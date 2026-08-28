@@ -1,0 +1,4769 @@
+from . import enums
+from .accept_dispute_response import AcceptDisputeResponse, AcceptDisputeResponseDict
+from .accepted_payment_methods import AcceptedPaymentMethods, AcceptedPaymentMethodsDict
+from .accumulate_loyalty_points_request import AccumulateLoyaltyPointsRequest, AccumulateLoyaltyPointsRequestDict
+from .accumulate_loyalty_points_response import AccumulateLoyaltyPointsResponse, AccumulateLoyaltyPointsResponseDict
+from .achdetails import Achdetails, AchdetailsDict
+from .add_group_to_customer_response import AddGroupToCustomerResponse, AddGroupToCustomerResponseDict
+from .additional_recipient import AdditionalRecipient, AdditionalRecipientDict
+from .address import Address, AddressDict
+from .adjust_loyalty_points_request import AdjustLoyaltyPointsRequest, AdjustLoyaltyPointsRequestDict
+from .adjust_loyalty_points_response import AdjustLoyaltyPointsResponse, AdjustLoyaltyPointsResponseDict
+from .afterpay_details import AfterpayDetails, AfterpayDetailsDict
+from .application_details import ApplicationDetails, ApplicationDetailsDict
+from .appointment_segment import AppointmentSegment, AppointmentSegmentDict
+from .availability import Availability, AvailabilityDict
+from .bank_account import BankAccount, BankAccountDict
+from .bank_account_created_event import BankAccountCreatedEvent, BankAccountCreatedEventDict
+from .bank_account_created_event_data import BankAccountCreatedEventData, BankAccountCreatedEventDataDict
+from .bank_account_created_event_object import BankAccountCreatedEventObject, BankAccountCreatedEventObjectDict
+from .bank_account_disabled_event import BankAccountDisabledEvent, BankAccountDisabledEventDict
+from .bank_account_disabled_event_data import BankAccountDisabledEventData, BankAccountDisabledEventDataDict
+from .bank_account_disabled_event_object import BankAccountDisabledEventObject, BankAccountDisabledEventObjectDict
+from .bank_account_payment_details import BankAccountPaymentDetails, BankAccountPaymentDetailsDict
+from .bank_account_verified_event import BankAccountVerifiedEvent, BankAccountVerifiedEventDict
+from .bank_account_verified_event_data import BankAccountVerifiedEventData, BankAccountVerifiedEventDataDict
+from .bank_account_verified_event_object import BankAccountVerifiedEventObject, BankAccountVerifiedEventObjectDict
+from .batch_change_inventory_request import BatchChangeInventoryRequest, BatchChangeInventoryRequestDict
+from .batch_change_inventory_response import BatchChangeInventoryResponse, BatchChangeInventoryResponseDict
+from .batch_delete_catalog_objects_request import BatchDeleteCatalogObjectsRequest, BatchDeleteCatalogObjectsRequestDict
+from .batch_delete_catalog_objects_response import (
+    BatchDeleteCatalogObjectsResponse,
+    BatchDeleteCatalogObjectsResponseDict,
+)
+from .batch_retrieve_catalog_objects_request import (
+    BatchRetrieveCatalogObjectsRequest,
+    BatchRetrieveCatalogObjectsRequestDict,
+)
+from .batch_retrieve_catalog_objects_response import (
+    BatchRetrieveCatalogObjectsResponse,
+    BatchRetrieveCatalogObjectsResponseDict,
+)
+from .batch_retrieve_inventory_changes_request import (
+    BatchRetrieveInventoryChangesRequest,
+    BatchRetrieveInventoryChangesRequestDict,
+)
+from .batch_retrieve_inventory_changes_response import (
+    BatchRetrieveInventoryChangesResponse,
+    BatchRetrieveInventoryChangesResponseDict,
+)
+from .batch_retrieve_inventory_changes_sort import (
+    BatchRetrieveInventoryChangesSort,
+    BatchRetrieveInventoryChangesSortDict,
+)
+from .batch_retrieve_inventory_counts_request import (
+    BatchRetrieveInventoryCountsRequest,
+    BatchRetrieveInventoryCountsRequestDict,
+)
+from .batch_retrieve_inventory_counts_response import (
+    BatchRetrieveInventoryCountsResponse,
+    BatchRetrieveInventoryCountsResponseDict,
+)
+from .batch_retrieve_orders_request import BatchRetrieveOrdersRequest, BatchRetrieveOrdersRequestDict
+from .batch_retrieve_orders_response import BatchRetrieveOrdersResponse, BatchRetrieveOrdersResponseDict
+from .batch_upsert_catalog_objects_request import BatchUpsertCatalogObjectsRequest, BatchUpsertCatalogObjectsRequestDict
+from .batch_upsert_catalog_objects_response import (
+    BatchUpsertCatalogObjectsResponse,
+    BatchUpsertCatalogObjectsResponseDict,
+)
+from .booking import Booking, BookingDict
+from .booking_created_event import BookingCreatedEvent, BookingCreatedEventDict
+from .booking_created_event_data import BookingCreatedEventData, BookingCreatedEventDataDict
+from .booking_created_event_object import BookingCreatedEventObject, BookingCreatedEventObjectDict
+from .booking_creator_details import BookingCreatorDetails, BookingCreatorDetailsDict
+from .booking_custom_attribute_definition_owned_created_event import (
+    BookingCustomAttributeDefinitionOwnedCreatedEvent,
+    BookingCustomAttributeDefinitionOwnedCreatedEventDict,
+)
+from .booking_custom_attribute_definition_owned_deleted_event import (
+    BookingCustomAttributeDefinitionOwnedDeletedEvent,
+    BookingCustomAttributeDefinitionOwnedDeletedEventDict,
+)
+from .booking_custom_attribute_definition_owned_updated_event import (
+    BookingCustomAttributeDefinitionOwnedUpdatedEvent,
+    BookingCustomAttributeDefinitionOwnedUpdatedEventDict,
+)
+from .booking_custom_attribute_definition_visible_created_event import (
+    BookingCustomAttributeDefinitionVisibleCreatedEvent,
+    BookingCustomAttributeDefinitionVisibleCreatedEventDict,
+)
+from .booking_custom_attribute_definition_visible_deleted_event import (
+    BookingCustomAttributeDefinitionVisibleDeletedEvent,
+    BookingCustomAttributeDefinitionVisibleDeletedEventDict,
+)
+from .booking_custom_attribute_definition_visible_updated_event import (
+    BookingCustomAttributeDefinitionVisibleUpdatedEvent,
+    BookingCustomAttributeDefinitionVisibleUpdatedEventDict,
+)
+from .booking_custom_attribute_delete_request import (
+    BookingCustomAttributeDeleteRequest,
+    BookingCustomAttributeDeleteRequestDict,
+)
+from .booking_custom_attribute_delete_response import (
+    BookingCustomAttributeDeleteResponse,
+    BookingCustomAttributeDeleteResponseDict,
+)
+from .booking_custom_attribute_owned_deleted_event import (
+    BookingCustomAttributeOwnedDeletedEvent,
+    BookingCustomAttributeOwnedDeletedEventDict,
+)
+from .booking_custom_attribute_owned_updated_event import (
+    BookingCustomAttributeOwnedUpdatedEvent,
+    BookingCustomAttributeOwnedUpdatedEventDict,
+)
+from .booking_custom_attribute_upsert_request import (
+    BookingCustomAttributeUpsertRequest,
+    BookingCustomAttributeUpsertRequestDict,
+)
+from .booking_custom_attribute_upsert_response import (
+    BookingCustomAttributeUpsertResponse,
+    BookingCustomAttributeUpsertResponseDict,
+)
+from .booking_custom_attribute_visible_deleted_event import (
+    BookingCustomAttributeVisibleDeletedEvent,
+    BookingCustomAttributeVisibleDeletedEventDict,
+)
+from .booking_custom_attribute_visible_updated_event import (
+    BookingCustomAttributeVisibleUpdatedEvent,
+    BookingCustomAttributeVisibleUpdatedEventDict,
+)
+from .booking_updated_event import BookingUpdatedEvent, BookingUpdatedEventDict
+from .booking_updated_event_data import BookingUpdatedEventData, BookingUpdatedEventDataDict
+from .booking_updated_event_object import BookingUpdatedEventObject, BookingUpdatedEventObjectDict
+from .break_model import BreakModel, BreakModelDict
+from .break_type import BreakType, BreakTypeDict
+from .bulk_create_customer_data import BulkCreateCustomerData, BulkCreateCustomerDataDict
+from .bulk_create_customers_request import BulkCreateCustomersRequest, BulkCreateCustomersRequestDict
+from .bulk_create_customers_response import BulkCreateCustomersResponse, BulkCreateCustomersResponseDict
+from .bulk_create_team_members_request import BulkCreateTeamMembersRequest, BulkCreateTeamMembersRequestDict
+from .bulk_create_team_members_response import BulkCreateTeamMembersResponse, BulkCreateTeamMembersResponseDict
+from .bulk_create_vendors_request import BulkCreateVendorsRequest, BulkCreateVendorsRequestDict
+from .bulk_create_vendors_response import BulkCreateVendorsResponse, BulkCreateVendorsResponseDict
+from .bulk_delete_booking_custom_attributes_request import (
+    BulkDeleteBookingCustomAttributesRequest,
+    BulkDeleteBookingCustomAttributesRequestDict,
+)
+from .bulk_delete_booking_custom_attributes_response import (
+    BulkDeleteBookingCustomAttributesResponse,
+    BulkDeleteBookingCustomAttributesResponseDict,
+)
+from .bulk_delete_customers_request import BulkDeleteCustomersRequest, BulkDeleteCustomersRequestDict
+from .bulk_delete_customers_response import BulkDeleteCustomersResponse, BulkDeleteCustomersResponseDict
+from .bulk_delete_location_custom_attributes_request import (
+    BulkDeleteLocationCustomAttributesRequest,
+    BulkDeleteLocationCustomAttributesRequestDict,
+)
+from .bulk_delete_location_custom_attributes_request_location_custom_attribute_delete_request import (
+    BulkDeleteLocationCustomAttributesRequestLocationCustomAttributeDeleteRequest,
+    BulkDeleteLocationCustomAttributesRequestLocationCustomAttributeDeleteRequestDict,
+)
+from .bulk_delete_location_custom_attributes_response import (
+    BulkDeleteLocationCustomAttributesResponse,
+    BulkDeleteLocationCustomAttributesResponseDict,
+)
+from .bulk_delete_location_custom_attributes_response_location_custom_attribute_delete_response import (
+    BulkDeleteLocationCustomAttributesResponseLocationCustomAttributeDeleteResponse,
+    BulkDeleteLocationCustomAttributesResponseLocationCustomAttributeDeleteResponseDict,
+)
+from .bulk_delete_merchant_custom_attributes_request import (
+    BulkDeleteMerchantCustomAttributesRequest,
+    BulkDeleteMerchantCustomAttributesRequestDict,
+)
+from .bulk_delete_merchant_custom_attributes_request_merchant_custom_attribute_delete_request import (
+    BulkDeleteMerchantCustomAttributesRequestMerchantCustomAttributeDeleteRequest,
+    BulkDeleteMerchantCustomAttributesRequestMerchantCustomAttributeDeleteRequestDict,
+)
+from .bulk_delete_merchant_custom_attributes_response import (
+    BulkDeleteMerchantCustomAttributesResponse,
+    BulkDeleteMerchantCustomAttributesResponseDict,
+)
+from .bulk_delete_merchant_custom_attributes_response_merchant_custom_attribute_delete_response import (
+    BulkDeleteMerchantCustomAttributesResponseMerchantCustomAttributeDeleteResponse,
+    BulkDeleteMerchantCustomAttributesResponseMerchantCustomAttributeDeleteResponseDict,
+)
+from .bulk_delete_order_custom_attributes_request import (
+    BulkDeleteOrderCustomAttributesRequest,
+    BulkDeleteOrderCustomAttributesRequestDict,
+)
+from .bulk_delete_order_custom_attributes_request_delete_custom_attribute import (
+    BulkDeleteOrderCustomAttributesRequestDeleteCustomAttribute,
+    BulkDeleteOrderCustomAttributesRequestDeleteCustomAttributeDict,
+)
+from .bulk_delete_order_custom_attributes_response import (
+    BulkDeleteOrderCustomAttributesResponse,
+    BulkDeleteOrderCustomAttributesResponseDict,
+)
+from .bulk_publish_scheduled_shifts_data import BulkPublishScheduledShiftsData, BulkPublishScheduledShiftsDataDict
+from .bulk_publish_scheduled_shifts_request import (
+    BulkPublishScheduledShiftsRequest,
+    BulkPublishScheduledShiftsRequestDict,
+)
+from .bulk_publish_scheduled_shifts_response import (
+    BulkPublishScheduledShiftsResponse,
+    BulkPublishScheduledShiftsResponseDict,
+)
+from .bulk_retrieve_bookings_request import BulkRetrieveBookingsRequest, BulkRetrieveBookingsRequestDict
+from .bulk_retrieve_bookings_response import BulkRetrieveBookingsResponse, BulkRetrieveBookingsResponseDict
+from .bulk_retrieve_channels_request import BulkRetrieveChannelsRequest, BulkRetrieveChannelsRequestDict
+from .bulk_retrieve_channels_response import BulkRetrieveChannelsResponse, BulkRetrieveChannelsResponseDict
+from .bulk_retrieve_customers_request import BulkRetrieveCustomersRequest, BulkRetrieveCustomersRequestDict
+from .bulk_retrieve_customers_response import BulkRetrieveCustomersResponse, BulkRetrieveCustomersResponseDict
+from .bulk_retrieve_team_member_booking_profiles_request import (
+    BulkRetrieveTeamMemberBookingProfilesRequest,
+    BulkRetrieveTeamMemberBookingProfilesRequestDict,
+)
+from .bulk_retrieve_team_member_booking_profiles_response import (
+    BulkRetrieveTeamMemberBookingProfilesResponse,
+    BulkRetrieveTeamMemberBookingProfilesResponseDict,
+)
+from .bulk_retrieve_vendors_request import BulkRetrieveVendorsRequest, BulkRetrieveVendorsRequestDict
+from .bulk_retrieve_vendors_response import BulkRetrieveVendorsResponse, BulkRetrieveVendorsResponseDict
+from .bulk_swap_plan_request import BulkSwapPlanRequest, BulkSwapPlanRequestDict
+from .bulk_swap_plan_response import BulkSwapPlanResponse, BulkSwapPlanResponseDict
+from .bulk_update_customer_data import BulkUpdateCustomerData, BulkUpdateCustomerDataDict
+from .bulk_update_customers_request import BulkUpdateCustomersRequest, BulkUpdateCustomersRequestDict
+from .bulk_update_customers_response import BulkUpdateCustomersResponse, BulkUpdateCustomersResponseDict
+from .bulk_update_team_members_request import BulkUpdateTeamMembersRequest, BulkUpdateTeamMembersRequestDict
+from .bulk_update_team_members_response import BulkUpdateTeamMembersResponse, BulkUpdateTeamMembersResponseDict
+from .bulk_update_vendors_request import BulkUpdateVendorsRequest, BulkUpdateVendorsRequestDict
+from .bulk_update_vendors_response import BulkUpdateVendorsResponse, BulkUpdateVendorsResponseDict
+from .bulk_upsert_booking_custom_attributes_request import (
+    BulkUpsertBookingCustomAttributesRequest,
+    BulkUpsertBookingCustomAttributesRequestDict,
+)
+from .bulk_upsert_booking_custom_attributes_response import (
+    BulkUpsertBookingCustomAttributesResponse,
+    BulkUpsertBookingCustomAttributesResponseDict,
+)
+from .bulk_upsert_customer_custom_attributes_request import (
+    BulkUpsertCustomerCustomAttributesRequest,
+    BulkUpsertCustomerCustomAttributesRequestDict,
+)
+from .bulk_upsert_customer_custom_attributes_request_customer_custom_attribute_upsert_request import (
+    BulkUpsertCustomerCustomAttributesRequestCustomerCustomAttributeUpsertRequest,
+    BulkUpsertCustomerCustomAttributesRequestCustomerCustomAttributeUpsertRequestDict,
+)
+from .bulk_upsert_customer_custom_attributes_response import (
+    BulkUpsertCustomerCustomAttributesResponse,
+    BulkUpsertCustomerCustomAttributesResponseDict,
+)
+from .bulk_upsert_customer_custom_attributes_response_customer_custom_attribute_upsert_response import (
+    BulkUpsertCustomerCustomAttributesResponseCustomerCustomAttributeUpsertResponse,
+    BulkUpsertCustomerCustomAttributesResponseCustomerCustomAttributeUpsertResponseDict,
+)
+from .bulk_upsert_location_custom_attributes_request import (
+    BulkUpsertLocationCustomAttributesRequest,
+    BulkUpsertLocationCustomAttributesRequestDict,
+)
+from .bulk_upsert_location_custom_attributes_request_location_custom_attribute_upsert_request import (
+    BulkUpsertLocationCustomAttributesRequestLocationCustomAttributeUpsertRequest,
+    BulkUpsertLocationCustomAttributesRequestLocationCustomAttributeUpsertRequestDict,
+)
+from .bulk_upsert_location_custom_attributes_response import (
+    BulkUpsertLocationCustomAttributesResponse,
+    BulkUpsertLocationCustomAttributesResponseDict,
+)
+from .bulk_upsert_location_custom_attributes_response_location_custom_attribute_upsert_response import (
+    BulkUpsertLocationCustomAttributesResponseLocationCustomAttributeUpsertResponse,
+    BulkUpsertLocationCustomAttributesResponseLocationCustomAttributeUpsertResponseDict,
+)
+from .bulk_upsert_merchant_custom_attributes_request import (
+    BulkUpsertMerchantCustomAttributesRequest,
+    BulkUpsertMerchantCustomAttributesRequestDict,
+)
+from .bulk_upsert_merchant_custom_attributes_request_merchant_custom_attribute_upsert_request import (
+    BulkUpsertMerchantCustomAttributesRequestMerchantCustomAttributeUpsertRequest,
+    BulkUpsertMerchantCustomAttributesRequestMerchantCustomAttributeUpsertRequestDict,
+)
+from .bulk_upsert_merchant_custom_attributes_response import (
+    BulkUpsertMerchantCustomAttributesResponse,
+    BulkUpsertMerchantCustomAttributesResponseDict,
+)
+from .bulk_upsert_merchant_custom_attributes_response_merchant_custom_attribute_upsert_response import (
+    BulkUpsertMerchantCustomAttributesResponseMerchantCustomAttributeUpsertResponse,
+    BulkUpsertMerchantCustomAttributesResponseMerchantCustomAttributeUpsertResponseDict,
+)
+from .bulk_upsert_order_custom_attributes_request import (
+    BulkUpsertOrderCustomAttributesRequest,
+    BulkUpsertOrderCustomAttributesRequestDict,
+)
+from .bulk_upsert_order_custom_attributes_request_upsert_custom_attribute import (
+    BulkUpsertOrderCustomAttributesRequestUpsertCustomAttribute,
+    BulkUpsertOrderCustomAttributesRequestUpsertCustomAttributeDict,
+)
+from .bulk_upsert_order_custom_attributes_response import (
+    BulkUpsertOrderCustomAttributesResponse,
+    BulkUpsertOrderCustomAttributesResponseDict,
+)
+from .business_appointment_settings import BusinessAppointmentSettings, BusinessAppointmentSettingsDict
+from .business_booking_profile import BusinessBookingProfile, BusinessBookingProfileDict
+from .business_hours import BusinessHours, BusinessHoursDict
+from .business_hours_period import BusinessHoursPeriod, BusinessHoursPeriodDict
+from .buy_now_pay_later_details import BuyNowPayLaterDetails, BuyNowPayLaterDetailsDict
+from .calculate_loyalty_points_request import CalculateLoyaltyPointsRequest, CalculateLoyaltyPointsRequestDict
+from .calculate_loyalty_points_response import CalculateLoyaltyPointsResponse, CalculateLoyaltyPointsResponseDict
+from .calculate_order_request import CalculateOrderRequest, CalculateOrderRequestDict
+from .calculate_order_response import CalculateOrderResponse, CalculateOrderResponseDict
+from .cancel_booking_request import CancelBookingRequest, CancelBookingRequestDict
+from .cancel_booking_response import CancelBookingResponse, CancelBookingResponseDict
+from .cancel_invoice_request import CancelInvoiceRequest, CancelInvoiceRequestDict
+from .cancel_invoice_response import CancelInvoiceResponse, CancelInvoiceResponseDict
+from .cancel_loyalty_promotion_response import CancelLoyaltyPromotionResponse, CancelLoyaltyPromotionResponseDict
+from .cancel_payment_by_idempotency_key_request import (
+    CancelPaymentByIdempotencyKeyRequest,
+    CancelPaymentByIdempotencyKeyRequestDict,
+)
+from .cancel_payment_by_idempotency_key_response import (
+    CancelPaymentByIdempotencyKeyResponse,
+    CancelPaymentByIdempotencyKeyResponseDict,
+)
+from .cancel_payment_response import CancelPaymentResponse, CancelPaymentResponseDict
+from .cancel_subscription_response import CancelSubscriptionResponse, CancelSubscriptionResponseDict
+from .cancel_terminal_action_response import CancelTerminalActionResponse, CancelTerminalActionResponseDict
+from .cancel_terminal_checkout_response import CancelTerminalCheckoutResponse, CancelTerminalCheckoutResponseDict
+from .cancel_terminal_refund_response import CancelTerminalRefundResponse, CancelTerminalRefundResponseDict
+from .cancel_transfer_order_request import CancelTransferOrderRequest, CancelTransferOrderRequestDict
+from .cancel_transfer_order_response import CancelTransferOrderResponse, CancelTransferOrderResponseDict
+from .capture_transaction_response import CaptureTransactionResponse, CaptureTransactionResponseDict
+from .card import Card, CardDict
+from .card_automatically_updated_event import CardAutomaticallyUpdatedEvent, CardAutomaticallyUpdatedEventDict
+from .card_automatically_updated_event_data import (
+    CardAutomaticallyUpdatedEventData,
+    CardAutomaticallyUpdatedEventDataDict,
+)
+from .card_automatically_updated_event_object import (
+    CardAutomaticallyUpdatedEventObject,
+    CardAutomaticallyUpdatedEventObjectDict,
+)
+from .card_created_event import CardCreatedEvent, CardCreatedEventDict
+from .card_created_event_data import CardCreatedEventData, CardCreatedEventDataDict
+from .card_created_event_object import CardCreatedEventObject, CardCreatedEventObjectDict
+from .card_disabled_event import CardDisabledEvent, CardDisabledEventDict
+from .card_disabled_event_data import CardDisabledEventData, CardDisabledEventDataDict
+from .card_disabled_event_object import CardDisabledEventObject, CardDisabledEventObjectDict
+from .card_forgotten_event import CardForgottenEvent, CardForgottenEventDict
+from .card_forgotten_event_card import CardForgottenEventCard, CardForgottenEventCardDict
+from .card_forgotten_event_data import CardForgottenEventData, CardForgottenEventDataDict
+from .card_forgotten_event_object import CardForgottenEventObject, CardForgottenEventObjectDict
+from .card_payment_details import CardPaymentDetails, CardPaymentDetailsDict
+from .card_payment_timeline import CardPaymentTimeline, CardPaymentTimelineDict
+from .card_surcharge_details import CardSurchargeDetails, CardSurchargeDetailsDict
+from .card_updated_event import CardUpdatedEvent, CardUpdatedEventDict
+from .card_updated_event_data import CardUpdatedEventData, CardUpdatedEventDataDict
+from .card_updated_event_object import CardUpdatedEventObject, CardUpdatedEventObjectDict
+from .cash_app_details import CashAppDetails, CashAppDetailsDict
+from .cash_drawer_device import CashDrawerDevice, CashDrawerDeviceDict
+from .cash_drawer_shift import CashDrawerShift, CashDrawerShiftDict
+from .cash_drawer_shift_event import CashDrawerShiftEvent, CashDrawerShiftEventDict
+from .cash_drawer_shift_summary import CashDrawerShiftSummary, CashDrawerShiftSummaryDict
+from .cash_payment_details import CashPaymentDetails, CashPaymentDetailsDict
+from .catalog_availability_period import CatalogAvailabilityPeriod, CatalogAvailabilityPeriodDict
+from .catalog_category import CatalogCategory, CatalogCategoryDict
+from .catalog_custom_attribute_definition import CatalogCustomAttributeDefinition, CatalogCustomAttributeDefinitionDict
+from .catalog_custom_attribute_definition_number_config import (
+    CatalogCustomAttributeDefinitionNumberConfig,
+    CatalogCustomAttributeDefinitionNumberConfigDict,
+)
+from .catalog_custom_attribute_definition_selection_config import (
+    CatalogCustomAttributeDefinitionSelectionConfig,
+    CatalogCustomAttributeDefinitionSelectionConfigDict,
+)
+from .catalog_custom_attribute_definition_selection_config_custom_attribute_selection import (
+    CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection,
+    CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelectionDict,
+)
+from .catalog_custom_attribute_definition_string_config import (
+    CatalogCustomAttributeDefinitionStringConfig,
+    CatalogCustomAttributeDefinitionStringConfigDict,
+)
+from .catalog_custom_attribute_value import CatalogCustomAttributeValue, CatalogCustomAttributeValueDict
+from .catalog_discount import CatalogDiscount, CatalogDiscountDict
+from .catalog_ecom_seo_data import CatalogEcomSeoData, CatalogEcomSeoDataDict
+from .catalog_id_mapping import CatalogIdMapping, CatalogIdMappingDict
+from .catalog_image import CatalogImage, CatalogImageDict
+from .catalog_info_response import CatalogInfoResponse, CatalogInfoResponseDict
+from .catalog_info_response_limits import CatalogInfoResponseLimits, CatalogInfoResponseLimitsDict
+from .catalog_item import CatalogItem, CatalogItemDict
+from .catalog_item_food_and_beverage_details import (
+    CatalogItemFoodAndBeverageDetails,
+    CatalogItemFoodAndBeverageDetailsDict,
+)
+from .catalog_item_food_and_beverage_details_dietary_preference import (
+    CatalogItemFoodAndBeverageDetailsDietaryPreference,
+    CatalogItemFoodAndBeverageDetailsDietaryPreferenceDict,
+)
+from .catalog_item_food_and_beverage_details_ingredient import (
+    CatalogItemFoodAndBeverageDetailsIngredient,
+    CatalogItemFoodAndBeverageDetailsIngredientDict,
+)
+from .catalog_item_modifier_list_info import CatalogItemModifierListInfo, CatalogItemModifierListInfoDict
+from .catalog_item_option import CatalogItemOption, CatalogItemOptionDict
+from .catalog_item_option_for_item import CatalogItemOptionForItem, CatalogItemOptionForItemDict
+from .catalog_item_option_value import CatalogItemOptionValue, CatalogItemOptionValueDict
+from .catalog_item_option_value_for_item_variation import (
+    CatalogItemOptionValueForItemVariation,
+    CatalogItemOptionValueForItemVariationDict,
+)
+from .catalog_item_variation import CatalogItemVariation, CatalogItemVariationDict
+from .catalog_item_variation_vendor_information import (
+    CatalogItemVariationVendorInformation,
+    CatalogItemVariationVendorInformationDict,
+)
+from .catalog_measurement_unit import CatalogMeasurementUnit, CatalogMeasurementUnitDict
+from .catalog_modifier import CatalogModifier, CatalogModifierDict
+from .catalog_modifier_list import CatalogModifierList, CatalogModifierListDict
+from .catalog_modifier_override import CatalogModifierOverride, CatalogModifierOverrideDict
+from .catalog_object import CatalogObject, CatalogObjectDict
+from .catalog_object_batch import CatalogObjectBatch, CatalogObjectBatchDict
+from .catalog_object_category import CatalogObjectCategory, CatalogObjectCategoryDict
+from .catalog_object_reference import CatalogObjectReference, CatalogObjectReferenceDict
+from .catalog_pricing_rule import CatalogPricingRule, CatalogPricingRuleDict
+from .catalog_product_set import CatalogProductSet, CatalogProductSetDict
+from .catalog_query import CatalogQuery, CatalogQueryDict
+from .catalog_query_exact import CatalogQueryExact, CatalogQueryExactDict
+from .catalog_query_item_variations_for_item_option_values import (
+    CatalogQueryItemVariationsForItemOptionValues,
+    CatalogQueryItemVariationsForItemOptionValuesDict,
+)
+from .catalog_query_items_for_item_options import CatalogQueryItemsForItemOptions, CatalogQueryItemsForItemOptionsDict
+from .catalog_query_items_for_modifier_list import (
+    CatalogQueryItemsForModifierList,
+    CatalogQueryItemsForModifierListDict,
+)
+from .catalog_query_items_for_tax import CatalogQueryItemsForTax, CatalogQueryItemsForTaxDict
+from .catalog_query_prefix import CatalogQueryPrefix, CatalogQueryPrefixDict
+from .catalog_query_range import CatalogQueryRange, CatalogQueryRangeDict
+from .catalog_query_set import CatalogQuerySet, CatalogQuerySetDict
+from .catalog_query_sorted_attribute import CatalogQuerySortedAttribute, CatalogQuerySortedAttributeDict
+from .catalog_query_text import CatalogQueryText, CatalogQueryTextDict
+from .catalog_quick_amount import CatalogQuickAmount, CatalogQuickAmountDict
+from .catalog_quick_amounts_settings import CatalogQuickAmountsSettings, CatalogQuickAmountsSettingsDict
+from .catalog_stock_conversion import CatalogStockConversion, CatalogStockConversionDict
+from .catalog_subscription_plan import CatalogSubscriptionPlan, CatalogSubscriptionPlanDict
+from .catalog_subscription_plan_variation import CatalogSubscriptionPlanVariation, CatalogSubscriptionPlanVariationDict
+from .catalog_tax import CatalogTax, CatalogTaxDict
+from .catalog_time_period import CatalogTimePeriod, CatalogTimePeriodDict
+from .catalog_v1_id import CatalogV1Id, CatalogV1IdDict
+from .catalog_version_updated_event import CatalogVersionUpdatedEvent, CatalogVersionUpdatedEventDict
+from .catalog_version_updated_event_catalog_version import (
+    CatalogVersionUpdatedEventCatalogVersion,
+    CatalogVersionUpdatedEventCatalogVersionDict,
+)
+from .catalog_version_updated_event_data import CatalogVersionUpdatedEventData, CatalogVersionUpdatedEventDataDict
+from .catalog_version_updated_event_object import CatalogVersionUpdatedEventObject, CatalogVersionUpdatedEventObjectDict
+from .category_path_to_root_node import CategoryPathToRootNode, CategoryPathToRootNodeDict
+from .change_billing_anchor_date_request import ChangeBillingAnchorDateRequest, ChangeBillingAnchorDateRequestDict
+from .change_billing_anchor_date_response import ChangeBillingAnchorDateResponse, ChangeBillingAnchorDateResponseDict
+from .channel import Channel, ChannelDict
+from .charge_request_additional_recipient import ChargeRequestAdditionalRecipient, ChargeRequestAdditionalRecipientDict
+from .checkout import Checkout, CheckoutDict
+from .checkout_location_settings import CheckoutLocationSettings, CheckoutLocationSettingsDict
+from .checkout_location_settings_branding import CheckoutLocationSettingsBranding, CheckoutLocationSettingsBrandingDict
+from .checkout_location_settings_coupons import CheckoutLocationSettingsCoupons, CheckoutLocationSettingsCouponsDict
+from .checkout_location_settings_policy import CheckoutLocationSettingsPolicy, CheckoutLocationSettingsPolicyDict
+from .checkout_location_settings_tipping import CheckoutLocationSettingsTipping, CheckoutLocationSettingsTippingDict
+from .checkout_merchant_settings import CheckoutMerchantSettings, CheckoutMerchantSettingsDict
+from .checkout_merchant_settings_payment_methods import (
+    CheckoutMerchantSettingsPaymentMethods,
+    CheckoutMerchantSettingsPaymentMethodsDict,
+)
+from .checkout_merchant_settings_payment_methods_afterpay_clearpay import (
+    CheckoutMerchantSettingsPaymentMethodsAfterpayClearpay,
+    CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayDict,
+)
+from .checkout_merchant_settings_payment_methods_afterpay_clearpay_eligibility_range import (
+    CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayEligibilityRange,
+    CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayEligibilityRangeDict,
+)
+from .checkout_merchant_settings_payment_methods_payment_method import (
+    CheckoutMerchantSettingsPaymentMethodsPaymentMethod,
+    CheckoutMerchantSettingsPaymentMethodsPaymentMethodDict,
+)
+from .checkout_options import CheckoutOptions, CheckoutOptionsDict
+from .clearpay_details import ClearpayDetails, ClearpayDetailsDict
+from .clone_order_request import CloneOrderRequest, CloneOrderRequestDict
+from .clone_order_response import CloneOrderResponse, CloneOrderResponseDict
+from .collected_data import CollectedData, CollectedDataDict
+from .complete_payment_request import CompletePaymentRequest, CompletePaymentRequestDict
+from .complete_payment_response import CompletePaymentResponse, CompletePaymentResponseDict
+from .component import Component, ComponentDict
+from .confirmation_decision import ConfirmationDecision, ConfirmationDecisionDict
+from .confirmation_options import ConfirmationOptions, ConfirmationOptionsDict
+from .coordinates import Coordinates, CoordinatesDict
+from .create_bank_account_request import CreateBankAccountRequest, CreateBankAccountRequestDict
+from .create_bank_account_response import CreateBankAccountResponse, CreateBankAccountResponseDict
+from .create_booking_custom_attribute_definition_request import (
+    CreateBookingCustomAttributeDefinitionRequest,
+    CreateBookingCustomAttributeDefinitionRequestDict,
+)
+from .create_booking_custom_attribute_definition_response import (
+    CreateBookingCustomAttributeDefinitionResponse,
+    CreateBookingCustomAttributeDefinitionResponseDict,
+)
+from .create_booking_request import CreateBookingRequest, CreateBookingRequestDict
+from .create_booking_response import CreateBookingResponse, CreateBookingResponseDict
+from .create_break_type_request import CreateBreakTypeRequest, CreateBreakTypeRequestDict
+from .create_break_type_response import CreateBreakTypeResponse, CreateBreakTypeResponseDict
+from .create_card_request import CreateCardRequest, CreateCardRequestDict
+from .create_card_response import CreateCardResponse, CreateCardResponseDict
+from .create_catalog_image_request import CreateCatalogImageRequest, CreateCatalogImageRequestDict
+from .create_catalog_image_response import CreateCatalogImageResponse, CreateCatalogImageResponseDict
+from .create_checkout_request import CreateCheckoutRequest, CreateCheckoutRequestDict
+from .create_checkout_response import CreateCheckoutResponse, CreateCheckoutResponseDict
+from .create_customer_card_request import CreateCustomerCardRequest, CreateCustomerCardRequestDict
+from .create_customer_card_response import CreateCustomerCardResponse, CreateCustomerCardResponseDict
+from .create_customer_custom_attribute_definition_request import (
+    CreateCustomerCustomAttributeDefinitionRequest,
+    CreateCustomerCustomAttributeDefinitionRequestDict,
+)
+from .create_customer_custom_attribute_definition_response import (
+    CreateCustomerCustomAttributeDefinitionResponse,
+    CreateCustomerCustomAttributeDefinitionResponseDict,
+)
+from .create_customer_group_request import CreateCustomerGroupRequest, CreateCustomerGroupRequestDict
+from .create_customer_group_response import CreateCustomerGroupResponse, CreateCustomerGroupResponseDict
+from .create_customer_request import CreateCustomerRequest, CreateCustomerRequestDict
+from .create_customer_response import CreateCustomerResponse, CreateCustomerResponseDict
+from .create_device_code_request import CreateDeviceCodeRequest, CreateDeviceCodeRequestDict
+from .create_device_code_response import CreateDeviceCodeResponse, CreateDeviceCodeResponseDict
+from .create_dispute_evidence_file_request import CreateDisputeEvidenceFileRequest, CreateDisputeEvidenceFileRequestDict
+from .create_dispute_evidence_file_response import (
+    CreateDisputeEvidenceFileResponse,
+    CreateDisputeEvidenceFileResponseDict,
+)
+from .create_dispute_evidence_text_request import CreateDisputeEvidenceTextRequest, CreateDisputeEvidenceTextRequestDict
+from .create_dispute_evidence_text_response import (
+    CreateDisputeEvidenceTextResponse,
+    CreateDisputeEvidenceTextResponseDict,
+)
+from .create_gift_card_activity_request import CreateGiftCardActivityRequest, CreateGiftCardActivityRequestDict
+from .create_gift_card_activity_response import CreateGiftCardActivityResponse, CreateGiftCardActivityResponseDict
+from .create_gift_card_request import CreateGiftCardRequest, CreateGiftCardRequestDict
+from .create_gift_card_response import CreateGiftCardResponse, CreateGiftCardResponseDict
+from .create_inventory_adjustment_reason_request import (
+    CreateInventoryAdjustmentReasonRequest,
+    CreateInventoryAdjustmentReasonRequestDict,
+)
+from .create_inventory_adjustment_reason_response import (
+    CreateInventoryAdjustmentReasonResponse,
+    CreateInventoryAdjustmentReasonResponseDict,
+)
+from .create_invoice_attachment_request import CreateInvoiceAttachmentRequest, CreateInvoiceAttachmentRequestDict
+from .create_invoice_attachment_response import CreateInvoiceAttachmentResponse, CreateInvoiceAttachmentResponseDict
+from .create_invoice_request import CreateInvoiceRequest, CreateInvoiceRequestDict
+from .create_invoice_response import CreateInvoiceResponse, CreateInvoiceResponseDict
+from .create_job_request import CreateJobRequest, CreateJobRequestDict
+from .create_job_response import CreateJobResponse, CreateJobResponseDict
+from .create_location_custom_attribute_definition_request import (
+    CreateLocationCustomAttributeDefinitionRequest,
+    CreateLocationCustomAttributeDefinitionRequestDict,
+)
+from .create_location_custom_attribute_definition_response import (
+    CreateLocationCustomAttributeDefinitionResponse,
+    CreateLocationCustomAttributeDefinitionResponseDict,
+)
+from .create_location_request import CreateLocationRequest, CreateLocationRequestDict
+from .create_location_response import CreateLocationResponse, CreateLocationResponseDict
+from .create_loyalty_account_request import CreateLoyaltyAccountRequest, CreateLoyaltyAccountRequestDict
+from .create_loyalty_account_response import CreateLoyaltyAccountResponse, CreateLoyaltyAccountResponseDict
+from .create_loyalty_promotion_request import CreateLoyaltyPromotionRequest, CreateLoyaltyPromotionRequestDict
+from .create_loyalty_promotion_response import CreateLoyaltyPromotionResponse, CreateLoyaltyPromotionResponseDict
+from .create_loyalty_reward_request import CreateLoyaltyRewardRequest, CreateLoyaltyRewardRequestDict
+from .create_loyalty_reward_response import CreateLoyaltyRewardResponse, CreateLoyaltyRewardResponseDict
+from .create_merchant_custom_attribute_definition_request import (
+    CreateMerchantCustomAttributeDefinitionRequest,
+    CreateMerchantCustomAttributeDefinitionRequestDict,
+)
+from .create_merchant_custom_attribute_definition_response import (
+    CreateMerchantCustomAttributeDefinitionResponse,
+    CreateMerchantCustomAttributeDefinitionResponseDict,
+)
+from .create_order_custom_attribute_definition_request import (
+    CreateOrderCustomAttributeDefinitionRequest,
+    CreateOrderCustomAttributeDefinitionRequestDict,
+)
+from .create_order_custom_attribute_definition_response import (
+    CreateOrderCustomAttributeDefinitionResponse,
+    CreateOrderCustomAttributeDefinitionResponseDict,
+)
+from .create_order_request import CreateOrderRequest, CreateOrderRequestDict
+from .create_order_response import CreateOrderResponse, CreateOrderResponseDict
+from .create_payment_link_request import CreatePaymentLinkRequest, CreatePaymentLinkRequestDict
+from .create_payment_link_response import CreatePaymentLinkResponse, CreatePaymentLinkResponseDict
+from .create_payment_request import CreatePaymentRequest, CreatePaymentRequestDict
+from .create_payment_response import CreatePaymentResponse, CreatePaymentResponseDict
+from .create_scheduled_shift_request import CreateScheduledShiftRequest, CreateScheduledShiftRequestDict
+from .create_scheduled_shift_response import CreateScheduledShiftResponse, CreateScheduledShiftResponseDict
+from .create_shift_request import CreateShiftRequest, CreateShiftRequestDict
+from .create_shift_response import CreateShiftResponse, CreateShiftResponseDict
+from .create_subscription_request import CreateSubscriptionRequest, CreateSubscriptionRequestDict
+from .create_subscription_response import CreateSubscriptionResponse, CreateSubscriptionResponseDict
+from .create_team_member_request import CreateTeamMemberRequest, CreateTeamMemberRequestDict
+from .create_team_member_response import CreateTeamMemberResponse, CreateTeamMemberResponseDict
+from .create_terminal_action_request import CreateTerminalActionRequest, CreateTerminalActionRequestDict
+from .create_terminal_action_response import CreateTerminalActionResponse, CreateTerminalActionResponseDict
+from .create_terminal_checkout_request import CreateTerminalCheckoutRequest, CreateTerminalCheckoutRequestDict
+from .create_terminal_checkout_response import CreateTerminalCheckoutResponse, CreateTerminalCheckoutResponseDict
+from .create_terminal_refund_request import CreateTerminalRefundRequest, CreateTerminalRefundRequestDict
+from .create_terminal_refund_response import CreateTerminalRefundResponse, CreateTerminalRefundResponseDict
+from .create_timecard_request import CreateTimecardRequest, CreateTimecardRequestDict
+from .create_timecard_response import CreateTimecardResponse, CreateTimecardResponseDict
+from .create_transfer_order_data import CreateTransferOrderData, CreateTransferOrderDataDict
+from .create_transfer_order_line_data import CreateTransferOrderLineData, CreateTransferOrderLineDataDict
+from .create_transfer_order_request import CreateTransferOrderRequest, CreateTransferOrderRequestDict
+from .create_transfer_order_response import CreateTransferOrderResponse, CreateTransferOrderResponseDict
+from .create_vendor_request import CreateVendorRequest, CreateVendorRequestDict
+from .create_vendor_response import CreateVendorResponse, CreateVendorResponseDict
+from .create_webhook_subscription_request import CreateWebhookSubscriptionRequest, CreateWebhookSubscriptionRequestDict
+from .create_webhook_subscription_response import (
+    CreateWebhookSubscriptionResponse,
+    CreateWebhookSubscriptionResponseDict,
+)
+from .custom_attribute import CustomAttribute, CustomAttributeDict
+from .custom_attribute_definition import CustomAttributeDefinition, CustomAttributeDefinitionDict
+from .custom_attribute_definition_event_data import (
+    CustomAttributeDefinitionEventData,
+    CustomAttributeDefinitionEventDataDict,
+)
+from .custom_attribute_definition_event_data_object import (
+    CustomAttributeDefinitionEventDataObject,
+    CustomAttributeDefinitionEventDataObjectDict,
+)
+from .custom_attribute_event_data import CustomAttributeEventData, CustomAttributeEventDataDict
+from .custom_attribute_event_data_object import CustomAttributeEventDataObject, CustomAttributeEventDataObjectDict
+from .custom_attribute_filter import CustomAttributeFilter, CustomAttributeFilterDict
+from .custom_field import CustomField, CustomFieldDict
+from .customer import Customer, CustomerDict
+from .customer_address_filter import CustomerAddressFilter, CustomerAddressFilterDict
+from .customer_created_event import CustomerCreatedEvent, CustomerCreatedEventDict
+from .customer_created_event_data import CustomerCreatedEventData, CustomerCreatedEventDataDict
+from .customer_created_event_event_context import CustomerCreatedEventEventContext, CustomerCreatedEventEventContextDict
+from .customer_created_event_event_context_merge import (
+    CustomerCreatedEventEventContextMerge,
+    CustomerCreatedEventEventContextMergeDict,
+)
+from .customer_created_event_object import CustomerCreatedEventObject, CustomerCreatedEventObjectDict
+from .customer_creation_source_filter import CustomerCreationSourceFilter, CustomerCreationSourceFilterDict
+from .customer_custom_attribute_definition_created_event import (
+    CustomerCustomAttributeDefinitionCreatedEvent,
+    CustomerCustomAttributeDefinitionCreatedEventDict,
+)
+from .customer_custom_attribute_definition_created_public_event import (
+    CustomerCustomAttributeDefinitionCreatedPublicEvent,
+    CustomerCustomAttributeDefinitionCreatedPublicEventDict,
+)
+from .customer_custom_attribute_definition_deleted_event import (
+    CustomerCustomAttributeDefinitionDeletedEvent,
+    CustomerCustomAttributeDefinitionDeletedEventDict,
+)
+from .customer_custom_attribute_definition_deleted_public_event import (
+    CustomerCustomAttributeDefinitionDeletedPublicEvent,
+    CustomerCustomAttributeDefinitionDeletedPublicEventDict,
+)
+from .customer_custom_attribute_definition_owned_created_event import (
+    CustomerCustomAttributeDefinitionOwnedCreatedEvent,
+    CustomerCustomAttributeDefinitionOwnedCreatedEventDict,
+)
+from .customer_custom_attribute_definition_owned_deleted_event import (
+    CustomerCustomAttributeDefinitionOwnedDeletedEvent,
+    CustomerCustomAttributeDefinitionOwnedDeletedEventDict,
+)
+from .customer_custom_attribute_definition_owned_updated_event import (
+    CustomerCustomAttributeDefinitionOwnedUpdatedEvent,
+    CustomerCustomAttributeDefinitionOwnedUpdatedEventDict,
+)
+from .customer_custom_attribute_definition_updated_event import (
+    CustomerCustomAttributeDefinitionUpdatedEvent,
+    CustomerCustomAttributeDefinitionUpdatedEventDict,
+)
+from .customer_custom_attribute_definition_updated_public_event import (
+    CustomerCustomAttributeDefinitionUpdatedPublicEvent,
+    CustomerCustomAttributeDefinitionUpdatedPublicEventDict,
+)
+from .customer_custom_attribute_definition_visible_created_event import (
+    CustomerCustomAttributeDefinitionVisibleCreatedEvent,
+    CustomerCustomAttributeDefinitionVisibleCreatedEventDict,
+)
+from .customer_custom_attribute_definition_visible_deleted_event import (
+    CustomerCustomAttributeDefinitionVisibleDeletedEvent,
+    CustomerCustomAttributeDefinitionVisibleDeletedEventDict,
+)
+from .customer_custom_attribute_definition_visible_updated_event import (
+    CustomerCustomAttributeDefinitionVisibleUpdatedEvent,
+    CustomerCustomAttributeDefinitionVisibleUpdatedEventDict,
+)
+from .customer_custom_attribute_deleted_event import (
+    CustomerCustomAttributeDeletedEvent,
+    CustomerCustomAttributeDeletedEventDict,
+)
+from .customer_custom_attribute_deleted_public_event import (
+    CustomerCustomAttributeDeletedPublicEvent,
+    CustomerCustomAttributeDeletedPublicEventDict,
+)
+from .customer_custom_attribute_filter import CustomerCustomAttributeFilter, CustomerCustomAttributeFilterDict
+from .customer_custom_attribute_filter_value import (
+    CustomerCustomAttributeFilterValue,
+    CustomerCustomAttributeFilterValueDict,
+)
+from .customer_custom_attribute_filters import CustomerCustomAttributeFilters, CustomerCustomAttributeFiltersDict
+from .customer_custom_attribute_owned_deleted_event import (
+    CustomerCustomAttributeOwnedDeletedEvent,
+    CustomerCustomAttributeOwnedDeletedEventDict,
+)
+from .customer_custom_attribute_owned_updated_event import (
+    CustomerCustomAttributeOwnedUpdatedEvent,
+    CustomerCustomAttributeOwnedUpdatedEventDict,
+)
+from .customer_custom_attribute_updated_event import (
+    CustomerCustomAttributeUpdatedEvent,
+    CustomerCustomAttributeUpdatedEventDict,
+)
+from .customer_custom_attribute_updated_public_event import (
+    CustomerCustomAttributeUpdatedPublicEvent,
+    CustomerCustomAttributeUpdatedPublicEventDict,
+)
+from .customer_custom_attribute_visible_deleted_event import (
+    CustomerCustomAttributeVisibleDeletedEvent,
+    CustomerCustomAttributeVisibleDeletedEventDict,
+)
+from .customer_custom_attribute_visible_updated_event import (
+    CustomerCustomAttributeVisibleUpdatedEvent,
+    CustomerCustomAttributeVisibleUpdatedEventDict,
+)
+from .customer_deleted_event import CustomerDeletedEvent, CustomerDeletedEventDict
+from .customer_deleted_event_data import CustomerDeletedEventData, CustomerDeletedEventDataDict
+from .customer_deleted_event_event_context import CustomerDeletedEventEventContext, CustomerDeletedEventEventContextDict
+from .customer_deleted_event_event_context_merge import (
+    CustomerDeletedEventEventContextMerge,
+    CustomerDeletedEventEventContextMergeDict,
+)
+from .customer_deleted_event_object import CustomerDeletedEventObject, CustomerDeletedEventObjectDict
+from .customer_details import CustomerDetails, CustomerDetailsDict
+from .customer_filter import CustomerFilter, CustomerFilterDict
+from .customer_group import CustomerGroup, CustomerGroupDict
+from .customer_preferences import CustomerPreferences, CustomerPreferencesDict
+from .customer_query import CustomerQuery, CustomerQueryDict
+from .customer_segment import CustomerSegment, CustomerSegmentDict
+from .customer_sort import CustomerSort, CustomerSortDict
+from .customer_tax_ids import CustomerTaxIds, CustomerTaxIdsDict
+from .customer_text_filter import CustomerTextFilter, CustomerTextFilterDict
+from .customer_updated_event import CustomerUpdatedEvent, CustomerUpdatedEventDict
+from .customer_updated_event_data import CustomerUpdatedEventData, CustomerUpdatedEventDataDict
+from .customer_updated_event_object import CustomerUpdatedEventObject, CustomerUpdatedEventObjectDict
+from .data_collection_options import DataCollectionOptions, DataCollectionOptionsDict
+from .date_range import DateRange, DateRangeDict
+from .delete_booking_custom_attribute_definition_response import (
+    DeleteBookingCustomAttributeDefinitionResponse,
+    DeleteBookingCustomAttributeDefinitionResponseDict,
+)
+from .delete_booking_custom_attribute_response import (
+    DeleteBookingCustomAttributeResponse,
+    DeleteBookingCustomAttributeResponseDict,
+)
+from .delete_break_type_response import DeleteBreakTypeResponse, DeleteBreakTypeResponseDict
+from .delete_catalog_object_response import DeleteCatalogObjectResponse, DeleteCatalogObjectResponseDict
+from .delete_customer_card_response import DeleteCustomerCardResponse, DeleteCustomerCardResponseDict
+from .delete_customer_custom_attribute_definition_response import (
+    DeleteCustomerCustomAttributeDefinitionResponse,
+    DeleteCustomerCustomAttributeDefinitionResponseDict,
+)
+from .delete_customer_custom_attribute_response import (
+    DeleteCustomerCustomAttributeResponse,
+    DeleteCustomerCustomAttributeResponseDict,
+)
+from .delete_customer_group_response import DeleteCustomerGroupResponse, DeleteCustomerGroupResponseDict
+from .delete_customer_response import DeleteCustomerResponse, DeleteCustomerResponseDict
+from .delete_dispute_evidence_response import DeleteDisputeEvidenceResponse, DeleteDisputeEvidenceResponseDict
+from .delete_inventory_adjustment_reason_request import (
+    DeleteInventoryAdjustmentReasonRequest,
+    DeleteInventoryAdjustmentReasonRequestDict,
+)
+from .delete_inventory_adjustment_reason_response import (
+    DeleteInventoryAdjustmentReasonResponse,
+    DeleteInventoryAdjustmentReasonResponseDict,
+)
+from .delete_invoice_attachment_response import DeleteInvoiceAttachmentResponse, DeleteInvoiceAttachmentResponseDict
+from .delete_invoice_response import DeleteInvoiceResponse, DeleteInvoiceResponseDict
+from .delete_location_custom_attribute_definition_response import (
+    DeleteLocationCustomAttributeDefinitionResponse,
+    DeleteLocationCustomAttributeDefinitionResponseDict,
+)
+from .delete_location_custom_attribute_response import (
+    DeleteLocationCustomAttributeResponse,
+    DeleteLocationCustomAttributeResponseDict,
+)
+from .delete_loyalty_reward_response import DeleteLoyaltyRewardResponse, DeleteLoyaltyRewardResponseDict
+from .delete_merchant_custom_attribute_definition_response import (
+    DeleteMerchantCustomAttributeDefinitionResponse,
+    DeleteMerchantCustomAttributeDefinitionResponseDict,
+)
+from .delete_merchant_custom_attribute_response import (
+    DeleteMerchantCustomAttributeResponse,
+    DeleteMerchantCustomAttributeResponseDict,
+)
+from .delete_order_custom_attribute_definition_response import (
+    DeleteOrderCustomAttributeDefinitionResponse,
+    DeleteOrderCustomAttributeDefinitionResponseDict,
+)
+from .delete_order_custom_attribute_response import (
+    DeleteOrderCustomAttributeResponse,
+    DeleteOrderCustomAttributeResponseDict,
+)
+from .delete_payment_link_response import DeletePaymentLinkResponse, DeletePaymentLinkResponseDict
+from .delete_shift_response import DeleteShiftResponse, DeleteShiftResponseDict
+from .delete_snippet_response import DeleteSnippetResponse, DeleteSnippetResponseDict
+from .delete_subscription_action_response import DeleteSubscriptionActionResponse, DeleteSubscriptionActionResponseDict
+from .delete_timecard_response import DeleteTimecardResponse, DeleteTimecardResponseDict
+from .delete_transfer_order_response import DeleteTransferOrderResponse, DeleteTransferOrderResponseDict
+from .delete_webhook_subscription_response import (
+    DeleteWebhookSubscriptionResponse,
+    DeleteWebhookSubscriptionResponseDict,
+)
+from .destination import Destination, DestinationDict
+from .destination_details import DestinationDetails, DestinationDetailsDict
+from .destination_details_card_refund_details import (
+    DestinationDetailsCardRefundDetails,
+    DestinationDetailsCardRefundDetailsDict,
+)
+from .destination_details_cash_refund_details import (
+    DestinationDetailsCashRefundDetails,
+    DestinationDetailsCashRefundDetailsDict,
+)
+from .destination_details_external_refund_details import (
+    DestinationDetailsExternalRefundDetails,
+    DestinationDetailsExternalRefundDetailsDict,
+)
+from .device import Device, DeviceDict
+from .device_attributes import DeviceAttributes, DeviceAttributesDict
+from .device_checkout_options import DeviceCheckoutOptions, DeviceCheckoutOptionsDict
+from .device_code import DeviceCode, DeviceCodeDict
+from .device_code_paired_event import DeviceCodePairedEvent, DeviceCodePairedEventDict
+from .device_code_paired_event_data import DeviceCodePairedEventData, DeviceCodePairedEventDataDict
+from .device_code_paired_event_object import DeviceCodePairedEventObject, DeviceCodePairedEventObjectDict
+from .device_component_details_application_details import (
+    DeviceComponentDetailsApplicationDetails,
+    DeviceComponentDetailsApplicationDetailsDict,
+)
+from .device_component_details_battery_details import (
+    DeviceComponentDetailsBatteryDetails,
+    DeviceComponentDetailsBatteryDetailsDict,
+)
+from .device_component_details_card_reader_details import (
+    DeviceComponentDetailsCardReaderDetails,
+    DeviceComponentDetailsCardReaderDetailsDict,
+)
+from .device_component_details_ethernet_details import (
+    DeviceComponentDetailsEthernetDetails,
+    DeviceComponentDetailsEthernetDetailsDict,
+)
+from .device_component_details_measurement import (
+    DeviceComponentDetailsMeasurement,
+    DeviceComponentDetailsMeasurementDict,
+)
+from .device_component_details_wi_fi_details import (
+    DeviceComponentDetailsWiFiDetails,
+    DeviceComponentDetailsWiFiDetailsDict,
+)
+from .device_created_event import DeviceCreatedEvent, DeviceCreatedEventDict
+from .device_created_event_data import DeviceCreatedEventData, DeviceCreatedEventDataDict
+from .device_created_event_object import DeviceCreatedEventObject, DeviceCreatedEventObjectDict
+from .device_details import DeviceDetails, DeviceDetailsDict
+from .device_metadata import DeviceMetadata, DeviceMetadataDict
+from .device_status import DeviceStatus, DeviceStatusDict
+from .digital_wallet_details import DigitalWalletDetails, DigitalWalletDetailsDict
+from .disable_bank_account_response import DisableBankAccountResponse, DisableBankAccountResponseDict
+from .disable_card_response import DisableCardResponse, DisableCardResponseDict
+from .disable_events_response import DisableEventsResponse, DisableEventsResponseDict
+from .dismiss_terminal_action_response import DismissTerminalActionResponse, DismissTerminalActionResponseDict
+from .dismiss_terminal_checkout_response import DismissTerminalCheckoutResponse, DismissTerminalCheckoutResponseDict
+from .dismiss_terminal_refund_response import DismissTerminalRefundResponse, DismissTerminalRefundResponseDict
+from .dispute import Dispute, DisputeDict
+from .dispute_created_event import DisputeCreatedEvent, DisputeCreatedEventDict
+from .dispute_created_event_data import DisputeCreatedEventData, DisputeCreatedEventDataDict
+from .dispute_created_event_object import DisputeCreatedEventObject, DisputeCreatedEventObjectDict
+from .dispute_evidence import DisputeEvidence, DisputeEvidenceDict
+from .dispute_evidence_added_event import DisputeEvidenceAddedEvent, DisputeEvidenceAddedEventDict
+from .dispute_evidence_added_event_data import DisputeEvidenceAddedEventData, DisputeEvidenceAddedEventDataDict
+from .dispute_evidence_added_event_object import DisputeEvidenceAddedEventObject, DisputeEvidenceAddedEventObjectDict
+from .dispute_evidence_created_event import DisputeEvidenceCreatedEvent, DisputeEvidenceCreatedEventDict
+from .dispute_evidence_created_event_data import DisputeEvidenceCreatedEventData, DisputeEvidenceCreatedEventDataDict
+from .dispute_evidence_created_event_object import (
+    DisputeEvidenceCreatedEventObject,
+    DisputeEvidenceCreatedEventObjectDict,
+)
+from .dispute_evidence_deleted_event import DisputeEvidenceDeletedEvent, DisputeEvidenceDeletedEventDict
+from .dispute_evidence_deleted_event_data import DisputeEvidenceDeletedEventData, DisputeEvidenceDeletedEventDataDict
+from .dispute_evidence_deleted_event_object import (
+    DisputeEvidenceDeletedEventObject,
+    DisputeEvidenceDeletedEventObjectDict,
+)
+from .dispute_evidence_file import DisputeEvidenceFile, DisputeEvidenceFileDict
+from .dispute_evidence_removed_event import DisputeEvidenceRemovedEvent, DisputeEvidenceRemovedEventDict
+from .dispute_evidence_removed_event_data import DisputeEvidenceRemovedEventData, DisputeEvidenceRemovedEventDataDict
+from .dispute_evidence_removed_event_object import (
+    DisputeEvidenceRemovedEventObject,
+    DisputeEvidenceRemovedEventObjectDict,
+)
+from .dispute_state_changed_event import DisputeStateChangedEvent, DisputeStateChangedEventDict
+from .dispute_state_changed_event_data import DisputeStateChangedEventData, DisputeStateChangedEventDataDict
+from .dispute_state_changed_event_object import DisputeStateChangedEventObject, DisputeStateChangedEventObjectDict
+from .dispute_state_updated_event import DisputeStateUpdatedEvent, DisputeStateUpdatedEventDict
+from .dispute_state_updated_event_data import DisputeStateUpdatedEventData, DisputeStateUpdatedEventDataDict
+from .dispute_state_updated_event_object import DisputeStateUpdatedEventObject, DisputeStateUpdatedEventObjectDict
+from .disputed_payment import DisputedPayment, DisputedPaymentDict
+from .electronic_money_details import ElectronicMoneyDetails, ElectronicMoneyDetailsDict
+from .employee import Employee, EmployeeDict
+from .employee_wage import EmployeeWage, EmployeeWageDict
+from .enable_events_response import EnableEventsResponse, EnableEventsResponseDict
+from .error import Error, ErrorDict
+from .event import Event, EventDict
+from .event_data import EventData, EventDataDict
+from .event_metadata import EventMetadata, EventMetadataDict
+from .event_type_metadata import EventTypeMetadata, EventTypeMetadataDict
+from .external_payment_details import ExternalPaymentDetails, ExternalPaymentDetailsDict
+from .felica_details import FelicaDetails, FelicaDetailsDict
+from .filter_value import FilterValue, FilterValueDict
+from .float_number_range import FloatNumberRange, FloatNumberRangeDict
+from .fulfillment import Fulfillment, FulfillmentDict
+from .fulfillment_delivery_details import FulfillmentDeliveryDetails, FulfillmentDeliveryDetailsDict
+from .fulfillment_fulfillment_entry import FulfillmentFulfillmentEntry, FulfillmentFulfillmentEntryDict
+from .fulfillment_in_store_details import FulfillmentInStoreDetails, FulfillmentInStoreDetailsDict
+from .fulfillment_pickup_details import FulfillmentPickupDetails, FulfillmentPickupDetailsDict
+from .fulfillment_pickup_details_curbside_pickup_details import (
+    FulfillmentPickupDetailsCurbsidePickupDetails,
+    FulfillmentPickupDetailsCurbsidePickupDetailsDict,
+)
+from .fulfillment_recipient import FulfillmentRecipient, FulfillmentRecipientDict
+from .fulfillment_shipment_details import FulfillmentShipmentDetails, FulfillmentShipmentDetailsDict
+from .get_bank_account_by_v1_id_response import GetBankAccountByV1IdResponse, GetBankAccountByV1IdResponseDict
+from .get_bank_account_response import GetBankAccountResponse, GetBankAccountResponseDict
+from .get_break_type_response import GetBreakTypeResponse, GetBreakTypeResponseDict
+from .get_device_code_response import GetDeviceCodeResponse, GetDeviceCodeResponseDict
+from .get_device_response import GetDeviceResponse, GetDeviceResponseDict
+from .get_employee_wage_response import GetEmployeeWageResponse, GetEmployeeWageResponseDict
+from .get_invoice_response import GetInvoiceResponse, GetInvoiceResponseDict
+from .get_payment_refund_response import GetPaymentRefundResponse, GetPaymentRefundResponseDict
+from .get_payment_response import GetPaymentResponse, GetPaymentResponseDict
+from .get_payout_response import GetPayoutResponse, GetPayoutResponseDict
+from .get_shift_response import GetShiftResponse, GetShiftResponseDict
+from .get_team_member_wage_response import GetTeamMemberWageResponse, GetTeamMemberWageResponseDict
+from .get_terminal_action_response import GetTerminalActionResponse, GetTerminalActionResponseDict
+from .get_terminal_checkout_response import GetTerminalCheckoutResponse, GetTerminalCheckoutResponseDict
+from .get_terminal_refund_response import GetTerminalRefundResponse, GetTerminalRefundResponseDict
+from .gift_card import GiftCard, GiftCardDict
+from .gift_card_activity import GiftCardActivity, GiftCardActivityDict
+from .gift_card_activity_activate import GiftCardActivityActivate, GiftCardActivityActivateDict
+from .gift_card_activity_adjust_decrement import GiftCardActivityAdjustDecrement, GiftCardActivityAdjustDecrementDict
+from .gift_card_activity_adjust_increment import GiftCardActivityAdjustIncrement, GiftCardActivityAdjustIncrementDict
+from .gift_card_activity_block import GiftCardActivityBlock, GiftCardActivityBlockDict
+from .gift_card_activity_clear_balance import GiftCardActivityClearBalance, GiftCardActivityClearBalanceDict
+from .gift_card_activity_created_event import GiftCardActivityCreatedEvent, GiftCardActivityCreatedEventDict
+from .gift_card_activity_created_event_data import (
+    GiftCardActivityCreatedEventData,
+    GiftCardActivityCreatedEventDataDict,
+)
+from .gift_card_activity_created_event_object import (
+    GiftCardActivityCreatedEventObject,
+    GiftCardActivityCreatedEventObjectDict,
+)
+from .gift_card_activity_deactivate import GiftCardActivityDeactivate, GiftCardActivityDeactivateDict
+from .gift_card_activity_import import GiftCardActivityImport, GiftCardActivityImportDict
+from .gift_card_activity_import_reversal import GiftCardActivityImportReversal, GiftCardActivityImportReversalDict
+from .gift_card_activity_load import GiftCardActivityLoad, GiftCardActivityLoadDict
+from .gift_card_activity_redeem import GiftCardActivityRedeem, GiftCardActivityRedeemDict
+from .gift_card_activity_refund import GiftCardActivityRefund, GiftCardActivityRefundDict
+from .gift_card_activity_transfer_balance_from import (
+    GiftCardActivityTransferBalanceFrom,
+    GiftCardActivityTransferBalanceFromDict,
+)
+from .gift_card_activity_transfer_balance_to import (
+    GiftCardActivityTransferBalanceTo,
+    GiftCardActivityTransferBalanceToDict,
+)
+from .gift_card_activity_unblock import GiftCardActivityUnblock, GiftCardActivityUnblockDict
+from .gift_card_activity_unlinked_activity_refund import (
+    GiftCardActivityUnlinkedActivityRefund,
+    GiftCardActivityUnlinkedActivityRefundDict,
+)
+from .gift_card_activity_updated_event import GiftCardActivityUpdatedEvent, GiftCardActivityUpdatedEventDict
+from .gift_card_activity_updated_event_data import (
+    GiftCardActivityUpdatedEventData,
+    GiftCardActivityUpdatedEventDataDict,
+)
+from .gift_card_activity_updated_event_object import (
+    GiftCardActivityUpdatedEventObject,
+    GiftCardActivityUpdatedEventObjectDict,
+)
+from .gift_card_created_event import GiftCardCreatedEvent, GiftCardCreatedEventDict
+from .gift_card_created_event_data import GiftCardCreatedEventData, GiftCardCreatedEventDataDict
+from .gift_card_created_event_object import GiftCardCreatedEventObject, GiftCardCreatedEventObjectDict
+from .gift_card_customer_linked_event import GiftCardCustomerLinkedEvent, GiftCardCustomerLinkedEventDict
+from .gift_card_customer_linked_event_data import GiftCardCustomerLinkedEventData, GiftCardCustomerLinkedEventDataDict
+from .gift_card_customer_linked_event_object import (
+    GiftCardCustomerLinkedEventObject,
+    GiftCardCustomerLinkedEventObjectDict,
+)
+from .gift_card_customer_unlinked_event import GiftCardCustomerUnlinkedEvent, GiftCardCustomerUnlinkedEventDict
+from .gift_card_customer_unlinked_event_data import (
+    GiftCardCustomerUnlinkedEventData,
+    GiftCardCustomerUnlinkedEventDataDict,
+)
+from .gift_card_customer_unlinked_event_object import (
+    GiftCardCustomerUnlinkedEventObject,
+    GiftCardCustomerUnlinkedEventObjectDict,
+)
+from .gift_card_updated_event import GiftCardUpdatedEvent, GiftCardUpdatedEventDict
+from .gift_card_updated_event_data import GiftCardUpdatedEventData, GiftCardUpdatedEventDataDict
+from .gift_card_updated_event_object import GiftCardUpdatedEventObject, GiftCardUpdatedEventObjectDict
+from .inventory_adjustment import InventoryAdjustment, InventoryAdjustmentDict
+from .inventory_adjustment_group import InventoryAdjustmentGroup, InventoryAdjustmentGroupDict
+from .inventory_adjustment_reason import InventoryAdjustmentReason, InventoryAdjustmentReasonDict
+from .inventory_adjustment_reason_id import InventoryAdjustmentReasonId, InventoryAdjustmentReasonIdDict
+from .inventory_change import InventoryChange, InventoryChangeDict
+from .inventory_count import InventoryCount, InventoryCountDict
+from .inventory_count_updated_event import InventoryCountUpdatedEvent, InventoryCountUpdatedEventDict
+from .inventory_count_updated_event_data import InventoryCountUpdatedEventData, InventoryCountUpdatedEventDataDict
+from .inventory_count_updated_event_object import InventoryCountUpdatedEventObject, InventoryCountUpdatedEventObjectDict
+from .inventory_physical_count import InventoryPhysicalCount, InventoryPhysicalCountDict
+from .invoice import Invoice, InvoiceDict
+from .invoice_accepted_payment_methods import InvoiceAcceptedPaymentMethods, InvoiceAcceptedPaymentMethodsDict
+from .invoice_attachment import InvoiceAttachment, InvoiceAttachmentDict
+from .invoice_canceled_event import InvoiceCanceledEvent, InvoiceCanceledEventDict
+from .invoice_canceled_event_data import InvoiceCanceledEventData, InvoiceCanceledEventDataDict
+from .invoice_canceled_event_object import InvoiceCanceledEventObject, InvoiceCanceledEventObjectDict
+from .invoice_created_event import InvoiceCreatedEvent, InvoiceCreatedEventDict
+from .invoice_created_event_data import InvoiceCreatedEventData, InvoiceCreatedEventDataDict
+from .invoice_created_event_object import InvoiceCreatedEventObject, InvoiceCreatedEventObjectDict
+from .invoice_custom_field import InvoiceCustomField, InvoiceCustomFieldDict
+from .invoice_deleted_event import InvoiceDeletedEvent, InvoiceDeletedEventDict
+from .invoice_deleted_event_data import InvoiceDeletedEventData, InvoiceDeletedEventDataDict
+from .invoice_filter import InvoiceFilter, InvoiceFilterDict
+from .invoice_payment_made_event import InvoicePaymentMadeEvent, InvoicePaymentMadeEventDict
+from .invoice_payment_made_event_data import InvoicePaymentMadeEventData, InvoicePaymentMadeEventDataDict
+from .invoice_payment_made_event_object import InvoicePaymentMadeEventObject, InvoicePaymentMadeEventObjectDict
+from .invoice_payment_reminder import InvoicePaymentReminder, InvoicePaymentReminderDict
+from .invoice_payment_request import InvoicePaymentRequest, InvoicePaymentRequestDict
+from .invoice_published_event import InvoicePublishedEvent, InvoicePublishedEventDict
+from .invoice_published_event_data import InvoicePublishedEventData, InvoicePublishedEventDataDict
+from .invoice_published_event_object import InvoicePublishedEventObject, InvoicePublishedEventObjectDict
+from .invoice_query import InvoiceQuery, InvoiceQueryDict
+from .invoice_recipient import InvoiceRecipient, InvoiceRecipientDict
+from .invoice_recipient_tax_ids import InvoiceRecipientTaxIds, InvoiceRecipientTaxIdsDict
+from .invoice_refunded_event import InvoiceRefundedEvent, InvoiceRefundedEventDict
+from .invoice_refunded_event_data import InvoiceRefundedEventData, InvoiceRefundedEventDataDict
+from .invoice_refunded_event_object import InvoiceRefundedEventObject, InvoiceRefundedEventObjectDict
+from .invoice_scheduled_charge_failed_event import (
+    InvoiceScheduledChargeFailedEvent,
+    InvoiceScheduledChargeFailedEventDict,
+)
+from .invoice_scheduled_charge_failed_event_data import (
+    InvoiceScheduledChargeFailedEventData,
+    InvoiceScheduledChargeFailedEventDataDict,
+)
+from .invoice_scheduled_charge_failed_event_object import (
+    InvoiceScheduledChargeFailedEventObject,
+    InvoiceScheduledChargeFailedEventObjectDict,
+)
+from .invoice_sort import InvoiceSort, InvoiceSortDict
+from .invoice_updated_event import InvoiceUpdatedEvent, InvoiceUpdatedEventDict
+from .invoice_updated_event_data import InvoiceUpdatedEventData, InvoiceUpdatedEventDataDict
+from .invoice_updated_event_object import InvoiceUpdatedEventObject, InvoiceUpdatedEventObjectDict
+from .item_variation_location_overrides import ItemVariationLocationOverrides, ItemVariationLocationOverridesDict
+from .job import Job, JobDict
+from .job_assignment import JobAssignment, JobAssignmentDict
+from .job_created_event import JobCreatedEvent, JobCreatedEventDict
+from .job_created_event_data import JobCreatedEventData, JobCreatedEventDataDict
+from .job_created_event_object import JobCreatedEventObject, JobCreatedEventObjectDict
+from .job_updated_event import JobUpdatedEvent, JobUpdatedEventDict
+from .job_updated_event_data import JobUpdatedEventData, JobUpdatedEventDataDict
+from .job_updated_event_object import JobUpdatedEventObject, JobUpdatedEventObjectDict
+from .labor_scheduled_shift_created_event import LaborScheduledShiftCreatedEvent, LaborScheduledShiftCreatedEventDict
+from .labor_scheduled_shift_created_event_data import (
+    LaborScheduledShiftCreatedEventData,
+    LaborScheduledShiftCreatedEventDataDict,
+)
+from .labor_scheduled_shift_created_event_object import (
+    LaborScheduledShiftCreatedEventObject,
+    LaborScheduledShiftCreatedEventObjectDict,
+)
+from .labor_scheduled_shift_deleted_event import LaborScheduledShiftDeletedEvent, LaborScheduledShiftDeletedEventDict
+from .labor_scheduled_shift_deleted_event_data import (
+    LaborScheduledShiftDeletedEventData,
+    LaborScheduledShiftDeletedEventDataDict,
+)
+from .labor_scheduled_shift_published_event import (
+    LaborScheduledShiftPublishedEvent,
+    LaborScheduledShiftPublishedEventDict,
+)
+from .labor_scheduled_shift_published_event_data import (
+    LaborScheduledShiftPublishedEventData,
+    LaborScheduledShiftPublishedEventDataDict,
+)
+from .labor_scheduled_shift_published_event_object import (
+    LaborScheduledShiftPublishedEventObject,
+    LaborScheduledShiftPublishedEventObjectDict,
+)
+from .labor_scheduled_shift_updated_event import LaborScheduledShiftUpdatedEvent, LaborScheduledShiftUpdatedEventDict
+from .labor_scheduled_shift_updated_event_data import (
+    LaborScheduledShiftUpdatedEventData,
+    LaborScheduledShiftUpdatedEventDataDict,
+)
+from .labor_scheduled_shift_updated_event_object import (
+    LaborScheduledShiftUpdatedEventObject,
+    LaborScheduledShiftUpdatedEventObjectDict,
+)
+from .labor_shift_created_event import LaborShiftCreatedEvent, LaborShiftCreatedEventDict
+from .labor_shift_created_event_data import LaborShiftCreatedEventData, LaborShiftCreatedEventDataDict
+from .labor_shift_created_event_object import LaborShiftCreatedEventObject, LaborShiftCreatedEventObjectDict
+from .labor_shift_deleted_event import LaborShiftDeletedEvent, LaborShiftDeletedEventDict
+from .labor_shift_deleted_event_data import LaborShiftDeletedEventData, LaborShiftDeletedEventDataDict
+from .labor_shift_updated_event import LaborShiftUpdatedEvent, LaborShiftUpdatedEventDict
+from .labor_shift_updated_event_data import LaborShiftUpdatedEventData, LaborShiftUpdatedEventDataDict
+from .labor_shift_updated_event_object import LaborShiftUpdatedEventObject, LaborShiftUpdatedEventObjectDict
+from .labor_timecard_created_event import LaborTimecardCreatedEvent, LaborTimecardCreatedEventDict
+from .labor_timecard_created_event_data import LaborTimecardCreatedEventData, LaborTimecardCreatedEventDataDict
+from .labor_timecard_created_event_object import LaborTimecardCreatedEventObject, LaborTimecardCreatedEventObjectDict
+from .labor_timecard_deleted_event import LaborTimecardDeletedEvent, LaborTimecardDeletedEventDict
+from .labor_timecard_deleted_event_data import LaborTimecardDeletedEventData, LaborTimecardDeletedEventDataDict
+from .labor_timecard_updated_event import LaborTimecardUpdatedEvent, LaborTimecardUpdatedEventDict
+from .labor_timecard_updated_event_data import LaborTimecardUpdatedEventData, LaborTimecardUpdatedEventDataDict
+from .labor_timecard_updated_event_object import LaborTimecardUpdatedEventObject, LaborTimecardUpdatedEventObjectDict
+from .lightning_details import LightningDetails, LightningDetailsDict
+from .link_customer_to_gift_card_request import LinkCustomerToGiftCardRequest, LinkCustomerToGiftCardRequestDict
+from .link_customer_to_gift_card_response import LinkCustomerToGiftCardResponse, LinkCustomerToGiftCardResponseDict
+from .list_bank_accounts_response import ListBankAccountsResponse, ListBankAccountsResponseDict
+from .list_booking_custom_attribute_definitions_response import (
+    ListBookingCustomAttributeDefinitionsResponse,
+    ListBookingCustomAttributeDefinitionsResponseDict,
+)
+from .list_booking_custom_attributes_response import (
+    ListBookingCustomAttributesResponse,
+    ListBookingCustomAttributesResponseDict,
+)
+from .list_bookings_response import ListBookingsResponse, ListBookingsResponseDict
+from .list_break_types_response import ListBreakTypesResponse, ListBreakTypesResponseDict
+from .list_cards_response import ListCardsResponse, ListCardsResponseDict
+from .list_cash_drawer_shift_events_response import (
+    ListCashDrawerShiftEventsResponse,
+    ListCashDrawerShiftEventsResponseDict,
+)
+from .list_cash_drawer_shifts_response import ListCashDrawerShiftsResponse, ListCashDrawerShiftsResponseDict
+from .list_catalog_response import ListCatalogResponse, ListCatalogResponseDict
+from .list_channels_response import ListChannelsResponse, ListChannelsResponseDict
+from .list_customer_custom_attribute_definitions_response import (
+    ListCustomerCustomAttributeDefinitionsResponse,
+    ListCustomerCustomAttributeDefinitionsResponseDict,
+)
+from .list_customer_custom_attributes_response import (
+    ListCustomerCustomAttributesResponse,
+    ListCustomerCustomAttributesResponseDict,
+)
+from .list_customer_groups_response import ListCustomerGroupsResponse, ListCustomerGroupsResponseDict
+from .list_customer_segments_response import ListCustomerSegmentsResponse, ListCustomerSegmentsResponseDict
+from .list_customers_response import ListCustomersResponse, ListCustomersResponseDict
+from .list_device_codes_response import ListDeviceCodesResponse, ListDeviceCodesResponseDict
+from .list_devices_response import ListDevicesResponse, ListDevicesResponseDict
+from .list_dispute_evidence_response import ListDisputeEvidenceResponse, ListDisputeEvidenceResponseDict
+from .list_disputes_response import ListDisputesResponse, ListDisputesResponseDict
+from .list_employee_wages_response import ListEmployeeWagesResponse, ListEmployeeWagesResponseDict
+from .list_employees_response import ListEmployeesResponse, ListEmployeesResponseDict
+from .list_event_types_response import ListEventTypesResponse, ListEventTypesResponseDict
+from .list_gift_card_activities_response import ListGiftCardActivitiesResponse, ListGiftCardActivitiesResponseDict
+from .list_gift_cards_response import ListGiftCardsResponse, ListGiftCardsResponseDict
+from .list_inventory_adjustment_reasons_response import (
+    ListInventoryAdjustmentReasonsResponse,
+    ListInventoryAdjustmentReasonsResponseDict,
+)
+from .list_invoices_response import ListInvoicesResponse, ListInvoicesResponseDict
+from .list_jobs_response import ListJobsResponse, ListJobsResponseDict
+from .list_location_booking_profiles_response import (
+    ListLocationBookingProfilesResponse,
+    ListLocationBookingProfilesResponseDict,
+)
+from .list_location_custom_attribute_definitions_response import (
+    ListLocationCustomAttributeDefinitionsResponse,
+    ListLocationCustomAttributeDefinitionsResponseDict,
+)
+from .list_location_custom_attributes_response import (
+    ListLocationCustomAttributesResponse,
+    ListLocationCustomAttributesResponseDict,
+)
+from .list_locations_response import ListLocationsResponse, ListLocationsResponseDict
+from .list_loyalty_programs_response import ListLoyaltyProgramsResponse, ListLoyaltyProgramsResponseDict
+from .list_loyalty_promotions_response import ListLoyaltyPromotionsResponse, ListLoyaltyPromotionsResponseDict
+from .list_merchant_custom_attribute_definitions_response import (
+    ListMerchantCustomAttributeDefinitionsResponse,
+    ListMerchantCustomAttributeDefinitionsResponseDict,
+)
+from .list_merchant_custom_attributes_response import (
+    ListMerchantCustomAttributesResponse,
+    ListMerchantCustomAttributesResponseDict,
+)
+from .list_merchants_response import ListMerchantsResponse, ListMerchantsResponseDict
+from .list_order_custom_attribute_definitions_response import (
+    ListOrderCustomAttributeDefinitionsResponse,
+    ListOrderCustomAttributeDefinitionsResponseDict,
+)
+from .list_order_custom_attributes_response import (
+    ListOrderCustomAttributesResponse,
+    ListOrderCustomAttributesResponseDict,
+)
+from .list_payment_links_response import ListPaymentLinksResponse, ListPaymentLinksResponseDict
+from .list_payment_refunds_response import ListPaymentRefundsResponse, ListPaymentRefundsResponseDict
+from .list_payments_response import ListPaymentsResponse, ListPaymentsResponseDict
+from .list_payout_entries_response import ListPayoutEntriesResponse, ListPayoutEntriesResponseDict
+from .list_payouts_response import ListPayoutsResponse, ListPayoutsResponseDict
+from .list_sites_response import ListSitesResponse, ListSitesResponseDict
+from .list_subscription_events_response import ListSubscriptionEventsResponse, ListSubscriptionEventsResponseDict
+from .list_team_member_booking_profiles_response import (
+    ListTeamMemberBookingProfilesResponse,
+    ListTeamMemberBookingProfilesResponseDict,
+)
+from .list_team_member_wages_response import ListTeamMemberWagesResponse, ListTeamMemberWagesResponseDict
+from .list_transactions_response import ListTransactionsResponse, ListTransactionsResponseDict
+from .list_webhook_event_types_response import ListWebhookEventTypesResponse, ListWebhookEventTypesResponseDict
+from .list_webhook_subscriptions_response import ListWebhookSubscriptionsResponse, ListWebhookSubscriptionsResponseDict
+from .list_workweek_configs_response import ListWorkweekConfigsResponse, ListWorkweekConfigsResponseDict
+from .location import Location, LocationDict
+from .location_booking_profile import LocationBookingProfile, LocationBookingProfileDict
+from .location_created_event import LocationCreatedEvent, LocationCreatedEventDict
+from .location_created_event_data import LocationCreatedEventData, LocationCreatedEventDataDict
+from .location_custom_attribute_definition_owned_created_event import (
+    LocationCustomAttributeDefinitionOwnedCreatedEvent,
+    LocationCustomAttributeDefinitionOwnedCreatedEventDict,
+)
+from .location_custom_attribute_definition_owned_deleted_event import (
+    LocationCustomAttributeDefinitionOwnedDeletedEvent,
+    LocationCustomAttributeDefinitionOwnedDeletedEventDict,
+)
+from .location_custom_attribute_definition_owned_updated_event import (
+    LocationCustomAttributeDefinitionOwnedUpdatedEvent,
+    LocationCustomAttributeDefinitionOwnedUpdatedEventDict,
+)
+from .location_custom_attribute_definition_visible_created_event import (
+    LocationCustomAttributeDefinitionVisibleCreatedEvent,
+    LocationCustomAttributeDefinitionVisibleCreatedEventDict,
+)
+from .location_custom_attribute_definition_visible_deleted_event import (
+    LocationCustomAttributeDefinitionVisibleDeletedEvent,
+    LocationCustomAttributeDefinitionVisibleDeletedEventDict,
+)
+from .location_custom_attribute_definition_visible_updated_event import (
+    LocationCustomAttributeDefinitionVisibleUpdatedEvent,
+    LocationCustomAttributeDefinitionVisibleUpdatedEventDict,
+)
+from .location_custom_attribute_owned_deleted_event import (
+    LocationCustomAttributeOwnedDeletedEvent,
+    LocationCustomAttributeOwnedDeletedEventDict,
+)
+from .location_custom_attribute_owned_updated_event import (
+    LocationCustomAttributeOwnedUpdatedEvent,
+    LocationCustomAttributeOwnedUpdatedEventDict,
+)
+from .location_custom_attribute_visible_deleted_event import (
+    LocationCustomAttributeVisibleDeletedEvent,
+    LocationCustomAttributeVisibleDeletedEventDict,
+)
+from .location_custom_attribute_visible_updated_event import (
+    LocationCustomAttributeVisibleUpdatedEvent,
+    LocationCustomAttributeVisibleUpdatedEventDict,
+)
+from .location_settings_updated_event import LocationSettingsUpdatedEvent, LocationSettingsUpdatedEventDict
+from .location_settings_updated_event_data import LocationSettingsUpdatedEventData, LocationSettingsUpdatedEventDataDict
+from .location_settings_updated_event_object import (
+    LocationSettingsUpdatedEventObject,
+    LocationSettingsUpdatedEventObjectDict,
+)
+from .location_updated_event import LocationUpdatedEvent, LocationUpdatedEventDict
+from .location_updated_event_data import LocationUpdatedEventData, LocationUpdatedEventDataDict
+from .loyalty_account import LoyaltyAccount, LoyaltyAccountDict
+from .loyalty_account_created_event import LoyaltyAccountCreatedEvent, LoyaltyAccountCreatedEventDict
+from .loyalty_account_created_event_data import LoyaltyAccountCreatedEventData, LoyaltyAccountCreatedEventDataDict
+from .loyalty_account_created_event_object import LoyaltyAccountCreatedEventObject, LoyaltyAccountCreatedEventObjectDict
+from .loyalty_account_deleted_event import LoyaltyAccountDeletedEvent, LoyaltyAccountDeletedEventDict
+from .loyalty_account_deleted_event_data import LoyaltyAccountDeletedEventData, LoyaltyAccountDeletedEventDataDict
+from .loyalty_account_deleted_event_object import LoyaltyAccountDeletedEventObject, LoyaltyAccountDeletedEventObjectDict
+from .loyalty_account_expiring_point_deadline import (
+    LoyaltyAccountExpiringPointDeadline,
+    LoyaltyAccountExpiringPointDeadlineDict,
+)
+from .loyalty_account_mapping import LoyaltyAccountMapping, LoyaltyAccountMappingDict
+from .loyalty_account_updated_event import LoyaltyAccountUpdatedEvent, LoyaltyAccountUpdatedEventDict
+from .loyalty_account_updated_event_data import LoyaltyAccountUpdatedEventData, LoyaltyAccountUpdatedEventDataDict
+from .loyalty_account_updated_event_object import LoyaltyAccountUpdatedEventObject, LoyaltyAccountUpdatedEventObjectDict
+from .loyalty_event import LoyaltyEvent, LoyaltyEventDict
+from .loyalty_event_accumulate_points import LoyaltyEventAccumulatePoints, LoyaltyEventAccumulatePointsDict
+from .loyalty_event_accumulate_promotion_points import (
+    LoyaltyEventAccumulatePromotionPoints,
+    LoyaltyEventAccumulatePromotionPointsDict,
+)
+from .loyalty_event_adjust_points import LoyaltyEventAdjustPoints, LoyaltyEventAdjustPointsDict
+from .loyalty_event_create_reward import LoyaltyEventCreateReward, LoyaltyEventCreateRewardDict
+from .loyalty_event_created_event import LoyaltyEventCreatedEvent, LoyaltyEventCreatedEventDict
+from .loyalty_event_created_event_data import LoyaltyEventCreatedEventData, LoyaltyEventCreatedEventDataDict
+from .loyalty_event_created_event_object import LoyaltyEventCreatedEventObject, LoyaltyEventCreatedEventObjectDict
+from .loyalty_event_date_time_filter import LoyaltyEventDateTimeFilter, LoyaltyEventDateTimeFilterDict
+from .loyalty_event_delete_reward import LoyaltyEventDeleteReward, LoyaltyEventDeleteRewardDict
+from .loyalty_event_expire_points import LoyaltyEventExpirePoints, LoyaltyEventExpirePointsDict
+from .loyalty_event_filter import LoyaltyEventFilter, LoyaltyEventFilterDict
+from .loyalty_event_location_filter import LoyaltyEventLocationFilter, LoyaltyEventLocationFilterDict
+from .loyalty_event_loyalty_account_filter import LoyaltyEventLoyaltyAccountFilter, LoyaltyEventLoyaltyAccountFilterDict
+from .loyalty_event_order_filter import LoyaltyEventOrderFilter, LoyaltyEventOrderFilterDict
+from .loyalty_event_other import LoyaltyEventOther, LoyaltyEventOtherDict
+from .loyalty_event_query import LoyaltyEventQuery, LoyaltyEventQueryDict
+from .loyalty_event_redeem_reward import LoyaltyEventRedeemReward, LoyaltyEventRedeemRewardDict
+from .loyalty_event_type_filter import LoyaltyEventTypeFilter, LoyaltyEventTypeFilterDict
+from .loyalty_program import LoyaltyProgram, LoyaltyProgramDict
+from .loyalty_program_accrual_rule import LoyaltyProgramAccrualRule, LoyaltyProgramAccrualRuleDict
+from .loyalty_program_accrual_rule_category_data import (
+    LoyaltyProgramAccrualRuleCategoryData,
+    LoyaltyProgramAccrualRuleCategoryDataDict,
+)
+from .loyalty_program_accrual_rule_item_variation_data import (
+    LoyaltyProgramAccrualRuleItemVariationData,
+    LoyaltyProgramAccrualRuleItemVariationDataDict,
+)
+from .loyalty_program_accrual_rule_spend_data import (
+    LoyaltyProgramAccrualRuleSpendData,
+    LoyaltyProgramAccrualRuleSpendDataDict,
+)
+from .loyalty_program_accrual_rule_visit_data import (
+    LoyaltyProgramAccrualRuleVisitData,
+    LoyaltyProgramAccrualRuleVisitDataDict,
+)
+from .loyalty_program_created_event import LoyaltyProgramCreatedEvent, LoyaltyProgramCreatedEventDict
+from .loyalty_program_created_event_data import LoyaltyProgramCreatedEventData, LoyaltyProgramCreatedEventDataDict
+from .loyalty_program_created_event_object import LoyaltyProgramCreatedEventObject, LoyaltyProgramCreatedEventObjectDict
+from .loyalty_program_expiration_policy import LoyaltyProgramExpirationPolicy, LoyaltyProgramExpirationPolicyDict
+from .loyalty_program_reward_tier import LoyaltyProgramRewardTier, LoyaltyProgramRewardTierDict
+from .loyalty_program_terminology import LoyaltyProgramTerminology, LoyaltyProgramTerminologyDict
+from .loyalty_program_updated_event import LoyaltyProgramUpdatedEvent, LoyaltyProgramUpdatedEventDict
+from .loyalty_program_updated_event_data import LoyaltyProgramUpdatedEventData, LoyaltyProgramUpdatedEventDataDict
+from .loyalty_program_updated_event_object import LoyaltyProgramUpdatedEventObject, LoyaltyProgramUpdatedEventObjectDict
+from .loyalty_promotion import LoyaltyPromotion, LoyaltyPromotionDict
+from .loyalty_promotion_available_time_data import (
+    LoyaltyPromotionAvailableTimeData,
+    LoyaltyPromotionAvailableTimeDataDict,
+)
+from .loyalty_promotion_created_event import LoyaltyPromotionCreatedEvent, LoyaltyPromotionCreatedEventDict
+from .loyalty_promotion_created_event_data import LoyaltyPromotionCreatedEventData, LoyaltyPromotionCreatedEventDataDict
+from .loyalty_promotion_created_event_object import (
+    LoyaltyPromotionCreatedEventObject,
+    LoyaltyPromotionCreatedEventObjectDict,
+)
+from .loyalty_promotion_incentive import LoyaltyPromotionIncentive, LoyaltyPromotionIncentiveDict
+from .loyalty_promotion_incentive_points_addition_data import (
+    LoyaltyPromotionIncentivePointsAdditionData,
+    LoyaltyPromotionIncentivePointsAdditionDataDict,
+)
+from .loyalty_promotion_incentive_points_multiplier_data import (
+    LoyaltyPromotionIncentivePointsMultiplierData,
+    LoyaltyPromotionIncentivePointsMultiplierDataDict,
+)
+from .loyalty_promotion_trigger_limit import LoyaltyPromotionTriggerLimit, LoyaltyPromotionTriggerLimitDict
+from .loyalty_promotion_updated_event import LoyaltyPromotionUpdatedEvent, LoyaltyPromotionUpdatedEventDict
+from .loyalty_promotion_updated_event_data import LoyaltyPromotionUpdatedEventData, LoyaltyPromotionUpdatedEventDataDict
+from .loyalty_promotion_updated_event_object import (
+    LoyaltyPromotionUpdatedEventObject,
+    LoyaltyPromotionUpdatedEventObjectDict,
+)
+from .loyalty_reward import LoyaltyReward, LoyaltyRewardDict
+from .measurement_unit import MeasurementUnit, MeasurementUnitDict
+from .measurement_unit_custom import MeasurementUnitCustom, MeasurementUnitCustomDict
+from .merchant import Merchant, MerchantDict
+from .merchant_custom_attribute_definition_owned_created_event import (
+    MerchantCustomAttributeDefinitionOwnedCreatedEvent,
+    MerchantCustomAttributeDefinitionOwnedCreatedEventDict,
+)
+from .merchant_custom_attribute_definition_owned_deleted_event import (
+    MerchantCustomAttributeDefinitionOwnedDeletedEvent,
+    MerchantCustomAttributeDefinitionOwnedDeletedEventDict,
+)
+from .merchant_custom_attribute_definition_owned_updated_event import (
+    MerchantCustomAttributeDefinitionOwnedUpdatedEvent,
+    MerchantCustomAttributeDefinitionOwnedUpdatedEventDict,
+)
+from .merchant_custom_attribute_definition_visible_created_event import (
+    MerchantCustomAttributeDefinitionVisibleCreatedEvent,
+    MerchantCustomAttributeDefinitionVisibleCreatedEventDict,
+)
+from .merchant_custom_attribute_definition_visible_deleted_event import (
+    MerchantCustomAttributeDefinitionVisibleDeletedEvent,
+    MerchantCustomAttributeDefinitionVisibleDeletedEventDict,
+)
+from .merchant_custom_attribute_definition_visible_updated_event import (
+    MerchantCustomAttributeDefinitionVisibleUpdatedEvent,
+    MerchantCustomAttributeDefinitionVisibleUpdatedEventDict,
+)
+from .merchant_custom_attribute_owned_deleted_event import (
+    MerchantCustomAttributeOwnedDeletedEvent,
+    MerchantCustomAttributeOwnedDeletedEventDict,
+)
+from .merchant_custom_attribute_owned_updated_event import (
+    MerchantCustomAttributeOwnedUpdatedEvent,
+    MerchantCustomAttributeOwnedUpdatedEventDict,
+)
+from .merchant_custom_attribute_visible_deleted_event import (
+    MerchantCustomAttributeVisibleDeletedEvent,
+    MerchantCustomAttributeVisibleDeletedEventDict,
+)
+from .merchant_custom_attribute_visible_updated_event import (
+    MerchantCustomAttributeVisibleUpdatedEvent,
+    MerchantCustomAttributeVisibleUpdatedEventDict,
+)
+from .merchant_settings_updated_event import MerchantSettingsUpdatedEvent, MerchantSettingsUpdatedEventDict
+from .merchant_settings_updated_event_data import MerchantSettingsUpdatedEventData, MerchantSettingsUpdatedEventDataDict
+from .merchant_settings_updated_event_object import (
+    MerchantSettingsUpdatedEventObject,
+    MerchantSettingsUpdatedEventObjectDict,
+)
+from .modifier_location_overrides import ModifierLocationOverrides, ModifierLocationOverridesDict
+from .money import Money, MoneyDict
+from .oauth_authorization_revoked_event import OauthAuthorizationRevokedEvent, OauthAuthorizationRevokedEventDict
+from .oauth_authorization_revoked_event_data import (
+    OauthAuthorizationRevokedEventData,
+    OauthAuthorizationRevokedEventDataDict,
+)
+from .oauth_authorization_revoked_event_object import (
+    OauthAuthorizationRevokedEventObject,
+    OauthAuthorizationRevokedEventObjectDict,
+)
+from .oauth_authorization_revoked_event_revocation_object import (
+    OauthAuthorizationRevokedEventRevocationObject,
+    OauthAuthorizationRevokedEventRevocationObjectDict,
+)
+from .obtain_token_request import ObtainTokenRequest, ObtainTokenRequestDict
+from .obtain_token_response import ObtainTokenResponse, ObtainTokenResponseDict
+from .offline_payment_details import OfflinePaymentDetails, OfflinePaymentDetailsDict
+from .order import Order, OrderDict
+from .order_created import OrderCreated, OrderCreatedDict
+from .order_created_event import OrderCreatedEvent, OrderCreatedEventDict
+from .order_created_event_data import OrderCreatedEventData, OrderCreatedEventDataDict
+from .order_created_object import OrderCreatedObject, OrderCreatedObjectDict
+from .order_custom_attribute_definition_owned_created_event import (
+    OrderCustomAttributeDefinitionOwnedCreatedEvent,
+    OrderCustomAttributeDefinitionOwnedCreatedEventDict,
+)
+from .order_custom_attribute_definition_owned_deleted_event import (
+    OrderCustomAttributeDefinitionOwnedDeletedEvent,
+    OrderCustomAttributeDefinitionOwnedDeletedEventDict,
+)
+from .order_custom_attribute_definition_owned_updated_event import (
+    OrderCustomAttributeDefinitionOwnedUpdatedEvent,
+    OrderCustomAttributeDefinitionOwnedUpdatedEventDict,
+)
+from .order_custom_attribute_definition_visible_created_event import (
+    OrderCustomAttributeDefinitionVisibleCreatedEvent,
+    OrderCustomAttributeDefinitionVisibleCreatedEventDict,
+)
+from .order_custom_attribute_definition_visible_deleted_event import (
+    OrderCustomAttributeDefinitionVisibleDeletedEvent,
+    OrderCustomAttributeDefinitionVisibleDeletedEventDict,
+)
+from .order_custom_attribute_definition_visible_updated_event import (
+    OrderCustomAttributeDefinitionVisibleUpdatedEvent,
+    OrderCustomAttributeDefinitionVisibleUpdatedEventDict,
+)
+from .order_custom_attribute_owned_deleted_event import (
+    OrderCustomAttributeOwnedDeletedEvent,
+    OrderCustomAttributeOwnedDeletedEventDict,
+)
+from .order_custom_attribute_owned_updated_event import (
+    OrderCustomAttributeOwnedUpdatedEvent,
+    OrderCustomAttributeOwnedUpdatedEventDict,
+)
+from .order_custom_attribute_visible_deleted_event import (
+    OrderCustomAttributeVisibleDeletedEvent,
+    OrderCustomAttributeVisibleDeletedEventDict,
+)
+from .order_custom_attribute_visible_updated_event import (
+    OrderCustomAttributeVisibleUpdatedEvent,
+    OrderCustomAttributeVisibleUpdatedEventDict,
+)
+from .order_entry import OrderEntry, OrderEntryDict
+from .order_fulfillment_updated import OrderFulfillmentUpdated, OrderFulfillmentUpdatedDict
+from .order_fulfillment_updated_event import OrderFulfillmentUpdatedEvent, OrderFulfillmentUpdatedEventDict
+from .order_fulfillment_updated_event_data import OrderFulfillmentUpdatedEventData, OrderFulfillmentUpdatedEventDataDict
+from .order_fulfillment_updated_object import OrderFulfillmentUpdatedObject, OrderFulfillmentUpdatedObjectDict
+from .order_fulfillment_updated_update import OrderFulfillmentUpdatedUpdate, OrderFulfillmentUpdatedUpdateDict
+from .order_line_item import OrderLineItem, OrderLineItemDict
+from .order_line_item_applied_discount import OrderLineItemAppliedDiscount, OrderLineItemAppliedDiscountDict
+from .order_line_item_applied_service_charge import (
+    OrderLineItemAppliedServiceCharge,
+    OrderLineItemAppliedServiceChargeDict,
+)
+from .order_line_item_applied_tax import OrderLineItemAppliedTax, OrderLineItemAppliedTaxDict
+from .order_line_item_discount import OrderLineItemDiscount, OrderLineItemDiscountDict
+from .order_line_item_modifier import OrderLineItemModifier, OrderLineItemModifierDict
+from .order_line_item_pricing_blocklists import OrderLineItemPricingBlocklists, OrderLineItemPricingBlocklistsDict
+from .order_line_item_pricing_blocklists_blocked_discount import (
+    OrderLineItemPricingBlocklistsBlockedDiscount,
+    OrderLineItemPricingBlocklistsBlockedDiscountDict,
+)
+from .order_line_item_pricing_blocklists_blocked_service_charge import (
+    OrderLineItemPricingBlocklistsBlockedServiceCharge,
+    OrderLineItemPricingBlocklistsBlockedServiceChargeDict,
+)
+from .order_line_item_pricing_blocklists_blocked_tax import (
+    OrderLineItemPricingBlocklistsBlockedTax,
+    OrderLineItemPricingBlocklistsBlockedTaxDict,
+)
+from .order_line_item_tax import OrderLineItemTax, OrderLineItemTaxDict
+from .order_money_amounts import OrderMoneyAmounts, OrderMoneyAmountsDict
+from .order_pricing_options import OrderPricingOptions, OrderPricingOptionsDict
+from .order_quantity_unit import OrderQuantityUnit, OrderQuantityUnitDict
+from .order_return import OrderReturn, OrderReturnDict
+from .order_return_discount import OrderReturnDiscount, OrderReturnDiscountDict
+from .order_return_line_item import OrderReturnLineItem, OrderReturnLineItemDict
+from .order_return_line_item_modifier import OrderReturnLineItemModifier, OrderReturnLineItemModifierDict
+from .order_return_service_charge import OrderReturnServiceCharge, OrderReturnServiceChargeDict
+from .order_return_tax import OrderReturnTax, OrderReturnTaxDict
+from .order_return_tip import OrderReturnTip, OrderReturnTipDict
+from .order_reward import OrderReward, OrderRewardDict
+from .order_rounding_adjustment import OrderRoundingAdjustment, OrderRoundingAdjustmentDict
+from .order_service_charge import OrderServiceCharge, OrderServiceChargeDict
+from .order_source import OrderSource, OrderSourceDict
+from .order_updated import OrderUpdated, OrderUpdatedDict
+from .order_updated_event import OrderUpdatedEvent, OrderUpdatedEventDict
+from .order_updated_event_data import OrderUpdatedEventData, OrderUpdatedEventDataDict
+from .order_updated_object import OrderUpdatedObject, OrderUpdatedObjectDict
+from .pause_subscription_request import PauseSubscriptionRequest, PauseSubscriptionRequestDict
+from .pause_subscription_response import PauseSubscriptionResponse, PauseSubscriptionResponseDict
+from .pay_order_request import PayOrderRequest, PayOrderRequestDict
+from .pay_order_response import PayOrderResponse, PayOrderResponseDict
+from .payment import Payment, PaymentDict
+from .payment_balance_activity_app_fee_refund_detail import (
+    PaymentBalanceActivityAppFeeRefundDetail,
+    PaymentBalanceActivityAppFeeRefundDetailDict,
+)
+from .payment_balance_activity_app_fee_revenue_detail import (
+    PaymentBalanceActivityAppFeeRevenueDetail,
+    PaymentBalanceActivityAppFeeRevenueDetailDict,
+)
+from .payment_balance_activity_automatic_savings_detail import (
+    PaymentBalanceActivityAutomaticSavingsDetail,
+    PaymentBalanceActivityAutomaticSavingsDetailDict,
+)
+from .payment_balance_activity_automatic_savings_reversed_detail import (
+    PaymentBalanceActivityAutomaticSavingsReversedDetail,
+    PaymentBalanceActivityAutomaticSavingsReversedDetailDict,
+)
+from .payment_balance_activity_charge_detail import (
+    PaymentBalanceActivityChargeDetail,
+    PaymentBalanceActivityChargeDetailDict,
+)
+from .payment_balance_activity_deposit_fee_detail import (
+    PaymentBalanceActivityDepositFeeDetail,
+    PaymentBalanceActivityDepositFeeDetailDict,
+)
+from .payment_balance_activity_deposit_fee_reversed_detail import (
+    PaymentBalanceActivityDepositFeeReversedDetail,
+    PaymentBalanceActivityDepositFeeReversedDetailDict,
+)
+from .payment_balance_activity_dispute_detail import (
+    PaymentBalanceActivityDisputeDetail,
+    PaymentBalanceActivityDisputeDetailDict,
+)
+from .payment_balance_activity_fee_detail import PaymentBalanceActivityFeeDetail, PaymentBalanceActivityFeeDetailDict
+from .payment_balance_activity_free_processing_detail import (
+    PaymentBalanceActivityFreeProcessingDetail,
+    PaymentBalanceActivityFreeProcessingDetailDict,
+)
+from .payment_balance_activity_hold_adjustment_detail import (
+    PaymentBalanceActivityHoldAdjustmentDetail,
+    PaymentBalanceActivityHoldAdjustmentDetailDict,
+)
+from .payment_balance_activity_open_dispute_detail import (
+    PaymentBalanceActivityOpenDisputeDetail,
+    PaymentBalanceActivityOpenDisputeDetailDict,
+)
+from .payment_balance_activity_other_adjustment_detail import (
+    PaymentBalanceActivityOtherAdjustmentDetail,
+    PaymentBalanceActivityOtherAdjustmentDetailDict,
+)
+from .payment_balance_activity_other_detail import (
+    PaymentBalanceActivityOtherDetail,
+    PaymentBalanceActivityOtherDetailDict,
+)
+from .payment_balance_activity_refund_detail import (
+    PaymentBalanceActivityRefundDetail,
+    PaymentBalanceActivityRefundDetailDict,
+)
+from .payment_balance_activity_release_adjustment_detail import (
+    PaymentBalanceActivityReleaseAdjustmentDetail,
+    PaymentBalanceActivityReleaseAdjustmentDetailDict,
+)
+from .payment_balance_activity_reserve_hold_detail import (
+    PaymentBalanceActivityReserveHoldDetail,
+    PaymentBalanceActivityReserveHoldDetailDict,
+)
+from .payment_balance_activity_reserve_release_detail import (
+    PaymentBalanceActivityReserveReleaseDetail,
+    PaymentBalanceActivityReserveReleaseDetailDict,
+)
+from .payment_balance_activity_square_capital_payment_detail import (
+    PaymentBalanceActivitySquareCapitalPaymentDetail,
+    PaymentBalanceActivitySquareCapitalPaymentDetailDict,
+)
+from .payment_balance_activity_square_capital_reversed_payment_detail import (
+    PaymentBalanceActivitySquareCapitalReversedPaymentDetail,
+    PaymentBalanceActivitySquareCapitalReversedPaymentDetailDict,
+)
+from .payment_balance_activity_square_payroll_transfer_detail import (
+    PaymentBalanceActivitySquarePayrollTransferDetail,
+    PaymentBalanceActivitySquarePayrollTransferDetailDict,
+)
+from .payment_balance_activity_square_payroll_transfer_reversed_detail import (
+    PaymentBalanceActivitySquarePayrollTransferReversedDetail,
+    PaymentBalanceActivitySquarePayrollTransferReversedDetailDict,
+)
+from .payment_balance_activity_tax_on_fee_detail import (
+    PaymentBalanceActivityTaxOnFeeDetail,
+    PaymentBalanceActivityTaxOnFeeDetailDict,
+)
+from .payment_balance_activity_third_party_fee_detail import (
+    PaymentBalanceActivityThirdPartyFeeDetail,
+    PaymentBalanceActivityThirdPartyFeeDetailDict,
+)
+from .payment_balance_activity_third_party_fee_refund_detail import (
+    PaymentBalanceActivityThirdPartyFeeRefundDetail,
+    PaymentBalanceActivityThirdPartyFeeRefundDetailDict,
+)
+from .payment_created_event import PaymentCreatedEvent, PaymentCreatedEventDict
+from .payment_created_event_data import PaymentCreatedEventData, PaymentCreatedEventDataDict
+from .payment_created_event_object import PaymentCreatedEventObject, PaymentCreatedEventObjectDict
+from .payment_link import PaymentLink, PaymentLinkDict
+from .payment_link_related_resources import PaymentLinkRelatedResources, PaymentLinkRelatedResourcesDict
+from .payment_options import PaymentOptions, PaymentOptionsDict
+from .payment_refund import PaymentRefund, PaymentRefundDict
+from .payment_updated_event import PaymentUpdatedEvent, PaymentUpdatedEventDict
+from .payment_updated_event_data import PaymentUpdatedEventData, PaymentUpdatedEventDataDict
+from .payment_updated_event_object import PaymentUpdatedEventObject, PaymentUpdatedEventObjectDict
+from .payout import Payout, PayoutDict
+from .payout_entry import PayoutEntry, PayoutEntryDict
+from .payout_failed_event import PayoutFailedEvent, PayoutFailedEventDict
+from .payout_failed_event_data import PayoutFailedEventData, PayoutFailedEventDataDict
+from .payout_failed_event_object import PayoutFailedEventObject, PayoutFailedEventObjectDict
+from .payout_fee import PayoutFee, PayoutFeeDict
+from .payout_paid_event import PayoutPaidEvent, PayoutPaidEventDict
+from .payout_paid_event_data import PayoutPaidEventData, PayoutPaidEventDataDict
+from .payout_paid_event_object import PayoutPaidEventObject, PayoutPaidEventObjectDict
+from .payout_sent_event import PayoutSentEvent, PayoutSentEventDict
+from .payout_sent_event_data import PayoutSentEventData, PayoutSentEventDataDict
+from .payout_sent_event_object import PayoutSentEventObject, PayoutSentEventObjectDict
+from .phase import Phase, PhaseDict
+from .phase_input import PhaseInput, PhaseInputDict
+from .pre_populated_data import PrePopulatedData, PrePopulatedDataDict
+from .processing_fee import ProcessingFee, ProcessingFeeDict
+from .publish_invoice_request import PublishInvoiceRequest, PublishInvoiceRequestDict
+from .publish_invoice_response import PublishInvoiceResponse, PublishInvoiceResponseDict
+from .publish_scheduled_shift_request import PublishScheduledShiftRequest, PublishScheduledShiftRequestDict
+from .publish_scheduled_shift_response import PublishScheduledShiftResponse, PublishScheduledShiftResponseDict
+from .qr_code_options import QrCodeOptions, QrCodeOptionsDict
+from .quick_pay import QuickPay, QuickPayDict
+from .range import Range, RangeDict
+from .receipt_options import ReceiptOptions, ReceiptOptionsDict
+from .receive_transfer_order_request import ReceiveTransferOrderRequest, ReceiveTransferOrderRequestDict
+from .receive_transfer_order_response import ReceiveTransferOrderResponse, ReceiveTransferOrderResponseDict
+from .redeem_loyalty_reward_request import RedeemLoyaltyRewardRequest, RedeemLoyaltyRewardRequestDict
+from .redeem_loyalty_reward_response import RedeemLoyaltyRewardResponse, RedeemLoyaltyRewardResponseDict
+from .reference import Reference, ReferenceDict
+from .refund import Refund, RefundDict
+from .refund_created_event import RefundCreatedEvent, RefundCreatedEventDict
+from .refund_created_event_data import RefundCreatedEventData, RefundCreatedEventDataDict
+from .refund_created_event_object import RefundCreatedEventObject, RefundCreatedEventObjectDict
+from .refund_payment_request import RefundPaymentRequest, RefundPaymentRequestDict
+from .refund_payment_response import RefundPaymentResponse, RefundPaymentResponseDict
+from .refund_updated_event import RefundUpdatedEvent, RefundUpdatedEventDict
+from .refund_updated_event_data import RefundUpdatedEventData, RefundUpdatedEventDataDict
+from .refund_updated_event_object import RefundUpdatedEventObject, RefundUpdatedEventObjectDict
+from .register_domain_request import RegisterDomainRequest, RegisterDomainRequestDict
+from .register_domain_response import RegisterDomainResponse, RegisterDomainResponseDict
+from .remove_group_from_customer_response import RemoveGroupFromCustomerResponse, RemoveGroupFromCustomerResponseDict
+from .restore_inventory_adjustment_reason_request import (
+    RestoreInventoryAdjustmentReasonRequest,
+    RestoreInventoryAdjustmentReasonRequestDict,
+)
+from .restore_inventory_adjustment_reason_response import (
+    RestoreInventoryAdjustmentReasonResponse,
+    RestoreInventoryAdjustmentReasonResponseDict,
+)
+from .resume_subscription_request import ResumeSubscriptionRequest, ResumeSubscriptionRequestDict
+from .resume_subscription_response import ResumeSubscriptionResponse, ResumeSubscriptionResponseDict
+from .retrieve_booking_custom_attribute_definition_response import (
+    RetrieveBookingCustomAttributeDefinitionResponse,
+    RetrieveBookingCustomAttributeDefinitionResponseDict,
+)
+from .retrieve_booking_custom_attribute_response import (
+    RetrieveBookingCustomAttributeResponse,
+    RetrieveBookingCustomAttributeResponseDict,
+)
+from .retrieve_booking_response import RetrieveBookingResponse, RetrieveBookingResponseDict
+from .retrieve_business_booking_profile_response import (
+    RetrieveBusinessBookingProfileResponse,
+    RetrieveBusinessBookingProfileResponseDict,
+)
+from .retrieve_card_response import RetrieveCardResponse, RetrieveCardResponseDict
+from .retrieve_cash_drawer_shift_response import RetrieveCashDrawerShiftResponse, RetrieveCashDrawerShiftResponseDict
+from .retrieve_catalog_object_response import RetrieveCatalogObjectResponse, RetrieveCatalogObjectResponseDict
+from .retrieve_channel_response import RetrieveChannelResponse, RetrieveChannelResponseDict
+from .retrieve_customer_custom_attribute_definition_response import (
+    RetrieveCustomerCustomAttributeDefinitionResponse,
+    RetrieveCustomerCustomAttributeDefinitionResponseDict,
+)
+from .retrieve_customer_custom_attribute_response import (
+    RetrieveCustomerCustomAttributeResponse,
+    RetrieveCustomerCustomAttributeResponseDict,
+)
+from .retrieve_customer_group_response import RetrieveCustomerGroupResponse, RetrieveCustomerGroupResponseDict
+from .retrieve_customer_response import RetrieveCustomerResponse, RetrieveCustomerResponseDict
+from .retrieve_customer_segment_response import RetrieveCustomerSegmentResponse, RetrieveCustomerSegmentResponseDict
+from .retrieve_dispute_evidence_response import RetrieveDisputeEvidenceResponse, RetrieveDisputeEvidenceResponseDict
+from .retrieve_dispute_response import RetrieveDisputeResponse, RetrieveDisputeResponseDict
+from .retrieve_employee_response import RetrieveEmployeeResponse, RetrieveEmployeeResponseDict
+from .retrieve_gift_card_from_ganrequest import RetrieveGiftCardFromGanrequest, RetrieveGiftCardFromGanrequestDict
+from .retrieve_gift_card_from_ganresponse import RetrieveGiftCardFromGanresponse, RetrieveGiftCardFromGanresponseDict
+from .retrieve_gift_card_from_nonce_request import (
+    RetrieveGiftCardFromNonceRequest,
+    RetrieveGiftCardFromNonceRequestDict,
+)
+from .retrieve_gift_card_from_nonce_response import (
+    RetrieveGiftCardFromNonceResponse,
+    RetrieveGiftCardFromNonceResponseDict,
+)
+from .retrieve_gift_card_response import RetrieveGiftCardResponse, RetrieveGiftCardResponseDict
+from .retrieve_inventory_adjustment_reason_request import (
+    RetrieveInventoryAdjustmentReasonRequest,
+    RetrieveInventoryAdjustmentReasonRequestDict,
+)
+from .retrieve_inventory_adjustment_reason_response import (
+    RetrieveInventoryAdjustmentReasonResponse,
+    RetrieveInventoryAdjustmentReasonResponseDict,
+)
+from .retrieve_inventory_adjustment_response import (
+    RetrieveInventoryAdjustmentResponse,
+    RetrieveInventoryAdjustmentResponseDict,
+)
+from .retrieve_inventory_changes_response import RetrieveInventoryChangesResponse, RetrieveInventoryChangesResponseDict
+from .retrieve_inventory_count_response import RetrieveInventoryCountResponse, RetrieveInventoryCountResponseDict
+from .retrieve_inventory_physical_count_response import (
+    RetrieveInventoryPhysicalCountResponse,
+    RetrieveInventoryPhysicalCountResponseDict,
+)
+from .retrieve_job_response import RetrieveJobResponse, RetrieveJobResponseDict
+from .retrieve_location_booking_profile_response import (
+    RetrieveLocationBookingProfileResponse,
+    RetrieveLocationBookingProfileResponseDict,
+)
+from .retrieve_location_custom_attribute_definition_response import (
+    RetrieveLocationCustomAttributeDefinitionResponse,
+    RetrieveLocationCustomAttributeDefinitionResponseDict,
+)
+from .retrieve_location_custom_attribute_response import (
+    RetrieveLocationCustomAttributeResponse,
+    RetrieveLocationCustomAttributeResponseDict,
+)
+from .retrieve_location_response import RetrieveLocationResponse, RetrieveLocationResponseDict
+from .retrieve_location_settings_response import RetrieveLocationSettingsResponse, RetrieveLocationSettingsResponseDict
+from .retrieve_loyalty_account_response import RetrieveLoyaltyAccountResponse, RetrieveLoyaltyAccountResponseDict
+from .retrieve_loyalty_program_response import RetrieveLoyaltyProgramResponse, RetrieveLoyaltyProgramResponseDict
+from .retrieve_loyalty_promotion_response import RetrieveLoyaltyPromotionResponse, RetrieveLoyaltyPromotionResponseDict
+from .retrieve_loyalty_reward_response import RetrieveLoyaltyRewardResponse, RetrieveLoyaltyRewardResponseDict
+from .retrieve_merchant_custom_attribute_definition_response import (
+    RetrieveMerchantCustomAttributeDefinitionResponse,
+    RetrieveMerchantCustomAttributeDefinitionResponseDict,
+)
+from .retrieve_merchant_custom_attribute_response import (
+    RetrieveMerchantCustomAttributeResponse,
+    RetrieveMerchantCustomAttributeResponseDict,
+)
+from .retrieve_merchant_response import RetrieveMerchantResponse, RetrieveMerchantResponseDict
+from .retrieve_merchant_settings_response import RetrieveMerchantSettingsResponse, RetrieveMerchantSettingsResponseDict
+from .retrieve_order_custom_attribute_definition_response import (
+    RetrieveOrderCustomAttributeDefinitionResponse,
+    RetrieveOrderCustomAttributeDefinitionResponseDict,
+)
+from .retrieve_order_custom_attribute_response import (
+    RetrieveOrderCustomAttributeResponse,
+    RetrieveOrderCustomAttributeResponseDict,
+)
+from .retrieve_order_response import RetrieveOrderResponse, RetrieveOrderResponseDict
+from .retrieve_payment_link_response import RetrievePaymentLinkResponse, RetrievePaymentLinkResponseDict
+from .retrieve_scheduled_shift_response import RetrieveScheduledShiftResponse, RetrieveScheduledShiftResponseDict
+from .retrieve_snippet_response import RetrieveSnippetResponse, RetrieveSnippetResponseDict
+from .retrieve_subscription_response import RetrieveSubscriptionResponse, RetrieveSubscriptionResponseDict
+from .retrieve_team_member_booking_profile_response import (
+    RetrieveTeamMemberBookingProfileResponse,
+    RetrieveTeamMemberBookingProfileResponseDict,
+)
+from .retrieve_team_member_response import RetrieveTeamMemberResponse, RetrieveTeamMemberResponseDict
+from .retrieve_timecard_response import RetrieveTimecardResponse, RetrieveTimecardResponseDict
+from .retrieve_token_status_response import RetrieveTokenStatusResponse, RetrieveTokenStatusResponseDict
+from .retrieve_transaction_response import RetrieveTransactionResponse, RetrieveTransactionResponseDict
+from .retrieve_transfer_order_response import RetrieveTransferOrderResponse, RetrieveTransferOrderResponseDict
+from .retrieve_vendor_response import RetrieveVendorResponse, RetrieveVendorResponseDict
+from .retrieve_wage_setting_response import RetrieveWageSettingResponse, RetrieveWageSettingResponseDict
+from .retrieve_webhook_subscription_response import (
+    RetrieveWebhookSubscriptionResponse,
+    RetrieveWebhookSubscriptionResponseDict,
+)
+from .revoke_token_request import RevokeTokenRequest, RevokeTokenRequestDict
+from .revoke_token_response import RevokeTokenResponse, RevokeTokenResponseDict
+from .risk_evaluation import RiskEvaluation, RiskEvaluationDict
+from .save_card_options import SaveCardOptions, SaveCardOptionsDict
+from .scheduled_shift import ScheduledShift, ScheduledShiftDict
+from .scheduled_shift_details import ScheduledShiftDetails, ScheduledShiftDetailsDict
+from .scheduled_shift_filter import ScheduledShiftFilter, ScheduledShiftFilterDict
+from .scheduled_shift_query import ScheduledShiftQuery, ScheduledShiftQueryDict
+from .scheduled_shift_sort import ScheduledShiftSort, ScheduledShiftSortDict
+from .scheduled_shift_workday import ScheduledShiftWorkday, ScheduledShiftWorkdayDict
+from .search_availability_filter import SearchAvailabilityFilter, SearchAvailabilityFilterDict
+from .search_availability_query import SearchAvailabilityQuery, SearchAvailabilityQueryDict
+from .search_availability_request import SearchAvailabilityRequest, SearchAvailabilityRequestDict
+from .search_availability_response import SearchAvailabilityResponse, SearchAvailabilityResponseDict
+from .search_catalog_items_request import SearchCatalogItemsRequest, SearchCatalogItemsRequestDict
+from .search_catalog_items_response import SearchCatalogItemsResponse, SearchCatalogItemsResponseDict
+from .search_catalog_objects_request import SearchCatalogObjectsRequest, SearchCatalogObjectsRequestDict
+from .search_catalog_objects_response import SearchCatalogObjectsResponse, SearchCatalogObjectsResponseDict
+from .search_customers_request import SearchCustomersRequest, SearchCustomersRequestDict
+from .search_customers_response import SearchCustomersResponse, SearchCustomersResponseDict
+from .search_events_filter import SearchEventsFilter, SearchEventsFilterDict
+from .search_events_query import SearchEventsQuery, SearchEventsQueryDict
+from .search_events_request import SearchEventsRequest, SearchEventsRequestDict
+from .search_events_response import SearchEventsResponse, SearchEventsResponseDict
+from .search_events_sort import SearchEventsSort, SearchEventsSortDict
+from .search_invoices_request import SearchInvoicesRequest, SearchInvoicesRequestDict
+from .search_invoices_response import SearchInvoicesResponse, SearchInvoicesResponseDict
+from .search_loyalty_accounts_request import SearchLoyaltyAccountsRequest, SearchLoyaltyAccountsRequestDict
+from .search_loyalty_accounts_request_loyalty_account_query import (
+    SearchLoyaltyAccountsRequestLoyaltyAccountQuery,
+    SearchLoyaltyAccountsRequestLoyaltyAccountQueryDict,
+)
+from .search_loyalty_accounts_response import SearchLoyaltyAccountsResponse, SearchLoyaltyAccountsResponseDict
+from .search_loyalty_events_request import SearchLoyaltyEventsRequest, SearchLoyaltyEventsRequestDict
+from .search_loyalty_events_response import SearchLoyaltyEventsResponse, SearchLoyaltyEventsResponseDict
+from .search_loyalty_rewards_request import SearchLoyaltyRewardsRequest, SearchLoyaltyRewardsRequestDict
+from .search_loyalty_rewards_request_loyalty_reward_query import (
+    SearchLoyaltyRewardsRequestLoyaltyRewardQuery,
+    SearchLoyaltyRewardsRequestLoyaltyRewardQueryDict,
+)
+from .search_loyalty_rewards_response import SearchLoyaltyRewardsResponse, SearchLoyaltyRewardsResponseDict
+from .search_orders_customer_filter import SearchOrdersCustomerFilter, SearchOrdersCustomerFilterDict
+from .search_orders_date_time_filter import SearchOrdersDateTimeFilter, SearchOrdersDateTimeFilterDict
+from .search_orders_filter import SearchOrdersFilter, SearchOrdersFilterDict
+from .search_orders_fulfillment_filter import SearchOrdersFulfillmentFilter, SearchOrdersFulfillmentFilterDict
+from .search_orders_query import SearchOrdersQuery, SearchOrdersQueryDict
+from .search_orders_request import SearchOrdersRequest, SearchOrdersRequestDict
+from .search_orders_response import SearchOrdersResponse, SearchOrdersResponseDict
+from .search_orders_sort import SearchOrdersSort, SearchOrdersSortDict
+from .search_orders_source_filter import SearchOrdersSourceFilter, SearchOrdersSourceFilterDict
+from .search_orders_state_filter import SearchOrdersStateFilter, SearchOrdersStateFilterDict
+from .search_scheduled_shifts_request import SearchScheduledShiftsRequest, SearchScheduledShiftsRequestDict
+from .search_scheduled_shifts_response import SearchScheduledShiftsResponse, SearchScheduledShiftsResponseDict
+from .search_shifts_request import SearchShiftsRequest, SearchShiftsRequestDict
+from .search_shifts_response import SearchShiftsResponse, SearchShiftsResponseDict
+from .search_subscriptions_filter import SearchSubscriptionsFilter, SearchSubscriptionsFilterDict
+from .search_subscriptions_query import SearchSubscriptionsQuery, SearchSubscriptionsQueryDict
+from .search_subscriptions_request import SearchSubscriptionsRequest, SearchSubscriptionsRequestDict
+from .search_subscriptions_response import SearchSubscriptionsResponse, SearchSubscriptionsResponseDict
+from .search_team_members_filter import SearchTeamMembersFilter, SearchTeamMembersFilterDict
+from .search_team_members_query import SearchTeamMembersQuery, SearchTeamMembersQueryDict
+from .search_team_members_request import SearchTeamMembersRequest, SearchTeamMembersRequestDict
+from .search_team_members_response import SearchTeamMembersResponse, SearchTeamMembersResponseDict
+from .search_terminal_actions_request import SearchTerminalActionsRequest, SearchTerminalActionsRequestDict
+from .search_terminal_actions_response import SearchTerminalActionsResponse, SearchTerminalActionsResponseDict
+from .search_terminal_checkouts_request import SearchTerminalCheckoutsRequest, SearchTerminalCheckoutsRequestDict
+from .search_terminal_checkouts_response import SearchTerminalCheckoutsResponse, SearchTerminalCheckoutsResponseDict
+from .search_terminal_refunds_request import SearchTerminalRefundsRequest, SearchTerminalRefundsRequestDict
+from .search_terminal_refunds_response import SearchTerminalRefundsResponse, SearchTerminalRefundsResponseDict
+from .search_timecards_request import SearchTimecardsRequest, SearchTimecardsRequestDict
+from .search_timecards_response import SearchTimecardsResponse, SearchTimecardsResponseDict
+from .search_transfer_orders_request import SearchTransferOrdersRequest, SearchTransferOrdersRequestDict
+from .search_transfer_orders_response import SearchTransferOrdersResponse, SearchTransferOrdersResponseDict
+from .search_vendors_request import SearchVendorsRequest, SearchVendorsRequestDict
+from .search_vendors_request_filter import SearchVendorsRequestFilter, SearchVendorsRequestFilterDict
+from .search_vendors_request_sort import SearchVendorsRequestSort, SearchVendorsRequestSortDict
+from .search_vendors_response import SearchVendorsResponse, SearchVendorsResponseDict
+from .segment_filter import SegmentFilter, SegmentFilterDict
+from .select_option import SelectOption, SelectOptionDict
+from .select_options import SelectOptions, SelectOptionsDict
+from .shift import Shift, ShiftDict
+from .shift_filter import ShiftFilter, ShiftFilterDict
+from .shift_query import ShiftQuery, ShiftQueryDict
+from .shift_sort import ShiftSort, ShiftSortDict
+from .shift_wage import ShiftWage, ShiftWageDict
+from .shift_workday import ShiftWorkday, ShiftWorkdayDict
+from .shipping_fee import ShippingFee, ShippingFeeDict
+from .signature_image import SignatureImage, SignatureImageDict
+from .signature_options import SignatureOptions, SignatureOptionsDict
+from .site import Site, SiteDict
+from .snippet import Snippet, SnippetDict
+from .source_application import SourceApplication, SourceApplicationDict
+from .square_account_details import SquareAccountDetails, SquareAccountDetailsDict
+from .standard_unit_description import StandardUnitDescription, StandardUnitDescriptionDict
+from .standard_unit_description_group import StandardUnitDescriptionGroup, StandardUnitDescriptionGroupDict
+from .start_transfer_order_request import StartTransferOrderRequest, StartTransferOrderRequestDict
+from .start_transfer_order_response import StartTransferOrderResponse, StartTransferOrderResponseDict
+from .submit_evidence_response import SubmitEvidenceResponse, SubmitEvidenceResponseDict
+from .subscription import Subscription, SubscriptionDict
+from .subscription_action import SubscriptionAction, SubscriptionActionDict
+from .subscription_created_event import SubscriptionCreatedEvent, SubscriptionCreatedEventDict
+from .subscription_created_event_data import SubscriptionCreatedEventData, SubscriptionCreatedEventDataDict
+from .subscription_created_event_object import SubscriptionCreatedEventObject, SubscriptionCreatedEventObjectDict
+from .subscription_event import SubscriptionEvent, SubscriptionEventDict
+from .subscription_event_info import SubscriptionEventInfo, SubscriptionEventInfoDict
+from .subscription_phase import SubscriptionPhase, SubscriptionPhaseDict
+from .subscription_pricing import SubscriptionPricing, SubscriptionPricingDict
+from .subscription_source import SubscriptionSource, SubscriptionSourceDict
+from .subscription_test_result import SubscriptionTestResult, SubscriptionTestResultDict
+from .subscription_updated_event import SubscriptionUpdatedEvent, SubscriptionUpdatedEventDict
+from .subscription_updated_event_data import SubscriptionUpdatedEventData, SubscriptionUpdatedEventDataDict
+from .subscription_updated_event_object import SubscriptionUpdatedEventObject, SubscriptionUpdatedEventObjectDict
+from .swap_plan_request import SwapPlanRequest, SwapPlanRequestDict
+from .swap_plan_response import SwapPlanResponse, SwapPlanResponseDict
+from .tax_ids import TaxIds, TaxIdsDict
+from .team_member import TeamMember, TeamMemberDict
+from .team_member_assigned_locations import TeamMemberAssignedLocations, TeamMemberAssignedLocationsDict
+from .team_member_booking_profile import TeamMemberBookingProfile, TeamMemberBookingProfileDict
+from .team_member_created_event import TeamMemberCreatedEvent, TeamMemberCreatedEventDict
+from .team_member_created_event_data import TeamMemberCreatedEventData, TeamMemberCreatedEventDataDict
+from .team_member_created_event_object import TeamMemberCreatedEventObject, TeamMemberCreatedEventObjectDict
+from .team_member_updated_event import TeamMemberUpdatedEvent, TeamMemberUpdatedEventDict
+from .team_member_updated_event_data import TeamMemberUpdatedEventData, TeamMemberUpdatedEventDataDict
+from .team_member_updated_event_object import TeamMemberUpdatedEventObject, TeamMemberUpdatedEventObjectDict
+from .team_member_wage import TeamMemberWage, TeamMemberWageDict
+from .team_member_wage_setting_updated_event import (
+    TeamMemberWageSettingUpdatedEvent,
+    TeamMemberWageSettingUpdatedEventDict,
+)
+from .team_member_wage_setting_updated_event_data import (
+    TeamMemberWageSettingUpdatedEventData,
+    TeamMemberWageSettingUpdatedEventDataDict,
+)
+from .team_member_wage_setting_updated_event_object import (
+    TeamMemberWageSettingUpdatedEventObject,
+    TeamMemberWageSettingUpdatedEventObjectDict,
+)
+from .tender import Tender, TenderDict
+from .tender_bank_account_details import TenderBankAccountDetails, TenderBankAccountDetailsDict
+from .tender_buy_now_pay_later_details import TenderBuyNowPayLaterDetails, TenderBuyNowPayLaterDetailsDict
+from .tender_card_details import TenderCardDetails, TenderCardDetailsDict
+from .tender_cash_details import TenderCashDetails, TenderCashDetailsDict
+from .tender_square_account_details import TenderSquareAccountDetails, TenderSquareAccountDetailsDict
+from .terminal_action import TerminalAction, TerminalActionDict
+from .terminal_action_created_event import TerminalActionCreatedEvent, TerminalActionCreatedEventDict
+from .terminal_action_created_event_data import TerminalActionCreatedEventData, TerminalActionCreatedEventDataDict
+from .terminal_action_created_event_object import TerminalActionCreatedEventObject, TerminalActionCreatedEventObjectDict
+from .terminal_action_query import TerminalActionQuery, TerminalActionQueryDict
+from .terminal_action_query_filter import TerminalActionQueryFilter, TerminalActionQueryFilterDict
+from .terminal_action_query_sort import TerminalActionQuerySort, TerminalActionQuerySortDict
+from .terminal_action_updated_event import TerminalActionUpdatedEvent, TerminalActionUpdatedEventDict
+from .terminal_action_updated_event_data import TerminalActionUpdatedEventData, TerminalActionUpdatedEventDataDict
+from .terminal_action_updated_event_object import TerminalActionUpdatedEventObject, TerminalActionUpdatedEventObjectDict
+from .terminal_checkout import TerminalCheckout, TerminalCheckoutDict
+from .terminal_checkout_created_event import TerminalCheckoutCreatedEvent, TerminalCheckoutCreatedEventDict
+from .terminal_checkout_created_event_data import TerminalCheckoutCreatedEventData, TerminalCheckoutCreatedEventDataDict
+from .terminal_checkout_created_event_object import (
+    TerminalCheckoutCreatedEventObject,
+    TerminalCheckoutCreatedEventObjectDict,
+)
+from .terminal_checkout_query import TerminalCheckoutQuery, TerminalCheckoutQueryDict
+from .terminal_checkout_query_filter import TerminalCheckoutQueryFilter, TerminalCheckoutQueryFilterDict
+from .terminal_checkout_query_sort import TerminalCheckoutQuerySort, TerminalCheckoutQuerySortDict
+from .terminal_checkout_updated_event import TerminalCheckoutUpdatedEvent, TerminalCheckoutUpdatedEventDict
+from .terminal_checkout_updated_event_data import TerminalCheckoutUpdatedEventData, TerminalCheckoutUpdatedEventDataDict
+from .terminal_checkout_updated_event_object import (
+    TerminalCheckoutUpdatedEventObject,
+    TerminalCheckoutUpdatedEventObjectDict,
+)
+from .terminal_refund import TerminalRefund, TerminalRefundDict
+from .terminal_refund_created_event import TerminalRefundCreatedEvent, TerminalRefundCreatedEventDict
+from .terminal_refund_created_event_data import TerminalRefundCreatedEventData, TerminalRefundCreatedEventDataDict
+from .terminal_refund_created_event_object import TerminalRefundCreatedEventObject, TerminalRefundCreatedEventObjectDict
+from .terminal_refund_query import TerminalRefundQuery, TerminalRefundQueryDict
+from .terminal_refund_query_filter import TerminalRefundQueryFilter, TerminalRefundQueryFilterDict
+from .terminal_refund_query_sort import TerminalRefundQuerySort, TerminalRefundQuerySortDict
+from .terminal_refund_updated_event import TerminalRefundUpdatedEvent, TerminalRefundUpdatedEventDict
+from .terminal_refund_updated_event_data import TerminalRefundUpdatedEventData, TerminalRefundUpdatedEventDataDict
+from .terminal_refund_updated_event_object import TerminalRefundUpdatedEventObject, TerminalRefundUpdatedEventObjectDict
+from .test_webhook_subscription_request import TestWebhookSubscriptionRequest, TestWebhookSubscriptionRequestDict
+from .test_webhook_subscription_response import TestWebhookSubscriptionResponse, TestWebhookSubscriptionResponseDict
+from .time_range import TimeRange, TimeRangeDict
+from .timecard import Timecard, TimecardDict
+from .timecard_filter import TimecardFilter, TimecardFilterDict
+from .timecard_query import TimecardQuery, TimecardQueryDict
+from .timecard_sort import TimecardSort, TimecardSortDict
+from .timecard_wage import TimecardWage, TimecardWageDict
+from .timecard_workday import TimecardWorkday, TimecardWorkdayDict
+from .tip_settings import TipSettings, TipSettingsDict
+from .transaction import Transaction, TransactionDict
+from .transfer_order import TransferOrder, TransferOrderDict
+from .transfer_order_created_event import TransferOrderCreatedEvent, TransferOrderCreatedEventDict
+from .transfer_order_created_event_data import TransferOrderCreatedEventData, TransferOrderCreatedEventDataDict
+from .transfer_order_created_event_object import TransferOrderCreatedEventObject, TransferOrderCreatedEventObjectDict
+from .transfer_order_deleted_event import TransferOrderDeletedEvent, TransferOrderDeletedEventDict
+from .transfer_order_deleted_event_data import TransferOrderDeletedEventData, TransferOrderDeletedEventDataDict
+from .transfer_order_filter import TransferOrderFilter, TransferOrderFilterDict
+from .transfer_order_goods_receipt import TransferOrderGoodsReceipt, TransferOrderGoodsReceiptDict
+from .transfer_order_goods_receipt_line_item import (
+    TransferOrderGoodsReceiptLineItem,
+    TransferOrderGoodsReceiptLineItemDict,
+)
+from .transfer_order_line import TransferOrderLine, TransferOrderLineDict
+from .transfer_order_query import TransferOrderQuery, TransferOrderQueryDict
+from .transfer_order_sort import TransferOrderSort, TransferOrderSortDict
+from .transfer_order_updated_event import TransferOrderUpdatedEvent, TransferOrderUpdatedEventDict
+from .transfer_order_updated_event_data import TransferOrderUpdatedEventData, TransferOrderUpdatedEventDataDict
+from .transfer_order_updated_event_object import TransferOrderUpdatedEventObject, TransferOrderUpdatedEventObjectDict
+from .unlink_customer_from_gift_card_request import (
+    UnlinkCustomerFromGiftCardRequest,
+    UnlinkCustomerFromGiftCardRequestDict,
+)
+from .unlink_customer_from_gift_card_response import (
+    UnlinkCustomerFromGiftCardResponse,
+    UnlinkCustomerFromGiftCardResponseDict,
+)
+from .update_booking_custom_attribute_definition_request import (
+    UpdateBookingCustomAttributeDefinitionRequest,
+    UpdateBookingCustomAttributeDefinitionRequestDict,
+)
+from .update_booking_custom_attribute_definition_response import (
+    UpdateBookingCustomAttributeDefinitionResponse,
+    UpdateBookingCustomAttributeDefinitionResponseDict,
+)
+from .update_booking_request import UpdateBookingRequest, UpdateBookingRequestDict
+from .update_booking_response import UpdateBookingResponse, UpdateBookingResponseDict
+from .update_break_type_request import UpdateBreakTypeRequest, UpdateBreakTypeRequestDict
+from .update_break_type_response import UpdateBreakTypeResponse, UpdateBreakTypeResponseDict
+from .update_catalog_image_request import UpdateCatalogImageRequest, UpdateCatalogImageRequestDict
+from .update_catalog_image_response import UpdateCatalogImageResponse, UpdateCatalogImageResponseDict
+from .update_customer_custom_attribute_definition_request import (
+    UpdateCustomerCustomAttributeDefinitionRequest,
+    UpdateCustomerCustomAttributeDefinitionRequestDict,
+)
+from .update_customer_custom_attribute_definition_response import (
+    UpdateCustomerCustomAttributeDefinitionResponse,
+    UpdateCustomerCustomAttributeDefinitionResponseDict,
+)
+from .update_customer_group_request import UpdateCustomerGroupRequest, UpdateCustomerGroupRequestDict
+from .update_customer_group_response import UpdateCustomerGroupResponse, UpdateCustomerGroupResponseDict
+from .update_customer_request import UpdateCustomerRequest, UpdateCustomerRequestDict
+from .update_customer_response import UpdateCustomerResponse, UpdateCustomerResponseDict
+from .update_inventory_adjustment_reason_request import (
+    UpdateInventoryAdjustmentReasonRequest,
+    UpdateInventoryAdjustmentReasonRequestDict,
+)
+from .update_inventory_adjustment_reason_response import (
+    UpdateInventoryAdjustmentReasonResponse,
+    UpdateInventoryAdjustmentReasonResponseDict,
+)
+from .update_inventory_adjustment_request import UpdateInventoryAdjustmentRequest, UpdateInventoryAdjustmentRequestDict
+from .update_inventory_adjustment_response import (
+    UpdateInventoryAdjustmentResponse,
+    UpdateInventoryAdjustmentResponseDict,
+)
+from .update_invoice_request import UpdateInvoiceRequest, UpdateInvoiceRequestDict
+from .update_invoice_response import UpdateInvoiceResponse, UpdateInvoiceResponseDict
+from .update_item_modifier_lists_request import UpdateItemModifierListsRequest, UpdateItemModifierListsRequestDict
+from .update_item_modifier_lists_response import UpdateItemModifierListsResponse, UpdateItemModifierListsResponseDict
+from .update_item_taxes_request import UpdateItemTaxesRequest, UpdateItemTaxesRequestDict
+from .update_item_taxes_response import UpdateItemTaxesResponse, UpdateItemTaxesResponseDict
+from .update_job_request import UpdateJobRequest, UpdateJobRequestDict
+from .update_job_response import UpdateJobResponse, UpdateJobResponseDict
+from .update_location_custom_attribute_definition_request import (
+    UpdateLocationCustomAttributeDefinitionRequest,
+    UpdateLocationCustomAttributeDefinitionRequestDict,
+)
+from .update_location_custom_attribute_definition_response import (
+    UpdateLocationCustomAttributeDefinitionResponse,
+    UpdateLocationCustomAttributeDefinitionResponseDict,
+)
+from .update_location_request import UpdateLocationRequest, UpdateLocationRequestDict
+from .update_location_response import UpdateLocationResponse, UpdateLocationResponseDict
+from .update_location_settings_request import UpdateLocationSettingsRequest, UpdateLocationSettingsRequestDict
+from .update_location_settings_response import UpdateLocationSettingsResponse, UpdateLocationSettingsResponseDict
+from .update_merchant_custom_attribute_definition_request import (
+    UpdateMerchantCustomAttributeDefinitionRequest,
+    UpdateMerchantCustomAttributeDefinitionRequestDict,
+)
+from .update_merchant_custom_attribute_definition_response import (
+    UpdateMerchantCustomAttributeDefinitionResponse,
+    UpdateMerchantCustomAttributeDefinitionResponseDict,
+)
+from .update_merchant_settings_request import UpdateMerchantSettingsRequest, UpdateMerchantSettingsRequestDict
+from .update_merchant_settings_response import UpdateMerchantSettingsResponse, UpdateMerchantSettingsResponseDict
+from .update_order_custom_attribute_definition_request import (
+    UpdateOrderCustomAttributeDefinitionRequest,
+    UpdateOrderCustomAttributeDefinitionRequestDict,
+)
+from .update_order_custom_attribute_definition_response import (
+    UpdateOrderCustomAttributeDefinitionResponse,
+    UpdateOrderCustomAttributeDefinitionResponseDict,
+)
+from .update_order_request import UpdateOrderRequest, UpdateOrderRequestDict
+from .update_order_response import UpdateOrderResponse, UpdateOrderResponseDict
+from .update_payment_link_request import UpdatePaymentLinkRequest, UpdatePaymentLinkRequestDict
+from .update_payment_link_response import UpdatePaymentLinkResponse, UpdatePaymentLinkResponseDict
+from .update_payment_request import UpdatePaymentRequest, UpdatePaymentRequestDict
+from .update_payment_response import UpdatePaymentResponse, UpdatePaymentResponseDict
+from .update_scheduled_shift_request import UpdateScheduledShiftRequest, UpdateScheduledShiftRequestDict
+from .update_scheduled_shift_response import UpdateScheduledShiftResponse, UpdateScheduledShiftResponseDict
+from .update_shift_request import UpdateShiftRequest, UpdateShiftRequestDict
+from .update_shift_response import UpdateShiftResponse, UpdateShiftResponseDict
+from .update_subscription_request import UpdateSubscriptionRequest, UpdateSubscriptionRequestDict
+from .update_subscription_response import UpdateSubscriptionResponse, UpdateSubscriptionResponseDict
+from .update_team_member_request import UpdateTeamMemberRequest, UpdateTeamMemberRequestDict
+from .update_team_member_response import UpdateTeamMemberResponse, UpdateTeamMemberResponseDict
+from .update_timecard_request import UpdateTimecardRequest, UpdateTimecardRequestDict
+from .update_timecard_response import UpdateTimecardResponse, UpdateTimecardResponseDict
+from .update_transfer_order_data import UpdateTransferOrderData, UpdateTransferOrderDataDict
+from .update_transfer_order_line_data import UpdateTransferOrderLineData, UpdateTransferOrderLineDataDict
+from .update_transfer_order_request import UpdateTransferOrderRequest, UpdateTransferOrderRequestDict
+from .update_transfer_order_response import UpdateTransferOrderResponse, UpdateTransferOrderResponseDict
+from .update_vendor_request import UpdateVendorRequest, UpdateVendorRequestDict
+from .update_vendor_response import UpdateVendorResponse, UpdateVendorResponseDict
+from .update_wage_setting_request import UpdateWageSettingRequest, UpdateWageSettingRequestDict
+from .update_wage_setting_response import UpdateWageSettingResponse, UpdateWageSettingResponseDict
+from .update_webhook_subscription_request import UpdateWebhookSubscriptionRequest, UpdateWebhookSubscriptionRequestDict
+from .update_webhook_subscription_response import (
+    UpdateWebhookSubscriptionResponse,
+    UpdateWebhookSubscriptionResponseDict,
+)
+from .update_webhook_subscription_signature_key_request import (
+    UpdateWebhookSubscriptionSignatureKeyRequest,
+    UpdateWebhookSubscriptionSignatureKeyRequestDict,
+)
+from .update_webhook_subscription_signature_key_response import (
+    UpdateWebhookSubscriptionSignatureKeyResponse,
+    UpdateWebhookSubscriptionSignatureKeyResponseDict,
+)
+from .update_workweek_config_request import UpdateWorkweekConfigRequest, UpdateWorkweekConfigRequestDict
+from .update_workweek_config_response import UpdateWorkweekConfigResponse, UpdateWorkweekConfigResponseDict
+from .upsert_booking_custom_attribute_request import (
+    UpsertBookingCustomAttributeRequest,
+    UpsertBookingCustomAttributeRequestDict,
+)
+from .upsert_booking_custom_attribute_response import (
+    UpsertBookingCustomAttributeResponse,
+    UpsertBookingCustomAttributeResponseDict,
+)
+from .upsert_catalog_object_request import UpsertCatalogObjectRequest, UpsertCatalogObjectRequestDict
+from .upsert_catalog_object_response import UpsertCatalogObjectResponse, UpsertCatalogObjectResponseDict
+from .upsert_customer_custom_attribute_request import (
+    UpsertCustomerCustomAttributeRequest,
+    UpsertCustomerCustomAttributeRequestDict,
+)
+from .upsert_customer_custom_attribute_response import (
+    UpsertCustomerCustomAttributeResponse,
+    UpsertCustomerCustomAttributeResponseDict,
+)
+from .upsert_location_custom_attribute_request import (
+    UpsertLocationCustomAttributeRequest,
+    UpsertLocationCustomAttributeRequestDict,
+)
+from .upsert_location_custom_attribute_response import (
+    UpsertLocationCustomAttributeResponse,
+    UpsertLocationCustomAttributeResponseDict,
+)
+from .upsert_merchant_custom_attribute_request import (
+    UpsertMerchantCustomAttributeRequest,
+    UpsertMerchantCustomAttributeRequestDict,
+)
+from .upsert_merchant_custom_attribute_response import (
+    UpsertMerchantCustomAttributeResponse,
+    UpsertMerchantCustomAttributeResponseDict,
+)
+from .upsert_order_custom_attribute_request import (
+    UpsertOrderCustomAttributeRequest,
+    UpsertOrderCustomAttributeRequestDict,
+)
+from .upsert_order_custom_attribute_response import (
+    UpsertOrderCustomAttributeResponse,
+    UpsertOrderCustomAttributeResponseDict,
+)
+from .upsert_snippet_request import UpsertSnippetRequest, UpsertSnippetRequestDict
+from .upsert_snippet_response import UpsertSnippetResponse, UpsertSnippetResponseDict
+from .v1_money import V1Money, V1MoneyDict
+from .v1_order import V1Order, V1OrderDict
+from .v1_order_history_entry import V1OrderHistoryEntry, V1OrderHistoryEntryDict
+from .v1_tender import V1Tender, V1TenderDict
+from .v1_update_order_request import V1UpdateOrderRequest, V1UpdateOrderRequestDict
+from .vendor import Vendor, VendorDict
+from .vendor_contact import VendorContact, VendorContactDict
+from .vendor_created_event import VendorCreatedEvent, VendorCreatedEventDict
+from .vendor_created_event_data import VendorCreatedEventData, VendorCreatedEventDataDict
+from .vendor_created_event_object import VendorCreatedEventObject, VendorCreatedEventObjectDict
+from .vendor_updated_event import VendorUpdatedEvent, VendorUpdatedEventDict
+from .vendor_updated_event_data import VendorUpdatedEventData, VendorUpdatedEventDataDict
+from .vendor_updated_event_object import VendorUpdatedEventObject, VendorUpdatedEventObjectDict
+from .void_transaction_response import VoidTransactionResponse, VoidTransactionResponseDict
+from .wage_setting import WageSetting, WageSettingDict
+from .webhook_subscription import WebhookSubscription, WebhookSubscriptionDict
+from .workweek_config import WorkweekConfig, WorkweekConfigDict
+
+__all__ = [
+    "enums",
+    "AcceptDisputeResponse",
+    "AcceptDisputeResponseDict",
+    "AcceptedPaymentMethods",
+    "AcceptedPaymentMethodsDict",
+    "AccumulateLoyaltyPointsRequest",
+    "AccumulateLoyaltyPointsRequestDict",
+    "AccumulateLoyaltyPointsResponse",
+    "AccumulateLoyaltyPointsResponseDict",
+    "Achdetails",
+    "AchdetailsDict",
+    "AddGroupToCustomerResponse",
+    "AddGroupToCustomerResponseDict",
+    "AdditionalRecipient",
+    "AdditionalRecipientDict",
+    "Address",
+    "AddressDict",
+    "AdjustLoyaltyPointsRequest",
+    "AdjustLoyaltyPointsRequestDict",
+    "AdjustLoyaltyPointsResponse",
+    "AdjustLoyaltyPointsResponseDict",
+    "AfterpayDetails",
+    "AfterpayDetailsDict",
+    "ApplicationDetails",
+    "ApplicationDetailsDict",
+    "AppointmentSegment",
+    "AppointmentSegmentDict",
+    "Availability",
+    "AvailabilityDict",
+    "BankAccount",
+    "BankAccountCreatedEvent",
+    "BankAccountCreatedEventData",
+    "BankAccountCreatedEventDataDict",
+    "BankAccountCreatedEventDict",
+    "BankAccountCreatedEventObject",
+    "BankAccountCreatedEventObjectDict",
+    "BankAccountDict",
+    "BankAccountDisabledEvent",
+    "BankAccountDisabledEventData",
+    "BankAccountDisabledEventDataDict",
+    "BankAccountDisabledEventDict",
+    "BankAccountDisabledEventObject",
+    "BankAccountDisabledEventObjectDict",
+    "BankAccountPaymentDetails",
+    "BankAccountPaymentDetailsDict",
+    "BankAccountVerifiedEvent",
+    "BankAccountVerifiedEventData",
+    "BankAccountVerifiedEventDataDict",
+    "BankAccountVerifiedEventDict",
+    "BankAccountVerifiedEventObject",
+    "BankAccountVerifiedEventObjectDict",
+    "BatchChangeInventoryRequest",
+    "BatchChangeInventoryRequestDict",
+    "BatchChangeInventoryResponse",
+    "BatchChangeInventoryResponseDict",
+    "BatchDeleteCatalogObjectsRequest",
+    "BatchDeleteCatalogObjectsRequestDict",
+    "BatchDeleteCatalogObjectsResponse",
+    "BatchDeleteCatalogObjectsResponseDict",
+    "BatchRetrieveCatalogObjectsRequest",
+    "BatchRetrieveCatalogObjectsRequestDict",
+    "BatchRetrieveCatalogObjectsResponse",
+    "BatchRetrieveCatalogObjectsResponseDict",
+    "BatchRetrieveInventoryChangesRequest",
+    "BatchRetrieveInventoryChangesRequestDict",
+    "BatchRetrieveInventoryChangesResponse",
+    "BatchRetrieveInventoryChangesResponseDict",
+    "BatchRetrieveInventoryChangesSort",
+    "BatchRetrieveInventoryChangesSortDict",
+    "BatchRetrieveInventoryCountsRequest",
+    "BatchRetrieveInventoryCountsRequestDict",
+    "BatchRetrieveInventoryCountsResponse",
+    "BatchRetrieveInventoryCountsResponseDict",
+    "BatchRetrieveOrdersRequest",
+    "BatchRetrieveOrdersRequestDict",
+    "BatchRetrieveOrdersResponse",
+    "BatchRetrieveOrdersResponseDict",
+    "BatchUpsertCatalogObjectsRequest",
+    "BatchUpsertCatalogObjectsRequestDict",
+    "BatchUpsertCatalogObjectsResponse",
+    "BatchUpsertCatalogObjectsResponseDict",
+    "Booking",
+    "BookingCreatedEvent",
+    "BookingCreatedEventData",
+    "BookingCreatedEventDataDict",
+    "BookingCreatedEventDict",
+    "BookingCreatedEventObject",
+    "BookingCreatedEventObjectDict",
+    "BookingCreatorDetails",
+    "BookingCreatorDetailsDict",
+    "BookingCustomAttributeDefinitionOwnedCreatedEvent",
+    "BookingCustomAttributeDefinitionOwnedCreatedEventDict",
+    "BookingCustomAttributeDefinitionOwnedDeletedEvent",
+    "BookingCustomAttributeDefinitionOwnedDeletedEventDict",
+    "BookingCustomAttributeDefinitionOwnedUpdatedEvent",
+    "BookingCustomAttributeDefinitionOwnedUpdatedEventDict",
+    "BookingCustomAttributeDefinitionVisibleCreatedEvent",
+    "BookingCustomAttributeDefinitionVisibleCreatedEventDict",
+    "BookingCustomAttributeDefinitionVisibleDeletedEvent",
+    "BookingCustomAttributeDefinitionVisibleDeletedEventDict",
+    "BookingCustomAttributeDefinitionVisibleUpdatedEvent",
+    "BookingCustomAttributeDefinitionVisibleUpdatedEventDict",
+    "BookingCustomAttributeDeleteRequest",
+    "BookingCustomAttributeDeleteRequestDict",
+    "BookingCustomAttributeDeleteResponse",
+    "BookingCustomAttributeDeleteResponseDict",
+    "BookingCustomAttributeOwnedDeletedEvent",
+    "BookingCustomAttributeOwnedDeletedEventDict",
+    "BookingCustomAttributeOwnedUpdatedEvent",
+    "BookingCustomAttributeOwnedUpdatedEventDict",
+    "BookingCustomAttributeUpsertRequest",
+    "BookingCustomAttributeUpsertRequestDict",
+    "BookingCustomAttributeUpsertResponse",
+    "BookingCustomAttributeUpsertResponseDict",
+    "BookingCustomAttributeVisibleDeletedEvent",
+    "BookingCustomAttributeVisibleDeletedEventDict",
+    "BookingCustomAttributeVisibleUpdatedEvent",
+    "BookingCustomAttributeVisibleUpdatedEventDict",
+    "BookingDict",
+    "BookingUpdatedEvent",
+    "BookingUpdatedEventData",
+    "BookingUpdatedEventDataDict",
+    "BookingUpdatedEventDict",
+    "BookingUpdatedEventObject",
+    "BookingUpdatedEventObjectDict",
+    "BreakModel",
+    "BreakModelDict",
+    "BreakType",
+    "BreakTypeDict",
+    "BulkCreateCustomerData",
+    "BulkCreateCustomerDataDict",
+    "BulkCreateCustomersRequest",
+    "BulkCreateCustomersRequestDict",
+    "BulkCreateCustomersResponse",
+    "BulkCreateCustomersResponseDict",
+    "BulkCreateTeamMembersRequest",
+    "BulkCreateTeamMembersRequestDict",
+    "BulkCreateTeamMembersResponse",
+    "BulkCreateTeamMembersResponseDict",
+    "BulkCreateVendorsRequest",
+    "BulkCreateVendorsRequestDict",
+    "BulkCreateVendorsResponse",
+    "BulkCreateVendorsResponseDict",
+    "BulkDeleteBookingCustomAttributesRequest",
+    "BulkDeleteBookingCustomAttributesRequestDict",
+    "BulkDeleteBookingCustomAttributesResponse",
+    "BulkDeleteBookingCustomAttributesResponseDict",
+    "BulkDeleteCustomersRequest",
+    "BulkDeleteCustomersRequestDict",
+    "BulkDeleteCustomersResponse",
+    "BulkDeleteCustomersResponseDict",
+    "BulkDeleteLocationCustomAttributesRequest",
+    "BulkDeleteLocationCustomAttributesRequestDict",
+    "BulkDeleteLocationCustomAttributesRequestLocationCustomAttributeDeleteRequest",
+    "BulkDeleteLocationCustomAttributesRequestLocationCustomAttributeDeleteRequestDict",
+    "BulkDeleteLocationCustomAttributesResponse",
+    "BulkDeleteLocationCustomAttributesResponseDict",
+    "BulkDeleteLocationCustomAttributesResponseLocationCustomAttributeDeleteResponse",
+    "BulkDeleteLocationCustomAttributesResponseLocationCustomAttributeDeleteResponseDict",
+    "BulkDeleteMerchantCustomAttributesRequest",
+    "BulkDeleteMerchantCustomAttributesRequestDict",
+    "BulkDeleteMerchantCustomAttributesRequestMerchantCustomAttributeDeleteRequest",
+    "BulkDeleteMerchantCustomAttributesRequestMerchantCustomAttributeDeleteRequestDict",
+    "BulkDeleteMerchantCustomAttributesResponse",
+    "BulkDeleteMerchantCustomAttributesResponseDict",
+    "BulkDeleteMerchantCustomAttributesResponseMerchantCustomAttributeDeleteResponse",
+    "BulkDeleteMerchantCustomAttributesResponseMerchantCustomAttributeDeleteResponseDict",
+    "BulkDeleteOrderCustomAttributesRequest",
+    "BulkDeleteOrderCustomAttributesRequestDeleteCustomAttribute",
+    "BulkDeleteOrderCustomAttributesRequestDeleteCustomAttributeDict",
+    "BulkDeleteOrderCustomAttributesRequestDict",
+    "BulkDeleteOrderCustomAttributesResponse",
+    "BulkDeleteOrderCustomAttributesResponseDict",
+    "BulkPublishScheduledShiftsData",
+    "BulkPublishScheduledShiftsDataDict",
+    "BulkPublishScheduledShiftsRequest",
+    "BulkPublishScheduledShiftsRequestDict",
+    "BulkPublishScheduledShiftsResponse",
+    "BulkPublishScheduledShiftsResponseDict",
+    "BulkRetrieveBookingsRequest",
+    "BulkRetrieveBookingsRequestDict",
+    "BulkRetrieveBookingsResponse",
+    "BulkRetrieveBookingsResponseDict",
+    "BulkRetrieveChannelsRequest",
+    "BulkRetrieveChannelsRequestDict",
+    "BulkRetrieveChannelsResponse",
+    "BulkRetrieveChannelsResponseDict",
+    "BulkRetrieveCustomersRequest",
+    "BulkRetrieveCustomersRequestDict",
+    "BulkRetrieveCustomersResponse",
+    "BulkRetrieveCustomersResponseDict",
+    "BulkRetrieveTeamMemberBookingProfilesRequest",
+    "BulkRetrieveTeamMemberBookingProfilesRequestDict",
+    "BulkRetrieveTeamMemberBookingProfilesResponse",
+    "BulkRetrieveTeamMemberBookingProfilesResponseDict",
+    "BulkRetrieveVendorsRequest",
+    "BulkRetrieveVendorsRequestDict",
+    "BulkRetrieveVendorsResponse",
+    "BulkRetrieveVendorsResponseDict",
+    "BulkSwapPlanRequest",
+    "BulkSwapPlanRequestDict",
+    "BulkSwapPlanResponse",
+    "BulkSwapPlanResponseDict",
+    "BulkUpdateCustomerData",
+    "BulkUpdateCustomerDataDict",
+    "BulkUpdateCustomersRequest",
+    "BulkUpdateCustomersRequestDict",
+    "BulkUpdateCustomersResponse",
+    "BulkUpdateCustomersResponseDict",
+    "BulkUpdateTeamMembersRequest",
+    "BulkUpdateTeamMembersRequestDict",
+    "BulkUpdateTeamMembersResponse",
+    "BulkUpdateTeamMembersResponseDict",
+    "BulkUpdateVendorsRequest",
+    "BulkUpdateVendorsRequestDict",
+    "BulkUpdateVendorsResponse",
+    "BulkUpdateVendorsResponseDict",
+    "BulkUpsertBookingCustomAttributesRequest",
+    "BulkUpsertBookingCustomAttributesRequestDict",
+    "BulkUpsertBookingCustomAttributesResponse",
+    "BulkUpsertBookingCustomAttributesResponseDict",
+    "BulkUpsertCustomerCustomAttributesRequest",
+    "BulkUpsertCustomerCustomAttributesRequestCustomerCustomAttributeUpsertRequest",
+    "BulkUpsertCustomerCustomAttributesRequestCustomerCustomAttributeUpsertRequestDict",
+    "BulkUpsertCustomerCustomAttributesRequestDict",
+    "BulkUpsertCustomerCustomAttributesResponse",
+    "BulkUpsertCustomerCustomAttributesResponseCustomerCustomAttributeUpsertResponse",
+    "BulkUpsertCustomerCustomAttributesResponseCustomerCustomAttributeUpsertResponseDict",
+    "BulkUpsertCustomerCustomAttributesResponseDict",
+    "BulkUpsertLocationCustomAttributesRequest",
+    "BulkUpsertLocationCustomAttributesRequestDict",
+    "BulkUpsertLocationCustomAttributesRequestLocationCustomAttributeUpsertRequest",
+    "BulkUpsertLocationCustomAttributesRequestLocationCustomAttributeUpsertRequestDict",
+    "BulkUpsertLocationCustomAttributesResponse",
+    "BulkUpsertLocationCustomAttributesResponseDict",
+    "BulkUpsertLocationCustomAttributesResponseLocationCustomAttributeUpsertResponse",
+    "BulkUpsertLocationCustomAttributesResponseLocationCustomAttributeUpsertResponseDict",
+    "BulkUpsertMerchantCustomAttributesRequest",
+    "BulkUpsertMerchantCustomAttributesRequestDict",
+    "BulkUpsertMerchantCustomAttributesRequestMerchantCustomAttributeUpsertRequest",
+    "BulkUpsertMerchantCustomAttributesRequestMerchantCustomAttributeUpsertRequestDict",
+    "BulkUpsertMerchantCustomAttributesResponse",
+    "BulkUpsertMerchantCustomAttributesResponseDict",
+    "BulkUpsertMerchantCustomAttributesResponseMerchantCustomAttributeUpsertResponse",
+    "BulkUpsertMerchantCustomAttributesResponseMerchantCustomAttributeUpsertResponseDict",
+    "BulkUpsertOrderCustomAttributesRequest",
+    "BulkUpsertOrderCustomAttributesRequestDict",
+    "BulkUpsertOrderCustomAttributesRequestUpsertCustomAttribute",
+    "BulkUpsertOrderCustomAttributesRequestUpsertCustomAttributeDict",
+    "BulkUpsertOrderCustomAttributesResponse",
+    "BulkUpsertOrderCustomAttributesResponseDict",
+    "BusinessAppointmentSettings",
+    "BusinessAppointmentSettingsDict",
+    "BusinessBookingProfile",
+    "BusinessBookingProfileDict",
+    "BusinessHours",
+    "BusinessHoursDict",
+    "BusinessHoursPeriod",
+    "BusinessHoursPeriodDict",
+    "BuyNowPayLaterDetails",
+    "BuyNowPayLaterDetailsDict",
+    "CalculateLoyaltyPointsRequest",
+    "CalculateLoyaltyPointsRequestDict",
+    "CalculateLoyaltyPointsResponse",
+    "CalculateLoyaltyPointsResponseDict",
+    "CalculateOrderRequest",
+    "CalculateOrderRequestDict",
+    "CalculateOrderResponse",
+    "CalculateOrderResponseDict",
+    "CancelBookingRequest",
+    "CancelBookingRequestDict",
+    "CancelBookingResponse",
+    "CancelBookingResponseDict",
+    "CancelInvoiceRequest",
+    "CancelInvoiceRequestDict",
+    "CancelInvoiceResponse",
+    "CancelInvoiceResponseDict",
+    "CancelLoyaltyPromotionResponse",
+    "CancelLoyaltyPromotionResponseDict",
+    "CancelPaymentByIdempotencyKeyRequest",
+    "CancelPaymentByIdempotencyKeyRequestDict",
+    "CancelPaymentByIdempotencyKeyResponse",
+    "CancelPaymentByIdempotencyKeyResponseDict",
+    "CancelPaymentResponse",
+    "CancelPaymentResponseDict",
+    "CancelSubscriptionResponse",
+    "CancelSubscriptionResponseDict",
+    "CancelTerminalActionResponse",
+    "CancelTerminalActionResponseDict",
+    "CancelTerminalCheckoutResponse",
+    "CancelTerminalCheckoutResponseDict",
+    "CancelTerminalRefundResponse",
+    "CancelTerminalRefundResponseDict",
+    "CancelTransferOrderRequest",
+    "CancelTransferOrderRequestDict",
+    "CancelTransferOrderResponse",
+    "CancelTransferOrderResponseDict",
+    "CaptureTransactionResponse",
+    "CaptureTransactionResponseDict",
+    "Card",
+    "CardAutomaticallyUpdatedEvent",
+    "CardAutomaticallyUpdatedEventData",
+    "CardAutomaticallyUpdatedEventDataDict",
+    "CardAutomaticallyUpdatedEventDict",
+    "CardAutomaticallyUpdatedEventObject",
+    "CardAutomaticallyUpdatedEventObjectDict",
+    "CardCreatedEvent",
+    "CardCreatedEventData",
+    "CardCreatedEventDataDict",
+    "CardCreatedEventDict",
+    "CardCreatedEventObject",
+    "CardCreatedEventObjectDict",
+    "CardDict",
+    "CardDisabledEvent",
+    "CardDisabledEventData",
+    "CardDisabledEventDataDict",
+    "CardDisabledEventDict",
+    "CardDisabledEventObject",
+    "CardDisabledEventObjectDict",
+    "CardForgottenEvent",
+    "CardForgottenEventCard",
+    "CardForgottenEventCardDict",
+    "CardForgottenEventData",
+    "CardForgottenEventDataDict",
+    "CardForgottenEventDict",
+    "CardForgottenEventObject",
+    "CardForgottenEventObjectDict",
+    "CardPaymentDetails",
+    "CardPaymentDetailsDict",
+    "CardPaymentTimeline",
+    "CardPaymentTimelineDict",
+    "CardSurchargeDetails",
+    "CardSurchargeDetailsDict",
+    "CardUpdatedEvent",
+    "CardUpdatedEventData",
+    "CardUpdatedEventDataDict",
+    "CardUpdatedEventDict",
+    "CardUpdatedEventObject",
+    "CardUpdatedEventObjectDict",
+    "CashAppDetails",
+    "CashAppDetailsDict",
+    "CashDrawerDevice",
+    "CashDrawerDeviceDict",
+    "CashDrawerShift",
+    "CashDrawerShiftDict",
+    "CashDrawerShiftEvent",
+    "CashDrawerShiftEventDict",
+    "CashDrawerShiftSummary",
+    "CashDrawerShiftSummaryDict",
+    "CashPaymentDetails",
+    "CashPaymentDetailsDict",
+    "CatalogAvailabilityPeriod",
+    "CatalogAvailabilityPeriodDict",
+    "CatalogCategory",
+    "CatalogCategoryDict",
+    "CatalogCustomAttributeDefinition",
+    "CatalogCustomAttributeDefinitionDict",
+    "CatalogCustomAttributeDefinitionNumberConfig",
+    "CatalogCustomAttributeDefinitionNumberConfigDict",
+    "CatalogCustomAttributeDefinitionSelectionConfig",
+    "CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection",
+    "CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelectionDict",
+    "CatalogCustomAttributeDefinitionSelectionConfigDict",
+    "CatalogCustomAttributeDefinitionStringConfig",
+    "CatalogCustomAttributeDefinitionStringConfigDict",
+    "CatalogCustomAttributeValue",
+    "CatalogCustomAttributeValueDict",
+    "CatalogDiscount",
+    "CatalogDiscountDict",
+    "CatalogEcomSeoData",
+    "CatalogEcomSeoDataDict",
+    "CatalogIdMapping",
+    "CatalogIdMappingDict",
+    "CatalogImage",
+    "CatalogImageDict",
+    "CatalogInfoResponse",
+    "CatalogInfoResponseDict",
+    "CatalogInfoResponseLimits",
+    "CatalogInfoResponseLimitsDict",
+    "CatalogItem",
+    "CatalogItemDict",
+    "CatalogItemFoodAndBeverageDetails",
+    "CatalogItemFoodAndBeverageDetailsDict",
+    "CatalogItemFoodAndBeverageDetailsDietaryPreference",
+    "CatalogItemFoodAndBeverageDetailsDietaryPreferenceDict",
+    "CatalogItemFoodAndBeverageDetailsIngredient",
+    "CatalogItemFoodAndBeverageDetailsIngredientDict",
+    "CatalogItemModifierListInfo",
+    "CatalogItemModifierListInfoDict",
+    "CatalogItemOption",
+    "CatalogItemOptionDict",
+    "CatalogItemOptionForItem",
+    "CatalogItemOptionForItemDict",
+    "CatalogItemOptionValue",
+    "CatalogItemOptionValueDict",
+    "CatalogItemOptionValueForItemVariation",
+    "CatalogItemOptionValueForItemVariationDict",
+    "CatalogItemVariation",
+    "CatalogItemVariationDict",
+    "CatalogItemVariationVendorInformation",
+    "CatalogItemVariationVendorInformationDict",
+    "CatalogMeasurementUnit",
+    "CatalogMeasurementUnitDict",
+    "CatalogModifier",
+    "CatalogModifierDict",
+    "CatalogModifierList",
+    "CatalogModifierListDict",
+    "CatalogModifierOverride",
+    "CatalogModifierOverrideDict",
+    "CatalogObject",
+    "CatalogObjectBatch",
+    "CatalogObjectBatchDict",
+    "CatalogObjectCategory",
+    "CatalogObjectCategoryDict",
+    "CatalogObjectDict",
+    "CatalogObjectReference",
+    "CatalogObjectReferenceDict",
+    "CatalogPricingRule",
+    "CatalogPricingRuleDict",
+    "CatalogProductSet",
+    "CatalogProductSetDict",
+    "CatalogQuery",
+    "CatalogQueryDict",
+    "CatalogQueryExact",
+    "CatalogQueryExactDict",
+    "CatalogQueryItemVariationsForItemOptionValues",
+    "CatalogQueryItemVariationsForItemOptionValuesDict",
+    "CatalogQueryItemsForItemOptions",
+    "CatalogQueryItemsForItemOptionsDict",
+    "CatalogQueryItemsForModifierList",
+    "CatalogQueryItemsForModifierListDict",
+    "CatalogQueryItemsForTax",
+    "CatalogQueryItemsForTaxDict",
+    "CatalogQueryPrefix",
+    "CatalogQueryPrefixDict",
+    "CatalogQueryRange",
+    "CatalogQueryRangeDict",
+    "CatalogQuerySet",
+    "CatalogQuerySetDict",
+    "CatalogQuerySortedAttribute",
+    "CatalogQuerySortedAttributeDict",
+    "CatalogQueryText",
+    "CatalogQueryTextDict",
+    "CatalogQuickAmount",
+    "CatalogQuickAmountDict",
+    "CatalogQuickAmountsSettings",
+    "CatalogQuickAmountsSettingsDict",
+    "CatalogStockConversion",
+    "CatalogStockConversionDict",
+    "CatalogSubscriptionPlan",
+    "CatalogSubscriptionPlanDict",
+    "CatalogSubscriptionPlanVariation",
+    "CatalogSubscriptionPlanVariationDict",
+    "CatalogTax",
+    "CatalogTaxDict",
+    "CatalogTimePeriod",
+    "CatalogTimePeriodDict",
+    "CatalogV1Id",
+    "CatalogV1IdDict",
+    "CatalogVersionUpdatedEvent",
+    "CatalogVersionUpdatedEventCatalogVersion",
+    "CatalogVersionUpdatedEventCatalogVersionDict",
+    "CatalogVersionUpdatedEventData",
+    "CatalogVersionUpdatedEventDataDict",
+    "CatalogVersionUpdatedEventDict",
+    "CatalogVersionUpdatedEventObject",
+    "CatalogVersionUpdatedEventObjectDict",
+    "CategoryPathToRootNode",
+    "CategoryPathToRootNodeDict",
+    "ChangeBillingAnchorDateRequest",
+    "ChangeBillingAnchorDateRequestDict",
+    "ChangeBillingAnchorDateResponse",
+    "ChangeBillingAnchorDateResponseDict",
+    "Channel",
+    "ChannelDict",
+    "ChargeRequestAdditionalRecipient",
+    "ChargeRequestAdditionalRecipientDict",
+    "Checkout",
+    "CheckoutDict",
+    "CheckoutLocationSettings",
+    "CheckoutLocationSettingsBranding",
+    "CheckoutLocationSettingsBrandingDict",
+    "CheckoutLocationSettingsCoupons",
+    "CheckoutLocationSettingsCouponsDict",
+    "CheckoutLocationSettingsDict",
+    "CheckoutLocationSettingsPolicy",
+    "CheckoutLocationSettingsPolicyDict",
+    "CheckoutLocationSettingsTipping",
+    "CheckoutLocationSettingsTippingDict",
+    "CheckoutMerchantSettings",
+    "CheckoutMerchantSettingsDict",
+    "CheckoutMerchantSettingsPaymentMethods",
+    "CheckoutMerchantSettingsPaymentMethodsAfterpayClearpay",
+    "CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayDict",
+    "CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayEligibilityRange",
+    "CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayEligibilityRangeDict",
+    "CheckoutMerchantSettingsPaymentMethodsDict",
+    "CheckoutMerchantSettingsPaymentMethodsPaymentMethod",
+    "CheckoutMerchantSettingsPaymentMethodsPaymentMethodDict",
+    "CheckoutOptions",
+    "CheckoutOptionsDict",
+    "ClearpayDetails",
+    "ClearpayDetailsDict",
+    "CloneOrderRequest",
+    "CloneOrderRequestDict",
+    "CloneOrderResponse",
+    "CloneOrderResponseDict",
+    "CollectedData",
+    "CollectedDataDict",
+    "CompletePaymentRequest",
+    "CompletePaymentRequestDict",
+    "CompletePaymentResponse",
+    "CompletePaymentResponseDict",
+    "Component",
+    "ComponentDict",
+    "ConfirmationDecision",
+    "ConfirmationDecisionDict",
+    "ConfirmationOptions",
+    "ConfirmationOptionsDict",
+    "Coordinates",
+    "CoordinatesDict",
+    "CreateBankAccountRequest",
+    "CreateBankAccountRequestDict",
+    "CreateBankAccountResponse",
+    "CreateBankAccountResponseDict",
+    "CreateBookingCustomAttributeDefinitionRequest",
+    "CreateBookingCustomAttributeDefinitionRequestDict",
+    "CreateBookingCustomAttributeDefinitionResponse",
+    "CreateBookingCustomAttributeDefinitionResponseDict",
+    "CreateBookingRequest",
+    "CreateBookingRequestDict",
+    "CreateBookingResponse",
+    "CreateBookingResponseDict",
+    "CreateBreakTypeRequest",
+    "CreateBreakTypeRequestDict",
+    "CreateBreakTypeResponse",
+    "CreateBreakTypeResponseDict",
+    "CreateCardRequest",
+    "CreateCardRequestDict",
+    "CreateCardResponse",
+    "CreateCardResponseDict",
+    "CreateCatalogImageRequest",
+    "CreateCatalogImageRequestDict",
+    "CreateCatalogImageResponse",
+    "CreateCatalogImageResponseDict",
+    "CreateCheckoutRequest",
+    "CreateCheckoutRequestDict",
+    "CreateCheckoutResponse",
+    "CreateCheckoutResponseDict",
+    "CreateCustomerCardRequest",
+    "CreateCustomerCardRequestDict",
+    "CreateCustomerCardResponse",
+    "CreateCustomerCardResponseDict",
+    "CreateCustomerCustomAttributeDefinitionRequest",
+    "CreateCustomerCustomAttributeDefinitionRequestDict",
+    "CreateCustomerCustomAttributeDefinitionResponse",
+    "CreateCustomerCustomAttributeDefinitionResponseDict",
+    "CreateCustomerGroupRequest",
+    "CreateCustomerGroupRequestDict",
+    "CreateCustomerGroupResponse",
+    "CreateCustomerGroupResponseDict",
+    "CreateCustomerRequest",
+    "CreateCustomerRequestDict",
+    "CreateCustomerResponse",
+    "CreateCustomerResponseDict",
+    "CreateDeviceCodeRequest",
+    "CreateDeviceCodeRequestDict",
+    "CreateDeviceCodeResponse",
+    "CreateDeviceCodeResponseDict",
+    "CreateDisputeEvidenceFileRequest",
+    "CreateDisputeEvidenceFileRequestDict",
+    "CreateDisputeEvidenceFileResponse",
+    "CreateDisputeEvidenceFileResponseDict",
+    "CreateDisputeEvidenceTextRequest",
+    "CreateDisputeEvidenceTextRequestDict",
+    "CreateDisputeEvidenceTextResponse",
+    "CreateDisputeEvidenceTextResponseDict",
+    "CreateGiftCardActivityRequest",
+    "CreateGiftCardActivityRequestDict",
+    "CreateGiftCardActivityResponse",
+    "CreateGiftCardActivityResponseDict",
+    "CreateGiftCardRequest",
+    "CreateGiftCardRequestDict",
+    "CreateGiftCardResponse",
+    "CreateGiftCardResponseDict",
+    "CreateInventoryAdjustmentReasonRequest",
+    "CreateInventoryAdjustmentReasonRequestDict",
+    "CreateInventoryAdjustmentReasonResponse",
+    "CreateInventoryAdjustmentReasonResponseDict",
+    "CreateInvoiceAttachmentRequest",
+    "CreateInvoiceAttachmentRequestDict",
+    "CreateInvoiceAttachmentResponse",
+    "CreateInvoiceAttachmentResponseDict",
+    "CreateInvoiceRequest",
+    "CreateInvoiceRequestDict",
+    "CreateInvoiceResponse",
+    "CreateInvoiceResponseDict",
+    "CreateJobRequest",
+    "CreateJobRequestDict",
+    "CreateJobResponse",
+    "CreateJobResponseDict",
+    "CreateLocationCustomAttributeDefinitionRequest",
+    "CreateLocationCustomAttributeDefinitionRequestDict",
+    "CreateLocationCustomAttributeDefinitionResponse",
+    "CreateLocationCustomAttributeDefinitionResponseDict",
+    "CreateLocationRequest",
+    "CreateLocationRequestDict",
+    "CreateLocationResponse",
+    "CreateLocationResponseDict",
+    "CreateLoyaltyAccountRequest",
+    "CreateLoyaltyAccountRequestDict",
+    "CreateLoyaltyAccountResponse",
+    "CreateLoyaltyAccountResponseDict",
+    "CreateLoyaltyPromotionRequest",
+    "CreateLoyaltyPromotionRequestDict",
+    "CreateLoyaltyPromotionResponse",
+    "CreateLoyaltyPromotionResponseDict",
+    "CreateLoyaltyRewardRequest",
+    "CreateLoyaltyRewardRequestDict",
+    "CreateLoyaltyRewardResponse",
+    "CreateLoyaltyRewardResponseDict",
+    "CreateMerchantCustomAttributeDefinitionRequest",
+    "CreateMerchantCustomAttributeDefinitionRequestDict",
+    "CreateMerchantCustomAttributeDefinitionResponse",
+    "CreateMerchantCustomAttributeDefinitionResponseDict",
+    "CreateOrderCustomAttributeDefinitionRequest",
+    "CreateOrderCustomAttributeDefinitionRequestDict",
+    "CreateOrderCustomAttributeDefinitionResponse",
+    "CreateOrderCustomAttributeDefinitionResponseDict",
+    "CreateOrderRequest",
+    "CreateOrderRequestDict",
+    "CreateOrderResponse",
+    "CreateOrderResponseDict",
+    "CreatePaymentLinkRequest",
+    "CreatePaymentLinkRequestDict",
+    "CreatePaymentLinkResponse",
+    "CreatePaymentLinkResponseDict",
+    "CreatePaymentRequest",
+    "CreatePaymentRequestDict",
+    "CreatePaymentResponse",
+    "CreatePaymentResponseDict",
+    "CreateScheduledShiftRequest",
+    "CreateScheduledShiftRequestDict",
+    "CreateScheduledShiftResponse",
+    "CreateScheduledShiftResponseDict",
+    "CreateShiftRequest",
+    "CreateShiftRequestDict",
+    "CreateShiftResponse",
+    "CreateShiftResponseDict",
+    "CreateSubscriptionRequest",
+    "CreateSubscriptionRequestDict",
+    "CreateSubscriptionResponse",
+    "CreateSubscriptionResponseDict",
+    "CreateTeamMemberRequest",
+    "CreateTeamMemberRequestDict",
+    "CreateTeamMemberResponse",
+    "CreateTeamMemberResponseDict",
+    "CreateTerminalActionRequest",
+    "CreateTerminalActionRequestDict",
+    "CreateTerminalActionResponse",
+    "CreateTerminalActionResponseDict",
+    "CreateTerminalCheckoutRequest",
+    "CreateTerminalCheckoutRequestDict",
+    "CreateTerminalCheckoutResponse",
+    "CreateTerminalCheckoutResponseDict",
+    "CreateTerminalRefundRequest",
+    "CreateTerminalRefundRequestDict",
+    "CreateTerminalRefundResponse",
+    "CreateTerminalRefundResponseDict",
+    "CreateTimecardRequest",
+    "CreateTimecardRequestDict",
+    "CreateTimecardResponse",
+    "CreateTimecardResponseDict",
+    "CreateTransferOrderData",
+    "CreateTransferOrderDataDict",
+    "CreateTransferOrderLineData",
+    "CreateTransferOrderLineDataDict",
+    "CreateTransferOrderRequest",
+    "CreateTransferOrderRequestDict",
+    "CreateTransferOrderResponse",
+    "CreateTransferOrderResponseDict",
+    "CreateVendorRequest",
+    "CreateVendorRequestDict",
+    "CreateVendorResponse",
+    "CreateVendorResponseDict",
+    "CreateWebhookSubscriptionRequest",
+    "CreateWebhookSubscriptionRequestDict",
+    "CreateWebhookSubscriptionResponse",
+    "CreateWebhookSubscriptionResponseDict",
+    "CustomAttribute",
+    "CustomAttributeDefinition",
+    "CustomAttributeDefinitionDict",
+    "CustomAttributeDefinitionEventData",
+    "CustomAttributeDefinitionEventDataDict",
+    "CustomAttributeDefinitionEventDataObject",
+    "CustomAttributeDefinitionEventDataObjectDict",
+    "CustomAttributeDict",
+    "CustomAttributeEventData",
+    "CustomAttributeEventDataDict",
+    "CustomAttributeEventDataObject",
+    "CustomAttributeEventDataObjectDict",
+    "CustomAttributeFilter",
+    "CustomAttributeFilterDict",
+    "CustomField",
+    "CustomFieldDict",
+    "Customer",
+    "CustomerAddressFilter",
+    "CustomerAddressFilterDict",
+    "CustomerCreatedEvent",
+    "CustomerCreatedEventData",
+    "CustomerCreatedEventDataDict",
+    "CustomerCreatedEventDict",
+    "CustomerCreatedEventEventContext",
+    "CustomerCreatedEventEventContextDict",
+    "CustomerCreatedEventEventContextMerge",
+    "CustomerCreatedEventEventContextMergeDict",
+    "CustomerCreatedEventObject",
+    "CustomerCreatedEventObjectDict",
+    "CustomerCreationSourceFilter",
+    "CustomerCreationSourceFilterDict",
+    "CustomerCustomAttributeDefinitionCreatedEvent",
+    "CustomerCustomAttributeDefinitionCreatedEventDict",
+    "CustomerCustomAttributeDefinitionCreatedPublicEvent",
+    "CustomerCustomAttributeDefinitionCreatedPublicEventDict",
+    "CustomerCustomAttributeDefinitionDeletedEvent",
+    "CustomerCustomAttributeDefinitionDeletedEventDict",
+    "CustomerCustomAttributeDefinitionDeletedPublicEvent",
+    "CustomerCustomAttributeDefinitionDeletedPublicEventDict",
+    "CustomerCustomAttributeDefinitionOwnedCreatedEvent",
+    "CustomerCustomAttributeDefinitionOwnedCreatedEventDict",
+    "CustomerCustomAttributeDefinitionOwnedDeletedEvent",
+    "CustomerCustomAttributeDefinitionOwnedDeletedEventDict",
+    "CustomerCustomAttributeDefinitionOwnedUpdatedEvent",
+    "CustomerCustomAttributeDefinitionOwnedUpdatedEventDict",
+    "CustomerCustomAttributeDefinitionUpdatedEvent",
+    "CustomerCustomAttributeDefinitionUpdatedEventDict",
+    "CustomerCustomAttributeDefinitionUpdatedPublicEvent",
+    "CustomerCustomAttributeDefinitionUpdatedPublicEventDict",
+    "CustomerCustomAttributeDefinitionVisibleCreatedEvent",
+    "CustomerCustomAttributeDefinitionVisibleCreatedEventDict",
+    "CustomerCustomAttributeDefinitionVisibleDeletedEvent",
+    "CustomerCustomAttributeDefinitionVisibleDeletedEventDict",
+    "CustomerCustomAttributeDefinitionVisibleUpdatedEvent",
+    "CustomerCustomAttributeDefinitionVisibleUpdatedEventDict",
+    "CustomerCustomAttributeDeletedEvent",
+    "CustomerCustomAttributeDeletedEventDict",
+    "CustomerCustomAttributeDeletedPublicEvent",
+    "CustomerCustomAttributeDeletedPublicEventDict",
+    "CustomerCustomAttributeFilter",
+    "CustomerCustomAttributeFilterDict",
+    "CustomerCustomAttributeFilterValue",
+    "CustomerCustomAttributeFilterValueDict",
+    "CustomerCustomAttributeFilters",
+    "CustomerCustomAttributeFiltersDict",
+    "CustomerCustomAttributeOwnedDeletedEvent",
+    "CustomerCustomAttributeOwnedDeletedEventDict",
+    "CustomerCustomAttributeOwnedUpdatedEvent",
+    "CustomerCustomAttributeOwnedUpdatedEventDict",
+    "CustomerCustomAttributeUpdatedEvent",
+    "CustomerCustomAttributeUpdatedEventDict",
+    "CustomerCustomAttributeUpdatedPublicEvent",
+    "CustomerCustomAttributeUpdatedPublicEventDict",
+    "CustomerCustomAttributeVisibleDeletedEvent",
+    "CustomerCustomAttributeVisibleDeletedEventDict",
+    "CustomerCustomAttributeVisibleUpdatedEvent",
+    "CustomerCustomAttributeVisibleUpdatedEventDict",
+    "CustomerDeletedEvent",
+    "CustomerDeletedEventData",
+    "CustomerDeletedEventDataDict",
+    "CustomerDeletedEventDict",
+    "CustomerDeletedEventEventContext",
+    "CustomerDeletedEventEventContextDict",
+    "CustomerDeletedEventEventContextMerge",
+    "CustomerDeletedEventEventContextMergeDict",
+    "CustomerDeletedEventObject",
+    "CustomerDeletedEventObjectDict",
+    "CustomerDetails",
+    "CustomerDetailsDict",
+    "CustomerDict",
+    "CustomerFilter",
+    "CustomerFilterDict",
+    "CustomerGroup",
+    "CustomerGroupDict",
+    "CustomerPreferences",
+    "CustomerPreferencesDict",
+    "CustomerQuery",
+    "CustomerQueryDict",
+    "CustomerSegment",
+    "CustomerSegmentDict",
+    "CustomerSort",
+    "CustomerSortDict",
+    "CustomerTaxIds",
+    "CustomerTaxIdsDict",
+    "CustomerTextFilter",
+    "CustomerTextFilterDict",
+    "CustomerUpdatedEvent",
+    "CustomerUpdatedEventData",
+    "CustomerUpdatedEventDataDict",
+    "CustomerUpdatedEventDict",
+    "CustomerUpdatedEventObject",
+    "CustomerUpdatedEventObjectDict",
+    "DataCollectionOptions",
+    "DataCollectionOptionsDict",
+    "DateRange",
+    "DateRangeDict",
+    "DeleteBookingCustomAttributeDefinitionResponse",
+    "DeleteBookingCustomAttributeDefinitionResponseDict",
+    "DeleteBookingCustomAttributeResponse",
+    "DeleteBookingCustomAttributeResponseDict",
+    "DeleteBreakTypeResponse",
+    "DeleteBreakTypeResponseDict",
+    "DeleteCatalogObjectResponse",
+    "DeleteCatalogObjectResponseDict",
+    "DeleteCustomerCardResponse",
+    "DeleteCustomerCardResponseDict",
+    "DeleteCustomerCustomAttributeDefinitionResponse",
+    "DeleteCustomerCustomAttributeDefinitionResponseDict",
+    "DeleteCustomerCustomAttributeResponse",
+    "DeleteCustomerCustomAttributeResponseDict",
+    "DeleteCustomerGroupResponse",
+    "DeleteCustomerGroupResponseDict",
+    "DeleteCustomerResponse",
+    "DeleteCustomerResponseDict",
+    "DeleteDisputeEvidenceResponse",
+    "DeleteDisputeEvidenceResponseDict",
+    "DeleteInventoryAdjustmentReasonRequest",
+    "DeleteInventoryAdjustmentReasonRequestDict",
+    "DeleteInventoryAdjustmentReasonResponse",
+    "DeleteInventoryAdjustmentReasonResponseDict",
+    "DeleteInvoiceAttachmentResponse",
+    "DeleteInvoiceAttachmentResponseDict",
+    "DeleteInvoiceResponse",
+    "DeleteInvoiceResponseDict",
+    "DeleteLocationCustomAttributeDefinitionResponse",
+    "DeleteLocationCustomAttributeDefinitionResponseDict",
+    "DeleteLocationCustomAttributeResponse",
+    "DeleteLocationCustomAttributeResponseDict",
+    "DeleteLoyaltyRewardResponse",
+    "DeleteLoyaltyRewardResponseDict",
+    "DeleteMerchantCustomAttributeDefinitionResponse",
+    "DeleteMerchantCustomAttributeDefinitionResponseDict",
+    "DeleteMerchantCustomAttributeResponse",
+    "DeleteMerchantCustomAttributeResponseDict",
+    "DeleteOrderCustomAttributeDefinitionResponse",
+    "DeleteOrderCustomAttributeDefinitionResponseDict",
+    "DeleteOrderCustomAttributeResponse",
+    "DeleteOrderCustomAttributeResponseDict",
+    "DeletePaymentLinkResponse",
+    "DeletePaymentLinkResponseDict",
+    "DeleteShiftResponse",
+    "DeleteShiftResponseDict",
+    "DeleteSnippetResponse",
+    "DeleteSnippetResponseDict",
+    "DeleteSubscriptionActionResponse",
+    "DeleteSubscriptionActionResponseDict",
+    "DeleteTimecardResponse",
+    "DeleteTimecardResponseDict",
+    "DeleteTransferOrderResponse",
+    "DeleteTransferOrderResponseDict",
+    "DeleteWebhookSubscriptionResponse",
+    "DeleteWebhookSubscriptionResponseDict",
+    "Destination",
+    "DestinationDetails",
+    "DestinationDetailsCardRefundDetails",
+    "DestinationDetailsCardRefundDetailsDict",
+    "DestinationDetailsCashRefundDetails",
+    "DestinationDetailsCashRefundDetailsDict",
+    "DestinationDetailsDict",
+    "DestinationDetailsExternalRefundDetails",
+    "DestinationDetailsExternalRefundDetailsDict",
+    "DestinationDict",
+    "Device",
+    "DeviceAttributes",
+    "DeviceAttributesDict",
+    "DeviceCheckoutOptions",
+    "DeviceCheckoutOptionsDict",
+    "DeviceCode",
+    "DeviceCodeDict",
+    "DeviceCodePairedEvent",
+    "DeviceCodePairedEventData",
+    "DeviceCodePairedEventDataDict",
+    "DeviceCodePairedEventDict",
+    "DeviceCodePairedEventObject",
+    "DeviceCodePairedEventObjectDict",
+    "DeviceComponentDetailsApplicationDetails",
+    "DeviceComponentDetailsApplicationDetailsDict",
+    "DeviceComponentDetailsBatteryDetails",
+    "DeviceComponentDetailsBatteryDetailsDict",
+    "DeviceComponentDetailsCardReaderDetails",
+    "DeviceComponentDetailsCardReaderDetailsDict",
+    "DeviceComponentDetailsEthernetDetails",
+    "DeviceComponentDetailsEthernetDetailsDict",
+    "DeviceComponentDetailsMeasurement",
+    "DeviceComponentDetailsMeasurementDict",
+    "DeviceComponentDetailsWiFiDetails",
+    "DeviceComponentDetailsWiFiDetailsDict",
+    "DeviceCreatedEvent",
+    "DeviceCreatedEventData",
+    "DeviceCreatedEventDataDict",
+    "DeviceCreatedEventDict",
+    "DeviceCreatedEventObject",
+    "DeviceCreatedEventObjectDict",
+    "DeviceDetails",
+    "DeviceDetailsDict",
+    "DeviceDict",
+    "DeviceMetadata",
+    "DeviceMetadataDict",
+    "DeviceStatus",
+    "DeviceStatusDict",
+    "DigitalWalletDetails",
+    "DigitalWalletDetailsDict",
+    "DisableBankAccountResponse",
+    "DisableBankAccountResponseDict",
+    "DisableCardResponse",
+    "DisableCardResponseDict",
+    "DisableEventsResponse",
+    "DisableEventsResponseDict",
+    "DismissTerminalActionResponse",
+    "DismissTerminalActionResponseDict",
+    "DismissTerminalCheckoutResponse",
+    "DismissTerminalCheckoutResponseDict",
+    "DismissTerminalRefundResponse",
+    "DismissTerminalRefundResponseDict",
+    "Dispute",
+    "DisputeCreatedEvent",
+    "DisputeCreatedEventData",
+    "DisputeCreatedEventDataDict",
+    "DisputeCreatedEventDict",
+    "DisputeCreatedEventObject",
+    "DisputeCreatedEventObjectDict",
+    "DisputeDict",
+    "DisputeEvidence",
+    "DisputeEvidenceAddedEvent",
+    "DisputeEvidenceAddedEventData",
+    "DisputeEvidenceAddedEventDataDict",
+    "DisputeEvidenceAddedEventDict",
+    "DisputeEvidenceAddedEventObject",
+    "DisputeEvidenceAddedEventObjectDict",
+    "DisputeEvidenceCreatedEvent",
+    "DisputeEvidenceCreatedEventData",
+    "DisputeEvidenceCreatedEventDataDict",
+    "DisputeEvidenceCreatedEventDict",
+    "DisputeEvidenceCreatedEventObject",
+    "DisputeEvidenceCreatedEventObjectDict",
+    "DisputeEvidenceDeletedEvent",
+    "DisputeEvidenceDeletedEventData",
+    "DisputeEvidenceDeletedEventDataDict",
+    "DisputeEvidenceDeletedEventDict",
+    "DisputeEvidenceDeletedEventObject",
+    "DisputeEvidenceDeletedEventObjectDict",
+    "DisputeEvidenceDict",
+    "DisputeEvidenceFile",
+    "DisputeEvidenceFileDict",
+    "DisputeEvidenceRemovedEvent",
+    "DisputeEvidenceRemovedEventData",
+    "DisputeEvidenceRemovedEventDataDict",
+    "DisputeEvidenceRemovedEventDict",
+    "DisputeEvidenceRemovedEventObject",
+    "DisputeEvidenceRemovedEventObjectDict",
+    "DisputeStateChangedEvent",
+    "DisputeStateChangedEventData",
+    "DisputeStateChangedEventDataDict",
+    "DisputeStateChangedEventDict",
+    "DisputeStateChangedEventObject",
+    "DisputeStateChangedEventObjectDict",
+    "DisputeStateUpdatedEvent",
+    "DisputeStateUpdatedEventData",
+    "DisputeStateUpdatedEventDataDict",
+    "DisputeStateUpdatedEventDict",
+    "DisputeStateUpdatedEventObject",
+    "DisputeStateUpdatedEventObjectDict",
+    "DisputedPayment",
+    "DisputedPaymentDict",
+    "ElectronicMoneyDetails",
+    "ElectronicMoneyDetailsDict",
+    "Employee",
+    "EmployeeDict",
+    "EmployeeWage",
+    "EmployeeWageDict",
+    "EnableEventsResponse",
+    "EnableEventsResponseDict",
+    "Error",
+    "ErrorDict",
+    "Event",
+    "EventData",
+    "EventDataDict",
+    "EventDict",
+    "EventMetadata",
+    "EventMetadataDict",
+    "EventTypeMetadata",
+    "EventTypeMetadataDict",
+    "ExternalPaymentDetails",
+    "ExternalPaymentDetailsDict",
+    "FelicaDetails",
+    "FelicaDetailsDict",
+    "FilterValue",
+    "FilterValueDict",
+    "FloatNumberRange",
+    "FloatNumberRangeDict",
+    "Fulfillment",
+    "FulfillmentDeliveryDetails",
+    "FulfillmentDeliveryDetailsDict",
+    "FulfillmentDict",
+    "FulfillmentFulfillmentEntry",
+    "FulfillmentFulfillmentEntryDict",
+    "FulfillmentInStoreDetails",
+    "FulfillmentInStoreDetailsDict",
+    "FulfillmentPickupDetails",
+    "FulfillmentPickupDetailsCurbsidePickupDetails",
+    "FulfillmentPickupDetailsCurbsidePickupDetailsDict",
+    "FulfillmentPickupDetailsDict",
+    "FulfillmentRecipient",
+    "FulfillmentRecipientDict",
+    "FulfillmentShipmentDetails",
+    "FulfillmentShipmentDetailsDict",
+    "GetBankAccountByV1IdResponse",
+    "GetBankAccountByV1IdResponseDict",
+    "GetBankAccountResponse",
+    "GetBankAccountResponseDict",
+    "GetBreakTypeResponse",
+    "GetBreakTypeResponseDict",
+    "GetDeviceCodeResponse",
+    "GetDeviceCodeResponseDict",
+    "GetDeviceResponse",
+    "GetDeviceResponseDict",
+    "GetEmployeeWageResponse",
+    "GetEmployeeWageResponseDict",
+    "GetInvoiceResponse",
+    "GetInvoiceResponseDict",
+    "GetPaymentRefundResponse",
+    "GetPaymentRefundResponseDict",
+    "GetPaymentResponse",
+    "GetPaymentResponseDict",
+    "GetPayoutResponse",
+    "GetPayoutResponseDict",
+    "GetShiftResponse",
+    "GetShiftResponseDict",
+    "GetTeamMemberWageResponse",
+    "GetTeamMemberWageResponseDict",
+    "GetTerminalActionResponse",
+    "GetTerminalActionResponseDict",
+    "GetTerminalCheckoutResponse",
+    "GetTerminalCheckoutResponseDict",
+    "GetTerminalRefundResponse",
+    "GetTerminalRefundResponseDict",
+    "GiftCard",
+    "GiftCardActivity",
+    "GiftCardActivityActivate",
+    "GiftCardActivityActivateDict",
+    "GiftCardActivityAdjustDecrement",
+    "GiftCardActivityAdjustDecrementDict",
+    "GiftCardActivityAdjustIncrement",
+    "GiftCardActivityAdjustIncrementDict",
+    "GiftCardActivityBlock",
+    "GiftCardActivityBlockDict",
+    "GiftCardActivityClearBalance",
+    "GiftCardActivityClearBalanceDict",
+    "GiftCardActivityCreatedEvent",
+    "GiftCardActivityCreatedEventData",
+    "GiftCardActivityCreatedEventDataDict",
+    "GiftCardActivityCreatedEventDict",
+    "GiftCardActivityCreatedEventObject",
+    "GiftCardActivityCreatedEventObjectDict",
+    "GiftCardActivityDeactivate",
+    "GiftCardActivityDeactivateDict",
+    "GiftCardActivityDict",
+    "GiftCardActivityImport",
+    "GiftCardActivityImportDict",
+    "GiftCardActivityImportReversal",
+    "GiftCardActivityImportReversalDict",
+    "GiftCardActivityLoad",
+    "GiftCardActivityLoadDict",
+    "GiftCardActivityRedeem",
+    "GiftCardActivityRedeemDict",
+    "GiftCardActivityRefund",
+    "GiftCardActivityRefundDict",
+    "GiftCardActivityTransferBalanceFrom",
+    "GiftCardActivityTransferBalanceFromDict",
+    "GiftCardActivityTransferBalanceTo",
+    "GiftCardActivityTransferBalanceToDict",
+    "GiftCardActivityUnblock",
+    "GiftCardActivityUnblockDict",
+    "GiftCardActivityUnlinkedActivityRefund",
+    "GiftCardActivityUnlinkedActivityRefundDict",
+    "GiftCardActivityUpdatedEvent",
+    "GiftCardActivityUpdatedEventData",
+    "GiftCardActivityUpdatedEventDataDict",
+    "GiftCardActivityUpdatedEventDict",
+    "GiftCardActivityUpdatedEventObject",
+    "GiftCardActivityUpdatedEventObjectDict",
+    "GiftCardCreatedEvent",
+    "GiftCardCreatedEventData",
+    "GiftCardCreatedEventDataDict",
+    "GiftCardCreatedEventDict",
+    "GiftCardCreatedEventObject",
+    "GiftCardCreatedEventObjectDict",
+    "GiftCardCustomerLinkedEvent",
+    "GiftCardCustomerLinkedEventData",
+    "GiftCardCustomerLinkedEventDataDict",
+    "GiftCardCustomerLinkedEventDict",
+    "GiftCardCustomerLinkedEventObject",
+    "GiftCardCustomerLinkedEventObjectDict",
+    "GiftCardCustomerUnlinkedEvent",
+    "GiftCardCustomerUnlinkedEventData",
+    "GiftCardCustomerUnlinkedEventDataDict",
+    "GiftCardCustomerUnlinkedEventDict",
+    "GiftCardCustomerUnlinkedEventObject",
+    "GiftCardCustomerUnlinkedEventObjectDict",
+    "GiftCardDict",
+    "GiftCardUpdatedEvent",
+    "GiftCardUpdatedEventData",
+    "GiftCardUpdatedEventDataDict",
+    "GiftCardUpdatedEventDict",
+    "GiftCardUpdatedEventObject",
+    "GiftCardUpdatedEventObjectDict",
+    "InventoryAdjustment",
+    "InventoryAdjustmentDict",
+    "InventoryAdjustmentGroup",
+    "InventoryAdjustmentGroupDict",
+    "InventoryAdjustmentReason",
+    "InventoryAdjustmentReasonDict",
+    "InventoryAdjustmentReasonId",
+    "InventoryAdjustmentReasonIdDict",
+    "InventoryChange",
+    "InventoryChangeDict",
+    "InventoryCount",
+    "InventoryCountDict",
+    "InventoryCountUpdatedEvent",
+    "InventoryCountUpdatedEventData",
+    "InventoryCountUpdatedEventDataDict",
+    "InventoryCountUpdatedEventDict",
+    "InventoryCountUpdatedEventObject",
+    "InventoryCountUpdatedEventObjectDict",
+    "InventoryPhysicalCount",
+    "InventoryPhysicalCountDict",
+    "Invoice",
+    "InvoiceAcceptedPaymentMethods",
+    "InvoiceAcceptedPaymentMethodsDict",
+    "InvoiceAttachment",
+    "InvoiceAttachmentDict",
+    "InvoiceCanceledEvent",
+    "InvoiceCanceledEventData",
+    "InvoiceCanceledEventDataDict",
+    "InvoiceCanceledEventDict",
+    "InvoiceCanceledEventObject",
+    "InvoiceCanceledEventObjectDict",
+    "InvoiceCreatedEvent",
+    "InvoiceCreatedEventData",
+    "InvoiceCreatedEventDataDict",
+    "InvoiceCreatedEventDict",
+    "InvoiceCreatedEventObject",
+    "InvoiceCreatedEventObjectDict",
+    "InvoiceCustomField",
+    "InvoiceCustomFieldDict",
+    "InvoiceDeletedEvent",
+    "InvoiceDeletedEventData",
+    "InvoiceDeletedEventDataDict",
+    "InvoiceDeletedEventDict",
+    "InvoiceDict",
+    "InvoiceFilter",
+    "InvoiceFilterDict",
+    "InvoicePaymentMadeEvent",
+    "InvoicePaymentMadeEventData",
+    "InvoicePaymentMadeEventDataDict",
+    "InvoicePaymentMadeEventDict",
+    "InvoicePaymentMadeEventObject",
+    "InvoicePaymentMadeEventObjectDict",
+    "InvoicePaymentReminder",
+    "InvoicePaymentReminderDict",
+    "InvoicePaymentRequest",
+    "InvoicePaymentRequestDict",
+    "InvoicePublishedEvent",
+    "InvoicePublishedEventData",
+    "InvoicePublishedEventDataDict",
+    "InvoicePublishedEventDict",
+    "InvoicePublishedEventObject",
+    "InvoicePublishedEventObjectDict",
+    "InvoiceQuery",
+    "InvoiceQueryDict",
+    "InvoiceRecipient",
+    "InvoiceRecipientDict",
+    "InvoiceRecipientTaxIds",
+    "InvoiceRecipientTaxIdsDict",
+    "InvoiceRefundedEvent",
+    "InvoiceRefundedEventData",
+    "InvoiceRefundedEventDataDict",
+    "InvoiceRefundedEventDict",
+    "InvoiceRefundedEventObject",
+    "InvoiceRefundedEventObjectDict",
+    "InvoiceScheduledChargeFailedEvent",
+    "InvoiceScheduledChargeFailedEventData",
+    "InvoiceScheduledChargeFailedEventDataDict",
+    "InvoiceScheduledChargeFailedEventDict",
+    "InvoiceScheduledChargeFailedEventObject",
+    "InvoiceScheduledChargeFailedEventObjectDict",
+    "InvoiceSort",
+    "InvoiceSortDict",
+    "InvoiceUpdatedEvent",
+    "InvoiceUpdatedEventData",
+    "InvoiceUpdatedEventDataDict",
+    "InvoiceUpdatedEventDict",
+    "InvoiceUpdatedEventObject",
+    "InvoiceUpdatedEventObjectDict",
+    "ItemVariationLocationOverrides",
+    "ItemVariationLocationOverridesDict",
+    "Job",
+    "JobAssignment",
+    "JobAssignmentDict",
+    "JobCreatedEvent",
+    "JobCreatedEventData",
+    "JobCreatedEventDataDict",
+    "JobCreatedEventDict",
+    "JobCreatedEventObject",
+    "JobCreatedEventObjectDict",
+    "JobDict",
+    "JobUpdatedEvent",
+    "JobUpdatedEventData",
+    "JobUpdatedEventDataDict",
+    "JobUpdatedEventDict",
+    "JobUpdatedEventObject",
+    "JobUpdatedEventObjectDict",
+    "LaborScheduledShiftCreatedEvent",
+    "LaborScheduledShiftCreatedEventData",
+    "LaborScheduledShiftCreatedEventDataDict",
+    "LaborScheduledShiftCreatedEventDict",
+    "LaborScheduledShiftCreatedEventObject",
+    "LaborScheduledShiftCreatedEventObjectDict",
+    "LaborScheduledShiftDeletedEvent",
+    "LaborScheduledShiftDeletedEventData",
+    "LaborScheduledShiftDeletedEventDataDict",
+    "LaborScheduledShiftDeletedEventDict",
+    "LaborScheduledShiftPublishedEvent",
+    "LaborScheduledShiftPublishedEventData",
+    "LaborScheduledShiftPublishedEventDataDict",
+    "LaborScheduledShiftPublishedEventDict",
+    "LaborScheduledShiftPublishedEventObject",
+    "LaborScheduledShiftPublishedEventObjectDict",
+    "LaborScheduledShiftUpdatedEvent",
+    "LaborScheduledShiftUpdatedEventData",
+    "LaborScheduledShiftUpdatedEventDataDict",
+    "LaborScheduledShiftUpdatedEventDict",
+    "LaborScheduledShiftUpdatedEventObject",
+    "LaborScheduledShiftUpdatedEventObjectDict",
+    "LaborShiftCreatedEvent",
+    "LaborShiftCreatedEventData",
+    "LaborShiftCreatedEventDataDict",
+    "LaborShiftCreatedEventDict",
+    "LaborShiftCreatedEventObject",
+    "LaborShiftCreatedEventObjectDict",
+    "LaborShiftDeletedEvent",
+    "LaborShiftDeletedEventData",
+    "LaborShiftDeletedEventDataDict",
+    "LaborShiftDeletedEventDict",
+    "LaborShiftUpdatedEvent",
+    "LaborShiftUpdatedEventData",
+    "LaborShiftUpdatedEventDataDict",
+    "LaborShiftUpdatedEventDict",
+    "LaborShiftUpdatedEventObject",
+    "LaborShiftUpdatedEventObjectDict",
+    "LaborTimecardCreatedEvent",
+    "LaborTimecardCreatedEventData",
+    "LaborTimecardCreatedEventDataDict",
+    "LaborTimecardCreatedEventDict",
+    "LaborTimecardCreatedEventObject",
+    "LaborTimecardCreatedEventObjectDict",
+    "LaborTimecardDeletedEvent",
+    "LaborTimecardDeletedEventData",
+    "LaborTimecardDeletedEventDataDict",
+    "LaborTimecardDeletedEventDict",
+    "LaborTimecardUpdatedEvent",
+    "LaborTimecardUpdatedEventData",
+    "LaborTimecardUpdatedEventDataDict",
+    "LaborTimecardUpdatedEventDict",
+    "LaborTimecardUpdatedEventObject",
+    "LaborTimecardUpdatedEventObjectDict",
+    "LightningDetails",
+    "LightningDetailsDict",
+    "LinkCustomerToGiftCardRequest",
+    "LinkCustomerToGiftCardRequestDict",
+    "LinkCustomerToGiftCardResponse",
+    "LinkCustomerToGiftCardResponseDict",
+    "ListBankAccountsResponse",
+    "ListBankAccountsResponseDict",
+    "ListBookingCustomAttributeDefinitionsResponse",
+    "ListBookingCustomAttributeDefinitionsResponseDict",
+    "ListBookingCustomAttributesResponse",
+    "ListBookingCustomAttributesResponseDict",
+    "ListBookingsResponse",
+    "ListBookingsResponseDict",
+    "ListBreakTypesResponse",
+    "ListBreakTypesResponseDict",
+    "ListCardsResponse",
+    "ListCardsResponseDict",
+    "ListCashDrawerShiftEventsResponse",
+    "ListCashDrawerShiftEventsResponseDict",
+    "ListCashDrawerShiftsResponse",
+    "ListCashDrawerShiftsResponseDict",
+    "ListCatalogResponse",
+    "ListCatalogResponseDict",
+    "ListChannelsResponse",
+    "ListChannelsResponseDict",
+    "ListCustomerCustomAttributeDefinitionsResponse",
+    "ListCustomerCustomAttributeDefinitionsResponseDict",
+    "ListCustomerCustomAttributesResponse",
+    "ListCustomerCustomAttributesResponseDict",
+    "ListCustomerGroupsResponse",
+    "ListCustomerGroupsResponseDict",
+    "ListCustomerSegmentsResponse",
+    "ListCustomerSegmentsResponseDict",
+    "ListCustomersResponse",
+    "ListCustomersResponseDict",
+    "ListDeviceCodesResponse",
+    "ListDeviceCodesResponseDict",
+    "ListDevicesResponse",
+    "ListDevicesResponseDict",
+    "ListDisputeEvidenceResponse",
+    "ListDisputeEvidenceResponseDict",
+    "ListDisputesResponse",
+    "ListDisputesResponseDict",
+    "ListEmployeeWagesResponse",
+    "ListEmployeeWagesResponseDict",
+    "ListEmployeesResponse",
+    "ListEmployeesResponseDict",
+    "ListEventTypesResponse",
+    "ListEventTypesResponseDict",
+    "ListGiftCardActivitiesResponse",
+    "ListGiftCardActivitiesResponseDict",
+    "ListGiftCardsResponse",
+    "ListGiftCardsResponseDict",
+    "ListInventoryAdjustmentReasonsResponse",
+    "ListInventoryAdjustmentReasonsResponseDict",
+    "ListInvoicesResponse",
+    "ListInvoicesResponseDict",
+    "ListJobsResponse",
+    "ListJobsResponseDict",
+    "ListLocationBookingProfilesResponse",
+    "ListLocationBookingProfilesResponseDict",
+    "ListLocationCustomAttributeDefinitionsResponse",
+    "ListLocationCustomAttributeDefinitionsResponseDict",
+    "ListLocationCustomAttributesResponse",
+    "ListLocationCustomAttributesResponseDict",
+    "ListLocationsResponse",
+    "ListLocationsResponseDict",
+    "ListLoyaltyProgramsResponse",
+    "ListLoyaltyProgramsResponseDict",
+    "ListLoyaltyPromotionsResponse",
+    "ListLoyaltyPromotionsResponseDict",
+    "ListMerchantCustomAttributeDefinitionsResponse",
+    "ListMerchantCustomAttributeDefinitionsResponseDict",
+    "ListMerchantCustomAttributesResponse",
+    "ListMerchantCustomAttributesResponseDict",
+    "ListMerchantsResponse",
+    "ListMerchantsResponseDict",
+    "ListOrderCustomAttributeDefinitionsResponse",
+    "ListOrderCustomAttributeDefinitionsResponseDict",
+    "ListOrderCustomAttributesResponse",
+    "ListOrderCustomAttributesResponseDict",
+    "ListPaymentLinksResponse",
+    "ListPaymentLinksResponseDict",
+    "ListPaymentRefundsResponse",
+    "ListPaymentRefundsResponseDict",
+    "ListPaymentsResponse",
+    "ListPaymentsResponseDict",
+    "ListPayoutEntriesResponse",
+    "ListPayoutEntriesResponseDict",
+    "ListPayoutsResponse",
+    "ListPayoutsResponseDict",
+    "ListSitesResponse",
+    "ListSitesResponseDict",
+    "ListSubscriptionEventsResponse",
+    "ListSubscriptionEventsResponseDict",
+    "ListTeamMemberBookingProfilesResponse",
+    "ListTeamMemberBookingProfilesResponseDict",
+    "ListTeamMemberWagesResponse",
+    "ListTeamMemberWagesResponseDict",
+    "ListTransactionsResponse",
+    "ListTransactionsResponseDict",
+    "ListWebhookEventTypesResponse",
+    "ListWebhookEventTypesResponseDict",
+    "ListWebhookSubscriptionsResponse",
+    "ListWebhookSubscriptionsResponseDict",
+    "ListWorkweekConfigsResponse",
+    "ListWorkweekConfigsResponseDict",
+    "Location",
+    "LocationBookingProfile",
+    "LocationBookingProfileDict",
+    "LocationCreatedEvent",
+    "LocationCreatedEventData",
+    "LocationCreatedEventDataDict",
+    "LocationCreatedEventDict",
+    "LocationCustomAttributeDefinitionOwnedCreatedEvent",
+    "LocationCustomAttributeDefinitionOwnedCreatedEventDict",
+    "LocationCustomAttributeDefinitionOwnedDeletedEvent",
+    "LocationCustomAttributeDefinitionOwnedDeletedEventDict",
+    "LocationCustomAttributeDefinitionOwnedUpdatedEvent",
+    "LocationCustomAttributeDefinitionOwnedUpdatedEventDict",
+    "LocationCustomAttributeDefinitionVisibleCreatedEvent",
+    "LocationCustomAttributeDefinitionVisibleCreatedEventDict",
+    "LocationCustomAttributeDefinitionVisibleDeletedEvent",
+    "LocationCustomAttributeDefinitionVisibleDeletedEventDict",
+    "LocationCustomAttributeDefinitionVisibleUpdatedEvent",
+    "LocationCustomAttributeDefinitionVisibleUpdatedEventDict",
+    "LocationCustomAttributeOwnedDeletedEvent",
+    "LocationCustomAttributeOwnedDeletedEventDict",
+    "LocationCustomAttributeOwnedUpdatedEvent",
+    "LocationCustomAttributeOwnedUpdatedEventDict",
+    "LocationCustomAttributeVisibleDeletedEvent",
+    "LocationCustomAttributeVisibleDeletedEventDict",
+    "LocationCustomAttributeVisibleUpdatedEvent",
+    "LocationCustomAttributeVisibleUpdatedEventDict",
+    "LocationDict",
+    "LocationSettingsUpdatedEvent",
+    "LocationSettingsUpdatedEventData",
+    "LocationSettingsUpdatedEventDataDict",
+    "LocationSettingsUpdatedEventDict",
+    "LocationSettingsUpdatedEventObject",
+    "LocationSettingsUpdatedEventObjectDict",
+    "LocationUpdatedEvent",
+    "LocationUpdatedEventData",
+    "LocationUpdatedEventDataDict",
+    "LocationUpdatedEventDict",
+    "LoyaltyAccount",
+    "LoyaltyAccountCreatedEvent",
+    "LoyaltyAccountCreatedEventData",
+    "LoyaltyAccountCreatedEventDataDict",
+    "LoyaltyAccountCreatedEventDict",
+    "LoyaltyAccountCreatedEventObject",
+    "LoyaltyAccountCreatedEventObjectDict",
+    "LoyaltyAccountDeletedEvent",
+    "LoyaltyAccountDeletedEventData",
+    "LoyaltyAccountDeletedEventDataDict",
+    "LoyaltyAccountDeletedEventDict",
+    "LoyaltyAccountDeletedEventObject",
+    "LoyaltyAccountDeletedEventObjectDict",
+    "LoyaltyAccountDict",
+    "LoyaltyAccountExpiringPointDeadline",
+    "LoyaltyAccountExpiringPointDeadlineDict",
+    "LoyaltyAccountMapping",
+    "LoyaltyAccountMappingDict",
+    "LoyaltyAccountUpdatedEvent",
+    "LoyaltyAccountUpdatedEventData",
+    "LoyaltyAccountUpdatedEventDataDict",
+    "LoyaltyAccountUpdatedEventDict",
+    "LoyaltyAccountUpdatedEventObject",
+    "LoyaltyAccountUpdatedEventObjectDict",
+    "LoyaltyEvent",
+    "LoyaltyEventAccumulatePoints",
+    "LoyaltyEventAccumulatePointsDict",
+    "LoyaltyEventAccumulatePromotionPoints",
+    "LoyaltyEventAccumulatePromotionPointsDict",
+    "LoyaltyEventAdjustPoints",
+    "LoyaltyEventAdjustPointsDict",
+    "LoyaltyEventCreateReward",
+    "LoyaltyEventCreateRewardDict",
+    "LoyaltyEventCreatedEvent",
+    "LoyaltyEventCreatedEventData",
+    "LoyaltyEventCreatedEventDataDict",
+    "LoyaltyEventCreatedEventDict",
+    "LoyaltyEventCreatedEventObject",
+    "LoyaltyEventCreatedEventObjectDict",
+    "LoyaltyEventDateTimeFilter",
+    "LoyaltyEventDateTimeFilterDict",
+    "LoyaltyEventDeleteReward",
+    "LoyaltyEventDeleteRewardDict",
+    "LoyaltyEventDict",
+    "LoyaltyEventExpirePoints",
+    "LoyaltyEventExpirePointsDict",
+    "LoyaltyEventFilter",
+    "LoyaltyEventFilterDict",
+    "LoyaltyEventLocationFilter",
+    "LoyaltyEventLocationFilterDict",
+    "LoyaltyEventLoyaltyAccountFilter",
+    "LoyaltyEventLoyaltyAccountFilterDict",
+    "LoyaltyEventOrderFilter",
+    "LoyaltyEventOrderFilterDict",
+    "LoyaltyEventOther",
+    "LoyaltyEventOtherDict",
+    "LoyaltyEventQuery",
+    "LoyaltyEventQueryDict",
+    "LoyaltyEventRedeemReward",
+    "LoyaltyEventRedeemRewardDict",
+    "LoyaltyEventTypeFilter",
+    "LoyaltyEventTypeFilterDict",
+    "LoyaltyProgram",
+    "LoyaltyProgramAccrualRule",
+    "LoyaltyProgramAccrualRuleCategoryData",
+    "LoyaltyProgramAccrualRuleCategoryDataDict",
+    "LoyaltyProgramAccrualRuleDict",
+    "LoyaltyProgramAccrualRuleItemVariationData",
+    "LoyaltyProgramAccrualRuleItemVariationDataDict",
+    "LoyaltyProgramAccrualRuleSpendData",
+    "LoyaltyProgramAccrualRuleSpendDataDict",
+    "LoyaltyProgramAccrualRuleVisitData",
+    "LoyaltyProgramAccrualRuleVisitDataDict",
+    "LoyaltyProgramCreatedEvent",
+    "LoyaltyProgramCreatedEventData",
+    "LoyaltyProgramCreatedEventDataDict",
+    "LoyaltyProgramCreatedEventDict",
+    "LoyaltyProgramCreatedEventObject",
+    "LoyaltyProgramCreatedEventObjectDict",
+    "LoyaltyProgramDict",
+    "LoyaltyProgramExpirationPolicy",
+    "LoyaltyProgramExpirationPolicyDict",
+    "LoyaltyProgramRewardTier",
+    "LoyaltyProgramRewardTierDict",
+    "LoyaltyProgramTerminology",
+    "LoyaltyProgramTerminologyDict",
+    "LoyaltyProgramUpdatedEvent",
+    "LoyaltyProgramUpdatedEventData",
+    "LoyaltyProgramUpdatedEventDataDict",
+    "LoyaltyProgramUpdatedEventDict",
+    "LoyaltyProgramUpdatedEventObject",
+    "LoyaltyProgramUpdatedEventObjectDict",
+    "LoyaltyPromotion",
+    "LoyaltyPromotionAvailableTimeData",
+    "LoyaltyPromotionAvailableTimeDataDict",
+    "LoyaltyPromotionCreatedEvent",
+    "LoyaltyPromotionCreatedEventData",
+    "LoyaltyPromotionCreatedEventDataDict",
+    "LoyaltyPromotionCreatedEventDict",
+    "LoyaltyPromotionCreatedEventObject",
+    "LoyaltyPromotionCreatedEventObjectDict",
+    "LoyaltyPromotionDict",
+    "LoyaltyPromotionIncentive",
+    "LoyaltyPromotionIncentiveDict",
+    "LoyaltyPromotionIncentivePointsAdditionData",
+    "LoyaltyPromotionIncentivePointsAdditionDataDict",
+    "LoyaltyPromotionIncentivePointsMultiplierData",
+    "LoyaltyPromotionIncentivePointsMultiplierDataDict",
+    "LoyaltyPromotionTriggerLimit",
+    "LoyaltyPromotionTriggerLimitDict",
+    "LoyaltyPromotionUpdatedEvent",
+    "LoyaltyPromotionUpdatedEventData",
+    "LoyaltyPromotionUpdatedEventDataDict",
+    "LoyaltyPromotionUpdatedEventDict",
+    "LoyaltyPromotionUpdatedEventObject",
+    "LoyaltyPromotionUpdatedEventObjectDict",
+    "LoyaltyReward",
+    "LoyaltyRewardDict",
+    "MeasurementUnit",
+    "MeasurementUnitCustom",
+    "MeasurementUnitCustomDict",
+    "MeasurementUnitDict",
+    "Merchant",
+    "MerchantCustomAttributeDefinitionOwnedCreatedEvent",
+    "MerchantCustomAttributeDefinitionOwnedCreatedEventDict",
+    "MerchantCustomAttributeDefinitionOwnedDeletedEvent",
+    "MerchantCustomAttributeDefinitionOwnedDeletedEventDict",
+    "MerchantCustomAttributeDefinitionOwnedUpdatedEvent",
+    "MerchantCustomAttributeDefinitionOwnedUpdatedEventDict",
+    "MerchantCustomAttributeDefinitionVisibleCreatedEvent",
+    "MerchantCustomAttributeDefinitionVisibleCreatedEventDict",
+    "MerchantCustomAttributeDefinitionVisibleDeletedEvent",
+    "MerchantCustomAttributeDefinitionVisibleDeletedEventDict",
+    "MerchantCustomAttributeDefinitionVisibleUpdatedEvent",
+    "MerchantCustomAttributeDefinitionVisibleUpdatedEventDict",
+    "MerchantCustomAttributeOwnedDeletedEvent",
+    "MerchantCustomAttributeOwnedDeletedEventDict",
+    "MerchantCustomAttributeOwnedUpdatedEvent",
+    "MerchantCustomAttributeOwnedUpdatedEventDict",
+    "MerchantCustomAttributeVisibleDeletedEvent",
+    "MerchantCustomAttributeVisibleDeletedEventDict",
+    "MerchantCustomAttributeVisibleUpdatedEvent",
+    "MerchantCustomAttributeVisibleUpdatedEventDict",
+    "MerchantDict",
+    "MerchantSettingsUpdatedEvent",
+    "MerchantSettingsUpdatedEventData",
+    "MerchantSettingsUpdatedEventDataDict",
+    "MerchantSettingsUpdatedEventDict",
+    "MerchantSettingsUpdatedEventObject",
+    "MerchantSettingsUpdatedEventObjectDict",
+    "ModifierLocationOverrides",
+    "ModifierLocationOverridesDict",
+    "Money",
+    "MoneyDict",
+    "OauthAuthorizationRevokedEvent",
+    "OauthAuthorizationRevokedEventData",
+    "OauthAuthorizationRevokedEventDataDict",
+    "OauthAuthorizationRevokedEventDict",
+    "OauthAuthorizationRevokedEventObject",
+    "OauthAuthorizationRevokedEventObjectDict",
+    "OauthAuthorizationRevokedEventRevocationObject",
+    "OauthAuthorizationRevokedEventRevocationObjectDict",
+    "ObtainTokenRequest",
+    "ObtainTokenRequestDict",
+    "ObtainTokenResponse",
+    "ObtainTokenResponseDict",
+    "OfflinePaymentDetails",
+    "OfflinePaymentDetailsDict",
+    "Order",
+    "OrderCreated",
+    "OrderCreatedDict",
+    "OrderCreatedEvent",
+    "OrderCreatedEventData",
+    "OrderCreatedEventDataDict",
+    "OrderCreatedEventDict",
+    "OrderCreatedObject",
+    "OrderCreatedObjectDict",
+    "OrderCustomAttributeDefinitionOwnedCreatedEvent",
+    "OrderCustomAttributeDefinitionOwnedCreatedEventDict",
+    "OrderCustomAttributeDefinitionOwnedDeletedEvent",
+    "OrderCustomAttributeDefinitionOwnedDeletedEventDict",
+    "OrderCustomAttributeDefinitionOwnedUpdatedEvent",
+    "OrderCustomAttributeDefinitionOwnedUpdatedEventDict",
+    "OrderCustomAttributeDefinitionVisibleCreatedEvent",
+    "OrderCustomAttributeDefinitionVisibleCreatedEventDict",
+    "OrderCustomAttributeDefinitionVisibleDeletedEvent",
+    "OrderCustomAttributeDefinitionVisibleDeletedEventDict",
+    "OrderCustomAttributeDefinitionVisibleUpdatedEvent",
+    "OrderCustomAttributeDefinitionVisibleUpdatedEventDict",
+    "OrderCustomAttributeOwnedDeletedEvent",
+    "OrderCustomAttributeOwnedDeletedEventDict",
+    "OrderCustomAttributeOwnedUpdatedEvent",
+    "OrderCustomAttributeOwnedUpdatedEventDict",
+    "OrderCustomAttributeVisibleDeletedEvent",
+    "OrderCustomAttributeVisibleDeletedEventDict",
+    "OrderCustomAttributeVisibleUpdatedEvent",
+    "OrderCustomAttributeVisibleUpdatedEventDict",
+    "OrderDict",
+    "OrderEntry",
+    "OrderEntryDict",
+    "OrderFulfillmentUpdated",
+    "OrderFulfillmentUpdatedDict",
+    "OrderFulfillmentUpdatedEvent",
+    "OrderFulfillmentUpdatedEventData",
+    "OrderFulfillmentUpdatedEventDataDict",
+    "OrderFulfillmentUpdatedEventDict",
+    "OrderFulfillmentUpdatedObject",
+    "OrderFulfillmentUpdatedObjectDict",
+    "OrderFulfillmentUpdatedUpdate",
+    "OrderFulfillmentUpdatedUpdateDict",
+    "OrderLineItem",
+    "OrderLineItemAppliedDiscount",
+    "OrderLineItemAppliedDiscountDict",
+    "OrderLineItemAppliedServiceCharge",
+    "OrderLineItemAppliedServiceChargeDict",
+    "OrderLineItemAppliedTax",
+    "OrderLineItemAppliedTaxDict",
+    "OrderLineItemDict",
+    "OrderLineItemDiscount",
+    "OrderLineItemDiscountDict",
+    "OrderLineItemModifier",
+    "OrderLineItemModifierDict",
+    "OrderLineItemPricingBlocklists",
+    "OrderLineItemPricingBlocklistsBlockedDiscount",
+    "OrderLineItemPricingBlocklistsBlockedDiscountDict",
+    "OrderLineItemPricingBlocklistsBlockedServiceCharge",
+    "OrderLineItemPricingBlocklistsBlockedServiceChargeDict",
+    "OrderLineItemPricingBlocklistsBlockedTax",
+    "OrderLineItemPricingBlocklistsBlockedTaxDict",
+    "OrderLineItemPricingBlocklistsDict",
+    "OrderLineItemTax",
+    "OrderLineItemTaxDict",
+    "OrderMoneyAmounts",
+    "OrderMoneyAmountsDict",
+    "OrderPricingOptions",
+    "OrderPricingOptionsDict",
+    "OrderQuantityUnit",
+    "OrderQuantityUnitDict",
+    "OrderReturn",
+    "OrderReturnDict",
+    "OrderReturnDiscount",
+    "OrderReturnDiscountDict",
+    "OrderReturnLineItem",
+    "OrderReturnLineItemDict",
+    "OrderReturnLineItemModifier",
+    "OrderReturnLineItemModifierDict",
+    "OrderReturnServiceCharge",
+    "OrderReturnServiceChargeDict",
+    "OrderReturnTax",
+    "OrderReturnTaxDict",
+    "OrderReturnTip",
+    "OrderReturnTipDict",
+    "OrderReward",
+    "OrderRewardDict",
+    "OrderRoundingAdjustment",
+    "OrderRoundingAdjustmentDict",
+    "OrderServiceCharge",
+    "OrderServiceChargeDict",
+    "OrderSource",
+    "OrderSourceDict",
+    "OrderUpdated",
+    "OrderUpdatedDict",
+    "OrderUpdatedEvent",
+    "OrderUpdatedEventData",
+    "OrderUpdatedEventDataDict",
+    "OrderUpdatedEventDict",
+    "OrderUpdatedObject",
+    "OrderUpdatedObjectDict",
+    "PauseSubscriptionRequest",
+    "PauseSubscriptionRequestDict",
+    "PauseSubscriptionResponse",
+    "PauseSubscriptionResponseDict",
+    "PayOrderRequest",
+    "PayOrderRequestDict",
+    "PayOrderResponse",
+    "PayOrderResponseDict",
+    "Payment",
+    "PaymentBalanceActivityAppFeeRefundDetail",
+    "PaymentBalanceActivityAppFeeRefundDetailDict",
+    "PaymentBalanceActivityAppFeeRevenueDetail",
+    "PaymentBalanceActivityAppFeeRevenueDetailDict",
+    "PaymentBalanceActivityAutomaticSavingsDetail",
+    "PaymentBalanceActivityAutomaticSavingsDetailDict",
+    "PaymentBalanceActivityAutomaticSavingsReversedDetail",
+    "PaymentBalanceActivityAutomaticSavingsReversedDetailDict",
+    "PaymentBalanceActivityChargeDetail",
+    "PaymentBalanceActivityChargeDetailDict",
+    "PaymentBalanceActivityDepositFeeDetail",
+    "PaymentBalanceActivityDepositFeeDetailDict",
+    "PaymentBalanceActivityDepositFeeReversedDetail",
+    "PaymentBalanceActivityDepositFeeReversedDetailDict",
+    "PaymentBalanceActivityDisputeDetail",
+    "PaymentBalanceActivityDisputeDetailDict",
+    "PaymentBalanceActivityFeeDetail",
+    "PaymentBalanceActivityFeeDetailDict",
+    "PaymentBalanceActivityFreeProcessingDetail",
+    "PaymentBalanceActivityFreeProcessingDetailDict",
+    "PaymentBalanceActivityHoldAdjustmentDetail",
+    "PaymentBalanceActivityHoldAdjustmentDetailDict",
+    "PaymentBalanceActivityOpenDisputeDetail",
+    "PaymentBalanceActivityOpenDisputeDetailDict",
+    "PaymentBalanceActivityOtherAdjustmentDetail",
+    "PaymentBalanceActivityOtherAdjustmentDetailDict",
+    "PaymentBalanceActivityOtherDetail",
+    "PaymentBalanceActivityOtherDetailDict",
+    "PaymentBalanceActivityRefundDetail",
+    "PaymentBalanceActivityRefundDetailDict",
+    "PaymentBalanceActivityReleaseAdjustmentDetail",
+    "PaymentBalanceActivityReleaseAdjustmentDetailDict",
+    "PaymentBalanceActivityReserveHoldDetail",
+    "PaymentBalanceActivityReserveHoldDetailDict",
+    "PaymentBalanceActivityReserveReleaseDetail",
+    "PaymentBalanceActivityReserveReleaseDetailDict",
+    "PaymentBalanceActivitySquareCapitalPaymentDetail",
+    "PaymentBalanceActivitySquareCapitalPaymentDetailDict",
+    "PaymentBalanceActivitySquareCapitalReversedPaymentDetail",
+    "PaymentBalanceActivitySquareCapitalReversedPaymentDetailDict",
+    "PaymentBalanceActivitySquarePayrollTransferDetail",
+    "PaymentBalanceActivitySquarePayrollTransferDetailDict",
+    "PaymentBalanceActivitySquarePayrollTransferReversedDetail",
+    "PaymentBalanceActivitySquarePayrollTransferReversedDetailDict",
+    "PaymentBalanceActivityTaxOnFeeDetail",
+    "PaymentBalanceActivityTaxOnFeeDetailDict",
+    "PaymentBalanceActivityThirdPartyFeeDetail",
+    "PaymentBalanceActivityThirdPartyFeeDetailDict",
+    "PaymentBalanceActivityThirdPartyFeeRefundDetail",
+    "PaymentBalanceActivityThirdPartyFeeRefundDetailDict",
+    "PaymentCreatedEvent",
+    "PaymentCreatedEventData",
+    "PaymentCreatedEventDataDict",
+    "PaymentCreatedEventDict",
+    "PaymentCreatedEventObject",
+    "PaymentCreatedEventObjectDict",
+    "PaymentDict",
+    "PaymentLink",
+    "PaymentLinkDict",
+    "PaymentLinkRelatedResources",
+    "PaymentLinkRelatedResourcesDict",
+    "PaymentOptions",
+    "PaymentOptionsDict",
+    "PaymentRefund",
+    "PaymentRefundDict",
+    "PaymentUpdatedEvent",
+    "PaymentUpdatedEventData",
+    "PaymentUpdatedEventDataDict",
+    "PaymentUpdatedEventDict",
+    "PaymentUpdatedEventObject",
+    "PaymentUpdatedEventObjectDict",
+    "Payout",
+    "PayoutDict",
+    "PayoutEntry",
+    "PayoutEntryDict",
+    "PayoutFailedEvent",
+    "PayoutFailedEventData",
+    "PayoutFailedEventDataDict",
+    "PayoutFailedEventDict",
+    "PayoutFailedEventObject",
+    "PayoutFailedEventObjectDict",
+    "PayoutFee",
+    "PayoutFeeDict",
+    "PayoutPaidEvent",
+    "PayoutPaidEventData",
+    "PayoutPaidEventDataDict",
+    "PayoutPaidEventDict",
+    "PayoutPaidEventObject",
+    "PayoutPaidEventObjectDict",
+    "PayoutSentEvent",
+    "PayoutSentEventData",
+    "PayoutSentEventDataDict",
+    "PayoutSentEventDict",
+    "PayoutSentEventObject",
+    "PayoutSentEventObjectDict",
+    "Phase",
+    "PhaseDict",
+    "PhaseInput",
+    "PhaseInputDict",
+    "PrePopulatedData",
+    "PrePopulatedDataDict",
+    "ProcessingFee",
+    "ProcessingFeeDict",
+    "PublishInvoiceRequest",
+    "PublishInvoiceRequestDict",
+    "PublishInvoiceResponse",
+    "PublishInvoiceResponseDict",
+    "PublishScheduledShiftRequest",
+    "PublishScheduledShiftRequestDict",
+    "PublishScheduledShiftResponse",
+    "PublishScheduledShiftResponseDict",
+    "QrCodeOptions",
+    "QrCodeOptionsDict",
+    "QuickPay",
+    "QuickPayDict",
+    "Range",
+    "RangeDict",
+    "ReceiptOptions",
+    "ReceiptOptionsDict",
+    "ReceiveTransferOrderRequest",
+    "ReceiveTransferOrderRequestDict",
+    "ReceiveTransferOrderResponse",
+    "ReceiveTransferOrderResponseDict",
+    "RedeemLoyaltyRewardRequest",
+    "RedeemLoyaltyRewardRequestDict",
+    "RedeemLoyaltyRewardResponse",
+    "RedeemLoyaltyRewardResponseDict",
+    "Reference",
+    "ReferenceDict",
+    "Refund",
+    "RefundCreatedEvent",
+    "RefundCreatedEventData",
+    "RefundCreatedEventDataDict",
+    "RefundCreatedEventDict",
+    "RefundCreatedEventObject",
+    "RefundCreatedEventObjectDict",
+    "RefundDict",
+    "RefundPaymentRequest",
+    "RefundPaymentRequestDict",
+    "RefundPaymentResponse",
+    "RefundPaymentResponseDict",
+    "RefundUpdatedEvent",
+    "RefundUpdatedEventData",
+    "RefundUpdatedEventDataDict",
+    "RefundUpdatedEventDict",
+    "RefundUpdatedEventObject",
+    "RefundUpdatedEventObjectDict",
+    "RegisterDomainRequest",
+    "RegisterDomainRequestDict",
+    "RegisterDomainResponse",
+    "RegisterDomainResponseDict",
+    "RemoveGroupFromCustomerResponse",
+    "RemoveGroupFromCustomerResponseDict",
+    "RestoreInventoryAdjustmentReasonRequest",
+    "RestoreInventoryAdjustmentReasonRequestDict",
+    "RestoreInventoryAdjustmentReasonResponse",
+    "RestoreInventoryAdjustmentReasonResponseDict",
+    "ResumeSubscriptionRequest",
+    "ResumeSubscriptionRequestDict",
+    "ResumeSubscriptionResponse",
+    "ResumeSubscriptionResponseDict",
+    "RetrieveBookingCustomAttributeDefinitionResponse",
+    "RetrieveBookingCustomAttributeDefinitionResponseDict",
+    "RetrieveBookingCustomAttributeResponse",
+    "RetrieveBookingCustomAttributeResponseDict",
+    "RetrieveBookingResponse",
+    "RetrieveBookingResponseDict",
+    "RetrieveBusinessBookingProfileResponse",
+    "RetrieveBusinessBookingProfileResponseDict",
+    "RetrieveCardResponse",
+    "RetrieveCardResponseDict",
+    "RetrieveCashDrawerShiftResponse",
+    "RetrieveCashDrawerShiftResponseDict",
+    "RetrieveCatalogObjectResponse",
+    "RetrieveCatalogObjectResponseDict",
+    "RetrieveChannelResponse",
+    "RetrieveChannelResponseDict",
+    "RetrieveCustomerCustomAttributeDefinitionResponse",
+    "RetrieveCustomerCustomAttributeDefinitionResponseDict",
+    "RetrieveCustomerCustomAttributeResponse",
+    "RetrieveCustomerCustomAttributeResponseDict",
+    "RetrieveCustomerGroupResponse",
+    "RetrieveCustomerGroupResponseDict",
+    "RetrieveCustomerResponse",
+    "RetrieveCustomerResponseDict",
+    "RetrieveCustomerSegmentResponse",
+    "RetrieveCustomerSegmentResponseDict",
+    "RetrieveDisputeEvidenceResponse",
+    "RetrieveDisputeEvidenceResponseDict",
+    "RetrieveDisputeResponse",
+    "RetrieveDisputeResponseDict",
+    "RetrieveEmployeeResponse",
+    "RetrieveEmployeeResponseDict",
+    "RetrieveGiftCardFromGanrequest",
+    "RetrieveGiftCardFromGanrequestDict",
+    "RetrieveGiftCardFromGanresponse",
+    "RetrieveGiftCardFromGanresponseDict",
+    "RetrieveGiftCardFromNonceRequest",
+    "RetrieveGiftCardFromNonceRequestDict",
+    "RetrieveGiftCardFromNonceResponse",
+    "RetrieveGiftCardFromNonceResponseDict",
+    "RetrieveGiftCardResponse",
+    "RetrieveGiftCardResponseDict",
+    "RetrieveInventoryAdjustmentReasonRequest",
+    "RetrieveInventoryAdjustmentReasonRequestDict",
+    "RetrieveInventoryAdjustmentReasonResponse",
+    "RetrieveInventoryAdjustmentReasonResponseDict",
+    "RetrieveInventoryAdjustmentResponse",
+    "RetrieveInventoryAdjustmentResponseDict",
+    "RetrieveInventoryChangesResponse",
+    "RetrieveInventoryChangesResponseDict",
+    "RetrieveInventoryCountResponse",
+    "RetrieveInventoryCountResponseDict",
+    "RetrieveInventoryPhysicalCountResponse",
+    "RetrieveInventoryPhysicalCountResponseDict",
+    "RetrieveJobResponse",
+    "RetrieveJobResponseDict",
+    "RetrieveLocationBookingProfileResponse",
+    "RetrieveLocationBookingProfileResponseDict",
+    "RetrieveLocationCustomAttributeDefinitionResponse",
+    "RetrieveLocationCustomAttributeDefinitionResponseDict",
+    "RetrieveLocationCustomAttributeResponse",
+    "RetrieveLocationCustomAttributeResponseDict",
+    "RetrieveLocationResponse",
+    "RetrieveLocationResponseDict",
+    "RetrieveLocationSettingsResponse",
+    "RetrieveLocationSettingsResponseDict",
+    "RetrieveLoyaltyAccountResponse",
+    "RetrieveLoyaltyAccountResponseDict",
+    "RetrieveLoyaltyProgramResponse",
+    "RetrieveLoyaltyProgramResponseDict",
+    "RetrieveLoyaltyPromotionResponse",
+    "RetrieveLoyaltyPromotionResponseDict",
+    "RetrieveLoyaltyRewardResponse",
+    "RetrieveLoyaltyRewardResponseDict",
+    "RetrieveMerchantCustomAttributeDefinitionResponse",
+    "RetrieveMerchantCustomAttributeDefinitionResponseDict",
+    "RetrieveMerchantCustomAttributeResponse",
+    "RetrieveMerchantCustomAttributeResponseDict",
+    "RetrieveMerchantResponse",
+    "RetrieveMerchantResponseDict",
+    "RetrieveMerchantSettingsResponse",
+    "RetrieveMerchantSettingsResponseDict",
+    "RetrieveOrderCustomAttributeDefinitionResponse",
+    "RetrieveOrderCustomAttributeDefinitionResponseDict",
+    "RetrieveOrderCustomAttributeResponse",
+    "RetrieveOrderCustomAttributeResponseDict",
+    "RetrieveOrderResponse",
+    "RetrieveOrderResponseDict",
+    "RetrievePaymentLinkResponse",
+    "RetrievePaymentLinkResponseDict",
+    "RetrieveScheduledShiftResponse",
+    "RetrieveScheduledShiftResponseDict",
+    "RetrieveSnippetResponse",
+    "RetrieveSnippetResponseDict",
+    "RetrieveSubscriptionResponse",
+    "RetrieveSubscriptionResponseDict",
+    "RetrieveTeamMemberBookingProfileResponse",
+    "RetrieveTeamMemberBookingProfileResponseDict",
+    "RetrieveTeamMemberResponse",
+    "RetrieveTeamMemberResponseDict",
+    "RetrieveTimecardResponse",
+    "RetrieveTimecardResponseDict",
+    "RetrieveTokenStatusResponse",
+    "RetrieveTokenStatusResponseDict",
+    "RetrieveTransactionResponse",
+    "RetrieveTransactionResponseDict",
+    "RetrieveTransferOrderResponse",
+    "RetrieveTransferOrderResponseDict",
+    "RetrieveVendorResponse",
+    "RetrieveVendorResponseDict",
+    "RetrieveWageSettingResponse",
+    "RetrieveWageSettingResponseDict",
+    "RetrieveWebhookSubscriptionResponse",
+    "RetrieveWebhookSubscriptionResponseDict",
+    "RevokeTokenRequest",
+    "RevokeTokenRequestDict",
+    "RevokeTokenResponse",
+    "RevokeTokenResponseDict",
+    "RiskEvaluation",
+    "RiskEvaluationDict",
+    "SaveCardOptions",
+    "SaveCardOptionsDict",
+    "ScheduledShift",
+    "ScheduledShiftDetails",
+    "ScheduledShiftDetailsDict",
+    "ScheduledShiftDict",
+    "ScheduledShiftFilter",
+    "ScheduledShiftFilterDict",
+    "ScheduledShiftQuery",
+    "ScheduledShiftQueryDict",
+    "ScheduledShiftSort",
+    "ScheduledShiftSortDict",
+    "ScheduledShiftWorkday",
+    "ScheduledShiftWorkdayDict",
+    "SearchAvailabilityFilter",
+    "SearchAvailabilityFilterDict",
+    "SearchAvailabilityQuery",
+    "SearchAvailabilityQueryDict",
+    "SearchAvailabilityRequest",
+    "SearchAvailabilityRequestDict",
+    "SearchAvailabilityResponse",
+    "SearchAvailabilityResponseDict",
+    "SearchCatalogItemsRequest",
+    "SearchCatalogItemsRequestDict",
+    "SearchCatalogItemsResponse",
+    "SearchCatalogItemsResponseDict",
+    "SearchCatalogObjectsRequest",
+    "SearchCatalogObjectsRequestDict",
+    "SearchCatalogObjectsResponse",
+    "SearchCatalogObjectsResponseDict",
+    "SearchCustomersRequest",
+    "SearchCustomersRequestDict",
+    "SearchCustomersResponse",
+    "SearchCustomersResponseDict",
+    "SearchEventsFilter",
+    "SearchEventsFilterDict",
+    "SearchEventsQuery",
+    "SearchEventsQueryDict",
+    "SearchEventsRequest",
+    "SearchEventsRequestDict",
+    "SearchEventsResponse",
+    "SearchEventsResponseDict",
+    "SearchEventsSort",
+    "SearchEventsSortDict",
+    "SearchInvoicesRequest",
+    "SearchInvoicesRequestDict",
+    "SearchInvoicesResponse",
+    "SearchInvoicesResponseDict",
+    "SearchLoyaltyAccountsRequest",
+    "SearchLoyaltyAccountsRequestDict",
+    "SearchLoyaltyAccountsRequestLoyaltyAccountQuery",
+    "SearchLoyaltyAccountsRequestLoyaltyAccountQueryDict",
+    "SearchLoyaltyAccountsResponse",
+    "SearchLoyaltyAccountsResponseDict",
+    "SearchLoyaltyEventsRequest",
+    "SearchLoyaltyEventsRequestDict",
+    "SearchLoyaltyEventsResponse",
+    "SearchLoyaltyEventsResponseDict",
+    "SearchLoyaltyRewardsRequest",
+    "SearchLoyaltyRewardsRequestDict",
+    "SearchLoyaltyRewardsRequestLoyaltyRewardQuery",
+    "SearchLoyaltyRewardsRequestLoyaltyRewardQueryDict",
+    "SearchLoyaltyRewardsResponse",
+    "SearchLoyaltyRewardsResponseDict",
+    "SearchOrdersCustomerFilter",
+    "SearchOrdersCustomerFilterDict",
+    "SearchOrdersDateTimeFilter",
+    "SearchOrdersDateTimeFilterDict",
+    "SearchOrdersFilter",
+    "SearchOrdersFilterDict",
+    "SearchOrdersFulfillmentFilter",
+    "SearchOrdersFulfillmentFilterDict",
+    "SearchOrdersQuery",
+    "SearchOrdersQueryDict",
+    "SearchOrdersRequest",
+    "SearchOrdersRequestDict",
+    "SearchOrdersResponse",
+    "SearchOrdersResponseDict",
+    "SearchOrdersSort",
+    "SearchOrdersSortDict",
+    "SearchOrdersSourceFilter",
+    "SearchOrdersSourceFilterDict",
+    "SearchOrdersStateFilter",
+    "SearchOrdersStateFilterDict",
+    "SearchScheduledShiftsRequest",
+    "SearchScheduledShiftsRequestDict",
+    "SearchScheduledShiftsResponse",
+    "SearchScheduledShiftsResponseDict",
+    "SearchShiftsRequest",
+    "SearchShiftsRequestDict",
+    "SearchShiftsResponse",
+    "SearchShiftsResponseDict",
+    "SearchSubscriptionsFilter",
+    "SearchSubscriptionsFilterDict",
+    "SearchSubscriptionsQuery",
+    "SearchSubscriptionsQueryDict",
+    "SearchSubscriptionsRequest",
+    "SearchSubscriptionsRequestDict",
+    "SearchSubscriptionsResponse",
+    "SearchSubscriptionsResponseDict",
+    "SearchTeamMembersFilter",
+    "SearchTeamMembersFilterDict",
+    "SearchTeamMembersQuery",
+    "SearchTeamMembersQueryDict",
+    "SearchTeamMembersRequest",
+    "SearchTeamMembersRequestDict",
+    "SearchTeamMembersResponse",
+    "SearchTeamMembersResponseDict",
+    "SearchTerminalActionsRequest",
+    "SearchTerminalActionsRequestDict",
+    "SearchTerminalActionsResponse",
+    "SearchTerminalActionsResponseDict",
+    "SearchTerminalCheckoutsRequest",
+    "SearchTerminalCheckoutsRequestDict",
+    "SearchTerminalCheckoutsResponse",
+    "SearchTerminalCheckoutsResponseDict",
+    "SearchTerminalRefundsRequest",
+    "SearchTerminalRefundsRequestDict",
+    "SearchTerminalRefundsResponse",
+    "SearchTerminalRefundsResponseDict",
+    "SearchTimecardsRequest",
+    "SearchTimecardsRequestDict",
+    "SearchTimecardsResponse",
+    "SearchTimecardsResponseDict",
+    "SearchTransferOrdersRequest",
+    "SearchTransferOrdersRequestDict",
+    "SearchTransferOrdersResponse",
+    "SearchTransferOrdersResponseDict",
+    "SearchVendorsRequest",
+    "SearchVendorsRequestDict",
+    "SearchVendorsRequestFilter",
+    "SearchVendorsRequestFilterDict",
+    "SearchVendorsRequestSort",
+    "SearchVendorsRequestSortDict",
+    "SearchVendorsResponse",
+    "SearchVendorsResponseDict",
+    "SegmentFilter",
+    "SegmentFilterDict",
+    "SelectOption",
+    "SelectOptionDict",
+    "SelectOptions",
+    "SelectOptionsDict",
+    "Shift",
+    "ShiftDict",
+    "ShiftFilter",
+    "ShiftFilterDict",
+    "ShiftQuery",
+    "ShiftQueryDict",
+    "ShiftSort",
+    "ShiftSortDict",
+    "ShiftWage",
+    "ShiftWageDict",
+    "ShiftWorkday",
+    "ShiftWorkdayDict",
+    "ShippingFee",
+    "ShippingFeeDict",
+    "SignatureImage",
+    "SignatureImageDict",
+    "SignatureOptions",
+    "SignatureOptionsDict",
+    "Site",
+    "SiteDict",
+    "Snippet",
+    "SnippetDict",
+    "SourceApplication",
+    "SourceApplicationDict",
+    "SquareAccountDetails",
+    "SquareAccountDetailsDict",
+    "StandardUnitDescription",
+    "StandardUnitDescriptionDict",
+    "StandardUnitDescriptionGroup",
+    "StandardUnitDescriptionGroupDict",
+    "StartTransferOrderRequest",
+    "StartTransferOrderRequestDict",
+    "StartTransferOrderResponse",
+    "StartTransferOrderResponseDict",
+    "SubmitEvidenceResponse",
+    "SubmitEvidenceResponseDict",
+    "Subscription",
+    "SubscriptionAction",
+    "SubscriptionActionDict",
+    "SubscriptionCreatedEvent",
+    "SubscriptionCreatedEventData",
+    "SubscriptionCreatedEventDataDict",
+    "SubscriptionCreatedEventDict",
+    "SubscriptionCreatedEventObject",
+    "SubscriptionCreatedEventObjectDict",
+    "SubscriptionDict",
+    "SubscriptionEvent",
+    "SubscriptionEventDict",
+    "SubscriptionEventInfo",
+    "SubscriptionEventInfoDict",
+    "SubscriptionPhase",
+    "SubscriptionPhaseDict",
+    "SubscriptionPricing",
+    "SubscriptionPricingDict",
+    "SubscriptionSource",
+    "SubscriptionSourceDict",
+    "SubscriptionTestResult",
+    "SubscriptionTestResultDict",
+    "SubscriptionUpdatedEvent",
+    "SubscriptionUpdatedEventData",
+    "SubscriptionUpdatedEventDataDict",
+    "SubscriptionUpdatedEventDict",
+    "SubscriptionUpdatedEventObject",
+    "SubscriptionUpdatedEventObjectDict",
+    "SwapPlanRequest",
+    "SwapPlanRequestDict",
+    "SwapPlanResponse",
+    "SwapPlanResponseDict",
+    "TaxIds",
+    "TaxIdsDict",
+    "TeamMember",
+    "TeamMemberAssignedLocations",
+    "TeamMemberAssignedLocationsDict",
+    "TeamMemberBookingProfile",
+    "TeamMemberBookingProfileDict",
+    "TeamMemberCreatedEvent",
+    "TeamMemberCreatedEventData",
+    "TeamMemberCreatedEventDataDict",
+    "TeamMemberCreatedEventDict",
+    "TeamMemberCreatedEventObject",
+    "TeamMemberCreatedEventObjectDict",
+    "TeamMemberDict",
+    "TeamMemberUpdatedEvent",
+    "TeamMemberUpdatedEventData",
+    "TeamMemberUpdatedEventDataDict",
+    "TeamMemberUpdatedEventDict",
+    "TeamMemberUpdatedEventObject",
+    "TeamMemberUpdatedEventObjectDict",
+    "TeamMemberWage",
+    "TeamMemberWageDict",
+    "TeamMemberWageSettingUpdatedEvent",
+    "TeamMemberWageSettingUpdatedEventData",
+    "TeamMemberWageSettingUpdatedEventDataDict",
+    "TeamMemberWageSettingUpdatedEventDict",
+    "TeamMemberWageSettingUpdatedEventObject",
+    "TeamMemberWageSettingUpdatedEventObjectDict",
+    "Tender",
+    "TenderBankAccountDetails",
+    "TenderBankAccountDetailsDict",
+    "TenderBuyNowPayLaterDetails",
+    "TenderBuyNowPayLaterDetailsDict",
+    "TenderCardDetails",
+    "TenderCardDetailsDict",
+    "TenderCashDetails",
+    "TenderCashDetailsDict",
+    "TenderDict",
+    "TenderSquareAccountDetails",
+    "TenderSquareAccountDetailsDict",
+    "TerminalAction",
+    "TerminalActionCreatedEvent",
+    "TerminalActionCreatedEventData",
+    "TerminalActionCreatedEventDataDict",
+    "TerminalActionCreatedEventDict",
+    "TerminalActionCreatedEventObject",
+    "TerminalActionCreatedEventObjectDict",
+    "TerminalActionDict",
+    "TerminalActionQuery",
+    "TerminalActionQueryDict",
+    "TerminalActionQueryFilter",
+    "TerminalActionQueryFilterDict",
+    "TerminalActionQuerySort",
+    "TerminalActionQuerySortDict",
+    "TerminalActionUpdatedEvent",
+    "TerminalActionUpdatedEventData",
+    "TerminalActionUpdatedEventDataDict",
+    "TerminalActionUpdatedEventDict",
+    "TerminalActionUpdatedEventObject",
+    "TerminalActionUpdatedEventObjectDict",
+    "TerminalCheckout",
+    "TerminalCheckoutCreatedEvent",
+    "TerminalCheckoutCreatedEventData",
+    "TerminalCheckoutCreatedEventDataDict",
+    "TerminalCheckoutCreatedEventDict",
+    "TerminalCheckoutCreatedEventObject",
+    "TerminalCheckoutCreatedEventObjectDict",
+    "TerminalCheckoutDict",
+    "TerminalCheckoutQuery",
+    "TerminalCheckoutQueryDict",
+    "TerminalCheckoutQueryFilter",
+    "TerminalCheckoutQueryFilterDict",
+    "TerminalCheckoutQuerySort",
+    "TerminalCheckoutQuerySortDict",
+    "TerminalCheckoutUpdatedEvent",
+    "TerminalCheckoutUpdatedEventData",
+    "TerminalCheckoutUpdatedEventDataDict",
+    "TerminalCheckoutUpdatedEventDict",
+    "TerminalCheckoutUpdatedEventObject",
+    "TerminalCheckoutUpdatedEventObjectDict",
+    "TerminalRefund",
+    "TerminalRefundCreatedEvent",
+    "TerminalRefundCreatedEventData",
+    "TerminalRefundCreatedEventDataDict",
+    "TerminalRefundCreatedEventDict",
+    "TerminalRefundCreatedEventObject",
+    "TerminalRefundCreatedEventObjectDict",
+    "TerminalRefundDict",
+    "TerminalRefundQuery",
+    "TerminalRefundQueryDict",
+    "TerminalRefundQueryFilter",
+    "TerminalRefundQueryFilterDict",
+    "TerminalRefundQuerySort",
+    "TerminalRefundQuerySortDict",
+    "TerminalRefundUpdatedEvent",
+    "TerminalRefundUpdatedEventData",
+    "TerminalRefundUpdatedEventDataDict",
+    "TerminalRefundUpdatedEventDict",
+    "TerminalRefundUpdatedEventObject",
+    "TerminalRefundUpdatedEventObjectDict",
+    "TestWebhookSubscriptionRequest",
+    "TestWebhookSubscriptionRequestDict",
+    "TestWebhookSubscriptionResponse",
+    "TestWebhookSubscriptionResponseDict",
+    "TimeRange",
+    "TimeRangeDict",
+    "Timecard",
+    "TimecardDict",
+    "TimecardFilter",
+    "TimecardFilterDict",
+    "TimecardQuery",
+    "TimecardQueryDict",
+    "TimecardSort",
+    "TimecardSortDict",
+    "TimecardWage",
+    "TimecardWageDict",
+    "TimecardWorkday",
+    "TimecardWorkdayDict",
+    "TipSettings",
+    "TipSettingsDict",
+    "Transaction",
+    "TransactionDict",
+    "TransferOrder",
+    "TransferOrderCreatedEvent",
+    "TransferOrderCreatedEventData",
+    "TransferOrderCreatedEventDataDict",
+    "TransferOrderCreatedEventDict",
+    "TransferOrderCreatedEventObject",
+    "TransferOrderCreatedEventObjectDict",
+    "TransferOrderDeletedEvent",
+    "TransferOrderDeletedEventData",
+    "TransferOrderDeletedEventDataDict",
+    "TransferOrderDeletedEventDict",
+    "TransferOrderDict",
+    "TransferOrderFilter",
+    "TransferOrderFilterDict",
+    "TransferOrderGoodsReceipt",
+    "TransferOrderGoodsReceiptDict",
+    "TransferOrderGoodsReceiptLineItem",
+    "TransferOrderGoodsReceiptLineItemDict",
+    "TransferOrderLine",
+    "TransferOrderLineDict",
+    "TransferOrderQuery",
+    "TransferOrderQueryDict",
+    "TransferOrderSort",
+    "TransferOrderSortDict",
+    "TransferOrderUpdatedEvent",
+    "TransferOrderUpdatedEventData",
+    "TransferOrderUpdatedEventDataDict",
+    "TransferOrderUpdatedEventDict",
+    "TransferOrderUpdatedEventObject",
+    "TransferOrderUpdatedEventObjectDict",
+    "UnlinkCustomerFromGiftCardRequest",
+    "UnlinkCustomerFromGiftCardRequestDict",
+    "UnlinkCustomerFromGiftCardResponse",
+    "UnlinkCustomerFromGiftCardResponseDict",
+    "UpdateBookingCustomAttributeDefinitionRequest",
+    "UpdateBookingCustomAttributeDefinitionRequestDict",
+    "UpdateBookingCustomAttributeDefinitionResponse",
+    "UpdateBookingCustomAttributeDefinitionResponseDict",
+    "UpdateBookingRequest",
+    "UpdateBookingRequestDict",
+    "UpdateBookingResponse",
+    "UpdateBookingResponseDict",
+    "UpdateBreakTypeRequest",
+    "UpdateBreakTypeRequestDict",
+    "UpdateBreakTypeResponse",
+    "UpdateBreakTypeResponseDict",
+    "UpdateCatalogImageRequest",
+    "UpdateCatalogImageRequestDict",
+    "UpdateCatalogImageResponse",
+    "UpdateCatalogImageResponseDict",
+    "UpdateCustomerCustomAttributeDefinitionRequest",
+    "UpdateCustomerCustomAttributeDefinitionRequestDict",
+    "UpdateCustomerCustomAttributeDefinitionResponse",
+    "UpdateCustomerCustomAttributeDefinitionResponseDict",
+    "UpdateCustomerGroupRequest",
+    "UpdateCustomerGroupRequestDict",
+    "UpdateCustomerGroupResponse",
+    "UpdateCustomerGroupResponseDict",
+    "UpdateCustomerRequest",
+    "UpdateCustomerRequestDict",
+    "UpdateCustomerResponse",
+    "UpdateCustomerResponseDict",
+    "UpdateInventoryAdjustmentReasonRequest",
+    "UpdateInventoryAdjustmentReasonRequestDict",
+    "UpdateInventoryAdjustmentReasonResponse",
+    "UpdateInventoryAdjustmentReasonResponseDict",
+    "UpdateInventoryAdjustmentRequest",
+    "UpdateInventoryAdjustmentRequestDict",
+    "UpdateInventoryAdjustmentResponse",
+    "UpdateInventoryAdjustmentResponseDict",
+    "UpdateInvoiceRequest",
+    "UpdateInvoiceRequestDict",
+    "UpdateInvoiceResponse",
+    "UpdateInvoiceResponseDict",
+    "UpdateItemModifierListsRequest",
+    "UpdateItemModifierListsRequestDict",
+    "UpdateItemModifierListsResponse",
+    "UpdateItemModifierListsResponseDict",
+    "UpdateItemTaxesRequest",
+    "UpdateItemTaxesRequestDict",
+    "UpdateItemTaxesResponse",
+    "UpdateItemTaxesResponseDict",
+    "UpdateJobRequest",
+    "UpdateJobRequestDict",
+    "UpdateJobResponse",
+    "UpdateJobResponseDict",
+    "UpdateLocationCustomAttributeDefinitionRequest",
+    "UpdateLocationCustomAttributeDefinitionRequestDict",
+    "UpdateLocationCustomAttributeDefinitionResponse",
+    "UpdateLocationCustomAttributeDefinitionResponseDict",
+    "UpdateLocationRequest",
+    "UpdateLocationRequestDict",
+    "UpdateLocationResponse",
+    "UpdateLocationResponseDict",
+    "UpdateLocationSettingsRequest",
+    "UpdateLocationSettingsRequestDict",
+    "UpdateLocationSettingsResponse",
+    "UpdateLocationSettingsResponseDict",
+    "UpdateMerchantCustomAttributeDefinitionRequest",
+    "UpdateMerchantCustomAttributeDefinitionRequestDict",
+    "UpdateMerchantCustomAttributeDefinitionResponse",
+    "UpdateMerchantCustomAttributeDefinitionResponseDict",
+    "UpdateMerchantSettingsRequest",
+    "UpdateMerchantSettingsRequestDict",
+    "UpdateMerchantSettingsResponse",
+    "UpdateMerchantSettingsResponseDict",
+    "UpdateOrderCustomAttributeDefinitionRequest",
+    "UpdateOrderCustomAttributeDefinitionRequestDict",
+    "UpdateOrderCustomAttributeDefinitionResponse",
+    "UpdateOrderCustomAttributeDefinitionResponseDict",
+    "UpdateOrderRequest",
+    "UpdateOrderRequestDict",
+    "UpdateOrderResponse",
+    "UpdateOrderResponseDict",
+    "UpdatePaymentLinkRequest",
+    "UpdatePaymentLinkRequestDict",
+    "UpdatePaymentLinkResponse",
+    "UpdatePaymentLinkResponseDict",
+    "UpdatePaymentRequest",
+    "UpdatePaymentRequestDict",
+    "UpdatePaymentResponse",
+    "UpdatePaymentResponseDict",
+    "UpdateScheduledShiftRequest",
+    "UpdateScheduledShiftRequestDict",
+    "UpdateScheduledShiftResponse",
+    "UpdateScheduledShiftResponseDict",
+    "UpdateShiftRequest",
+    "UpdateShiftRequestDict",
+    "UpdateShiftResponse",
+    "UpdateShiftResponseDict",
+    "UpdateSubscriptionRequest",
+    "UpdateSubscriptionRequestDict",
+    "UpdateSubscriptionResponse",
+    "UpdateSubscriptionResponseDict",
+    "UpdateTeamMemberRequest",
+    "UpdateTeamMemberRequestDict",
+    "UpdateTeamMemberResponse",
+    "UpdateTeamMemberResponseDict",
+    "UpdateTimecardRequest",
+    "UpdateTimecardRequestDict",
+    "UpdateTimecardResponse",
+    "UpdateTimecardResponseDict",
+    "UpdateTransferOrderData",
+    "UpdateTransferOrderDataDict",
+    "UpdateTransferOrderLineData",
+    "UpdateTransferOrderLineDataDict",
+    "UpdateTransferOrderRequest",
+    "UpdateTransferOrderRequestDict",
+    "UpdateTransferOrderResponse",
+    "UpdateTransferOrderResponseDict",
+    "UpdateVendorRequest",
+    "UpdateVendorRequestDict",
+    "UpdateVendorResponse",
+    "UpdateVendorResponseDict",
+    "UpdateWageSettingRequest",
+    "UpdateWageSettingRequestDict",
+    "UpdateWageSettingResponse",
+    "UpdateWageSettingResponseDict",
+    "UpdateWebhookSubscriptionRequest",
+    "UpdateWebhookSubscriptionRequestDict",
+    "UpdateWebhookSubscriptionResponse",
+    "UpdateWebhookSubscriptionResponseDict",
+    "UpdateWebhookSubscriptionSignatureKeyRequest",
+    "UpdateWebhookSubscriptionSignatureKeyRequestDict",
+    "UpdateWebhookSubscriptionSignatureKeyResponse",
+    "UpdateWebhookSubscriptionSignatureKeyResponseDict",
+    "UpdateWorkweekConfigRequest",
+    "UpdateWorkweekConfigRequestDict",
+    "UpdateWorkweekConfigResponse",
+    "UpdateWorkweekConfigResponseDict",
+    "UpsertBookingCustomAttributeRequest",
+    "UpsertBookingCustomAttributeRequestDict",
+    "UpsertBookingCustomAttributeResponse",
+    "UpsertBookingCustomAttributeResponseDict",
+    "UpsertCatalogObjectRequest",
+    "UpsertCatalogObjectRequestDict",
+    "UpsertCatalogObjectResponse",
+    "UpsertCatalogObjectResponseDict",
+    "UpsertCustomerCustomAttributeRequest",
+    "UpsertCustomerCustomAttributeRequestDict",
+    "UpsertCustomerCustomAttributeResponse",
+    "UpsertCustomerCustomAttributeResponseDict",
+    "UpsertLocationCustomAttributeRequest",
+    "UpsertLocationCustomAttributeRequestDict",
+    "UpsertLocationCustomAttributeResponse",
+    "UpsertLocationCustomAttributeResponseDict",
+    "UpsertMerchantCustomAttributeRequest",
+    "UpsertMerchantCustomAttributeRequestDict",
+    "UpsertMerchantCustomAttributeResponse",
+    "UpsertMerchantCustomAttributeResponseDict",
+    "UpsertOrderCustomAttributeRequest",
+    "UpsertOrderCustomAttributeRequestDict",
+    "UpsertOrderCustomAttributeResponse",
+    "UpsertOrderCustomAttributeResponseDict",
+    "UpsertSnippetRequest",
+    "UpsertSnippetRequestDict",
+    "UpsertSnippetResponse",
+    "UpsertSnippetResponseDict",
+    "V1Money",
+    "V1MoneyDict",
+    "V1Order",
+    "V1OrderDict",
+    "V1OrderHistoryEntry",
+    "V1OrderHistoryEntryDict",
+    "V1Tender",
+    "V1TenderDict",
+    "V1UpdateOrderRequest",
+    "V1UpdateOrderRequestDict",
+    "Vendor",
+    "VendorContact",
+    "VendorContactDict",
+    "VendorCreatedEvent",
+    "VendorCreatedEventData",
+    "VendorCreatedEventDataDict",
+    "VendorCreatedEventDict",
+    "VendorCreatedEventObject",
+    "VendorCreatedEventObjectDict",
+    "VendorDict",
+    "VendorUpdatedEvent",
+    "VendorUpdatedEventData",
+    "VendorUpdatedEventDataDict",
+    "VendorUpdatedEventDict",
+    "VendorUpdatedEventObject",
+    "VendorUpdatedEventObjectDict",
+    "VoidTransactionResponse",
+    "VoidTransactionResponseDict",
+    "WageSetting",
+    "WageSettingDict",
+    "WebhookSubscription",
+    "WebhookSubscriptionDict",
+    "WorkweekConfig",
+    "WorkweekConfigDict",
+]
+
+BatchRetrieveCatalogObjectsResponse.model_rebuild()
+BatchUpsertCatalogObjectsRequest.model_rebuild()
+BatchUpsertCatalogObjectsResponse.model_rebuild()
+CatalogItem.model_rebuild()
+CatalogItemOption.model_rebuild()
+CatalogModifierList.model_rebuild()
+CatalogObject.model_rebuild()
+CatalogObjectBatch.model_rebuild()
+CatalogSubscriptionPlan.model_rebuild()
+CreateCatalogImageRequest.model_rebuild()
+CreateCatalogImageResponse.model_rebuild()
+CreatePaymentLinkResponse.model_rebuild()
+ListCatalogResponse.model_rebuild()
+PaymentLinkRelatedResources.model_rebuild()
+RetrieveCatalogObjectResponse.model_rebuild()
+SearchCatalogItemsResponse.model_rebuild()
+SearchCatalogObjectsResponse.model_rebuild()
+UpdateCatalogImageResponse.model_rebuild()
+UpsertCatalogObjectRequest.model_rebuild()
+UpsertCatalogObjectResponse.model_rebuild()
