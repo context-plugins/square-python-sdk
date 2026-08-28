@@ -1,18 +1,17 @@
 from __future__ import annotations
 
-from typing import Literal
-
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from ..core import SdkBaseModel
+from .enums.gift_card_activity_unblock_reason import GiftCardActivityUnblockReasonOrStr
 
 
 class GiftCardActivityUnblock(SdkBaseModel):
     """Represents details about an ``UNBLOCK`` `gift card activity type <entity:GiftCardActivityType>`__."""
 
-    reason: Literal["CHARGEBACK_UNBLOCK"] = "CHARGEBACK_UNBLOCK"
+    reason: GiftCardActivityUnblockReasonOrStr
     """Indicates the reason for unblocking a `gift card <entity:GiftCard>`__."""
 
 
 class GiftCardActivityUnblockDict(TypedDict):
-    reason: NotRequired[Literal["CHARGEBACK_UNBLOCK"]]
+    reason: GiftCardActivityUnblockReasonOrStr
