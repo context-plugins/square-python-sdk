@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.merchants.list_merchants
 
 - **Route**: `GET /v2/merchants`
+- **Auth**: `oauth2`
 - **Signature**: `def list_merchants(*, cursor: int | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `cursor` — query
 - **Returns (parsed)**: `ListMerchantsResponse`
@@ -22,6 +23,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.merchants.retrieve_merchant
 
 - **Route**: `GET /v2/merchants/{merchant_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_merchant(merchant_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `merchant_id`
 - **Params**: `merchant_id` — path

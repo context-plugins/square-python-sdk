@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -509,6 +511,7 @@ class PaymentsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="POST",
             url_template=self._server.default("/v2/payments/{payment_id}/cancel"),
             path_params=[param[str]("payment_id", payment_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CancelPaymentResponse],
             error_mapper=raw_error_response,
@@ -542,6 +545,7 @@ class PaymentsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/payments/cancel"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CancelPaymentByIdempotencyKeyRequest | CancelPaymentByIdempotencyKeyRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CancelPaymentByIdempotencyKeyResponse],
@@ -572,6 +576,7 @@ class PaymentsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="POST",
             url_template=self._server.default("/v2/payments/{payment_id}/complete"),
             path_params=[param[str]("payment_id", payment_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CompletePaymentRequest | CompletePaymentRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CompletePaymentResponse],
@@ -601,6 +606,7 @@ class PaymentsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/payments"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreatePaymentRequest | CreatePaymentRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreatePaymentResponse],
@@ -741,6 +747,7 @@ class PaymentsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="PUT",
             url_template=self._server.default("/v2/payments/{payment_id}"),
             path_params=[param[str]("payment_id", payment_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdatePaymentRequest | UpdatePaymentRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdatePaymentResponse],
@@ -765,6 +772,7 @@ class AsyncPaymentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="POST",
             url_template=self._server.default("/v2/payments/{payment_id}/cancel"),
             path_params=[param[str]("payment_id", payment_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CancelPaymentResponse],
             error_mapper=raw_error_response,
@@ -798,6 +806,7 @@ class AsyncPaymentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/payments/cancel"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CancelPaymentByIdempotencyKeyRequest | CancelPaymentByIdempotencyKeyRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CancelPaymentByIdempotencyKeyResponse],
@@ -828,6 +837,7 @@ class AsyncPaymentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="POST",
             url_template=self._server.default("/v2/payments/{payment_id}/complete"),
             path_params=[param[str]("payment_id", payment_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CompletePaymentRequest | CompletePaymentRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CompletePaymentResponse],
@@ -857,6 +867,7 @@ class AsyncPaymentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/payments"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreatePaymentRequest | CreatePaymentRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreatePaymentResponse],
@@ -997,6 +1008,7 @@ class AsyncPaymentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="PUT",
             url_template=self._server.default("/v2/payments/{payment_id}"),
             path_params=[param[str]("payment_id", payment_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdatePaymentRequest | UpdatePaymentRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdatePaymentResponse],

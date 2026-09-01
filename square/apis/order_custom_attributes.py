@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -836,6 +838,7 @@ class OrderCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Server,
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/orders/custom-attributes/bulk-delete"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkDeleteOrderCustomAttributesRequest | BulkDeleteOrderCustomAttributesRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkDeleteOrderCustomAttributesResponse],
@@ -874,6 +877,7 @@ class OrderCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Server,
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/orders/custom-attributes/bulk-upsert"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkUpsertOrderCustomAttributesRequest | BulkUpsertOrderCustomAttributesRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkUpsertOrderCustomAttributesResponse],
@@ -903,6 +907,7 @@ class OrderCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Server,
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/orders/custom-attribute-definitions"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[
                 CreateOrderCustomAttributeDefinitionRequest | CreateOrderCustomAttributeDefinitionRequestDict
             ](body),
@@ -933,6 +938,7 @@ class OrderCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Server,
             http_method="DELETE",
             url_template=self._server.default("/v2/orders/{order_id}/custom-attributes/{custom_attribute_key}"),
             path_params=[param[str]("order_id", order_id), param[str]("custom_attribute_key", custom_attribute_key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteOrderCustomAttributeResponse],
             error_mapper=raw_error_response,
@@ -957,6 +963,7 @@ class OrderCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Server,
             http_method="DELETE",
             url_template=self._server.default("/v2/orders/custom-attribute-definitions/{key}"),
             path_params=[param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteOrderCustomAttributeDefinitionResponse],
             error_mapper=raw_error_response,
@@ -1161,6 +1168,7 @@ class OrderCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Server,
             http_method="PUT",
             url_template=self._server.default("/v2/orders/custom-attribute-definitions/{key}"),
             path_params=[param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[
                 UpdateOrderCustomAttributeDefinitionRequest | UpdateOrderCustomAttributeDefinitionRequestDict
             ](body),
@@ -1203,6 +1211,7 @@ class OrderCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Server,
             http_method="POST",
             url_template=self._server.default("/v2/orders/{order_id}/custom-attributes/{custom_attribute_key}"),
             path_params=[param[str]("order_id", order_id), param[str]("custom_attribute_key", custom_attribute_key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpsertOrderCustomAttributeRequest | UpsertOrderCustomAttributeRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpsertOrderCustomAttributeResponse],
@@ -1243,6 +1252,7 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/orders/custom-attributes/bulk-delete"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkDeleteOrderCustomAttributesRequest | BulkDeleteOrderCustomAttributesRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkDeleteOrderCustomAttributesResponse],
@@ -1281,6 +1291,7 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/orders/custom-attributes/bulk-upsert"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkUpsertOrderCustomAttributesRequest | BulkUpsertOrderCustomAttributesRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkUpsertOrderCustomAttributesResponse],
@@ -1310,6 +1321,7 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/orders/custom-attribute-definitions"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[
                 CreateOrderCustomAttributeDefinitionRequest | CreateOrderCustomAttributeDefinitionRequestDict
             ](body),
@@ -1340,6 +1352,7 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
             http_method="DELETE",
             url_template=self._server.default("/v2/orders/{order_id}/custom-attributes/{custom_attribute_key}"),
             path_params=[param[str]("order_id", order_id), param[str]("custom_attribute_key", custom_attribute_key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteOrderCustomAttributeResponse],
             error_mapper=raw_error_response,
@@ -1364,6 +1377,7 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
             http_method="DELETE",
             url_template=self._server.default("/v2/orders/custom-attribute-definitions/{key}"),
             path_params=[param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteOrderCustomAttributeDefinitionResponse],
             error_mapper=raw_error_response,
@@ -1568,6 +1582,7 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
             http_method="PUT",
             url_template=self._server.default("/v2/orders/custom-attribute-definitions/{key}"),
             path_params=[param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[
                 UpdateOrderCustomAttributeDefinitionRequest | UpdateOrderCustomAttributeDefinitionRequestDict
             ](body),
@@ -1610,6 +1625,7 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
             http_method="POST",
             url_template=self._server.default("/v2/orders/{order_id}/custom-attributes/{custom_attribute_key}"),
             path_params=[param[str]("order_id", order_id), param[str]("custom_attribute_key", custom_attribute_key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpsertOrderCustomAttributeRequest | UpsertOrderCustomAttributeRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpsertOrderCustomAttributeResponse],

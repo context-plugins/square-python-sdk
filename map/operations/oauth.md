@@ -25,6 +25,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.oauth.retrieve_token_status
 
 - **Route**: `POST /oauth2/token/status`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_token_status(*, request_options: RequestOptionsOrDict | None = None)`
 - **Returns (parsed)**: `RetrieveTokenStatusResponse`
 - **Returns (raw)**: `ApiResult[RetrieveTokenStatusResponse, RawError]`

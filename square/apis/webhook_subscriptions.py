@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -460,6 +462,7 @@ class WebhookSubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, 
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/webhooks/subscriptions"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateWebhookSubscriptionRequest | CreateWebhookSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateWebhookSubscriptionResponse],
@@ -482,6 +485,7 @@ class WebhookSubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, 
             http_method="DELETE",
             url_template=self._server.default("/v2/webhooks/subscriptions/{subscription_id}"),
             path_params=[param[str]("subscription_id", subscription_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteWebhookSubscriptionResponse],
             error_mapper=raw_error_response,
@@ -593,6 +597,7 @@ class WebhookSubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, 
             http_method="POST",
             url_template=self._server.default("/v2/webhooks/subscriptions/{subscription_id}/test"),
             path_params=[param[str]("subscription_id", subscription_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[TestWebhookSubscriptionRequest | TestWebhookSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[TestWebhookSubscriptionResponse],
@@ -621,6 +626,7 @@ class WebhookSubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, 
             http_method="PUT",
             url_template=self._server.default("/v2/webhooks/subscriptions/{subscription_id}"),
             path_params=[param[str]("subscription_id", subscription_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateWebhookSubscriptionRequest | UpdateWebhookSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateWebhookSubscriptionResponse],
@@ -649,6 +655,7 @@ class WebhookSubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, 
             http_method="POST",
             url_template=self._server.default("/v2/webhooks/subscriptions/{subscription_id}/signature-key"),
             path_params=[param[str]("subscription_id", subscription_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[
                 UpdateWebhookSubscriptionSignatureKeyRequest | UpdateWebhookSubscriptionSignatureKeyRequestDict
             ](body),
@@ -678,6 +685,7 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/webhooks/subscriptions"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateWebhookSubscriptionRequest | CreateWebhookSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateWebhookSubscriptionResponse],
@@ -700,6 +708,7 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
             http_method="DELETE",
             url_template=self._server.default("/v2/webhooks/subscriptions/{subscription_id}"),
             path_params=[param[str]("subscription_id", subscription_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteWebhookSubscriptionResponse],
             error_mapper=raw_error_response,
@@ -811,6 +820,7 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
             http_method="POST",
             url_template=self._server.default("/v2/webhooks/subscriptions/{subscription_id}/test"),
             path_params=[param[str]("subscription_id", subscription_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[TestWebhookSubscriptionRequest | TestWebhookSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[TestWebhookSubscriptionResponse],
@@ -839,6 +849,7 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
             http_method="PUT",
             url_template=self._server.default("/v2/webhooks/subscriptions/{subscription_id}"),
             path_params=[param[str]("subscription_id", subscription_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateWebhookSubscriptionRequest | UpdateWebhookSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateWebhookSubscriptionResponse],
@@ -867,6 +878,7 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
             http_method="POST",
             url_template=self._server.default("/v2/webhooks/subscriptions/{subscription_id}/signature-key"),
             path_params=[param[str]("subscription_id", subscription_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[
                 UpdateWebhookSubscriptionSignatureKeyRequest | UpdateWebhookSubscriptionSignatureKeyRequestDict
             ](body),

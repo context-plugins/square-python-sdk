@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customer_groups.create_customer_group
 
 - **Route**: `POST /v2/customers/groups`
+- **Auth**: `oauth2`
 - **Signature**: `def create_customer_group(body: CreateCustomerGroupRequest | CreateCustomerGroupRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customer_groups.delete_customer_group
 
 - **Route**: `DELETE /v2/customers/groups/{group_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_customer_group(group_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `group_id`
 - **Params**: `group_id` — path
@@ -39,6 +41,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customer_groups.list_customer_groups
 
 - **Route**: `GET /v2/customers/groups`
+- **Auth**: `oauth2`
 - **Signature**: `def list_customer_groups(*, cursor: str | None = None, limit: int | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `cursor` — query · `limit` — query
 - **Returns (parsed)**: `ListCustomerGroupsResponse`
@@ -52,6 +55,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customer_groups.retrieve_customer_group
 
 - **Route**: `GET /v2/customers/groups/{group_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_customer_group(group_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `group_id`
 - **Params**: `group_id` — path
@@ -66,6 +70,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customer_groups.update_customer_group
 
 - **Route**: `PUT /v2/customers/groups/{group_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_customer_group(group_id: str, body: UpdateCustomerGroupRequest | UpdateCustomerGroupRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `group_id`, `body`
 - **Params**: `group_id` — path · `body` — JSON body

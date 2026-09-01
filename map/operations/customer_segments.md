@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customer_segments.list_customer_segments
 
 - **Route**: `GET /v2/customers/segments`
+- **Auth**: `oauth2`
 - **Signature**: `def list_customer_segments(*, cursor: str | None = None, limit: int | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `cursor` — query · `limit` — query
 - **Returns (parsed)**: `ListCustomerSegmentsResponse`
@@ -22,6 +23,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customer_segments.retrieve_customer_segment
 
 - **Route**: `GET /v2/customers/segments/{segment_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_customer_segment(segment_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `segment_id`
 - **Params**: `segment_id` — path

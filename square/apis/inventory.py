@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -1025,6 +1027,7 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/inventory/changes/batch-create"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchChangeInventoryRequest | BatchChangeInventoryRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BatchChangeInventoryResponse],
@@ -1055,6 +1058,7 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/inventory/changes/batch-retrieve"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchRetrieveInventoryChangesRequest | BatchRetrieveInventoryChangesRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BatchRetrieveInventoryChangesResponse],
@@ -1088,6 +1092,7 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/inventory/counts/batch-retrieve"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchRetrieveInventoryCountsRequest | BatchRetrieveInventoryCountsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BatchRetrieveInventoryCountsResponse],
@@ -1113,6 +1118,7 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/inventory/adjustment-reasons/create"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateInventoryAdjustmentReasonRequest | CreateInventoryAdjustmentReasonRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateInventoryAdjustmentReasonResponse],
@@ -1138,6 +1144,7 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/inventory/adjustment-reasons/delete"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[DeleteInventoryAdjustmentReasonRequest | DeleteInventoryAdjustmentReasonRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteInventoryAdjustmentReasonResponse],
@@ -1164,6 +1171,7 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/inventory/batch-change"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchChangeInventoryRequest | BatchChangeInventoryRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BatchChangeInventoryResponse],
@@ -1191,6 +1199,7 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/inventory/batch-retrieve-changes"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchRetrieveInventoryChangesRequest | BatchRetrieveInventoryChangesRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BatchRetrieveInventoryChangesResponse],
@@ -1217,6 +1226,7 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/inventory/batch-retrieve-counts"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchRetrieveInventoryCountsRequest | BatchRetrieveInventoryCountsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BatchRetrieveInventoryCountsResponse],
@@ -1319,6 +1329,7 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/inventory/adjustment-reasons/restore"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RestoreInventoryAdjustmentReasonRequest | RestoreInventoryAdjustmentReasonRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[RestoreInventoryAdjustmentReasonResponse],
@@ -1366,6 +1377,7 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/inventory/adjustment-reasons/retrieve"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RetrieveInventoryAdjustmentReasonRequest | RetrieveInventoryAdjustmentReasonRequestDict](
                 body
             ),
@@ -1494,6 +1506,7 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/inventory/adjustments/update"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateInventoryAdjustmentRequest | UpdateInventoryAdjustmentRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateInventoryAdjustmentResponse],
@@ -1519,6 +1532,7 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/inventory/adjustment-reasons/update"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateInventoryAdjustmentReasonRequest | UpdateInventoryAdjustmentReasonRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateInventoryAdjustmentReasonResponse],
@@ -1549,6 +1563,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/inventory/changes/batch-create"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchChangeInventoryRequest | BatchChangeInventoryRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BatchChangeInventoryResponse],
@@ -1579,6 +1594,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/inventory/changes/batch-retrieve"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchRetrieveInventoryChangesRequest | BatchRetrieveInventoryChangesRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BatchRetrieveInventoryChangesResponse],
@@ -1612,6 +1628,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/inventory/counts/batch-retrieve"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchRetrieveInventoryCountsRequest | BatchRetrieveInventoryCountsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BatchRetrieveInventoryCountsResponse],
@@ -1637,6 +1654,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/inventory/adjustment-reasons/create"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateInventoryAdjustmentReasonRequest | CreateInventoryAdjustmentReasonRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateInventoryAdjustmentReasonResponse],
@@ -1662,6 +1680,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/inventory/adjustment-reasons/delete"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[DeleteInventoryAdjustmentReasonRequest | DeleteInventoryAdjustmentReasonRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteInventoryAdjustmentReasonResponse],
@@ -1688,6 +1707,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/inventory/batch-change"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchChangeInventoryRequest | BatchChangeInventoryRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BatchChangeInventoryResponse],
@@ -1715,6 +1735,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/inventory/batch-retrieve-changes"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchRetrieveInventoryChangesRequest | BatchRetrieveInventoryChangesRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BatchRetrieveInventoryChangesResponse],
@@ -1741,6 +1762,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/inventory/batch-retrieve-counts"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchRetrieveInventoryCountsRequest | BatchRetrieveInventoryCountsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BatchRetrieveInventoryCountsResponse],
@@ -1843,6 +1865,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/inventory/adjustment-reasons/restore"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RestoreInventoryAdjustmentReasonRequest | RestoreInventoryAdjustmentReasonRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[RestoreInventoryAdjustmentReasonResponse],
@@ -1890,6 +1913,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/inventory/adjustment-reasons/retrieve"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RetrieveInventoryAdjustmentReasonRequest | RetrieveInventoryAdjustmentReasonRequestDict](
                 body
             ),
@@ -2018,6 +2042,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/inventory/adjustments/update"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateInventoryAdjustmentRequest | UpdateInventoryAdjustmentRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateInventoryAdjustmentResponse],
@@ -2043,6 +2068,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/inventory/adjustment-reasons/update"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateInventoryAdjustmentReasonRequest | UpdateInventoryAdjustmentReasonRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateInventoryAdjustmentReasonResponse],

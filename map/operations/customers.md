@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customers.add_group_to_customer
 
 - **Route**: `PUT /v2/customers/{customer_id}/groups/{group_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def add_group_to_customer(customer_id: str, group_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `customer_id`, `group_id`
 - **Params**: `customer_id` — path · `group_id` — path
@@ -23,6 +24,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customers.bulk_create_customers
 
 - **Route**: `POST /v2/customers/bulk-create`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_create_customers(body: BulkCreateCustomersRequest | BulkCreateCustomersRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -39,6 +41,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customers.bulk_delete_customers
 
 - **Route**: `POST /v2/customers/bulk-delete`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_delete_customers(body: BulkDeleteCustomersRequest | BulkDeleteCustomersRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -55,6 +58,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customers.bulk_retrieve_customers
 
 - **Route**: `POST /v2/customers/bulk-retrieve`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_retrieve_customers(body: BulkRetrieveCustomersRequest | BulkRetrieveCustomersRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -71,6 +75,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customers.bulk_update_customers
 
 - **Route**: `POST /v2/customers/bulk-update`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_update_customers(body: BulkUpdateCustomersRequest | BulkUpdateCustomersRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -87,6 +92,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customers.create_customer
 
 - **Route**: `POST /v2/customers`
+- **Auth**: `oauth2`
 - **Signature**: `def create_customer(body: CreateCustomerRequest | CreateCustomerRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -103,6 +109,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customers.create_customer_card
 
 - **Route**: `POST /v2/customers/{customer_id}/cards`
+- **Auth**: `oauth2`
 - **Signature**: `def create_customer_card(customer_id: str, body: CreateCustomerCardRequest | CreateCustomerCardRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `customer_id`, `body`
 - **Params**: `customer_id` — path · `body` — JSON body
@@ -119,6 +126,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customers.delete_customer
 
 - **Route**: `DELETE /v2/customers/{customer_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_customer(customer_id: str, *, version: int | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `customer_id`
 - **Params**: `customer_id` — path · `version` — query
@@ -133,6 +141,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customers.delete_customer_card
 
 - **Route**: `DELETE /v2/customers/{customer_id}/cards/{card_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_customer_card(customer_id: str, card_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `customer_id`, `card_id`
 - **Params**: `customer_id` — path · `card_id` — path
@@ -147,6 +156,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customers.list_customers
 
 - **Route**: `GET /v2/customers`
+- **Auth**: `oauth2`
 - **Signature**: `def list_customers(*, cursor: str | None = None, limit: int | None = None, sort_field: CustomerSortFieldOrStr | None = None, sort_order: SortOrderOrStr | None = None, count: bool | None = False, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `cursor` — query · `limit` — query · `sort_field` — query · `sort_order` — query · `count` — query
 - **Returns (parsed)**: `ListCustomersResponse`
@@ -162,6 +172,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customers.remove_group_from_customer
 
 - **Route**: `DELETE /v2/customers/{customer_id}/groups/{group_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def remove_group_from_customer(customer_id: str, group_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `customer_id`, `group_id`
 - **Params**: `customer_id` — path · `group_id` — path
@@ -176,6 +187,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customers.retrieve_customer
 
 - **Route**: `GET /v2/customers/{customer_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_customer(customer_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `customer_id`
 - **Params**: `customer_id` — path
@@ -190,6 +202,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customers.search_customers
 
 - **Route**: `POST /v2/customers/search`
+- **Auth**: `oauth2`
 - **Signature**: `def search_customers(body: SearchCustomersRequest | SearchCustomersRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -206,6 +219,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customers.update_customer
 
 - **Route**: `PUT /v2/customers/{customer_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_customer(customer_id: str, body: UpdateCustomerRequest | UpdateCustomerRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `customer_id`, `body`
 - **Params**: `customer_id` — path · `body` — JSON body

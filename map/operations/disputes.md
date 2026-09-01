@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.disputes.accept_dispute
 
 - **Route**: `POST /v2/disputes/{dispute_id}/accept`
+- **Auth**: `oauth2`
 - **Signature**: `def accept_dispute(dispute_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `dispute_id`
 - **Params**: `dispute_id` — path
@@ -23,6 +24,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.disputes.create_dispute_evidence_file
 
 - **Route**: `POST /v2/disputes/{dispute_id}/evidence-files`
+- **Auth**: `oauth2`
 - **Signature**: `def create_dispute_evidence_file(dispute_id: str, *, request: CreateDisputeEvidenceFileRequest | CreateDisputeEvidenceFileRequestDict | None = None, image_file: bytes | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `dispute_id`
 - **Params**: `dispute_id` — path · `request` — multipart field · `image_file` — multipart file
@@ -39,6 +41,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.disputes.create_dispute_evidence_text
 
 - **Route**: `POST /v2/disputes/{dispute_id}/evidence-text`
+- **Auth**: `oauth2`
 - **Signature**: `def create_dispute_evidence_text(dispute_id: str, body: CreateDisputeEvidenceTextRequest | CreateDisputeEvidenceTextRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `dispute_id`, `body`
 - **Params**: `dispute_id` — path · `body` — JSON body
@@ -55,6 +58,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.disputes.delete_dispute_evidence
 
 - **Route**: `DELETE /v2/disputes/{dispute_id}/evidence/{evidence_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_dispute_evidence(dispute_id: str, evidence_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `dispute_id`, `evidence_id`
 - **Params**: `dispute_id` — path · `evidence_id` — path
@@ -69,6 +73,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.disputes.list_dispute_evidence
 
 - **Route**: `GET /v2/disputes/{dispute_id}/evidence`
+- **Auth**: `oauth2`
 - **Signature**: `def list_dispute_evidence(dispute_id: str, *, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `dispute_id`
 - **Params**: `dispute_id` — path · `cursor` — query
@@ -83,6 +88,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.disputes.list_disputes
 
 - **Route**: `GET /v2/disputes`
+- **Auth**: `oauth2`
 - **Signature**: `def list_disputes(*, cursor: str | None = None, states: DisputeStateOrStr | None = None, location_id: str | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `cursor` — query · `states` — query · `location_id` — query
 - **Returns (parsed)**: `ListDisputesResponse`
@@ -97,6 +103,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.disputes.retrieve_dispute
 
 - **Route**: `GET /v2/disputes/{dispute_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_dispute(dispute_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `dispute_id`
 - **Params**: `dispute_id` — path
@@ -111,6 +118,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.disputes.retrieve_dispute_evidence
 
 - **Route**: `GET /v2/disputes/{dispute_id}/evidence/{evidence_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_dispute_evidence(dispute_id: str, evidence_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `dispute_id`, `evidence_id`
 - **Params**: `dispute_id` — path · `evidence_id` — path
@@ -125,6 +133,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.disputes.submit_evidence
 
 - **Route**: `POST /v2/disputes/{dispute_id}/submit-evidence`
+- **Auth**: `oauth2`
 - **Signature**: `def submit_evidence(dispute_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `dispute_id`
 - **Params**: `dispute_id` — path

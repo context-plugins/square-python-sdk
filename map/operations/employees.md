@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.employees.list_employees
 
 - **Route**: `GET /v2/employees`
+- **Auth**: `oauth2`
 - **Signature**: `def list_employees(*, location_id: str | None = None, status: EmployeeStatusOrStr | None = None, limit: int | None = None, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `location_id` — query · `status` — query · `limit` — query · `cursor` — query
 - **Returns (parsed)**: `ListEmployeesResponse`
@@ -23,6 +24,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.employees.retrieve_employee
 
 - **Route**: `GET /v2/employees/{id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_employee(id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`
 - **Params**: `id` — path

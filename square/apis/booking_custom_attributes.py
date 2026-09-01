@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -801,6 +803,7 @@ class BookingCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serve
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/bookings/custom-attributes/bulk-delete"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkDeleteBookingCustomAttributesRequest | BulkDeleteBookingCustomAttributesRequestDict](
                 body
             ),
@@ -835,6 +838,7 @@ class BookingCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serve
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/bookings/custom-attributes/bulk-upsert"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkUpsertBookingCustomAttributesRequest | BulkUpsertBookingCustomAttributesRequestDict](
                 body
             ),
@@ -869,6 +873,7 @@ class BookingCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serve
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/bookings/custom-attribute-definitions"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[
                 CreateBookingCustomAttributeDefinitionRequest | CreateBookingCustomAttributeDefinitionRequestDict
             ](body),
@@ -903,6 +908,7 @@ class BookingCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serve
             http_method="DELETE",
             url_template=self._server.default("/v2/bookings/{booking_id}/custom-attributes/{key}"),
             path_params=[param[str]("booking_id", booking_id), param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteBookingCustomAttributeResponse],
             error_mapper=raw_error_response,
@@ -931,6 +937,7 @@ class BookingCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serve
             http_method="DELETE",
             url_template=self._server.default("/v2/bookings/custom-attribute-definitions/{key}"),
             path_params=[param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteBookingCustomAttributeDefinitionResponse],
             error_mapper=raw_error_response,
@@ -1123,6 +1130,7 @@ class BookingCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serve
             http_method="PUT",
             url_template=self._server.default("/v2/bookings/custom-attribute-definitions/{key}"),
             path_params=[param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[
                 UpdateBookingCustomAttributeDefinitionRequest | UpdateBookingCustomAttributeDefinitionRequestDict
             ](body),
@@ -1164,6 +1172,7 @@ class BookingCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serve
             http_method="PUT",
             url_template=self._server.default("/v2/bookings/{booking_id}/custom-attributes/{key}"),
             path_params=[param[str]("booking_id", booking_id), param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpsertBookingCustomAttributeRequest | UpsertBookingCustomAttributeRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpsertBookingCustomAttributeResponse],
@@ -1198,6 +1207,7 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/bookings/custom-attributes/bulk-delete"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkDeleteBookingCustomAttributesRequest | BulkDeleteBookingCustomAttributesRequestDict](
                 body
             ),
@@ -1232,6 +1242,7 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/bookings/custom-attributes/bulk-upsert"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkUpsertBookingCustomAttributesRequest | BulkUpsertBookingCustomAttributesRequestDict](
                 body
             ),
@@ -1266,6 +1277,7 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/bookings/custom-attribute-definitions"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[
                 CreateBookingCustomAttributeDefinitionRequest | CreateBookingCustomAttributeDefinitionRequestDict
             ](body),
@@ -1300,6 +1312,7 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
             http_method="DELETE",
             url_template=self._server.default("/v2/bookings/{booking_id}/custom-attributes/{key}"),
             path_params=[param[str]("booking_id", booking_id), param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteBookingCustomAttributeResponse],
             error_mapper=raw_error_response,
@@ -1328,6 +1341,7 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
             http_method="DELETE",
             url_template=self._server.default("/v2/bookings/custom-attribute-definitions/{key}"),
             path_params=[param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteBookingCustomAttributeDefinitionResponse],
             error_mapper=raw_error_response,
@@ -1520,6 +1534,7 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
             http_method="PUT",
             url_template=self._server.default("/v2/bookings/custom-attribute-definitions/{key}"),
             path_params=[param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[
                 UpdateBookingCustomAttributeDefinitionRequest | UpdateBookingCustomAttributeDefinitionRequestDict
             ](body),
@@ -1561,6 +1576,7 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
             http_method="PUT",
             url_template=self._server.default("/v2/bookings/{booking_id}/custom-attributes/{key}"),
             path_params=[param[str]("booking_id", booking_id), param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpsertBookingCustomAttributeRequest | UpsertBookingCustomAttributeRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpsertBookingCustomAttributeResponse],

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -479,6 +481,7 @@ class DisputesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="POST",
             url_template=self._server.default("/v2/disputes/{dispute_id}/accept"),
             path_params=[param[str]("dispute_id", dispute_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[AcceptDisputeResponse],
             error_mapper=raw_error_response,
@@ -508,6 +511,7 @@ class DisputesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="POST",
             url_template=self._server.default("/v2/disputes/{dispute_id}/evidence-files"),
             path_params=[param[str]("dispute_id", dispute_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=multipart_body(
                 [
                     param[CreateDisputeEvidenceFileRequest | CreateDisputeEvidenceFileRequestDict | None](
@@ -543,6 +547,7 @@ class DisputesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="POST",
             url_template=self._server.default("/v2/disputes/{dispute_id}/evidence-text"),
             path_params=[param[str]("dispute_id", dispute_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateDisputeEvidenceTextRequest | CreateDisputeEvidenceTextRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateDisputeEvidenceTextResponse],
@@ -566,6 +571,7 @@ class DisputesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="DELETE",
             url_template=self._server.default("/v2/disputes/{dispute_id}/evidence/{evidence_id}"),
             path_params=[param[str]("dispute_id", dispute_id), param[str]("evidence_id", evidence_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteDisputeEvidenceResponse],
             error_mapper=raw_error_response,
@@ -698,6 +704,7 @@ class DisputesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="POST",
             url_template=self._server.default("/v2/disputes/{dispute_id}/submit-evidence"),
             path_params=[param[str]("dispute_id", dispute_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SubmitEvidenceResponse],
             error_mapper=raw_error_response,
@@ -725,6 +732,7 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="POST",
             url_template=self._server.default("/v2/disputes/{dispute_id}/accept"),
             path_params=[param[str]("dispute_id", dispute_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[AcceptDisputeResponse],
             error_mapper=raw_error_response,
@@ -754,6 +762,7 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="POST",
             url_template=self._server.default("/v2/disputes/{dispute_id}/evidence-files"),
             path_params=[param[str]("dispute_id", dispute_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=multipart_body(
                 [
                     param[CreateDisputeEvidenceFileRequest | CreateDisputeEvidenceFileRequestDict | None](
@@ -789,6 +798,7 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="POST",
             url_template=self._server.default("/v2/disputes/{dispute_id}/evidence-text"),
             path_params=[param[str]("dispute_id", dispute_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateDisputeEvidenceTextRequest | CreateDisputeEvidenceTextRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateDisputeEvidenceTextResponse],
@@ -812,6 +822,7 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="DELETE",
             url_template=self._server.default("/v2/disputes/{dispute_id}/evidence/{evidence_id}"),
             path_params=[param[str]("dispute_id", dispute_id), param[str]("evidence_id", evidence_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteDisputeEvidenceResponse],
             error_mapper=raw_error_response,
@@ -944,6 +955,7 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="POST",
             url_template=self._server.default("/v2/disputes/{dispute_id}/submit-evidence"),
             path_params=[param[str]("dispute_id", dispute_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SubmitEvidenceResponse],
             error_mapper=raw_error_response,

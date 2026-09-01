@@ -1,10 +1,11 @@
 from __future__ import annotations
 
+from typing import Literal
+
 from typing_extensions import NotRequired, TypedDict
 
 from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
 from .enums.device_code_status import DeviceCodeStatusOrStr
-from .enums.product_type import ProductTypeOrStr
 
 
 class DeviceCode(SdkBaseModel):
@@ -20,7 +21,7 @@ class DeviceCode(SdkBaseModel):
     device_id: Optional[str] = UNSET
     """The unique id of the device that used this code. Populated when the device is paired up."""
 
-    product_type: ProductTypeOrStr
+    product_type: Literal["TERMINAL_API"] = "TERMINAL_API"
     location_id: OptionalNullable[str] = UNSET
     """The location assigned to this code."""
 
@@ -45,7 +46,7 @@ class DeviceCodeDict(TypedDict):
     name: NotRequired[str | None]
     code: NotRequired[str]
     device_id: NotRequired[str]
-    product_type: ProductTypeOrStr
+    product_type: NotRequired[Literal["TERMINAL_API"]]
     location_id: NotRequired[str | None]
     status: NotRequired[DeviceCodeStatusOrStr]
     pair_by: NotRequired[str]

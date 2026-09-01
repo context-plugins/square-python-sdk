@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.catalog.batch_delete_catalog_objects
 
 - **Route**: `POST /v2/catalog/batch-delete`
+- **Auth**: `oauth2`
 - **Signature**: `def batch_delete_catalog_objects(body: BatchDeleteCatalogObjectsRequest | BatchDeleteCatalogObjectsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.catalog.batch_retrieve_catalog_objects
 
 - **Route**: `POST /v2/catalog/batch-retrieve`
+- **Auth**: `oauth2`
 - **Signature**: `def batch_retrieve_catalog_objects(body: BatchRetrieveCatalogObjectsRequest | BatchRetrieveCatalogObjectsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -41,6 +43,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.catalog.batch_upsert_catalog_objects
 
 - **Route**: `POST /v2/catalog/batch-upsert`
+- **Auth**: `oauth2`
 - **Signature**: `def batch_upsert_catalog_objects(body: BatchUpsertCatalogObjectsRequest | BatchUpsertCatalogObjectsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -57,6 +60,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.catalog.catalog_info
 
 - **Route**: `GET /v2/catalog/info`
+- **Auth**: `oauth2`
 - **Signature**: `def catalog_info(*, request_options: RequestOptionsOrDict | None = None)`
 - **Returns (parsed)**: `CatalogInfoResponse`
 - **Returns (raw)**: `ApiResult[CatalogInfoResponse, RawError]`
@@ -69,6 +73,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.catalog.create_catalog_image
 
 - **Route**: `POST /v2/catalog/images`
+- **Auth**: `oauth2`
 - **Signature**: `def create_catalog_image(*, request: CreateCatalogImageRequest | CreateCatalogImageRequestDict | None = None, image_file: bytes | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `request` — multipart field · `image_file` — multipart file
 - **Returns (parsed)**: `CreateCatalogImageResponse`
@@ -84,6 +89,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.catalog.delete_catalog_object
 
 - **Route**: `DELETE /v2/catalog/object/{object_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_catalog_object(object_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `object_id`
 - **Params**: `object_id` — path
@@ -98,6 +104,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.catalog.list_catalog
 
 - **Route**: `GET /v2/catalog/list`
+- **Auth**: `oauth2`
 - **Signature**: `def list_catalog(*, cursor: str | None = None, types: str | None = None, catalog_version: int | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `cursor` — query · `types` — query · `catalog_version` — query
 - **Returns (parsed)**: `ListCatalogResponse`
@@ -111,6 +118,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.catalog.retrieve_catalog_object
 
 - **Route**: `GET /v2/catalog/object/{object_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_catalog_object(object_id: str, *, include_related_objects: bool | None = False, catalog_version: int | None = None, include_category_path_to_root: bool | None = False, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `object_id`
 - **Params**: `object_id` — path · `include_related_objects` — query · `catalog_version` — query · `include_category_path_to_root` — query
@@ -125,6 +133,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.catalog.search_catalog_items
 
 - **Route**: `POST /v2/catalog/search-catalog-items`
+- **Auth**: `oauth2`
 - **Signature**: `def search_catalog_items(body: SearchCatalogItemsRequest | SearchCatalogItemsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -141,6 +150,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.catalog.search_catalog_objects
 
 - **Route**: `POST /v2/catalog/search`
+- **Auth**: `oauth2`
 - **Signature**: `def search_catalog_objects(body: SearchCatalogObjectsRequest | SearchCatalogObjectsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -157,6 +167,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.catalog.update_catalog_image
 
 - **Route**: `PUT /v2/catalog/images/{image_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_catalog_image(image_id: str, *, request: UpdateCatalogImageRequest | UpdateCatalogImageRequestDict | None = None, image_file: bytes | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `image_id`
 - **Params**: `image_id` — path · `request` — multipart field · `image_file` — multipart file
@@ -173,6 +184,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.catalog.update_item_modifier_lists
 
 - **Route**: `POST /v2/catalog/update-item-modifier-lists`
+- **Auth**: `oauth2`
 - **Signature**: `def update_item_modifier_lists(body: UpdateItemModifierListsRequest | UpdateItemModifierListsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -189,6 +201,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.catalog.update_item_taxes
 
 - **Route**: `POST /v2/catalog/update-item-taxes`
+- **Auth**: `oauth2`
 - **Signature**: `def update_item_taxes(body: UpdateItemTaxesRequest | UpdateItemTaxesRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -205,6 +218,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.catalog.upsert_catalog_object
 
 - **Route**: `POST /v2/catalog/object`
+- **Auth**: `oauth2`
 - **Signature**: `def upsert_catalog_object(body: UpsertCatalogObjectRequest | UpsertCatalogObjectRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body

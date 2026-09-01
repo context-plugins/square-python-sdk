@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.team.bulk_create_team_members
 
 - **Route**: `POST /v2/team-members/bulk-create`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_create_team_members(body: BulkCreateTeamMembersRequest | BulkCreateTeamMembersRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.team.bulk_update_team_members
 
 - **Route**: `POST /v2/team-members/bulk-update`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_update_team_members(body: BulkUpdateTeamMembersRequest | BulkUpdateTeamMembersRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -41,6 +43,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.team.create_job
 
 - **Route**: `POST /v2/team-members/jobs`
+- **Auth**: `oauth2`
 - **Signature**: `def create_job(body: CreateJobRequest | CreateJobRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -57,6 +60,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.team.create_team_member
 
 - **Route**: `POST /v2/team-members`
+- **Auth**: `oauth2`
 - **Signature**: `def create_team_member(body: CreateTeamMemberRequest | CreateTeamMemberRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -73,6 +77,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.team.list_jobs
 
 - **Route**: `GET /v2/team-members/jobs`
+- **Auth**: `oauth2`
 - **Signature**: `def list_jobs(*, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `cursor` — query
 - **Returns (parsed)**: `ListJobsResponse`
@@ -86,6 +91,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.team.retrieve_job
 
 - **Route**: `GET /v2/team-members/jobs/{job_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_job(job_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `job_id`
 - **Params**: `job_id` — path
@@ -100,6 +106,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.team.retrieve_team_member
 
 - **Route**: `GET /v2/team-members/{team_member_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_team_member(team_member_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `team_member_id`
 - **Params**: `team_member_id` — path
@@ -114,6 +121,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.team.retrieve_wage_setting
 
 - **Route**: `GET /v2/team-members/{team_member_id}/wage-setting`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_wage_setting(team_member_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `team_member_id`
 - **Params**: `team_member_id` — path
@@ -128,6 +136,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.team.search_team_members
 
 - **Route**: `POST /v2/team-members/search`
+- **Auth**: `oauth2`
 - **Signature**: `def search_team_members(body: SearchTeamMembersRequest | SearchTeamMembersRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -144,6 +153,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.team.update_job
 
 - **Route**: `PUT /v2/team-members/jobs/{job_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_job(job_id: str, body: UpdateJobRequest | UpdateJobRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `job_id`, `body`
 - **Params**: `job_id` — path · `body` — JSON body
@@ -160,6 +170,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.team.update_team_member
 
 - **Route**: `PUT /v2/team-members/{team_member_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_team_member(team_member_id: str, body: UpdateTeamMemberRequest | UpdateTeamMemberRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `team_member_id`, `body`
 - **Params**: `team_member_id` — path · `body` — JSON body
@@ -176,6 +187,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.team.update_wage_setting
 
 - **Route**: `PUT /v2/team-members/{team_member_id}/wage-setting`
+- **Auth**: `oauth2`
 - **Signature**: `def update_wage_setting(team_member_id: str, body: UpdateWageSettingRequest | UpdateWageSettingRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `team_member_id`, `body`
 - **Params**: `team_member_id` — path · `body` — JSON body

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -217,6 +219,7 @@ class SnippetsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="DELETE",
             url_template=self._server.default("/v2/sites/{site_id}/snippet"),
             path_params=[param[str]("site_id", site_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteSnippetResponse],
             error_mapper=raw_error_response,
@@ -282,6 +285,7 @@ class SnippetsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="POST",
             url_template=self._server.default("/v2/sites/{site_id}/snippet"),
             path_params=[param[str]("site_id", site_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpsertSnippetRequest | UpsertSnippetRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpsertSnippetResponse],
@@ -313,6 +317,7 @@ class AsyncSnippetsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="DELETE",
             url_template=self._server.default("/v2/sites/{site_id}/snippet"),
             path_params=[param[str]("site_id", site_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteSnippetResponse],
             error_mapper=raw_error_response,
@@ -378,6 +383,7 @@ class AsyncSnippetsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="POST",
             url_template=self._server.default("/v2/sites/{site_id}/snippet"),
             path_params=[param[str]("site_id", site_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpsertSnippetRequest | UpsertSnippetRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpsertSnippetResponse],

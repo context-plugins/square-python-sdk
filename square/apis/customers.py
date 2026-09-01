@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -790,6 +792,7 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             http_method="PUT",
             url_template=self._server.default("/v2/customers/{customer_id}/groups/{group_id}"),
             path_params=[param[str]("customer_id", customer_id), param[str]("group_id", group_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[AddGroupToCustomerResponse],
             error_mapper=raw_error_response,
@@ -824,6 +827,7 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/customers/bulk-create"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkCreateCustomersRequest | BulkCreateCustomersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkCreateCustomersResponse],
@@ -851,6 +855,7 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/customers/bulk-delete"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkDeleteCustomersRequest | BulkDeleteCustomersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkDeleteCustomersResponse],
@@ -878,6 +883,7 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/customers/bulk-retrieve"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkRetrieveCustomersRequest | BulkRetrieveCustomersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkRetrieveCustomersResponse],
@@ -905,6 +911,7 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/customers/bulk-update"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkUpdateCustomersRequest | BulkUpdateCustomersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkUpdateCustomersResponse],
@@ -938,6 +945,7 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/customers"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateCustomerRequest | CreateCustomerRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateCustomerResponse],
@@ -969,6 +977,7 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             http_method="POST",
             url_template=self._server.default("/v2/customers/{customer_id}/cards"),
             path_params=[param[str]("customer_id", customer_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateCustomerCardRequest | CreateCustomerCardRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateCustomerCardResponse],
@@ -1000,6 +1009,7 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             url_template=self._server.default("/v2/customers/{customer_id}"),
             path_params=[param[str]("customer_id", customer_id)],
             query_params=[param[int | None]("version", version)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteCustomerResponse],
             error_mapper=raw_error_response,
@@ -1022,6 +1032,7 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             http_method="DELETE",
             url_template=self._server.default("/v2/customers/{customer_id}/cards/{card_id}"),
             path_params=[param[str]("customer_id", customer_id), param[str]("card_id", card_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteCustomerCardResponse],
             error_mapper=raw_error_response,
@@ -1096,6 +1107,7 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             http_method="DELETE",
             url_template=self._server.default("/v2/customers/{customer_id}/groups/{group_id}"),
             path_params=[param[str]("customer_id", customer_id), param[str]("group_id", group_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[RemoveGroupFromCustomerResponse],
             error_mapper=raw_error_response,
@@ -1148,6 +1160,7 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/customers/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchCustomersRequest | SearchCustomersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchCustomersResponse],
@@ -1180,6 +1193,7 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             http_method="PUT",
             url_template=self._server.default("/v2/customers/{customer_id}"),
             path_params=[param[str]("customer_id", customer_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateCustomerRequest | UpdateCustomerRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateCustomerResponse],
@@ -1208,6 +1222,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             http_method="PUT",
             url_template=self._server.default("/v2/customers/{customer_id}/groups/{group_id}"),
             path_params=[param[str]("customer_id", customer_id), param[str]("group_id", group_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[AddGroupToCustomerResponse],
             error_mapper=raw_error_response,
@@ -1242,6 +1257,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/customers/bulk-create"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkCreateCustomersRequest | BulkCreateCustomersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkCreateCustomersResponse],
@@ -1269,6 +1285,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/customers/bulk-delete"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkDeleteCustomersRequest | BulkDeleteCustomersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkDeleteCustomersResponse],
@@ -1296,6 +1313,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/customers/bulk-retrieve"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkRetrieveCustomersRequest | BulkRetrieveCustomersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkRetrieveCustomersResponse],
@@ -1323,6 +1341,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/customers/bulk-update"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkUpdateCustomersRequest | BulkUpdateCustomersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkUpdateCustomersResponse],
@@ -1356,6 +1375,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/customers"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateCustomerRequest | CreateCustomerRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateCustomerResponse],
@@ -1387,6 +1407,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             http_method="POST",
             url_template=self._server.default("/v2/customers/{customer_id}/cards"),
             path_params=[param[str]("customer_id", customer_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateCustomerCardRequest | CreateCustomerCardRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateCustomerCardResponse],
@@ -1418,6 +1439,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             url_template=self._server.default("/v2/customers/{customer_id}"),
             path_params=[param[str]("customer_id", customer_id)],
             query_params=[param[int | None]("version", version)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteCustomerResponse],
             error_mapper=raw_error_response,
@@ -1440,6 +1462,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             http_method="DELETE",
             url_template=self._server.default("/v2/customers/{customer_id}/cards/{card_id}"),
             path_params=[param[str]("customer_id", customer_id), param[str]("card_id", card_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteCustomerCardResponse],
             error_mapper=raw_error_response,
@@ -1514,6 +1537,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             http_method="DELETE",
             url_template=self._server.default("/v2/customers/{customer_id}/groups/{group_id}"),
             path_params=[param[str]("customer_id", customer_id), param[str]("group_id", group_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[RemoveGroupFromCustomerResponse],
             error_mapper=raw_error_response,
@@ -1566,6 +1590,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/customers/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchCustomersRequest | SearchCustomersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchCustomersResponse],
@@ -1598,6 +1623,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             http_method="PUT",
             url_template=self._server.default("/v2/customers/{customer_id}"),
             path_params=[param[str]("customer_id", customer_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateCustomerRequest | UpdateCustomerRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateCustomerResponse],

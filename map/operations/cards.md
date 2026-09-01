@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.cards.create_card
 
 - **Route**: `POST /v2/cards`
+- **Auth**: `oauth2`
 - **Signature**: `def create_card(body: CreateCardRequest | CreateCardRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.cards.disable_card
 
 - **Route**: `POST /v2/cards/{card_id}/disable`
+- **Auth**: `oauth2`
 - **Signature**: `def disable_card(card_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `card_id`
 - **Params**: `card_id` — path
@@ -39,6 +41,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.cards.list_cards
 
 - **Route**: `GET /v2/cards`
+- **Auth**: `oauth2`
 - **Signature**: `def list_cards(*, cursor: str | None = None, customer_id: str | None = None, include_disabled: bool | None = False, reference_id: str | None = None, sort_order: SortOrderOrStr | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `cursor` — query · `customer_id` — query · `include_disabled` — query · `reference_id` — query · `sort_order` — query
 - **Returns (parsed)**: `ListCardsResponse`
@@ -53,6 +56,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.cards.retrieve_card
 
 - **Route**: `GET /v2/cards/{card_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_card(card_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `card_id`
 - **Params**: `card_id` — path

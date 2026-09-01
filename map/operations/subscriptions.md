@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.subscriptions.bulk_swap_plan
 
 - **Route**: `POST /v2/subscriptions/bulk-swap-plan`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_swap_plan(body: BulkSwapPlanRequest | BulkSwapPlanRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.subscriptions.cancel_subscription
 
 - **Route**: `POST /v2/subscriptions/{subscription_id}/cancel`
+- **Auth**: `oauth2`
 - **Signature**: `def cancel_subscription(subscription_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `subscription_id`
 - **Params**: `subscription_id` — path
@@ -39,6 +41,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.subscriptions.change_billing_anchor_date
 
 - **Route**: `POST /v2/subscriptions/{subscription_id}/billing-anchor`
+- **Auth**: `oauth2`
 - **Signature**: `def change_billing_anchor_date(subscription_id: str, body: ChangeBillingAnchorDateRequest | ChangeBillingAnchorDateRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `subscription_id`, `body`
 - **Params**: `subscription_id` — path · `body` — JSON body
@@ -55,6 +58,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.subscriptions.create_subscription
 
 - **Route**: `POST /v2/subscriptions`
+- **Auth**: `oauth2`
 - **Signature**: `def create_subscription(body: CreateSubscriptionRequest | CreateSubscriptionRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -71,6 +75,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.subscriptions.delete_subscription_action
 
 - **Route**: `DELETE /v2/subscriptions/{subscription_id}/actions/{action_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_subscription_action(subscription_id: str, action_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `subscription_id`, `action_id`
 - **Params**: `subscription_id` — path · `action_id` — path
@@ -85,6 +90,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.subscriptions.list_subscription_events
 
 - **Route**: `GET /v2/subscriptions/{subscription_id}/events`
+- **Auth**: `oauth2`
 - **Signature**: `def list_subscription_events(subscription_id: str, *, cursor: str | None = None, limit: int | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `subscription_id`
 - **Params**: `subscription_id` — path · `cursor` — query · `limit` — query
@@ -99,6 +105,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.subscriptions.pause_subscription
 
 - **Route**: `POST /v2/subscriptions/{subscription_id}/pause`
+- **Auth**: `oauth2`
 - **Signature**: `def pause_subscription(subscription_id: str, body: PauseSubscriptionRequest | PauseSubscriptionRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `subscription_id`, `body`
 - **Params**: `subscription_id` — path · `body` — JSON body
@@ -115,6 +122,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.subscriptions.resume_subscription
 
 - **Route**: `POST /v2/subscriptions/{subscription_id}/resume`
+- **Auth**: `oauth2`
 - **Signature**: `def resume_subscription(subscription_id: str, body: ResumeSubscriptionRequest | ResumeSubscriptionRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `subscription_id`, `body`
 - **Params**: `subscription_id` — path · `body` — JSON body
@@ -131,6 +139,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.subscriptions.retrieve_subscription
 
 - **Route**: `GET /v2/subscriptions/{subscription_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_subscription(subscription_id: str, *, include: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `subscription_id`
 - **Params**: `subscription_id` — path · `include` — query
@@ -145,6 +154,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.subscriptions.search_subscriptions
 
 - **Route**: `POST /v2/subscriptions/search`
+- **Auth**: `oauth2`
 - **Signature**: `def search_subscriptions(body: SearchSubscriptionsRequest | SearchSubscriptionsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -161,6 +171,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.subscriptions.swap_plan
 
 - **Route**: `POST /v2/subscriptions/{subscription_id}/swap-plan`
+- **Auth**: `oauth2`
 - **Signature**: `def swap_plan(subscription_id: str, body: SwapPlanRequest | SwapPlanRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `subscription_id`, `body`
 - **Params**: `subscription_id` — path · `body` — JSON body
@@ -177,6 +188,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.subscriptions.update_subscription
 
 - **Route**: `PUT /v2/subscriptions/{subscription_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_subscription(subscription_id: str, body: UpdateSubscriptionRequest | UpdateSubscriptionRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `subscription_id`, `body`
 - **Params**: `subscription_id` — path · `body` — JSON body

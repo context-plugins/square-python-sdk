@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.snippets.delete_snippet
 
 - **Route**: `DELETE /v2/sites/{site_id}/snippet`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_snippet(site_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `site_id`
 - **Params**: `site_id` — path
@@ -23,6 +24,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.snippets.retrieve_snippet
 
 - **Route**: `GET /v2/sites/{site_id}/snippet`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_snippet(site_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `site_id`
 - **Params**: `site_id` — path
@@ -37,6 +39,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.snippets.upsert_snippet
 
 - **Route**: `POST /v2/sites/{site_id}/snippet`
+- **Auth**: `oauth2`
 - **Signature**: `def upsert_snippet(site_id: str, body: UpsertSnippetRequest | UpsertSnippetRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `site_id`, `body`
 - **Params**: `site_id` — path · `body` — JSON body

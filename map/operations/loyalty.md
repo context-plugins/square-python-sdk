@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.loyalty.accumulate_loyalty_points
 
 - **Route**: `POST /v2/loyalty/accounts/{account_id}/accumulate`
+- **Auth**: `oauth2`
 - **Signature**: `def accumulate_loyalty_points(account_id: str, body: AccumulateLoyaltyPointsRequest | AccumulateLoyaltyPointsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `account_id`, `body`
 - **Params**: `account_id` — path · `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.loyalty.adjust_loyalty_points
 
 - **Route**: `POST /v2/loyalty/accounts/{account_id}/adjust`
+- **Auth**: `oauth2`
 - **Signature**: `def adjust_loyalty_points(account_id: str, body: AdjustLoyaltyPointsRequest | AdjustLoyaltyPointsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `account_id`, `body`
 - **Params**: `account_id` — path · `body` — JSON body
@@ -41,6 +43,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.loyalty.calculate_loyalty_points
 
 - **Route**: `POST /v2/loyalty/programs/{program_id}/calculate`
+- **Auth**: `oauth2`
 - **Signature**: `def calculate_loyalty_points(program_id: str, body: CalculateLoyaltyPointsRequest | CalculateLoyaltyPointsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `program_id`, `body`
 - **Params**: `program_id` — path · `body` — JSON body
@@ -57,6 +60,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.loyalty.cancel_loyalty_promotion
 
 - **Route**: `POST /v2/loyalty/programs/{program_id}/promotions/{promotion_id}/cancel`
+- **Auth**: `oauth2`
 - **Signature**: `def cancel_loyalty_promotion(promotion_id: str, program_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `promotion_id`, `program_id`
 - **Params**: `promotion_id` — path · `program_id` — path
@@ -71,6 +75,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.loyalty.create_loyalty_account
 
 - **Route**: `POST /v2/loyalty/accounts`
+- **Auth**: `oauth2`
 - **Signature**: `def create_loyalty_account(body: CreateLoyaltyAccountRequest | CreateLoyaltyAccountRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -87,6 +92,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.loyalty.create_loyalty_promotion
 
 - **Route**: `POST /v2/loyalty/programs/{program_id}/promotions`
+- **Auth**: `oauth2`
 - **Signature**: `def create_loyalty_promotion(program_id: str, body: CreateLoyaltyPromotionRequest | CreateLoyaltyPromotionRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `program_id`, `body`
 - **Params**: `program_id` — path · `body` — JSON body
@@ -103,6 +109,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.loyalty.create_loyalty_reward
 
 - **Route**: `POST /v2/loyalty/rewards`
+- **Auth**: `oauth2`
 - **Signature**: `def create_loyalty_reward(body: CreateLoyaltyRewardRequest | CreateLoyaltyRewardRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -119,6 +126,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.loyalty.delete_loyalty_reward
 
 - **Route**: `DELETE /v2/loyalty/rewards/{reward_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_loyalty_reward(reward_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `reward_id`
 - **Params**: `reward_id` — path
@@ -133,6 +141,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.loyalty.list_loyalty_programs
 
 - **Route**: `GET /v2/loyalty/programs`
+- **Auth**: `oauth2`
 - **Signature**: `def list_loyalty_programs(*, request_options: RequestOptionsOrDict | None = None)`
 - **Returns (parsed)**: `ListLoyaltyProgramsResponse`
 - **Returns (raw)**: `ApiResult[ListLoyaltyProgramsResponse, RawError]`
@@ -145,6 +154,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.loyalty.list_loyalty_promotions
 
 - **Route**: `GET /v2/loyalty/programs/{program_id}/promotions`
+- **Auth**: `oauth2`
 - **Signature**: `def list_loyalty_promotions(program_id: str, *, status: LoyaltyPromotionStatusOrStr | None = None, cursor: str | None = None, limit: int | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `program_id`
 - **Params**: `program_id` — path · `status` — query · `cursor` — query · `limit` — query
@@ -160,6 +170,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.loyalty.redeem_loyalty_reward
 
 - **Route**: `POST /v2/loyalty/rewards/{reward_id}/redeem`
+- **Auth**: `oauth2`
 - **Signature**: `def redeem_loyalty_reward(reward_id: str, body: RedeemLoyaltyRewardRequest | RedeemLoyaltyRewardRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `reward_id`, `body`
 - **Params**: `reward_id` — path · `body` — JSON body
@@ -176,6 +187,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.loyalty.retrieve_loyalty_account
 
 - **Route**: `GET /v2/loyalty/accounts/{account_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_loyalty_account(account_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `account_id`
 - **Params**: `account_id` — path
@@ -190,6 +202,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.loyalty.retrieve_loyalty_program
 
 - **Route**: `GET /v2/loyalty/programs/{program_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_loyalty_program(program_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `program_id`
 - **Params**: `program_id` — path
@@ -204,6 +217,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.loyalty.retrieve_loyalty_promotion
 
 - **Route**: `GET /v2/loyalty/programs/{program_id}/promotions/{promotion_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_loyalty_promotion(promotion_id: str, program_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `promotion_id`, `program_id`
 - **Params**: `promotion_id` — path · `program_id` — path
@@ -218,6 +232,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.loyalty.retrieve_loyalty_reward
 
 - **Route**: `GET /v2/loyalty/rewards/{reward_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_loyalty_reward(reward_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `reward_id`
 - **Params**: `reward_id` — path
@@ -232,6 +247,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.loyalty.search_loyalty_accounts
 
 - **Route**: `POST /v2/loyalty/accounts/search`
+- **Auth**: `oauth2`
 - **Signature**: `def search_loyalty_accounts(body: SearchLoyaltyAccountsRequest | SearchLoyaltyAccountsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -248,6 +264,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.loyalty.search_loyalty_events
 
 - **Route**: `POST /v2/loyalty/events/search`
+- **Auth**: `oauth2`
 - **Signature**: `def search_loyalty_events(body: SearchLoyaltyEventsRequest | SearchLoyaltyEventsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -264,6 +281,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.loyalty.search_loyalty_rewards
 
 - **Route**: `POST /v2/loyalty/rewards/search`
+- **Auth**: `oauth2`
 - **Signature**: `def search_loyalty_rewards(body: SearchLoyaltyRewardsRequest | SearchLoyaltyRewardsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body

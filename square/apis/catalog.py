@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -964,6 +966,7 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/catalog/batch-delete"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchDeleteCatalogObjectsRequest | BatchDeleteCatalogObjectsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BatchDeleteCatalogObjectsResponse],
@@ -992,6 +995,7 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/catalog/batch-retrieve"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchRetrieveCatalogObjectsRequest | BatchRetrieveCatalogObjectsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BatchRetrieveCatalogObjectsResponse],
@@ -1032,6 +1036,7 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/catalog/batch-upsert"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchUpsertCatalogObjectsRequest | BatchUpsertCatalogObjectsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BatchUpsertCatalogObjectsResponse],
@@ -1083,6 +1088,7 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/catalog/images"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=multipart_body(
                 [param[CreateCatalogImageRequest | CreateCatalogImageRequestDict | None]("request", request)],
                 {"image_file": image_file},
@@ -1117,6 +1123,7 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             http_method="DELETE",
             url_template=self._server.default("/v2/catalog/object/{object_id}"),
             path_params=[param[str]("object_id", object_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteCatalogObjectResponse],
             error_mapper=raw_error_response,
@@ -1263,6 +1270,7 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/catalog/search-catalog-items"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchCatalogItemsRequest | SearchCatalogItemsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchCatalogItemsResponse],
@@ -1306,6 +1314,7 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/catalog/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchCatalogObjectsRequest | SearchCatalogObjectsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchCatalogObjectsResponse],
@@ -1339,6 +1348,7 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             http_method="PUT",
             url_template=self._server.default("/v2/catalog/images/{image_id}"),
             path_params=[param[str]("image_id", image_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=multipart_body(
                 [param[UpdateCatalogImageRequest | UpdateCatalogImageRequestDict | None]("request", request)],
                 {"image_file": image_file},
@@ -1368,6 +1378,7 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/catalog/update-item-modifier-lists"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateItemModifierListsRequest | UpdateItemModifierListsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateItemModifierListsResponse],
@@ -1394,6 +1405,7 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/catalog/update-item-taxes"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateItemTaxesRequest | UpdateItemTaxesRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateItemTaxesResponse],
@@ -1427,6 +1439,7 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/catalog/object"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpsertCatalogObjectRequest | UpsertCatalogObjectRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpsertCatalogObjectResponse],
@@ -1464,6 +1477,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/catalog/batch-delete"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchDeleteCatalogObjectsRequest | BatchDeleteCatalogObjectsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BatchDeleteCatalogObjectsResponse],
@@ -1492,6 +1506,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/catalog/batch-retrieve"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchRetrieveCatalogObjectsRequest | BatchRetrieveCatalogObjectsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BatchRetrieveCatalogObjectsResponse],
@@ -1532,6 +1547,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/catalog/batch-upsert"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchUpsertCatalogObjectsRequest | BatchUpsertCatalogObjectsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BatchUpsertCatalogObjectsResponse],
@@ -1583,6 +1599,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/catalog/images"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=multipart_body(
                 [param[CreateCatalogImageRequest | CreateCatalogImageRequestDict | None]("request", request)],
                 {"image_file": image_file},
@@ -1617,6 +1634,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             http_method="DELETE",
             url_template=self._server.default("/v2/catalog/object/{object_id}"),
             path_params=[param[str]("object_id", object_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteCatalogObjectResponse],
             error_mapper=raw_error_response,
@@ -1763,6 +1781,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/catalog/search-catalog-items"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchCatalogItemsRequest | SearchCatalogItemsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchCatalogItemsResponse],
@@ -1806,6 +1825,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/catalog/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchCatalogObjectsRequest | SearchCatalogObjectsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchCatalogObjectsResponse],
@@ -1839,6 +1859,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             http_method="PUT",
             url_template=self._server.default("/v2/catalog/images/{image_id}"),
             path_params=[param[str]("image_id", image_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=multipart_body(
                 [param[UpdateCatalogImageRequest | UpdateCatalogImageRequestDict | None]("request", request)],
                 {"image_file": image_file},
@@ -1868,6 +1889,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/catalog/update-item-modifier-lists"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateItemModifierListsRequest | UpdateItemModifierListsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateItemModifierListsResponse],
@@ -1894,6 +1916,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/catalog/update-item-taxes"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateItemTaxesRequest | UpdateItemTaxesRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateItemTaxesResponse],
@@ -1927,6 +1950,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/catalog/object"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpsertCatalogObjectRequest | UpsertCatalogObjectRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpsertCatalogObjectResponse],

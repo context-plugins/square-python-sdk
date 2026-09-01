@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -764,6 +766,7 @@ class MerchantCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serv
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/merchants/custom-attributes/bulk-delete"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkDeleteMerchantCustomAttributesRequest | BulkDeleteMerchantCustomAttributesRequestDict](
                 body
             ),
@@ -800,6 +803,7 @@ class MerchantCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serv
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/merchants/custom-attributes/bulk-upsert"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkUpsertMerchantCustomAttributesRequest | BulkUpsertMerchantCustomAttributesRequestDict](
                 body
             ),
@@ -833,6 +837,7 @@ class MerchantCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serv
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/merchants/custom-attribute-definitions"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[
                 CreateMerchantCustomAttributeDefinitionRequest | CreateMerchantCustomAttributeDefinitionRequestDict
             ](body),
@@ -861,6 +866,7 @@ class MerchantCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serv
             http_method="DELETE",
             url_template=self._server.default("/v2/merchants/{merchant_id}/custom-attributes/{key}"),
             path_params=[param[str]("merchant_id", merchant_id), param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteMerchantCustomAttributeResponse],
             error_mapper=raw_error_response,
@@ -884,6 +890,7 @@ class MerchantCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serv
             http_method="DELETE",
             url_template=self._server.default("/v2/merchants/custom-attribute-definitions/{key}"),
             path_params=[param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteMerchantCustomAttributeDefinitionResponse],
             error_mapper=raw_error_response,
@@ -1077,6 +1084,7 @@ class MerchantCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serv
             http_method="PUT",
             url_template=self._server.default("/v2/merchants/custom-attribute-definitions/{key}"),
             path_params=[param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[
                 UpdateMerchantCustomAttributeDefinitionRequest | UpdateMerchantCustomAttributeDefinitionRequestDict
             ](body),
@@ -1116,6 +1124,7 @@ class MerchantCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serv
             http_method="POST",
             url_template=self._server.default("/v2/merchants/{merchant_id}/custom-attributes/{key}"),
             path_params=[param[str]("merchant_id", merchant_id), param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpsertMerchantCustomAttributeRequest | UpsertMerchantCustomAttributeRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpsertMerchantCustomAttributeResponse],
@@ -1144,6 +1153,7 @@ class AsyncMerchantCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCl
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/merchants/custom-attributes/bulk-delete"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkDeleteMerchantCustomAttributesRequest | BulkDeleteMerchantCustomAttributesRequestDict](
                 body
             ),
@@ -1180,6 +1190,7 @@ class AsyncMerchantCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCl
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/merchants/custom-attributes/bulk-upsert"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkUpsertMerchantCustomAttributesRequest | BulkUpsertMerchantCustomAttributesRequestDict](
                 body
             ),
@@ -1213,6 +1224,7 @@ class AsyncMerchantCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCl
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/merchants/custom-attribute-definitions"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[
                 CreateMerchantCustomAttributeDefinitionRequest | CreateMerchantCustomAttributeDefinitionRequestDict
             ](body),
@@ -1241,6 +1253,7 @@ class AsyncMerchantCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCl
             http_method="DELETE",
             url_template=self._server.default("/v2/merchants/{merchant_id}/custom-attributes/{key}"),
             path_params=[param[str]("merchant_id", merchant_id), param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteMerchantCustomAttributeResponse],
             error_mapper=raw_error_response,
@@ -1264,6 +1277,7 @@ class AsyncMerchantCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCl
             http_method="DELETE",
             url_template=self._server.default("/v2/merchants/custom-attribute-definitions/{key}"),
             path_params=[param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteMerchantCustomAttributeDefinitionResponse],
             error_mapper=raw_error_response,
@@ -1457,6 +1471,7 @@ class AsyncMerchantCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCl
             http_method="PUT",
             url_template=self._server.default("/v2/merchants/custom-attribute-definitions/{key}"),
             path_params=[param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[
                 UpdateMerchantCustomAttributeDefinitionRequest | UpdateMerchantCustomAttributeDefinitionRequestDict
             ](body),
@@ -1496,6 +1511,7 @@ class AsyncMerchantCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCl
             http_method="POST",
             url_template=self._server.default("/v2/merchants/{merchant_id}/custom-attributes/{key}"),
             path_params=[param[str]("merchant_id", merchant_id), param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpsertMerchantCustomAttributeRequest | UpsertMerchantCustomAttributeRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpsertMerchantCustomAttributeResponse],

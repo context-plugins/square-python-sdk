@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -591,6 +593,7 @@ class InvoicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="POST",
             url_template=self._server.default("/v2/invoices/{invoice_id}/cancel"),
             path_params=[param[str]("invoice_id", invoice_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CancelInvoiceRequest | CancelInvoiceRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CancelInvoiceResponse],
@@ -619,6 +622,7 @@ class InvoicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/invoices"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateInvoiceRequest | CreateInvoiceRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateInvoiceResponse],
@@ -655,6 +659,7 @@ class InvoicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="POST",
             url_template=self._server.default("/v2/invoices/{invoice_id}/attachments"),
             path_params=[param[str]("invoice_id", invoice_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=multipart_body(
                 [param[CreateInvoiceAttachmentRequest | CreateInvoiceAttachmentRequestDict | None]("request", request)],
                 {"image_file": image_file},
@@ -686,6 +691,7 @@ class InvoicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             url_template=self._server.default("/v2/invoices/{invoice_id}"),
             path_params=[param[str]("invoice_id", invoice_id)],
             query_params=[param[int | None]("version", version)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteInvoiceResponse],
             error_mapper=raw_error_response,
@@ -709,6 +715,7 @@ class InvoicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="DELETE",
             url_template=self._server.default("/v2/invoices/{invoice_id}/attachments/{attachment_id}"),
             path_params=[param[str]("invoice_id", invoice_id), param[str]("attachment_id", attachment_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteInvoiceAttachmentResponse],
             error_mapper=raw_error_response,
@@ -804,6 +811,7 @@ class InvoicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="POST",
             url_template=self._server.default("/v2/invoices/{invoice_id}/publish"),
             path_params=[param[str]("invoice_id", invoice_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[PublishInvoiceRequest | PublishInvoiceRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[PublishInvoiceResponse],
@@ -834,6 +842,7 @@ class InvoicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/invoices/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchInvoicesRequest | SearchInvoicesRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchInvoicesResponse],
@@ -864,6 +873,7 @@ class InvoicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="PUT",
             url_template=self._server.default("/v2/invoices/{invoice_id}"),
             path_params=[param[str]("invoice_id", invoice_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateInvoiceRequest | UpdateInvoiceRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateInvoiceResponse],
@@ -897,6 +907,7 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="POST",
             url_template=self._server.default("/v2/invoices/{invoice_id}/cancel"),
             path_params=[param[str]("invoice_id", invoice_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CancelInvoiceRequest | CancelInvoiceRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CancelInvoiceResponse],
@@ -925,6 +936,7 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/invoices"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateInvoiceRequest | CreateInvoiceRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateInvoiceResponse],
@@ -961,6 +973,7 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="POST",
             url_template=self._server.default("/v2/invoices/{invoice_id}/attachments"),
             path_params=[param[str]("invoice_id", invoice_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=multipart_body(
                 [param[CreateInvoiceAttachmentRequest | CreateInvoiceAttachmentRequestDict | None]("request", request)],
                 {"image_file": image_file},
@@ -992,6 +1005,7 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             url_template=self._server.default("/v2/invoices/{invoice_id}"),
             path_params=[param[str]("invoice_id", invoice_id)],
             query_params=[param[int | None]("version", version)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteInvoiceResponse],
             error_mapper=raw_error_response,
@@ -1015,6 +1029,7 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="DELETE",
             url_template=self._server.default("/v2/invoices/{invoice_id}/attachments/{attachment_id}"),
             path_params=[param[str]("invoice_id", invoice_id), param[str]("attachment_id", attachment_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteInvoiceAttachmentResponse],
             error_mapper=raw_error_response,
@@ -1110,6 +1125,7 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="POST",
             url_template=self._server.default("/v2/invoices/{invoice_id}/publish"),
             path_params=[param[str]("invoice_id", invoice_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[PublishInvoiceRequest | PublishInvoiceRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[PublishInvoiceResponse],
@@ -1140,6 +1156,7 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/invoices/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchInvoicesRequest | SearchInvoicesRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchInvoicesResponse],
@@ -1170,6 +1187,7 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="PUT",
             url_template=self._server.default("/v2/invoices/{invoice_id}"),
             path_params=[param[str]("invoice_id", invoice_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateInvoiceRequest | UpdateInvoiceRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateInvoiceResponse],

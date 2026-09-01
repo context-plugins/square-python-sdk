@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.orders.batch_retrieve_orders
 
 - **Route**: `POST /v2/orders/batch-retrieve`
+- **Auth**: `oauth2`
 - **Signature**: `def batch_retrieve_orders(body: BatchRetrieveOrdersRequest | BatchRetrieveOrdersRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.orders.calculate_order
 
 - **Route**: `POST /v2/orders/calculate`
+- **Auth**: `oauth2`
 - **Signature**: `def calculate_order(body: CalculateOrderRequest | CalculateOrderRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -41,6 +43,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.orders.clone_order
 
 - **Route**: `POST /v2/orders/clone`
+- **Auth**: `oauth2`
 - **Signature**: `def clone_order(body: CloneOrderRequest | CloneOrderRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -57,6 +60,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.orders.create_order
 
 - **Route**: `POST /v2/orders`
+- **Auth**: `oauth2`
 - **Signature**: `def create_order(body: CreateOrderRequest | CreateOrderRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -73,6 +77,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.orders.pay_order
 
 - **Route**: `POST /v2/orders/{order_id}/pay`
+- **Auth**: `oauth2`
 - **Signature**: `def pay_order(order_id: str, body: PayOrderRequest | PayOrderRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `order_id`, `body`
 - **Params**: `order_id` — path · `body` — JSON body
@@ -89,6 +94,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.orders.retrieve_order
 
 - **Route**: `GET /v2/orders/{order_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_order(order_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `order_id`
 - **Params**: `order_id` — path
@@ -103,6 +109,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.orders.search_orders
 
 - **Route**: `POST /v2/orders/search`
+- **Auth**: `oauth2`
 - **Signature**: `def search_orders(body: SearchOrdersRequest | SearchOrdersRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -119,6 +126,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.orders.update_order
 
 - **Route**: `PUT /v2/orders/{order_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_order(order_id: str, body: UpdateOrderRequest | UpdateOrderRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `order_id`, `body`
 - **Params**: `order_id` — path · `body` — JSON body

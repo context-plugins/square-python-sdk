@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customer_custom_attributes.bulk_upsert_customer_custom_attributes
 
 - **Route**: `POST /v2/customers/custom-attributes/bulk-upsert`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_upsert_customer_custom_attributes(body: BulkUpsertCustomerCustomAttributesRequest | BulkUpsertCustomerCustomAttributesRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customer_custom_attributes.create_customer_custom_attribute_definition
 
 - **Route**: `POST /v2/customers/custom-attribute-definitions`
+- **Auth**: `oauth2`
 - **Signature**: `def create_customer_custom_attribute_definition(body: CreateCustomerCustomAttributeDefinitionRequest | CreateCustomerCustomAttributeDefinitionRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -41,6 +43,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customer_custom_attributes.delete_customer_custom_attribute
 
 - **Route**: `DELETE /v2/customers/{customer_id}/custom-attributes/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_customer_custom_attribute(customer_id: str, key: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `customer_id`, `key`
 - **Params**: `customer_id` — path · `key` — path
@@ -55,6 +58,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customer_custom_attributes.delete_customer_custom_attribute_definition
 
 - **Route**: `DELETE /v2/customers/custom-attribute-definitions/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_customer_custom_attribute_definition(key: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `key`
 - **Params**: `key` — path
@@ -69,6 +73,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customer_custom_attributes.list_customer_custom_attribute_definitions
 
 - **Route**: `GET /v2/customers/custom-attribute-definitions`
+- **Auth**: `oauth2`
 - **Signature**: `def list_customer_custom_attribute_definitions(*, limit: int | None = None, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `limit` — query · `cursor` — query
 - **Returns (parsed)**: `ListCustomerCustomAttributeDefinitionsResponse`
@@ -82,6 +87,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customer_custom_attributes.list_customer_custom_attributes
 
 - **Route**: `GET /v2/customers/{customer_id}/custom-attributes`
+- **Auth**: `oauth2`
 - **Signature**: `def list_customer_custom_attributes(customer_id: str, *, limit: int | None = None, cursor: str | None = None, with_definitions: bool | None = False, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `customer_id`
 - **Params**: `customer_id` — path · `limit` — query · `cursor` — query · `with_definitions` — query
@@ -96,6 +102,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customer_custom_attributes.retrieve_customer_custom_attribute
 
 - **Route**: `GET /v2/customers/{customer_id}/custom-attributes/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_customer_custom_attribute(customer_id: str, key: str, *, with_definition: bool | None = False, version: int | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `customer_id`, `key`
 - **Params**: `customer_id` — path · `key` — path · `with_definition` — query · `version` — query
@@ -110,6 +117,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customer_custom_attributes.retrieve_customer_custom_attribute_definition
 
 - **Route**: `GET /v2/customers/custom-attribute-definitions/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_customer_custom_attribute_definition(key: str, *, version: int | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `key`
 - **Params**: `key` — path · `version` — query
@@ -124,6 +132,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customer_custom_attributes.update_customer_custom_attribute_definition
 
 - **Route**: `PUT /v2/customers/custom-attribute-definitions/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_customer_custom_attribute_definition(key: str, body: UpdateCustomerCustomAttributeDefinitionRequest | UpdateCustomerCustomAttributeDefinitionRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `key`, `body`
 - **Params**: `key` — path · `body` — JSON body
@@ -140,6 +149,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.customer_custom_attributes.upsert_customer_custom_attribute
 
 - **Route**: `POST /v2/customers/{customer_id}/custom-attributes/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def upsert_customer_custom_attribute(customer_id: str, key: str, body: UpsertCustomerCustomAttributeRequest | UpsertCustomerCustomAttributeRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `customer_id`, `key`, `body`
 - **Params**: `customer_id` — path · `key` — path · `body` — JSON body

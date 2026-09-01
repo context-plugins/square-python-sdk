@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.gift_card_activities.create_gift_card_activity
 
 - **Route**: `POST /v2/gift-cards/activities`
+- **Auth**: `oauth2`
 - **Signature**: `def create_gift_card_activity(body: CreateGiftCardActivityRequest | CreateGiftCardActivityRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.gift_card_activities.list_gift_card_activities
 
 - **Route**: `GET /v2/gift-cards/activities`
+- **Auth**: `oauth2`
 - **Signature**: `def list_gift_card_activities(*, gift_card_id: str | None = None, type_: str | None = None, location_id: str | None = None, begin_time: str | None = None, end_time: str | None = None, limit: int | None = None, cursor: str | None = None, sort_order: str | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `gift_card_id` — query · `type_` — query `type` · `location_id` — query · `begin_time` — query · `end_time` — query · `limit` — query · `cursor` — query · `sort_order` — query
 - **Returns (parsed)**: `ListGiftCardActivitiesResponse`

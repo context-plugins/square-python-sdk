@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.cash_drawers.list_cash_drawer_shift_events
 
 - **Route**: `GET /v2/cash-drawers/shifts/{shift_id}/events`
+- **Auth**: `oauth2`
 - **Signature**: `def list_cash_drawer_shift_events(shift_id: str, location_id: str, *, limit: int | None = None, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `shift_id`, `location_id`
 - **Params**: `shift_id` — path · `location_id` — query · `limit` — query · `cursor` — query
@@ -23,6 +24,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.cash_drawers.list_cash_drawer_shifts
 
 - **Route**: `GET /v2/cash-drawers/shifts`
+- **Auth**: `oauth2`
 - **Signature**: `def list_cash_drawer_shifts(location_id: str, *, sort_order: SortOrderOrStr | None = None, begin_time: str | None = None, end_time: str | None = None, limit: int | None = None, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `location_id`
 - **Params**: `location_id` — query · `sort_order` — query · `begin_time` — query · `end_time` — query · `limit` — query · `cursor` — query
@@ -38,6 +40,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.cash_drawers.retrieve_cash_drawer_shift
 
 - **Route**: `GET /v2/cash-drawers/shifts/{shift_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_cash_drawer_shift(shift_id: str, location_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `shift_id`, `location_id`
 - **Params**: `shift_id` — path · `location_id` — query

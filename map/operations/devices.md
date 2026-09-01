@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.devices.create_device_code
 
 - **Route**: `POST /v2/devices/codes`
+- **Auth**: `oauth2`
 - **Signature**: `def create_device_code(body: CreateDeviceCodeRequest | CreateDeviceCodeRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.devices.get_device
 
 - **Route**: `GET /v2/devices/{device_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def get_device(device_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `device_id`
 - **Params**: `device_id` — path
@@ -39,6 +41,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.devices.get_device_code
 
 - **Route**: `GET /v2/devices/codes/{id}`
+- **Auth**: `oauth2`
 - **Signature**: `def get_device_code(id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`
 - **Params**: `id` — path
@@ -53,6 +56,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.devices.list_device_codes
 
 - **Route**: `GET /v2/devices/codes`
+- **Auth**: `oauth2`
 - **Signature**: `def list_device_codes(*, cursor: str | None = None, location_id: str | None = None, product_type: ProductTypeOrStr | None = None, status: DeviceCodeStatusOrStr | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `cursor` — query · `location_id` — query · `product_type` — query · `status` — query
 - **Returns (parsed)**: `ListDeviceCodesResponse`
@@ -68,6 +72,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.devices.list_devices
 
 - **Route**: `GET /v2/devices`
+- **Auth**: `oauth2`
 - **Signature**: `def list_devices(*, cursor: str | None = None, sort_order: SortOrderOrStr | None = None, limit: int | None = None, location_id: str | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `cursor` — query · `sort_order` — query · `limit` — query · `location_id` — query
 - **Returns (parsed)**: `ListDevicesResponse`

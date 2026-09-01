@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.booking_custom_attributes.bulk_delete_booking_custom_attributes
 
 - **Route**: `POST /v2/bookings/custom-attributes/bulk-delete`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_delete_booking_custom_attributes(body: BulkDeleteBookingCustomAttributesRequest | BulkDeleteBookingCustomAttributesRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.booking_custom_attributes.bulk_upsert_booking_custom_attributes
 
 - **Route**: `POST /v2/bookings/custom-attributes/bulk-upsert`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_upsert_booking_custom_attributes(body: BulkUpsertBookingCustomAttributesRequest | BulkUpsertBookingCustomAttributesRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -41,6 +43,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.booking_custom_attributes.create_booking_custom_attribute_definition
 
 - **Route**: `POST /v2/bookings/custom-attribute-definitions`
+- **Auth**: `oauth2`
 - **Signature**: `def create_booking_custom_attribute_definition(body: CreateBookingCustomAttributeDefinitionRequest | CreateBookingCustomAttributeDefinitionRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -57,6 +60,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.booking_custom_attributes.delete_booking_custom_attribute
 
 - **Route**: `DELETE /v2/bookings/{booking_id}/custom-attributes/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_booking_custom_attribute(booking_id: str, key: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `booking_id`, `key`
 - **Params**: `booking_id` — path · `key` — path
@@ -71,6 +75,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.booking_custom_attributes.delete_booking_custom_attribute_definition
 
 - **Route**: `DELETE /v2/bookings/custom-attribute-definitions/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_booking_custom_attribute_definition(key: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `key`
 - **Params**: `key` — path
@@ -85,6 +90,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.booking_custom_attributes.list_booking_custom_attribute_definitions
 
 - **Route**: `GET /v2/bookings/custom-attribute-definitions`
+- **Auth**: `oauth2`
 - **Signature**: `def list_booking_custom_attribute_definitions(*, limit: int | None = None, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `limit` — query · `cursor` — query
 - **Returns (parsed)**: `ListBookingCustomAttributeDefinitionsResponse`
@@ -98,6 +104,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.booking_custom_attributes.list_booking_custom_attributes
 
 - **Route**: `GET /v2/bookings/{booking_id}/custom-attributes`
+- **Auth**: `oauth2`
 - **Signature**: `def list_booking_custom_attributes(booking_id: str, *, limit: int | None = None, cursor: str | None = None, with_definitions: bool | None = False, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `booking_id`
 - **Params**: `booking_id` — path · `limit` — query · `cursor` — query · `with_definitions` — query
@@ -112,6 +119,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.booking_custom_attributes.retrieve_booking_custom_attribute
 
 - **Route**: `GET /v2/bookings/{booking_id}/custom-attributes/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_booking_custom_attribute(booking_id: str, key: str, *, with_definition: bool | None = False, version: int | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `booking_id`, `key`
 - **Params**: `booking_id` — path · `key` — path · `with_definition` — query · `version` — query
@@ -126,6 +134,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.booking_custom_attributes.retrieve_booking_custom_attribute_definition
 
 - **Route**: `GET /v2/bookings/custom-attribute-definitions/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_booking_custom_attribute_definition(key: str, *, version: int | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `key`
 - **Params**: `key` — path · `version` — query
@@ -140,6 +149,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.booking_custom_attributes.update_booking_custom_attribute_definition
 
 - **Route**: `PUT /v2/bookings/custom-attribute-definitions/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_booking_custom_attribute_definition(key: str, body: UpdateBookingCustomAttributeDefinitionRequest | UpdateBookingCustomAttributeDefinitionRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `key`, `body`
 - **Params**: `key` — path · `body` — JSON body
@@ -156,6 +166,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.booking_custom_attributes.upsert_booking_custom_attribute
 
 - **Route**: `PUT /v2/bookings/{booking_id}/custom-attributes/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def upsert_booking_custom_attribute(booking_id: str, key: str, body: UpsertBookingCustomAttributeRequest | UpsertBookingCustomAttributeRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `booking_id`, `key`, `body`
 - **Params**: `booking_id` — path · `key` — path · `body` — JSON body

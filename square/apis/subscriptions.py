@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -660,6 +662,7 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/subscriptions/bulk-swap-plan"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkSwapPlanRequest | BulkSwapPlanRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkSwapPlanResponse],
@@ -683,6 +686,7 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             http_method="POST",
             url_template=self._server.default("/v2/subscriptions/{subscription_id}/cancel"),
             path_params=[param[str]("subscription_id", subscription_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CancelSubscriptionResponse],
             error_mapper=raw_error_response,
@@ -712,6 +716,7 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             http_method="POST",
             url_template=self._server.default("/v2/subscriptions/{subscription_id}/billing-anchor"),
             path_params=[param[str]("subscription_id", subscription_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[ChangeBillingAnchorDateRequest | ChangeBillingAnchorDateRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[ChangeBillingAnchorDateResponse],
@@ -744,6 +749,7 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/subscriptions"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateSubscriptionRequest | CreateSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateSubscriptionResponse],
@@ -767,6 +773,7 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             http_method="DELETE",
             url_template=self._server.default("/v2/subscriptions/{subscription_id}/actions/{action_id}"),
             path_params=[param[str]("subscription_id", subscription_id), param[str]("action_id", action_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteSubscriptionActionResponse],
             error_mapper=raw_error_response,
@@ -827,6 +834,7 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             http_method="POST",
             url_template=self._server.default("/v2/subscriptions/{subscription_id}/pause"),
             path_params=[param[str]("subscription_id", subscription_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[PauseSubscriptionRequest | PauseSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[PauseSubscriptionResponse],
@@ -855,6 +863,7 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             http_method="POST",
             url_template=self._server.default("/v2/subscriptions/{subscription_id}/resume"),
             path_params=[param[str]("subscription_id", subscription_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[ResumeSubscriptionRequest | ResumeSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[ResumeSubscriptionResponse],
@@ -912,6 +921,7 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/subscriptions/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchSubscriptionsRequest | SearchSubscriptionsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchSubscriptionsResponse],
@@ -942,6 +952,7 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             http_method="POST",
             url_template=self._server.default("/v2/subscriptions/{subscription_id}/swap-plan"),
             path_params=[param[str]("subscription_id", subscription_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SwapPlanRequest | SwapPlanRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SwapPlanResponse],
@@ -971,6 +982,7 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             http_method="PUT",
             url_template=self._server.default("/v2/subscriptions/{subscription_id}"),
             path_params=[param[str]("subscription_id", subscription_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateSubscriptionRequest | UpdateSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateSubscriptionResponse],
@@ -1000,6 +1012,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/subscriptions/bulk-swap-plan"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkSwapPlanRequest | BulkSwapPlanRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkSwapPlanResponse],
@@ -1023,6 +1036,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             http_method="POST",
             url_template=self._server.default("/v2/subscriptions/{subscription_id}/cancel"),
             path_params=[param[str]("subscription_id", subscription_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CancelSubscriptionResponse],
             error_mapper=raw_error_response,
@@ -1052,6 +1066,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             http_method="POST",
             url_template=self._server.default("/v2/subscriptions/{subscription_id}/billing-anchor"),
             path_params=[param[str]("subscription_id", subscription_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[ChangeBillingAnchorDateRequest | ChangeBillingAnchorDateRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[ChangeBillingAnchorDateResponse],
@@ -1084,6 +1099,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/subscriptions"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateSubscriptionRequest | CreateSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateSubscriptionResponse],
@@ -1107,6 +1123,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             http_method="DELETE",
             url_template=self._server.default("/v2/subscriptions/{subscription_id}/actions/{action_id}"),
             path_params=[param[str]("subscription_id", subscription_id), param[str]("action_id", action_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteSubscriptionActionResponse],
             error_mapper=raw_error_response,
@@ -1167,6 +1184,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             http_method="POST",
             url_template=self._server.default("/v2/subscriptions/{subscription_id}/pause"),
             path_params=[param[str]("subscription_id", subscription_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[PauseSubscriptionRequest | PauseSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[PauseSubscriptionResponse],
@@ -1195,6 +1213,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             http_method="POST",
             url_template=self._server.default("/v2/subscriptions/{subscription_id}/resume"),
             path_params=[param[str]("subscription_id", subscription_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[ResumeSubscriptionRequest | ResumeSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[ResumeSubscriptionResponse],
@@ -1252,6 +1271,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/subscriptions/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchSubscriptionsRequest | SearchSubscriptionsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchSubscriptionsResponse],
@@ -1282,6 +1302,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             http_method="POST",
             url_template=self._server.default("/v2/subscriptions/{subscription_id}/swap-plan"),
             path_params=[param[str]("subscription_id", subscription_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SwapPlanRequest | SwapPlanRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SwapPlanResponse],
@@ -1311,6 +1332,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             http_method="PUT",
             url_template=self._server.default("/v2/subscriptions/{subscription_id}"),
             path_params=[param[str]("subscription_id", subscription_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateSubscriptionRequest | UpdateSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateSubscriptionResponse],

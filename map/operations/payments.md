@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.payments.cancel_payment
 
 - **Route**: `POST /v2/payments/{payment_id}/cancel`
+- **Auth**: `oauth2`
 - **Signature**: `def cancel_payment(payment_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `payment_id`
 - **Params**: `payment_id` — path
@@ -23,6 +24,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.payments.cancel_payment_by_idempotency_key
 
 - **Route**: `POST /v2/payments/cancel`
+- **Auth**: `oauth2`
 - **Signature**: `def cancel_payment_by_idempotency_key(body: CancelPaymentByIdempotencyKeyRequest | CancelPaymentByIdempotencyKeyRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -39,6 +41,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.payments.complete_payment
 
 - **Route**: `POST /v2/payments/{payment_id}/complete`
+- **Auth**: `oauth2`
 - **Signature**: `def complete_payment(payment_id: str, body: CompletePaymentRequest | CompletePaymentRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `payment_id`, `body`
 - **Params**: `payment_id` — path · `body` — JSON body
@@ -55,6 +58,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.payments.create_payment
 
 - **Route**: `POST /v2/payments`
+- **Auth**: `oauth2`
 - **Signature**: `def create_payment(body: CreatePaymentRequest | CreatePaymentRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -71,6 +75,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.payments.get_payment
 
 - **Route**: `GET /v2/payments/{payment_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def get_payment(payment_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `payment_id`
 - **Params**: `payment_id` — path
@@ -85,6 +90,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.payments.list_payments
 
 - **Route**: `GET /v2/payments`
+- **Auth**: `oauth2`
 - **Signature**: `def list_payments(*, begin_time: str | None = None, end_time: str | None = None, sort_order: str | None = None, cursor: str | None = None, location_id: str | None = None, total: int | None = None, last_4: str | None = None, card_brand: str | None = None, limit: int | None = None, is_offline_payment: bool | None = False, offline_begin_time: str | None = None, offline_end_time: str | None = None, updated_at_begin_time: str | None = None, updated_at_end_time: str | None = None, sort_field: ListPaymentsRequestSortFieldOrStr | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `begin_time` — query · `end_time` — query · `sort_order` — query · `cursor` — query · `location_id` — query · `total` — query · `last_4` — query · `card_brand` — query · `limit` — query · `is_offline_payment` — query · `offline_begin_time` — query · `offline_end_time` — query · `updated_at_begin_time` — query · `updated_at_end_time` — query · `sort_field` — query
 - **Returns (parsed)**: `ListPaymentsResponse`
@@ -99,6 +105,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.payments.update_payment
 
 - **Route**: `PUT /v2/payments/{payment_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_payment(payment_id: str, body: UpdatePaymentRequest | UpdatePaymentRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `payment_id`, `body`
 - **Params**: `payment_id` — path · `body` — JSON body

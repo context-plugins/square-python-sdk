@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.invoices.cancel_invoice
 
 - **Route**: `POST /v2/invoices/{invoice_id}/cancel`
+- **Auth**: `oauth2`
 - **Signature**: `def cancel_invoice(invoice_id: str, body: CancelInvoiceRequest | CancelInvoiceRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `invoice_id`, `body`
 - **Params**: `invoice_id` — path · `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.invoices.create_invoice
 
 - **Route**: `POST /v2/invoices`
+- **Auth**: `oauth2`
 - **Signature**: `def create_invoice(body: CreateInvoiceRequest | CreateInvoiceRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -41,6 +43,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.invoices.create_invoice_attachment
 
 - **Route**: `POST /v2/invoices/{invoice_id}/attachments`
+- **Auth**: `oauth2`
 - **Signature**: `def create_invoice_attachment(invoice_id: str, *, request: CreateInvoiceAttachmentRequest | CreateInvoiceAttachmentRequestDict | None = None, image_file: bytes | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `invoice_id`
 - **Params**: `invoice_id` — path · `request` — multipart field · `image_file` — multipart file
@@ -57,6 +60,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.invoices.delete_invoice
 
 - **Route**: `DELETE /v2/invoices/{invoice_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_invoice(invoice_id: str, *, version: int | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `invoice_id`
 - **Params**: `invoice_id` — path · `version` — query
@@ -71,6 +75,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.invoices.delete_invoice_attachment
 
 - **Route**: `DELETE /v2/invoices/{invoice_id}/attachments/{attachment_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_invoice_attachment(invoice_id: str, attachment_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `invoice_id`, `attachment_id`
 - **Params**: `invoice_id` — path · `attachment_id` — path
@@ -85,6 +90,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.invoices.get_invoice
 
 - **Route**: `GET /v2/invoices/{invoice_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def get_invoice(invoice_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `invoice_id`
 - **Params**: `invoice_id` — path
@@ -99,6 +105,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.invoices.list_invoices
 
 - **Route**: `GET /v2/invoices`
+- **Auth**: `oauth2`
 - **Signature**: `def list_invoices(location_id: str, *, cursor: str | None = None, limit: int | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `location_id`
 - **Params**: `location_id` — query · `cursor` — query · `limit` — query
@@ -113,6 +120,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.invoices.publish_invoice
 
 - **Route**: `POST /v2/invoices/{invoice_id}/publish`
+- **Auth**: `oauth2`
 - **Signature**: `def publish_invoice(invoice_id: str, body: PublishInvoiceRequest | PublishInvoiceRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `invoice_id`, `body`
 - **Params**: `invoice_id` — path · `body` — JSON body
@@ -129,6 +137,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.invoices.search_invoices
 
 - **Route**: `POST /v2/invoices/search`
+- **Auth**: `oauth2`
 - **Signature**: `def search_invoices(body: SearchInvoicesRequest | SearchInvoicesRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -145,6 +154,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.invoices.update_invoice
 
 - **Route**: `PUT /v2/invoices/{invoice_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_invoice(invoice_id: str, body: UpdateInvoiceRequest | UpdateInvoiceRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `invoice_id`, `body`
 - **Params**: `invoice_id` — path · `body` — JSON body

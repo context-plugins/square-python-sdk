@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -10,6 +12,7 @@ from ..core import (
     SecuredRawResponse,
     json_body,
     json_decoder,
+    param,
     raw_error_response,
 )
 from ..models.register_domain_request import RegisterDomainRequest, RegisterDomainRequestDict
@@ -136,6 +139,7 @@ class ApplePayWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/apple-pay/domains"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RegisterDomainRequest | RegisterDomainRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[RegisterDomainResponse],
@@ -177,6 +181,7 @@ class AsyncApplePayWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/apple-pay/domains"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RegisterDomainRequest | RegisterDomainRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[RegisterDomainResponse],

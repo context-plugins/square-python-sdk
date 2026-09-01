@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -219,6 +221,7 @@ class LocationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/locations"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateLocationRequest | CreateLocationRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateLocationResponse],
@@ -289,6 +292,7 @@ class LocationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             http_method="PUT",
             url_template=self._server.default("/v2/locations/{location_id}"),
             path_params=[param[str]("location_id", location_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateLocationRequest | UpdateLocationRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateLocationResponse],
@@ -320,6 +324,7 @@ class AsyncLocationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/locations"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateLocationRequest | CreateLocationRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateLocationResponse],
@@ -390,6 +395,7 @@ class AsyncLocationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             http_method="PUT",
             url_template=self._server.default("/v2/locations/{location_id}"),
             path_params=[param[str]("location_id", location_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateLocationRequest | UpdateLocationRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateLocationResponse],

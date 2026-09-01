@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -1382,6 +1384,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/labor/scheduled-shifts/bulk-publish"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkPublishScheduledShiftsRequest | BulkPublishScheduledShiftsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkPublishScheduledShiftsResponse],
@@ -1418,6 +1421,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/labor/break-types"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateBreakTypeRequest | CreateBreakTypeRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateBreakTypeResponse],
@@ -1450,6 +1454,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/labor/scheduled-shifts"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateScheduledShiftRequest | CreateScheduledShiftRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateScheduledShiftResponse],
@@ -1487,6 +1492,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/labor/shifts"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateShiftRequest | CreateShiftRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateShiftResponse],
@@ -1527,6 +1533,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/labor/timecards"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateTimecardRequest | CreateTimecardRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateTimecardResponse],
@@ -1551,6 +1558,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             http_method="DELETE",
             url_template=self._server.default("/v2/labor/break-types/{id}"),
             path_params=[param[str]("id", id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteBreakTypeResponse],
             error_mapper=raw_error_response,
@@ -1572,6 +1580,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             http_method="DELETE",
             url_template=self._server.default("/v2/labor/shifts/{id}"),
             path_params=[param[str]("id", id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteShiftResponse],
             error_mapper=raw_error_response,
@@ -1593,6 +1602,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             http_method="DELETE",
             url_template=self._server.default("/v2/labor/timecards/{id}"),
             path_params=[param[str]("id", id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteTimecardResponse],
             error_mapper=raw_error_response,
@@ -1831,6 +1841,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             http_method="POST",
             url_template=self._server.default("/v2/labor/scheduled-shifts/{id}/publish"),
             path_params=[param[str]("id", id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[PublishScheduledShiftRequest | PublishScheduledShiftRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[PublishScheduledShiftResponse],
@@ -1899,6 +1910,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/labor/scheduled-shifts/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchScheduledShiftsRequest | SearchScheduledShiftsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchScheduledShiftsResponse],
@@ -1936,6 +1948,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/labor/shifts/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchShiftsRequest | SearchShiftsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchShiftsResponse],
@@ -1973,6 +1986,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/labor/timecards/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchTimecardsRequest | SearchTimecardsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchTimecardsResponse],
@@ -2001,6 +2015,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             http_method="PUT",
             url_template=self._server.default("/v2/labor/break-types/{id}"),
             path_params=[param[str]("id", id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateBreakTypeRequest | UpdateBreakTypeRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateBreakTypeResponse],
@@ -2037,6 +2052,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             http_method="PUT",
             url_template=self._server.default("/v2/labor/scheduled-shifts/{id}"),
             path_params=[param[str]("id", id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateScheduledShiftRequest | UpdateScheduledShiftRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateScheduledShiftResponse],
@@ -2071,6 +2087,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             http_method="PUT",
             url_template=self._server.default("/v2/labor/shifts/{id}"),
             path_params=[param[str]("id", id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateShiftRequest | UpdateShiftRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateShiftResponse],
@@ -2105,6 +2122,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             http_method="PUT",
             url_template=self._server.default("/v2/labor/timecards/{id}"),
             path_params=[param[str]("id", id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateTimecardRequest | UpdateTimecardRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateTimecardResponse],
@@ -2133,6 +2151,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             http_method="PUT",
             url_template=self._server.default("/v2/labor/workweek-configs/{id}"),
             path_params=[param[str]("id", id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateWorkweekConfigRequest | UpdateWorkweekConfigRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateWorkweekConfigResponse],
@@ -2165,6 +2184,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/labor/scheduled-shifts/bulk-publish"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkPublishScheduledShiftsRequest | BulkPublishScheduledShiftsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkPublishScheduledShiftsResponse],
@@ -2201,6 +2221,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/labor/break-types"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateBreakTypeRequest | CreateBreakTypeRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateBreakTypeResponse],
@@ -2233,6 +2254,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/labor/scheduled-shifts"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateScheduledShiftRequest | CreateScheduledShiftRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateScheduledShiftResponse],
@@ -2270,6 +2292,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/labor/shifts"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateShiftRequest | CreateShiftRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateShiftResponse],
@@ -2310,6 +2333,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/labor/timecards"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateTimecardRequest | CreateTimecardRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateTimecardResponse],
@@ -2334,6 +2358,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             http_method="DELETE",
             url_template=self._server.default("/v2/labor/break-types/{id}"),
             path_params=[param[str]("id", id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteBreakTypeResponse],
             error_mapper=raw_error_response,
@@ -2355,6 +2380,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             http_method="DELETE",
             url_template=self._server.default("/v2/labor/shifts/{id}"),
             path_params=[param[str]("id", id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteShiftResponse],
             error_mapper=raw_error_response,
@@ -2376,6 +2402,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             http_method="DELETE",
             url_template=self._server.default("/v2/labor/timecards/{id}"),
             path_params=[param[str]("id", id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteTimecardResponse],
             error_mapper=raw_error_response,
@@ -2614,6 +2641,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             http_method="POST",
             url_template=self._server.default("/v2/labor/scheduled-shifts/{id}/publish"),
             path_params=[param[str]("id", id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[PublishScheduledShiftRequest | PublishScheduledShiftRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[PublishScheduledShiftResponse],
@@ -2682,6 +2710,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/labor/scheduled-shifts/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchScheduledShiftsRequest | SearchScheduledShiftsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchScheduledShiftsResponse],
@@ -2719,6 +2748,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/labor/shifts/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchShiftsRequest | SearchShiftsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchShiftsResponse],
@@ -2756,6 +2786,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/labor/timecards/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchTimecardsRequest | SearchTimecardsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchTimecardsResponse],
@@ -2784,6 +2815,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             http_method="PUT",
             url_template=self._server.default("/v2/labor/break-types/{id}"),
             path_params=[param[str]("id", id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateBreakTypeRequest | UpdateBreakTypeRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateBreakTypeResponse],
@@ -2820,6 +2852,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             http_method="PUT",
             url_template=self._server.default("/v2/labor/scheduled-shifts/{id}"),
             path_params=[param[str]("id", id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateScheduledShiftRequest | UpdateScheduledShiftRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateScheduledShiftResponse],
@@ -2854,6 +2887,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             http_method="PUT",
             url_template=self._server.default("/v2/labor/shifts/{id}"),
             path_params=[param[str]("id", id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateShiftRequest | UpdateShiftRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateShiftResponse],
@@ -2888,6 +2922,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             http_method="PUT",
             url_template=self._server.default("/v2/labor/timecards/{id}"),
             path_params=[param[str]("id", id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateTimecardRequest | UpdateTimecardRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateTimecardResponse],
@@ -2916,6 +2951,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             http_method="PUT",
             url_template=self._server.default("/v2/labor/workweek-configs/{id}"),
             path_params=[param[str]("id", id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateWorkweekConfigRequest | UpdateWorkweekConfigRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateWorkweekConfigResponse],

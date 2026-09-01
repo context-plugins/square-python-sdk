@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -617,6 +619,7 @@ class TeamWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/team-members/bulk-create"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkCreateTeamMembersRequest | BulkCreateTeamMembersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkCreateTeamMembersResponse],
@@ -646,6 +649,7 @@ class TeamWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/team-members/bulk-update"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkUpdateTeamMembersRequest | BulkUpdateTeamMembersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkUpdateTeamMembersResponse],
@@ -669,6 +673,7 @@ class TeamWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/team-members/jobs"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateJobRequest | CreateJobRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateJobResponse],
@@ -700,6 +705,7 @@ class TeamWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/team-members"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateTeamMemberRequest | CreateTeamMemberRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateTeamMemberResponse],
@@ -819,6 +825,7 @@ class TeamWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/team-members/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchTeamMembersRequest | SearchTeamMembersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchTeamMembersResponse],
@@ -849,6 +856,7 @@ class TeamWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             http_method="PUT",
             url_template=self._server.default("/v2/team-members/jobs/{job_id}"),
             path_params=[param[str]("job_id", job_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateJobRequest | UpdateJobRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateJobResponse],
@@ -879,6 +887,7 @@ class TeamWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             http_method="PUT",
             url_template=self._server.default("/v2/team-members/{team_member_id}"),
             path_params=[param[str]("team_member_id", team_member_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateTeamMemberRequest | UpdateTeamMemberRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateTeamMemberResponse],
@@ -913,6 +922,7 @@ class TeamWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             http_method="PUT",
             url_template=self._server.default("/v2/team-members/{team_member_id}/wage-setting"),
             path_params=[param[str]("team_member_id", team_member_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateWageSettingRequest | UpdateWageSettingRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateWageSettingResponse],
@@ -946,6 +956,7 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/team-members/bulk-create"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkCreateTeamMembersRequest | BulkCreateTeamMembersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkCreateTeamMembersResponse],
@@ -975,6 +986,7 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/team-members/bulk-update"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkUpdateTeamMembersRequest | BulkUpdateTeamMembersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkUpdateTeamMembersResponse],
@@ -998,6 +1010,7 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/team-members/jobs"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateJobRequest | CreateJobRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateJobResponse],
@@ -1029,6 +1042,7 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/team-members"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateTeamMemberRequest | CreateTeamMemberRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateTeamMemberResponse],
@@ -1148,6 +1162,7 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/team-members/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchTeamMembersRequest | SearchTeamMembersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchTeamMembersResponse],
@@ -1178,6 +1193,7 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             http_method="PUT",
             url_template=self._server.default("/v2/team-members/jobs/{job_id}"),
             path_params=[param[str]("job_id", job_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateJobRequest | UpdateJobRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateJobResponse],
@@ -1208,6 +1224,7 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             http_method="PUT",
             url_template=self._server.default("/v2/team-members/{team_member_id}"),
             path_params=[param[str]("team_member_id", team_member_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateTeamMemberRequest | UpdateTeamMemberRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateTeamMemberResponse],
@@ -1242,6 +1259,7 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             http_method="PUT",
             url_template=self._server.default("/v2/team-members/{team_member_id}/wage-setting"),
             path_params=[param[str]("team_member_id", team_member_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateWageSettingRequest | UpdateWageSettingRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateWageSettingResponse],

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -780,6 +782,7 @@ class CustomerCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serv
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/customers/custom-attributes/bulk-upsert"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkUpsertCustomerCustomAttributesRequest | BulkUpsertCustomerCustomAttributesRequestDict](
                 body
             ),
@@ -816,6 +819,7 @@ class CustomerCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serv
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/customers/custom-attribute-definitions"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[
                 CreateCustomerCustomAttributeDefinitionRequest | CreateCustomerCustomAttributeDefinitionRequestDict
             ](body),
@@ -847,6 +851,7 @@ class CustomerCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serv
             http_method="DELETE",
             url_template=self._server.default("/v2/customers/{customer_id}/custom-attributes/{key}"),
             path_params=[param[str]("customer_id", customer_id), param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteCustomerCustomAttributeResponse],
             error_mapper=raw_error_response,
@@ -874,6 +879,7 @@ class CustomerCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serv
             http_method="DELETE",
             url_template=self._server.default("/v2/customers/custom-attribute-definitions/{key}"),
             path_params=[param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteCustomerCustomAttributeDefinitionResponse],
             error_mapper=raw_error_response,
@@ -1075,6 +1081,7 @@ class CustomerCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serv
             http_method="PUT",
             url_template=self._server.default("/v2/customers/custom-attribute-definitions/{key}"),
             path_params=[param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[
                 UpdateCustomerCustomAttributeDefinitionRequest | UpdateCustomerCustomAttributeDefinitionRequestDict
             ](body),
@@ -1118,6 +1125,7 @@ class CustomerCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serv
             http_method="POST",
             url_template=self._server.default("/v2/customers/{customer_id}/custom-attributes/{key}"),
             path_params=[param[str]("customer_id", customer_id), param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpsertCustomerCustomAttributeRequest | UpsertCustomerCustomAttributeRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpsertCustomerCustomAttributeResponse],
@@ -1158,6 +1166,7 @@ class AsyncCustomerCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCl
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/customers/custom-attributes/bulk-upsert"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkUpsertCustomerCustomAttributesRequest | BulkUpsertCustomerCustomAttributesRequestDict](
                 body
             ),
@@ -1194,6 +1203,7 @@ class AsyncCustomerCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCl
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/customers/custom-attribute-definitions"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[
                 CreateCustomerCustomAttributeDefinitionRequest | CreateCustomerCustomAttributeDefinitionRequestDict
             ](body),
@@ -1225,6 +1235,7 @@ class AsyncCustomerCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCl
             http_method="DELETE",
             url_template=self._server.default("/v2/customers/{customer_id}/custom-attributes/{key}"),
             path_params=[param[str]("customer_id", customer_id), param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteCustomerCustomAttributeResponse],
             error_mapper=raw_error_response,
@@ -1252,6 +1263,7 @@ class AsyncCustomerCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCl
             http_method="DELETE",
             url_template=self._server.default("/v2/customers/custom-attribute-definitions/{key}"),
             path_params=[param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteCustomerCustomAttributeDefinitionResponse],
             error_mapper=raw_error_response,
@@ -1453,6 +1465,7 @@ class AsyncCustomerCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCl
             http_method="PUT",
             url_template=self._server.default("/v2/customers/custom-attribute-definitions/{key}"),
             path_params=[param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[
                 UpdateCustomerCustomAttributeDefinitionRequest | UpdateCustomerCustomAttributeDefinitionRequestDict
             ](body),
@@ -1496,6 +1509,7 @@ class AsyncCustomerCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCl
             http_method="POST",
             url_template=self._server.default("/v2/customers/{customer_id}/custom-attributes/{key}"),
             path_params=[param[str]("customer_id", customer_id), param[str]("key", key)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpsertCustomerCustomAttributeRequest | UpsertCustomerCustomAttributeRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpsertCustomerCustomAttributeResponse],

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -10,6 +12,7 @@ from ..core import (
     SecuredRawResponse,
     json_body,
     json_decoder,
+    param,
     raw_error_response,
 )
 from ..models.obtain_token_request import ObtainTokenRequest, ObtainTokenRequestDict
@@ -265,6 +268,7 @@ class OauthWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/oauth2/token"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[ObtainTokenRequest | ObtainTokenRequestDict](body),
             decoder=json_decoder[ObtainTokenResponse],
             error_mapper=raw_error_response,
@@ -300,6 +304,7 @@ class OauthWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/oauth2/token/status"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[RetrieveTokenStatusResponse],
             error_mapper=raw_error_response,
@@ -333,6 +338,7 @@ class OauthWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/oauth2/revoke"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RevokeTokenRequest | RevokeTokenRequestDict](body),
             decoder=json_decoder[RevokeTokenResponse],
             error_mapper=raw_error_response,
@@ -375,6 +381,7 @@ class AsyncOauthWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/oauth2/token"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[ObtainTokenRequest | ObtainTokenRequestDict](body),
             decoder=json_decoder[ObtainTokenResponse],
             error_mapper=raw_error_response,
@@ -410,6 +417,7 @@ class AsyncOauthWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/oauth2/token/status"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[RetrieveTokenStatusResponse],
             error_mapper=raw_error_response,
@@ -443,6 +451,7 @@ class AsyncOauthWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/oauth2/revoke"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RevokeTokenRequest | RevokeTokenRequestDict](body),
             decoder=json_decoder[RevokeTokenResponse],
             error_mapper=raw_error_response,

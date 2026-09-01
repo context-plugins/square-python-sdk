@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.terminal.cancel_terminal_action
 
 - **Route**: `POST /v2/terminals/actions/{action_id}/cancel`
+- **Auth**: `oauth2`
 - **Signature**: `def cancel_terminal_action(action_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `action_id`
 - **Params**: `action_id` — path
@@ -23,6 +24,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.terminal.cancel_terminal_checkout
 
 - **Route**: `POST /v2/terminals/checkouts/{checkout_id}/cancel`
+- **Auth**: `oauth2`
 - **Signature**: `def cancel_terminal_checkout(checkout_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `checkout_id`
 - **Params**: `checkout_id` — path
@@ -37,6 +39,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.terminal.cancel_terminal_refund
 
 - **Route**: `POST /v2/terminals/refunds/{terminal_refund_id}/cancel`
+- **Auth**: `oauth2`
 - **Signature**: `def cancel_terminal_refund(terminal_refund_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `terminal_refund_id`
 - **Params**: `terminal_refund_id` — path
@@ -51,6 +54,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.terminal.create_terminal_action
 
 - **Route**: `POST /v2/terminals/actions`
+- **Auth**: `oauth2`
 - **Signature**: `def create_terminal_action(body: CreateTerminalActionRequest | CreateTerminalActionRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -67,6 +71,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.terminal.create_terminal_checkout
 
 - **Route**: `POST /v2/terminals/checkouts`
+- **Auth**: `oauth2`
 - **Signature**: `def create_terminal_checkout(body: CreateTerminalCheckoutRequest | CreateTerminalCheckoutRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -83,6 +88,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.terminal.create_terminal_refund
 
 - **Route**: `POST /v2/terminals/refunds`
+- **Auth**: `oauth2`
 - **Signature**: `def create_terminal_refund(body: CreateTerminalRefundRequest | CreateTerminalRefundRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -99,6 +105,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.terminal.dismiss_terminal_action
 
 - **Route**: `POST /v2/terminals/actions/{action_id}/dismiss`
+- **Auth**: `oauth2`
 - **Signature**: `def dismiss_terminal_action(action_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `action_id`
 - **Params**: `action_id` — path
@@ -113,6 +120,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.terminal.dismiss_terminal_checkout
 
 - **Route**: `POST /v2/terminals/checkouts/{checkout_id}/dismiss`
+- **Auth**: `oauth2`
 - **Signature**: `def dismiss_terminal_checkout(checkout_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `checkout_id`
 - **Params**: `checkout_id` — path
@@ -127,6 +135,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.terminal.dismiss_terminal_refund
 
 - **Route**: `POST /v2/terminals/refunds/{terminal_refund_id}/dismiss`
+- **Auth**: `oauth2`
 - **Signature**: `def dismiss_terminal_refund(terminal_refund_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `terminal_refund_id`
 - **Params**: `terminal_refund_id` — path
@@ -141,6 +150,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.terminal.get_terminal_action
 
 - **Route**: `GET /v2/terminals/actions/{action_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def get_terminal_action(action_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `action_id`
 - **Params**: `action_id` — path
@@ -155,6 +165,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.terminal.get_terminal_checkout
 
 - **Route**: `GET /v2/terminals/checkouts/{checkout_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def get_terminal_checkout(checkout_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `checkout_id`
 - **Params**: `checkout_id` — path
@@ -169,6 +180,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.terminal.get_terminal_refund
 
 - **Route**: `GET /v2/terminals/refunds/{terminal_refund_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def get_terminal_refund(terminal_refund_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `terminal_refund_id`
 - **Params**: `terminal_refund_id` — path
@@ -183,6 +195,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.terminal.search_terminal_actions
 
 - **Route**: `POST /v2/terminals/actions/search`
+- **Auth**: `oauth2`
 - **Signature**: `def search_terminal_actions(body: SearchTerminalActionsRequest | SearchTerminalActionsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -199,6 +212,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.terminal.search_terminal_checkouts
 
 - **Route**: `POST /v2/terminals/checkouts/search`
+- **Auth**: `oauth2`
 - **Signature**: `def search_terminal_checkouts(body: SearchTerminalCheckoutsRequest | SearchTerminalCheckoutsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -215,6 +229,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.terminal.search_terminal_refunds
 
 - **Route**: `POST /v2/terminals/refunds/search`
+- **Auth**: `oauth2`
 - **Signature**: `def search_terminal_refunds(body: SearchTerminalRefundsRequest | SearchTerminalRefundsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body

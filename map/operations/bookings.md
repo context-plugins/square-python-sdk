@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.bookings.bulk_retrieve_bookings
 
 - **Route**: `POST /v2/bookings/bulk-retrieve`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_retrieve_bookings(body: BulkRetrieveBookingsRequest | BulkRetrieveBookingsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.bookings.bulk_retrieve_team_member_booking_profiles
 
 - **Route**: `POST /v2/bookings/team-member-booking-profiles/bulk-retrieve`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_retrieve_team_member_booking_profiles(body: BulkRetrieveTeamMemberBookingProfilesRequest | BulkRetrieveTeamMemberBookingProfilesRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -41,6 +43,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.bookings.cancel_booking
 
 - **Route**: `POST /v2/bookings/{booking_id}/cancel`
+- **Auth**: `oauth2`
 - **Signature**: `def cancel_booking(booking_id: str, body: CancelBookingRequest | CancelBookingRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `booking_id`, `body`
 - **Params**: `booking_id` — path · `body` — JSON body
@@ -57,6 +60,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.bookings.create_booking
 
 - **Route**: `POST /v2/bookings`
+- **Auth**: `oauth2`
 - **Signature**: `def create_booking(body: CreateBookingRequest | CreateBookingRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -73,6 +77,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.bookings.list_bookings
 
 - **Route**: `GET /v2/bookings`
+- **Auth**: `oauth2`
 - **Signature**: `def list_bookings(*, limit: int | None = None, cursor: str | None = None, customer_id: str | None = None, team_member_id: str | None = None, location_id: str | None = None, start_at_min: str | None = None, start_at_max: str | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `limit` — query · `cursor` — query · `customer_id` — query · `team_member_id` — query · `location_id` — query · `start_at_min` — query · `start_at_max` — query
 - **Returns (parsed)**: `ListBookingsResponse`
@@ -86,6 +91,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.bookings.list_location_booking_profiles
 
 - **Route**: `GET /v2/bookings/location-booking-profiles`
+- **Auth**: `oauth2`
 - **Signature**: `def list_location_booking_profiles(*, limit: int | None = None, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `limit` — query · `cursor` — query
 - **Returns (parsed)**: `ListLocationBookingProfilesResponse`
@@ -99,6 +105,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.bookings.list_team_member_booking_profiles
 
 - **Route**: `GET /v2/bookings/team-member-booking-profiles`
+- **Auth**: `oauth2`
 - **Signature**: `def list_team_member_booking_profiles(*, bookable_only: bool | None = False, limit: int | None = None, cursor: str | None = None, location_id: str | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `bookable_only` — query · `limit` — query · `cursor` — query · `location_id` — query
 - **Returns (parsed)**: `ListTeamMemberBookingProfilesResponse`
@@ -112,6 +119,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.bookings.retrieve_booking
 
 - **Route**: `GET /v2/bookings/{booking_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_booking(booking_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `booking_id`
 - **Params**: `booking_id` — path
@@ -126,6 +134,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.bookings.retrieve_business_booking_profile
 
 - **Route**: `GET /v2/bookings/business-booking-profile`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_business_booking_profile(*, request_options: RequestOptionsOrDict | None = None)`
 - **Returns (parsed)**: `RetrieveBusinessBookingProfileResponse`
 - **Returns (raw)**: `ApiResult[RetrieveBusinessBookingProfileResponse, RawError]`
@@ -138,6 +147,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.bookings.retrieve_location_booking_profile
 
 - **Route**: `GET /v2/bookings/location-booking-profiles/{location_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_location_booking_profile(location_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `location_id`
 - **Params**: `location_id` — path
@@ -152,6 +162,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.bookings.retrieve_team_member_booking_profile
 
 - **Route**: `GET /v2/bookings/team-member-booking-profiles/{team_member_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_team_member_booking_profile(team_member_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `team_member_id`
 - **Params**: `team_member_id` — path
@@ -166,6 +177,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.bookings.search_availability
 
 - **Route**: `POST /v2/bookings/availability/search`
+- **Auth**: `oauth2`
 - **Signature**: `def search_availability(body: SearchAvailabilityRequest | SearchAvailabilityRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -182,6 +194,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.bookings.update_booking
 
 - **Route**: `PUT /v2/bookings/{booking_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_booking(booking_id: str, body: UpdateBookingRequest | UpdateBookingRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `booking_id`, `body`
 - **Params**: `booking_id` — path · `body` — JSON body

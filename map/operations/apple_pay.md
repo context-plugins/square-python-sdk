@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.apple_pay.register_domain
 
 - **Route**: `POST /v2/apple-pay/domains`
+- **Auth**: `oauth2`
 - **Signature**: `def register_domain(body: RegisterDomainRequest | RegisterDomainRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body

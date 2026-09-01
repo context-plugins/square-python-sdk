@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.channels.bulk_retrieve_channels
 
 - **Route**: `POST /v2/channels/bulk-retrieve`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_retrieve_channels(body: BulkRetrieveChannelsRequest | BulkRetrieveChannelsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.channels.list_channels
 
 - **Route**: `GET /v2/channels`
+- **Auth**: `oauth2`
 - **Signature**: `def list_channels(*, reference_type: ReferenceTypeOrStr | None = None, reference_id: str | None = None, status: ChannelStatusOrStr | None = None, cursor: str | None = None, limit: int | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `reference_type` — query · `reference_id` — query · `status` — query · `cursor` — query · `limit` — query
 - **Returns (parsed)**: `ListChannelsResponse`
@@ -40,6 +42,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.channels.retrieve_channel
 
 - **Route**: `GET /v2/channels/{channel_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_channel(channel_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `channel_id`
 - **Params**: `channel_id` — path

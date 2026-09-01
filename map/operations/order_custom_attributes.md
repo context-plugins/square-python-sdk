@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.order_custom_attributes.bulk_delete_order_custom_attributes
 
 - **Route**: `POST /v2/orders/custom-attributes/bulk-delete`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_delete_order_custom_attributes(body: BulkDeleteOrderCustomAttributesRequest | BulkDeleteOrderCustomAttributesRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.order_custom_attributes.bulk_upsert_order_custom_attributes
 
 - **Route**: `POST /v2/orders/custom-attributes/bulk-upsert`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_upsert_order_custom_attributes(body: BulkUpsertOrderCustomAttributesRequest | BulkUpsertOrderCustomAttributesRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -41,6 +43,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.order_custom_attributes.create_order_custom_attribute_definition
 
 - **Route**: `POST /v2/orders/custom-attribute-definitions`
+- **Auth**: `oauth2`
 - **Signature**: `def create_order_custom_attribute_definition(body: CreateOrderCustomAttributeDefinitionRequest | CreateOrderCustomAttributeDefinitionRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -57,6 +60,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.order_custom_attributes.delete_order_custom_attribute
 
 - **Route**: `DELETE /v2/orders/{order_id}/custom-attributes/{custom_attribute_key}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_order_custom_attribute(order_id: str, custom_attribute_key: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `order_id`, `custom_attribute_key`
 - **Params**: `order_id` — path · `custom_attribute_key` — path
@@ -71,6 +75,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.order_custom_attributes.delete_order_custom_attribute_definition
 
 - **Route**: `DELETE /v2/orders/custom-attribute-definitions/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_order_custom_attribute_definition(key: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `key`
 - **Params**: `key` — path
@@ -85,6 +90,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.order_custom_attributes.list_order_custom_attribute_definitions
 
 - **Route**: `GET /v2/orders/custom-attribute-definitions`
+- **Auth**: `oauth2`
 - **Signature**: `def list_order_custom_attribute_definitions(*, visibility_filter: VisibilityFilterOrStr | None = None, cursor: str | None = None, limit: int | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `visibility_filter` — query · `cursor` — query · `limit` — query
 - **Returns (parsed)**: `ListOrderCustomAttributeDefinitionsResponse`
@@ -99,6 +105,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.order_custom_attributes.list_order_custom_attributes
 
 - **Route**: `GET /v2/orders/{order_id}/custom-attributes`
+- **Auth**: `oauth2`
 - **Signature**: `def list_order_custom_attributes(order_id: str, *, visibility_filter: VisibilityFilterOrStr | None = None, cursor: str | None = None, limit: int | None = None, with_definitions: bool | None = False, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `order_id`
 - **Params**: `order_id` — path · `visibility_filter` — query · `cursor` — query · `limit` — query · `with_definitions` — query
@@ -114,6 +121,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.order_custom_attributes.retrieve_order_custom_attribute
 
 - **Route**: `GET /v2/orders/{order_id}/custom-attributes/{custom_attribute_key}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_order_custom_attribute(order_id: str, custom_attribute_key: str, *, version: int | None = None, with_definition: bool | None = False, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `order_id`, `custom_attribute_key`
 - **Params**: `order_id` — path · `custom_attribute_key` — path · `version` — query · `with_definition` — query
@@ -128,6 +136,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.order_custom_attributes.retrieve_order_custom_attribute_definition
 
 - **Route**: `GET /v2/orders/custom-attribute-definitions/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_order_custom_attribute_definition(key: str, *, version: int | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `key`
 - **Params**: `key` — path · `version` — query
@@ -142,6 +151,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.order_custom_attributes.update_order_custom_attribute_definition
 
 - **Route**: `PUT /v2/orders/custom-attribute-definitions/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_order_custom_attribute_definition(key: str, body: UpdateOrderCustomAttributeDefinitionRequest | UpdateOrderCustomAttributeDefinitionRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `key`, `body`
 - **Params**: `key` — path · `body` — JSON body
@@ -158,6 +168,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.order_custom_attributes.upsert_order_custom_attribute
 
 - **Route**: `POST /v2/orders/{order_id}/custom-attributes/{custom_attribute_key}`
+- **Auth**: `oauth2`
 - **Signature**: `def upsert_order_custom_attribute(order_id: str, custom_attribute_key: str, body: UpsertOrderCustomAttributeRequest | UpsertOrderCustomAttributeRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `order_id`, `custom_attribute_key`, `body`
 - **Params**: `order_id` — path · `custom_attribute_key` — path · `body` — JSON body

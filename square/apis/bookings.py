@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -779,6 +781,7 @@ class BookingsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/bookings/bulk-retrieve"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkRetrieveBookingsRequest | BulkRetrieveBookingsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkRetrieveBookingsResponse],
@@ -804,6 +807,7 @@ class BookingsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/bookings/team-member-booking-profiles/bulk-retrieve"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[
                 BulkRetrieveTeamMemberBookingProfilesRequest | BulkRetrieveTeamMemberBookingProfilesRequestDict
             ](body),
@@ -841,6 +845,7 @@ class BookingsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="POST",
             url_template=self._server.default("/v2/bookings/{booking_id}/cancel"),
             path_params=[param[str]("booking_id", booking_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CancelBookingRequest | CancelBookingRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CancelBookingResponse],
@@ -880,6 +885,7 @@ class BookingsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/bookings"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateBookingRequest | CreateBookingRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateBookingResponse],
@@ -1114,6 +1120,7 @@ class BookingsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/bookings/availability/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchAvailabilityRequest | SearchAvailabilityRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchAvailabilityResponse],
@@ -1149,6 +1156,7 @@ class BookingsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="PUT",
             url_template=self._server.default("/v2/bookings/{booking_id}"),
             path_params=[param[str]("booking_id", booking_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateBookingRequest | UpdateBookingRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateBookingResponse],
@@ -1180,6 +1188,7 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/bookings/bulk-retrieve"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkRetrieveBookingsRequest | BulkRetrieveBookingsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkRetrieveBookingsResponse],
@@ -1205,6 +1214,7 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/bookings/team-member-booking-profiles/bulk-retrieve"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[
                 BulkRetrieveTeamMemberBookingProfilesRequest | BulkRetrieveTeamMemberBookingProfilesRequestDict
             ](body),
@@ -1242,6 +1252,7 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="POST",
             url_template=self._server.default("/v2/bookings/{booking_id}/cancel"),
             path_params=[param[str]("booking_id", booking_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CancelBookingRequest | CancelBookingRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CancelBookingResponse],
@@ -1281,6 +1292,7 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/bookings"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateBookingRequest | CreateBookingRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateBookingResponse],
@@ -1515,6 +1527,7 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/bookings/availability/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchAvailabilityRequest | SearchAvailabilityRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchAvailabilityResponse],
@@ -1550,6 +1563,7 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="PUT",
             url_template=self._server.default("/v2/bookings/{booking_id}"),
             path_params=[param[str]("booking_id", booking_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateBookingRequest | UpdateBookingRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateBookingResponse],

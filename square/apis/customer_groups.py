@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -276,6 +278,7 @@ class CustomerGroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSc
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/customers/groups"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateCustomerGroupRequest | CreateCustomerGroupRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateCustomerGroupResponse],
@@ -298,6 +301,7 @@ class CustomerGroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSc
             http_method="DELETE",
             url_template=self._server.default("/v2/customers/groups/{group_id}"),
             path_params=[param[str]("group_id", group_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteCustomerGroupResponse],
             error_mapper=raw_error_response,
@@ -377,6 +381,7 @@ class CustomerGroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSc
             http_method="PUT",
             url_template=self._server.default("/v2/customers/groups/{group_id}"),
             path_params=[param[str]("group_id", group_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateCustomerGroupRequest | UpdateCustomerGroupRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateCustomerGroupResponse],
@@ -406,6 +411,7 @@ class AsyncCustomerGroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serv
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/customers/groups"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateCustomerGroupRequest | CreateCustomerGroupRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateCustomerGroupResponse],
@@ -428,6 +434,7 @@ class AsyncCustomerGroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serv
             http_method="DELETE",
             url_template=self._server.default("/v2/customers/groups/{group_id}"),
             path_params=[param[str]("group_id", group_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteCustomerGroupResponse],
             error_mapper=raw_error_response,
@@ -507,6 +514,7 @@ class AsyncCustomerGroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serv
             http_method="PUT",
             url_template=self._server.default("/v2/customers/groups/{group_id}"),
             path_params=[param[str]("group_id", group_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateCustomerGroupRequest | UpdateCustomerGroupRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateCustomerGroupResponse],

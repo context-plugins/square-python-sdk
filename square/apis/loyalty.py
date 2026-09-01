@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -1054,6 +1056,7 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/accounts/{account_id}/accumulate"),
             path_params=[param[str]("account_id", account_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[AccumulateLoyaltyPointsRequest | AccumulateLoyaltyPointsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[AccumulateLoyaltyPointsResponse],
@@ -1086,6 +1089,7 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/accounts/{account_id}/adjust"),
             path_params=[param[str]("account_id", account_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[AdjustLoyaltyPointsRequest | AdjustLoyaltyPointsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[AdjustLoyaltyPointsResponse],
@@ -1130,6 +1134,7 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/programs/{program_id}/calculate"),
             path_params=[param[str]("program_id", program_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CalculateLoyaltyPointsRequest | CalculateLoyaltyPointsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CalculateLoyaltyPointsResponse],
@@ -1159,6 +1164,7 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/programs/{program_id}/promotions/{promotion_id}/cancel"),
             path_params=[param[str]("promotion_id", promotion_id), param[str]("program_id", program_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CancelLoyaltyPromotionResponse],
             error_mapper=raw_error_response,
@@ -1184,6 +1190,7 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/accounts"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateLoyaltyAccountRequest | CreateLoyaltyAccountRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateLoyaltyAccountResponse],
@@ -1219,6 +1226,7 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/programs/{program_id}/promotions"),
             path_params=[param[str]("program_id", program_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateLoyaltyPromotionRequest | CreateLoyaltyPromotionRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateLoyaltyPromotionResponse],
@@ -1250,6 +1258,7 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/rewards"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateLoyaltyRewardRequest | CreateLoyaltyRewardRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateLoyaltyRewardResponse],
@@ -1279,6 +1288,7 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             http_method="DELETE",
             url_template=self._server.default("/v2/loyalty/rewards/{reward_id}"),
             path_params=[param[str]("reward_id", reward_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteLoyaltyRewardResponse],
             error_mapper=raw_error_response,
@@ -1382,6 +1392,7 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/rewards/{reward_id}/redeem"),
             path_params=[param[str]("reward_id", reward_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RedeemLoyaltyRewardRequest | RedeemLoyaltyRewardRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[RedeemLoyaltyRewardResponse],
@@ -1503,6 +1514,7 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/accounts/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchLoyaltyAccountsRequest | SearchLoyaltyAccountsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchLoyaltyAccountsResponse],
@@ -1534,6 +1546,7 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/events/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchLoyaltyEventsRequest | SearchLoyaltyEventsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchLoyaltyEventsResponse],
@@ -1566,6 +1579,7 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/rewards/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchLoyaltyRewardsRequest | SearchLoyaltyRewardsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchLoyaltyRewardsResponse],
@@ -1610,6 +1624,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/accounts/{account_id}/accumulate"),
             path_params=[param[str]("account_id", account_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[AccumulateLoyaltyPointsRequest | AccumulateLoyaltyPointsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[AccumulateLoyaltyPointsResponse],
@@ -1642,6 +1657,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/accounts/{account_id}/adjust"),
             path_params=[param[str]("account_id", account_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[AdjustLoyaltyPointsRequest | AdjustLoyaltyPointsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[AdjustLoyaltyPointsResponse],
@@ -1686,6 +1702,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/programs/{program_id}/calculate"),
             path_params=[param[str]("program_id", program_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CalculateLoyaltyPointsRequest | CalculateLoyaltyPointsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CalculateLoyaltyPointsResponse],
@@ -1715,6 +1732,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/programs/{program_id}/promotions/{promotion_id}/cancel"),
             path_params=[param[str]("promotion_id", promotion_id), param[str]("program_id", program_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CancelLoyaltyPromotionResponse],
             error_mapper=raw_error_response,
@@ -1740,6 +1758,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/accounts"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateLoyaltyAccountRequest | CreateLoyaltyAccountRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateLoyaltyAccountResponse],
@@ -1775,6 +1794,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/programs/{program_id}/promotions"),
             path_params=[param[str]("program_id", program_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateLoyaltyPromotionRequest | CreateLoyaltyPromotionRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateLoyaltyPromotionResponse],
@@ -1806,6 +1826,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/rewards"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateLoyaltyRewardRequest | CreateLoyaltyRewardRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateLoyaltyRewardResponse],
@@ -1835,6 +1856,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             http_method="DELETE",
             url_template=self._server.default("/v2/loyalty/rewards/{reward_id}"),
             path_params=[param[str]("reward_id", reward_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteLoyaltyRewardResponse],
             error_mapper=raw_error_response,
@@ -1938,6 +1960,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/rewards/{reward_id}/redeem"),
             path_params=[param[str]("reward_id", reward_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RedeemLoyaltyRewardRequest | RedeemLoyaltyRewardRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[RedeemLoyaltyRewardResponse],
@@ -2059,6 +2082,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/accounts/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchLoyaltyAccountsRequest | SearchLoyaltyAccountsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchLoyaltyAccountsResponse],
@@ -2090,6 +2114,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/events/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchLoyaltyEventsRequest | SearchLoyaltyEventsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchLoyaltyEventsResponse],
@@ -2122,6 +2147,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/loyalty/rewards/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchLoyaltyRewardsRequest | SearchLoyaltyRewardsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchLoyaltyRewardsResponse],

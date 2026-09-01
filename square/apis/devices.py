@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -307,6 +309,7 @@ class DevicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/devices/codes"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateDeviceCodeRequest | CreateDeviceCodeRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateDeviceCodeResponse],
@@ -456,6 +459,7 @@ class AsyncDevicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/devices/codes"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateDeviceCodeRequest | CreateDeviceCodeRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateDeviceCodeResponse],

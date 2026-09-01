@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -287,6 +289,7 @@ class TransactionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSche
             http_method="POST",
             url_template=self._server.default("/v2/locations/{location_id}/transactions/{transaction_id}/capture"),
             path_params=[param[str]("location_id", location_id), param[str]("transaction_id", transaction_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CaptureTransactionResponse],
             error_mapper=raw_error_response,
@@ -385,6 +388,7 @@ class TransactionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSche
             http_method="POST",
             url_template=self._server.default("/v2/locations/{location_id}/transactions/{transaction_id}/void"),
             path_params=[param[str]("location_id", location_id), param[str]("transaction_id", transaction_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[VoidTransactionResponse],
             error_mapper=raw_error_response,
@@ -413,6 +417,7 @@ class AsyncTransactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
             http_method="POST",
             url_template=self._server.default("/v2/locations/{location_id}/transactions/{transaction_id}/capture"),
             path_params=[param[str]("location_id", location_id), param[str]("transaction_id", transaction_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CaptureTransactionResponse],
             error_mapper=raw_error_response,
@@ -511,6 +516,7 @@ class AsyncTransactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
             http_method="POST",
             url_template=self._server.default("/v2/locations/{location_id}/transactions/{transaction_id}/void"),
             path_params=[param[str]("location_id", location_id), param[str]("transaction_id", transaction_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[VoidTransactionResponse],
             error_mapper=raw_error_response,

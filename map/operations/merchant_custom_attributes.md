@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.merchant_custom_attributes.bulk_delete_merchant_custom_attributes
 
 - **Route**: `POST /v2/merchants/custom-attributes/bulk-delete`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_delete_merchant_custom_attributes(body: BulkDeleteMerchantCustomAttributesRequest | BulkDeleteMerchantCustomAttributesRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.merchant_custom_attributes.bulk_upsert_merchant_custom_attributes
 
 - **Route**: `POST /v2/merchants/custom-attributes/bulk-upsert`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_upsert_merchant_custom_attributes(body: BulkUpsertMerchantCustomAttributesRequest | BulkUpsertMerchantCustomAttributesRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -41,6 +43,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.merchant_custom_attributes.create_merchant_custom_attribute_definition
 
 - **Route**: `POST /v2/merchants/custom-attribute-definitions`
+- **Auth**: `oauth2`
 - **Signature**: `def create_merchant_custom_attribute_definition(body: CreateMerchantCustomAttributeDefinitionRequest | CreateMerchantCustomAttributeDefinitionRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -57,6 +60,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.merchant_custom_attributes.delete_merchant_custom_attribute
 
 - **Route**: `DELETE /v2/merchants/{merchant_id}/custom-attributes/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_merchant_custom_attribute(merchant_id: str, key: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `merchant_id`, `key`
 - **Params**: `merchant_id` — path · `key` — path
@@ -71,6 +75,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.merchant_custom_attributes.delete_merchant_custom_attribute_definition
 
 - **Route**: `DELETE /v2/merchants/custom-attribute-definitions/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_merchant_custom_attribute_definition(key: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `key`
 - **Params**: `key` — path
@@ -85,6 +90,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.merchant_custom_attributes.list_merchant_custom_attribute_definitions
 
 - **Route**: `GET /v2/merchants/custom-attribute-definitions`
+- **Auth**: `oauth2`
 - **Signature**: `def list_merchant_custom_attribute_definitions(*, visibility_filter: VisibilityFilterOrStr | None = None, limit: int | None = None, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `visibility_filter` — query · `limit` — query · `cursor` — query
 - **Returns (parsed)**: `ListMerchantCustomAttributeDefinitionsResponse`
@@ -99,6 +105,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.merchant_custom_attributes.list_merchant_custom_attributes
 
 - **Route**: `GET /v2/merchants/{merchant_id}/custom-attributes`
+- **Auth**: `oauth2`
 - **Signature**: `def list_merchant_custom_attributes(merchant_id: str, *, visibility_filter: VisibilityFilterOrStr | None = None, limit: int | None = None, cursor: str | None = None, with_definitions: bool | None = False, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `merchant_id`
 - **Params**: `merchant_id` — path · `visibility_filter` — query · `limit` — query · `cursor` — query · `with_definitions` — query
@@ -114,6 +121,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.merchant_custom_attributes.retrieve_merchant_custom_attribute
 
 - **Route**: `GET /v2/merchants/{merchant_id}/custom-attributes/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_merchant_custom_attribute(merchant_id: str, key: str, *, with_definition: bool | None = False, version: int | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `merchant_id`, `key`
 - **Params**: `merchant_id` — path · `key` — path · `with_definition` — query · `version` — query
@@ -128,6 +136,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.merchant_custom_attributes.retrieve_merchant_custom_attribute_definition
 
 - **Route**: `GET /v2/merchants/custom-attribute-definitions/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_merchant_custom_attribute_definition(key: str, *, version: int | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `key`
 - **Params**: `key` — path · `version` — query
@@ -142,6 +151,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.merchant_custom_attributes.update_merchant_custom_attribute_definition
 
 - **Route**: `PUT /v2/merchants/custom-attribute-definitions/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_merchant_custom_attribute_definition(key: str, body: UpdateMerchantCustomAttributeDefinitionRequest | UpdateMerchantCustomAttributeDefinitionRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `key`, `body`
 - **Params**: `key` — path · `body` — JSON body
@@ -158,6 +168,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.merchant_custom_attributes.upsert_merchant_custom_attribute
 
 - **Route**: `POST /v2/merchants/{merchant_id}/custom-attributes/{key}`
+- **Auth**: `oauth2`
 - **Signature**: `def upsert_merchant_custom_attribute(merchant_id: str, key: str, body: UpsertMerchantCustomAttributeRequest | UpsertMerchantCustomAttributeRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `merchant_id`, `key`, `body`
 - **Params**: `merchant_id` — path · `key` — path · `body` — JSON body

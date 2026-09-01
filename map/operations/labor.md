@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.bulk_publish_scheduled_shifts
 
 - **Route**: `POST /v2/labor/scheduled-shifts/bulk-publish`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_publish_scheduled_shifts(body: BulkPublishScheduledShiftsRequest | BulkPublishScheduledShiftsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.create_break_type
 
 - **Route**: `POST /v2/labor/break-types`
+- **Auth**: `oauth2`
 - **Signature**: `def create_break_type(body: CreateBreakTypeRequest | CreateBreakTypeRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -41,6 +43,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.create_scheduled_shift
 
 - **Route**: `POST /v2/labor/scheduled-shifts`
+- **Auth**: `oauth2`
 - **Signature**: `def create_scheduled_shift(body: CreateScheduledShiftRequest | CreateScheduledShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -57,6 +60,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.create_shift
 
 - **Route**: `POST /v2/labor/shifts`
+- **Auth**: `oauth2`
 - **Signature**: `def create_shift(body: CreateShiftRequest | CreateShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -73,6 +77,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.create_timecard
 
 - **Route**: `POST /v2/labor/timecards`
+- **Auth**: `oauth2`
 - **Signature**: `def create_timecard(body: CreateTimecardRequest | CreateTimecardRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -89,6 +94,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.delete_break_type
 
 - **Route**: `DELETE /v2/labor/break-types/{id}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_break_type(id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`
 - **Params**: `id` — path
@@ -103,6 +109,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.delete_shift
 
 - **Route**: `DELETE /v2/labor/shifts/{id}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_shift(id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`
 - **Params**: `id` — path
@@ -117,6 +124,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.delete_timecard
 
 - **Route**: `DELETE /v2/labor/timecards/{id}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_timecard(id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`
 - **Params**: `id` — path
@@ -131,6 +139,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.get_break_type
 
 - **Route**: `GET /v2/labor/break-types/{id}`
+- **Auth**: `oauth2`
 - **Signature**: `def get_break_type(id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`
 - **Params**: `id` — path
@@ -145,6 +154,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.get_employee_wage
 
 - **Route**: `GET /v2/labor/employee-wages/{id}`
+- **Auth**: `oauth2`
 - **Signature**: `def get_employee_wage(id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`
 - **Params**: `id` — path
@@ -159,6 +169,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.get_shift
 
 - **Route**: `GET /v2/labor/shifts/{id}`
+- **Auth**: `oauth2`
 - **Signature**: `def get_shift(id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`
 - **Params**: `id` — path
@@ -173,6 +184,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.get_team_member_wage
 
 - **Route**: `GET /v2/labor/team-member-wages/{id}`
+- **Auth**: `oauth2`
 - **Signature**: `def get_team_member_wage(id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`
 - **Params**: `id` — path
@@ -187,6 +199,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.list_break_types
 
 - **Route**: `GET /v2/labor/break-types`
+- **Auth**: `oauth2`
 - **Signature**: `def list_break_types(*, location_id: str | None = None, limit: int | None = None, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `location_id` — query · `limit` — query · `cursor` — query
 - **Returns (parsed)**: `ListBreakTypesResponse`
@@ -200,6 +213,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.list_employee_wages
 
 - **Route**: `GET /v2/labor/employee-wages`
+- **Auth**: `oauth2`
 - **Signature**: `def list_employee_wages(*, employee_id: str | None = None, limit: int | None = None, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `employee_id` — query · `limit` — query · `cursor` — query
 - **Returns (parsed)**: `ListEmployeeWagesResponse`
@@ -213,6 +227,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.list_team_member_wages
 
 - **Route**: `GET /v2/labor/team-member-wages`
+- **Auth**: `oauth2`
 - **Signature**: `def list_team_member_wages(*, team_member_id: str | None = None, limit: int | None = None, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `team_member_id` — query · `limit` — query · `cursor` — query
 - **Returns (parsed)**: `ListTeamMemberWagesResponse`
@@ -226,6 +241,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.list_workweek_configs
 
 - **Route**: `GET /v2/labor/workweek-configs`
+- **Auth**: `oauth2`
 - **Signature**: `def list_workweek_configs(*, limit: int | None = None, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `limit` — query · `cursor` — query
 - **Returns (parsed)**: `ListWorkweekConfigsResponse`
@@ -239,6 +255,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.publish_scheduled_shift
 
 - **Route**: `POST /v2/labor/scheduled-shifts/{id}/publish`
+- **Auth**: `oauth2`
 - **Signature**: `def publish_scheduled_shift(id: str, body: PublishScheduledShiftRequest | PublishScheduledShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`, `body`
 - **Params**: `id` — path · `body` — JSON body
@@ -255,6 +272,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.retrieve_scheduled_shift
 
 - **Route**: `GET /v2/labor/scheduled-shifts/{id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_scheduled_shift(id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`
 - **Params**: `id` — path
@@ -269,6 +287,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.retrieve_timecard
 
 - **Route**: `GET /v2/labor/timecards/{id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_timecard(id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`
 - **Params**: `id` — path
@@ -283,6 +302,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.search_scheduled_shifts
 
 - **Route**: `POST /v2/labor/scheduled-shifts/search`
+- **Auth**: `oauth2`
 - **Signature**: `def search_scheduled_shifts(body: SearchScheduledShiftsRequest | SearchScheduledShiftsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -299,6 +319,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.search_shifts
 
 - **Route**: `POST /v2/labor/shifts/search`
+- **Auth**: `oauth2`
 - **Signature**: `def search_shifts(body: SearchShiftsRequest | SearchShiftsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -315,6 +336,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.search_timecards
 
 - **Route**: `POST /v2/labor/timecards/search`
+- **Auth**: `oauth2`
 - **Signature**: `def search_timecards(body: SearchTimecardsRequest | SearchTimecardsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -331,6 +353,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.update_break_type
 
 - **Route**: `PUT /v2/labor/break-types/{id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_break_type(id: str, body: UpdateBreakTypeRequest | UpdateBreakTypeRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`, `body`
 - **Params**: `id` — path · `body` — JSON body
@@ -347,6 +370,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.update_scheduled_shift
 
 - **Route**: `PUT /v2/labor/scheduled-shifts/{id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_scheduled_shift(id: str, body: UpdateScheduledShiftRequest | UpdateScheduledShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`, `body`
 - **Params**: `id` — path · `body` — JSON body
@@ -363,6 +387,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.update_shift
 
 - **Route**: `PUT /v2/labor/shifts/{id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_shift(id: str, body: UpdateShiftRequest | UpdateShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`, `body`
 - **Params**: `id` — path · `body` — JSON body
@@ -379,6 +404,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.update_timecard
 
 - **Route**: `PUT /v2/labor/timecards/{id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_timecard(id: str, body: UpdateTimecardRequest | UpdateTimecardRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`, `body`
 - **Params**: `id` — path · `body` — JSON body
@@ -395,6 +421,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.labor.update_workweek_config
 
 - **Route**: `PUT /v2/labor/workweek-configs/{id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_workweek_config(id: str, body: UpdateWorkweekConfigRequest | UpdateWorkweekConfigRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`, `body`
 - **Params**: `id` — path · `body` — JSON body

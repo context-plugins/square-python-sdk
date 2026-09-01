@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.vendors.bulk_create_vendors
 
 - **Route**: `POST /v2/vendors/bulk-create`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_create_vendors(body: BulkCreateVendorsRequest | BulkCreateVendorsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.vendors.bulk_retrieve_vendors
 
 - **Route**: `POST /v2/vendors/bulk-retrieve`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_retrieve_vendors(body: BulkRetrieveVendorsRequest | BulkRetrieveVendorsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -41,6 +43,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.vendors.bulk_update_vendors
 
 - **Route**: `PUT /v2/vendors/bulk-update`
+- **Auth**: `oauth2`
 - **Signature**: `def bulk_update_vendors(body: BulkUpdateVendorsRequest | BulkUpdateVendorsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -57,6 +60,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.vendors.create_vendor
 
 - **Route**: `POST /v2/vendors/create`
+- **Auth**: `oauth2`
 - **Signature**: `def create_vendor(body: CreateVendorRequest | CreateVendorRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -73,6 +77,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.vendors.retrieve_vendor
 
 - **Route**: `GET /v2/vendors/{vendor_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_vendor(vendor_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `vendor_id`
 - **Params**: `vendor_id` — path
@@ -87,6 +92,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.vendors.search_vendors
 
 - **Route**: `POST /v2/vendors/search`
+- **Auth**: `oauth2`
 - **Signature**: `def search_vendors(body: SearchVendorsRequest | SearchVendorsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -103,6 +109,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.vendors.update_vendor
 
 - **Route**: `PUT /v2/vendors/{vendor_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_vendor(vendor_id: str, body: UpdateVendorRequest | UpdateVendorRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `vendor_id`, `body`
 - **Params**: `vendor_id` — path · `body` — JSON body

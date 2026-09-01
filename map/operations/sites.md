@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.sites.list_sites
 
 - **Route**: `GET /v2/sites`
+- **Auth**: `oauth2`
 - **Signature**: `def list_sites(*, request_options: RequestOptionsOrDict | None = None)`
 - **Returns (parsed)**: `ListSitesResponse`
 - **Returns (raw)**: `ApiResult[ListSitesResponse, RawError]`

@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.inventory.batch_change_inventory
 
 - **Route**: `POST /v2/inventory/changes/batch-create`
+- **Auth**: `oauth2`
 - **Signature**: `def batch_change_inventory(body: BatchChangeInventoryRequest | BatchChangeInventoryRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.inventory.batch_retrieve_inventory_changes
 
 - **Route**: `POST /v2/inventory/changes/batch-retrieve`
+- **Auth**: `oauth2`
 - **Signature**: `def batch_retrieve_inventory_changes(body: BatchRetrieveInventoryChangesRequest | BatchRetrieveInventoryChangesRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -41,6 +43,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.inventory.batch_retrieve_inventory_counts
 
 - **Route**: `POST /v2/inventory/counts/batch-retrieve`
+- **Auth**: `oauth2`
 - **Signature**: `def batch_retrieve_inventory_counts(body: BatchRetrieveInventoryCountsRequest | BatchRetrieveInventoryCountsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -57,6 +60,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.inventory.create_inventory_adjustment_reason
 
 - **Route**: `POST /v2/inventory/adjustment-reasons/create`
+- **Auth**: `oauth2`
 - **Signature**: `def create_inventory_adjustment_reason(body: CreateInventoryAdjustmentReasonRequest | CreateInventoryAdjustmentReasonRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -73,6 +77,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.inventory.delete_inventory_adjustment_reason
 
 - **Route**: `POST /v2/inventory/adjustment-reasons/delete`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_inventory_adjustment_reason(body: DeleteInventoryAdjustmentReasonRequest | DeleteInventoryAdjustmentReasonRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -89,6 +94,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.inventory.deprecated_batch_change_inventory
 
 - **Route**: `POST /v2/inventory/batch-change`
+- **Auth**: `oauth2`
 - **Signature**: `def deprecated_batch_change_inventory(body: BatchChangeInventoryRequest | BatchChangeInventoryRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -105,6 +111,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.inventory.deprecated_batch_retrieve_inventory_changes
 
 - **Route**: `POST /v2/inventory/batch-retrieve-changes`
+- **Auth**: `oauth2`
 - **Signature**: `def deprecated_batch_retrieve_inventory_changes(body: BatchRetrieveInventoryChangesRequest | BatchRetrieveInventoryChangesRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -121,6 +128,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.inventory.deprecated_batch_retrieve_inventory_counts
 
 - **Route**: `POST /v2/inventory/batch-retrieve-counts`
+- **Auth**: `oauth2`
 - **Signature**: `def deprecated_batch_retrieve_inventory_counts(body: BatchRetrieveInventoryCountsRequest | BatchRetrieveInventoryCountsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -137,6 +145,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.inventory.deprecated_retrieve_inventory_adjustment
 
 - **Route**: `GET /v2/inventory/adjustment/{adjustment_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def deprecated_retrieve_inventory_adjustment(adjustment_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `adjustment_id`
 - **Params**: `adjustment_id` — path
@@ -151,6 +160,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.inventory.deprecated_retrieve_inventory_physical_count
 
 - **Route**: `GET /v2/inventory/physical-count/{physical_count_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def deprecated_retrieve_inventory_physical_count(physical_count_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `physical_count_id`
 - **Params**: `physical_count_id` — path
@@ -165,6 +175,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.inventory.list_inventory_adjustment_reasons
 
 - **Route**: `GET /v2/inventory/adjustment-reasons`
+- **Auth**: `oauth2`
 - **Signature**: `def list_inventory_adjustment_reasons(*, include_deleted: bool | None = False, include_system_codes: bool | None = False, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `include_deleted` — query · `include_system_codes` — query
 - **Returns (parsed)**: `ListInventoryAdjustmentReasonsResponse`
@@ -178,6 +189,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.inventory.restore_inventory_adjustment_reason
 
 - **Route**: `POST /v2/inventory/adjustment-reasons/restore`
+- **Auth**: `oauth2`
 - **Signature**: `def restore_inventory_adjustment_reason(body: RestoreInventoryAdjustmentReasonRequest | RestoreInventoryAdjustmentReasonRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -194,6 +206,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.inventory.retrieve_inventory_adjustment
 
 - **Route**: `GET /v2/inventory/adjustments/{adjustment_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_inventory_adjustment(adjustment_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `adjustment_id`
 - **Params**: `adjustment_id` — path
@@ -208,6 +221,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.inventory.retrieve_inventory_adjustment_reason
 
 - **Route**: `POST /v2/inventory/adjustment-reasons/retrieve`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_inventory_adjustment_reason(body: RetrieveInventoryAdjustmentReasonRequest | RetrieveInventoryAdjustmentReasonRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -224,6 +238,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.inventory.retrieve_inventory_changes
 
 - **Route**: `GET /v2/inventory/{catalog_object_id}/changes`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_inventory_changes(catalog_object_id: str, *, location_ids: str | None = None, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `catalog_object_id`
 - **Params**: `catalog_object_id` — path · `location_ids` — query · `cursor` — query
@@ -238,6 +253,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.inventory.retrieve_inventory_count
 
 - **Route**: `GET /v2/inventory/{catalog_object_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_inventory_count(catalog_object_id: str, *, location_ids: str | None = None, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `catalog_object_id`
 - **Params**: `catalog_object_id` — path · `location_ids` — query · `cursor` — query
@@ -252,6 +268,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.inventory.retrieve_inventory_physical_count
 
 - **Route**: `GET /v2/inventory/physical-counts/{physical_count_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_inventory_physical_count(physical_count_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `physical_count_id`
 - **Params**: `physical_count_id` — path
@@ -266,6 +283,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.inventory.update_inventory_adjustment
 
 - **Route**: `PUT /v2/inventory/adjustments/update`
+- **Auth**: `oauth2`
 - **Signature**: `def update_inventory_adjustment(body: UpdateInventoryAdjustmentRequest | UpdateInventoryAdjustmentRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -282,6 +300,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.inventory.update_inventory_adjustment_reason
 
 - **Route**: `PUT /v2/inventory/adjustment-reasons/update`
+- **Auth**: `oauth2`
 - **Signature**: `def update_inventory_adjustment_reason(body: UpdateInventoryAdjustmentReasonRequest | UpdateInventoryAdjustmentReasonRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body

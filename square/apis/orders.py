@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -478,6 +480,7 @@ class OrdersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/orders/batch-retrieve"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchRetrieveOrdersRequest | BatchRetrieveOrdersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BatchRetrieveOrdersResponse],
@@ -503,6 +506,7 @@ class OrdersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/orders/calculate"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CalculateOrderRequest | CalculateOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CalculateOrderResponse],
@@ -526,6 +530,7 @@ class OrdersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/orders/clone"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CloneOrderRequest | CloneOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CloneOrderResponse],
@@ -554,6 +559,7 @@ class OrdersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/orders"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateOrderRequest | CreateOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateOrderResponse],
@@ -595,6 +601,7 @@ class OrdersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             http_method="POST",
             url_template=self._server.default("/v2/orders/{order_id}/pay"),
             path_params=[param[str]("order_id", order_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[PayOrderRequest | PayOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[PayOrderResponse],
@@ -655,6 +662,7 @@ class OrdersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/orders/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchOrdersRequest | SearchOrdersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchOrdersResponse],
@@ -697,6 +705,7 @@ class OrdersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             http_method="PUT",
             url_template=self._server.default("/v2/orders/{order_id}"),
             path_params=[param[str]("order_id", order_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateOrderRequest | UpdateOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateOrderResponse],
@@ -726,6 +735,7 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/orders/batch-retrieve"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchRetrieveOrdersRequest | BatchRetrieveOrdersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BatchRetrieveOrdersResponse],
@@ -751,6 +761,7 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/orders/calculate"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CalculateOrderRequest | CalculateOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CalculateOrderResponse],
@@ -774,6 +785,7 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/orders/clone"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CloneOrderRequest | CloneOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CloneOrderResponse],
@@ -802,6 +814,7 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/orders"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateOrderRequest | CreateOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateOrderResponse],
@@ -843,6 +856,7 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
             http_method="POST",
             url_template=self._server.default("/v2/orders/{order_id}/pay"),
             path_params=[param[str]("order_id", order_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[PayOrderRequest | PayOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[PayOrderResponse],
@@ -903,6 +917,7 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/orders/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchOrdersRequest | SearchOrdersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchOrdersResponse],
@@ -945,6 +960,7 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
             http_method="PUT",
             url_template=self._server.default("/v2/orders/{order_id}"),
             path_params=[param[str]("order_id", order_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateOrderRequest | UpdateOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateOrderResponse],

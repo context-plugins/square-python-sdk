@@ -251,6 +251,13 @@ Import paths by content type (`from <package> import <Name>`):
 
 **API key (header `Authorization`).** Pass `oauth2_client_secret="<api_key>"`; sent as the `Authorization` request header.
 
+Operation blocks name their scheme in an **Auth** bullet; an operation whose spec declares no scheme carries no such bullet.
+
+- `AND` — every scheme listed must be configured for the call to succeed.
+- `OR` — any one of the schemes listed can be used; the first one you configured is the one sent, in the order listed.
+
+A scheme you did not configure is skipped silently rather than raising, and the request is sent anyway — so an authentication failure can mean no credential was sent rather than a bad one.
+
 **Environments.** `environment=` selects the target environment (`square/server/environment.py`); this SDK's one server (`square/server/server_config.py`) has a base URL per environment:
 
 | Environment | Base URL | Hosting | Override point |

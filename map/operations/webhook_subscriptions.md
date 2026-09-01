@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.webhook_subscriptions.create_webhook_subscription
 
 - **Route**: `POST /v2/webhooks/subscriptions`
+- **Auth**: `oauth2`
 - **Signature**: `def create_webhook_subscription(body: CreateWebhookSubscriptionRequest | CreateWebhookSubscriptionRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.webhook_subscriptions.delete_webhook_subscription
 
 - **Route**: `DELETE /v2/webhooks/subscriptions/{subscription_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_webhook_subscription(subscription_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `subscription_id`
 - **Params**: `subscription_id` — path
@@ -39,6 +41,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.webhook_subscriptions.list_webhook_event_types
 
 - **Route**: `GET /v2/webhooks/event-types`
+- **Auth**: `oauth2`
 - **Signature**: `def list_webhook_event_types(*, api_version: str | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `api_version` — query
 - **Returns (parsed)**: `ListWebhookEventTypesResponse`
@@ -52,6 +55,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.webhook_subscriptions.list_webhook_subscriptions
 
 - **Route**: `GET /v2/webhooks/subscriptions`
+- **Auth**: `oauth2`
 - **Signature**: `def list_webhook_subscriptions(*, cursor: str | None = None, include_disabled: bool | None = False, sort_order: SortOrderOrStr | None = None, limit: int | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `cursor` — query · `include_disabled` — query · `sort_order` — query · `limit` — query
 - **Returns (parsed)**: `ListWebhookSubscriptionsResponse`
@@ -66,6 +70,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.webhook_subscriptions.retrieve_webhook_subscription
 
 - **Route**: `GET /v2/webhooks/subscriptions/{subscription_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_webhook_subscription(subscription_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `subscription_id`
 - **Params**: `subscription_id` — path
@@ -80,6 +85,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.webhook_subscriptions.test_webhook_subscription
 
 - **Route**: `POST /v2/webhooks/subscriptions/{subscription_id}/test`
+- **Auth**: `oauth2`
 - **Signature**: `def test_webhook_subscription(subscription_id: str, body: TestWebhookSubscriptionRequest | TestWebhookSubscriptionRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `subscription_id`, `body`
 - **Params**: `subscription_id` — path · `body` — JSON body
@@ -96,6 +102,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.webhook_subscriptions.update_webhook_subscription
 
 - **Route**: `PUT /v2/webhooks/subscriptions/{subscription_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_webhook_subscription(subscription_id: str, body: UpdateWebhookSubscriptionRequest | UpdateWebhookSubscriptionRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `subscription_id`, `body`
 - **Params**: `subscription_id` — path · `body` — JSON body
@@ -112,6 +119,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.webhook_subscriptions.update_webhook_subscription_signature_key
 
 - **Route**: `POST /v2/webhooks/subscriptions/{subscription_id}/signature-key`
+- **Auth**: `oauth2`
 - **Signature**: `def update_webhook_subscription_signature_key(subscription_id: str, body: UpdateWebhookSubscriptionSignatureKeyRequest | UpdateWebhookSubscriptionSignatureKeyRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `subscription_id`, `body`
 - **Params**: `subscription_id` — path · `body` — JSON body

@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.transfer_order_api.cancel_transfer_order
 
 - **Route**: `POST /v2/transfer-orders/{transfer_order_id}/cancel`
+- **Auth**: `oauth2`
 - **Signature**: `def cancel_transfer_order(transfer_order_id: str, body: CancelTransferOrderRequest | CancelTransferOrderRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `transfer_order_id`, `body`
 - **Params**: `transfer_order_id` — path · `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.transfer_order_api.create_transfer_order
 
 - **Route**: `POST /v2/transfer-orders`
+- **Auth**: `oauth2`
 - **Signature**: `def create_transfer_order(body: CreateTransferOrderRequest | CreateTransferOrderRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -41,6 +43,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.transfer_order_api.delete_transfer_order
 
 - **Route**: `DELETE /v2/transfer-orders/{transfer_order_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_transfer_order(transfer_order_id: str, *, version: int | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `transfer_order_id`
 - **Params**: `transfer_order_id` — path · `version` — query
@@ -55,6 +58,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.transfer_order_api.receive_transfer_order
 
 - **Route**: `POST /v2/transfer-orders/{transfer_order_id}/receive`
+- **Auth**: `oauth2`
 - **Signature**: `def receive_transfer_order(transfer_order_id: str, body: ReceiveTransferOrderRequest | ReceiveTransferOrderRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `transfer_order_id`, `body`
 - **Params**: `transfer_order_id` — path · `body` — JSON body
@@ -71,6 +75,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.transfer_order_api.retrieve_transfer_order
 
 - **Route**: `GET /v2/transfer-orders/{transfer_order_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_transfer_order(transfer_order_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `transfer_order_id`
 - **Params**: `transfer_order_id` — path
@@ -85,6 +90,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.transfer_order_api.search_transfer_orders
 
 - **Route**: `POST /v2/transfer-orders/search`
+- **Auth**: `oauth2`
 - **Signature**: `def search_transfer_orders(body: SearchTransferOrdersRequest | SearchTransferOrdersRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -101,6 +107,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.transfer_order_api.start_transfer_order
 
 - **Route**: `POST /v2/transfer-orders/{transfer_order_id}/start`
+- **Auth**: `oauth2`
 - **Signature**: `def start_transfer_order(transfer_order_id: str, body: StartTransferOrderRequest | StartTransferOrderRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `transfer_order_id`, `body`
 - **Params**: `transfer_order_id` — path · `body` — JSON body
@@ -117,6 +124,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.transfer_order_api.update_transfer_order
 
 - **Route**: `PUT /v2/transfer-orders/{transfer_order_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_transfer_order(transfer_order_id: str, body: UpdateTransferOrderRequest | UpdateTransferOrderRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `transfer_order_id`, `body`
 - **Params**: `transfer_order_id` — path · `body` — JSON body

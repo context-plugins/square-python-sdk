@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.gift_cards.create_gift_card
 
 - **Route**: `POST /v2/gift-cards`
+- **Auth**: `oauth2`
 - **Signature**: `def create_gift_card(body: CreateGiftCardRequest | CreateGiftCardRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.gift_cards.link_customer_to_gift_card
 
 - **Route**: `POST /v2/gift-cards/{gift_card_id}/link-customer`
+- **Auth**: `oauth2`
 - **Signature**: `def link_customer_to_gift_card(gift_card_id: str, body: LinkCustomerToGiftCardRequest | LinkCustomerToGiftCardRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `gift_card_id`, `body`
 - **Params**: `gift_card_id` — path · `body` — JSON body
@@ -41,6 +43,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.gift_cards.list_gift_cards
 
 - **Route**: `GET /v2/gift-cards`
+- **Auth**: `oauth2`
 - **Signature**: `def list_gift_cards(*, type_: str | None = None, state: str | None = None, limit: int | None = None, cursor: str | None = None, customer_id: str | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `type_` — query `type` · `state` — query · `limit` — query · `cursor` — query · `customer_id` — query
 - **Returns (parsed)**: `ListGiftCardsResponse`
@@ -54,6 +57,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.gift_cards.retrieve_gift_card
 
 - **Route**: `GET /v2/gift-cards/{id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_gift_card(id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`
 - **Params**: `id` — path
@@ -68,6 +72,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.gift_cards.retrieve_gift_card_from_gan
 
 - **Route**: `POST /v2/gift-cards/from-gan`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_gift_card_from_gan(body: RetrieveGiftCardFromGanrequest | RetrieveGiftCardFromGanrequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -84,6 +89,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.gift_cards.retrieve_gift_card_from_nonce
 
 - **Route**: `POST /v2/gift-cards/from-nonce`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_gift_card_from_nonce(body: RetrieveGiftCardFromNonceRequest | RetrieveGiftCardFromNonceRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -100,6 +106,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.gift_cards.unlink_customer_from_gift_card
 
 - **Route**: `POST /v2/gift-cards/{gift_card_id}/unlink-customer`
+- **Auth**: `oauth2`
 - **Signature**: `def unlink_customer_from_gift_card(gift_card_id: str, body: UnlinkCustomerFromGiftCardRequest | UnlinkCustomerFromGiftCardRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `gift_card_id`, `body`
 - **Params**: `gift_card_id` — path · `body` — JSON body

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -189,6 +191,7 @@ class EventsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/events/disable"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DisableEventsResponse],
             error_mapper=raw_error_response,
@@ -208,6 +211,7 @@ class EventsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/events/enable"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[EnableEventsResponse],
             error_mapper=raw_error_response,
@@ -254,6 +258,7 @@ class EventsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/events"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchEventsRequest | SearchEventsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchEventsResponse],
@@ -278,6 +283,7 @@ class AsyncEventsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
         return await self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/events/disable"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DisableEventsResponse],
             error_mapper=raw_error_response,
@@ -297,6 +303,7 @@ class AsyncEventsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
         return await self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/events/enable"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[EnableEventsResponse],
             error_mapper=raw_error_response,
@@ -343,6 +350,7 @@ class AsyncEventsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/events"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchEventsRequest | SearchEventsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchEventsResponse],

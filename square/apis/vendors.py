@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -344,6 +346,7 @@ class VendorsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/vendors/bulk-create"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkCreateVendorsRequest | BulkCreateVendorsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkCreateVendorsResponse],
@@ -369,6 +372,7 @@ class VendorsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/vendors/bulk-retrieve"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkRetrieveVendorsRequest | BulkRetrieveVendorsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkRetrieveVendorsResponse],
@@ -394,6 +398,7 @@ class VendorsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/vendors/bulk-update"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkUpdateVendorsRequest | BulkUpdateVendorsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkUpdateVendorsResponse],
@@ -419,6 +424,7 @@ class VendorsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/vendors/create"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateVendorRequest | CreateVendorRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateVendorResponse],
@@ -466,6 +472,7 @@ class VendorsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/vendors/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchVendorsRequest | SearchVendorsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchVendorsResponse],
@@ -494,6 +501,7 @@ class VendorsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             http_method="PUT",
             url_template=self._server.default("/v2/vendors/{vendor_id}"),
             path_params=[param[str]("vendor_id", vendor_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateVendorRequest | UpdateVendorRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateVendorResponse],
@@ -521,6 +529,7 @@ class AsyncVendorsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/vendors/bulk-create"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkCreateVendorsRequest | BulkCreateVendorsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkCreateVendorsResponse],
@@ -546,6 +555,7 @@ class AsyncVendorsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/vendors/bulk-retrieve"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkRetrieveVendorsRequest | BulkRetrieveVendorsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkRetrieveVendorsResponse],
@@ -571,6 +581,7 @@ class AsyncVendorsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/vendors/bulk-update"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkUpdateVendorsRequest | BulkUpdateVendorsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[BulkUpdateVendorsResponse],
@@ -596,6 +607,7 @@ class AsyncVendorsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/vendors/create"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateVendorRequest | CreateVendorRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateVendorResponse],
@@ -643,6 +655,7 @@ class AsyncVendorsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/vendors/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchVendorsRequest | SearchVendorsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchVendorsResponse],
@@ -671,6 +684,7 @@ class AsyncVendorsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             http_method="PUT",
             url_template=self._server.default("/v2/vendors/{vendor_id}"),
             path_params=[param[str]("vendor_id", vendor_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateVendorRequest | UpdateVendorRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateVendorResponse],

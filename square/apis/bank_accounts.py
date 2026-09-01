@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -281,6 +283,7 @@ class BankAccountsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSche
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/bank-accounts"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateBankAccountRequest | CreateBankAccountRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateBankAccountResponse],
@@ -303,6 +306,7 @@ class BankAccountsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSche
             http_method="POST",
             url_template=self._server.default("/v2/bank-accounts/{bank_account_id}/disable"),
             path_params=[param[str]("bank_account_id", bank_account_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DisableBankAccountResponse],
             error_mapper=raw_error_response,
@@ -413,6 +417,7 @@ class AsyncBankAccountsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/bank-accounts"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateBankAccountRequest | CreateBankAccountRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateBankAccountResponse],
@@ -435,6 +440,7 @@ class AsyncBankAccountsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
             http_method="POST",
             url_template=self._server.default("/v2/bank-accounts/{bank_account_id}/disable"),
             path_params=[param[str]("bank_account_id", bank_account_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DisableBankAccountResponse],
             error_mapper=raw_error_response,

@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.checkout_api.create_checkout
 
 - **Route**: `POST /v2/locations/{location_id}/checkouts`
+- **Auth**: `oauth2`
 - **Signature**: `def create_checkout(location_id: str, body: CreateCheckoutRequest | CreateCheckoutRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `location_id`, `body`
 - **Params**: `location_id` — path · `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.checkout_api.create_payment_link
 
 - **Route**: `POST /v2/online-checkout/payment-links`
+- **Auth**: `oauth2`
 - **Signature**: `def create_payment_link(body: CreatePaymentLinkRequest | CreatePaymentLinkRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -41,6 +43,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.checkout_api.delete_payment_link
 
 - **Route**: `DELETE /v2/online-checkout/payment-links/{id}`
+- **Auth**: `oauth2`
 - **Signature**: `def delete_payment_link(id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`
 - **Params**: `id` — path
@@ -55,6 +58,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.checkout_api.list_payment_links
 
 - **Route**: `GET /v2/online-checkout/payment-links`
+- **Auth**: `oauth2`
 - **Signature**: `def list_payment_links(*, cursor: str | None = None, limit: int | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `cursor` — query · `limit` — query
 - **Returns (parsed)**: `ListPaymentLinksResponse`
@@ -68,6 +72,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.checkout_api.retrieve_location_settings
 
 - **Route**: `GET /v2/online-checkout/location-settings/{location_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_location_settings(location_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `location_id`
 - **Params**: `location_id` — path
@@ -82,6 +87,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.checkout_api.retrieve_merchant_settings
 
 - **Route**: `GET /v2/online-checkout/merchant-settings`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_merchant_settings(*, request_options: RequestOptionsOrDict | None = None)`
 - **Returns (parsed)**: `RetrieveMerchantSettingsResponse`
 - **Returns (raw)**: `ApiResult[RetrieveMerchantSettingsResponse, RawError]`
@@ -94,6 +100,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.checkout_api.retrieve_payment_link
 
 - **Route**: `GET /v2/online-checkout/payment-links/{id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_payment_link(id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`
 - **Params**: `id` — path
@@ -108,6 +115,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.checkout_api.update_location_settings
 
 - **Route**: `PUT /v2/online-checkout/location-settings/{location_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_location_settings(location_id: str, body: UpdateLocationSettingsRequest | UpdateLocationSettingsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `location_id`, `body`
 - **Params**: `location_id` — path · `body` — JSON body
@@ -124,6 +132,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.checkout_api.update_merchant_settings
 
 - **Route**: `PUT /v2/online-checkout/merchant-settings`
+- **Auth**: `oauth2`
 - **Signature**: `def update_merchant_settings(body: UpdateMerchantSettingsRequest | UpdateMerchantSettingsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -140,6 +149,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.checkout_api.update_payment_link
 
 - **Route**: `PUT /v2/online-checkout/payment-links/{id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_payment_link(id: str, body: UpdatePaymentLinkRequest | UpdatePaymentLinkRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `id`, `body`
 - **Params**: `id` — path · `body` — JSON body

@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.v1_transactions.v1_list_orders
 
 - **Route**: `GET /v1/{location_id}/orders`
+- **Auth**: `oauth2`
 - **Signature**: `def v1_list_orders(location_id: str, *, order: SortOrderOrStr | None = None, limit: int | None = None, batch_token: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `location_id`
 - **Params**: `location_id` — path · `order` — query · `limit` — query · `batch_token` — query
@@ -24,6 +25,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.v1_transactions.v1_retrieve_order
 
 - **Route**: `GET /v1/{location_id}/orders/{order_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def v1_retrieve_order(location_id: str, order_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `location_id`, `order_id`
 - **Params**: `location_id` — path · `order_id` — path
@@ -38,6 +40,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.v1_transactions.v1_update_order
 
 - **Route**: `PUT /v1/{location_id}/orders/{order_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def v1_update_order(location_id: str, order_id: str, body: V1UpdateOrderRequest | V1UpdateOrderRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `location_id`, `order_id`, `body`
 - **Params**: `location_id` — path · `order_id` — path · `body` — JSON body

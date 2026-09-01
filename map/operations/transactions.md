@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.transactions.capture_transaction
 
 - **Route**: `POST /v2/locations/{location_id}/transactions/{transaction_id}/capture`
+- **Auth**: `oauth2`
 - **Signature**: `def capture_transaction(location_id: str, transaction_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `location_id`, `transaction_id`
 - **Params**: `location_id` — path · `transaction_id` — path
@@ -23,6 +24,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.transactions.list_transactions
 
 - **Route**: `GET /v2/locations/{location_id}/transactions`
+- **Auth**: `oauth2`
 - **Signature**: `def list_transactions(location_id: str, *, begin_time: str | None = None, end_time: str | None = None, sort_order: SortOrderOrStr | None = None, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `location_id`
 - **Params**: `location_id` — path · `begin_time` — query · `end_time` — query · `sort_order` — query · `cursor` — query
@@ -38,6 +40,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.transactions.retrieve_transaction
 
 - **Route**: `GET /v2/locations/{location_id}/transactions/{transaction_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_transaction(location_id: str, transaction_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `location_id`, `transaction_id`
 - **Params**: `location_id` — path · `transaction_id` — path
@@ -52,6 +55,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.transactions.void_transaction
 
 - **Route**: `POST /v2/locations/{location_id}/transactions/{transaction_id}/void`
+- **Auth**: `oauth2`
 - **Signature**: `def void_transaction(location_id: str, transaction_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `location_id`, `transaction_id`
 - **Params**: `location_id` — path · `transaction_id` — path

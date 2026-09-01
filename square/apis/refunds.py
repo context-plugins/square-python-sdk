@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -391,6 +393,7 @@ class RefundsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/refunds"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RefundPaymentRequest | RefundPaymentRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[RefundPaymentResponse],
@@ -521,6 +524,7 @@ class AsyncRefundsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/refunds"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RefundPaymentRequest | RefundPaymentRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[RefundPaymentResponse],

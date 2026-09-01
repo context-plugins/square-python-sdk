@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -430,6 +432,7 @@ class GiftCardsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/gift-cards"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateGiftCardRequest | CreateGiftCardRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateGiftCardResponse],
@@ -458,6 +461,7 @@ class GiftCardsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             http_method="POST",
             url_template=self._server.default("/v2/gift-cards/{gift_card_id}/link-customer"),
             path_params=[param[str]("gift_card_id", gift_card_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[LinkCustomerToGiftCardRequest | LinkCustomerToGiftCardRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[LinkCustomerToGiftCardResponse],
@@ -551,6 +555,7 @@ class GiftCardsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/gift-cards/from-gan"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RetrieveGiftCardFromGanrequest | RetrieveGiftCardFromGanrequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[RetrieveGiftCardFromGanresponse],
@@ -576,6 +581,7 @@ class GiftCardsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/gift-cards/from-nonce"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RetrieveGiftCardFromNonceRequest | RetrieveGiftCardFromNonceRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[RetrieveGiftCardFromNonceResponse],
@@ -604,6 +610,7 @@ class GiftCardsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             http_method="POST",
             url_template=self._server.default("/v2/gift-cards/{gift_card_id}/unlink-customer"),
             path_params=[param[str]("gift_card_id", gift_card_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UnlinkCustomerFromGiftCardRequest | UnlinkCustomerFromGiftCardRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UnlinkCustomerFromGiftCardResponse],
@@ -635,6 +642,7 @@ class AsyncGiftCardsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/gift-cards"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateGiftCardRequest | CreateGiftCardRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateGiftCardResponse],
@@ -663,6 +671,7 @@ class AsyncGiftCardsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             http_method="POST",
             url_template=self._server.default("/v2/gift-cards/{gift_card_id}/link-customer"),
             path_params=[param[str]("gift_card_id", gift_card_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[LinkCustomerToGiftCardRequest | LinkCustomerToGiftCardRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[LinkCustomerToGiftCardResponse],
@@ -756,6 +765,7 @@ class AsyncGiftCardsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/gift-cards/from-gan"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RetrieveGiftCardFromGanrequest | RetrieveGiftCardFromGanrequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[RetrieveGiftCardFromGanresponse],
@@ -781,6 +791,7 @@ class AsyncGiftCardsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/gift-cards/from-nonce"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RetrieveGiftCardFromNonceRequest | RetrieveGiftCardFromNonceRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[RetrieveGiftCardFromNonceResponse],
@@ -809,6 +820,7 @@ class AsyncGiftCardsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             http_method="POST",
             url_template=self._server.default("/v2/gift-cards/{gift_card_id}/unlink-customer"),
             path_params=[param[str]("gift_card_id", gift_card_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UnlinkCustomerFromGiftCardRequest | UnlinkCustomerFromGiftCardRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UnlinkCustomerFromGiftCardResponse],

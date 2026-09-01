@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -577,6 +579,7 @@ class TransferOrderApiWithRawResponse(SecuredRawResponse[RawClient, Server, Auth
             http_method="POST",
             url_template=self._server.default("/v2/transfer-orders/{transfer_order_id}/cancel"),
             path_params=[param[str]("transfer_order_id", transfer_order_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CancelTransferOrderRequest | CancelTransferOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CancelTransferOrderResponse],
@@ -621,6 +624,7 @@ class TransferOrderApiWithRawResponse(SecuredRawResponse[RawClient, Server, Auth
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/transfer-orders"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateTransferOrderRequest | CreateTransferOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateTransferOrderResponse],
@@ -649,6 +653,7 @@ class TransferOrderApiWithRawResponse(SecuredRawResponse[RawClient, Server, Auth
             url_template=self._server.default("/v2/transfer-orders/{transfer_order_id}"),
             path_params=[param[str]("transfer_order_id", transfer_order_id)],
             query_params=[param[int | None]("version", version)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteTransferOrderResponse],
             error_mapper=raw_error_response,
@@ -694,6 +699,7 @@ class TransferOrderApiWithRawResponse(SecuredRawResponse[RawClient, Server, Auth
             http_method="POST",
             url_template=self._server.default("/v2/transfer-orders/{transfer_order_id}/receive"),
             path_params=[param[str]("transfer_order_id", transfer_order_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[ReceiveTransferOrderRequest | ReceiveTransferOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[ReceiveTransferOrderResponse],
@@ -752,6 +758,7 @@ class TransferOrderApiWithRawResponse(SecuredRawResponse[RawClient, Server, Auth
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/transfer-orders/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchTransferOrdersRequest | SearchTransferOrdersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchTransferOrdersResponse],
@@ -787,6 +794,7 @@ class TransferOrderApiWithRawResponse(SecuredRawResponse[RawClient, Server, Auth
             http_method="POST",
             url_template=self._server.default("/v2/transfer-orders/{transfer_order_id}/start"),
             path_params=[param[str]("transfer_order_id", transfer_order_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[StartTransferOrderRequest | StartTransferOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[StartTransferOrderResponse],
@@ -818,6 +826,7 @@ class TransferOrderApiWithRawResponse(SecuredRawResponse[RawClient, Server, Auth
             http_method="PUT",
             url_template=self._server.default("/v2/transfer-orders/{transfer_order_id}"),
             path_params=[param[str]("transfer_order_id", transfer_order_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateTransferOrderRequest | UpdateTransferOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateTransferOrderResponse],
@@ -857,6 +866,7 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
             http_method="POST",
             url_template=self._server.default("/v2/transfer-orders/{transfer_order_id}/cancel"),
             path_params=[param[str]("transfer_order_id", transfer_order_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CancelTransferOrderRequest | CancelTransferOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CancelTransferOrderResponse],
@@ -901,6 +911,7 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/transfer-orders"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateTransferOrderRequest | CreateTransferOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateTransferOrderResponse],
@@ -929,6 +940,7 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
             url_template=self._server.default("/v2/transfer-orders/{transfer_order_id}"),
             path_params=[param[str]("transfer_order_id", transfer_order_id)],
             query_params=[param[int | None]("version", version)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteTransferOrderResponse],
             error_mapper=raw_error_response,
@@ -974,6 +986,7 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
             http_method="POST",
             url_template=self._server.default("/v2/transfer-orders/{transfer_order_id}/receive"),
             path_params=[param[str]("transfer_order_id", transfer_order_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[ReceiveTransferOrderRequest | ReceiveTransferOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[ReceiveTransferOrderResponse],
@@ -1032,6 +1045,7 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/transfer-orders/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchTransferOrdersRequest | SearchTransferOrdersRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchTransferOrdersResponse],
@@ -1067,6 +1081,7 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
             http_method="POST",
             url_template=self._server.default("/v2/transfer-orders/{transfer_order_id}/start"),
             path_params=[param[str]("transfer_order_id", transfer_order_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[StartTransferOrderRequest | StartTransferOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[StartTransferOrderResponse],
@@ -1098,6 +1113,7 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
             http_method="PUT",
             url_template=self._server.default("/v2/transfer-orders/{transfer_order_id}"),
             path_params=[param[str]("transfer_order_id", transfer_order_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateTransferOrderRequest | UpdateTransferOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateTransferOrderResponse],

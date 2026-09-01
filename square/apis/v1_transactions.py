@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -276,6 +278,7 @@ class V1TransactionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSc
             http_method="PUT",
             url_template=self._server.default("/v1/{location_id}/orders/{order_id}"),
             path_params=[param[str]("location_id", location_id), param[str]("order_id", order_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[V1UpdateOrderRequest | V1UpdateOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[V1Order],
@@ -369,6 +372,7 @@ class AsyncV1TransactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serv
             http_method="PUT",
             url_template=self._server.default("/v1/{location_id}/orders/{order_id}"),
             path_params=[param[str]("location_id", location_id), param[str]("order_id", order_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[V1UpdateOrderRequest | V1UpdateOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[V1Order],

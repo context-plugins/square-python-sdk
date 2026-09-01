@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.events.disable_events
 
 - **Route**: `PUT /v2/events/disable`
+- **Auth**: `oauth2`
 - **Signature**: `def disable_events(*, request_options: RequestOptionsOrDict | None = None)`
 - **Returns (parsed)**: `DisableEventsResponse`
 - **Returns (raw)**: `ApiResult[DisableEventsResponse, RawError]`
@@ -21,6 +22,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.events.enable_events
 
 - **Route**: `PUT /v2/events/enable`
+- **Auth**: `oauth2`
 - **Signature**: `def enable_events(*, request_options: RequestOptionsOrDict | None = None)`
 - **Returns (parsed)**: `EnableEventsResponse`
 - **Returns (raw)**: `ApiResult[EnableEventsResponse, RawError]`
@@ -33,6 +35,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.events.list_event_types
 
 - **Route**: `GET /v2/events/types`
+- **Auth**: `oauth2`
 - **Signature**: `def list_event_types(*, api_version: str | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `api_version` — query
 - **Returns (parsed)**: `ListEventTypesResponse`
@@ -46,6 +49,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.events.search_events
 
 - **Route**: `POST /v2/events`
+- **Auth**: `oauth2`
 - **Signature**: `def search_events(body: SearchEventsRequest | SearchEventsRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body

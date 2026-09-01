@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.bank_accounts.create_bank_account
 
 - **Route**: `POST /v2/bank-accounts`
+- **Auth**: `oauth2`
 - **Signature**: `def create_bank_account(body: CreateBankAccountRequest | CreateBankAccountRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.bank_accounts.disable_bank_account
 
 - **Route**: `POST /v2/bank-accounts/{bank_account_id}/disable`
+- **Auth**: `oauth2`
 - **Signature**: `def disable_bank_account(bank_account_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `bank_account_id`
 - **Params**: `bank_account_id` — path
@@ -39,6 +41,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.bank_accounts.get_bank_account
 
 - **Route**: `GET /v2/bank-accounts/{bank_account_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def get_bank_account(bank_account_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `bank_account_id`
 - **Params**: `bank_account_id` — path
@@ -53,6 +56,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.bank_accounts.get_bank_account_by_v1_id
 
 - **Route**: `GET /v2/bank-accounts/by-v1-id/{v1_bank_account_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def get_bank_account_by_v1_id(v1_bank_account_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `v1_bank_account_id`
 - **Params**: `v1_bank_account_id` — path
@@ -67,6 +71,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.bank_accounts.list_bank_accounts
 
 - **Route**: `GET /v2/bank-accounts`
+- **Auth**: `oauth2`
 - **Signature**: `def list_bank_accounts(*, cursor: str | None = None, limit: int | None = None, location_id: str | None = None, customer_id: str | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `cursor` — query · `limit` — query · `location_id` — query · `customer_id` — query
 - **Returns (parsed)**: `ListBankAccountsResponse`

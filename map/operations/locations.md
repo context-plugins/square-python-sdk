@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.locations.create_location
 
 - **Route**: `POST /v2/locations`
+- **Auth**: `oauth2`
 - **Signature**: `def create_location(body: CreateLocationRequest | CreateLocationRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `body`
 - **Params**: `body` — JSON body
@@ -25,6 +26,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.locations.list_locations
 
 - **Route**: `GET /v2/locations`
+- **Auth**: `oauth2`
 - **Signature**: `def list_locations(*, request_options: RequestOptionsOrDict | None = None)`
 - **Returns (parsed)**: `ListLocationsResponse`
 - **Returns (raw)**: `ApiResult[ListLocationsResponse, RawError]`
@@ -37,6 +39,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.locations.retrieve_location
 
 - **Route**: `GET /v2/locations/{location_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def retrieve_location(location_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `location_id`
 - **Params**: `location_id` — path
@@ -51,6 +54,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.locations.update_location
 
 - **Route**: `PUT /v2/locations/{location_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def update_location(location_id: str, body: UpdateLocationRequest | UpdateLocationRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `location_id`, `body`
 - **Params**: `location_id` — path · `body` — JSON body

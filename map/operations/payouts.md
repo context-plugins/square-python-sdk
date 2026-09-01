@@ -9,6 +9,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.payouts.get_payout
 
 - **Route**: `GET /v2/payouts/{payout_id}`
+- **Auth**: `oauth2`
 - **Signature**: `def get_payout(payout_id: str, *, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `payout_id`
 - **Params**: `payout_id` — path
@@ -23,6 +24,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.payouts.list_payout_entries
 
 - **Route**: `GET /v2/payouts/{payout_id}/payout-entries`
+- **Auth**: `oauth2`
 - **Signature**: `def list_payout_entries(payout_id: str, *, sort_order: SortOrderOrStr | None = None, cursor: str | None = None, limit: int | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `payout_id`
 - **Params**: `payout_id` — path · `sort_order` — query · `cursor` — query · `limit` — query
@@ -38,6 +40,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 ### client.payouts.list_payouts
 
 - **Route**: `GET /v2/payouts`
+- **Auth**: `oauth2`
 - **Signature**: `def list_payouts(*, location_id: str | None = None, status: PayoutStatusOrStr | None = None, begin_time: str | None = None, end_time: str | None = None, sort_order: SortOrderOrStr | None = None, cursor: str | None = None, limit: int | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `location_id` — query · `status` — query · `begin_time` — query · `end_time` — query · `sort_order` — query · `cursor` — query · `limit` — query
 - **Returns (parsed)**: `ListPayoutsResponse`

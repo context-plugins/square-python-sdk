@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID, uuid4
+
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
@@ -646,6 +648,7 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="POST",
             url_template=self._server.default("/v2/terminals/actions/{action_id}/cancel"),
             path_params=[param[str]("action_id", action_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CancelTerminalActionResponse],
             error_mapper=raw_error_response,
@@ -667,6 +670,7 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="POST",
             url_template=self._server.default("/v2/terminals/checkouts/{checkout_id}/cancel"),
             path_params=[param[str]("checkout_id", checkout_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CancelTerminalCheckoutResponse],
             error_mapper=raw_error_response,
@@ -688,6 +692,7 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="POST",
             url_template=self._server.default("/v2/terminals/refunds/{terminal_refund_id}/cancel"),
             path_params=[param[str]("terminal_refund_id", terminal_refund_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CancelTerminalRefundResponse],
             error_mapper=raw_error_response,
@@ -712,6 +717,7 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/terminals/actions"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateTerminalActionRequest | CreateTerminalActionRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateTerminalActionResponse],
@@ -738,6 +744,7 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/terminals/checkouts"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateTerminalCheckoutRequest | CreateTerminalCheckoutRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateTerminalCheckoutResponse],
@@ -765,6 +772,7 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/terminals/refunds"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateTerminalRefundRequest | CreateTerminalRefundRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateTerminalRefundResponse],
@@ -791,6 +799,7 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="POST",
             url_template=self._server.default("/v2/terminals/actions/{action_id}/dismiss"),
             path_params=[param[str]("action_id", action_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DismissTerminalActionResponse],
             error_mapper=raw_error_response,
@@ -812,6 +821,7 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="POST",
             url_template=self._server.default("/v2/terminals/checkouts/{checkout_id}/dismiss"),
             path_params=[param[str]("checkout_id", checkout_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DismissTerminalCheckoutResponse],
             error_mapper=raw_error_response,
@@ -833,6 +843,7 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             http_method="POST",
             url_template=self._server.default("/v2/terminals/refunds/{terminal_refund_id}/dismiss"),
             path_params=[param[str]("terminal_refund_id", terminal_refund_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DismissTerminalRefundResponse],
             error_mapper=raw_error_response,
@@ -922,6 +933,7 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/terminals/actions/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchTerminalActionsRequest | SearchTerminalActionsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchTerminalActionsResponse],
@@ -949,6 +961,7 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/terminals/checkouts/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchTerminalCheckoutsRequest | SearchTerminalCheckoutsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchTerminalCheckoutsResponse],
@@ -975,6 +988,7 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/terminals/refunds/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchTerminalRefundsRequest | SearchTerminalRefundsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchTerminalRefundsResponse],
@@ -999,6 +1013,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="POST",
             url_template=self._server.default("/v2/terminals/actions/{action_id}/cancel"),
             path_params=[param[str]("action_id", action_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CancelTerminalActionResponse],
             error_mapper=raw_error_response,
@@ -1020,6 +1035,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="POST",
             url_template=self._server.default("/v2/terminals/checkouts/{checkout_id}/cancel"),
             path_params=[param[str]("checkout_id", checkout_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CancelTerminalCheckoutResponse],
             error_mapper=raw_error_response,
@@ -1041,6 +1057,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="POST",
             url_template=self._server.default("/v2/terminals/refunds/{terminal_refund_id}/cancel"),
             path_params=[param[str]("terminal_refund_id", terminal_refund_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CancelTerminalRefundResponse],
             error_mapper=raw_error_response,
@@ -1065,6 +1082,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/terminals/actions"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateTerminalActionRequest | CreateTerminalActionRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateTerminalActionResponse],
@@ -1091,6 +1109,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/terminals/checkouts"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateTerminalCheckoutRequest | CreateTerminalCheckoutRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateTerminalCheckoutResponse],
@@ -1118,6 +1137,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/terminals/refunds"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateTerminalRefundRequest | CreateTerminalRefundRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateTerminalRefundResponse],
@@ -1144,6 +1164,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="POST",
             url_template=self._server.default("/v2/terminals/actions/{action_id}/dismiss"),
             path_params=[param[str]("action_id", action_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DismissTerminalActionResponse],
             error_mapper=raw_error_response,
@@ -1165,6 +1186,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="POST",
             url_template=self._server.default("/v2/terminals/checkouts/{checkout_id}/dismiss"),
             path_params=[param[str]("checkout_id", checkout_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DismissTerminalCheckoutResponse],
             error_mapper=raw_error_response,
@@ -1186,6 +1208,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="POST",
             url_template=self._server.default("/v2/terminals/refunds/{terminal_refund_id}/dismiss"),
             path_params=[param[str]("terminal_refund_id", terminal_refund_id)],
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DismissTerminalRefundResponse],
             error_mapper=raw_error_response,
@@ -1275,6 +1298,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/terminals/actions/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchTerminalActionsRequest | SearchTerminalActionsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchTerminalActionsResponse],
@@ -1302,6 +1326,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/terminals/checkouts/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchTerminalCheckoutsRequest | SearchTerminalCheckoutsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchTerminalCheckoutsResponse],
@@ -1328,6 +1353,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/terminals/refunds/search"),
+            headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchTerminalRefundsRequest | SearchTerminalRefundsRequestDict](body),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[SearchTerminalRefundsResponse],
