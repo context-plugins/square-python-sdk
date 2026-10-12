@@ -33,4 +33,4 @@ class LoyaltyProgramRewardTierDict(TypedDict):
     points: int
     name: NotRequired[str]
     created_at: NotRequired[str]
-    pricing_rule_reference: CatalogObjectReference | CatalogObjectReferenceDict
+    pricing_rule_reference: CatalogObjectReferenceDict

@@ -20,6 +20,6 @@ class ListCatalogResponse(SdkBaseModel):
 
 
 class ListCatalogResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]
     cursor: NotRequired[str]
-    objects: NotRequired[list[CatalogObject | CatalogObjectDict]]
+    objects: NotRequired[list[CatalogObjectDict]]

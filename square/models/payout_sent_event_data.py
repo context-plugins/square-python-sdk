@@ -20,4 +20,4 @@ class PayoutSentEventData(SdkBaseModel):
 class PayoutSentEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[PayoutSentEventObject | PayoutSentEventObjectDict]
+    object_: NotRequired[PayoutSentEventObjectDict]

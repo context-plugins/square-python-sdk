@@ -20,4 +20,4 @@ class BulkUpsertBookingCustomAttributesRequest(SdkBaseModel):
 
 
 class BulkUpsertBookingCustomAttributesRequestDict(TypedDict):
-    values: dict[str, BookingCustomAttributeUpsertRequest | BookingCustomAttributeUpsertRequestDict]
+    values: dict[str, BookingCustomAttributeUpsertRequestDict]

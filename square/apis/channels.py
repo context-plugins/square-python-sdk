@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.bulk_retrieve_channels_request import BulkRetrieveChannelsRequest, BulkRetrieveChannelsRequestDict
 from ..models.bulk_retrieve_channels_response import BulkRetrieveChannelsResponse
@@ -39,14 +41,15 @@ class Channels:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.bulk_retrieve_channels(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.bulk_retrieve_channels(body, request_options=request_options))
 
     def list_channels(
         self,
@@ -67,21 +70,24 @@ class Channels:
             cursor: Cursor to fetch the next result
             limit: Maximum number of results to return. When not provided the returned results will be cap at 100
                 channels.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_channels(
-            reference_type=reference_type,
-            reference_id=reference_id,
-            status=status,
-            cursor=cursor,
-            limit=limit,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_channels(
+                reference_type=reference_type,
+                reference_id=reference_id,
+                status=status,
+                cursor=cursor,
+                limit=limit,
+                request_options=request_options,
+            ),
+        )
 
     def retrieve_channel(
         self, channel_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -90,14 +96,15 @@ class Channels:
 
         Args:
             channel_id: A channel id
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_channel(channel_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_channel(channel_id, request_options=request_options))
 
     @property
     def with_raw_response(self) -> ChannelsWithRawResponse:
@@ -119,14 +126,15 @@ class AsyncChannels:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.bulk_retrieve_channels(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.bulk_retrieve_channels(body, request_options=request_options))
 
     async def list_channels(
         self,
@@ -147,14 +155,15 @@ class AsyncChannels:
             cursor: Cursor to fetch the next result
             limit: Maximum number of results to return. When not provided the returned results will be cap at 100
                 channels.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_channels(
                 reference_type=reference_type,
                 reference_id=reference_id,
@@ -162,8 +171,8 @@ class AsyncChannels:
                 cursor=cursor,
                 limit=limit,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_channel(
         self, channel_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -172,14 +181,15 @@ class AsyncChannels:
 
         Args:
             channel_id: A channel id
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.retrieve_channel(channel_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.retrieve_channel(channel_id, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncChannelsWithRawResponse:
@@ -198,7 +208,8 @@ class ChannelsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -232,7 +243,8 @@ class ChannelsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             cursor: Cursor to fetch the next result
             limit: Maximum number of results to return. When not provided the returned results will be cap at 100
                 channels.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -259,7 +271,8 @@ class ChannelsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             channel_id: A channel id
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -286,7 +299,8 @@ class AsyncChannelsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -296,7 +310,7 @@ class AsyncChannelsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkRetrieveChannelsRequest | BulkRetrieveChannelsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BulkRetrieveChannelsResponse],
+            decoder=async_json_decoder[BulkRetrieveChannelsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -320,7 +334,8 @@ class AsyncChannelsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             cursor: Cursor to fetch the next result
             limit: Maximum number of results to return. When not provided the returned results will be cap at 100
                 channels.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -335,7 +350,7 @@ class AsyncChannelsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
                 param[int | None]("limit", limit),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListChannelsResponse],
+            decoder=async_json_decoder[ListChannelsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -347,7 +362,8 @@ class AsyncChannelsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             channel_id: A channel id
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -356,7 +372,7 @@ class AsyncChannelsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             url_template=self._server.default("/v2/channels/{channel_id}"),
             path_params=[param[str]("channel_id", channel_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveChannelResponse],
+            decoder=async_json_decoder[RetrieveChannelResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

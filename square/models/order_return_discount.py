@@ -63,6 +63,6 @@ class OrderReturnDiscountDict(TypedDict):
     name: NotRequired[str | None]
     type_: NotRequired[OrderLineItemDiscountTypeOrStr]
     percentage: NotRequired[str | None]
-    amount_money: NotRequired[Money | MoneyDict]
-    applied_money: NotRequired[Money | MoneyDict]
+    amount_money: NotRequired[MoneyDict]
+    applied_money: NotRequired[MoneyDict]
     scope: NotRequired[OrderLineItemDiscountScopeOrStr]

@@ -24,5 +24,5 @@ class AdjustLoyaltyPointsRequest(SdkBaseModel):
 
 class AdjustLoyaltyPointsRequestDict(TypedDict):
     idempotency_key: str
-    adjust_points: LoyaltyEventAdjustPoints | LoyaltyEventAdjustPointsDict
+    adjust_points: LoyaltyEventAdjustPointsDict
     allow_negative_balance: NotRequired[bool | None]

@@ -20,6 +20,6 @@ class SearchTransferOrdersRequest(SdkBaseModel):
 
 
 class SearchTransferOrdersRequestDict(TypedDict):
-    query: NotRequired[TransferOrderQuery | TransferOrderQueryDict]
+    query: NotRequired[TransferOrderQueryDict]
     cursor: NotRequired[str]
     limit: NotRequired[int]

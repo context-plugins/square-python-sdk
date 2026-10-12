@@ -14,4 +14,4 @@ class CreateLocationRequest(SdkBaseModel):
 
 
 class CreateLocationRequestDict(TypedDict):
-    location: NotRequired[Location | LocationDict]
+    location: NotRequired[LocationDict]

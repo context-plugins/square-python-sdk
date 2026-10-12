@@ -19,5 +19,5 @@ class UnlinkCustomerFromGiftCardResponse(SdkBaseModel):
 
 
 class UnlinkCustomerFromGiftCardResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    gift_card: NotRequired[GiftCard | GiftCardDict]
+    errors: NotRequired[list[ErrorDict]]
+    gift_card: NotRequired[GiftCardDict]

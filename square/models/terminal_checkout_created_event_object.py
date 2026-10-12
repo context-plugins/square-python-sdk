@@ -12,4 +12,4 @@ class TerminalCheckoutCreatedEventObject(SdkBaseModel):
 
 
 class TerminalCheckoutCreatedEventObjectDict(TypedDict):
-    checkout: NotRequired[TerminalCheckout | TerminalCheckoutDict]
+    checkout: NotRequired[TerminalCheckoutDict]

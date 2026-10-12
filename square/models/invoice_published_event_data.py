@@ -20,4 +20,4 @@ class InvoicePublishedEventData(SdkBaseModel):
 class InvoicePublishedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[InvoicePublishedEventObject | InvoicePublishedEventObjectDict]
+    object_: NotRequired[InvoicePublishedEventObjectDict]

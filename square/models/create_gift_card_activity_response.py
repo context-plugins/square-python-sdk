@@ -21,5 +21,5 @@ class CreateGiftCardActivityResponse(SdkBaseModel):
 
 
 class CreateGiftCardActivityResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    gift_card_activity: NotRequired[GiftCardActivity | GiftCardActivityDict]
+    errors: NotRequired[list[ErrorDict]]
+    gift_card_activity: NotRequired[GiftCardActivityDict]

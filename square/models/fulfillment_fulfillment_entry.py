@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
+from ..core import UNSET, OptionalNullable, SdkBaseModel
 
 
 class FulfillmentFulfillmentEntry(SdkBaseModel):
@@ -20,7 +20,7 @@ class FulfillmentFulfillmentEntry(SdkBaseModel):
 
     Fulfillments for line items with a ``quantity_unit`` can have non-integer quantities. For example, ``"1.70000"``."""
 
-    metadata: Optional[dict[str, str | None]] = UNSET
+    metadata: OptionalNullable[dict[str, str]] = UNSET
     """Application-defined data attached to this fulfillment entry. Metadata fields are intended to store descriptive
     references or associations with an entity in another system or store brief information about the object. Square does
     not process this field; it only stores and returns it in relevant API calls. Do not use metadata to store any
@@ -43,4 +43,4 @@ class FulfillmentFulfillmentEntryDict(TypedDict):
     uid: NotRequired[str | None]
     line_item_uid: str
     quantity: str
-    metadata: NotRequired[dict[str, str | None]]
+    metadata: NotRequired[dict[str, str] | None]

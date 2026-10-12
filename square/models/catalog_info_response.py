@@ -18,6 +18,6 @@ class CatalogInfoResponse(SdkBaseModel):
 
 
 class CatalogInfoResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    limits: NotRequired[CatalogInfoResponseLimits | CatalogInfoResponseLimitsDict]
-    standard_unit_description_group: NotRequired[StandardUnitDescriptionGroup | StandardUnitDescriptionGroupDict]
+    errors: NotRequired[list[ErrorDict]]
+    limits: NotRequired[CatalogInfoResponseLimitsDict]
+    standard_unit_description_group: NotRequired[StandardUnitDescriptionGroupDict]

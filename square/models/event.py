@@ -32,4 +32,4 @@ class EventDict(TypedDict):
     type_: NotRequired[str | None]
     event_id: NotRequired[str | None]
     created_at: NotRequired[str]
-    data: NotRequired[EventData | EventDataDict]
+    data: NotRequired[EventDataDict]

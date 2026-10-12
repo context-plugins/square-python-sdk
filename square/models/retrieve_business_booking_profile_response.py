@@ -16,5 +16,5 @@ class RetrieveBusinessBookingProfileResponse(SdkBaseModel):
 
 
 class RetrieveBusinessBookingProfileResponseDict(TypedDict):
-    business_booking_profile: NotRequired[BusinessBookingProfile | BusinessBookingProfileDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    business_booking_profile: NotRequired[BusinessBookingProfileDict]
+    errors: NotRequired[list[ErrorDict]]

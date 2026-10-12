@@ -14,4 +14,4 @@ class DisputeStateChangedEventObject(SdkBaseModel):
 
 
 class DisputeStateChangedEventObjectDict(TypedDict):
-    object_: NotRequired[Dispute | DisputeDict]
+    object_: NotRequired[DisputeDict]

@@ -72,7 +72,7 @@ class OrderReturnServiceCharge(SdkBaseModel):
     """Indicates whether the surcharge can be taxed. Service charges calculated in the ``TOTAL_PHASE`` cannot be marked
     as taxable."""
 
-    applied_taxes: Optional[list[OrderLineItemAppliedTax | None]] = UNSET
+    applied_taxes: OptionalNullable[list[OrderLineItemAppliedTax]] = UNSET
     """The list of references to ``OrderReturnTax`` entities applied to the ``OrderReturnServiceCharge``. Each
     ``OrderLineItemAppliedTax`` has a ``tax_uid`` that references the ``uid`` of a top-level ``OrderReturnTax`` that is
     being applied to the ``OrderReturnServiceCharge``. On reads, the applied amount is populated."""
@@ -94,13 +94,13 @@ class OrderReturnServiceChargeDict(TypedDict):
     catalog_object_id: NotRequired[str | None]
     catalog_version: NotRequired[int | None]
     percentage: NotRequired[str | None]
-    amount_money: NotRequired[Money | MoneyDict]
-    applied_money: NotRequired[Money | MoneyDict]
-    total_money: NotRequired[Money | MoneyDict]
-    total_tax_money: NotRequired[Money | MoneyDict]
+    amount_money: NotRequired[MoneyDict]
+    applied_money: NotRequired[MoneyDict]
+    total_money: NotRequired[MoneyDict]
+    total_tax_money: NotRequired[MoneyDict]
     calculation_phase: NotRequired[OrderServiceChargeCalculationPhaseOrStr]
     taxable: NotRequired[bool | None]
-    applied_taxes: NotRequired[list[OrderLineItemAppliedTax | OrderLineItemAppliedTaxDict | None]]
+    applied_taxes: NotRequired[list[OrderLineItemAppliedTaxDict] | None]
     treatment_type: NotRequired[OrderServiceChargeTreatmentTypeOrStr]
     scope: NotRequired[OrderServiceChargeScopeOrStr]
     type_: NotRequired[OrderServiceChargeTypeOrStr]

@@ -15,4 +15,4 @@ class LaborScheduledShiftUpdatedEventObject(SdkBaseModel):
 
 
 class LaborScheduledShiftUpdatedEventObjectDict(TypedDict):
-    scheduled_shift: NotRequired[ScheduledShift | ScheduledShiftDict]
+    scheduled_shift: NotRequired[ScheduledShiftDict]

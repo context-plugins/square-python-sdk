@@ -24,6 +24,6 @@ class AccumulateLoyaltyPointsResponse(SdkBaseModel):
 
 
 class AccumulateLoyaltyPointsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    event: NotRequired[LoyaltyEvent | LoyaltyEventDict]
-    events: NotRequired[list[LoyaltyEvent | LoyaltyEventDict]]
+    errors: NotRequired[list[ErrorDict]]
+    event: NotRequired[LoyaltyEventDict]
+    events: NotRequired[list[LoyaltyEventDict]]

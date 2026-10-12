@@ -22,5 +22,5 @@ class CreateInvoiceRequest(SdkBaseModel):
 
 
 class CreateInvoiceRequestDict(TypedDict):
-    invoice: Invoice | InvoiceDict
+    invoice: InvoiceDict
     idempotency_key: NotRequired[str]

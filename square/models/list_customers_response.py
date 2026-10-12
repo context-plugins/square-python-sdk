@@ -34,7 +34,7 @@ class ListCustomersResponse(SdkBaseModel):
 
 
 class ListCustomersResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    customers: NotRequired[list[Customer | CustomerDict]]
+    errors: NotRequired[list[ErrorDict]]
+    customers: NotRequired[list[CustomerDict]]
     cursor: NotRequired[str]
     count: NotRequired[int]

@@ -44,7 +44,7 @@ class Refund(SdkBaseModel):
     the sign of the value indicates the purpose of the money transfer. See `Working with Monetary Amounts
     <https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts>`__ for more information."""
 
-    additional_recipients: Optional[list[AdditionalRecipient | None]] = UNSET
+    additional_recipients: OptionalNullable[list[AdditionalRecipient]] = UNSET
     """Additional recipients (other than the merchant) receiving a portion of this refund. For example, fees assessed on
     a refund of a purchase by a third party integration."""
 
@@ -56,7 +56,7 @@ class RefundDict(TypedDict):
     tender_id: NotRequired[str | None]
     created_at: NotRequired[str]
     reason: str
-    amount_money: Money | MoneyDict
+    amount_money: MoneyDict
     status: RefundStatusOrStr
-    processing_fee_money: NotRequired[Money | MoneyDict]
-    additional_recipients: NotRequired[list[AdditionalRecipient | AdditionalRecipientDict | None]]
+    processing_fee_money: NotRequired[MoneyDict]
+    additional_recipients: NotRequired[list[AdditionalRecipientDict] | None]

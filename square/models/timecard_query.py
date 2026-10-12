@@ -19,5 +19,5 @@ class TimecardQuery(SdkBaseModel):
 
 
 class TimecardQueryDict(TypedDict):
-    filter: NotRequired[TimecardFilter | TimecardFilterDict]
-    sort: NotRequired[TimecardSort | TimecardSortDict]
+    filter: NotRequired[TimecardFilterDict]
+    sort: NotRequired[TimecardSortDict]

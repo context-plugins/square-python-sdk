@@ -81,7 +81,7 @@ class CatalogObject(SdkBaseModel):
     """If ``true``, the object has been deleted from the database. Must be ``false`` for new objects being inserted.
     When deleted, the ``updated_at`` field will equal the deletion time."""
 
-    custom_attribute_values: Optional[dict[str, CatalogCustomAttributeValue | None]] = UNSET
+    custom_attribute_values: OptionalNullable[dict[str, CatalogCustomAttributeValue]] = UNSET
     """A map (key-value pairs) of application-defined custom attribute values. The value of a key-value pair is a
     `CatalogCustomAttributeValue <entity:CatalogCustomAttributeValue>`__ object. The key is the ``key`` attribute value
     defined in the associated `CatalogCustomAttributeDefinition <entity:CatalogCustomAttributeDefinition>`__ object
@@ -99,7 +99,7 @@ class CatalogObject(SdkBaseModel):
     not use custom attributes to store any sensitive information (personally identifiable information, card details,
     etc.)."""
 
-    catalog_v1_ids: Optional[list[CatalogV1Id | None]] = UNSET
+    catalog_v1_ids: OptionalNullable[list[CatalogV1Id]] = UNSET
     """The Connect v1 IDs for this object at each location where it is present, where they differ from the object's
     Connect V2 ID. The field will only be present for objects that have been created or modified by legacy APIs."""
 
@@ -120,13 +120,13 @@ class CatalogObject(SdkBaseModel):
     locations except those in ``absent_at_location_ids``. When false, the object is available only at locations in
     ``present_at_location_ids``. The unused list in each mode is ignored."""
 
-    present_at_location_ids: Optional[list[str | None]] = UNSET
+    present_at_location_ids: OptionalNullable[list[str]] = UNSET
     """Locations where the object is present, used when ``present_at_all_locations`` is false.
 
     When ``present_at_all_locations`` is true, this field is ignored since the object is already present everywhere. Can
     include deactivated locations. Empty strings are rejected."""
 
-    absent_at_location_ids: Optional[list[str | None]] = UNSET
+    absent_at_location_ids: OptionalNullable[list[str]] = UNSET
     """Locations where the object is not present, used when ``present_at_all_locations`` is true.
 
     When ``present_at_all_locations`` is false, this field is ignored since the object is already absent everywhere
@@ -230,33 +230,27 @@ class CatalogObjectDict(TypedDict):
     updated_at: NotRequired[str]
     version: NotRequired[int]
     is_deleted: NotRequired[bool | None]
-    custom_attribute_values: NotRequired[
-        dict[str, CatalogCustomAttributeValue | CatalogCustomAttributeValueDict | None]
-    ]
-    catalog_v1_ids: NotRequired[list[CatalogV1Id | CatalogV1IdDict | None]]
+    custom_attribute_values: NotRequired[dict[str, CatalogCustomAttributeValueDict] | None]
+    catalog_v1_ids: NotRequired[list[CatalogV1IdDict] | None]
     present_at_all_locations: NotRequired[bool | None]
-    present_at_location_ids: NotRequired[list[str | None]]
-    absent_at_location_ids: NotRequired[list[str | None]]
-    item_data: NotRequired[CatalogItem | CatalogItemDict]
-    category_data: NotRequired[CatalogCategory | CatalogCategoryDict]
-    item_variation_data: NotRequired[CatalogItemVariation | CatalogItemVariationDict]
-    tax_data: NotRequired[CatalogTax | CatalogTaxDict]
-    discount_data: NotRequired[CatalogDiscount | CatalogDiscountDict]
-    modifier_list_data: NotRequired[CatalogModifierList | CatalogModifierListDict]
-    modifier_data: NotRequired[CatalogModifier | CatalogModifierDict]
-    time_period_data: NotRequired[CatalogTimePeriod | CatalogTimePeriodDict]
-    product_set_data: NotRequired[CatalogProductSet | CatalogProductSetDict]
-    pricing_rule_data: NotRequired[CatalogPricingRule | CatalogPricingRuleDict]
-    image_data: NotRequired[CatalogImage | CatalogImageDict]
-    measurement_unit_data: NotRequired[CatalogMeasurementUnit | CatalogMeasurementUnitDict]
-    subscription_plan_data: NotRequired[CatalogSubscriptionPlan | CatalogSubscriptionPlanDict]
-    item_option_data: NotRequired[CatalogItemOption | CatalogItemOptionDict]
-    item_option_value_data: NotRequired[CatalogItemOptionValue | CatalogItemOptionValueDict]
-    custom_attribute_definition_data: NotRequired[
-        CatalogCustomAttributeDefinition | CatalogCustomAttributeDefinitionDict
-    ]
-    quick_amounts_settings_data: NotRequired[CatalogQuickAmountsSettings | CatalogQuickAmountsSettingsDict]
-    subscription_plan_variation_data: NotRequired[
-        CatalogSubscriptionPlanVariation | CatalogSubscriptionPlanVariationDict
-    ]
-    availability_period_data: NotRequired[CatalogAvailabilityPeriod | CatalogAvailabilityPeriodDict]
+    present_at_location_ids: NotRequired[list[str] | None]
+    absent_at_location_ids: NotRequired[list[str] | None]
+    item_data: NotRequired[CatalogItemDict]
+    category_data: NotRequired[CatalogCategoryDict]
+    item_variation_data: NotRequired[CatalogItemVariationDict]
+    tax_data: NotRequired[CatalogTaxDict]
+    discount_data: NotRequired[CatalogDiscountDict]
+    modifier_list_data: NotRequired[CatalogModifierListDict]
+    modifier_data: NotRequired[CatalogModifierDict]
+    time_period_data: NotRequired[CatalogTimePeriodDict]
+    product_set_data: NotRequired[CatalogProductSetDict]
+    pricing_rule_data: NotRequired[CatalogPricingRuleDict]
+    image_data: NotRequired[CatalogImageDict]
+    measurement_unit_data: NotRequired[CatalogMeasurementUnitDict]
+    subscription_plan_data: NotRequired[CatalogSubscriptionPlanDict]
+    item_option_data: NotRequired[CatalogItemOptionDict]
+    item_option_value_data: NotRequired[CatalogItemOptionValueDict]
+    custom_attribute_definition_data: NotRequired[CatalogCustomAttributeDefinitionDict]
+    quick_amounts_settings_data: NotRequired[CatalogQuickAmountsSettingsDict]
+    subscription_plan_variation_data: NotRequired[CatalogSubscriptionPlanVariationDict]
+    availability_period_data: NotRequired[CatalogAvailabilityPeriodDict]

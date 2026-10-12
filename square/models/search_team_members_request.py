@@ -21,6 +21,6 @@ class SearchTeamMembersRequest(SdkBaseModel):
 
 
 class SearchTeamMembersRequestDict(TypedDict):
-    query: NotRequired[SearchTeamMembersQuery | SearchTeamMembersQueryDict]
+    query: NotRequired[SearchTeamMembersQueryDict]
     limit: NotRequired[int]
     cursor: NotRequired[str]

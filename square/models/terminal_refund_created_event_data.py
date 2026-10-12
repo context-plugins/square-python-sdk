@@ -20,4 +20,4 @@ class TerminalRefundCreatedEventData(SdkBaseModel):
 class TerminalRefundCreatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[TerminalRefundCreatedEventObject | TerminalRefundCreatedEventObjectDict]
+    object_: NotRequired[TerminalRefundCreatedEventObjectDict]

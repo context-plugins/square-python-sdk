@@ -25,5 +25,5 @@ class QuickPay(SdkBaseModel):
 
 class QuickPayDict(TypedDict):
     name: str
-    price_money: Money | MoneyDict
+    price_money: MoneyDict
     location_id: str

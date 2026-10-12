@@ -14,4 +14,4 @@ class JobUpdatedEventObject(SdkBaseModel):
 
 
 class JobUpdatedEventObjectDict(TypedDict):
-    job: NotRequired[Job | JobDict]
+    job: NotRequired[JobDict]

@@ -20,4 +20,4 @@ class BankAccountCreatedEventData(SdkBaseModel):
 class BankAccountCreatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[BankAccountCreatedEventObject | BankAccountCreatedEventObjectDict]
+    object_: NotRequired[BankAccountCreatedEventObjectDict]

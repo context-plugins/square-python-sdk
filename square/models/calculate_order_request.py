@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, SdkBaseModel
+from ..core import UNSET, OptionalNullable, SdkBaseModel
 from .order import Order, OrderDict
 from .order_reward import OrderReward, OrderRewardDict
 
@@ -14,7 +14,7 @@ class CalculateOrderRequest(SdkBaseModel):
 
     All Connect V2 Transactions have all been converted to Orders including all associated itemization data."""
 
-    proposed_rewards: Optional[list[OrderReward | None]] = UNSET
+    proposed_rewards: OptionalNullable[list[OrderReward]] = UNSET
     """Identifies one or more loyalty reward tiers to apply during the order calculation. The discounts defined by the
     reward tiers are added to the order only to preview the effect of applying the specified rewards. The rewards do not
     correspond to actual redemptions; that is, no ``reward``s are created. Therefore, the reward ``id``s are random
@@ -22,5 +22,5 @@ class CalculateOrderRequest(SdkBaseModel):
 
 
 class CalculateOrderRequestDict(TypedDict):
-    order: Order | OrderDict
-    proposed_rewards: NotRequired[list[OrderReward | OrderRewardDict | None]]
+    order: OrderDict
+    proposed_rewards: NotRequired[list[OrderRewardDict] | None]

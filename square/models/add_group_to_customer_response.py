@@ -15,4 +15,4 @@ class AddGroupToCustomerResponse(SdkBaseModel):
 
 
 class AddGroupToCustomerResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

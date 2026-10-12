@@ -81,7 +81,7 @@ class TransferOrder(SdkBaseModel):
     """ID of the `TeamMember <entity:TeamMember>`__ who created this transfer order. This field is not writeable by the
     Connect V2 API."""
 
-    line_items: Optional[list[TransferOrderLine | None]] = UNSET
+    line_items: OptionalNullable[list[TransferOrderLine]] = UNSET
     """List of `CatalogItemVariation <entity:CatalogItemVariation>`__s being transferred."""
 
     version: Optional[int] = UNSET
@@ -103,5 +103,5 @@ class TransferOrderDict(TypedDict):
     notes: NotRequired[str | None]
     tracking_number: NotRequired[str | None]
     created_by_team_member_id: NotRequired[str]
-    line_items: NotRequired[list[TransferOrderLine | TransferOrderLineDict | None]]
+    line_items: NotRequired[list[TransferOrderLineDict] | None]
     version: NotRequired[int]

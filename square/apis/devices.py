@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.create_device_code_request import CreateDeviceCodeRequest, CreateDeviceCodeRequestDict
 from ..models.create_device_code_response import CreateDeviceCodeResponse
@@ -43,42 +45,47 @@ class Devices:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_device_code(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_device_code(body, request_options=request_options))
 
     def get_device(self, device_id: str, *, request_options: RequestOptionsOrDict | None = None) -> GetDeviceResponse:
         """Retrieves Device with the associated ``device_id``.
 
         Args:
             device_id: The unique ID for the desired ``Device``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.get_device(device_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.get_device(device_id, request_options=request_options))
 
-    def get_device_code(self, id: str, *, request_options: RequestOptionsOrDict | None = None) -> GetDeviceCodeResponse:
+    def get_device_code(
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
+    ) -> GetDeviceCodeResponse:
         """Retrieves DeviceCode with the associated ID.
 
         Args:
-            id: The unique identifier for the device code.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The unique identifier for the device code.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.get_device_code(id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.get_device_code(id_, request_options=request_options))
 
     def list_device_codes(
         self,
@@ -101,20 +108,23 @@ class Devices:
                 DeviceCodes of all product types if empty.
             status: If specified, returns DeviceCodes with the specified statuses. Returns DeviceCodes of status
                 ``PAIRED`` and ``UNPAIRED`` if empty.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_device_codes(
-            cursor=cursor,
-            location_id=location_id,
-            product_type=product_type,
-            status=status,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_device_codes(
+                cursor=cursor,
+                location_id=location_id,
+                product_type=product_type,
+                status=status,
+                request_options=request_options,
+            ),
+        )
 
     def list_devices(
         self,
@@ -136,16 +146,23 @@ class Devices:
                 oldest (default).
             limit: The number of results to return in a single page.
             location_id: If present, only returns devices at the target location.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_devices(
-            cursor=cursor, sort_order=sort_order, limit=limit, location_id=location_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_devices(
+                cursor=cursor,
+                sort_order=sort_order,
+                limit=limit,
+                location_id=location_id,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> DevicesWithRawResponse:
@@ -168,14 +185,15 @@ class AsyncDevices:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_device_code(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_device_code(body, request_options=request_options))
 
     async def get_device(
         self, device_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -184,30 +202,32 @@ class AsyncDevices:
 
         Args:
             device_id: The unique ID for the desired ``Device``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.get_device(device_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.get_device(device_id, request_options=request_options))
 
     async def get_device_code(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> GetDeviceCodeResponse:
         """Retrieves DeviceCode with the associated ID.
 
         Args:
-            id: The unique identifier for the device code.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The unique identifier for the device code.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.get_device_code(id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.get_device_code(id_, request_options=request_options))
 
     async def list_device_codes(
         self,
@@ -230,22 +250,23 @@ class AsyncDevices:
                 DeviceCodes of all product types if empty.
             status: If specified, returns DeviceCodes with the specified statuses. Returns DeviceCodes of status
                 ``PAIRED`` and ``UNPAIRED`` if empty.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_device_codes(
                 cursor=cursor,
                 location_id=location_id,
                 product_type=product_type,
                 status=status,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def list_devices(
         self,
@@ -267,22 +288,23 @@ class AsyncDevices:
                 oldest (default).
             limit: The number of results to return in a single page.
             location_id: If present, only returns devices at the target location.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_devices(
                 cursor=cursor,
                 sort_order=sort_order,
                 limit=limit,
                 location_id=location_id,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncDevicesWithRawResponse:
@@ -302,7 +324,8 @@ class DevicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -324,7 +347,8 @@ class DevicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
 
         Args:
             device_id: The unique ID for the desired ``Device``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -339,20 +363,21 @@ class DevicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         )
 
     def get_device_code(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[GetDeviceCodeResponse, RawError]:
         """Retrieves DeviceCode with the associated ID.
 
         Args:
-            id: The unique identifier for the device code.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The unique identifier for the device code.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="GET",
             url_template=self._server.default("/v2/devices/codes/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[GetDeviceCodeResponse],
             error_mapper=raw_error_response,
@@ -380,7 +405,8 @@ class DevicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
                 DeviceCodes of all product types if empty.
             status: If specified, returns DeviceCodes with the specified statuses. Returns DeviceCodes of status
                 ``PAIRED`` and ``UNPAIRED`` if empty.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -419,7 +445,8 @@ class DevicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
                 oldest (default).
             limit: The number of results to return in a single page.
             location_id: If present, only returns devices at the target location.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -452,7 +479,8 @@ class AsyncDevicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -462,7 +490,7 @@ class AsyncDevicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateDeviceCodeRequest | CreateDeviceCodeRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateDeviceCodeResponse],
+            decoder=async_json_decoder[CreateDeviceCodeResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -474,7 +502,8 @@ class AsyncDevicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
 
         Args:
             device_id: The unique ID for the desired ``Device``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -483,28 +512,29 @@ class AsyncDevicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             url_template=self._server.default("/v2/devices/{device_id}"),
             path_params=[param[str]("device_id", device_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[GetDeviceResponse],
+            decoder=async_json_decoder[GetDeviceResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def get_device_code(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[GetDeviceCodeResponse, RawError]:
         """Retrieves DeviceCode with the associated ID.
 
         Args:
-            id: The unique identifier for the device code.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The unique identifier for the device code.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="GET",
             url_template=self._server.default("/v2/devices/codes/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[GetDeviceCodeResponse],
+            decoder=async_json_decoder[GetDeviceCodeResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -530,7 +560,8 @@ class AsyncDevicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
                 DeviceCodes of all product types if empty.
             status: If specified, returns DeviceCodes with the specified statuses. Returns DeviceCodes of status
                 ``PAIRED`` and ``UNPAIRED`` if empty.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -544,7 +575,7 @@ class AsyncDevicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
                 param[DeviceCodeStatusOrStr | None]("status", status),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListDeviceCodesResponse],
+            decoder=async_json_decoder[ListDeviceCodesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -569,7 +600,8 @@ class AsyncDevicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
                 oldest (default).
             limit: The number of results to return in a single page.
             location_id: If present, only returns devices at the target location.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -583,7 +615,7 @@ class AsyncDevicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
                 param[str | None]("location_id", location_id),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListDevicesResponse],
+            decoder=async_json_decoder[ListDevicesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

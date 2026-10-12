@@ -13,4 +13,4 @@ class CardDisabledEventObject(SdkBaseModel):
 
 
 class CardDisabledEventObjectDict(TypedDict):
-    card: NotRequired[Card | CardDict]
+    card: NotRequired[CardDict]

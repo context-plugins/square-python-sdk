@@ -21,4 +21,4 @@ class CreateTerminalRefundRequest(SdkBaseModel):
 
 class CreateTerminalRefundRequestDict(TypedDict):
     idempotency_key: str
-    refund: NotRequired[TerminalRefund | TerminalRefundDict]
+    refund: NotRequired[TerminalRefundDict]

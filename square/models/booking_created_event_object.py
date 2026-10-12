@@ -13,4 +13,4 @@ class BookingCreatedEventObject(SdkBaseModel):
 
 
 class BookingCreatedEventObjectDict(TypedDict):
-    booking: NotRequired[Booking | BookingDict]
+    booking: NotRequired[BookingDict]

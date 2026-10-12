@@ -14,7 +14,7 @@ class CatalogItemModifierListInfo(SdkBaseModel):
     modifier_list_id: str
     """The ID of the ``CatalogModifierList`` controlled by this ``CatalogModifierListInfo``."""
 
-    modifier_overrides: Optional[list[CatalogModifierOverride | None]] = UNSET
+    modifier_overrides: OptionalNullable[list[CatalogModifierOverride]] = UNSET
     """A set of ``CatalogModifierOverride`` objects that override default modifier settings for this item."""
 
     min_selected_modifiers: OptionalNullable[int] = UNSET
@@ -56,7 +56,7 @@ class CatalogItemModifierListInfo(SdkBaseModel):
 
 class CatalogItemModifierListInfoDict(TypedDict):
     modifier_list_id: str
-    modifier_overrides: NotRequired[list[CatalogModifierOverride | CatalogModifierOverrideDict | None]]
+    modifier_overrides: NotRequired[list[CatalogModifierOverrideDict] | None]
     min_selected_modifiers: NotRequired[int | None]
     max_selected_modifiers: NotRequired[int | None]
     enabled: NotRequired[bool | None]

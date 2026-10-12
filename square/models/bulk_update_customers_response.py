@@ -23,5 +23,5 @@ class BulkUpdateCustomersResponse(SdkBaseModel):
 
 
 class BulkUpdateCustomersResponseDict(TypedDict):
-    responses: NotRequired[dict[str, UpdateCustomerResponse | UpdateCustomerResponseDict]]
-    errors: NotRequired[list[Error | ErrorDict]]
+    responses: NotRequired[dict[str, UpdateCustomerResponseDict]]
+    errors: NotRequired[list[ErrorDict]]

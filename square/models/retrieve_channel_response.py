@@ -15,5 +15,5 @@ class RetrieveChannelResponse(SdkBaseModel):
 
 
 class RetrieveChannelResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    channel: NotRequired[Channel | ChannelDict]
+    errors: NotRequired[list[ErrorDict]]
+    channel: NotRequired[ChannelDict]

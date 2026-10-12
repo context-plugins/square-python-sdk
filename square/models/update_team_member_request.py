@@ -14,4 +14,4 @@ class UpdateTeamMemberRequest(SdkBaseModel):
 
 
 class UpdateTeamMemberRequestDict(TypedDict):
-    team_member: NotRequired[TeamMember | TeamMemberDict]
+    team_member: NotRequired[TeamMemberDict]

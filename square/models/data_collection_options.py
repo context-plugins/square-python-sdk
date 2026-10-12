@@ -24,4 +24,4 @@ class DataCollectionOptionsDict(TypedDict):
     title: str
     body: str
     input_type: DataCollectionOptionsInputTypeOrStr
-    collected_data: NotRequired[CollectedData | CollectedDataDict]
+    collected_data: NotRequired[CollectedDataDict]

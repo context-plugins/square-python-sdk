@@ -19,4 +19,4 @@ class BookingCustomAttributeDeleteResponse(SdkBaseModel):
 
 class BookingCustomAttributeDeleteResponseDict(TypedDict):
     booking_id: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

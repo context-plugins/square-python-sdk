@@ -48,7 +48,7 @@ class OrderLineItemDiscount(SdkBaseModel):
     the sign of the value indicates the purpose of the money transfer. See `Working with Monetary Amounts
     <https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts>`__ for more information."""
 
-    metadata: Optional[dict[str, str | None]] = UNSET
+    metadata: OptionalNullable[dict[str, str]] = UNSET
     """Application-defined data attached to this discount. Metadata fields are intended to store descriptive references
     or associations with an entity in another system or store brief information about the object. Square does not
     process this field; it only stores and returns it in relevant API calls. Do not use metadata to store any sensitive
@@ -88,9 +88,9 @@ class OrderLineItemDiscountDict(TypedDict):
     name: NotRequired[str | None]
     type_: NotRequired[OrderLineItemDiscountTypeOrStr]
     percentage: NotRequired[str | None]
-    amount_money: NotRequired[Money | MoneyDict]
-    applied_money: NotRequired[Money | MoneyDict]
-    metadata: NotRequired[dict[str, str | None]]
+    amount_money: NotRequired[MoneyDict]
+    applied_money: NotRequired[MoneyDict]
+    metadata: NotRequired[dict[str, str] | None]
     scope: NotRequired[OrderLineItemDiscountScopeOrStr]
     reward_ids: NotRequired[list[str]]
     pricing_rule_id: NotRequired[str]

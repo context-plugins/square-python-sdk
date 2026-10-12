@@ -23,7 +23,5 @@ class BulkRetrieveTeamMemberBookingProfilesResponse(SdkBaseModel):
 
 
 class BulkRetrieveTeamMemberBookingProfilesResponseDict(TypedDict):
-    team_member_booking_profiles: NotRequired[
-        dict[str, RetrieveTeamMemberBookingProfileResponse | RetrieveTeamMemberBookingProfileResponseDict]
-    ]
-    errors: NotRequired[list[Error | ErrorDict]]
+    team_member_booking_profiles: NotRequired[dict[str, RetrieveTeamMemberBookingProfileResponseDict]]
+    errors: NotRequired[list[ErrorDict]]

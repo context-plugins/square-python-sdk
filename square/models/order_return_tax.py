@@ -55,5 +55,5 @@ class OrderReturnTaxDict(TypedDict):
     name: NotRequired[str | None]
     type_: NotRequired[OrderLineItemTaxTypeOrStr]
     percentage: NotRequired[str | None]
-    applied_money: NotRequired[Money | MoneyDict]
+    applied_money: NotRequired[MoneyDict]
     scope: NotRequired[OrderLineItemTaxScopeOrStr]

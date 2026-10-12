@@ -16,4 +16,4 @@ class LaborShiftUpdatedEventObject(SdkBaseModel):
 
 
 class LaborShiftUpdatedEventObjectDict(TypedDict):
-    shift: NotRequired[Shift | ShiftDict]
+    shift: NotRequired[ShiftDict]

@@ -17,5 +17,5 @@ class RetrieveLocationBookingProfileResponse(SdkBaseModel):
 
 
 class RetrieveLocationBookingProfileResponseDict(TypedDict):
-    location_booking_profile: NotRequired[LocationBookingProfile | LocationBookingProfileDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    location_booking_profile: NotRequired[LocationBookingProfileDict]
+    errors: NotRequired[list[ErrorDict]]

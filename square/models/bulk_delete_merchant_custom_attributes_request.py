@@ -19,10 +19,4 @@ class BulkDeleteMerchantCustomAttributesRequest(SdkBaseModel):
 
 
 class BulkDeleteMerchantCustomAttributesRequestDict(TypedDict):
-    values: dict[
-        str,
-        (
-            BulkDeleteMerchantCustomAttributesRequestMerchantCustomAttributeDeleteRequest
-            | BulkDeleteMerchantCustomAttributesRequestMerchantCustomAttributeDeleteRequestDict
-        ),
-    ]
+    values: dict[str, BulkDeleteMerchantCustomAttributesRequestMerchantCustomAttributeDeleteRequestDict]

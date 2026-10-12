@@ -46,7 +46,7 @@ To learn more about the Web Payments SDK and how to add Apple Pay, see [Take an 
 
 ```python
 try:
-    response = client.apple_pay.register_domain(body)
+    response = client.apple_pay.register_domain(RegisterDomainRequest(domain_name="some example string"))
     # TODO: Handle 'response' of type RegisterDomainResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -56,7 +56,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.apple_pay.register_domain(body)
+    response = await async_client.apple_pay.register_domain(RegisterDomainRequest(domain_name="some example string"))
     # TODO: Handle 'response' of type RegisterDomainResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -73,7 +73,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[RegisterDomainRequest](square/models/register_domain_request.py) \| [RegisterDomainRequestDict](square/models/register_domain_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -124,7 +124,9 @@ Store a bank account on file for a square account
 
 ```python
 try:
-    response = client.bank_accounts.create_bank_account(body)
+    response = client.bank_accounts.create_bank_account(
+        CreateBankAccountRequest(idempotency_key="some example string", source_id="some example string")
+    )
     # TODO: Handle 'response' of type CreateBankAccountResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -134,7 +136,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.bank_accounts.create_bank_account(body)
+    response = await async_client.bank_accounts.create_bank_account(
+        CreateBankAccountRequest(idempotency_key="some example string", source_id="some example string")
+    )
     # TODO: Handle 'response' of type CreateBankAccountResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -151,7 +155,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateBankAccountRequest](square/models/create_bank_account_request.py) \| [CreateBankAccountRequestDict](square/models/create_bank_account_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -198,7 +202,7 @@ Disable a bank account.
 
 ```python
 try:
-    response = client.bank_accounts.disable_bank_account(bank_account_id)
+    response = client.bank_accounts.disable_bank_account("some example string")
     # TODO: Handle 'response' of type DisableBankAccountResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -208,7 +212,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.bank_accounts.disable_bank_account(bank_account_id)
+    response = await async_client.bank_accounts.disable_bank_account("some example string")
     # TODO: Handle 'response' of type DisableBankAccountResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -225,7 +229,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>bank_account_id</code> | <code>str</code> | The ID of the bank account to disable. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -272,7 +276,7 @@ Retrieve details of a [BankAccount](entity:BankAccount) bank account linked to a
 
 ```python
 try:
-    response = client.bank_accounts.get_bank_account(bank_account_id)
+    response = client.bank_accounts.get_bank_account("some example string")
     # TODO: Handle 'response' of type GetBankAccountResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -282,7 +286,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.bank_accounts.get_bank_account(bank_account_id)
+    response = await async_client.bank_accounts.get_bank_account("some example string")
     # TODO: Handle 'response' of type GetBankAccountResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -299,7 +303,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>bank_account_id</code> | <code>str</code> | Square-issued ID of the desired `BankAccount`. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -346,7 +350,7 @@ Returns details of a [BankAccount](entity:BankAccount) identified by V1 bank acc
 
 ```python
 try:
-    response = client.bank_accounts.get_bank_account_by_v1_id(v1_bank_account_id)
+    response = client.bank_accounts.get_bank_account_by_v1_id("some example string")
     # TODO: Handle 'response' of type GetBankAccountByV1IdResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -356,7 +360,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.bank_accounts.get_bank_account_by_v1_id(v1_bank_account_id)
+    response = await async_client.bank_accounts.get_bank_account_by_v1_id("some example string")
     # TODO: Handle 'response' of type GetBankAccountByV1IdResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -373,7 +377,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>v1_bank_account_id</code> | <code>str</code> | Connect V1 ID of the desired `BankAccount`. For more information, see <br>[Retrieve a bank account by using an ID issued by V1 Bank Accounts API](https://developer.squareup.com/docs/bank-accounts-api#retrieve-a-bank-account-by-using-an-id-issued-by-v1-bank-accounts-api). |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -450,7 +454,7 @@ except ApiError as e:
 | <code>limit</code> | <code>int \| None</code> | Upper limit on the number of bank accounts to return in the response.<br>Currently, 1000 is the largest supported limit. You can specify a limit<br>of up to 1000 bank accounts. This is also the default limit.<br>**Default**: <code>None</code> |
 | <code>location_id</code> | <code>str \| None</code> | Location ID. You can specify this optional filter<br>to retrieve only the linked bank accounts belonging to a specific location.<br>**Default**: <code>None</code> |
 | <code>customer_id</code> | <code>str \| None</code> | Customer ID. You can specify this optional filter<br>to retrieve only the linked bank accounts belonging to a specific customer.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -507,7 +511,13 @@ or *Appointments Premium*.
 
 ```python
 try:
-    response = client.booking_custom_attributes.bulk_delete_booking_custom_attributes(body)
+    response = client.booking_custom_attributes.bulk_delete_booking_custom_attributes(
+        BulkDeleteBookingCustomAttributesRequest(
+            values={
+                "key": BookingCustomAttributeDeleteRequest(booking_id="some example string", key="some example string")
+            },
+        ),
+    )
     # TODO: Handle 'response' of type BulkDeleteBookingCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -517,7 +527,13 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.booking_custom_attributes.bulk_delete_booking_custom_attributes(body)
+    response = await async_client.booking_custom_attributes.bulk_delete_booking_custom_attributes(
+        BulkDeleteBookingCustomAttributesRequest(
+            values={
+                "key": BookingCustomAttributeDeleteRequest(booking_id="some example string", key="some example string")
+            },
+        ),
+    )
     # TODO: Handle 'response' of type BulkDeleteBookingCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -534,7 +550,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkDeleteBookingCustomAttributesRequest](square/models/bulk_delete_booking_custom_attributes_request.py) \| [BulkDeleteBookingCustomAttributesRequestDict](square/models/bulk_delete_booking_custom_attributes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -587,7 +603,15 @@ or *Appointments Premium*.
 
 ```python
 try:
-    response = client.booking_custom_attributes.bulk_upsert_booking_custom_attributes(body)
+    response = client.booking_custom_attributes.bulk_upsert_booking_custom_attributes(
+        BulkUpsertBookingCustomAttributesRequest(
+            values={
+                "key": BookingCustomAttributeUpsertRequest(
+                    booking_id="some example string", custom_attribute=CustomAttribute()
+                ),
+            },
+        ),
+    )
     # TODO: Handle 'response' of type BulkUpsertBookingCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -597,7 +621,15 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.booking_custom_attributes.bulk_upsert_booking_custom_attributes(body)
+    response = await async_client.booking_custom_attributes.bulk_upsert_booking_custom_attributes(
+        BulkUpsertBookingCustomAttributesRequest(
+            values={
+                "key": BookingCustomAttributeUpsertRequest(
+                    booking_id="some example string", custom_attribute=CustomAttribute()
+                ),
+            },
+        ),
+    )
     # TODO: Handle 'response' of type BulkUpsertBookingCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -614,7 +646,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkUpsertBookingCustomAttributesRequest](square/models/bulk_upsert_booking_custom_attributes_request.py) \| [BulkUpsertBookingCustomAttributesRequestDict](square/models/bulk_upsert_booking_custom_attributes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -667,7 +699,9 @@ or *Appointments Premium*.
 
 ```python
 try:
-    response = client.booking_custom_attributes.create_booking_custom_attribute_definition(body)
+    response = client.booking_custom_attributes.create_booking_custom_attribute_definition(
+        CreateBookingCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition())
+    )
     # TODO: Handle 'response' of type CreateBookingCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -677,7 +711,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.booking_custom_attributes.create_booking_custom_attribute_definition(body)
+    response = await async_client.booking_custom_attributes.create_booking_custom_attribute_definition(
+        CreateBookingCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition())
+    )
     # TODO: Handle 'response' of type CreateBookingCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -694,7 +730,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateBookingCustomAttributeDefinitionRequest](square/models/create_booking_custom_attribute_definition_request.py) \| [CreateBookingCustomAttributeDefinitionRequestDict](square/models/create_booking_custom_attribute_definition_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -747,7 +783,9 @@ or *Appointments Premium*.
 
 ```python
 try:
-    response = client.booking_custom_attributes.delete_booking_custom_attribute(booking_id, key)
+    response = client.booking_custom_attributes.delete_booking_custom_attribute(
+        "some example string", "some example string"
+    )
     # TODO: Handle 'response' of type DeleteBookingCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -757,7 +795,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.booking_custom_attributes.delete_booking_custom_attribute(booking_id, key)
+    response = await async_client.booking_custom_attributes.delete_booking_custom_attribute(
+        "some example string", "some example string"
+    )
     # TODO: Handle 'response' of type DeleteBookingCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -775,7 +815,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>booking_id</code> | <code>str</code> | The ID of the target [booking](entity:Booking). |
 | <code>key</code> | <code>str</code> | The key of the custom attribute to delete. This key must match the `key` of a custom<br>attribute definition in the Square seller account. If the requesting application is not the<br>definition owner, you must use the qualified key. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -828,7 +868,7 @@ or *Appointments Premium*.
 
 ```python
 try:
-    response = client.booking_custom_attributes.delete_booking_custom_attribute_definition(key)
+    response = client.booking_custom_attributes.delete_booking_custom_attribute_definition("some example string")
     # TODO: Handle 'response' of type DeleteBookingCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -838,7 +878,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.booking_custom_attributes.delete_booking_custom_attribute_definition(key)
+    response = await async_client.booking_custom_attributes.delete_booking_custom_attribute_definition(
+        "some example string"
+    )
     # TODO: Handle 'response' of type DeleteBookingCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -855,7 +897,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -933,7 +975,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response. This limit is advisory.<br>The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100.<br>The default value is 20. For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint.<br>Provide this cursor to retrieve the next page of results for your original request.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -983,7 +1025,7 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 
 ```python
 try:
-    response = client.booking_custom_attributes.list_booking_custom_attributes(booking_id)
+    response = client.booking_custom_attributes.list_booking_custom_attributes("some example string")
     # TODO: Handle 'response' of type ListBookingCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -993,7 +1035,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.booking_custom_attributes.list_booking_custom_attributes(booking_id)
+    response = await async_client.booking_custom_attributes.list_booking_custom_attributes("some example string")
     # TODO: Handle 'response' of type ListBookingCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -1013,7 +1055,7 @@ except ApiError as e:
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response. This limit is advisory.<br>The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100.<br>The default value is 20. For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint.<br>Provide this cursor to retrieve the next page of results for your original request. For more<br>information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>with_definitions</code> | <code>bool \| None</code> | Indicates whether to return the [custom attribute definition](entity:CustomAttributeDefinition) in the `definition` field of each<br>custom attribute. Set this parameter to `true` to get the name and description of each custom<br>attribute, information about the data type, or other definition details. The default value is `false`.<br>**Default**: <code>False</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1063,7 +1105,9 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 
 ```python
 try:
-    response = client.booking_custom_attributes.retrieve_booking_custom_attribute(booking_id, key)
+    response = client.booking_custom_attributes.retrieve_booking_custom_attribute(
+        "some example string", "some example string"
+    )
     # TODO: Handle 'response' of type RetrieveBookingCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -1073,7 +1117,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.booking_custom_attributes.retrieve_booking_custom_attribute(booking_id, key)
+    response = await async_client.booking_custom_attributes.retrieve_booking_custom_attribute(
+        "some example string", "some example string"
+    )
     # TODO: Handle 'response' of type RetrieveBookingCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -1093,7 +1139,7 @@ except ApiError as e:
 | <code>key</code> | <code>str</code> | The key of the custom attribute to retrieve. This key must match the `key` of a custom<br>attribute definition in the Square seller account. If the requesting application is not the<br>definition owner, you must use the qualified key. |
 | <code>with_definition</code> | <code>bool \| None</code> | Indicates whether to return the [custom attribute definition](entity:CustomAttributeDefinition) in the `definition` field of<br>the custom attribute. Set this parameter to `true` to get the name and description of the custom<br>attribute, information about the data type, or other definition details. The default value is `false`.<br>**Default**: <code>False</code> |
 | <code>version</code> | <code>int \| None</code> | The current version of the custom attribute, which is used for strongly consistent reads to<br>guarantee that you receive the most up-to-date data. When included in the request, Square<br>returns the specified version or a higher version if one exists. If the specified version is<br>higher than the current version, Square returns a `BAD_REQUEST` error.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1143,7 +1189,7 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 
 ```python
 try:
-    response = client.booking_custom_attributes.retrieve_booking_custom_attribute_definition(key)
+    response = client.booking_custom_attributes.retrieve_booking_custom_attribute_definition("some example string")
     # TODO: Handle 'response' of type RetrieveBookingCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -1153,7 +1199,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.booking_custom_attributes.retrieve_booking_custom_attribute_definition(key)
+    response = await async_client.booking_custom_attributes.retrieve_booking_custom_attribute_definition(
+        "some example string"
+    )
     # TODO: Handle 'response' of type RetrieveBookingCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -1171,7 +1219,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to retrieve. If the requesting application<br>is not the definition owner, you must use the qualified key. |
 | <code>version</code> | <code>int \| None</code> | The current version of the custom attribute definition, which is used for strongly consistent<br>reads to guarantee that you receive the most up-to-date data. When included in the request,<br>Square returns the specified version or a higher version if one exists. If the specified version<br>is higher than the current version, Square returns a `BAD_REQUEST` error.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1224,7 +1272,10 @@ or *Appointments Premium*.
 
 ```python
 try:
-    response = client.booking_custom_attributes.update_booking_custom_attribute_definition(key, body)
+    response = client.booking_custom_attributes.update_booking_custom_attribute_definition(
+        "some example string",
+        UpdateBookingCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition()),
+    )
     # TODO: Handle 'response' of type UpdateBookingCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -1234,7 +1285,10 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.booking_custom_attributes.update_booking_custom_attribute_definition(key, body)
+    response = await async_client.booking_custom_attributes.update_booking_custom_attribute_definition(
+        "some example string",
+        UpdateBookingCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition()),
+    )
     # TODO: Handle 'response' of type UpdateBookingCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -1252,7 +1306,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to update. |
 | <code>body</code> | <code>[UpdateBookingCustomAttributeDefinitionRequest](square/models/update_booking_custom_attribute_definition_request.py) \| [UpdateBookingCustomAttributeDefinitionRequestDict](square/models/update_booking_custom_attribute_definition_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1305,7 +1359,11 @@ or *Appointments Premium*.
 
 ```python
 try:
-    response = client.booking_custom_attributes.upsert_booking_custom_attribute(booking_id, key, body)
+    response = client.booking_custom_attributes.upsert_booking_custom_attribute(
+        "some example string",
+        "some example string",
+        UpsertBookingCustomAttributeRequest(custom_attribute=CustomAttribute()),
+    )
     # TODO: Handle 'response' of type UpsertBookingCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -1315,7 +1373,11 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.booking_custom_attributes.upsert_booking_custom_attribute(booking_id, key, body)
+    response = await async_client.booking_custom_attributes.upsert_booking_custom_attribute(
+        "some example string",
+        "some example string",
+        UpsertBookingCustomAttributeRequest(custom_attribute=CustomAttribute()),
+    )
     # TODO: Handle 'response' of type UpsertBookingCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -1334,7 +1396,7 @@ except ApiError as e:
 | <code>booking_id</code> | <code>str</code> | The ID of the target [booking](entity:Booking). |
 | <code>key</code> | <code>str</code> | The key of the custom attribute to create or update. This key must match the `key` of a<br>custom attribute definition in the Square seller account. If the requesting application is not<br>the definition owner, you must use the qualified key. |
 | <code>body</code> | <code>[UpsertBookingCustomAttributeRequest](square/models/upsert_booking_custom_attribute_request.py) \| [UpsertBookingCustomAttributeRequestDict](square/models/upsert_booking_custom_attribute_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1388,7 +1450,7 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 
 ```python
 try:
-    response = client.bookings.bulk_retrieve_bookings(body)
+    response = client.bookings.bulk_retrieve_bookings(BulkRetrieveBookingsRequest(booking_ids=["some example string"]))
     # TODO: Handle 'response' of type BulkRetrieveBookingsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -1398,7 +1460,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.bookings.bulk_retrieve_bookings(body)
+    response = await async_client.bookings.bulk_retrieve_bookings(
+        BulkRetrieveBookingsRequest(booking_ids=["some example string"])
+    )
     # TODO: Handle 'response' of type BulkRetrieveBookingsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -1415,7 +1479,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkRetrieveBookingsRequest](square/models/bulk_retrieve_bookings_request.py) \| [BulkRetrieveBookingsRequestDict](square/models/bulk_retrieve_bookings_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1462,7 +1526,9 @@ Retrieves one or more team members' booking profiles.
 
 ```python
 try:
-    response = client.bookings.bulk_retrieve_team_member_booking_profiles(body)
+    response = client.bookings.bulk_retrieve_team_member_booking_profiles(
+        BulkRetrieveTeamMemberBookingProfilesRequest(team_member_ids=["some example string"])
+    )
     # TODO: Handle 'response' of type BulkRetrieveTeamMemberBookingProfilesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -1472,7 +1538,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.bookings.bulk_retrieve_team_member_booking_profiles(body)
+    response = await async_client.bookings.bulk_retrieve_team_member_booking_profiles(
+        BulkRetrieveTeamMemberBookingProfilesRequest(team_member_ids=["some example string"])
+    )
     # TODO: Handle 'response' of type BulkRetrieveTeamMemberBookingProfilesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -1489,7 +1557,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkRetrieveTeamMemberBookingProfilesRequest](square/models/bulk_retrieve_team_member_booking_profiles_request.py) \| [BulkRetrieveTeamMemberBookingProfilesRequestDict](square/models/bulk_retrieve_team_member_booking_profiles_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1542,7 +1610,7 @@ or *Appointments Premium*.
 
 ```python
 try:
-    response = client.bookings.cancel_booking(booking_id, body)
+    response = client.bookings.cancel_booking("some example string", CancelBookingRequest())
     # TODO: Handle 'response' of type CancelBookingResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -1552,7 +1620,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.bookings.cancel_booking(booking_id, body)
+    response = await async_client.bookings.cancel_booking("some example string", CancelBookingRequest())
     # TODO: Handle 'response' of type CancelBookingResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -1570,7 +1638,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>booking_id</code> | <code>str</code> | The ID of the [Booking](entity:Booking) object representing the to-be-cancelled booking. |
 | <code>body</code> | <code>[CancelBookingRequest](square/models/cancel_booking_request.py) \| [CancelBookingRequestDict](square/models/cancel_booking_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1630,7 +1698,7 @@ or *Appointments Premium*.
 
 ```python
 try:
-    response = client.bookings.create_booking(body)
+    response = client.bookings.create_booking(CreateBookingRequest(booking=Booking()))
     # TODO: Handle 'response' of type CreateBookingResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -1640,7 +1708,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.bookings.create_booking(body)
+    response = await async_client.bookings.create_booking(CreateBookingRequest(booking=Booking()))
     # TODO: Handle 'response' of type CreateBookingResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -1657,7 +1725,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateBookingRequest](square/models/create_booking_request.py) \| [CreateBookingRequestDict](square/models/create_booking_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1740,7 +1808,7 @@ except ApiError as e:
 | <code>location_id</code> | <code>str \| None</code> | The location for which to retrieve bookings. If this is not set, all locations' bookings are retrieved.<br>**Default**: <code>None</code> |
 | <code>start_at_min</code> | <code>str \| None</code> | The RFC 3339 timestamp specifying the earliest of the start time. If this is not set, the current time is used.<br>**Default**: <code>None</code> |
 | <code>start_at_max</code> | <code>str \| None</code> | The RFC 3339 timestamp specifying the latest of the start time. If this is not set, the time of 31 days after `start_at_min` is used.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1815,7 +1883,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a paged response.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The pagination cursor from the preceding response to return the next page of the results. Do not set this when retrieving the first page of the results.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1892,7 +1960,7 @@ except ApiError as e:
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a paged response.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The pagination cursor from the preceding response to return the next page of the results. Do not set this when retrieving the first page of the results.<br>**Default**: <code>None</code> |
 | <code>location_id</code> | <code>str \| None</code> | Indicates whether to include only team members enabled at the given location in the returned result.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1942,7 +2010,7 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 
 ```python
 try:
-    response = client.bookings.retrieve_booking(booking_id)
+    response = client.bookings.retrieve_booking("some example string")
     # TODO: Handle 'response' of type RetrieveBookingResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -1952,7 +2020,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.bookings.retrieve_booking(booking_id)
+    response = await async_client.bookings.retrieve_booking("some example string")
     # TODO: Handle 'response' of type RetrieveBookingResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -1969,7 +2037,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>booking_id</code> | <code>str</code> | The ID of the [Booking](entity:Booking) object representing the to-be-retrieved booking. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2042,7 +2110,7 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2089,7 +2157,7 @@ Retrieves a seller's location booking profile.
 
 ```python
 try:
-    response = client.bookings.retrieve_location_booking_profile(location_id)
+    response = client.bookings.retrieve_location_booking_profile("some example string")
     # TODO: Handle 'response' of type RetrieveLocationBookingProfileResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2099,7 +2167,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.bookings.retrieve_location_booking_profile(location_id)
+    response = await async_client.bookings.retrieve_location_booking_profile("some example string")
     # TODO: Handle 'response' of type RetrieveLocationBookingProfileResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2116,7 +2184,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | The ID of the location to retrieve the booking profile. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2163,7 +2231,7 @@ Retrieves a team member's booking profile.
 
 ```python
 try:
-    response = client.bookings.retrieve_team_member_booking_profile(team_member_id)
+    response = client.bookings.retrieve_team_member_booking_profile("some example string")
     # TODO: Handle 'response' of type RetrieveTeamMemberBookingProfileResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2173,7 +2241,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.bookings.retrieve_team_member_booking_profile(team_member_id)
+    response = await async_client.bookings.retrieve_team_member_booking_profile("some example string")
     # TODO: Handle 'response' of type RetrieveTeamMemberBookingProfileResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2190,7 +2258,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>team_member_id</code> | <code>str</code> | The ID of the team member to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2240,7 +2308,11 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 
 ```python
 try:
-    response = client.bookings.search_availability(body)
+    response = client.bookings.search_availability(
+        SearchAvailabilityRequest(
+            query=SearchAvailabilityQuery(filter=SearchAvailabilityFilter(start_at_range=TimeRange()))
+        ),
+    )
     # TODO: Handle 'response' of type SearchAvailabilityResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2250,7 +2322,11 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.bookings.search_availability(body)
+    response = await async_client.bookings.search_availability(
+        SearchAvailabilityRequest(
+            query=SearchAvailabilityQuery(filter=SearchAvailabilityFilter(start_at_range=TimeRange()))
+        ),
+    )
     # TODO: Handle 'response' of type SearchAvailabilityResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2267,7 +2343,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchAvailabilityRequest](square/models/search_availability_request.py) \| [SearchAvailabilityRequestDict](square/models/search_availability_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2320,7 +2396,7 @@ or *Appointments Premium*.
 
 ```python
 try:
-    response = client.bookings.update_booking(booking_id, body)
+    response = client.bookings.update_booking("some example string", UpdateBookingRequest(booking=Booking()))
     # TODO: Handle 'response' of type UpdateBookingResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2330,7 +2406,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.bookings.update_booking(booking_id, body)
+    response = await async_client.bookings.update_booking(
+        "some example string", UpdateBookingRequest(booking=Booking())
+    )
     # TODO: Handle 'response' of type UpdateBookingResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2348,7 +2426,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>booking_id</code> | <code>str</code> | The ID of the [Booking](entity:Booking) object representing the to-be-updated booking. |
 | <code>body</code> | <code>[UpdateBookingRequest](square/models/update_booking_request.py) \| [UpdateBookingRequestDict](square/models/update_booking_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2399,7 +2477,9 @@ Adds a card on file to an existing merchant.
 
 ```python
 try:
-    response = client.cards.create_card(body)
+    response = client.cards.create_card(
+        CreateCardRequest(idempotency_key="some example string", source_id="some example string", card=Card())
+    )
     # TODO: Handle 'response' of type CreateCardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2409,7 +2489,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.cards.create_card(body)
+    response = await async_client.cards.create_card(
+        CreateCardRequest(idempotency_key="some example string", source_id="some example string", card=Card())
+    )
     # TODO: Handle 'response' of type CreateCardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2426,7 +2508,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateCardRequest](square/models/create_card_request.py) \| [CreateCardRequestDict](square/models/create_card_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2474,7 +2556,7 @@ Disabling an already disabled card is allowed but has no effect.
 
 ```python
 try:
-    response = client.cards.disable_card(card_id)
+    response = client.cards.disable_card("some example string")
     # TODO: Handle 'response' of type DisableCardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2484,7 +2566,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.cards.disable_card(card_id)
+    response = await async_client.cards.disable_card("some example string")
     # TODO: Handle 'response' of type DisableCardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2501,7 +2583,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>card_id</code> | <code>str</code> | Unique ID for the desired Card. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2580,7 +2662,7 @@ except ApiError as e:
 | <code>include_disabled</code> | <code>bool \| None</code> | Includes disabled cards.<br>By default, all enabled cards owned by the merchant are returned.<br>**Default**: <code>False</code> |
 | <code>reference_id</code> | <code>str \| None</code> | Limit results to cards associated with the reference_id supplied.<br>**Default**: <code>None</code> |
 | <code>sort_order</code> | <code>[SortOrderOrStr](square/models/enums/sort_order.py) \| None</code> | Sorts the returned list by when the card was created with the specified order.<br>This field defaults to ASC.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2627,7 +2709,7 @@ Retrieves details for a specific Card.
 
 ```python
 try:
-    response = client.cards.retrieve_card(card_id)
+    response = client.cards.retrieve_card("some example string")
     # TODO: Handle 'response' of type RetrieveCardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2637,7 +2719,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.cards.retrieve_card(card_id)
+    response = await async_client.cards.retrieve_card("some example string")
     # TODO: Handle 'response' of type RetrieveCardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2654,7 +2736,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>card_id</code> | <code>str</code> | Unique ID for the desired Card. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2705,7 +2787,7 @@ Provides a paginated list of events for a single cash drawer shift.
 
 ```python
 try:
-    response = client.cash_drawers.list_cash_drawer_shift_events(shift_id, location_id)
+    response = client.cash_drawers.list_cash_drawer_shift_events("some example string", "some example string")
     # TODO: Handle 'response' of type ListCashDrawerShiftEventsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2715,7 +2797,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.cash_drawers.list_cash_drawer_shift_events(shift_id, location_id)
+    response = await async_client.cash_drawers.list_cash_drawer_shift_events(
+        "some example string", "some example string"
+    )
     # TODO: Handle 'response' of type ListCashDrawerShiftEventsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2735,7 +2819,7 @@ except ApiError as e:
 | <code>location_id</code> | <code>str</code> | The ID of the location to list cash drawer shifts for. |
 | <code>limit</code> | <code>int \| None</code> | Number of resources to be returned in a page of results (200 by<br>default, 1000 max).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Opaque cursor for fetching the next page of results.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2783,7 +2867,7 @@ in a date range.
 
 ```python
 try:
-    response = client.cash_drawers.list_cash_drawer_shifts(location_id)
+    response = client.cash_drawers.list_cash_drawer_shifts("some example string")
     # TODO: Handle 'response' of type ListCashDrawerShiftsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2793,7 +2877,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.cash_drawers.list_cash_drawer_shifts(location_id)
+    response = await async_client.cash_drawers.list_cash_drawer_shifts("some example string")
     # TODO: Handle 'response' of type ListCashDrawerShiftsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2815,7 +2899,7 @@ except ApiError as e:
 | <code>end_time</code> | <code>str \| None</code> | The exclusive end date of the query on opened_at, in ISO 8601 format.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | Number of cash drawer shift events in a page of results (200 by<br>default, 1000 max).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Opaque cursor for fetching the next page of results.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2863,7 +2947,7 @@ Provides the summary details for a single cash drawer shift. See
 
 ```python
 try:
-    response = client.cash_drawers.retrieve_cash_drawer_shift(shift_id, location_id)
+    response = client.cash_drawers.retrieve_cash_drawer_shift("some example string", "some example string")
     # TODO: Handle 'response' of type RetrieveCashDrawerShiftResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2873,7 +2957,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.cash_drawers.retrieve_cash_drawer_shift(shift_id, location_id)
+    response = await async_client.cash_drawers.retrieve_cash_drawer_shift("some example string", "some example string")
     # TODO: Handle 'response' of type RetrieveCashDrawerShiftResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2891,7 +2975,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>shift_id</code> | <code>str</code> | The shift ID. |
 | <code>location_id</code> | <code>str</code> | The ID of the location to retrieve cash drawer shifts from. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2955,7 +3039,9 @@ delete requests are rejected with the `429` error code.
 
 ```python
 try:
-    response = client.catalog.batch_delete_catalog_objects(body)
+    response = client.catalog.batch_delete_catalog_objects(
+        BatchDeleteCatalogObjectsRequest(object_ids=["some example string"])
+    )
     # TODO: Handle 'response' of type BatchDeleteCatalogObjectsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2965,7 +3051,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.catalog.batch_delete_catalog_objects(body)
+    response = await async_client.catalog.batch_delete_catalog_objects(
+        BatchDeleteCatalogObjectsRequest(object_ids=["some example string"])
+    )
     # TODO: Handle 'response' of type BatchDeleteCatalogObjectsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -2982,7 +3070,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BatchDeleteCatalogObjectsRequest](square/models/batch_delete_catalog_objects_request.py) \| [BatchDeleteCatalogObjectsRequestDict](square/models/batch_delete_catalog_objects_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3034,7 +3122,9 @@ any [CatalogTax](entity:CatalogTax) objects that apply to it.
 
 ```python
 try:
-    response = client.catalog.batch_retrieve_catalog_objects(body)
+    response = client.catalog.batch_retrieve_catalog_objects(
+        BatchRetrieveCatalogObjectsRequest(object_ids=["some example string"])
+    )
     # TODO: Handle 'response' of type BatchRetrieveCatalogObjectsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -3044,7 +3134,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.catalog.batch_retrieve_catalog_objects(body)
+    response = await async_client.catalog.batch_retrieve_catalog_objects(
+        BatchRetrieveCatalogObjectsRequest(object_ids=["some example string"])
+    )
     # TODO: Handle 'response' of type BatchRetrieveCatalogObjectsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -3061,7 +3153,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BatchRetrieveCatalogObjectsRequest](square/models/batch_retrieve_catalog_objects_request.py) \| [BatchRetrieveCatalogObjectsRequestDict](square/models/batch_retrieve_catalog_objects_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3126,7 +3218,14 @@ and parallel writes to the same seller will contend with each other, producing `
 
 ```python
 try:
-    response = client.catalog.batch_upsert_catalog_objects(body)
+    response = client.catalog.batch_upsert_catalog_objects(
+        BatchUpsertCatalogObjectsRequest(
+            idempotency_key="some example string",
+            batches=[
+                CatalogObjectBatch(objects=[CatalogObject(type_=CatalogObjectType.ITEM, id="some example string")])
+            ],
+        ),
+    )
     # TODO: Handle 'response' of type BatchUpsertCatalogObjectsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -3136,7 +3235,14 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.catalog.batch_upsert_catalog_objects(body)
+    response = await async_client.catalog.batch_upsert_catalog_objects(
+        BatchUpsertCatalogObjectsRequest(
+            idempotency_key="some example string",
+            batches=[
+                CatalogObjectBatch(objects=[CatalogObject(type_=CatalogObjectType.ITEM, id="some example string")])
+            ],
+        ),
+    )
     # TODO: Handle 'response' of type BatchUpsertCatalogObjectsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -3153,7 +3259,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BatchUpsertCatalogObjectsRequest](square/models/batch_upsert_catalog_objects_request.py) \| [BatchUpsertCatalogObjectsRequestDict](square/models/batch_upsert_catalog_objects_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3227,7 +3333,7 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3250,7 +3356,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def create_catalog_image(*, request: CreateCatalogImageRequest | CreateCatalogImageRequestDict | None = None, image_file: bytes | None = None, request_options: RequestOptionsOrDict | None = None) -> CreateCatalogImageResponse</code></summary>
+<summary><code>def create_catalog_image(*, request: CreateCatalogImageRequest | CreateCatalogImageRequestDict | None = None, image_file: FileInput | None = None, request_options: RequestOptionsOrDict | None = None) -> CreateCatalogImageResponse</code></summary>
 
 <dl>
 <dd>
@@ -3306,8 +3412,8 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>request</code> | <code>[CreateCatalogImageRequest](square/models/create_catalog_image_request.py) \| [CreateCatalogImageRequestDict](square/models/create_catalog_image_request.py) \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>image_file</code> | <code>bytes \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>image_file</code> | <code>FileInput \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3363,7 +3469,7 @@ delete requests are rejected with the `429` error code.
 
 ```python
 try:
-    response = client.catalog.delete_catalog_object(object_id)
+    response = client.catalog.delete_catalog_object("some example string")
     # TODO: Handle 'response' of type DeleteCatalogObjectResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -3373,7 +3479,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.catalog.delete_catalog_object(object_id)
+    response = await async_client.catalog.delete_catalog_object("some example string")
     # TODO: Handle 'response' of type DeleteCatalogObjectResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -3390,7 +3496,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>object_id</code> | <code>str</code> | The ID of the catalog object to be deleted. When an object is deleted, other<br>objects in the graph that depend on that object will be deleted as well (for example, deleting a<br>catalog item will delete its catalog item variations). |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3475,7 +3581,7 @@ except ApiError as e:
 | <code>cursor</code> | <code>str \| None</code> | The pagination cursor returned in the previous response. Leave unset for an initial request.<br>The page size is currently set to be 100.<br>See [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination) for more information.<br>**Default**: <code>None</code> |
 | <code>types</code> | <code>str \| None</code> | An optional case-insensitive, comma-separated list of object types to retrieve.<br><br>The valid values are defined in the [CatalogObjectType](entity:CatalogObjectType) enum, for example,<br>`ITEM`, `ITEM_VARIATION`, `CATEGORY`, `DISCOUNT`, `TAX`,<br>`MODIFIER`, `MODIFIER_LIST`, `IMAGE`, etc.<br><br>If this is unspecified, the operation returns objects of all the top level types at the version<br>of the Square API used to make the request. Object types that are nested onto other object types<br>are not included in the defaults.<br><br>At the current API version the default object types are:<br>ITEM, CATEGORY, TAX, DISCOUNT, MODIFIER_LIST, <br>PRICING_RULE, PRODUCT_SET, TIME_PERIOD, MEASUREMENT_UNIT,<br>SUBSCRIPTION_PLAN, ITEM_OPTION, CUSTOM_ATTRIBUTE_DEFINITION, QUICK_AMOUNT_SETTINGS.<br>**Default**: <code>None</code> |
 | <code>catalog_version</code> | <code>int \| None</code> | The specific version of the catalog objects to be included in the response.<br>This allows you to retrieve historical versions of objects. The specified version value is matched against<br>the [CatalogObject](entity:CatalogObject)s' `version` attribute.  If not included, results will be from the<br>current version of the catalog.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3528,7 +3634,7 @@ any [CatalogTax](entity:CatalogTax) objects that apply to it.
 
 ```python
 try:
-    response = client.catalog.retrieve_catalog_object(object_id)
+    response = client.catalog.retrieve_catalog_object("some example string")
     # TODO: Handle 'response' of type RetrieveCatalogObjectResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -3538,7 +3644,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.catalog.retrieve_catalog_object(object_id)
+    response = await async_client.catalog.retrieve_catalog_object("some example string")
     # TODO: Handle 'response' of type RetrieveCatalogObjectResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -3558,7 +3664,7 @@ except ApiError as e:
 | <code>include_related_objects</code> | <code>bool \| None</code> | If `true`, the response will include additional objects that are related to the<br>requested objects. Related objects are defined as any objects referenced by ID by the results in the `objects` field<br>of the response. These objects are put in the `related_objects` field. Setting this to `true` is<br>helpful when the objects are needed for immediate display to a user.<br>This process only goes one level deep. Objects referenced by the related objects will not be included. For example,<br><br>if the `objects` field of the response contains a CatalogItem, its associated<br>CatalogCategory objects, CatalogTax objects, CatalogImage objects and<br>CatalogModifierLists will be returned in the `related_objects` field of the<br>response. If the `objects` field of the response contains a CatalogItemVariation,<br>its parent CatalogItem will be returned in the `related_objects` field of<br>the response.<br><br>Default value: `false`<br>**Default**: <code>False</code> |
 | <code>catalog_version</code> | <code>int \| None</code> | Requests objects as of a specific version of the catalog. This allows you to retrieve historical<br>versions of objects. The value to retrieve a specific version of an object can be found<br>in the version field of [CatalogObject](entity:CatalogObject)s. If not included, results will<br>be from the current version of the catalog.<br>**Default**: <code>None</code> |
 | <code>include_category_path_to_root</code> | <code>bool \| None</code> | Specifies whether or not to include the `path_to_root` list for each returned category instance. The `path_to_root` list consists<br>of `CategoryPathToRootNode` objects and specifies the path that starts with the immediate parent category of the returned category<br>and ends with its root category. If the returned category is a top-level category, the `path_to_root` list is empty and is not returned<br>in the response payload.<br>**Default**: <code>False</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3614,7 +3720,7 @@ endpoint in the following aspects:
 
 ```python
 try:
-    response = client.catalog.search_catalog_items(body)
+    response = client.catalog.search_catalog_items(SearchCatalogItemsRequest())
     # TODO: Handle 'response' of type SearchCatalogItemsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -3624,7 +3730,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.catalog.search_catalog_items(body)
+    response = await async_client.catalog.search_catalog_items(SearchCatalogItemsRequest())
     # TODO: Handle 'response' of type SearchCatalogItemsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -3641,7 +3747,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchCatalogItemsRequest](square/models/search_catalog_items_request.py) \| [SearchCatalogItemsRequestDict](square/models/search_catalog_items_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3702,7 +3808,7 @@ the previous version.
 
 ```python
 try:
-    response = client.catalog.search_catalog_objects(body)
+    response = client.catalog.search_catalog_objects(SearchCatalogObjectsRequest())
     # TODO: Handle 'response' of type SearchCatalogObjectsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -3712,7 +3818,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.catalog.search_catalog_objects(body)
+    response = await async_client.catalog.search_catalog_objects(SearchCatalogObjectsRequest())
     # TODO: Handle 'response' of type SearchCatalogObjectsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -3729,7 +3835,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchCatalogObjectsRequest](square/models/search_catalog_objects_request.py) \| [SearchCatalogObjectsRequestDict](square/models/search_catalog_objects_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3752,7 +3858,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def update_catalog_image(image_id: str, *, request: UpdateCatalogImageRequest | UpdateCatalogImageRequestDict | None = None, image_file: bytes | None = None, request_options: RequestOptionsOrDict | None = None) -> UpdateCatalogImageResponse</code></summary>
+<summary><code>def update_catalog_image(image_id: str, *, request: UpdateCatalogImageRequest | UpdateCatalogImageRequestDict | None = None, image_file: FileInput | None = None, request_options: RequestOptionsOrDict | None = None) -> UpdateCatalogImageResponse</code></summary>
 
 <dl>
 <dd>
@@ -3779,7 +3885,7 @@ JPEG, PJPEG, PNG, or GIF format. The maximum file size is 15MB.
 
 ```python
 try:
-    response = client.catalog.update_catalog_image(image_id)
+    response = client.catalog.update_catalog_image("some example string")
     # TODO: Handle 'response' of type UpdateCatalogImageResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -3789,7 +3895,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.catalog.update_catalog_image(image_id)
+    response = await async_client.catalog.update_catalog_image("some example string")
     # TODO: Handle 'response' of type UpdateCatalogImageResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -3807,8 +3913,8 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>image_id</code> | <code>str</code> | The ID of the `CatalogImage` object to update the encapsulated image file. |
 | <code>request</code> | <code>[UpdateCatalogImageRequest](square/models/update_catalog_image_request.py) \| [UpdateCatalogImageRequestDict](square/models/update_catalog_image_request.py) \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>image_file</code> | <code>bytes \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>image_file</code> | <code>FileInput \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3857,7 +3963,9 @@ to perform an upsert on the entire item.
 
 ```python
 try:
-    response = client.catalog.update_item_modifier_lists(body)
+    response = client.catalog.update_item_modifier_lists(
+        UpdateItemModifierListsRequest(item_ids=["some example string"])
+    )
     # TODO: Handle 'response' of type UpdateItemModifierListsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -3867,7 +3975,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.catalog.update_item_modifier_lists(body)
+    response = await async_client.catalog.update_item_modifier_lists(
+        UpdateItemModifierListsRequest(item_ids=["some example string"])
+    )
     # TODO: Handle 'response' of type UpdateItemModifierListsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -3884,7 +3994,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[UpdateItemModifierListsRequest](square/models/update_item_modifier_lists_request.py) \| [UpdateItemModifierListsRequestDict](square/models/update_item_modifier_lists_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3933,7 +4043,7 @@ upsert on the entire item.
 
 ```python
 try:
-    response = client.catalog.update_item_taxes(body)
+    response = client.catalog.update_item_taxes(UpdateItemTaxesRequest(item_ids=["some example string"]))
     # TODO: Handle 'response' of type UpdateItemTaxesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -3943,7 +4053,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.catalog.update_item_taxes(body)
+    response = await async_client.catalog.update_item_taxes(UpdateItemTaxesRequest(item_ids=["some example string"]))
     # TODO: Handle 'response' of type UpdateItemTaxesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -3960,7 +4070,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[UpdateItemTaxesRequest](square/models/update_item_taxes_request.py) \| [UpdateItemTaxesRequestDict](square/models/update_item_taxes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4015,7 +4125,12 @@ update requests are rejected with the `429` error code.
 
 ```python
 try:
-    response = client.catalog.upsert_catalog_object(body)
+    response = client.catalog.upsert_catalog_object(
+        UpsertCatalogObjectRequest(
+            idempotency_key="some example string",
+            object_=CatalogObject(type_=CatalogObjectType.ITEM, id="some example string"),
+        ),
+    )
     # TODO: Handle 'response' of type UpsertCatalogObjectResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -4025,7 +4140,12 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.catalog.upsert_catalog_object(body)
+    response = await async_client.catalog.upsert_catalog_object(
+        UpsertCatalogObjectRequest(
+            idempotency_key="some example string",
+            object_=CatalogObject(type_=CatalogObjectType.ITEM, id="some example string"),
+        ),
+    )
     # TODO: Handle 'response' of type UpsertCatalogObjectResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -4042,7 +4162,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[UpsertCatalogObjectRequest](square/models/upsert_catalog_object_request.py) \| [UpsertCatalogObjectRequestDict](square/models/upsert_catalog_object_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4093,7 +4213,7 @@ Send a `POST` request.
 
 ```python
 try:
-    response = client.channels.bulk_retrieve_channels(body)
+    response = client.channels.bulk_retrieve_channels(BulkRetrieveChannelsRequest(channel_ids=["some example string"]))
     # TODO: Handle 'response' of type BulkRetrieveChannelsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -4103,7 +4223,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.channels.bulk_retrieve_channels(body)
+    response = await async_client.channels.bulk_retrieve_channels(
+        BulkRetrieveChannelsRequest(channel_ids=["some example string"])
+    )
     # TODO: Handle 'response' of type BulkRetrieveChannelsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -4120,7 +4242,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkRetrieveChannelsRequest](square/models/bulk_retrieve_channels_request.py) \| [BulkRetrieveChannelsRequestDict](square/models/bulk_retrieve_channels_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4198,7 +4320,7 @@ except ApiError as e:
 | <code>status</code> | <code>[ChannelStatusOrStr](square/models/enums/channel_status.py) \| None</code> | Status of channel<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Cursor to fetch the next result<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | Maximum number of results to return.<br>When not provided the returned results will be cap at 100 channels.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4245,7 +4367,7 @@ Send a `GET` request.
 
 ```python
 try:
-    response = client.channels.retrieve_channel(channel_id)
+    response = client.channels.retrieve_channel("some example string")
     # TODO: Handle 'response' of type RetrieveChannelResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -4255,7 +4377,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.channels.retrieve_channel(channel_id)
+    response = await async_client.channels.retrieve_channel("some example string")
     # TODO: Handle 'response' of type RetrieveChannelResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -4272,7 +4394,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>channel_id</code> | <code>str</code> | A channel id |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4328,7 +4450,9 @@ For more information, see [Checkout API highlights](https://developer.squareup.c
 
 ```python
 try:
-    response = client.checkout_api.create_checkout(location_id, body)
+    response = client.checkout_api.create_checkout(
+        "some example string", CreateCheckoutRequest(idempotency_key="some example string", order=CreateOrderRequest())
+    )
     # TODO: Handle 'response' of type CreateCheckoutResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -4338,7 +4462,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.checkout_api.create_checkout(location_id, body)
+    response = await async_client.checkout_api.create_checkout(
+        "some example string", CreateCheckoutRequest(idempotency_key="some example string", order=CreateOrderRequest())
+    )
     # TODO: Handle 'response' of type CreateCheckoutResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -4356,7 +4482,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | The ID of the business location to associate the checkout with. |
 | <code>body</code> | <code>[CreateCheckoutRequest](square/models/create_checkout_request.py) \| [CreateCheckoutRequestDict](square/models/create_checkout_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4403,7 +4529,7 @@ Creates a Square-hosted checkout page. Applications can share the resulting paym
 
 ```python
 try:
-    response = client.checkout_api.create_payment_link(body)
+    response = client.checkout_api.create_payment_link(CreatePaymentLinkRequest())
     # TODO: Handle 'response' of type CreatePaymentLinkResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -4413,7 +4539,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.checkout_api.create_payment_link(body)
+    response = await async_client.checkout_api.create_payment_link(CreatePaymentLinkRequest())
     # TODO: Handle 'response' of type CreatePaymentLinkResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -4430,7 +4556,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreatePaymentLinkRequest](square/models/create_payment_link_request.py) \| [CreatePaymentLinkRequestDict](square/models/create_payment_link_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4453,7 +4579,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def delete_payment_link(id: str, *, request_options: RequestOptionsOrDict | None = None) -> DeletePaymentLinkResponse</code></summary>
+<summary><code>def delete_payment_link(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> DeletePaymentLinkResponse</code></summary>
 
 <dl>
 <dd>
@@ -4477,7 +4603,7 @@ Deletes a payment link.
 
 ```python
 try:
-    response = client.checkout_api.delete_payment_link(id)
+    response = client.checkout_api.delete_payment_link("some example string")
     # TODO: Handle 'response' of type DeletePaymentLinkResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -4487,7 +4613,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.checkout_api.delete_payment_link(id)
+    response = await async_client.checkout_api.delete_payment_link("some example string")
     # TODO: Handle 'response' of type DeletePaymentLinkResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -4503,8 +4629,8 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The ID of the payment link to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The ID of the payment link to delete. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4579,7 +4705,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br>If a cursor is not provided, the endpoint returns the first page of the results.<br>For more  information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | A limit on the number of results to return per page. The limit is advisory and<br>the implementation might return more or less results. If the supplied limit is negative, zero, or<br>greater than the maximum limit of 1000, it is ignored.<br><br>Default value: `100`<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4626,7 +4752,7 @@ Retrieves the location-level settings for a Square-hosted checkout page.
 
 ```python
 try:
-    response = client.checkout_api.retrieve_location_settings(location_id)
+    response = client.checkout_api.retrieve_location_settings("some example string")
     # TODO: Handle 'response' of type RetrieveLocationSettingsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -4636,7 +4762,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.checkout_api.retrieve_location_settings(location_id)
+    response = await async_client.checkout_api.retrieve_location_settings("some example string")
     # TODO: Handle 'response' of type RetrieveLocationSettingsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -4653,7 +4779,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | The ID of the location for which to retrieve settings. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4726,7 +4852,7 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4749,7 +4875,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def retrieve_payment_link(id: str, *, request_options: RequestOptionsOrDict | None = None) -> RetrievePaymentLinkResponse</code></summary>
+<summary><code>def retrieve_payment_link(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> RetrievePaymentLinkResponse</code></summary>
 
 <dl>
 <dd>
@@ -4773,7 +4899,7 @@ Retrieves a payment link.
 
 ```python
 try:
-    response = client.checkout_api.retrieve_payment_link(id)
+    response = client.checkout_api.retrieve_payment_link("some example string")
     # TODO: Handle 'response' of type RetrievePaymentLinkResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -4783,7 +4909,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.checkout_api.retrieve_payment_link(id)
+    response = await async_client.checkout_api.retrieve_payment_link("some example string")
     # TODO: Handle 'response' of type RetrievePaymentLinkResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -4799,8 +4925,8 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The ID of link to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The ID of link to retrieve. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4847,7 +4973,9 @@ Updates the location-level settings for a Square-hosted checkout page.
 
 ```python
 try:
-    response = client.checkout_api.update_location_settings(location_id, body)
+    response = client.checkout_api.update_location_settings(
+        "some example string", UpdateLocationSettingsRequest(location_settings=CheckoutLocationSettings())
+    )
     # TODO: Handle 'response' of type UpdateLocationSettingsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -4857,7 +4985,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.checkout_api.update_location_settings(location_id, body)
+    response = await async_client.checkout_api.update_location_settings(
+        "some example string", UpdateLocationSettingsRequest(location_settings=CheckoutLocationSettings())
+    )
     # TODO: Handle 'response' of type UpdateLocationSettingsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -4875,7 +5005,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | The ID of the location for which to retrieve settings. |
 | <code>body</code> | <code>[UpdateLocationSettingsRequest](square/models/update_location_settings_request.py) \| [UpdateLocationSettingsRequestDict](square/models/update_location_settings_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4922,7 +5052,9 @@ Updates the merchant-level settings for a Square-hosted checkout page.
 
 ```python
 try:
-    response = client.checkout_api.update_merchant_settings(body)
+    response = client.checkout_api.update_merchant_settings(
+        UpdateMerchantSettingsRequest(merchant_settings=CheckoutMerchantSettings())
+    )
     # TODO: Handle 'response' of type UpdateMerchantSettingsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -4932,7 +5064,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.checkout_api.update_merchant_settings(body)
+    response = await async_client.checkout_api.update_merchant_settings(
+        UpdateMerchantSettingsRequest(merchant_settings=CheckoutMerchantSettings())
+    )
     # TODO: Handle 'response' of type UpdateMerchantSettingsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -4949,7 +5083,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[UpdateMerchantSettingsRequest](square/models/update_merchant_settings_request.py) \| [UpdateMerchantSettingsRequestDict](square/models/update_merchant_settings_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4972,7 +5106,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def update_payment_link(id: str, body: UpdatePaymentLinkRequest | UpdatePaymentLinkRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> UpdatePaymentLinkResponse</code></summary>
+<summary><code>def update_payment_link(id_: str, body: UpdatePaymentLinkRequest | UpdatePaymentLinkRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> UpdatePaymentLinkResponse</code></summary>
 
 <dl>
 <dd>
@@ -4998,7 +5132,9 @@ You cannot update other fields such as the `order_id`, `version`, `URL`, or `tim
 
 ```python
 try:
-    response = client.checkout_api.update_payment_link(id, body)
+    response = client.checkout_api.update_payment_link(
+        "some example string", UpdatePaymentLinkRequest(payment_link=PaymentLink(version=1))
+    )
     # TODO: Handle 'response' of type UpdatePaymentLinkResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5008,7 +5144,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.checkout_api.update_payment_link(id, body)
+    response = await async_client.checkout_api.update_payment_link(
+        "some example string", UpdatePaymentLinkRequest(payment_link=PaymentLink(version=1))
+    )
     # TODO: Handle 'response' of type UpdatePaymentLinkResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5024,9 +5162,9 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The ID of the payment link to update. |
+| <code>id_</code> | <code>str</code> | The ID of the payment link to update. |
 | <code>body</code> | <code>[UpdatePaymentLinkRequest](square/models/update_payment_link_request.py) \| [UpdatePaymentLinkRequestDict](square/models/update_payment_link_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5090,7 +5228,15 @@ must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attribut
 
 ```python
 try:
-    response = client.customer_custom_attributes.bulk_upsert_customer_custom_attributes(body)
+    response = client.customer_custom_attributes.bulk_upsert_customer_custom_attributes(
+        BulkUpsertCustomerCustomAttributesRequest(
+            values={
+                "key": BulkUpsertCustomerCustomAttributesRequestCustomerCustomAttributeUpsertRequest(
+                    customer_id="some example string", custom_attribute=CustomAttribute()
+                ),
+            },
+        ),
+    )
     # TODO: Handle 'response' of type BulkUpsertCustomerCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5100,7 +5246,15 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customer_custom_attributes.bulk_upsert_customer_custom_attributes(body)
+    response = await async_client.customer_custom_attributes.bulk_upsert_customer_custom_attributes(
+        BulkUpsertCustomerCustomAttributesRequest(
+            values={
+                "key": BulkUpsertCustomerCustomAttributesRequestCustomerCustomAttributeUpsertRequest(
+                    customer_id="some example string", custom_attribute=CustomAttribute()
+                ),
+            },
+        ),
+    )
     # TODO: Handle 'response' of type BulkUpsertCustomerCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5117,7 +5271,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkUpsertCustomerCustomAttributesRequest](square/models/bulk_upsert_customer_custom_attributes_request.py) \| [BulkUpsertCustomerCustomAttributesRequestDict](square/models/bulk_upsert_customer_custom_attributes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5174,7 +5328,9 @@ Sellers can view all custom attributes in exported customer data, including thos
 
 ```python
 try:
-    response = client.customer_custom_attributes.create_customer_custom_attribute_definition(body)
+    response = client.customer_custom_attributes.create_customer_custom_attribute_definition(
+        CreateCustomerCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition())
+    )
     # TODO: Handle 'response' of type CreateCustomerCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5184,7 +5340,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customer_custom_attributes.create_customer_custom_attribute_definition(body)
+    response = await async_client.customer_custom_attributes.create_customer_custom_attribute_definition(
+        CreateCustomerCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition())
+    )
     # TODO: Handle 'response' of type CreateCustomerCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5201,7 +5359,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateCustomerCustomAttributeDefinitionRequest](square/models/create_customer_custom_attribute_definition_request.py) \| [CreateCustomerCustomAttributeDefinitionRequestDict](square/models/create_customer_custom_attribute_definition_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5252,7 +5410,9 @@ To delete a custom attribute owned by another application, the `visibility` sett
 
 ```python
 try:
-    response = client.customer_custom_attributes.delete_customer_custom_attribute(customer_id, key)
+    response = client.customer_custom_attributes.delete_customer_custom_attribute(
+        "some example string", "some example string"
+    )
     # TODO: Handle 'response' of type DeleteCustomerCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5262,7 +5422,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customer_custom_attributes.delete_customer_custom_attribute(customer_id, key)
+    response = await async_client.customer_custom_attributes.delete_customer_custom_attribute(
+        "some example string", "some example string"
+    )
     # TODO: Handle 'response' of type DeleteCustomerCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5280,7 +5442,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>customer_id</code> | <code>str</code> | The ID of the target [customer profile](entity:Customer). |
 | <code>key</code> | <code>str</code> | The key of the custom attribute to delete. This key must match the `key` of a custom<br>attribute definition in the Square seller account. If the requesting application is not the<br>definition owner, you must use the qualified key. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5332,7 +5494,7 @@ Only the definition owner can delete a custom attribute definition.
 
 ```python
 try:
-    response = client.customer_custom_attributes.delete_customer_custom_attribute_definition(key)
+    response = client.customer_custom_attributes.delete_customer_custom_attribute_definition("some example string")
     # TODO: Handle 'response' of type DeleteCustomerCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5342,7 +5504,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customer_custom_attributes.delete_customer_custom_attribute_definition(key)
+    response = await async_client.customer_custom_attributes.delete_customer_custom_attribute_definition(
+        "some example string"
+    )
     # TODO: Handle 'response' of type DeleteCustomerCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5359,7 +5523,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5439,7 +5603,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response. This limit is advisory.<br>The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100.<br>The default value is 20. For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint.<br>Provide this cursor to retrieve the next page of results for your original request.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5493,7 +5657,7 @@ and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 
 ```python
 try:
-    response = client.customer_custom_attributes.list_customer_custom_attributes(customer_id)
+    response = client.customer_custom_attributes.list_customer_custom_attributes("some example string")
     # TODO: Handle 'response' of type ListCustomerCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5503,7 +5667,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customer_custom_attributes.list_customer_custom_attributes(customer_id)
+    response = await async_client.customer_custom_attributes.list_customer_custom_attributes("some example string")
     # TODO: Handle 'response' of type ListCustomerCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5523,7 +5687,7 @@ except ApiError as e:
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response. This limit is advisory.<br>The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100.<br>The default value is 20. For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint.<br>Provide this cursor to retrieve the next page of results for your original request. For more<br>information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>with_definitions</code> | <code>bool \| None</code> | Indicates whether to return the [custom attribute definition](entity:CustomAttributeDefinition) in the `definition` field of each<br>custom attribute. Set this parameter to `true` to get the name and description of each custom<br>attribute, information about the data type, or other definition details. The default value is `false`.<br>**Default**: <code>False</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5577,7 +5741,9 @@ To retrieve a custom attribute owned by another application, the `visibility` se
 
 ```python
 try:
-    response = client.customer_custom_attributes.retrieve_customer_custom_attribute(customer_id, key)
+    response = client.customer_custom_attributes.retrieve_customer_custom_attribute(
+        "some example string", "some example string"
+    )
     # TODO: Handle 'response' of type RetrieveCustomerCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5587,7 +5753,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customer_custom_attributes.retrieve_customer_custom_attribute(customer_id, key)
+    response = await async_client.customer_custom_attributes.retrieve_customer_custom_attribute(
+        "some example string", "some example string"
+    )
     # TODO: Handle 'response' of type RetrieveCustomerCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5607,7 +5775,7 @@ except ApiError as e:
 | <code>key</code> | <code>str</code> | The key of the custom attribute to retrieve. This key must match the `key` of a custom<br>attribute definition in the Square seller account. If the requesting application is not the<br>definition owner, you must use the qualified key. |
 | <code>with_definition</code> | <code>bool \| None</code> | Indicates whether to return the [custom attribute definition](entity:CustomAttributeDefinition) in the `definition` field of<br>the custom attribute. Set this parameter to `true` to get the name and description of the custom<br>attribute, information about the data type, or other definition details. The default value is `false`.<br>**Default**: <code>False</code> |
 | <code>version</code> | <code>int \| None</code> | The current version of the custom attribute, which is used for strongly consistent reads to<br>guarantee that you receive the most up-to-date data. When included in the request, Square<br>returns the specified version or a higher version if one exists. If the specified version is<br>higher than the current version, Square returns a `BAD_REQUEST` error.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5658,7 +5826,7 @@ setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note t
 
 ```python
 try:
-    response = client.customer_custom_attributes.retrieve_customer_custom_attribute_definition(key)
+    response = client.customer_custom_attributes.retrieve_customer_custom_attribute_definition("some example string")
     # TODO: Handle 'response' of type RetrieveCustomerCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5668,7 +5836,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customer_custom_attributes.retrieve_customer_custom_attribute_definition(key)
+    response = await async_client.customer_custom_attributes.retrieve_customer_custom_attribute_definition(
+        "some example string"
+    )
     # TODO: Handle 'response' of type RetrieveCustomerCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5686,7 +5856,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to retrieve. If the requesting application<br>is not the definition owner, you must use the qualified key. |
 | <code>version</code> | <code>int \| None</code> | The current version of the custom attribute definition, which is used for strongly consistent<br>reads to guarantee that you receive the most up-to-date data. When included in the request,<br>Square returns the specified version or a higher version if one exists. If the specified version<br>is higher than the current version, Square returns a `BAD_REQUEST` error.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5739,7 +5909,10 @@ all custom attributes in exported customer data, including those set to `VISIBIL
 
 ```python
 try:
-    response = client.customer_custom_attributes.update_customer_custom_attribute_definition(key, body)
+    response = client.customer_custom_attributes.update_customer_custom_attribute_definition(
+        "some example string",
+        UpdateCustomerCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition()),
+    )
     # TODO: Handle 'response' of type UpdateCustomerCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5749,7 +5922,10 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customer_custom_attributes.update_customer_custom_attribute_definition(key, body)
+    response = await async_client.customer_custom_attributes.update_customer_custom_attribute_definition(
+        "some example string",
+        UpdateCustomerCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition()),
+    )
     # TODO: Handle 'response' of type UpdateCustomerCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5767,7 +5943,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to update. |
 | <code>body</code> | <code>[UpdateCustomerCustomAttributeDefinitionRequest](square/models/update_customer_custom_attribute_definition_request.py) \| [UpdateCustomerCustomAttributeDefinitionRequestDict](square/models/update_customer_custom_attribute_definition_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5822,7 +5998,11 @@ must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attribut
 
 ```python
 try:
-    response = client.customer_custom_attributes.upsert_customer_custom_attribute(customer_id, key, body)
+    response = client.customer_custom_attributes.upsert_customer_custom_attribute(
+        "some example string",
+        "some example string",
+        UpsertCustomerCustomAttributeRequest(custom_attribute=CustomAttribute()),
+    )
     # TODO: Handle 'response' of type UpsertCustomerCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5832,7 +6012,11 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customer_custom_attributes.upsert_customer_custom_attribute(customer_id, key, body)
+    response = await async_client.customer_custom_attributes.upsert_customer_custom_attribute(
+        "some example string",
+        "some example string",
+        UpsertCustomerCustomAttributeRequest(custom_attribute=CustomAttribute()),
+    )
     # TODO: Handle 'response' of type UpsertCustomerCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5851,7 +6035,7 @@ except ApiError as e:
 | <code>customer_id</code> | <code>str</code> | The ID of the target [customer profile](entity:Customer). |
 | <code>key</code> | <code>str</code> | The key of the custom attribute to create or update. This key must match the `key` of a<br>custom attribute definition in the Square seller account. If the requesting application is not<br>the definition owner, you must use the qualified key. |
 | <code>body</code> | <code>[UpsertCustomerCustomAttributeRequest](square/models/upsert_customer_custom_attribute_request.py) \| [UpsertCustomerCustomAttributeRequestDict](square/models/upsert_customer_custom_attribute_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5904,7 +6088,9 @@ The request must include the `name` value of the group.
 
 ```python
 try:
-    response = client.customer_groups.create_customer_group(body)
+    response = client.customer_groups.create_customer_group(
+        CreateCustomerGroupRequest(group=CustomerGroup(name="some example string"))
+    )
     # TODO: Handle 'response' of type CreateCustomerGroupResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5914,7 +6100,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customer_groups.create_customer_group(body)
+    response = await async_client.customer_groups.create_customer_group(
+        CreateCustomerGroupRequest(group=CustomerGroup(name="some example string"))
+    )
     # TODO: Handle 'response' of type CreateCustomerGroupResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5931,7 +6119,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateCustomerGroupRequest](square/models/create_customer_group_request.py) \| [CreateCustomerGroupRequestDict](square/models/create_customer_group_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5978,7 +6166,7 @@ Deletes a customer group as identified by the `group_id` value.
 
 ```python
 try:
-    response = client.customer_groups.delete_customer_group(group_id)
+    response = client.customer_groups.delete_customer_group("some example string")
     # TODO: Handle 'response' of type DeleteCustomerGroupResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -5988,7 +6176,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customer_groups.delete_customer_group(group_id)
+    response = await async_client.customer_groups.delete_customer_group("some example string")
     # TODO: Handle 'response' of type DeleteCustomerGroupResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6005,7 +6193,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>group_id</code> | <code>str</code> | The ID of the customer group to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6080,7 +6268,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for your original query.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single page. This limit is advisory. The response might contain more or fewer results.<br>If the limit is less than 1 or greater than 50, Square returns a `400 VALUE_TOO_LOW` or `400 VALUE_TOO_HIGH` error. The default value is 50.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6127,7 +6315,7 @@ Retrieves a specific customer group as identified by the `group_id` value.
 
 ```python
 try:
-    response = client.customer_groups.retrieve_customer_group(group_id)
+    response = client.customer_groups.retrieve_customer_group("some example string")
     # TODO: Handle 'response' of type RetrieveCustomerGroupResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6137,7 +6325,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customer_groups.retrieve_customer_group(group_id)
+    response = await async_client.customer_groups.retrieve_customer_group("some example string")
     # TODO: Handle 'response' of type RetrieveCustomerGroupResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6154,7 +6342,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>group_id</code> | <code>str</code> | The ID of the customer group to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6201,7 +6389,9 @@ Updates a customer group as identified by the `group_id` value.
 
 ```python
 try:
-    response = client.customer_groups.update_customer_group(group_id, body)
+    response = client.customer_groups.update_customer_group(
+        "some example string", UpdateCustomerGroupRequest(group=CustomerGroup(name="some example string"))
+    )
     # TODO: Handle 'response' of type UpdateCustomerGroupResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6211,7 +6401,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customer_groups.update_customer_group(group_id, body)
+    response = await async_client.customer_groups.update_customer_group(
+        "some example string", UpdateCustomerGroupRequest(group=CustomerGroup(name="some example string"))
+    )
     # TODO: Handle 'response' of type UpdateCustomerGroupResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6229,7 +6421,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>group_id</code> | <code>str</code> | The ID of the customer group to update. |
 | <code>body</code> | <code>[UpdateCustomerGroupRequest](square/models/update_customer_group_request.py) \| [UpdateCustomerGroupRequestDict](square/models/update_customer_group_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6308,7 +6500,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by previous calls to `ListCustomerSegments`.<br>This cursor is used to retrieve the next set of query results.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single page. This limit is advisory. The response might contain more or fewer results.<br>If the specified limit is less than 1 or greater than 50, Square returns a `400 VALUE_TOO_LOW` or `400 VALUE_TOO_HIGH` error. The default value is 50.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6355,7 +6547,7 @@ Retrieves a specific customer segment as identified by the `segment_id` value.
 
 ```python
 try:
-    response = client.customer_segments.retrieve_customer_segment(segment_id)
+    response = client.customer_segments.retrieve_customer_segment("some example string")
     # TODO: Handle 'response' of type RetrieveCustomerSegmentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6365,7 +6557,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customer_segments.retrieve_customer_segment(segment_id)
+    response = await async_client.customer_segments.retrieve_customer_segment("some example string")
     # TODO: Handle 'response' of type RetrieveCustomerSegmentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6382,7 +6574,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>segment_id</code> | <code>str</code> | The Square-issued ID of the customer segment. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6436,7 +6628,7 @@ and the customer group is identified by the `group_id` value.
 
 ```python
 try:
-    response = client.customers.add_group_to_customer(customer_id, group_id)
+    response = client.customers.add_group_to_customer("some example string", "some example string")
     # TODO: Handle 'response' of type AddGroupToCustomerResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6446,7 +6638,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customers.add_group_to_customer(customer_id, group_id)
+    response = await async_client.customers.add_group_to_customer("some example string", "some example string")
     # TODO: Handle 'response' of type AddGroupToCustomerResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6464,7 +6656,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>customer_id</code> | <code>str</code> | The ID of the customer to add to a group. |
 | <code>group_id</code> | <code>str</code> | The ID of the customer group to add the customer to. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6521,7 +6713,9 @@ You must provide at least one of the following values in each create request:
 
 ```python
 try:
-    response = client.customers.bulk_create_customers(body)
+    response = client.customers.bulk_create_customers(
+        BulkCreateCustomersRequest(customers={"key": BulkCreateCustomerData()})
+    )
     # TODO: Handle 'response' of type BulkCreateCustomersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6531,7 +6725,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customers.bulk_create_customers(body)
+    response = await async_client.customers.bulk_create_customers(
+        BulkCreateCustomersRequest(customers={"key": BulkCreateCustomerData()})
+    )
     # TODO: Handle 'response' of type BulkCreateCustomersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6548,7 +6744,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkCreateCustomersRequest](square/models/bulk_create_customers_request.py) \| [BulkCreateCustomersRequestDict](square/models/bulk_create_customers_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6597,7 +6793,7 @@ The endpoint takes a list of customer IDs and returns a map of responses.
 
 ```python
 try:
-    response = client.customers.bulk_delete_customers(body)
+    response = client.customers.bulk_delete_customers(BulkDeleteCustomersRequest(customer_ids=["some example string"]))
     # TODO: Handle 'response' of type BulkDeleteCustomersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6607,7 +6803,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customers.bulk_delete_customers(body)
+    response = await async_client.customers.bulk_delete_customers(
+        BulkDeleteCustomersRequest(customer_ids=["some example string"])
+    )
     # TODO: Handle 'response' of type BulkDeleteCustomersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6624,7 +6822,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkDeleteCustomersRequest](square/models/bulk_delete_customers_request.py) \| [BulkDeleteCustomersRequestDict](square/models/bulk_delete_customers_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6673,7 +6871,9 @@ This endpoint takes a list of customer IDs and returns a map of responses.
 
 ```python
 try:
-    response = client.customers.bulk_retrieve_customers(body)
+    response = client.customers.bulk_retrieve_customers(
+        BulkRetrieveCustomersRequest(customer_ids=["some example string"])
+    )
     # TODO: Handle 'response' of type BulkRetrieveCustomersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6683,7 +6883,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customers.bulk_retrieve_customers(body)
+    response = await async_client.customers.bulk_retrieve_customers(
+        BulkRetrieveCustomersRequest(customer_ids=["some example string"])
+    )
     # TODO: Handle 'response' of type BulkRetrieveCustomersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6700,7 +6902,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkRetrieveCustomersRequest](square/models/bulk_retrieve_customers_request.py) \| [BulkRetrieveCustomersRequestDict](square/models/bulk_retrieve_customers_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6749,7 +6951,9 @@ This endpoint takes a map of individual update requests and returns a map of res
 
 ```python
 try:
-    response = client.customers.bulk_update_customers(body)
+    response = client.customers.bulk_update_customers(
+        BulkUpdateCustomersRequest(customers={"key": BulkUpdateCustomerData()})
+    )
     # TODO: Handle 'response' of type BulkUpdateCustomersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6759,7 +6963,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customers.bulk_update_customers(body)
+    response = await async_client.customers.bulk_update_customers(
+        BulkUpdateCustomersRequest(customers={"key": BulkUpdateCustomerData()})
+    )
     # TODO: Handle 'response' of type BulkUpdateCustomersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6776,7 +6982,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkUpdateCustomersRequest](square/models/bulk_update_customers_request.py) \| [BulkUpdateCustomersRequestDict](square/models/bulk_update_customers_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6832,7 +7038,7 @@ endpoint:
 
 ```python
 try:
-    response = client.customers.create_customer(body)
+    response = client.customers.create_customer(CreateCustomerRequest())
     # TODO: Handle 'response' of type CreateCustomerResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6842,7 +7048,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customers.create_customer(body)
+    response = await async_client.customers.create_customer(CreateCustomerRequest())
     # TODO: Handle 'response' of type CreateCustomerResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6859,7 +7065,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateCustomerRequest](square/models/create_customer_request.py) \| [CreateCustomerRequestDict](square/models/create_customer_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6910,7 +7116,9 @@ with the provided nonce during the _first_ call.
 
 ```python
 try:
-    response = client.customers.create_customer_card(customer_id, body)
+    response = client.customers.create_customer_card(
+        "some example string", CreateCustomerCardRequest(card_nonce="some example string")
+    )
     # TODO: Handle 'response' of type CreateCustomerCardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6920,7 +7128,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customers.create_customer_card(customer_id, body)
+    response = await async_client.customers.create_customer_card(
+        "some example string", CreateCustomerCardRequest(card_nonce="some example string")
+    )
     # TODO: Handle 'response' of type CreateCustomerCardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6938,7 +7148,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>customer_id</code> | <code>str</code> | The Square ID of the customer profile the card is linked to. |
 | <code>body</code> | <code>[CreateCustomerCardRequest](square/models/create_customer_card_request.py) \| [CreateCustomerCardRequestDict](square/models/create_customer_card_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6987,7 +7197,7 @@ To delete a customer profile that was created by merging existing profiles, you 
 
 ```python
 try:
-    response = client.customers.delete_customer(customer_id)
+    response = client.customers.delete_customer("some example string")
     # TODO: Handle 'response' of type DeleteCustomerResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -6997,7 +7207,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customers.delete_customer(customer_id)
+    response = await async_client.customers.delete_customer("some example string")
     # TODO: Handle 'response' of type DeleteCustomerResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -7015,7 +7225,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>customer_id</code> | <code>str</code> | The ID of the customer to delete. |
 | <code>version</code> | <code>int \| None</code> | The current version of the customer profile.<br><br>As a best practice, you should include this parameter to enable [optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency) control.  For more information, see [Delete a customer profile](https://developer.squareup.com/docs/customers-api/use-the-api/keep-records#delete-customer-profile).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7062,7 +7272,7 @@ Removes a card on file from a customer.
 
 ```python
 try:
-    response = client.customers.delete_customer_card(customer_id, card_id)
+    response = client.customers.delete_customer_card("some example string", "some example string")
     # TODO: Handle 'response' of type DeleteCustomerCardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -7072,7 +7282,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customers.delete_customer_card(customer_id, card_id)
+    response = await async_client.customers.delete_customer_card("some example string", "some example string")
     # TODO: Handle 'response' of type DeleteCustomerCardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -7090,7 +7300,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>customer_id</code> | <code>str</code> | The ID of the customer that the card on file belongs to. |
 | <code>card_id</code> | <code>str</code> | The ID of the card on file to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7172,7 +7382,7 @@ except ApiError as e:
 | <code>sort_field</code> | <code>[CustomerSortFieldOrStr](square/models/enums/customer_sort_field.py) \| None</code> | Indicates how customers should be sorted.<br><br>The default value is `DEFAULT`.<br>**Default**: <code>None</code> |
 | <code>sort_order</code> | <code>[SortOrderOrStr](square/models/enums/sort_order.py) \| None</code> | Indicates whether customers should be sorted in ascending (`ASC`) or<br>descending (`DESC`) order.<br><br>The default value is `ASC`.<br>**Default**: <code>None</code> |
 | <code>count</code> | <code>bool \| None</code> | Indicates whether to return the total count of customers in the `count` field of the response.<br><br>The default value is `false`.<br>**Default**: <code>False</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7222,7 +7432,7 @@ and the customer group is identified by the `group_id` value.
 
 ```python
 try:
-    response = client.customers.remove_group_from_customer(customer_id, group_id)
+    response = client.customers.remove_group_from_customer("some example string", "some example string")
     # TODO: Handle 'response' of type RemoveGroupFromCustomerResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -7232,7 +7442,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customers.remove_group_from_customer(customer_id, group_id)
+    response = await async_client.customers.remove_group_from_customer("some example string", "some example string")
     # TODO: Handle 'response' of type RemoveGroupFromCustomerResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -7250,7 +7460,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>customer_id</code> | <code>str</code> | The ID of the customer to remove from the group. |
 | <code>group_id</code> | <code>str</code> | The ID of the customer group to remove the customer from. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7297,7 +7507,7 @@ Returns details for a single customer.
 
 ```python
 try:
-    response = client.customers.retrieve_customer(customer_id)
+    response = client.customers.retrieve_customer("some example string")
     # TODO: Handle 'response' of type RetrieveCustomerResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -7307,7 +7517,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customers.retrieve_customer(customer_id)
+    response = await async_client.customers.retrieve_customer("some example string")
     # TODO: Handle 'response' of type RetrieveCustomerResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -7324,7 +7534,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>customer_id</code> | <code>str</code> | The ID of the customer to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7379,7 +7589,7 @@ profiles can take closer to one minute or longer, especially during network inci
 
 ```python
 try:
-    response = client.customers.search_customers(body)
+    response = client.customers.search_customers(SearchCustomersRequest())
     # TODO: Handle 'response' of type SearchCustomersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -7389,7 +7599,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customers.search_customers(body)
+    response = await async_client.customers.search_customers(SearchCustomersRequest())
     # TODO: Handle 'response' of type SearchCustomersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -7406,7 +7616,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchCustomersRequest](square/models/search_customers_request.py) \| [SearchCustomersRequestDict](square/models/search_customers_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7456,7 +7666,7 @@ To update a customer profile that was created by merging existing profiles, you 
 
 ```python
 try:
-    response = client.customers.update_customer(customer_id, body)
+    response = client.customers.update_customer("some example string", UpdateCustomerRequest())
     # TODO: Handle 'response' of type UpdateCustomerResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -7466,7 +7676,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.customers.update_customer(customer_id, body)
+    response = await async_client.customers.update_customer("some example string", UpdateCustomerRequest())
     # TODO: Handle 'response' of type UpdateCustomerResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -7484,7 +7694,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>customer_id</code> | <code>str</code> | The ID of the customer to update. |
 | <code>body</code> | <code>[UpdateCustomerRequest](square/models/update_customer_request.py) \| [UpdateCustomerRequestDict](square/models/update_customer_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7536,7 +7746,11 @@ terminal mode.
 
 ```python
 try:
-    response = client.devices.create_device_code(body)
+    response = client.devices.create_device_code(
+        CreateDeviceCodeRequest(
+            idempotency_key="some example string", device_code=DeviceCode(product_type=ProductType.TERMINAL_API)
+        ),
+    )
     # TODO: Handle 'response' of type CreateDeviceCodeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -7546,7 +7760,11 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.devices.create_device_code(body)
+    response = await async_client.devices.create_device_code(
+        CreateDeviceCodeRequest(
+            idempotency_key="some example string", device_code=DeviceCode(product_type=ProductType.TERMINAL_API)
+        ),
+    )
     # TODO: Handle 'response' of type CreateDeviceCodeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -7563,7 +7781,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateDeviceCodeRequest](square/models/create_device_code_request.py) \| [CreateDeviceCodeRequestDict](square/models/create_device_code_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7610,7 +7828,7 @@ Retrieves Device with the associated `device_id`.
 
 ```python
 try:
-    response = client.devices.get_device(device_id)
+    response = client.devices.get_device("some example string")
     # TODO: Handle 'response' of type GetDeviceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -7620,7 +7838,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.devices.get_device(device_id)
+    response = await async_client.devices.get_device("some example string")
     # TODO: Handle 'response' of type GetDeviceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -7637,7 +7855,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>device_id</code> | <code>str</code> | The unique ID for the desired `Device`. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7660,7 +7878,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def get_device_code(id: str, *, request_options: RequestOptionsOrDict | None = None) -> GetDeviceCodeResponse</code></summary>
+<summary><code>def get_device_code(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> GetDeviceCodeResponse</code></summary>
 
 <dl>
 <dd>
@@ -7684,7 +7902,7 @@ Retrieves DeviceCode with the associated ID.
 
 ```python
 try:
-    response = client.devices.get_device_code(id)
+    response = client.devices.get_device_code("some example string")
     # TODO: Handle 'response' of type GetDeviceCodeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -7694,7 +7912,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.devices.get_device_code(id)
+    response = await async_client.devices.get_device_code("some example string")
     # TODO: Handle 'response' of type GetDeviceCodeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -7710,8 +7928,8 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The unique identifier for the device code. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The unique identifier for the device code. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7788,7 +8006,7 @@ except ApiError as e:
 | <code>location_id</code> | <code>str \| None</code> | If specified, only returns DeviceCodes of the specified location.<br>Returns DeviceCodes of all locations if empty.<br>**Default**: <code>None</code> |
 | <code>product_type</code> | <code>[ProductTypeOrStr](square/models/enums/product_type.py) \| None</code> | If specified, only returns DeviceCodes targeting the specified product type.<br>Returns DeviceCodes of all product types if empty.<br>**Default**: <code>None</code> |
 | <code>status</code> | <code>[DeviceCodeStatusOrStr](square/models/enums/device_code_status.py) \| None</code> | If specified, returns DeviceCodes with the specified statuses.<br>Returns DeviceCodes of status `PAIRED` and `UNPAIRED` if empty.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7866,7 +8084,7 @@ except ApiError as e:
 | <code>sort_order</code> | <code>[SortOrderOrStr](square/models/enums/sort_order.py) \| None</code> | The order in which results are listed.<br>- `ASC` - Oldest to newest.<br>- `DESC` - Newest to oldest (default).<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The number of results to return in a single page.<br>**Default**: <code>None</code> |
 | <code>location_id</code> | <code>str \| None</code> | If present, only returns devices at the target location.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7921,7 +8139,7 @@ does not have sufficient funds, Square debits the associated bank account.
 
 ```python
 try:
-    response = client.disputes.accept_dispute(dispute_id)
+    response = client.disputes.accept_dispute("some example string")
     # TODO: Handle 'response' of type AcceptDisputeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -7931,7 +8149,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.disputes.accept_dispute(dispute_id)
+    response = await async_client.disputes.accept_dispute("some example string")
     # TODO: Handle 'response' of type AcceptDisputeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -7948,7 +8166,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>dispute_id</code> | <code>str</code> | The ID of the dispute you want to accept. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7971,7 +8189,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def create_dispute_evidence_file(dispute_id: str, *, request: CreateDisputeEvidenceFileRequest | CreateDisputeEvidenceFileRequestDict | None = None, image_file: bytes | None = None, request_options: RequestOptionsOrDict | None = None) -> CreateDisputeEvidenceFileResponse</code></summary>
+<summary><code>def create_dispute_evidence_file(dispute_id: str, *, request: CreateDisputeEvidenceFileRequest | CreateDisputeEvidenceFileRequestDict | None = None, image_file: FileInput | None = None, request_options: RequestOptionsOrDict | None = None) -> CreateDisputeEvidenceFileResponse</code></summary>
 
 <dl>
 <dd>
@@ -7996,7 +8214,7 @@ multipart/form-data file uploads in HEIC, HEIF, JPEG, PDF, PNG, and TIFF formats
 
 ```python
 try:
-    response = client.disputes.create_dispute_evidence_file(dispute_id)
+    response = client.disputes.create_dispute_evidence_file("some example string")
     # TODO: Handle 'response' of type CreateDisputeEvidenceFileResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -8006,7 +8224,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.disputes.create_dispute_evidence_file(dispute_id)
+    response = await async_client.disputes.create_dispute_evidence_file("some example string")
     # TODO: Handle 'response' of type CreateDisputeEvidenceFileResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -8024,8 +8242,8 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>dispute_id</code> | <code>str</code> | The ID of the dispute for which you want to upload evidence. |
 | <code>request</code> | <code>[CreateDisputeEvidenceFileRequest](square/models/create_dispute_evidence_file_request.py) \| [CreateDisputeEvidenceFileRequestDict](square/models/create_dispute_evidence_file_request.py) \| None</code> | Defines the parameters for a `CreateDisputeEvidenceFile` request.<br>**Default**: <code>None</code> |
-| <code>image_file</code> | <code>bytes \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>image_file</code> | <code>FileInput \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8072,7 +8290,10 @@ Uploads text to use as evidence for a dispute challenge.
 
 ```python
 try:
-    response = client.disputes.create_dispute_evidence_text(dispute_id, body)
+    response = client.disputes.create_dispute_evidence_text(
+        "some example string",
+        CreateDisputeEvidenceTextRequest(idempotency_key="some example string", evidence_text="some example string"),
+    )
     # TODO: Handle 'response' of type CreateDisputeEvidenceTextResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -8082,7 +8303,10 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.disputes.create_dispute_evidence_text(dispute_id, body)
+    response = await async_client.disputes.create_dispute_evidence_text(
+        "some example string",
+        CreateDisputeEvidenceTextRequest(idempotency_key="some example string", evidence_text="some example string"),
+    )
     # TODO: Handle 'response' of type CreateDisputeEvidenceTextResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -8100,7 +8324,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>dispute_id</code> | <code>str</code> | The ID of the dispute for which you want to upload evidence. |
 | <code>body</code> | <code>[CreateDisputeEvidenceTextRequest](square/models/create_dispute_evidence_text_request.py) \| [CreateDisputeEvidenceTextRequestDict](square/models/create_dispute_evidence_text_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8148,7 +8372,7 @@ Square does not send the bank any evidence that is removed.
 
 ```python
 try:
-    response = client.disputes.delete_dispute_evidence(dispute_id, evidence_id)
+    response = client.disputes.delete_dispute_evidence("some example string", "some example string")
     # TODO: Handle 'response' of type DeleteDisputeEvidenceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -8158,7 +8382,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.disputes.delete_dispute_evidence(dispute_id, evidence_id)
+    response = await async_client.disputes.delete_dispute_evidence("some example string", "some example string")
     # TODO: Handle 'response' of type DeleteDisputeEvidenceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -8176,7 +8400,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>dispute_id</code> | <code>str</code> | The ID of the dispute from which you want to remove evidence. |
 | <code>evidence_id</code> | <code>str</code> | The ID of the evidence you want to remove. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8223,7 +8447,7 @@ Returns a list of evidence associated with a dispute.
 
 ```python
 try:
-    response = client.disputes.list_dispute_evidence(dispute_id)
+    response = client.disputes.list_dispute_evidence("some example string")
     # TODO: Handle 'response' of type ListDisputeEvidenceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -8233,7 +8457,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.disputes.list_dispute_evidence(dispute_id)
+    response = await async_client.disputes.list_dispute_evidence("some example string")
     # TODO: Handle 'response' of type ListDisputeEvidenceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -8251,7 +8475,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>dispute_id</code> | <code>str</code> | The ID of the dispute. |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8327,7 +8551,7 @@ except ApiError as e:
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>states</code> | <code>[DisputeStateOrStr](square/models/enums/dispute_state.py) \| None</code> | The dispute states used to filter the result. If not specified, the endpoint returns all disputes.<br>**Default**: <code>None</code> |
 | <code>location_id</code> | <code>str \| None</code> | The ID of the location for which to return a list of disputes.<br>If not specified, the endpoint returns disputes associated with all locations.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8374,7 +8598,7 @@ Returns details about a specific dispute.
 
 ```python
 try:
-    response = client.disputes.retrieve_dispute(dispute_id)
+    response = client.disputes.retrieve_dispute("some example string")
     # TODO: Handle 'response' of type RetrieveDisputeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -8384,7 +8608,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.disputes.retrieve_dispute(dispute_id)
+    response = await async_client.disputes.retrieve_dispute("some example string")
     # TODO: Handle 'response' of type RetrieveDisputeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -8401,7 +8625,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>dispute_id</code> | <code>str</code> | The ID of the dispute you want more details about. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8450,7 +8674,7 @@ You must maintain a copy of any evidence uploaded if you want to reference it la
 
 ```python
 try:
-    response = client.disputes.retrieve_dispute_evidence(dispute_id, evidence_id)
+    response = client.disputes.retrieve_dispute_evidence("some example string", "some example string")
     # TODO: Handle 'response' of type RetrieveDisputeEvidenceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -8460,7 +8684,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.disputes.retrieve_dispute_evidence(dispute_id, evidence_id)
+    response = await async_client.disputes.retrieve_dispute_evidence("some example string", "some example string")
     # TODO: Handle 'response' of type RetrieveDisputeEvidenceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -8478,7 +8702,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>dispute_id</code> | <code>str</code> | The ID of the dispute from which you want to retrieve evidence metadata. |
 | <code>evidence_id</code> | <code>str</code> | The ID of the evidence to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8531,7 +8755,7 @@ a dispute after submission.
 
 ```python
 try:
-    response = client.disputes.submit_evidence(dispute_id)
+    response = client.disputes.submit_evidence("some example string")
     # TODO: Handle 'response' of type SubmitEvidenceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -8541,7 +8765,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.disputes.submit_evidence(dispute_id)
+    response = await async_client.disputes.submit_evidence("some example string")
     # TODO: Handle 'response' of type SubmitEvidenceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -8558,7 +8782,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>dispute_id</code> | <code>str</code> | The ID of the dispute for which you want to submit evidence. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8639,7 +8863,7 @@ except ApiError as e:
 | <code>status</code> | <code>[EmployeeStatusOrStr](square/models/enums/employee_status.py) \| None</code> | Specifies the EmployeeStatus to filter the employee by.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The number of employees to be returned on each page.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The token required to retrieve the specified page of results.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8662,7 +8886,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def retrieve_employee(id: str, *, request_options: RequestOptionsOrDict | None = None) -> RetrieveEmployeeResponse</code></summary>
+<summary><code>def retrieve_employee(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> RetrieveEmployeeResponse</code></summary>
 
 <dl>
 <dd>
@@ -8686,7 +8910,7 @@ Send a `GET` request.
 
 ```python
 try:
-    response = client.employees.retrieve_employee(id)
+    response = client.employees.retrieve_employee("some example string")
     # TODO: Handle 'response' of type RetrieveEmployeeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -8696,7 +8920,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.employees.retrieve_employee(id)
+    response = await async_client.employees.retrieve_employee("some example string")
     # TODO: Handle 'response' of type RetrieveEmployeeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -8712,8 +8936,8 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | UUID for the employee that was requested. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | UUID for the employee that was requested. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8792,7 +9016,7 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8865,7 +9089,7 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8939,7 +9163,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>api_version</code> | <code>str \| None</code> | The API version for which to list event types. Setting this field overrides the default version used by the application.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8986,7 +9210,7 @@ Search for Square API events that occur within a 28-day timeframe.
 
 ```python
 try:
-    response = client.events.search_events(body)
+    response = client.events.search_events(SearchEventsRequest())
     # TODO: Handle 'response' of type SearchEventsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -8996,7 +9220,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.events.search_events(body)
+    response = await async_client.events.search_events(SearchEventsRequest())
     # TODO: Handle 'response' of type SearchEventsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9013,7 +9237,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchEventsRequest](square/models/search_events_request.py) \| [SearchEventsRequestDict](square/models/search_events_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9065,7 +9289,12 @@ For example, create an `ACTIVATE` activity to activate a gift card with an initi
 
 ```python
 try:
-    response = client.gift_card_activities.create_gift_card_activity(body)
+    response = client.gift_card_activities.create_gift_card_activity(
+        CreateGiftCardActivityRequest(
+            idempotency_key="some example string",
+            gift_card_activity=GiftCardActivity(type_=GiftCardActivityType.ACTIVATE, location_id="some example string"),
+        ),
+    )
     # TODO: Handle 'response' of type CreateGiftCardActivityResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9075,7 +9304,12 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.gift_card_activities.create_gift_card_activity(body)
+    response = await async_client.gift_card_activities.create_gift_card_activity(
+        CreateGiftCardActivityRequest(
+            idempotency_key="some example string",
+            gift_card_activity=GiftCardActivity(type_=GiftCardActivityType.ACTIVATE, location_id="some example string"),
+        ),
+    )
     # TODO: Handle 'response' of type CreateGiftCardActivityResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9092,7 +9326,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateGiftCardActivityRequest](square/models/create_gift_card_activity_request.py) \| [CreateGiftCardActivityRequestDict](square/models/create_gift_card_activity_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9176,7 +9410,7 @@ except ApiError as e:
 | <code>limit</code> | <code>int \| None</code> | If a limit is provided, the endpoint returns the specified number <br>of results (or fewer) per page. The maximum value is 100. The default value is 50.<br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br>If a cursor is not provided, the endpoint returns the first page of the results.<br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).<br>**Default**: <code>None</code> |
 | <code>sort_order</code> | <code>str \| None</code> | The order in which the endpoint returns the activities, based on `created_at`.<br>- `ASC` - Oldest to newest.<br>- `DESC` - Newest to oldest (default).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9231,7 +9465,13 @@ to refund a payment to the new gift card.
 
 ```python
 try:
-    response = client.gift_cards.create_gift_card(body)
+    response = client.gift_cards.create_gift_card(
+        CreateGiftCardRequest(
+            idempotency_key="some example string",
+            location_id="some example string",
+            gift_card=GiftCard(type_=GiftCardType.PHYSICAL),
+        ),
+    )
     # TODO: Handle 'response' of type CreateGiftCardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9241,7 +9481,13 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.gift_cards.create_gift_card(body)
+    response = await async_client.gift_cards.create_gift_card(
+        CreateGiftCardRequest(
+            idempotency_key="some example string",
+            location_id="some example string",
+            gift_card=GiftCard(type_=GiftCardType.PHYSICAL),
+        ),
+    )
     # TODO: Handle 'response' of type CreateGiftCardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9258,7 +9504,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateGiftCardRequest](square/models/create_gift_card_request.py) \| [CreateGiftCardRequestDict](square/models/create_gift_card_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9305,7 +9551,9 @@ Links a customer to a gift card, which is also referred to as adding a card on f
 
 ```python
 try:
-    response = client.gift_cards.link_customer_to_gift_card(gift_card_id, body)
+    response = client.gift_cards.link_customer_to_gift_card(
+        "some example string", LinkCustomerToGiftCardRequest(customer_id="some example string")
+    )
     # TODO: Handle 'response' of type LinkCustomerToGiftCardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9315,7 +9563,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.gift_cards.link_customer_to_gift_card(gift_card_id, body)
+    response = await async_client.gift_cards.link_customer_to_gift_card(
+        "some example string", LinkCustomerToGiftCardRequest(customer_id="some example string")
+    )
     # TODO: Handle 'response' of type LinkCustomerToGiftCardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9333,7 +9583,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>gift_card_id</code> | <code>str</code> | The ID of the gift card to be linked. |
 | <code>body</code> | <code>[LinkCustomerToGiftCardRequest](square/models/link_customer_to_gift_card_request.py) \| [LinkCustomerToGiftCardRequestDict](square/models/link_customer_to_gift_card_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9412,7 +9662,7 @@ except ApiError as e:
 | <code>limit</code> | <code>int \| None</code> | If a limit is provided, the endpoint returns only the specified number of results per page.<br>The maximum value is 200. The default value is 30.<br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br>If a cursor is not provided, the endpoint returns the first page of the results. <br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).<br>**Default**: <code>None</code> |
 | <code>customer_id</code> | <code>str \| None</code> | If a customer ID is provided, the endpoint returns only the gift cards linked to the specified customer.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9435,7 +9685,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def retrieve_gift_card(id: str, *, request_options: RequestOptionsOrDict | None = None) -> RetrieveGiftCardResponse</code></summary>
+<summary><code>def retrieve_gift_card(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> RetrieveGiftCardResponse</code></summary>
 
 <dl>
 <dd>
@@ -9459,7 +9709,7 @@ Retrieves a gift card using the gift card ID.
 
 ```python
 try:
-    response = client.gift_cards.retrieve_gift_card(id)
+    response = client.gift_cards.retrieve_gift_card("some example string")
     # TODO: Handle 'response' of type RetrieveGiftCardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9469,7 +9719,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.gift_cards.retrieve_gift_card(id)
+    response = await async_client.gift_cards.retrieve_gift_card("some example string")
     # TODO: Handle 'response' of type RetrieveGiftCardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9485,8 +9735,8 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The ID of the gift card to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The ID of the gift card to retrieve. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9533,7 +9783,7 @@ Retrieves a gift card using the gift card account number (GAN).
 
 ```python
 try:
-    response = client.gift_cards.retrieve_gift_card_from_gan(body)
+    response = client.gift_cards.retrieve_gift_card_from_gan(RetrieveGiftCardFromGanrequest(gan="some example string"))
     # TODO: Handle 'response' of type RetrieveGiftCardFromGanresponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9543,7 +9793,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.gift_cards.retrieve_gift_card_from_gan(body)
+    response = await async_client.gift_cards.retrieve_gift_card_from_gan(
+        RetrieveGiftCardFromGanrequest(gan="some example string")
+    )
     # TODO: Handle 'response' of type RetrieveGiftCardFromGanresponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9560,7 +9812,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[RetrieveGiftCardFromGanrequest](square/models/retrieve_gift_card_from_ganrequest.py) \| [RetrieveGiftCardFromGanrequestDict](square/models/retrieve_gift_card_from_ganrequest.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9607,7 +9859,9 @@ Retrieves a gift card using a secure payment token that represents the gift card
 
 ```python
 try:
-    response = client.gift_cards.retrieve_gift_card_from_nonce(body)
+    response = client.gift_cards.retrieve_gift_card_from_nonce(
+        RetrieveGiftCardFromNonceRequest(nonce="some example string")
+    )
     # TODO: Handle 'response' of type RetrieveGiftCardFromNonceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9617,7 +9871,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.gift_cards.retrieve_gift_card_from_nonce(body)
+    response = await async_client.gift_cards.retrieve_gift_card_from_nonce(
+        RetrieveGiftCardFromNonceRequest(nonce="some example string")
+    )
     # TODO: Handle 'response' of type RetrieveGiftCardFromNonceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9634,7 +9890,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[RetrieveGiftCardFromNonceRequest](square/models/retrieve_gift_card_from_nonce_request.py) \| [RetrieveGiftCardFromNonceRequestDict](square/models/retrieve_gift_card_from_nonce_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9681,7 +9937,9 @@ Unlinks a customer from a gift card, which is also referred to as removing a car
 
 ```python
 try:
-    response = client.gift_cards.unlink_customer_from_gift_card(gift_card_id, body)
+    response = client.gift_cards.unlink_customer_from_gift_card(
+        "some example string", UnlinkCustomerFromGiftCardRequest(customer_id="some example string")
+    )
     # TODO: Handle 'response' of type UnlinkCustomerFromGiftCardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9691,7 +9949,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.gift_cards.unlink_customer_from_gift_card(gift_card_id, body)
+    response = await async_client.gift_cards.unlink_customer_from_gift_card(
+        "some example string", UnlinkCustomerFromGiftCardRequest(customer_id="some example string")
+    )
     # TODO: Handle 'response' of type UnlinkCustomerFromGiftCardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9709,7 +9969,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>gift_card_id</code> | <code>str</code> | The ID of the gift card to be unlinked. |
 | <code>body</code> | <code>[UnlinkCustomerFromGiftCardRequest](square/models/unlink_customer_from_gift_card_request.py) \| [UnlinkCustomerFromGiftCardRequestDict](square/models/unlink_customer_from_gift_card_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9764,7 +10024,9 @@ On failure: returns a list of related errors.
 
 ```python
 try:
-    response = client.inventory.batch_change_inventory(body)
+    response = client.inventory.batch_change_inventory(
+        BatchChangeInventoryRequest(idempotency_key="some example string")
+    )
     # TODO: Handle 'response' of type BatchChangeInventoryResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9774,7 +10036,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.inventory.batch_change_inventory(body)
+    response = await async_client.inventory.batch_change_inventory(
+        BatchChangeInventoryRequest(idempotency_key="some example string")
+    )
     # TODO: Handle 'response' of type BatchChangeInventoryResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9791,7 +10055,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BatchChangeInventoryRequest](square/models/batch_change_inventory_request.py) \| [BatchChangeInventoryRequestDict](square/models/batch_change_inventory_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9845,7 +10109,7 @@ that cannot be handled by other, simpler endpoints.
 
 ```python
 try:
-    response = client.inventory.batch_retrieve_inventory_changes(body)
+    response = client.inventory.batch_retrieve_inventory_changes(BatchRetrieveInventoryChangesRequest())
     # TODO: Handle 'response' of type BatchRetrieveInventoryChangesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9855,7 +10119,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.inventory.batch_retrieve_inventory_changes(body)
+    response = await async_client.inventory.batch_retrieve_inventory_changes(BatchRetrieveInventoryChangesRequest())
     # TODO: Handle 'response' of type BatchRetrieveInventoryChangesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9872,7 +10136,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BatchRetrieveInventoryChangesRequest](square/models/batch_retrieve_inventory_changes_request.py) \| [BatchRetrieveInventoryChangesRequestDict](square/models/batch_retrieve_inventory_changes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9929,7 +10193,7 @@ in response to receiving a Webhook notification.
 
 ```python
 try:
-    response = client.inventory.batch_retrieve_inventory_counts(body)
+    response = client.inventory.batch_retrieve_inventory_counts(BatchRetrieveInventoryCountsRequest())
     # TODO: Handle 'response' of type BatchRetrieveInventoryCountsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9939,7 +10203,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.inventory.batch_retrieve_inventory_counts(body)
+    response = await async_client.inventory.batch_retrieve_inventory_counts(BatchRetrieveInventoryCountsRequest())
     # TODO: Handle 'response' of type BatchRetrieveInventoryCountsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -9956,7 +10220,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BatchRetrieveInventoryCountsRequest](square/models/batch_retrieve_inventory_counts_request.py) \| [BatchRetrieveInventoryCountsRequestDict](square/models/batch_retrieve_inventory_counts_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10003,7 +10267,14 @@ Creates a custom inventory adjustment reason.
 
 ```python
 try:
-    response = client.inventory.create_inventory_adjustment_reason(body)
+    response = client.inventory.create_inventory_adjustment_reason(
+        CreateInventoryAdjustmentReasonRequest(
+            idempotency_key="some example string",
+            adjustment_reason=InventoryAdjustmentReason(
+                id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED)
+            ),
+        ),
+    )
     # TODO: Handle 'response' of type CreateInventoryAdjustmentReasonResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10013,7 +10284,14 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.inventory.create_inventory_adjustment_reason(body)
+    response = await async_client.inventory.create_inventory_adjustment_reason(
+        CreateInventoryAdjustmentReasonRequest(
+            idempotency_key="some example string",
+            adjustment_reason=InventoryAdjustmentReason(
+                id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED)
+            ),
+        ),
+    )
     # TODO: Handle 'response' of type CreateInventoryAdjustmentReasonResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10030,7 +10308,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateInventoryAdjustmentReasonRequest](square/models/create_inventory_adjustment_reason_request.py) \| [CreateInventoryAdjustmentReasonRequestDict](square/models/create_inventory_adjustment_reason_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10077,7 +10355,11 @@ Soft deletes a custom inventory adjustment reason.
 
 ```python
 try:
-    response = client.inventory.delete_inventory_adjustment_reason(body)
+    response = client.inventory.delete_inventory_adjustment_reason(
+        DeleteInventoryAdjustmentReasonRequest(
+            reason_id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED)
+        ),
+    )
     # TODO: Handle 'response' of type DeleteInventoryAdjustmentReasonResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10087,7 +10369,11 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.inventory.delete_inventory_adjustment_reason(body)
+    response = await async_client.inventory.delete_inventory_adjustment_reason(
+        DeleteInventoryAdjustmentReasonRequest(
+            reason_id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED)
+        ),
+    )
     # TODO: Handle 'response' of type DeleteInventoryAdjustmentReasonResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10104,7 +10390,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[DeleteInventoryAdjustmentReasonRequest](square/models/delete_inventory_adjustment_reason_request.py) \| [DeleteInventoryAdjustmentReasonRequestDict](square/models/delete_inventory_adjustment_reason_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10152,7 +10438,9 @@ is updated to conform to the standard convention.
 
 ```python
 try:
-    response = client.inventory.deprecated_batch_change_inventory(body)
+    response = client.inventory.deprecated_batch_change_inventory(
+        BatchChangeInventoryRequest(idempotency_key="some example string")
+    )
     # TODO: Handle 'response' of type BatchChangeInventoryResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10162,7 +10450,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.inventory.deprecated_batch_change_inventory(body)
+    response = await async_client.inventory.deprecated_batch_change_inventory(
+        BatchChangeInventoryRequest(idempotency_key="some example string")
+    )
     # TODO: Handle 'response' of type BatchChangeInventoryResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10179,7 +10469,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BatchChangeInventoryRequest](square/models/batch_change_inventory_request.py) \| [BatchChangeInventoryRequestDict](square/models/batch_change_inventory_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10227,7 +10517,7 @@ is updated to conform to the standard convention.
 
 ```python
 try:
-    response = client.inventory.deprecated_batch_retrieve_inventory_changes(body)
+    response = client.inventory.deprecated_batch_retrieve_inventory_changes(BatchRetrieveInventoryChangesRequest())
     # TODO: Handle 'response' of type BatchRetrieveInventoryChangesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10237,7 +10527,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.inventory.deprecated_batch_retrieve_inventory_changes(body)
+    response = await async_client.inventory.deprecated_batch_retrieve_inventory_changes(
+        BatchRetrieveInventoryChangesRequest()
+    )
     # TODO: Handle 'response' of type BatchRetrieveInventoryChangesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10254,7 +10546,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BatchRetrieveInventoryChangesRequest](square/models/batch_retrieve_inventory_changes_request.py) \| [BatchRetrieveInventoryChangesRequestDict](square/models/batch_retrieve_inventory_changes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10302,7 +10594,7 @@ is updated to conform to the standard convention.
 
 ```python
 try:
-    response = client.inventory.deprecated_batch_retrieve_inventory_counts(body)
+    response = client.inventory.deprecated_batch_retrieve_inventory_counts(BatchRetrieveInventoryCountsRequest())
     # TODO: Handle 'response' of type BatchRetrieveInventoryCountsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10312,7 +10604,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.inventory.deprecated_batch_retrieve_inventory_counts(body)
+    response = await async_client.inventory.deprecated_batch_retrieve_inventory_counts(
+        BatchRetrieveInventoryCountsRequest()
+    )
     # TODO: Handle 'response' of type BatchRetrieveInventoryCountsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10329,7 +10623,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BatchRetrieveInventoryCountsRequest](square/models/batch_retrieve_inventory_counts_request.py) \| [BatchRetrieveInventoryCountsRequestDict](square/models/batch_retrieve_inventory_counts_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10377,7 +10671,7 @@ is updated to conform to the standard convention.
 
 ```python
 try:
-    response = client.inventory.deprecated_retrieve_inventory_adjustment(adjustment_id)
+    response = client.inventory.deprecated_retrieve_inventory_adjustment("some example string")
     # TODO: Handle 'response' of type RetrieveInventoryAdjustmentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10387,7 +10681,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.inventory.deprecated_retrieve_inventory_adjustment(adjustment_id)
+    response = await async_client.inventory.deprecated_retrieve_inventory_adjustment("some example string")
     # TODO: Handle 'response' of type RetrieveInventoryAdjustmentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10404,7 +10698,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>adjustment_id</code> | <code>str</code> | ID of the [InventoryAdjustment](entity:InventoryAdjustment) to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10452,7 +10746,7 @@ is updated to conform to the standard convention.
 
 ```python
 try:
-    response = client.inventory.deprecated_retrieve_inventory_physical_count(physical_count_id)
+    response = client.inventory.deprecated_retrieve_inventory_physical_count("some example string")
     # TODO: Handle 'response' of type RetrieveInventoryPhysicalCountResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10462,7 +10756,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.inventory.deprecated_retrieve_inventory_physical_count(physical_count_id)
+    response = await async_client.inventory.deprecated_retrieve_inventory_physical_count("some example string")
     # TODO: Handle 'response' of type RetrieveInventoryPhysicalCountResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10479,7 +10773,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>physical_count_id</code> | <code>str</code> | ID of the<br>[InventoryPhysicalCount](entity:InventoryPhysicalCount) to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10555,7 +10849,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>include_deleted</code> | <code>bool \| None</code> | Indicates whether the response should include deleted custom inventory<br>adjustment reasons. The default value is `false`.<br>**Default**: <code>False</code> |
 | <code>include_system_codes</code> | <code>bool \| None</code> | Indicates whether the response should include Square-generated system<br>inventory adjustment reason codes that cannot be used to write adjustments<br>from the Connect API, such as `SALE`, `RECOUNT`, `TRANSFER`, `IN_TRANSIT`,<br>and `CANCELED_SALE`. The default value is `false`.<br>**Default**: <code>False</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10602,7 +10896,11 @@ Restores a soft-deleted custom inventory adjustment reason.
 
 ```python
 try:
-    response = client.inventory.restore_inventory_adjustment_reason(body)
+    response = client.inventory.restore_inventory_adjustment_reason(
+        RestoreInventoryAdjustmentReasonRequest(
+            reason_id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED)
+        ),
+    )
     # TODO: Handle 'response' of type RestoreInventoryAdjustmentReasonResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10612,7 +10910,11 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.inventory.restore_inventory_adjustment_reason(body)
+    response = await async_client.inventory.restore_inventory_adjustment_reason(
+        RestoreInventoryAdjustmentReasonRequest(
+            reason_id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED)
+        ),
+    )
     # TODO: Handle 'response' of type RestoreInventoryAdjustmentReasonResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10629,7 +10931,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[RestoreInventoryAdjustmentReasonRequest](square/models/restore_inventory_adjustment_reason_request.py) \| [RestoreInventoryAdjustmentReasonRequestDict](square/models/restore_inventory_adjustment_reason_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10677,7 +10979,7 @@ with the provided `adjustment_id`.
 
 ```python
 try:
-    response = client.inventory.retrieve_inventory_adjustment(adjustment_id)
+    response = client.inventory.retrieve_inventory_adjustment("some example string")
     # TODO: Handle 'response' of type RetrieveInventoryAdjustmentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10687,7 +10989,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.inventory.retrieve_inventory_adjustment(adjustment_id)
+    response = await async_client.inventory.retrieve_inventory_adjustment("some example string")
     # TODO: Handle 'response' of type RetrieveInventoryAdjustmentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10704,7 +11006,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>adjustment_id</code> | <code>str</code> | ID of the [InventoryAdjustment](entity:InventoryAdjustment) to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10752,7 +11054,11 @@ Returns the inventory adjustment reason identified by the provided
 
 ```python
 try:
-    response = client.inventory.retrieve_inventory_adjustment_reason(body)
+    response = client.inventory.retrieve_inventory_adjustment_reason(
+        RetrieveInventoryAdjustmentReasonRequest(
+            reason_id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED)
+        ),
+    )
     # TODO: Handle 'response' of type RetrieveInventoryAdjustmentReasonResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10762,7 +11068,11 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.inventory.retrieve_inventory_adjustment_reason(body)
+    response = await async_client.inventory.retrieve_inventory_adjustment_reason(
+        RetrieveInventoryAdjustmentReasonRequest(
+            reason_id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED)
+        ),
+    )
     # TODO: Handle 'response' of type RetrieveInventoryAdjustmentReasonResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10779,7 +11089,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[RetrieveInventoryAdjustmentReasonRequest](square/models/retrieve_inventory_adjustment_reason_request.py) \| [RetrieveInventoryAdjustmentReasonRequestDict](square/models/retrieve_inventory_adjustment_reason_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10838,7 +11148,7 @@ sophisticated queries, use a batch endpoint.
 
 ```python
 try:
-    response = client.inventory.retrieve_inventory_changes(catalog_object_id)
+    response = client.inventory.retrieve_inventory_changes("some example string")
     # TODO: Handle 'response' of type RetrieveInventoryChangesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10848,7 +11158,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.inventory.retrieve_inventory_changes(catalog_object_id)
+    response = await async_client.inventory.retrieve_inventory_changes("some example string")
     # TODO: Handle 'response' of type RetrieveInventoryChangesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10867,7 +11177,7 @@ except ApiError as e:
 | <code>catalog_object_id</code> | <code>str</code> | ID of the [CatalogObject](entity:CatalogObject) to retrieve. |
 | <code>location_ids</code> | <code>str \| None</code> | The [Location](entity:Location) IDs to look up as a comma-separated<br>list. An empty list queries all locations.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this to retrieve the next set of results for the original query.<br><br>See the [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10917,7 +11227,7 @@ For more sophisticated queries, use a batch endpoint.
 
 ```python
 try:
-    response = client.inventory.retrieve_inventory_count(catalog_object_id)
+    response = client.inventory.retrieve_inventory_count("some example string")
     # TODO: Handle 'response' of type RetrieveInventoryCountResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10927,7 +11237,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.inventory.retrieve_inventory_count(catalog_object_id)
+    response = await async_client.inventory.retrieve_inventory_count("some example string")
     # TODO: Handle 'response' of type RetrieveInventoryCountResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -10946,7 +11256,7 @@ except ApiError as e:
 | <code>catalog_object_id</code> | <code>str</code> | ID of the [CatalogObject](entity:CatalogObject) to retrieve. |
 | <code>location_ids</code> | <code>str \| None</code> | The [Location](entity:Location) IDs to look up as a comma-separated<br>list. An empty list queries all locations.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this to retrieve the next set of results for the original query.<br><br>See the [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10994,7 +11304,7 @@ object with the provided `physical_count_id`.
 
 ```python
 try:
-    response = client.inventory.retrieve_inventory_physical_count(physical_count_id)
+    response = client.inventory.retrieve_inventory_physical_count("some example string")
     # TODO: Handle 'response' of type RetrieveInventoryPhysicalCountResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11004,7 +11314,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.inventory.retrieve_inventory_physical_count(physical_count_id)
+    response = await async_client.inventory.retrieve_inventory_physical_count("some example string")
     # TODO: Handle 'response' of type RetrieveInventoryPhysicalCountResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11021,7 +11331,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>physical_count_id</code> | <code>str</code> | ID of the<br>[InventoryPhysicalCount](entity:InventoryPhysicalCount) to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11071,7 +11381,9 @@ On failure: returns a list of related errors.
 
 ```python
 try:
-    response = client.inventory.update_inventory_adjustment(body)
+    response = client.inventory.update_inventory_adjustment(
+        UpdateInventoryAdjustmentRequest(idempotency_key="some example string", adjustment=InventoryAdjustment())
+    )
     # TODO: Handle 'response' of type UpdateInventoryAdjustmentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11081,7 +11393,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.inventory.update_inventory_adjustment(body)
+    response = await async_client.inventory.update_inventory_adjustment(
+        UpdateInventoryAdjustmentRequest(idempotency_key="some example string", adjustment=InventoryAdjustment())
+    )
     # TODO: Handle 'response' of type UpdateInventoryAdjustmentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11098,7 +11412,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[UpdateInventoryAdjustmentRequest](square/models/update_inventory_adjustment_request.py) \| [UpdateInventoryAdjustmentRequestDict](square/models/update_inventory_adjustment_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11145,7 +11459,14 @@ Updates a custom inventory adjustment reason.
 
 ```python
 try:
-    response = client.inventory.update_inventory_adjustment_reason(body)
+    response = client.inventory.update_inventory_adjustment_reason(
+        UpdateInventoryAdjustmentReasonRequest(
+            reason_id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED),
+            adjustment_reason=InventoryAdjustmentReason(
+                id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED)
+            ),
+        ),
+    )
     # TODO: Handle 'response' of type UpdateInventoryAdjustmentReasonResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11155,7 +11476,14 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.inventory.update_inventory_adjustment_reason(body)
+    response = await async_client.inventory.update_inventory_adjustment_reason(
+        UpdateInventoryAdjustmentReasonRequest(
+            reason_id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED),
+            adjustment_reason=InventoryAdjustmentReason(
+                id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED)
+            ),
+        ),
+    )
     # TODO: Handle 'response' of type UpdateInventoryAdjustmentReasonResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11172,7 +11500,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[UpdateInventoryAdjustmentReasonRequest](square/models/update_inventory_adjustment_reason_request.py) \| [UpdateInventoryAdjustmentReasonRequestDict](square/models/update_inventory_adjustment_reason_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11226,7 +11554,7 @@ You cannot cancel an invoice in the `DRAFT` state or in a terminal state: `PAID`
 
 ```python
 try:
-    response = client.invoices.cancel_invoice(invoice_id, body)
+    response = client.invoices.cancel_invoice("some example string", CancelInvoiceRequest(version=1))
     # TODO: Handle 'response' of type CancelInvoiceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11236,7 +11564,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.invoices.cancel_invoice(invoice_id, body)
+    response = await async_client.invoices.cancel_invoice("some example string", CancelInvoiceRequest(version=1))
     # TODO: Handle 'response' of type CancelInvoiceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11254,7 +11582,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>invoice_id</code> | <code>str</code> | The ID of the [invoice](entity:Invoice) to cancel. |
 | <code>body</code> | <code>[CancelInvoiceRequest](square/models/cancel_invoice_request.py) \| [CancelInvoiceRequestDict](square/models/cancel_invoice_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11305,7 +11633,7 @@ You must publish the invoice before Square can process it (send it to the custom
 
 ```python
 try:
-    response = client.invoices.create_invoice(body)
+    response = client.invoices.create_invoice(CreateInvoiceRequest(invoice=Invoice()))
     # TODO: Handle 'response' of type CreateInvoiceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11315,7 +11643,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.invoices.create_invoice(body)
+    response = await async_client.invoices.create_invoice(CreateInvoiceRequest(invoice=Invoice()))
     # TODO: Handle 'response' of type CreateInvoiceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11332,7 +11660,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateInvoiceRequest](square/models/create_invoice_request.py) \| [CreateInvoiceRequestDict](square/models/create_invoice_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11355,7 +11683,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def create_invoice_attachment(invoice_id: str, *, request: CreateInvoiceAttachmentRequest | CreateInvoiceAttachmentRequestDict | None = None, image_file: bytes | None = None, request_options: RequestOptionsOrDict | None = None) -> CreateInvoiceAttachmentResponse</code></summary>
+<summary><code>def create_invoice_attachment(invoice_id: str, *, request: CreateInvoiceAttachmentRequest | CreateInvoiceAttachmentRequestDict | None = None, image_file: FileInput | None = None, request_options: RequestOptionsOrDict | None = None) -> CreateInvoiceAttachmentResponse</code></summary>
 
 <dl>
 <dd>
@@ -11386,7 +11714,7 @@ __NOTE:__ When testing in the Sandbox environment, the total file size is limite
 
 ```python
 try:
-    response = client.invoices.create_invoice_attachment(invoice_id)
+    response = client.invoices.create_invoice_attachment("some example string")
     # TODO: Handle 'response' of type CreateInvoiceAttachmentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11396,7 +11724,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.invoices.create_invoice_attachment(invoice_id)
+    response = await async_client.invoices.create_invoice_attachment("some example string")
     # TODO: Handle 'response' of type CreateInvoiceAttachmentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11414,8 +11742,8 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>invoice_id</code> | <code>str</code> | The ID of the [invoice](entity:Invoice) to attach the file to. |
 | <code>request</code> | <code>[CreateInvoiceAttachmentRequest](square/models/create_invoice_attachment_request.py) \| [CreateInvoiceAttachmentRequestDict](square/models/create_invoice_attachment_request.py) \| None</code> | Represents a [CreateInvoiceAttachment](api-endpoint:Invoices-CreateInvoiceAttachment) request.<br>**Default**: <code>None</code> |
-| <code>image_file</code> | <code>bytes \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>image_file</code> | <code>FileInput \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11464,7 +11792,7 @@ invoice (you cannot delete a published invoice, including one that is scheduled 
 
 ```python
 try:
-    response = client.invoices.delete_invoice(invoice_id)
+    response = client.invoices.delete_invoice("some example string")
     # TODO: Handle 'response' of type DeleteInvoiceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11474,7 +11802,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.invoices.delete_invoice(invoice_id)
+    response = await async_client.invoices.delete_invoice("some example string")
     # TODO: Handle 'response' of type DeleteInvoiceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11492,7 +11820,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>invoice_id</code> | <code>str</code> | The ID of the invoice to delete. |
 | <code>version</code> | <code>int \| None</code> | The version of the [invoice](entity:Invoice) to delete.<br>If you do not know the version, you can call [GetInvoice](api-endpoint:Invoices-GetInvoice) or <br>[ListInvoices](api-endpoint:Invoices-ListInvoices).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11540,7 +11868,7 @@ from invoices in the `DRAFT`, `SCHEDULED`, `UNPAID`, or `PARTIALLY_PAID` state.
 
 ```python
 try:
-    response = client.invoices.delete_invoice_attachment(invoice_id, attachment_id)
+    response = client.invoices.delete_invoice_attachment("some example string", "some example string")
     # TODO: Handle 'response' of type DeleteInvoiceAttachmentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11550,7 +11878,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.invoices.delete_invoice_attachment(invoice_id, attachment_id)
+    response = await async_client.invoices.delete_invoice_attachment("some example string", "some example string")
     # TODO: Handle 'response' of type DeleteInvoiceAttachmentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11568,7 +11896,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>invoice_id</code> | <code>str</code> | The ID of the [invoice](entity:Invoice) to delete the attachment from. |
 | <code>attachment_id</code> | <code>str</code> | The ID of the [attachment](entity:InvoiceAttachment) to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11615,7 +11943,7 @@ Retrieves an invoice by invoice ID.
 
 ```python
 try:
-    response = client.invoices.get_invoice(invoice_id)
+    response = client.invoices.get_invoice("some example string")
     # TODO: Handle 'response' of type GetInvoiceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11625,7 +11953,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.invoices.get_invoice(invoice_id)
+    response = await async_client.invoices.get_invoice("some example string")
     # TODO: Handle 'response' of type GetInvoiceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11642,7 +11970,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>invoice_id</code> | <code>str</code> | The ID of the invoice to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11691,7 +12019,7 @@ use in a subsequent request to retrieve the next set of invoices.
 
 ```python
 try:
-    response = client.invoices.list_invoices(location_id)
+    response = client.invoices.list_invoices("some example string")
     # TODO: Handle 'response' of type ListInvoicesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11701,7 +12029,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.invoices.list_invoices(location_id)
+    response = await async_client.invoices.list_invoices("some example string")
     # TODO: Handle 'response' of type ListInvoicesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11720,7 +12048,7 @@ except ApiError as e:
 | <code>location_id</code> | <code>str</code> | The ID of the location for which to list invoices. |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint. <br>Provide this cursor to retrieve the next set of results for your original query.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of invoices to return (200 is the maximum `limit`). <br>If not provided, the server uses a default limit of 100 invoices.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11780,7 +12108,7 @@ and `PAYMENTS_WRITE` are required when publishing invoices configured for card-o
 
 ```python
 try:
-    response = client.invoices.publish_invoice(invoice_id, body)
+    response = client.invoices.publish_invoice("some example string", PublishInvoiceRequest(version=1))
     # TODO: Handle 'response' of type PublishInvoiceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11790,7 +12118,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.invoices.publish_invoice(invoice_id, body)
+    response = await async_client.invoices.publish_invoice("some example string", PublishInvoiceRequest(version=1))
     # TODO: Handle 'response' of type PublishInvoiceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11808,7 +12136,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>invoice_id</code> | <code>str</code> | The ID of the invoice to publish. |
 | <code>body</code> | <code>[PublishInvoiceRequest](square/models/publish_invoice_request.py) \| [PublishInvoiceRequestDict](square/models/publish_invoice_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11861,7 +12189,9 @@ that you use in a subsequent request to retrieve the next set of invoices.
 
 ```python
 try:
-    response = client.invoices.search_invoices(body)
+    response = client.invoices.search_invoices(
+        SearchInvoicesRequest(query=InvoiceQuery(filter=InvoiceFilter(location_ids=["some example string"])))
+    )
     # TODO: Handle 'response' of type SearchInvoicesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11871,7 +12201,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.invoices.search_invoices(body)
+    response = await async_client.invoices.search_invoices(
+        SearchInvoicesRequest(query=InvoiceQuery(filter=InvoiceFilter(location_ids=["some example string"])))
+    )
     # TODO: Handle 'response' of type SearchInvoicesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11888,7 +12220,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchInvoicesRequest](square/models/search_invoices_request.py) \| [SearchInvoicesRequestDict](square/models/search_invoices_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11938,7 +12270,7 @@ Some restrictions apply to updating invoices. For example, you cannot change the
 
 ```python
 try:
-    response = client.invoices.update_invoice(invoice_id, body)
+    response = client.invoices.update_invoice("some example string", UpdateInvoiceRequest(invoice=Invoice()))
     # TODO: Handle 'response' of type UpdateInvoiceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11948,7 +12280,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.invoices.update_invoice(invoice_id, body)
+    response = await async_client.invoices.update_invoice(
+        "some example string", UpdateInvoiceRequest(invoice=Invoice())
+    )
     # TODO: Handle 'response' of type UpdateInvoiceResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -11966,7 +12300,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>invoice_id</code> | <code>str</code> | The ID of the invoice to update. |
 | <code>body</code> | <code>[UpdateInvoiceRequest](square/models/update_invoice_request.py) \| [UpdateInvoiceRequestDict](square/models/update_invoice_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12022,7 +12356,9 @@ The minimum `start_at` and maximum `end_at` timestamps of all shifts in a
 
 ```python
 try:
-    response = client.labor.bulk_publish_scheduled_shifts(body)
+    response = client.labor.bulk_publish_scheduled_shifts(
+        BulkPublishScheduledShiftsRequest(scheduled_shifts={"key": BulkPublishScheduledShiftsData()})
+    )
     # TODO: Handle 'response' of type BulkPublishScheduledShiftsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12032,7 +12368,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.bulk_publish_scheduled_shifts(body)
+    response = await async_client.labor.bulk_publish_scheduled_shifts(
+        BulkPublishScheduledShiftsRequest(scheduled_shifts={"key": BulkPublishScheduledShiftsData()})
+    )
     # TODO: Handle 'response' of type BulkPublishScheduledShiftsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12049,7 +12387,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkPublishScheduledShiftsRequest](square/models/bulk_publish_scheduled_shifts_request.py) \| [BulkPublishScheduledShiftsRequestDict](square/models/bulk_publish_scheduled_shifts_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12109,7 +12447,16 @@ is returned.
 
 ```python
 try:
-    response = client.labor.create_break_type(body)
+    response = client.labor.create_break_type(
+        CreateBreakTypeRequest(
+            break_type=BreakType(
+                location_id="some example string",
+                break_name="some example string",
+                expected_duration="some example string",
+                is_paid=True,
+            ),
+        ),
+    )
     # TODO: Handle 'response' of type CreateBreakTypeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12119,7 +12466,16 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.create_break_type(body)
+    response = await async_client.labor.create_break_type(
+        CreateBreakTypeRequest(
+            break_type=BreakType(
+                location_id="some example string",
+                break_name="some example string",
+                expected_duration="some example string",
+                is_paid=True,
+            ),
+        ),
+    )
     # TODO: Handle 'response' of type CreateBreakTypeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12136,7 +12492,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateBreakTypeRequest](square/models/create_break_type_request.py) \| [CreateBreakTypeRequestDict](square/models/create_break_type_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12190,7 +12546,7 @@ The following `draft_shift_details` fields are required:
 
 ```python
 try:
-    response = client.labor.create_scheduled_shift(body)
+    response = client.labor.create_scheduled_shift(CreateScheduledShiftRequest(scheduled_shift=ScheduledShift()))
     # TODO: Handle 'response' of type CreateScheduledShiftResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12200,7 +12556,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.create_scheduled_shift(body)
+    response = await async_client.labor.create_scheduled_shift(
+        CreateScheduledShiftRequest(scheduled_shift=ScheduledShift())
+    )
     # TODO: Handle 'response' of type CreateScheduledShiftResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12217,7 +12575,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateScheduledShiftRequest](square/models/create_scheduled_shift_request.py) \| [CreateScheduledShiftRequestDict](square/models/create_scheduled_shift_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12281,7 +12639,9 @@ the `Shift.end_at`, or both.
 
 ```python
 try:
-    response = client.labor.create_shift(body)
+    response = client.labor.create_shift(
+        CreateShiftRequest(shift=Shift(location_id="some example string", start_at="some example string"))
+    )
     # TODO: Handle 'response' of type CreateShiftResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12291,7 +12651,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.create_shift(body)
+    response = await async_client.labor.create_shift(
+        CreateShiftRequest(shift=Shift(location_id="some example string", start_at="some example string"))
+    )
     # TODO: Handle 'response' of type CreateShiftResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12308,7 +12670,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateShiftRequest](square/models/create_shift_request.py) \| [CreateShiftRequestDict](square/models/create_shift_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12372,7 +12734,13 @@ the `Timecard.end_at`, or both.
 
 ```python
 try:
-    response = client.labor.create_timecard(body)
+    response = client.labor.create_timecard(
+        CreateTimecardRequest(
+            timecard=Timecard(
+                location_id="some example string", start_at="some example string", team_member_id="some example string"
+            ),
+        ),
+    )
     # TODO: Handle 'response' of type CreateTimecardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12382,7 +12750,13 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.create_timecard(body)
+    response = await async_client.labor.create_timecard(
+        CreateTimecardRequest(
+            timecard=Timecard(
+                location_id="some example string", start_at="some example string", team_member_id="some example string"
+            ),
+        ),
+    )
     # TODO: Handle 'response' of type CreateTimecardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12399,7 +12773,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateTimecardRequest](square/models/create_timecard_request.py) \| [CreateTimecardRequestDict](square/models/create_timecard_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12422,7 +12796,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def delete_break_type(id: str, *, request_options: RequestOptionsOrDict | None = None) -> DeleteBreakTypeResponse</code></summary>
+<summary><code>def delete_break_type(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> DeleteBreakTypeResponse</code></summary>
 
 <dl>
 <dd>
@@ -12448,7 +12822,7 @@ A `BreakType` can be deleted even if it is referenced from a `Shift`.
 
 ```python
 try:
-    response = client.labor.delete_break_type(id)
+    response = client.labor.delete_break_type("some example string")
     # TODO: Handle 'response' of type DeleteBreakTypeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12458,7 +12832,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.delete_break_type(id)
+    response = await async_client.labor.delete_break_type("some example string")
     # TODO: Handle 'response' of type DeleteBreakTypeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12474,8 +12848,8 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The UUID for the `BreakType` being deleted. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The UUID for the `BreakType` being deleted. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12498,7 +12872,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def delete_shift(id: str, *, request_options: RequestOptionsOrDict | None = None) -> DeleteShiftResponse</code></summary>
+<summary><code>def delete_shift(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> DeleteShiftResponse</code></summary>
 
 <dl>
 <dd>
@@ -12522,7 +12896,7 @@ Deletes a `Shift`.
 
 ```python
 try:
-    response = client.labor.delete_shift(id)
+    response = client.labor.delete_shift("some example string")
     # TODO: Handle 'response' of type DeleteShiftResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12532,7 +12906,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.delete_shift(id)
+    response = await async_client.labor.delete_shift("some example string")
     # TODO: Handle 'response' of type DeleteShiftResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12548,8 +12922,8 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The UUID for the `Shift` being deleted. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The UUID for the `Shift` being deleted. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12572,7 +12946,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def delete_timecard(id: str, *, request_options: RequestOptionsOrDict | None = None) -> DeleteTimecardResponse</code></summary>
+<summary><code>def delete_timecard(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> DeleteTimecardResponse</code></summary>
 
 <dl>
 <dd>
@@ -12596,7 +12970,7 @@ Deletes a `Timecard`.
 
 ```python
 try:
-    response = client.labor.delete_timecard(id)
+    response = client.labor.delete_timecard("some example string")
     # TODO: Handle 'response' of type DeleteTimecardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12606,7 +12980,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.delete_timecard(id)
+    response = await async_client.labor.delete_timecard("some example string")
     # TODO: Handle 'response' of type DeleteTimecardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12622,8 +12996,8 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The UUID for the `Timecard` being deleted. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The UUID for the `Timecard` being deleted. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12646,7 +13020,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def get_break_type(id: str, *, request_options: RequestOptionsOrDict | None = None) -> GetBreakTypeResponse</code></summary>
+<summary><code>def get_break_type(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> GetBreakTypeResponse</code></summary>
 
 <dl>
 <dd>
@@ -12670,7 +13044,7 @@ Returns a single `BreakType` specified by `id`.
 
 ```python
 try:
-    response = client.labor.get_break_type(id)
+    response = client.labor.get_break_type("some example string")
     # TODO: Handle 'response' of type GetBreakTypeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12680,7 +13054,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.get_break_type(id)
+    response = await async_client.labor.get_break_type("some example string")
     # TODO: Handle 'response' of type GetBreakTypeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12696,8 +13070,8 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The UUID for the `BreakType` being retrieved. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The UUID for the `BreakType` being retrieved. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12720,7 +13094,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def get_employee_wage(id: str, *, request_options: RequestOptionsOrDict | None = None) -> GetEmployeeWageResponse</code></summary>
+<summary><code>def get_employee_wage(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> GetEmployeeWageResponse</code></summary>
 
 <dl>
 <dd>
@@ -12744,7 +13118,7 @@ Returns a single `EmployeeWage` specified by `id`.
 
 ```python
 try:
-    response = client.labor.get_employee_wage(id)
+    response = client.labor.get_employee_wage("some example string")
     # TODO: Handle 'response' of type GetEmployeeWageResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12754,7 +13128,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.get_employee_wage(id)
+    response = await async_client.labor.get_employee_wage("some example string")
     # TODO: Handle 'response' of type GetEmployeeWageResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12770,8 +13144,8 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The UUID for the `EmployeeWage` being retrieved. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The UUID for the `EmployeeWage` being retrieved. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12794,7 +13168,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def get_shift(id: str, *, request_options: RequestOptionsOrDict | None = None) -> GetShiftResponse</code></summary>
+<summary><code>def get_shift(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> GetShiftResponse</code></summary>
 
 <dl>
 <dd>
@@ -12818,7 +13192,7 @@ Returns a single `Shift` specified by `id`.
 
 ```python
 try:
-    response = client.labor.get_shift(id)
+    response = client.labor.get_shift("some example string")
     # TODO: Handle 'response' of type GetShiftResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12828,7 +13202,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.get_shift(id)
+    response = await async_client.labor.get_shift("some example string")
     # TODO: Handle 'response' of type GetShiftResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12844,8 +13218,8 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The UUID for the `Shift` being retrieved. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The UUID for the `Shift` being retrieved. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12868,7 +13242,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def get_team_member_wage(id: str, *, request_options: RequestOptionsOrDict | None = None) -> GetTeamMemberWageResponse</code></summary>
+<summary><code>def get_team_member_wage(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> GetTeamMemberWageResponse</code></summary>
 
 <dl>
 <dd>
@@ -12892,7 +13266,7 @@ Returns a single `TeamMemberWage` specified by `id`.
 
 ```python
 try:
-    response = client.labor.get_team_member_wage(id)
+    response = client.labor.get_team_member_wage("some example string")
     # TODO: Handle 'response' of type GetTeamMemberWageResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12902,7 +13276,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.get_team_member_wage(id)
+    response = await async_client.labor.get_team_member_wage("some example string")
     # TODO: Handle 'response' of type GetTeamMemberWageResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -12918,8 +13292,8 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The UUID for the `TeamMemberWage` being retrieved. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The UUID for the `TeamMemberWage` being retrieved. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12995,7 +13369,7 @@ except ApiError as e:
 | <code>location_id</code> | <code>str \| None</code> | Filter the returned `BreakType` results to only those that are associated with the<br>specified location.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of `BreakType` results to return per page. The number can range between 1<br>and 200. The default is 200.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pointer to the next page of `BreakType` results to fetch.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13071,7 +13445,7 @@ except ApiError as e:
 | <code>employee_id</code> | <code>str \| None</code> | Filter the returned wages to only those that are associated with the specified employee.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of `EmployeeWage` results to return per page. The number can range between<br>1 and 200. The default is 200.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pointer to the next page of `EmployeeWage` results to fetch.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13147,7 +13521,7 @@ except ApiError as e:
 | <code>team_member_id</code> | <code>str \| None</code> | Filter the returned wages to only those that are associated with the<br>specified team member.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of `TeamMemberWage` results to return per page. The number can range between<br>1 and 200. The default is 200.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pointer to the next page of `EmployeeWage` results to fetch.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13222,7 +13596,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of `WorkweekConfigs` results to return per page.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pointer to the next page of `WorkweekConfig` results to fetch.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13245,7 +13619,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def publish_scheduled_shift(id: str, body: PublishScheduledShiftRequest | PublishScheduledShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> PublishScheduledShiftResponse</code></summary>
+<summary><code>def publish_scheduled_shift(id_: str, body: PublishScheduledShiftRequest | PublishScheduledShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> PublishScheduledShiftResponse</code></summary>
 
 <dl>
 <dd>
@@ -13270,7 +13644,9 @@ Publishes a scheduled shift. When a scheduled shift is published, Square keeps t
 
 ```python
 try:
-    response = client.labor.publish_scheduled_shift(id, body)
+    response = client.labor.publish_scheduled_shift(
+        "some example string", PublishScheduledShiftRequest(idempotency_key="some example string")
+    )
     # TODO: Handle 'response' of type PublishScheduledShiftResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -13280,7 +13656,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.publish_scheduled_shift(id, body)
+    response = await async_client.labor.publish_scheduled_shift(
+        "some example string", PublishScheduledShiftRequest(idempotency_key="some example string")
+    )
     # TODO: Handle 'response' of type PublishScheduledShiftResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -13296,9 +13674,9 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The ID of the scheduled shift to publish. |
+| <code>id_</code> | <code>str</code> | The ID of the scheduled shift to publish. |
 | <code>body</code> | <code>[PublishScheduledShiftRequest](square/models/publish_scheduled_shift_request.py) \| [PublishScheduledShiftRequestDict](square/models/publish_scheduled_shift_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13321,7 +13699,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def retrieve_scheduled_shift(id: str, *, request_options: RequestOptionsOrDict | None = None) -> RetrieveScheduledShiftResponse</code></summary>
+<summary><code>def retrieve_scheduled_shift(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> RetrieveScheduledShiftResponse</code></summary>
 
 <dl>
 <dd>
@@ -13345,7 +13723,7 @@ Retrieves a scheduled shift by ID.
 
 ```python
 try:
-    response = client.labor.retrieve_scheduled_shift(id)
+    response = client.labor.retrieve_scheduled_shift("some example string")
     # TODO: Handle 'response' of type RetrieveScheduledShiftResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -13355,7 +13733,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.retrieve_scheduled_shift(id)
+    response = await async_client.labor.retrieve_scheduled_shift("some example string")
     # TODO: Handle 'response' of type RetrieveScheduledShiftResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -13371,8 +13749,8 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The ID of the scheduled shift to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The ID of the scheduled shift to retrieve. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13395,7 +13773,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def retrieve_timecard(id: str, *, request_options: RequestOptionsOrDict | None = None) -> RetrieveTimecardResponse</code></summary>
+<summary><code>def retrieve_timecard(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> RetrieveTimecardResponse</code></summary>
 
 <dl>
 <dd>
@@ -13419,7 +13797,7 @@ Returns a single `Timecard` specified by `id`.
 
 ```python
 try:
-    response = client.labor.retrieve_timecard(id)
+    response = client.labor.retrieve_timecard("some example string")
     # TODO: Handle 'response' of type RetrieveTimecardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -13429,7 +13807,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.retrieve_timecard(id)
+    response = await async_client.labor.retrieve_timecard("some example string")
     # TODO: Handle 'response' of type RetrieveTimecardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -13445,8 +13823,8 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The UUID for the `Timecard` being retrieved. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The UUID for the `Timecard` being retrieved. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13494,7 +13872,7 @@ By default, results are sorted by `start_at` in ascending order.
 
 ```python
 try:
-    response = client.labor.search_scheduled_shifts(body)
+    response = client.labor.search_scheduled_shifts(SearchScheduledShiftsRequest())
     # TODO: Handle 'response' of type SearchScheduledShiftsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -13504,7 +13882,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.search_scheduled_shifts(body)
+    response = await async_client.labor.search_scheduled_shifts(SearchScheduledShiftsRequest())
     # TODO: Handle 'response' of type SearchScheduledShiftsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -13521,7 +13899,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchScheduledShiftsRequest](square/models/search_scheduled_shifts_request.py) \| [SearchScheduledShiftsRequestDict](square/models/search_scheduled_shifts_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13581,7 +13959,7 @@ The list can be sorted by:
 
 ```python
 try:
-    response = client.labor.search_shifts(body)
+    response = client.labor.search_shifts(SearchShiftsRequest())
     # TODO: Handle 'response' of type SearchShiftsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -13591,7 +13969,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.search_shifts(body)
+    response = await async_client.labor.search_shifts(SearchShiftsRequest())
     # TODO: Handle 'response' of type SearchShiftsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -13608,7 +13986,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchShiftsRequest](square/models/search_shifts_request.py) \| [SearchShiftsRequestDict](square/models/search_shifts_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13668,7 +14046,7 @@ The list can be sorted by:
 
 ```python
 try:
-    response = client.labor.search_timecards(body)
+    response = client.labor.search_timecards(SearchTimecardsRequest())
     # TODO: Handle 'response' of type SearchTimecardsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -13678,7 +14056,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.search_timecards(body)
+    response = await async_client.labor.search_timecards(SearchTimecardsRequest())
     # TODO: Handle 'response' of type SearchTimecardsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -13695,7 +14073,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchTimecardsRequest](square/models/search_timecards_request.py) \| [SearchTimecardsRequestDict](square/models/search_timecards_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13718,7 +14096,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def update_break_type(id: str, body: UpdateBreakTypeRequest | UpdateBreakTypeRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> UpdateBreakTypeResponse</code></summary>
+<summary><code>def update_break_type(id_: str, body: UpdateBreakTypeRequest | UpdateBreakTypeRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> UpdateBreakTypeResponse</code></summary>
 
 <dl>
 <dd>
@@ -13742,7 +14120,17 @@ Updates an existing `BreakType`.
 
 ```python
 try:
-    response = client.labor.update_break_type(id, body)
+    response = client.labor.update_break_type(
+        "some example string",
+        UpdateBreakTypeRequest(
+            break_type=BreakType(
+                location_id="some example string",
+                break_name="some example string",
+                expected_duration="some example string",
+                is_paid=True,
+            ),
+        ),
+    )
     # TODO: Handle 'response' of type UpdateBreakTypeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -13752,7 +14140,17 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.update_break_type(id, body)
+    response = await async_client.labor.update_break_type(
+        "some example string",
+        UpdateBreakTypeRequest(
+            break_type=BreakType(
+                location_id="some example string",
+                break_name="some example string",
+                expected_duration="some example string",
+                is_paid=True,
+            ),
+        ),
+    )
     # TODO: Handle 'response' of type UpdateBreakTypeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -13768,9 +14166,9 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The UUID for the `BreakType` being updated. |
+| <code>id_</code> | <code>str</code> | The UUID for the `BreakType` being updated. |
 | <code>body</code> | <code>[UpdateBreakTypeRequest](square/models/update_break_type_request.py) \| [UpdateBreakTypeRequestDict](square/models/update_break_type_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13793,7 +14191,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def update_scheduled_shift(id: str, body: UpdateScheduledShiftRequest | UpdateScheduledShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> UpdateScheduledShiftResponse</code></summary>
+<summary><code>def update_scheduled_shift(id_: str, body: UpdateScheduledShiftRequest | UpdateScheduledShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> UpdateScheduledShiftResponse</code></summary>
 
 <dl>
 <dd>
@@ -13826,7 +14224,9 @@ and then publish the shift.
 
 ```python
 try:
-    response = client.labor.update_scheduled_shift(id, body)
+    response = client.labor.update_scheduled_shift(
+        "some example string", UpdateScheduledShiftRequest(scheduled_shift=ScheduledShift())
+    )
     # TODO: Handle 'response' of type UpdateScheduledShiftResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -13836,7 +14236,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.update_scheduled_shift(id, body)
+    response = await async_client.labor.update_scheduled_shift(
+        "some example string", UpdateScheduledShiftRequest(scheduled_shift=ScheduledShift())
+    )
     # TODO: Handle 'response' of type UpdateScheduledShiftResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -13852,9 +14254,9 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The ID of the scheduled shift to update. |
+| <code>id_</code> | <code>str</code> | The ID of the scheduled shift to update. |
 | <code>body</code> | <code>[UpdateScheduledShiftRequest](square/models/update_scheduled_shift_request.py) \| [UpdateScheduledShiftRequestDict](square/models/update_scheduled_shift_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13877,7 +14279,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def update_shift(id: str, body: UpdateShiftRequest | UpdateShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> UpdateShiftResponse</code></summary>
+<summary><code>def update_shift(id_: str, body: UpdateShiftRequest | UpdateShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> UpdateShiftResponse</code></summary>
 
 <dl>
 <dd>
@@ -13907,7 +14309,10 @@ set on each `Break`.
 
 ```python
 try:
-    response = client.labor.update_shift(id, body)
+    response = client.labor.update_shift(
+        "some example string",
+        UpdateShiftRequest(shift=Shift(location_id="some example string", start_at="some example string")),
+    )
     # TODO: Handle 'response' of type UpdateShiftResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -13917,7 +14322,10 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.update_shift(id, body)
+    response = await async_client.labor.update_shift(
+        "some example string",
+        UpdateShiftRequest(shift=Shift(location_id="some example string", start_at="some example string")),
+    )
     # TODO: Handle 'response' of type UpdateShiftResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -13933,9 +14341,9 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The ID of the object being updated. |
+| <code>id_</code> | <code>str</code> | The ID of the object being updated. |
 | <code>body</code> | <code>[UpdateShiftRequest](square/models/update_shift_request.py) \| [UpdateShiftRequestDict](square/models/update_shift_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13958,7 +14366,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def update_timecard(id: str, body: UpdateTimecardRequest | UpdateTimecardRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> UpdateTimecardResponse</code></summary>
+<summary><code>def update_timecard(id_: str, body: UpdateTimecardRequest | UpdateTimecardRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> UpdateTimecardResponse</code></summary>
 
 <dl>
 <dd>
@@ -13988,7 +14396,14 @@ set on each `Break`.
 
 ```python
 try:
-    response = client.labor.update_timecard(id, body)
+    response = client.labor.update_timecard(
+        "some example string",
+        UpdateTimecardRequest(
+            timecard=Timecard(
+                location_id="some example string", start_at="some example string", team_member_id="some example string"
+            ),
+        ),
+    )
     # TODO: Handle 'response' of type UpdateTimecardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -13998,7 +14413,14 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.update_timecard(id, body)
+    response = await async_client.labor.update_timecard(
+        "some example string",
+        UpdateTimecardRequest(
+            timecard=Timecard(
+                location_id="some example string", start_at="some example string", team_member_id="some example string"
+            ),
+        ),
+    )
     # TODO: Handle 'response' of type UpdateTimecardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14014,9 +14436,9 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The ID of the object being updated. |
+| <code>id_</code> | <code>str</code> | The ID of the object being updated. |
 | <code>body</code> | <code>[UpdateTimecardRequest](square/models/update_timecard_request.py) \| [UpdateTimecardRequestDict](square/models/update_timecard_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14039,7 +14461,7 @@ except ApiError as e:
 </details>
 
 <details>
-<summary><code>def update_workweek_config(id: str, body: UpdateWorkweekConfigRequest | UpdateWorkweekConfigRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> UpdateWorkweekConfigResponse</code></summary>
+<summary><code>def update_workweek_config(id_: str, body: UpdateWorkweekConfigRequest | UpdateWorkweekConfigRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> UpdateWorkweekConfigResponse</code></summary>
 
 <dl>
 <dd>
@@ -14063,7 +14485,12 @@ Updates a `WorkweekConfig`.
 
 ```python
 try:
-    response = client.labor.update_workweek_config(id, body)
+    response = client.labor.update_workweek_config(
+        "some example string",
+        UpdateWorkweekConfigRequest(
+            workweek_config=WorkweekConfig(start_of_week=Weekday.MON, start_of_day_local_time="some example string")
+        ),
+    )
     # TODO: Handle 'response' of type UpdateWorkweekConfigResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14073,7 +14500,12 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.labor.update_workweek_config(id, body)
+    response = await async_client.labor.update_workweek_config(
+        "some example string",
+        UpdateWorkweekConfigRequest(
+            workweek_config=WorkweekConfig(start_of_week=Weekday.MON, start_of_day_local_time="some example string")
+        ),
+    )
     # TODO: Handle 'response' of type UpdateWorkweekConfigResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14089,9 +14521,9 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The UUID for the `WorkweekConfig` object being updated. |
+| <code>id_</code> | <code>str</code> | The UUID for the `WorkweekConfig` object being updated. |
 | <code>body</code> | <code>[UpdateWorkweekConfigRequest](square/models/update_workweek_config_request.py) \| [UpdateWorkweekConfigRequestDict](square/models/update_workweek_config_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14144,7 +14576,11 @@ To delete a custom attribute owned by another application, the `visibility` sett
 
 ```python
 try:
-    response = client.location_custom_attributes.bulk_delete_location_custom_attributes(body)
+    response = client.location_custom_attributes.bulk_delete_location_custom_attributes(
+        BulkDeleteLocationCustomAttributesRequest(
+            values={"key": BulkDeleteLocationCustomAttributesRequestLocationCustomAttributeDeleteRequest()}
+        ),
+    )
     # TODO: Handle 'response' of type BulkDeleteLocationCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14154,7 +14590,11 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.location_custom_attributes.bulk_delete_location_custom_attributes(body)
+    response = await async_client.location_custom_attributes.bulk_delete_location_custom_attributes(
+        BulkDeleteLocationCustomAttributesRequest(
+            values={"key": BulkDeleteLocationCustomAttributesRequestLocationCustomAttributeDeleteRequest()}
+        ),
+    )
     # TODO: Handle 'response' of type BulkDeleteLocationCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14171,7 +14611,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkDeleteLocationCustomAttributesRequest](square/models/bulk_delete_location_custom_attributes_request.py) \| [BulkDeleteLocationCustomAttributesRequestDict](square/models/bulk_delete_location_custom_attributes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14227,7 +14667,15 @@ must be `VISIBILITY_READ_WRITE_VALUES`.
 
 ```python
 try:
-    response = client.location_custom_attributes.bulk_upsert_location_custom_attributes(body)
+    response = client.location_custom_attributes.bulk_upsert_location_custom_attributes(
+        BulkUpsertLocationCustomAttributesRequest(
+            values={
+                "key": BulkUpsertLocationCustomAttributesRequestLocationCustomAttributeUpsertRequest(
+                    location_id="some example string", custom_attribute=CustomAttribute()
+                ),
+            },
+        ),
+    )
     # TODO: Handle 'response' of type BulkUpsertLocationCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14237,7 +14685,15 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.location_custom_attributes.bulk_upsert_location_custom_attributes(body)
+    response = await async_client.location_custom_attributes.bulk_upsert_location_custom_attributes(
+        BulkUpsertLocationCustomAttributesRequest(
+            values={
+                "key": BulkUpsertLocationCustomAttributesRequestLocationCustomAttributeUpsertRequest(
+                    location_id="some example string", custom_attribute=CustomAttribute()
+                ),
+            },
+        ),
+    )
     # TODO: Handle 'response' of type BulkUpsertLocationCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14254,7 +14710,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkUpsertLocationCustomAttributesRequest](square/models/bulk_upsert_location_custom_attributes_request.py) \| [BulkUpsertLocationCustomAttributesRequestDict](square/models/bulk_upsert_location_custom_attributes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14307,7 +14763,9 @@ to set the custom attribute for locations.
 
 ```python
 try:
-    response = client.location_custom_attributes.create_location_custom_attribute_definition(body)
+    response = client.location_custom_attributes.create_location_custom_attribute_definition(
+        CreateLocationCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition())
+    )
     # TODO: Handle 'response' of type CreateLocationCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14317,7 +14775,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.location_custom_attributes.create_location_custom_attribute_definition(body)
+    response = await async_client.location_custom_attributes.create_location_custom_attribute_definition(
+        CreateLocationCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition())
+    )
     # TODO: Handle 'response' of type CreateLocationCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14334,7 +14794,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateLocationCustomAttributeDefinitionRequest](square/models/create_location_custom_attribute_definition_request.py) \| [CreateLocationCustomAttributeDefinitionRequestDict](square/models/create_location_custom_attribute_definition_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14383,7 +14843,9 @@ To delete a custom attribute owned by another application, the `visibility` sett
 
 ```python
 try:
-    response = client.location_custom_attributes.delete_location_custom_attribute(location_id, key)
+    response = client.location_custom_attributes.delete_location_custom_attribute(
+        "some example string", "some example string"
+    )
     # TODO: Handle 'response' of type DeleteLocationCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14393,7 +14855,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.location_custom_attributes.delete_location_custom_attribute(location_id, key)
+    response = await async_client.location_custom_attributes.delete_location_custom_attribute(
+        "some example string", "some example string"
+    )
     # TODO: Handle 'response' of type DeleteLocationCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14411,7 +14875,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | The ID of the target [location](entity:Location). |
 | <code>key</code> | <code>str</code> | The key of the custom attribute to delete. This key must match the `key` of a custom<br>attribute definition in the Square seller account. If the requesting application is not the<br>definition owner, you must use the qualified key. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14461,7 +14925,7 @@ Only the definition owner can delete a custom attribute definition.
 
 ```python
 try:
-    response = client.location_custom_attributes.delete_location_custom_attribute_definition(key)
+    response = client.location_custom_attributes.delete_location_custom_attribute_definition("some example string")
     # TODO: Handle 'response' of type DeleteLocationCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14471,7 +14935,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.location_custom_attributes.delete_location_custom_attribute_definition(key)
+    response = await async_client.location_custom_attributes.delete_location_custom_attribute_definition(
+        "some example string"
+    )
     # TODO: Handle 'response' of type DeleteLocationCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14488,7 +14954,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14567,7 +15033,7 @@ except ApiError as e:
 | <code>visibility_filter</code> | <code>[VisibilityFilterOrStr](square/models/enums/visibility_filter.py) \| None</code> | Filters the `CustomAttributeDefinition` results by their `visibility` values.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response. This limit is advisory.<br>The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100.<br>The default value is 20. For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint.<br>Provide this cursor to retrieve the next page of results for your original request.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14619,7 +15085,7 @@ and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 
 ```python
 try:
-    response = client.location_custom_attributes.list_location_custom_attributes(location_id)
+    response = client.location_custom_attributes.list_location_custom_attributes("some example string")
     # TODO: Handle 'response' of type ListLocationCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14629,7 +15095,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.location_custom_attributes.list_location_custom_attributes(location_id)
+    response = await async_client.location_custom_attributes.list_location_custom_attributes("some example string")
     # TODO: Handle 'response' of type ListLocationCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14650,7 +15116,7 @@ except ApiError as e:
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response. This limit is advisory.<br>The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100.<br>The default value is 20. For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint.<br>Provide this cursor to retrieve the next page of results for your original request. For more<br>information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>with_definitions</code> | <code>bool \| None</code> | Indicates whether to return the [custom attribute definition](entity:CustomAttributeDefinition) in the `definition` field of each<br>custom attribute. Set this parameter to `true` to get the name and description of each custom<br>attribute, information about the data type, or other definition details. The default value is `false`.<br>**Default**: <code>False</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14701,7 +15167,9 @@ To retrieve a custom attribute owned by another application, the `visibility` se
 
 ```python
 try:
-    response = client.location_custom_attributes.retrieve_location_custom_attribute(location_id, key)
+    response = client.location_custom_attributes.retrieve_location_custom_attribute(
+        "some example string", "some example string"
+    )
     # TODO: Handle 'response' of type RetrieveLocationCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14711,7 +15179,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.location_custom_attributes.retrieve_location_custom_attribute(location_id, key)
+    response = await async_client.location_custom_attributes.retrieve_location_custom_attribute(
+        "some example string", "some example string"
+    )
     # TODO: Handle 'response' of type RetrieveLocationCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14731,7 +15201,7 @@ except ApiError as e:
 | <code>key</code> | <code>str</code> | The key of the custom attribute to retrieve. This key must match the `key` of a custom<br>attribute definition in the Square seller account. If the requesting application is not the<br>definition owner, you must use the qualified key. |
 | <code>with_definition</code> | <code>bool \| None</code> | Indicates whether to return the [custom attribute definition](entity:CustomAttributeDefinition) in the `definition` field of<br>the custom attribute. Set this parameter to `true` to get the name and description of the custom<br>attribute, information about the data type, or other definition details. The default value is `false`.<br>**Default**: <code>False</code> |
 | <code>version</code> | <code>int \| None</code> | The current version of the custom attribute, which is used for strongly consistent reads to<br>guarantee that you receive the most up-to-date data. When included in the request, Square<br>returns the specified version or a higher version if one exists. If the specified version is<br>higher than the current version, Square returns a `BAD_REQUEST` error.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14780,7 +15250,7 @@ setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 
 ```python
 try:
-    response = client.location_custom_attributes.retrieve_location_custom_attribute_definition(key)
+    response = client.location_custom_attributes.retrieve_location_custom_attribute_definition("some example string")
     # TODO: Handle 'response' of type RetrieveLocationCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14790,7 +15260,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.location_custom_attributes.retrieve_location_custom_attribute_definition(key)
+    response = await async_client.location_custom_attributes.retrieve_location_custom_attribute_definition(
+        "some example string"
+    )
     # TODO: Handle 'response' of type RetrieveLocationCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14808,7 +15280,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to retrieve. If the requesting application<br>is not the definition owner, you must use the qualified key. |
 | <code>version</code> | <code>int \| None</code> | The current version of the custom attribute definition, which is used for strongly consistent<br>reads to guarantee that you receive the most up-to-date data. When included in the request,<br>Square returns the specified version or a higher version if one exists. If the specified version<br>is higher than the current version, Square returns a `BAD_REQUEST` error.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14858,7 +15330,10 @@ Only the definition owner can update a custom attribute definition.
 
 ```python
 try:
-    response = client.location_custom_attributes.update_location_custom_attribute_definition(key, body)
+    response = client.location_custom_attributes.update_location_custom_attribute_definition(
+        "some example string",
+        UpdateLocationCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition()),
+    )
     # TODO: Handle 'response' of type UpdateLocationCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14868,7 +15343,10 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.location_custom_attributes.update_location_custom_attribute_definition(key, body)
+    response = await async_client.location_custom_attributes.update_location_custom_attribute_definition(
+        "some example string",
+        UpdateLocationCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition()),
+    )
     # TODO: Handle 'response' of type UpdateLocationCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14886,7 +15364,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to update. |
 | <code>body</code> | <code>[UpdateLocationCustomAttributeDefinitionRequest](square/models/update_location_custom_attribute_definition_request.py) \| [UpdateLocationCustomAttributeDefinitionRequestDict](square/models/update_location_custom_attribute_definition_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14938,7 +15416,11 @@ must be `VISIBILITY_READ_WRITE_VALUES`.
 
 ```python
 try:
-    response = client.location_custom_attributes.upsert_location_custom_attribute(location_id, key, body)
+    response = client.location_custom_attributes.upsert_location_custom_attribute(
+        "some example string",
+        "some example string",
+        UpsertLocationCustomAttributeRequest(custom_attribute=CustomAttribute()),
+    )
     # TODO: Handle 'response' of type UpsertLocationCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14948,7 +15430,11 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.location_custom_attributes.upsert_location_custom_attribute(location_id, key, body)
+    response = await async_client.location_custom_attributes.upsert_location_custom_attribute(
+        "some example string",
+        "some example string",
+        UpsertLocationCustomAttributeRequest(custom_attribute=CustomAttribute()),
+    )
     # TODO: Handle 'response' of type UpsertLocationCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -14967,7 +15453,7 @@ except ApiError as e:
 | <code>location_id</code> | <code>str</code> | The ID of the target [location](entity:Location). |
 | <code>key</code> | <code>str</code> | The key of the custom attribute to create or update. This key must match the `key` of a<br>custom attribute definition in the Square seller account. If the requesting application is not<br>the definition owner, you must use the qualified key. |
 | <code>body</code> | <code>[UpsertLocationCustomAttributeRequest](square/models/upsert_location_custom_attribute_request.py) \| [UpsertLocationCustomAttributeRequestDict](square/models/upsert_location_custom_attribute_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15024,7 +15510,7 @@ each location has a sensible and unique name.
 
 ```python
 try:
-    response = client.locations.create_location(body)
+    response = client.locations.create_location(CreateLocationRequest())
     # TODO: Handle 'response' of type CreateLocationResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15034,7 +15520,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.locations.create_location(body)
+    response = await async_client.locations.create_location(CreateLocationRequest())
     # TODO: Handle 'response' of type CreateLocationResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15051,7 +15537,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateLocationRequest](square/models/create_location_request.py) \| [CreateLocationRequestDict](square/models/create_location_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15125,7 +15611,7 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15173,7 +15659,7 @@ as the location ID to retrieve details of the [main location](https://developer.
 
 ```python
 try:
-    response = client.locations.retrieve_location(location_id)
+    response = client.locations.retrieve_location("some example string")
     # TODO: Handle 'response' of type RetrieveLocationResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15183,7 +15669,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.locations.retrieve_location(location_id)
+    response = await async_client.locations.retrieve_location("some example string")
     # TODO: Handle 'response' of type RetrieveLocationResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15200,7 +15686,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | The ID of the location to retrieve. Specify the string<br>"main" to return the main location. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15247,7 +15733,7 @@ Updates a [location](https://developer.squareup.com/docs/locations-api).
 
 ```python
 try:
-    response = client.locations.update_location(location_id, body)
+    response = client.locations.update_location("some example string", UpdateLocationRequest())
     # TODO: Handle 'response' of type UpdateLocationResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15257,7 +15743,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.locations.update_location(location_id, body)
+    response = await async_client.locations.update_location("some example string", UpdateLocationRequest())
     # TODO: Handle 'response' of type UpdateLocationResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15275,7 +15761,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | The ID of the location to update. |
 | <code>body</code> | <code>[UpdateLocationRequest](square/models/update_location_request.py) \| [UpdateLocationRequestDict](square/models/update_location_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15339,7 +15825,14 @@ to compute the points earned from the base loyalty program. For information abou
 
 ```python
 try:
-    response = client.loyalty.accumulate_loyalty_points(account_id, body)
+    response = client.loyalty.accumulate_loyalty_points(
+        "some example string",
+        AccumulateLoyaltyPointsRequest(
+            accumulate_points=LoyaltyEventAccumulatePoints(),
+            idempotency_key="some example string",
+            location_id="some example string",
+        ),
+    )
     # TODO: Handle 'response' of type AccumulateLoyaltyPointsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15349,7 +15842,14 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.loyalty.accumulate_loyalty_points(account_id, body)
+    response = await async_client.loyalty.accumulate_loyalty_points(
+        "some example string",
+        AccumulateLoyaltyPointsRequest(
+            accumulate_points=LoyaltyEventAccumulatePoints(),
+            idempotency_key="some example string",
+            location_id="some example string",
+        ),
+    )
     # TODO: Handle 'response' of type AccumulateLoyaltyPointsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15367,7 +15867,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>account_id</code> | <code>str</code> | The ID of the target [loyalty account](entity:LoyaltyAccount). |
 | <code>body</code> | <code>[AccumulateLoyaltyPointsRequest](square/models/accumulate_loyalty_points_request.py) \| [AccumulateLoyaltyPointsRequestDict](square/models/accumulate_loyalty_points_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15418,7 +15918,12 @@ to add points when a buyer pays for the purchase.
 
 ```python
 try:
-    response = client.loyalty.adjust_loyalty_points(account_id, body)
+    response = client.loyalty.adjust_loyalty_points(
+        "some example string",
+        AdjustLoyaltyPointsRequest(
+            idempotency_key="some example string", adjust_points=LoyaltyEventAdjustPoints(points=1)
+        ),
+    )
     # TODO: Handle 'response' of type AdjustLoyaltyPointsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15428,7 +15933,12 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.loyalty.adjust_loyalty_points(account_id, body)
+    response = await async_client.loyalty.adjust_loyalty_points(
+        "some example string",
+        AdjustLoyaltyPointsRequest(
+            idempotency_key="some example string", adjust_points=LoyaltyEventAdjustPoints(points=1)
+        ),
+    )
     # TODO: Handle 'response' of type AdjustLoyaltyPointsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15446,7 +15956,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>account_id</code> | <code>str</code> | The ID of the target [loyalty account](entity:LoyaltyAccount). |
 | <code>body</code> | <code>[AdjustLoyaltyPointsRequest](square/models/adjust_loyalty_points_request.py) \| [AdjustLoyaltyPointsRequestDict](square/models/adjust_loyalty_points_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15507,7 +16017,7 @@ to calculate whether the purchase also qualifies for promotion points. For more 
 
 ```python
 try:
-    response = client.loyalty.calculate_loyalty_points(program_id, body)
+    response = client.loyalty.calculate_loyalty_points("some example string", CalculateLoyaltyPointsRequest())
     # TODO: Handle 'response' of type CalculateLoyaltyPointsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15517,7 +16027,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.loyalty.calculate_loyalty_points(program_id, body)
+    response = await async_client.loyalty.calculate_loyalty_points(
+        "some example string", CalculateLoyaltyPointsRequest()
+    )
     # TODO: Handle 'response' of type CalculateLoyaltyPointsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15535,7 +16047,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>program_id</code> | <code>str</code> | The ID of the [loyalty program](entity:LoyaltyProgram), which defines the rules for accruing points. |
 | <code>body</code> | <code>[CalculateLoyaltyPointsRequest](square/models/calculate_loyalty_points_request.py) \| [CalculateLoyaltyPointsRequestDict](square/models/calculate_loyalty_points_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15587,7 +16099,7 @@ This endpoint sets the loyalty promotion to the `CANCELED` state
 
 ```python
 try:
-    response = client.loyalty.cancel_loyalty_promotion(promotion_id, program_id)
+    response = client.loyalty.cancel_loyalty_promotion("some example string", "some example string")
     # TODO: Handle 'response' of type CancelLoyaltyPromotionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15597,7 +16109,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.loyalty.cancel_loyalty_promotion(promotion_id, program_id)
+    response = await async_client.loyalty.cancel_loyalty_promotion("some example string", "some example string")
     # TODO: Handle 'response' of type CancelLoyaltyPromotionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15615,7 +16127,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>promotion_id</code> | <code>str</code> | The ID of the [loyalty promotion](entity:LoyaltyPromotion) to cancel. You can cancel a<br>promotion that has an `ACTIVE` or `SCHEDULED` status. |
 | <code>program_id</code> | <code>str</code> | The ID of the base [loyalty program](entity:LoyaltyProgram). |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15662,7 +16174,11 @@ Creates a loyalty account. To create a loyalty account, you must provide the `pr
 
 ```python
 try:
-    response = client.loyalty.create_loyalty_account(body)
+    response = client.loyalty.create_loyalty_account(
+        CreateLoyaltyAccountRequest(
+            loyalty_account=LoyaltyAccount(program_id="some example string"), idempotency_key="some example string"
+        ),
+    )
     # TODO: Handle 'response' of type CreateLoyaltyAccountResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15672,7 +16188,11 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.loyalty.create_loyalty_account(body)
+    response = await async_client.loyalty.create_loyalty_account(
+        CreateLoyaltyAccountRequest(
+            loyalty_account=LoyaltyAccount(program_id="some example string"), idempotency_key="some example string"
+        ),
+    )
     # TODO: Handle 'response' of type CreateLoyaltyAccountResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15689,7 +16209,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateLoyaltyAccountRequest](square/models/create_loyalty_account_request.py) \| [CreateLoyaltyAccountRequestDict](square/models/create_loyalty_account_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15741,7 +16261,17 @@ This endpoint sets the loyalty promotion to the `ACTIVE` or `SCHEDULED` status, 
 
 ```python
 try:
-    response = client.loyalty.create_loyalty_promotion(program_id, body)
+    response = client.loyalty.create_loyalty_promotion(
+        "some example string",
+        CreateLoyaltyPromotionRequest(
+            loyalty_promotion=LoyaltyPromotion(
+                name="some example string",
+                incentive=LoyaltyPromotionIncentive(type_=LoyaltyPromotionIncentiveType.POINTS_MULTIPLIER),
+                available_time=LoyaltyPromotionAvailableTimeData(time_periods=["some example string"]),
+            ),
+            idempotency_key="some example string",
+        ),
+    )
     # TODO: Handle 'response' of type CreateLoyaltyPromotionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15751,7 +16281,17 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.loyalty.create_loyalty_promotion(program_id, body)
+    response = await async_client.loyalty.create_loyalty_promotion(
+        "some example string",
+        CreateLoyaltyPromotionRequest(
+            loyalty_promotion=LoyaltyPromotion(
+                name="some example string",
+                incentive=LoyaltyPromotionIncentive(type_=LoyaltyPromotionIncentiveType.POINTS_MULTIPLIER),
+                available_time=LoyaltyPromotionAvailableTimeData(time_periods=["some example string"]),
+            ),
+            idempotency_key="some example string",
+        ),
+    )
     # TODO: Handle 'response' of type CreateLoyaltyPromotionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15769,7 +16309,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>program_id</code> | <code>str</code> | The ID of the [loyalty program](entity:LoyaltyProgram) to associate with the promotion.<br>To get the program ID, call [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram)<br>using the `main` keyword. |
 | <code>body</code> | <code>[CreateLoyaltyPromotionRequest](square/models/create_loyalty_promotion_request.py) \| [CreateLoyaltyPromotionRequestDict](square/models/create_loyalty_promotion_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15823,7 +16363,12 @@ not available for the buyer to redeem another reward.
 
 ```python
 try:
-    response = client.loyalty.create_loyalty_reward(body)
+    response = client.loyalty.create_loyalty_reward(
+        CreateLoyaltyRewardRequest(
+            reward=LoyaltyReward(loyalty_account_id="some example string", reward_tier_id="some example string"),
+            idempotency_key="some example string",
+        ),
+    )
     # TODO: Handle 'response' of type CreateLoyaltyRewardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15833,7 +16378,12 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.loyalty.create_loyalty_reward(body)
+    response = await async_client.loyalty.create_loyalty_reward(
+        CreateLoyaltyRewardRequest(
+            reward=LoyaltyReward(loyalty_account_id="some example string", reward_tier_id="some example string"),
+            idempotency_key="some example string",
+        ),
+    )
     # TODO: Handle 'response' of type CreateLoyaltyRewardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15850,7 +16400,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateLoyaltyRewardRequest](square/models/create_loyalty_reward_request.py) \| [CreateLoyaltyRewardRequestDict](square/models/create_loyalty_reward_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15905,7 +16455,7 @@ You cannot delete a reward that has reached the terminal state (REDEEMED).
 
 ```python
 try:
-    response = client.loyalty.delete_loyalty_reward(reward_id)
+    response = client.loyalty.delete_loyalty_reward("some example string")
     # TODO: Handle 'response' of type DeleteLoyaltyRewardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15915,7 +16465,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.loyalty.delete_loyalty_reward(reward_id)
+    response = await async_client.loyalty.delete_loyalty_reward("some example string")
     # TODO: Handle 'response' of type DeleteLoyaltyRewardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -15932,7 +16482,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>reward_id</code> | <code>str</code> | The ID of the [loyalty reward](entity:LoyaltyReward) to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16008,7 +16558,7 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16056,7 +16606,7 @@ Results are sorted by the `created_at` date in descending order (newest to oldes
 
 ```python
 try:
-    response = client.loyalty.list_loyalty_promotions(program_id)
+    response = client.loyalty.list_loyalty_promotions("some example string")
     # TODO: Handle 'response' of type ListLoyaltyPromotionsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16066,7 +16616,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.loyalty.list_loyalty_promotions(program_id)
+    response = await async_client.loyalty.list_loyalty_promotions("some example string")
     # TODO: Handle 'response' of type ListLoyaltyPromotionsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16086,7 +16636,7 @@ except ApiError as e:
 | <code>status</code> | <code>[LoyaltyPromotionStatusOrStr](square/models/enums/loyalty_promotion_status.py) \| None</code> | The status to filter the results by. If a status is provided, only loyalty promotions<br>with the specified status are returned. Otherwise, all loyalty promotions associated with<br>the loyalty program are returned.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint.<br>Provide this cursor to retrieve the next page of results for your original request.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response.<br>The minimum value is 1 and the maximum value is 30. The default value is 30.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16143,7 +16693,10 @@ to the account.
 
 ```python
 try:
-    response = client.loyalty.redeem_loyalty_reward(reward_id, body)
+    response = client.loyalty.redeem_loyalty_reward(
+        "some example string",
+        RedeemLoyaltyRewardRequest(idempotency_key="some example string", location_id="some example string"),
+    )
     # TODO: Handle 'response' of type RedeemLoyaltyRewardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16153,7 +16706,10 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.loyalty.redeem_loyalty_reward(reward_id, body)
+    response = await async_client.loyalty.redeem_loyalty_reward(
+        "some example string",
+        RedeemLoyaltyRewardRequest(idempotency_key="some example string", location_id="some example string"),
+    )
     # TODO: Handle 'response' of type RedeemLoyaltyRewardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16171,7 +16727,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>reward_id</code> | <code>str</code> | The ID of the [loyalty reward](entity:LoyaltyReward) to redeem. |
 | <code>body</code> | <code>[RedeemLoyaltyRewardRequest](square/models/redeem_loyalty_reward_request.py) \| [RedeemLoyaltyRewardRequestDict](square/models/redeem_loyalty_reward_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16218,7 +16774,7 @@ Retrieves a loyalty account.
 
 ```python
 try:
-    response = client.loyalty.retrieve_loyalty_account(account_id)
+    response = client.loyalty.retrieve_loyalty_account("some example string")
     # TODO: Handle 'response' of type RetrieveLoyaltyAccountResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16228,7 +16784,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.loyalty.retrieve_loyalty_account(account_id)
+    response = await async_client.loyalty.retrieve_loyalty_account("some example string")
     # TODO: Handle 'response' of type RetrieveLoyaltyAccountResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16245,7 +16801,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>account_id</code> | <code>str</code> | The ID of the [loyalty account](entity:LoyaltyAccount) to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16294,7 +16850,7 @@ Loyalty programs define how buyers can earn points and redeem points for rewards
 
 ```python
 try:
-    response = client.loyalty.retrieve_loyalty_program(program_id)
+    response = client.loyalty.retrieve_loyalty_program("some example string")
     # TODO: Handle 'response' of type RetrieveLoyaltyProgramResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16304,7 +16860,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.loyalty.retrieve_loyalty_program(program_id)
+    response = await async_client.loyalty.retrieve_loyalty_program("some example string")
     # TODO: Handle 'response' of type RetrieveLoyaltyProgramResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16321,7 +16877,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>program_id</code> | <code>str</code> | The ID of the loyalty program or the keyword `main`. Either value can be used to retrieve the single loyalty program that belongs to the seller. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16368,7 +16924,7 @@ Retrieves a loyalty promotion.
 
 ```python
 try:
-    response = client.loyalty.retrieve_loyalty_promotion(promotion_id, program_id)
+    response = client.loyalty.retrieve_loyalty_promotion("some example string", "some example string")
     # TODO: Handle 'response' of type RetrieveLoyaltyPromotionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16378,7 +16934,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.loyalty.retrieve_loyalty_promotion(promotion_id, program_id)
+    response = await async_client.loyalty.retrieve_loyalty_promotion("some example string", "some example string")
     # TODO: Handle 'response' of type RetrieveLoyaltyPromotionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16396,7 +16952,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>promotion_id</code> | <code>str</code> | The ID of the [loyalty promotion](entity:LoyaltyPromotion) to retrieve. |
 | <code>program_id</code> | <code>str</code> | The ID of the base [loyalty program](entity:LoyaltyProgram). To get the program ID,<br>call [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram) using the `main` keyword. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16443,7 +16999,7 @@ Retrieves a loyalty reward.
 
 ```python
 try:
-    response = client.loyalty.retrieve_loyalty_reward(reward_id)
+    response = client.loyalty.retrieve_loyalty_reward("some example string")
     # TODO: Handle 'response' of type RetrieveLoyaltyRewardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16453,7 +17009,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.loyalty.retrieve_loyalty_reward(reward_id)
+    response = await async_client.loyalty.retrieve_loyalty_reward("some example string")
     # TODO: Handle 'response' of type RetrieveLoyaltyRewardResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16470,7 +17026,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>reward_id</code> | <code>str</code> | The ID of the [loyalty reward](entity:LoyaltyReward) to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16521,7 +17077,7 @@ Search results are sorted by `created_at` in ascending order.
 
 ```python
 try:
-    response = client.loyalty.search_loyalty_accounts(body)
+    response = client.loyalty.search_loyalty_accounts(SearchLoyaltyAccountsRequest())
     # TODO: Handle 'response' of type SearchLoyaltyAccountsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16531,7 +17087,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.loyalty.search_loyalty_accounts(body)
+    response = await async_client.loyalty.search_loyalty_accounts(SearchLoyaltyAccountsRequest())
     # TODO: Handle 'response' of type SearchLoyaltyAccountsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16548,7 +17104,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchLoyaltyAccountsRequest](square/models/search_loyalty_accounts_request.py) \| [SearchLoyaltyAccountsRequestDict](square/models/search_loyalty_accounts_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16602,7 +17158,7 @@ Search results are sorted by `created_at` in descending order.
 
 ```python
 try:
-    response = client.loyalty.search_loyalty_events(body)
+    response = client.loyalty.search_loyalty_events(SearchLoyaltyEventsRequest())
     # TODO: Handle 'response' of type SearchLoyaltyEventsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16612,7 +17168,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.loyalty.search_loyalty_events(body)
+    response = await async_client.loyalty.search_loyalty_events(SearchLoyaltyEventsRequest())
     # TODO: Handle 'response' of type SearchLoyaltyEventsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16629,7 +17185,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchLoyaltyEventsRequest](square/models/search_loyalty_events_request.py) \| [SearchLoyaltyEventsRequestDict](square/models/search_loyalty_events_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16682,7 +17238,7 @@ Search results are sorted by `updated_at` in descending order.
 
 ```python
 try:
-    response = client.loyalty.search_loyalty_rewards(body)
+    response = client.loyalty.search_loyalty_rewards(SearchLoyaltyRewardsRequest())
     # TODO: Handle 'response' of type SearchLoyaltyRewardsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16692,7 +17248,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.loyalty.search_loyalty_rewards(body)
+    response = await async_client.loyalty.search_loyalty_rewards(SearchLoyaltyRewardsRequest())
     # TODO: Handle 'response' of type SearchLoyaltyRewardsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16709,7 +17265,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchLoyaltyRewardsRequest](square/models/search_loyalty_rewards_request.py) \| [SearchLoyaltyRewardsRequestDict](square/models/search_loyalty_rewards_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16762,7 +17318,11 @@ To delete a custom attribute owned by another application, the `visibility` sett
 
 ```python
 try:
-    response = client.merchant_custom_attributes.bulk_delete_merchant_custom_attributes(body)
+    response = client.merchant_custom_attributes.bulk_delete_merchant_custom_attributes(
+        BulkDeleteMerchantCustomAttributesRequest(
+            values={"key": BulkDeleteMerchantCustomAttributesRequestMerchantCustomAttributeDeleteRequest()}
+        ),
+    )
     # TODO: Handle 'response' of type BulkDeleteMerchantCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16772,7 +17332,11 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.merchant_custom_attributes.bulk_delete_merchant_custom_attributes(body)
+    response = await async_client.merchant_custom_attributes.bulk_delete_merchant_custom_attributes(
+        BulkDeleteMerchantCustomAttributesRequest(
+            values={"key": BulkDeleteMerchantCustomAttributesRequestMerchantCustomAttributeDeleteRequest()}
+        ),
+    )
     # TODO: Handle 'response' of type BulkDeleteMerchantCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16789,7 +17353,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkDeleteMerchantCustomAttributesRequest](square/models/bulk_delete_merchant_custom_attributes_request.py) \| [BulkDeleteMerchantCustomAttributesRequestDict](square/models/bulk_delete_merchant_custom_attributes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16845,7 +17409,15 @@ must be `VISIBILITY_READ_WRITE_VALUES`.
 
 ```python
 try:
-    response = client.merchant_custom_attributes.bulk_upsert_merchant_custom_attributes(body)
+    response = client.merchant_custom_attributes.bulk_upsert_merchant_custom_attributes(
+        BulkUpsertMerchantCustomAttributesRequest(
+            values={
+                "key": BulkUpsertMerchantCustomAttributesRequestMerchantCustomAttributeUpsertRequest(
+                    merchant_id="some example string", custom_attribute=CustomAttribute()
+                ),
+            },
+        ),
+    )
     # TODO: Handle 'response' of type BulkUpsertMerchantCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16855,7 +17427,15 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.merchant_custom_attributes.bulk_upsert_merchant_custom_attributes(body)
+    response = await async_client.merchant_custom_attributes.bulk_upsert_merchant_custom_attributes(
+        BulkUpsertMerchantCustomAttributesRequest(
+            values={
+                "key": BulkUpsertMerchantCustomAttributesRequestMerchantCustomAttributeUpsertRequest(
+                    merchant_id="some example string", custom_attribute=CustomAttribute()
+                ),
+            },
+        ),
+    )
     # TODO: Handle 'response' of type BulkUpsertMerchantCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16872,7 +17452,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkUpsertMerchantCustomAttributesRequest](square/models/bulk_upsert_merchant_custom_attributes_request.py) \| [BulkUpsertMerchantCustomAttributesRequestDict](square/models/bulk_upsert_merchant_custom_attributes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16925,7 +17505,9 @@ to set the custom attribute for a merchant.
 
 ```python
 try:
-    response = client.merchant_custom_attributes.create_merchant_custom_attribute_definition(body)
+    response = client.merchant_custom_attributes.create_merchant_custom_attribute_definition(
+        CreateMerchantCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition())
+    )
     # TODO: Handle 'response' of type CreateMerchantCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16935,7 +17517,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.merchant_custom_attributes.create_merchant_custom_attribute_definition(body)
+    response = await async_client.merchant_custom_attributes.create_merchant_custom_attribute_definition(
+        CreateMerchantCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition())
+    )
     # TODO: Handle 'response' of type CreateMerchantCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -16952,7 +17536,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateMerchantCustomAttributeDefinitionRequest](square/models/create_merchant_custom_attribute_definition_request.py) \| [CreateMerchantCustomAttributeDefinitionRequestDict](square/models/create_merchant_custom_attribute_definition_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17001,7 +17585,9 @@ To delete a custom attribute owned by another application, the `visibility` sett
 
 ```python
 try:
-    response = client.merchant_custom_attributes.delete_merchant_custom_attribute(merchant_id, key)
+    response = client.merchant_custom_attributes.delete_merchant_custom_attribute(
+        "some example string", "some example string"
+    )
     # TODO: Handle 'response' of type DeleteMerchantCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -17011,7 +17597,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.merchant_custom_attributes.delete_merchant_custom_attribute(merchant_id, key)
+    response = await async_client.merchant_custom_attributes.delete_merchant_custom_attribute(
+        "some example string", "some example string"
+    )
     # TODO: Handle 'response' of type DeleteMerchantCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -17029,7 +17617,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>merchant_id</code> | <code>str</code> | The ID of the target [merchant](entity:Merchant). |
 | <code>key</code> | <code>str</code> | The key of the custom attribute to delete. This key must match the `key` of a custom<br>attribute definition in the Square seller account. If the requesting application is not the<br>definition owner, you must use the qualified key. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17079,7 +17667,7 @@ Only the definition owner can delete a custom attribute definition.
 
 ```python
 try:
-    response = client.merchant_custom_attributes.delete_merchant_custom_attribute_definition(key)
+    response = client.merchant_custom_attributes.delete_merchant_custom_attribute_definition("some example string")
     # TODO: Handle 'response' of type DeleteMerchantCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -17089,7 +17677,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.merchant_custom_attributes.delete_merchant_custom_attribute_definition(key)
+    response = await async_client.merchant_custom_attributes.delete_merchant_custom_attribute_definition(
+        "some example string"
+    )
     # TODO: Handle 'response' of type DeleteMerchantCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -17106,7 +17696,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17185,7 +17775,7 @@ except ApiError as e:
 | <code>visibility_filter</code> | <code>[VisibilityFilterOrStr](square/models/enums/visibility_filter.py) \| None</code> | Filters the `CustomAttributeDefinition` results by their `visibility` values.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response. This limit is advisory.<br>The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100.<br>The default value is 20. For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint.<br>Provide this cursor to retrieve the next page of results for your original request.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17237,7 +17827,7 @@ and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 
 ```python
 try:
-    response = client.merchant_custom_attributes.list_merchant_custom_attributes(merchant_id)
+    response = client.merchant_custom_attributes.list_merchant_custom_attributes("some example string")
     # TODO: Handle 'response' of type ListMerchantCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -17247,7 +17837,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.merchant_custom_attributes.list_merchant_custom_attributes(merchant_id)
+    response = await async_client.merchant_custom_attributes.list_merchant_custom_attributes("some example string")
     # TODO: Handle 'response' of type ListMerchantCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -17268,7 +17858,7 @@ except ApiError as e:
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response. This limit is advisory.<br>The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100.<br>The default value is 20. For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint.<br>Provide this cursor to retrieve the next page of results for your original request. For more<br>information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>with_definitions</code> | <code>bool \| None</code> | Indicates whether to return the [custom attribute definition](entity:CustomAttributeDefinition) in the `definition` field of each<br>custom attribute. Set this parameter to `true` to get the name and description of each custom<br>attribute, information about the data type, or other definition details. The default value is `false`.<br>**Default**: <code>False</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17319,7 +17909,9 @@ To retrieve a custom attribute owned by another application, the `visibility` se
 
 ```python
 try:
-    response = client.merchant_custom_attributes.retrieve_merchant_custom_attribute(merchant_id, key)
+    response = client.merchant_custom_attributes.retrieve_merchant_custom_attribute(
+        "some example string", "some example string"
+    )
     # TODO: Handle 'response' of type RetrieveMerchantCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -17329,7 +17921,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.merchant_custom_attributes.retrieve_merchant_custom_attribute(merchant_id, key)
+    response = await async_client.merchant_custom_attributes.retrieve_merchant_custom_attribute(
+        "some example string", "some example string"
+    )
     # TODO: Handle 'response' of type RetrieveMerchantCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -17349,7 +17943,7 @@ except ApiError as e:
 | <code>key</code> | <code>str</code> | The key of the custom attribute to retrieve. This key must match the `key` of a custom<br>attribute definition in the Square seller account. If the requesting application is not the<br>definition owner, you must use the qualified key. |
 | <code>with_definition</code> | <code>bool \| None</code> | Indicates whether to return the [custom attribute definition](entity:CustomAttributeDefinition) in the `definition` field of<br>the custom attribute. Set this parameter to `true` to get the name and description of the custom<br>attribute, information about the data type, or other definition details. The default value is `false`.<br>**Default**: <code>False</code> |
 | <code>version</code> | <code>int \| None</code> | The current version of the custom attribute, which is used for strongly consistent reads to<br>guarantee that you receive the most up-to-date data. When included in the request, Square<br>returns the specified version or a higher version if one exists. If the specified version is<br>higher than the current version, Square returns a `BAD_REQUEST` error.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17398,7 +17992,7 @@ setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 
 ```python
 try:
-    response = client.merchant_custom_attributes.retrieve_merchant_custom_attribute_definition(key)
+    response = client.merchant_custom_attributes.retrieve_merchant_custom_attribute_definition("some example string")
     # TODO: Handle 'response' of type RetrieveMerchantCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -17408,7 +18002,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.merchant_custom_attributes.retrieve_merchant_custom_attribute_definition(key)
+    response = await async_client.merchant_custom_attributes.retrieve_merchant_custom_attribute_definition(
+        "some example string"
+    )
     # TODO: Handle 'response' of type RetrieveMerchantCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -17426,7 +18022,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to retrieve. If the requesting application<br>is not the definition owner, you must use the qualified key. |
 | <code>version</code> | <code>int \| None</code> | The current version of the custom attribute definition, which is used for strongly consistent<br>reads to guarantee that you receive the most up-to-date data. When included in the request,<br>Square returns the specified version or a higher version if one exists. If the specified version<br>is higher than the current version, Square returns a `BAD_REQUEST` error.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17476,7 +18072,10 @@ Only the definition owner can update a custom attribute definition.
 
 ```python
 try:
-    response = client.merchant_custom_attributes.update_merchant_custom_attribute_definition(key, body)
+    response = client.merchant_custom_attributes.update_merchant_custom_attribute_definition(
+        "some example string",
+        UpdateMerchantCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition()),
+    )
     # TODO: Handle 'response' of type UpdateMerchantCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -17486,7 +18085,10 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.merchant_custom_attributes.update_merchant_custom_attribute_definition(key, body)
+    response = await async_client.merchant_custom_attributes.update_merchant_custom_attribute_definition(
+        "some example string",
+        UpdateMerchantCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition()),
+    )
     # TODO: Handle 'response' of type UpdateMerchantCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -17504,7 +18106,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to update. |
 | <code>body</code> | <code>[UpdateMerchantCustomAttributeDefinitionRequest](square/models/update_merchant_custom_attribute_definition_request.py) \| [UpdateMerchantCustomAttributeDefinitionRequestDict](square/models/update_merchant_custom_attribute_definition_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17556,7 +18158,11 @@ must be `VISIBILITY_READ_WRITE_VALUES`.
 
 ```python
 try:
-    response = client.merchant_custom_attributes.upsert_merchant_custom_attribute(merchant_id, key, body)
+    response = client.merchant_custom_attributes.upsert_merchant_custom_attribute(
+        "some example string",
+        "some example string",
+        UpsertMerchantCustomAttributeRequest(custom_attribute=CustomAttribute()),
+    )
     # TODO: Handle 'response' of type UpsertMerchantCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -17566,7 +18172,11 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.merchant_custom_attributes.upsert_merchant_custom_attribute(merchant_id, key, body)
+    response = await async_client.merchant_custom_attributes.upsert_merchant_custom_attribute(
+        "some example string",
+        "some example string",
+        UpsertMerchantCustomAttributeRequest(custom_attribute=CustomAttribute()),
+    )
     # TODO: Handle 'response' of type UpsertMerchantCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -17585,7 +18195,7 @@ except ApiError as e:
 | <code>merchant_id</code> | <code>str</code> | The ID of the target [merchant](entity:Merchant). |
 | <code>key</code> | <code>str</code> | The key of the custom attribute to create or update. This key must match the `key` of a<br>custom attribute definition in the Square seller account. If the requesting application is not<br>the definition owner, you must use the qualified key. |
 | <code>body</code> | <code>[UpsertMerchantCustomAttributeRequest](square/models/upsert_merchant_custom_attribute_request.py) \| [UpsertMerchantCustomAttributeRequestDict](square/models/upsert_merchant_custom_attribute_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17672,7 +18282,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>cursor</code> | <code>int \| None</code> | The cursor generated by the previous response.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17719,7 +18329,7 @@ Retrieves the `Merchant` object for the given `merchant_id`.
 
 ```python
 try:
-    response = client.merchants.retrieve_merchant(merchant_id)
+    response = client.merchants.retrieve_merchant("some example string")
     # TODO: Handle 'response' of type RetrieveMerchantResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -17729,7 +18339,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.merchants.retrieve_merchant(merchant_id)
+    response = await async_client.merchants.retrieve_merchant("some example string")
     # TODO: Handle 'response' of type RetrieveMerchantResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -17746,7 +18356,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>merchant_id</code> | <code>str</code> | The ID of the merchant to retrieve. If the string "me" is supplied as the ID,<br>then retrieve the merchant that is currently accessible to this call. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17817,7 +18427,9 @@ Application clients should never interact directly with OAuth tokens.
 
 ```python
 try:
-    response = client.oauth.obtain_token(body)
+    response = client.oauth.obtain_token(
+        ObtainTokenRequest(client_id="some example string", grant_type="some example string")
+    )
     # TODO: Handle 'response' of type ObtainTokenResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -17827,7 +18439,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.oauth.obtain_token(body)
+    response = await async_client.oauth.obtain_token(
+        ObtainTokenRequest(client_id="some example string", grant_type="some example string")
+    )
     # TODO: Handle 'response' of type ObtainTokenResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -17844,7 +18458,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[ObtainTokenRequest](square/models/obtain_token_request.py) \| [ObtainTokenRequestDict](square/models/obtain_token_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17930,7 +18544,7 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17990,7 +18604,7 @@ page for your application in the Developer Dashboard.
 
 ```python
 try:
-    response = client.oauth.revoke_token(body)
+    response = client.oauth.revoke_token(RevokeTokenRequest())
     # TODO: Handle 'response' of type RevokeTokenResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18000,7 +18614,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.oauth.revoke_token(body)
+    response = await async_client.oauth.revoke_token(RevokeTokenRequest())
     # TODO: Handle 'response' of type RevokeTokenResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18017,7 +18631,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[RevokeTokenRequest](square/models/revoke_token_request.py) \| [RevokeTokenRequestDict](square/models/revoke_token_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18081,7 +18695,11 @@ must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attribut
 
 ```python
 try:
-    response = client.order_custom_attributes.bulk_delete_order_custom_attributes(body)
+    response = client.order_custom_attributes.bulk_delete_order_custom_attributes(
+        BulkDeleteOrderCustomAttributesRequest(
+            values={"key": BulkDeleteOrderCustomAttributesRequestDeleteCustomAttribute(order_id="some example string")}
+        ),
+    )
     # TODO: Handle 'response' of type BulkDeleteOrderCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18091,7 +18709,11 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.order_custom_attributes.bulk_delete_order_custom_attributes(body)
+    response = await async_client.order_custom_attributes.bulk_delete_order_custom_attributes(
+        BulkDeleteOrderCustomAttributesRequest(
+            values={"key": BulkDeleteOrderCustomAttributesRequestDeleteCustomAttribute(order_id="some example string")}
+        ),
+    )
     # TODO: Handle 'response' of type BulkDeleteOrderCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18108,7 +18730,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkDeleteOrderCustomAttributesRequest](square/models/bulk_delete_order_custom_attributes_request.py) \| [BulkDeleteOrderCustomAttributesRequestDict](square/models/bulk_delete_order_custom_attributes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18168,7 +18790,15 @@ must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attribut
 
 ```python
 try:
-    response = client.order_custom_attributes.bulk_upsert_order_custom_attributes(body)
+    response = client.order_custom_attributes.bulk_upsert_order_custom_attributes(
+        BulkUpsertOrderCustomAttributesRequest(
+            values={
+                "key": BulkUpsertOrderCustomAttributesRequestUpsertCustomAttribute(
+                    custom_attribute=CustomAttribute(), order_id="some example string"
+                ),
+            },
+        ),
+    )
     # TODO: Handle 'response' of type BulkUpsertOrderCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18178,7 +18808,15 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.order_custom_attributes.bulk_upsert_order_custom_attributes(body)
+    response = await async_client.order_custom_attributes.bulk_upsert_order_custom_attributes(
+        BulkUpsertOrderCustomAttributesRequest(
+            values={
+                "key": BulkUpsertOrderCustomAttributesRequestUpsertCustomAttribute(
+                    custom_attribute=CustomAttribute(), order_id="some example string"
+                ),
+            },
+        ),
+    )
     # TODO: Handle 'response' of type BulkUpsertOrderCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18195,7 +18833,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkUpsertOrderCustomAttributesRequest](square/models/bulk_upsert_order_custom_attributes_request.py) \| [BulkUpsertOrderCustomAttributesRequestDict](square/models/bulk_upsert_order_custom_attributes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18246,7 +18884,9 @@ in the Square seller account.
 
 ```python
 try:
-    response = client.order_custom_attributes.create_order_custom_attribute_definition(body)
+    response = client.order_custom_attributes.create_order_custom_attribute_definition(
+        CreateOrderCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition())
+    )
     # TODO: Handle 'response' of type CreateOrderCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18256,7 +18896,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.order_custom_attributes.create_order_custom_attribute_definition(body)
+    response = await async_client.order_custom_attributes.create_order_custom_attribute_definition(
+        CreateOrderCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition())
+    )
     # TODO: Handle 'response' of type CreateOrderCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18273,7 +18915,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateOrderCustomAttributeDefinitionRequest](square/models/create_order_custom_attribute_definition_request.py) \| [CreateOrderCustomAttributeDefinitionRequestDict](square/models/create_order_custom_attribute_definition_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18324,7 +18966,9 @@ To delete a custom attribute owned by another application, the `visibility` sett
 
 ```python
 try:
-    response = client.order_custom_attributes.delete_order_custom_attribute(order_id, custom_attribute_key)
+    response = client.order_custom_attributes.delete_order_custom_attribute(
+        "some example string", "some example string"
+    )
     # TODO: Handle 'response' of type DeleteOrderCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18334,7 +18978,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.order_custom_attributes.delete_order_custom_attribute(order_id, custom_attribute_key)
+    response = await async_client.order_custom_attributes.delete_order_custom_attribute(
+        "some example string", "some example string"
+    )
     # TODO: Handle 'response' of type DeleteOrderCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18352,7 +18998,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>order_id</code> | <code>str</code> | The ID of the target [order](entity:Order). |
 | <code>custom_attribute_key</code> | <code>str</code> | The key of the custom attribute to delete.  This key must match the key of an<br>existing custom attribute definition. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18401,7 +19047,7 @@ Only the definition owner can delete a custom attribute definition.
 
 ```python
 try:
-    response = client.order_custom_attributes.delete_order_custom_attribute_definition(key)
+    response = client.order_custom_attributes.delete_order_custom_attribute_definition("some example string")
     # TODO: Handle 'response' of type DeleteOrderCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18411,7 +19057,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.order_custom_attributes.delete_order_custom_attribute_definition(key)
+    response = await async_client.order_custom_attributes.delete_order_custom_attribute_definition(
+        "some example string"
+    )
     # TODO: Handle 'response' of type DeleteOrderCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18428,7 +19076,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18509,7 +19157,7 @@ except ApiError as e:
 | <code>visibility_filter</code> | <code>[VisibilityFilterOrStr](square/models/enums/visibility_filter.py) \| None</code> | Requests that all of the custom attributes be returned, or only those that are read-only or read-write.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint. <br>Provide this cursor to retrieve the next page of results for your original request. <br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response. This limit is advisory. <br>The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100. <br>The default value is 20.<br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18563,7 +19211,7 @@ and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 
 ```python
 try:
-    response = client.order_custom_attributes.list_order_custom_attributes(order_id)
+    response = client.order_custom_attributes.list_order_custom_attributes("some example string")
     # TODO: Handle 'response' of type ListOrderCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18573,7 +19221,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.order_custom_attributes.list_order_custom_attributes(order_id)
+    response = await async_client.order_custom_attributes.list_order_custom_attributes("some example string")
     # TODO: Handle 'response' of type ListOrderCustomAttributesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18594,7 +19242,7 @@ except ApiError as e:
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint. <br>Provide this cursor to retrieve the next page of results for your original request. <br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response. This limit is advisory. <br>The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100. <br>The default value is 20.<br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).<br>**Default**: <code>None</code> |
 | <code>with_definitions</code> | <code>bool \| None</code> | Indicates whether to return the [custom attribute definition](entity:CustomAttributeDefinition) in the `definition` field of each<br>custom attribute. Set this parameter to `true` to get the name and description of each custom attribute, <br>information about the data type, or other definition details. The default value is `false`.<br>**Default**: <code>False</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18648,7 +19296,9 @@ also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
 
 ```python
 try:
-    response = client.order_custom_attributes.retrieve_order_custom_attribute(order_id, custom_attribute_key)
+    response = client.order_custom_attributes.retrieve_order_custom_attribute(
+        "some example string", "some example string"
+    )
     # TODO: Handle 'response' of type RetrieveOrderCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18659,7 +19309,7 @@ except ApiError as e:
 ```python
 try:
     response = await async_client.order_custom_attributes.retrieve_order_custom_attribute(
-        order_id, custom_attribute_key
+        "some example string", "some example string"
     )
     # TODO: Handle 'response' of type RetrieveOrderCustomAttributeResponse
 except ApiError as e:
@@ -18680,7 +19330,7 @@ except ApiError as e:
 | <code>custom_attribute_key</code> | <code>str</code> | The key of the custom attribute to retrieve.  This key must match the key of an<br>existing custom attribute definition. |
 | <code>version</code> | <code>int \| None</code> | To enable [optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency)<br>control, include this optional field and specify the current version of the custom attribute.<br>**Default**: <code>None</code> |
 | <code>with_definition</code> | <code>bool \| None</code> | Indicates whether to return the [custom attribute definition](entity:CustomAttributeDefinition) in the `definition` field of each <br>custom attribute. Set this parameter to `true` to get the name and description of each custom attribute, <br>information about the data type, or other definition details. The default value is `false`.<br>**Default**: <code>False</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18731,7 +19381,7 @@ setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note t
 
 ```python
 try:
-    response = client.order_custom_attributes.retrieve_order_custom_attribute_definition(key)
+    response = client.order_custom_attributes.retrieve_order_custom_attribute_definition("some example string")
     # TODO: Handle 'response' of type RetrieveOrderCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18741,7 +19391,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.order_custom_attributes.retrieve_order_custom_attribute_definition(key)
+    response = await async_client.order_custom_attributes.retrieve_order_custom_attribute_definition(
+        "some example string"
+    )
     # TODO: Handle 'response' of type RetrieveOrderCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18759,7 +19411,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to retrieve. |
 | <code>version</code> | <code>int \| None</code> | To enable [optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency)<br>control, include this optional field and specify the current version of the custom attribute.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18808,7 +19460,10 @@ Only the definition owner can update a custom attribute definition. Note that se
 
 ```python
 try:
-    response = client.order_custom_attributes.update_order_custom_attribute_definition(key, body)
+    response = client.order_custom_attributes.update_order_custom_attribute_definition(
+        "some example string",
+        UpdateOrderCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition()),
+    )
     # TODO: Handle 'response' of type UpdateOrderCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18818,7 +19473,10 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.order_custom_attributes.update_order_custom_attribute_definition(key, body)
+    response = await async_client.order_custom_attributes.update_order_custom_attribute_definition(
+        "some example string",
+        UpdateOrderCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition()),
+    )
     # TODO: Handle 'response' of type UpdateOrderCustomAttributeDefinitionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18836,7 +19494,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to update. |
 | <code>body</code> | <code>[UpdateOrderCustomAttributeDefinitionRequest](square/models/update_order_custom_attribute_definition_request.py) \| [UpdateOrderCustomAttributeDefinitionRequestDict](square/models/update_order_custom_attribute_definition_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18891,7 +19549,11 @@ must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attribut
 
 ```python
 try:
-    response = client.order_custom_attributes.upsert_order_custom_attribute(order_id, custom_attribute_key, body)
+    response = client.order_custom_attributes.upsert_order_custom_attribute(
+        "some example string",
+        "some example string",
+        UpsertOrderCustomAttributeRequest(custom_attribute=CustomAttribute()),
+    )
     # TODO: Handle 'response' of type UpsertOrderCustomAttributeResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18902,7 +19564,9 @@ except ApiError as e:
 ```python
 try:
     response = await async_client.order_custom_attributes.upsert_order_custom_attribute(
-        order_id, custom_attribute_key, body
+        "some example string",
+        "some example string",
+        UpsertOrderCustomAttributeRequest(custom_attribute=CustomAttribute()),
     )
     # TODO: Handle 'response' of type UpsertOrderCustomAttributeResponse
 except ApiError as e:
@@ -18922,7 +19586,7 @@ except ApiError as e:
 | <code>order_id</code> | <code>str</code> | The ID of the target [order](entity:Order). |
 | <code>custom_attribute_key</code> | <code>str</code> | The key of the custom attribute to create or update.  This key must match the key <br>of an existing custom attribute definition. |
 | <code>body</code> | <code>[UpsertOrderCustomAttributeRequest](square/models/upsert_order_custom_attribute_request.py) \| [UpsertOrderCustomAttributeRequestDict](square/models/upsert_order_custom_attribute_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18975,7 +19639,7 @@ If a given order ID does not exist, the ID is ignored instead of generating an e
 
 ```python
 try:
-    response = client.orders.batch_retrieve_orders(body)
+    response = client.orders.batch_retrieve_orders(BatchRetrieveOrdersRequest(order_ids=["some example string"]))
     # TODO: Handle 'response' of type BatchRetrieveOrdersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -18985,7 +19649,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.orders.batch_retrieve_orders(body)
+    response = await async_client.orders.batch_retrieve_orders(
+        BatchRetrieveOrdersRequest(order_ids=["some example string"])
+    )
     # TODO: Handle 'response' of type BatchRetrieveOrdersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19002,7 +19668,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BatchRetrieveOrdersRequest](square/models/batch_retrieve_orders_request.py) \| [BatchRetrieveOrdersRequestDict](square/models/batch_retrieve_orders_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19049,7 +19715,7 @@ Enables applications to preview order pricing without creating an order.
 
 ```python
 try:
-    response = client.orders.calculate_order(body)
+    response = client.orders.calculate_order(CalculateOrderRequest(order=Order(location_id="some example string")))
     # TODO: Handle 'response' of type CalculateOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19059,7 +19725,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.orders.calculate_order(body)
+    response = await async_client.orders.calculate_order(
+        CalculateOrderRequest(order=Order(location_id="some example string"))
+    )
     # TODO: Handle 'response' of type CalculateOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19076,7 +19744,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CalculateOrderRequest](square/models/calculate_order_request.py) \| [CalculateOrderRequestDict](square/models/calculate_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19124,7 +19792,7 @@ only the core fields (such as line items, taxes, and discounts) copied from the 
 
 ```python
 try:
-    response = client.orders.clone_order(body)
+    response = client.orders.clone_order(CloneOrderRequest(order_id="some example string"))
     # TODO: Handle 'response' of type CloneOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19134,7 +19802,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.orders.clone_order(body)
+    response = await async_client.orders.clone_order(CloneOrderRequest(order_id="some example string"))
     # TODO: Handle 'response' of type CloneOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19151,7 +19819,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CloneOrderRequest](square/models/clone_order_request.py) \| [CloneOrderRequestDict](square/models/clone_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19204,7 +19872,7 @@ You can modify open orders using the [UpdateOrder](api-endpoint:Orders-UpdateOrd
 
 ```python
 try:
-    response = client.orders.create_order(body)
+    response = client.orders.create_order(CreateOrderRequest())
     # TODO: Handle 'response' of type CreateOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19214,7 +19882,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.orders.create_order(body)
+    response = await async_client.orders.create_order(CreateOrderRequest())
     # TODO: Handle 'response' of type CreateOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19231,7 +19899,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateOrderRequest](square/models/create_order_request.py) \| [CreateOrderRequestDict](square/models/create_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19291,7 +19959,7 @@ Using a delayed capture payment with `PayOrder` completes the approved payment.
 
 ```python
 try:
-    response = client.orders.pay_order(order_id, body)
+    response = client.orders.pay_order("some example string", PayOrderRequest(idempotency_key="some example string"))
     # TODO: Handle 'response' of type PayOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19301,7 +19969,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.orders.pay_order(order_id, body)
+    response = await async_client.orders.pay_order(
+        "some example string", PayOrderRequest(idempotency_key="some example string")
+    )
     # TODO: Handle 'response' of type PayOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19319,7 +19989,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>order_id</code> | <code>str</code> | The ID of the order being paid. |
 | <code>body</code> | <code>[PayOrderRequest](square/models/pay_order_request.py) \| [PayOrderRequestDict](square/models/pay_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19366,7 +20036,7 @@ Retrieves an [Order](entity:Order) by ID.
 
 ```python
 try:
-    response = client.orders.retrieve_order(order_id)
+    response = client.orders.retrieve_order("some example string")
     # TODO: Handle 'response' of type RetrieveOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19376,7 +20046,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.orders.retrieve_order(order_id)
+    response = await async_client.orders.retrieve_order("some example string")
     # TODO: Handle 'response' of type RetrieveOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19393,7 +20063,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>order_id</code> | <code>str</code> | The ID of the order to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19456,7 +20126,7 @@ not the time it was subsequently transmitted to Square.
 
 ```python
 try:
-    response = client.orders.search_orders(body)
+    response = client.orders.search_orders(SearchOrdersRequest())
     # TODO: Handle 'response' of type SearchOrdersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19466,7 +20136,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.orders.search_orders(body)
+    response = await async_client.orders.search_orders(SearchOrdersRequest())
     # TODO: Handle 'response' of type SearchOrdersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19483,7 +20153,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchOrdersRequest](square/models/search_orders_request.py) \| [SearchOrdersRequestDict](square/models/search_orders_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19544,7 +20214,7 @@ To pay for an order, see
 
 ```python
 try:
-    response = client.orders.update_order(order_id, body)
+    response = client.orders.update_order("some example string", UpdateOrderRequest())
     # TODO: Handle 'response' of type UpdateOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19554,7 +20224,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.orders.update_order(order_id, body)
+    response = await async_client.orders.update_order("some example string", UpdateOrderRequest())
     # TODO: Handle 'response' of type UpdateOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19572,7 +20242,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>order_id</code> | <code>str</code> | The ID of the order to update. |
 | <code>body</code> | <code>[UpdateOrderRequest](square/models/update_order_request.py) \| [UpdateOrderRequestDict](square/models/update_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19624,7 +20294,7 @@ the APPROVED `status`.
 
 ```python
 try:
-    response = client.payments.cancel_payment(payment_id)
+    response = client.payments.cancel_payment("some example string")
     # TODO: Handle 'response' of type CancelPaymentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19634,7 +20304,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.payments.cancel_payment(payment_id)
+    response = await async_client.payments.cancel_payment("some example string")
     # TODO: Handle 'response' of type CancelPaymentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19651,7 +20321,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>payment_id</code> | <code>str</code> | The ID of the payment to cancel. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19708,7 +20378,9 @@ returns successfully.
 
 ```python
 try:
-    response = client.payments.cancel_payment_by_idempotency_key(body)
+    response = client.payments.cancel_payment_by_idempotency_key(
+        CancelPaymentByIdempotencyKeyRequest(idempotency_key="some example string")
+    )
     # TODO: Handle 'response' of type CancelPaymentByIdempotencyKeyResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19718,7 +20390,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.payments.cancel_payment_by_idempotency_key(body)
+    response = await async_client.payments.cancel_payment_by_idempotency_key(
+        CancelPaymentByIdempotencyKeyRequest(idempotency_key="some example string")
+    )
     # TODO: Handle 'response' of type CancelPaymentByIdempotencyKeyResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19735,7 +20409,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CancelPaymentByIdempotencyKeyRequest](square/models/cancel_payment_by_idempotency_key_request.py) \| [CancelPaymentByIdempotencyKeyRequestDict](square/models/cancel_payment_by_idempotency_key_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19785,7 +20459,7 @@ You can use this endpoint to complete a payment with the APPROVED `status`.
 
 ```python
 try:
-    response = client.payments.complete_payment(payment_id, body)
+    response = client.payments.complete_payment("some example string", CompletePaymentRequest())
     # TODO: Handle 'response' of type CompletePaymentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19795,7 +20469,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.payments.complete_payment(payment_id, body)
+    response = await async_client.payments.complete_payment("some example string", CompletePaymentRequest())
     # TODO: Handle 'response' of type CompletePaymentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19813,7 +20487,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>payment_id</code> | <code>str</code> | The unique ID identifying the payment to be completed. |
 | <code>body</code> | <code>[CompletePaymentRequest](square/models/complete_payment_request.py) \| [CompletePaymentRequestDict](square/models/complete_payment_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19867,7 +20541,9 @@ The endpoint creates a
 
 ```python
 try:
-    response = client.payments.create_payment(body)
+    response = client.payments.create_payment(
+        CreatePaymentRequest(source_id="some example string", idempotency_key="some example string")
+    )
     # TODO: Handle 'response' of type CreatePaymentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19877,7 +20553,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.payments.create_payment(body)
+    response = await async_client.payments.create_payment(
+        CreatePaymentRequest(source_id="some example string", idempotency_key="some example string")
+    )
     # TODO: Handle 'response' of type CreatePaymentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19894,7 +20572,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreatePaymentRequest](square/models/create_payment_request.py) \| [CreatePaymentRequestDict](square/models/create_payment_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19941,7 +20619,7 @@ Retrieves details for a specific payment.
 
 ```python
 try:
-    response = client.payments.get_payment(payment_id)
+    response = client.payments.get_payment("some example string")
     # TODO: Handle 'response' of type GetPaymentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19951,7 +20629,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.payments.get_payment(payment_id)
+    response = await async_client.payments.get_payment("some example string")
     # TODO: Handle 'response' of type GetPaymentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -19968,7 +20646,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>payment_id</code> | <code>str</code> | A unique ID for the desired payment. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20061,7 +20739,7 @@ except ApiError as e:
 | <code>updated_at_begin_time</code> | <code>str \| None</code> | Indicates the start of the time range to retrieve payments for, in RFC 3339 format.  The<br>range is determined using the `updated_at` field for each Payment.<br>**Default**: <code>None</code> |
 | <code>updated_at_end_time</code> | <code>str \| None</code> | Indicates the end of the time range to retrieve payments for, in RFC 3339 format.  The<br>range is determined using the `updated_at` field for each Payment.<br>**Default**: <code>None</code> |
 | <code>sort_field</code> | <code>[ListPaymentsRequestSortFieldOrStr](square/models/enums/list_payments_request_sort_field.py) \| None</code> | The field used to sort results by. The default is `CREATED_AT`.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20109,7 +20787,9 @@ You can update the `amount_money` and `tip_money` using this endpoint.
 
 ```python
 try:
-    response = client.payments.update_payment(payment_id, body)
+    response = client.payments.update_payment(
+        "some example string", UpdatePaymentRequest(idempotency_key="some example string")
+    )
     # TODO: Handle 'response' of type UpdatePaymentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -20119,7 +20799,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.payments.update_payment(payment_id, body)
+    response = await async_client.payments.update_payment(
+        "some example string", UpdatePaymentRequest(idempotency_key="some example string")
+    )
     # TODO: Handle 'response' of type UpdatePaymentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -20137,7 +20819,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>payment_id</code> | <code>str</code> | The ID of the payment to update. |
 | <code>body</code> | <code>[UpdatePaymentRequest](square/models/update_payment_request.py) \| [UpdatePaymentRequestDict](square/models/update_payment_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20189,7 +20871,7 @@ To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
 
 ```python
 try:
-    response = client.payouts.get_payout(payout_id)
+    response = client.payouts.get_payout("some example string")
     # TODO: Handle 'response' of type GetPayoutResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -20199,7 +20881,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.payouts.get_payout(payout_id)
+    response = await async_client.payouts.get_payout("some example string")
     # TODO: Handle 'response' of type GetPayoutResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -20216,7 +20898,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>payout_id</code> | <code>str</code> | The ID of the payout to retrieve the information for. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20264,7 +20946,7 @@ To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
 
 ```python
 try:
-    response = client.payouts.list_payout_entries(payout_id)
+    response = client.payouts.list_payout_entries("some example string")
     # TODO: Handle 'response' of type ListPayoutEntriesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -20274,7 +20956,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.payouts.list_payout_entries(payout_id)
+    response = await async_client.payouts.list_payout_entries("some example string")
     # TODO: Handle 'response' of type ListPayoutEntriesResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -20294,7 +20976,7 @@ except ApiError as e:
 | <code>sort_order</code> | <code>[SortOrderOrStr](square/models/enums/sort_order.py) \| None</code> | The order in which payout entries are listed.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>If request parameters change between requests, subsequent results may contain duplicates or missing records.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to be returned in a single page.<br>It is possible to receive fewer results than the specified limit on a given page.<br>The default value of 100 is also the maximum allowed value. If the provided value is<br>greater than 100, it is ignored and the default value is used instead.<br>Default: `100`<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20376,7 +21058,7 @@ except ApiError as e:
 | <code>sort_order</code> | <code>[SortOrderOrStr](square/models/enums/sort_order.py) \| None</code> | The order in which payouts are listed.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>If request parameters change between requests, subsequent results may contain duplicates or missing records.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to be returned in a single page.<br>It is possible to receive fewer results than the specified limit on a given page.<br>The default value of 100 is also the maximum allowed value. If the provided value is<br>greater than 100, it is ignored and the default value is used instead.<br>Default: `100`<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20427,7 +21109,7 @@ Retrieves a specific refund using the `refund_id`.
 
 ```python
 try:
-    response = client.refunds.get_payment_refund(refund_id)
+    response = client.refunds.get_payment_refund("some example string")
     # TODO: Handle 'response' of type GetPaymentRefundResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -20437,7 +21119,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.refunds.get_payment_refund(refund_id)
+    response = await async_client.refunds.get_payment_refund("some example string")
     # TODO: Handle 'response' of type GetPaymentRefundResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -20454,7 +21136,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>refund_id</code> | <code>str</code> | The unique ID for the desired `PaymentRefund`. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20543,7 +21225,7 @@ except ApiError as e:
 | <code>updated_at_begin_time</code> | <code>str \| None</code> | Indicates the start of the time range to retrieve each `PaymentRefund` for, in RFC 3339<br>format.  The range is determined using the `updated_at` field for each `PaymentRefund`.<br><br>Default: If omitted, the time range starts at `begin_time`.<br>**Default**: <code>None</code> |
 | <code>updated_at_end_time</code> | <code>str \| None</code> | Indicates the end of the time range to retrieve each `PaymentRefund` for, in RFC 3339<br>format.  The range is determined using the `updated_at` field for each `PaymentRefund`.<br><br>Default: The current time.<br>**Default**: <code>None</code> |
 | <code>sort_field</code> | <code>[ListPaymentRefundsRequestSortFieldOrStr](square/models/enums/list_payment_refunds_request_sort_field.py) \| None</code> | The field used to sort results by. The default is `CREATED_AT`.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20593,7 +21275,9 @@ refund of a cash or external payment. For more information, see
 
 ```python
 try:
-    response = client.refunds.refund_payment(body)
+    response = client.refunds.refund_payment(
+        RefundPaymentRequest(idempotency_key="some example string", amount_money=Money())
+    )
     # TODO: Handle 'response' of type RefundPaymentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -20603,7 +21287,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.refunds.refund_payment(body)
+    response = await async_client.refunds.refund_payment(
+        RefundPaymentRequest(idempotency_key="some example string", amount_money=Money())
+    )
     # TODO: Handle 'response' of type RefundPaymentResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -20620,7 +21306,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[RefundPaymentRequest](square/models/refund_payment_request.py) \| [RefundPaymentRequestDict](square/models/refund_payment_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20699,7 +21385,7 @@ except ApiError as e:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20755,7 +21441,7 @@ __Note:__ Square Online APIs are publicly available as part of an early access p
 
 ```python
 try:
-    response = client.snippets.delete_snippet(site_id)
+    response = client.snippets.delete_snippet("some example string")
     # TODO: Handle 'response' of type DeleteSnippetResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -20765,7 +21451,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.snippets.delete_snippet(site_id)
+    response = await async_client.snippets.delete_snippet("some example string")
     # TODO: Handle 'response' of type DeleteSnippetResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -20782,7 +21468,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>site_id</code> | <code>str</code> | The ID of the site that contains the snippet. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20834,7 +21520,7 @@ __Note:__ Square Online APIs are publicly available as part of an early access p
 
 ```python
 try:
-    response = client.snippets.retrieve_snippet(site_id)
+    response = client.snippets.retrieve_snippet("some example string")
     # TODO: Handle 'response' of type RetrieveSnippetResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -20844,7 +21530,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.snippets.retrieve_snippet(site_id)
+    response = await async_client.snippets.retrieve_snippet("some example string")
     # TODO: Handle 'response' of type RetrieveSnippetResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -20861,7 +21547,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>site_id</code> | <code>str</code> | The ID of the site that contains the snippet. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20914,7 +21600,9 @@ __Note:__ Square Online APIs are publicly available as part of an early access p
 
 ```python
 try:
-    response = client.snippets.upsert_snippet(site_id, body)
+    response = client.snippets.upsert_snippet(
+        "some example string", UpsertSnippetRequest(snippet=Snippet(content="some example string"))
+    )
     # TODO: Handle 'response' of type UpsertSnippetResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -20924,7 +21612,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.snippets.upsert_snippet(site_id, body)
+    response = await async_client.snippets.upsert_snippet(
+        "some example string", UpsertSnippetRequest(snippet=Snippet(content="some example string"))
+    )
     # TODO: Handle 'response' of type UpsertSnippetResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -20942,7 +21632,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>site_id</code> | <code>str</code> | The ID of the site where you want to add or update the snippet. |
 | <code>body</code> | <code>[UpsertSnippetRequest](square/models/upsert_snippet_request.py) \| [UpsertSnippetRequestDict](square/models/upsert_snippet_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20994,7 +21684,13 @@ variation. For more information, see [Swap Subscription Plan Variations](https:/
 
 ```python
 try:
-    response = client.subscriptions.bulk_swap_plan(body)
+    response = client.subscriptions.bulk_swap_plan(
+        BulkSwapPlanRequest(
+            new_plan_variation_id="some example string",
+            old_plan_variation_id="some example string",
+            location_id="some example string",
+        ),
+    )
     # TODO: Handle 'response' of type BulkSwapPlanResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21004,7 +21700,13 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.subscriptions.bulk_swap_plan(body)
+    response = await async_client.subscriptions.bulk_swap_plan(
+        BulkSwapPlanRequest(
+            new_plan_variation_id="some example string",
+            old_plan_variation_id="some example string",
+            location_id="some example string",
+        ),
+    )
     # TODO: Handle 'response' of type BulkSwapPlanResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21021,7 +21723,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkSwapPlanRequest](square/models/bulk_swap_plan_request.py) \| [BulkSwapPlanRequestDict](square/models/bulk_swap_plan_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21070,7 +21772,7 @@ the subscription status changes from ACTIVE to CANCELED.
 
 ```python
 try:
-    response = client.subscriptions.cancel_subscription(subscription_id)
+    response = client.subscriptions.cancel_subscription("some example string")
     # TODO: Handle 'response' of type CancelSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21080,7 +21782,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.subscriptions.cancel_subscription(subscription_id)
+    response = await async_client.subscriptions.cancel_subscription("some example string")
     # TODO: Handle 'response' of type CancelSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21097,7 +21799,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | The ID of the subscription to cancel. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21145,7 +21847,7 @@ for a subscription.
 
 ```python
 try:
-    response = client.subscriptions.change_billing_anchor_date(subscription_id, body)
+    response = client.subscriptions.change_billing_anchor_date("some example string", ChangeBillingAnchorDateRequest())
     # TODO: Handle 'response' of type ChangeBillingAnchorDateResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21155,7 +21857,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.subscriptions.change_billing_anchor_date(subscription_id, body)
+    response = await async_client.subscriptions.change_billing_anchor_date(
+        "some example string", ChangeBillingAnchorDateRequest()
+    )
     # TODO: Handle 'response' of type ChangeBillingAnchorDateResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21173,7 +21877,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | The ID of the subscription to update the billing anchor date. |
 | <code>body</code> | <code>[ChangeBillingAnchorDateRequest](square/models/change_billing_anchor_date_request.py) \| [ChangeBillingAnchorDateRequestDict](square/models/change_billing_anchor_date_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21227,7 +21931,9 @@ For more information, see [Create a subscription](https://developer.squareup.com
 
 ```python
 try:
-    response = client.subscriptions.create_subscription(body)
+    response = client.subscriptions.create_subscription(
+        CreateSubscriptionRequest(location_id="some example string", customer_id="some example string")
+    )
     # TODO: Handle 'response' of type CreateSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21237,7 +21943,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.subscriptions.create_subscription(body)
+    response = await async_client.subscriptions.create_subscription(
+        CreateSubscriptionRequest(location_id="some example string", customer_id="some example string")
+    )
     # TODO: Handle 'response' of type CreateSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21254,7 +21962,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateSubscriptionRequest](square/models/create_subscription_request.py) \| [CreateSubscriptionRequestDict](square/models/create_subscription_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21301,7 +22009,7 @@ Deletes a scheduled action for a subscription.
 
 ```python
 try:
-    response = client.subscriptions.delete_subscription_action(subscription_id, action_id)
+    response = client.subscriptions.delete_subscription_action("some example string", "some example string")
     # TODO: Handle 'response' of type DeleteSubscriptionActionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21311,7 +22019,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.subscriptions.delete_subscription_action(subscription_id, action_id)
+    response = await async_client.subscriptions.delete_subscription_action("some example string", "some example string")
     # TODO: Handle 'response' of type DeleteSubscriptionActionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21329,7 +22037,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | The ID of the subscription the targeted action is to act upon. |
 | <code>action_id</code> | <code>str</code> | The ID of the targeted action to be deleted. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21376,7 +22084,7 @@ Lists all [events](https://developer.squareup.com/docs/subscriptions-api/actions
 
 ```python
 try:
-    response = client.subscriptions.list_subscription_events(subscription_id)
+    response = client.subscriptions.list_subscription_events("some example string")
     # TODO: Handle 'response' of type ListSubscriptionEventsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21386,7 +22094,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.subscriptions.list_subscription_events(subscription_id)
+    response = await async_client.subscriptions.list_subscription_events("some example string")
     # TODO: Handle 'response' of type ListSubscriptionEventsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21405,7 +22113,7 @@ except ApiError as e:
 | <code>subscription_id</code> | <code>str</code> | The ID of the subscription to retrieve the events for. |
 | <code>cursor</code> | <code>str \| None</code> | When the total number of resulting subscription events exceeds the limit of a paged response, <br>specify the cursor returned from a preceding response here to fetch the next set of results.<br>If the cursor is unset, the response contains the last page of the results.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The upper limit on the number of subscription events to return<br>in a paged response.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21452,7 +22160,7 @@ Schedules a `PAUSE` action to pause an active subscription.
 
 ```python
 try:
-    response = client.subscriptions.pause_subscription(subscription_id, body)
+    response = client.subscriptions.pause_subscription("some example string", PauseSubscriptionRequest())
     # TODO: Handle 'response' of type PauseSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21462,7 +22170,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.subscriptions.pause_subscription(subscription_id, body)
+    response = await async_client.subscriptions.pause_subscription("some example string", PauseSubscriptionRequest())
     # TODO: Handle 'response' of type PauseSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21480,7 +22188,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | The ID of the subscription to pause. |
 | <code>body</code> | <code>[PauseSubscriptionRequest](square/models/pause_subscription_request.py) \| [PauseSubscriptionRequestDict](square/models/pause_subscription_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21527,7 +22235,7 @@ Schedules a `RESUME` action to resume a paused or a deactivated subscription.
 
 ```python
 try:
-    response = client.subscriptions.resume_subscription(subscription_id, body)
+    response = client.subscriptions.resume_subscription("some example string", ResumeSubscriptionRequest())
     # TODO: Handle 'response' of type ResumeSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21537,7 +22245,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.subscriptions.resume_subscription(subscription_id, body)
+    response = await async_client.subscriptions.resume_subscription("some example string", ResumeSubscriptionRequest())
     # TODO: Handle 'response' of type ResumeSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21555,7 +22263,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | The ID of the subscription to resume. |
 | <code>body</code> | <code>[ResumeSubscriptionRequest](square/models/resume_subscription_request.py) \| [ResumeSubscriptionRequestDict](square/models/resume_subscription_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21602,7 +22310,7 @@ Retrieves a specific subscription.
 
 ```python
 try:
-    response = client.subscriptions.retrieve_subscription(subscription_id)
+    response = client.subscriptions.retrieve_subscription("some example string")
     # TODO: Handle 'response' of type RetrieveSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21612,7 +22320,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.subscriptions.retrieve_subscription(subscription_id)
+    response = await async_client.subscriptions.retrieve_subscription("some example string")
     # TODO: Handle 'response' of type RetrieveSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21630,7 +22338,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | The ID of the subscription to retrieve. |
 | <code>include</code> | <code>str \| None</code> | A query parameter to specify related information to be included in the response. <br><br>The supported query parameter values are: <br><br>- `actions`: to include scheduled actions on the targeted subscription.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21690,7 +22398,7 @@ customer by subscription creation date.
 
 ```python
 try:
-    response = client.subscriptions.search_subscriptions(body)
+    response = client.subscriptions.search_subscriptions(SearchSubscriptionsRequest())
     # TODO: Handle 'response' of type SearchSubscriptionsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21700,7 +22408,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.subscriptions.search_subscriptions(body)
+    response = await async_client.subscriptions.search_subscriptions(SearchSubscriptionsRequest())
     # TODO: Handle 'response' of type SearchSubscriptionsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21717,7 +22425,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchSubscriptionsRequest](square/models/search_subscriptions_request.py) \| [SearchSubscriptionsRequestDict](square/models/search_subscriptions_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21765,7 +22473,7 @@ For more information, see [Swap Subscription Plan Variations](https://developer.
 
 ```python
 try:
-    response = client.subscriptions.swap_plan(subscription_id, body)
+    response = client.subscriptions.swap_plan("some example string", SwapPlanRequest())
     # TODO: Handle 'response' of type SwapPlanResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21775,7 +22483,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.subscriptions.swap_plan(subscription_id, body)
+    response = await async_client.subscriptions.swap_plan("some example string", SwapPlanRequest())
     # TODO: Handle 'response' of type SwapPlanResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21793,7 +22501,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | The ID of the subscription to swap the subscription plan for. |
 | <code>body</code> | <code>[SwapPlanRequest](square/models/swap_plan_request.py) \| [SwapPlanRequestDict](square/models/swap_plan_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21841,7 +22549,7 @@ To clear a field, set its value to `null`.
 
 ```python
 try:
-    response = client.subscriptions.update_subscription(subscription_id, body)
+    response = client.subscriptions.update_subscription("some example string", UpdateSubscriptionRequest())
     # TODO: Handle 'response' of type UpdateSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21851,7 +22559,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.subscriptions.update_subscription(subscription_id, body)
+    response = await async_client.subscriptions.update_subscription("some example string", UpdateSubscriptionRequest())
     # TODO: Handle 'response' of type UpdateSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21869,7 +22577,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | The ID of the subscription to update. |
 | <code>body</code> | <code>[UpdateSubscriptionRequest](square/models/update_subscription_request.py) \| [UpdateSubscriptionRequestDict](square/models/update_subscription_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21925,7 +22633,9 @@ Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/t
 
 ```python
 try:
-    response = client.team.bulk_create_team_members(body)
+    response = client.team.bulk_create_team_members(
+        BulkCreateTeamMembersRequest(team_members={"key": CreateTeamMemberRequest()})
+    )
     # TODO: Handle 'response' of type BulkCreateTeamMembersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21935,7 +22645,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.team.bulk_create_team_members(body)
+    response = await async_client.team.bulk_create_team_members(
+        BulkCreateTeamMembersRequest(team_members={"key": CreateTeamMemberRequest()})
+    )
     # TODO: Handle 'response' of type BulkCreateTeamMembersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -21952,7 +22664,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkCreateTeamMembersRequest](square/models/bulk_create_team_members_request.py) \| [BulkCreateTeamMembersRequestDict](square/models/bulk_create_team_members_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22003,7 +22715,9 @@ Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/t
 
 ```python
 try:
-    response = client.team.bulk_update_team_members(body)
+    response = client.team.bulk_update_team_members(
+        BulkUpdateTeamMembersRequest(team_members={"key": UpdateTeamMemberRequest()})
+    )
     # TODO: Handle 'response' of type BulkUpdateTeamMembersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22013,7 +22727,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.team.bulk_update_team_members(body)
+    response = await async_client.team.bulk_update_team_members(
+        BulkUpdateTeamMembersRequest(team_members={"key": UpdateTeamMemberRequest()})
+    )
     # TODO: Handle 'response' of type BulkUpdateTeamMembersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22030,7 +22746,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkUpdateTeamMembersRequest](square/models/bulk_update_team_members_request.py) \| [BulkUpdateTeamMembersRequestDict](square/models/bulk_update_team_members_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22078,7 +22794,7 @@ compensation is defined in a [job assignment](entity:JobAssignment) in a team me
 
 ```python
 try:
-    response = client.team.create_job(body)
+    response = client.team.create_job(CreateJobRequest(job=Job(), idempotency_key="some example string"))
     # TODO: Handle 'response' of type CreateJobResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22088,7 +22804,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.team.create_job(body)
+    response = await async_client.team.create_job(CreateJobRequest(job=Job(), idempotency_key="some example string"))
     # TODO: Handle 'response' of type CreateJobResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22105,7 +22821,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateJobRequest](square/models/create_job_request.py) \| [CreateJobRequestDict](square/models/create_job_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22157,7 +22873,7 @@ Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/t
 
 ```python
 try:
-    response = client.team.create_team_member(body)
+    response = client.team.create_team_member(CreateTeamMemberRequest())
     # TODO: Handle 'response' of type CreateTeamMemberResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22167,7 +22883,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.team.create_team_member(body)
+    response = await async_client.team.create_team_member(CreateTeamMemberRequest())
     # TODO: Handle 'response' of type CreateTeamMemberResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22184,7 +22900,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateTeamMemberRequest](square/models/create_team_member_request.py) \| [CreateTeamMemberRequestDict](square/models/create_team_member_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22258,7 +22974,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>cursor</code> | <code>str \| None</code> | The pagination cursor returned by the previous call to this endpoint. Provide this<br>cursor to retrieve the next page of results for your original request. For more information,<br>see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22305,7 +23021,7 @@ Retrieves a specified job.
 
 ```python
 try:
-    response = client.team.retrieve_job(job_id)
+    response = client.team.retrieve_job("some example string")
     # TODO: Handle 'response' of type RetrieveJobResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22315,7 +23031,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.team.retrieve_job(job_id)
+    response = await async_client.team.retrieve_job("some example string")
     # TODO: Handle 'response' of type RetrieveJobResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22332,7 +23048,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>job_id</code> | <code>str</code> | The ID of the job to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22380,7 +23096,7 @@ Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/t
 
 ```python
 try:
-    response = client.team.retrieve_team_member(team_member_id)
+    response = client.team.retrieve_team_member("some example string")
     # TODO: Handle 'response' of type RetrieveTeamMemberResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22390,7 +23106,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.team.retrieve_team_member(team_member_id)
+    response = await async_client.team.retrieve_team_member("some example string")
     # TODO: Handle 'response' of type RetrieveTeamMemberResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22407,7 +23123,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>team_member_id</code> | <code>str</code> | The ID of the team member to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22459,7 +23175,7 @@ to get this information directly from the `TeamMember.wage_setting` field.
 
 ```python
 try:
-    response = client.team.retrieve_wage_setting(team_member_id)
+    response = client.team.retrieve_wage_setting("some example string")
     # TODO: Handle 'response' of type RetrieveWageSettingResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22469,7 +23185,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.team.retrieve_wage_setting(team_member_id)
+    response = await async_client.team.retrieve_wage_setting("some example string")
     # TODO: Handle 'response' of type RetrieveWageSettingResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22486,7 +23202,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>team_member_id</code> | <code>str</code> | The ID of the team member for which to retrieve the wage setting. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22535,7 +23251,7 @@ the team member is the Square account owner.
 
 ```python
 try:
-    response = client.team.search_team_members(body)
+    response = client.team.search_team_members(SearchTeamMembersRequest())
     # TODO: Handle 'response' of type SearchTeamMembersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22545,7 +23261,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.team.search_team_members(body)
+    response = await async_client.team.search_team_members(SearchTeamMembersRequest())
     # TODO: Handle 'response' of type SearchTeamMembersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22562,7 +23278,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchTeamMembersRequest](square/models/search_team_members_request.py) \| [SearchTeamMembersRequestDict](square/models/search_team_members_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22611,7 +23327,7 @@ tip eligibility propagate to all `TeamMemberWage` objects that reference the job
 
 ```python
 try:
-    response = client.team.update_job(job_id, body)
+    response = client.team.update_job("some example string", UpdateJobRequest(job=Job()))
     # TODO: Handle 'response' of type UpdateJobResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22621,7 +23337,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.team.update_job(job_id, body)
+    response = await async_client.team.update_job("some example string", UpdateJobRequest(job=Job()))
     # TODO: Handle 'response' of type UpdateJobResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22639,7 +23355,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>job_id</code> | <code>str</code> | The ID of the job to update. |
 | <code>body</code> | <code>[UpdateJobRequest](square/models/update_job_request.py) \| [UpdateJobRequestDict](square/models/update_job_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22687,7 +23403,7 @@ Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/t
 
 ```python
 try:
-    response = client.team.update_team_member(team_member_id, body)
+    response = client.team.update_team_member("some example string", UpdateTeamMemberRequest())
     # TODO: Handle 'response' of type UpdateTeamMemberResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22697,7 +23413,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.team.update_team_member(team_member_id, body)
+    response = await async_client.team.update_team_member("some example string", UpdateTeamMemberRequest())
     # TODO: Handle 'response' of type UpdateTeamMemberResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22715,7 +23431,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>team_member_id</code> | <code>str</code> | The ID of the team member to update. |
 | <code>body</code> | <code>[UpdateTeamMemberRequest](square/models/update_team_member_request.py) \| [UpdateTeamMemberRequestDict](square/models/update_team_member_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22769,7 +23485,9 @@ to manage the `TeamMember.wage_setting` field directly.
 
 ```python
 try:
-    response = client.team.update_wage_setting(team_member_id, body)
+    response = client.team.update_wage_setting(
+        "some example string", UpdateWageSettingRequest(wage_setting=WageSetting())
+    )
     # TODO: Handle 'response' of type UpdateWageSettingResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22779,7 +23497,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.team.update_wage_setting(team_member_id, body)
+    response = await async_client.team.update_wage_setting(
+        "some example string", UpdateWageSettingRequest(wage_setting=WageSetting())
+    )
     # TODO: Handle 'response' of type UpdateWageSettingResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22797,7 +23517,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>team_member_id</code> | <code>str</code> | The ID of the team member for which to update the `WageSetting` object. |
 | <code>body</code> | <code>[UpdateWageSettingRequest](square/models/update_wage_setting_request.py) \| [UpdateWageSettingRequestDict](square/models/update_wage_setting_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22848,7 +23568,7 @@ Cancels a Terminal action request if the status of the request permits it.
 
 ```python
 try:
-    response = client.terminal.cancel_terminal_action(action_id)
+    response = client.terminal.cancel_terminal_action("some example string")
     # TODO: Handle 'response' of type CancelTerminalActionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22858,7 +23578,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.terminal.cancel_terminal_action(action_id)
+    response = await async_client.terminal.cancel_terminal_action("some example string")
     # TODO: Handle 'response' of type CancelTerminalActionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22875,7 +23595,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>action_id</code> | <code>str</code> | Unique ID for the desired `TerminalAction`. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22922,7 +23642,7 @@ Cancels a Terminal checkout request if the status of the request permits it.
 
 ```python
 try:
-    response = client.terminal.cancel_terminal_checkout(checkout_id)
+    response = client.terminal.cancel_terminal_checkout("some example string")
     # TODO: Handle 'response' of type CancelTerminalCheckoutResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22932,7 +23652,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.terminal.cancel_terminal_checkout(checkout_id)
+    response = await async_client.terminal.cancel_terminal_checkout("some example string")
     # TODO: Handle 'response' of type CancelTerminalCheckoutResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -22949,7 +23669,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>checkout_id</code> | <code>str</code> | The unique ID for the desired `TerminalCheckout`. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22996,7 +23716,7 @@ Cancels an Interac Terminal refund request by refund request ID if the status of
 
 ```python
 try:
-    response = client.terminal.cancel_terminal_refund(terminal_refund_id)
+    response = client.terminal.cancel_terminal_refund("some example string")
     # TODO: Handle 'response' of type CancelTerminalRefundResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23006,7 +23726,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.terminal.cancel_terminal_refund(terminal_refund_id)
+    response = await async_client.terminal.cancel_terminal_refund("some example string")
     # TODO: Handle 'response' of type CancelTerminalRefundResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23023,7 +23743,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>terminal_refund_id</code> | <code>str</code> | The unique ID for the desired `TerminalRefund`. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23070,7 +23790,9 @@ Creates a Terminal action request and sends it to the specified device.
 
 ```python
 try:
-    response = client.terminal.create_terminal_action(body)
+    response = client.terminal.create_terminal_action(
+        CreateTerminalActionRequest(idempotency_key="some example string", action=TerminalAction())
+    )
     # TODO: Handle 'response' of type CreateTerminalActionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23080,7 +23802,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.terminal.create_terminal_action(body)
+    response = await async_client.terminal.create_terminal_action(
+        CreateTerminalActionRequest(idempotency_key="some example string", action=TerminalAction())
+    )
     # TODO: Handle 'response' of type CreateTerminalActionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23097,7 +23821,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateTerminalActionRequest](square/models/create_terminal_action_request.py) \| [CreateTerminalActionRequestDict](square/models/create_terminal_action_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23145,7 +23869,14 @@ for the requested amount.
 
 ```python
 try:
-    response = client.terminal.create_terminal_checkout(body)
+    response = client.terminal.create_terminal_checkout(
+        CreateTerminalCheckoutRequest(
+            idempotency_key="some example string",
+            checkout=TerminalCheckout(
+                amount_money=Money(), device_options=DeviceCheckoutOptions(device_id="some example string")
+            ),
+        ),
+    )
     # TODO: Handle 'response' of type CreateTerminalCheckoutResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23155,7 +23886,14 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.terminal.create_terminal_checkout(body)
+    response = await async_client.terminal.create_terminal_checkout(
+        CreateTerminalCheckoutRequest(
+            idempotency_key="some example string",
+            checkout=TerminalCheckout(
+                amount_money=Money(), device_options=DeviceCheckoutOptions(device_id="some example string")
+            ),
+        ),
+    )
     # TODO: Handle 'response' of type CreateTerminalCheckoutResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23172,7 +23910,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateTerminalCheckoutRequest](square/models/create_terminal_checkout_request.py) \| [CreateTerminalCheckoutRequestDict](square/models/create_terminal_checkout_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23219,7 +23957,9 @@ Creates a request to refund an Interac payment completed on a Square Terminal. R
 
 ```python
 try:
-    response = client.terminal.create_terminal_refund(body)
+    response = client.terminal.create_terminal_refund(
+        CreateTerminalRefundRequest(idempotency_key="some example string")
+    )
     # TODO: Handle 'response' of type CreateTerminalRefundResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23229,7 +23969,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.terminal.create_terminal_refund(body)
+    response = await async_client.terminal.create_terminal_refund(
+        CreateTerminalRefundRequest(idempotency_key="some example string")
+    )
     # TODO: Handle 'response' of type CreateTerminalRefundResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23246,7 +23988,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateTerminalRefundRequest](square/models/create_terminal_refund_request.py) \| [CreateTerminalRefundRequestDict](square/models/create_terminal_refund_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23295,7 +24037,7 @@ See [Link and Dismiss Actions](https://developer.squareup.com/docs/terminal-api/
 
 ```python
 try:
-    response = client.terminal.dismiss_terminal_action(action_id)
+    response = client.terminal.dismiss_terminal_action("some example string")
     # TODO: Handle 'response' of type DismissTerminalActionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23305,7 +24047,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.terminal.dismiss_terminal_action(action_id)
+    response = await async_client.terminal.dismiss_terminal_action("some example string")
     # TODO: Handle 'response' of type DismissTerminalActionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23322,7 +24064,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>action_id</code> | <code>str</code> | Unique ID for the `TerminalAction` associated with the action to be dismissed. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23369,7 +24111,7 @@ Dismisses a Terminal checkout request if the status and type of the request perm
 
 ```python
 try:
-    response = client.terminal.dismiss_terminal_checkout(checkout_id)
+    response = client.terminal.dismiss_terminal_checkout("some example string")
     # TODO: Handle 'response' of type DismissTerminalCheckoutResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23379,7 +24121,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.terminal.dismiss_terminal_checkout(checkout_id)
+    response = await async_client.terminal.dismiss_terminal_checkout("some example string")
     # TODO: Handle 'response' of type DismissTerminalCheckoutResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23396,7 +24138,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>checkout_id</code> | <code>str</code> | Unique ID for the `TerminalCheckout` associated with the checkout to be dismissed. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23443,7 +24185,7 @@ Dismisses a Terminal refund request if the status and type of the request permit
 
 ```python
 try:
-    response = client.terminal.dismiss_terminal_refund(terminal_refund_id)
+    response = client.terminal.dismiss_terminal_refund("some example string")
     # TODO: Handle 'response' of type DismissTerminalRefundResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23453,7 +24195,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.terminal.dismiss_terminal_refund(terminal_refund_id)
+    response = await async_client.terminal.dismiss_terminal_refund("some example string")
     # TODO: Handle 'response' of type DismissTerminalRefundResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23470,7 +24212,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>terminal_refund_id</code> | <code>str</code> | Unique ID for the `TerminalRefund` associated with the refund to be dismissed. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23517,7 +24259,7 @@ Retrieves a Terminal action request by `action_id`. Terminal action requests are
 
 ```python
 try:
-    response = client.terminal.get_terminal_action(action_id)
+    response = client.terminal.get_terminal_action("some example string")
     # TODO: Handle 'response' of type GetTerminalActionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23527,7 +24269,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.terminal.get_terminal_action(action_id)
+    response = await async_client.terminal.get_terminal_action("some example string")
     # TODO: Handle 'response' of type GetTerminalActionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23544,7 +24286,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>action_id</code> | <code>str</code> | Unique ID for the desired `TerminalAction`. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23591,7 +24333,7 @@ Retrieves a Terminal checkout request by `checkout_id`. Terminal checkout reques
 
 ```python
 try:
-    response = client.terminal.get_terminal_checkout(checkout_id)
+    response = client.terminal.get_terminal_checkout("some example string")
     # TODO: Handle 'response' of type GetTerminalCheckoutResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23601,7 +24343,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.terminal.get_terminal_checkout(checkout_id)
+    response = await async_client.terminal.get_terminal_checkout("some example string")
     # TODO: Handle 'response' of type GetTerminalCheckoutResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23618,7 +24360,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>checkout_id</code> | <code>str</code> | The unique ID for the desired `TerminalCheckout`. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23665,7 +24407,7 @@ Retrieves an Interac Terminal refund object by ID. Terminal refund objects are a
 
 ```python
 try:
-    response = client.terminal.get_terminal_refund(terminal_refund_id)
+    response = client.terminal.get_terminal_refund("some example string")
     # TODO: Handle 'response' of type GetTerminalRefundResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23675,7 +24417,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.terminal.get_terminal_refund(terminal_refund_id)
+    response = await async_client.terminal.get_terminal_refund("some example string")
     # TODO: Handle 'response' of type GetTerminalRefundResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23692,7 +24434,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>terminal_refund_id</code> | <code>str</code> | The unique ID for the desired `TerminalRefund`. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23739,7 +24481,7 @@ Retrieves a filtered list of Terminal action requests created by the account mak
 
 ```python
 try:
-    response = client.terminal.search_terminal_actions(body)
+    response = client.terminal.search_terminal_actions(SearchTerminalActionsRequest())
     # TODO: Handle 'response' of type SearchTerminalActionsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23749,7 +24491,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.terminal.search_terminal_actions(body)
+    response = await async_client.terminal.search_terminal_actions(SearchTerminalActionsRequest())
     # TODO: Handle 'response' of type SearchTerminalActionsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23766,7 +24508,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchTerminalActionsRequest](square/models/search_terminal_actions_request.py) \| [SearchTerminalActionsRequestDict](square/models/search_terminal_actions_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23813,7 +24555,7 @@ Returns a filtered list of Terminal checkout requests created by the application
 
 ```python
 try:
-    response = client.terminal.search_terminal_checkouts(body)
+    response = client.terminal.search_terminal_checkouts(SearchTerminalCheckoutsRequest())
     # TODO: Handle 'response' of type SearchTerminalCheckoutsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23823,7 +24565,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.terminal.search_terminal_checkouts(body)
+    response = await async_client.terminal.search_terminal_checkouts(SearchTerminalCheckoutsRequest())
     # TODO: Handle 'response' of type SearchTerminalCheckoutsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23840,7 +24582,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchTerminalCheckoutsRequest](square/models/search_terminal_checkouts_request.py) \| [SearchTerminalCheckoutsRequestDict](square/models/search_terminal_checkouts_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23887,7 +24629,7 @@ Retrieves a filtered list of Interac Terminal refund requests created by the sel
 
 ```python
 try:
-    response = client.terminal.search_terminal_refunds(body)
+    response = client.terminal.search_terminal_refunds(SearchTerminalRefundsRequest())
     # TODO: Handle 'response' of type SearchTerminalRefundsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23897,7 +24639,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.terminal.search_terminal_refunds(body)
+    response = await async_client.terminal.search_terminal_refunds(SearchTerminalRefundsRequest())
     # TODO: Handle 'response' of type SearchTerminalRefundsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23914,7 +24656,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchTerminalRefundsRequest](square/models/search_terminal_refunds_request.py) \| [SearchTerminalRefundsRequestDict](square/models/search_terminal_refunds_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23969,7 +24711,7 @@ for more information.
 
 ```python
 try:
-    response = client.transactions.capture_transaction(location_id, transaction_id)
+    response = client.transactions.capture_transaction("some example string", "some example string")
     # TODO: Handle 'response' of type CaptureTransactionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23979,7 +24721,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.transactions.capture_transaction(location_id, transaction_id)
+    response = await async_client.transactions.capture_transaction("some example string", "some example string")
     # TODO: Handle 'response' of type CaptureTransactionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -23997,7 +24739,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | Value sent with the request. |
 | <code>transaction_id</code> | <code>str</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24049,7 +24791,7 @@ Max results per [page](https://developer.squareup.com/docs/working-with-apis/pag
 
 ```python
 try:
-    response = client.transactions.list_transactions(location_id)
+    response = client.transactions.list_transactions("some example string")
     # TODO: Handle 'response' of type ListTransactionsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24059,7 +24801,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.transactions.list_transactions(location_id)
+    response = await async_client.transactions.list_transactions("some example string")
     # TODO: Handle 'response' of type ListTransactionsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24080,7 +24822,7 @@ except ApiError as e:
 | <code>end_time</code> | <code>str \| None</code> | The end of the requested reporting period, in RFC 3339 format.<br><br>See [Date ranges](https://developer.squareup.com/docs/build-basics/working-with-dates) for details on date inclusivity/exclusivity.<br><br>Default value: The current time.<br>**Default**: <code>None</code> |
 | <code>sort_order</code> | <code>[SortOrderOrStr](square/models/enums/sort_order.py) \| None</code> | The order in which results are listed in the response (`ASC` for<br>oldest first, `DESC` for newest first).<br><br>Default value: `DESC`<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this to retrieve the next set of results for your original query.<br><br>See [Paginating results](https://developer.squareup.com/docs/working-with-apis/pagination) for more information.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24127,7 +24869,7 @@ Retrieves details for a single transaction.
 
 ```python
 try:
-    response = client.transactions.retrieve_transaction(location_id, transaction_id)
+    response = client.transactions.retrieve_transaction("some example string", "some example string")
     # TODO: Handle 'response' of type RetrieveTransactionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24137,7 +24879,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.transactions.retrieve_transaction(location_id, transaction_id)
+    response = await async_client.transactions.retrieve_transaction("some example string", "some example string")
     # TODO: Handle 'response' of type RetrieveTransactionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24155,7 +24897,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | The ID of the transaction's associated location. |
 | <code>transaction_id</code> | <code>str</code> | The ID of the transaction to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24206,7 +24948,7 @@ for more information.
 
 ```python
 try:
-    response = client.transactions.void_transaction(location_id, transaction_id)
+    response = client.transactions.void_transaction("some example string", "some example string")
     # TODO: Handle 'response' of type VoidTransactionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24216,7 +24958,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.transactions.void_transaction(location_id, transaction_id)
+    response = await async_client.transactions.void_transaction("some example string", "some example string")
     # TODO: Handle 'response' of type VoidTransactionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24234,7 +24976,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | Value sent with the request. |
 | <code>transaction_id</code> | <code>str</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24294,7 +25036,9 @@ Creates a [transfer_order.updated](webhook:transfer_order.updated) webhook event
 
 ```python
 try:
-    response = client.transfer_order_api.cancel_transfer_order(transfer_order_id, body)
+    response = client.transfer_order_api.cancel_transfer_order(
+        "some example string", CancelTransferOrderRequest(idempotency_key="some example string")
+    )
     # TODO: Handle 'response' of type CancelTransferOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24304,7 +25048,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.transfer_order_api.cancel_transfer_order(transfer_order_id, body)
+    response = await async_client.transfer_order_api.cancel_transfer_order(
+        "some example string", CancelTransferOrderRequest(idempotency_key="some example string")
+    )
     # TODO: Handle 'response' of type CancelTransferOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24322,7 +25068,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>transfer_order_id</code> | <code>str</code> | The ID of the transfer order to cancel. Must be in STARTED or PARTIALLY_RECEIVED status. |
 | <code>body</code> | <code>[CancelTransferOrderRequest](square/models/cancel_transfer_order_request.py) \| [CancelTransferOrderRequestDict](square/models/cancel_transfer_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24388,7 +25134,14 @@ Creates a [transfer_order.created](webhook:transfer_order.created) webhook event
 
 ```python
 try:
-    response = client.transfer_order_api.create_transfer_order(body)
+    response = client.transfer_order_api.create_transfer_order(
+        CreateTransferOrderRequest(
+            idempotency_key="some example string",
+            transfer_order=CreateTransferOrderData(
+                source_location_id="some example string", destination_location_id="some example string"
+            ),
+        ),
+    )
     # TODO: Handle 'response' of type CreateTransferOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24398,7 +25151,14 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.transfer_order_api.create_transfer_order(body)
+    response = await async_client.transfer_order_api.create_transfer_order(
+        CreateTransferOrderRequest(
+            idempotency_key="some example string",
+            transfer_order=CreateTransferOrderData(
+                source_location_id="some example string", destination_location_id="some example string"
+            ),
+        ),
+    )
     # TODO: Handle 'response' of type CreateTransferOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24415,7 +25175,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateTransferOrderRequest](square/models/create_transfer_order_request.py) \| [CreateTransferOrderRequestDict](square/models/create_transfer_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24466,7 +25226,7 @@ Creates a [transfer_order.deleted](webhook:transfer_order.deleted) webhook event
 
 ```python
 try:
-    response = client.transfer_order_api.delete_transfer_order(transfer_order_id)
+    response = client.transfer_order_api.delete_transfer_order("some example string")
     # TODO: Handle 'response' of type DeleteTransferOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24476,7 +25236,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.transfer_order_api.delete_transfer_order(transfer_order_id)
+    response = await async_client.transfer_order_api.delete_transfer_order("some example string")
     # TODO: Handle 'response' of type DeleteTransferOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24494,7 +25254,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>transfer_order_id</code> | <code>str</code> | The ID of the transfer order to delete |
 | <code>version</code> | <code>int \| None</code> | Version for optimistic concurrency<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24556,7 +25316,10 @@ Creates a [transfer_order.updated](webhook:transfer_order.updated) webhook event
 
 ```python
 try:
-    response = client.transfer_order_api.receive_transfer_order(transfer_order_id, body)
+    response = client.transfer_order_api.receive_transfer_order(
+        "some example string",
+        ReceiveTransferOrderRequest(idempotency_key="some example string", receipt=TransferOrderGoodsReceipt()),
+    )
     # TODO: Handle 'response' of type ReceiveTransferOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24566,7 +25329,10 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.transfer_order_api.receive_transfer_order(transfer_order_id, body)
+    response = await async_client.transfer_order_api.receive_transfer_order(
+        "some example string",
+        ReceiveTransferOrderRequest(idempotency_key="some example string", receipt=TransferOrderGoodsReceipt()),
+    )
     # TODO: Handle 'response' of type ReceiveTransferOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24584,7 +25350,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>transfer_order_id</code> | <code>str</code> | The ID of the transfer order to receive items for |
 | <code>body</code> | <code>[ReceiveTransferOrderRequest](square/models/receive_transfer_order_request.py) \| [ReceiveTransferOrderRequestDict](square/models/receive_transfer_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24637,7 +25403,7 @@ order details including:
 
 ```python
 try:
-    response = client.transfer_order_api.retrieve_transfer_order(transfer_order_id)
+    response = client.transfer_order_api.retrieve_transfer_order("some example string")
     # TODO: Handle 'response' of type RetrieveTransferOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24647,7 +25413,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.transfer_order_api.retrieve_transfer_order(transfer_order_id)
+    response = await async_client.transfer_order_api.retrieve_transfer_order("some example string")
     # TODO: Handle 'response' of type RetrieveTransferOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24664,7 +25430,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>transfer_order_id</code> | <code>str</code> | The ID of the transfer order to retrieve |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24717,7 +25483,7 @@ Common search scenarios:
 
 ```python
 try:
-    response = client.transfer_order_api.search_transfer_orders(body)
+    response = client.transfer_order_api.search_transfer_orders(SearchTransferOrdersRequest())
     # TODO: Handle 'response' of type SearchTransferOrdersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24727,7 +25493,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.transfer_order_api.search_transfer_orders(body)
+    response = await async_client.transfer_order_api.search_transfer_orders(SearchTransferOrdersRequest())
     # TODO: Handle 'response' of type SearchTransferOrdersResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24744,7 +25510,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchTransferOrdersRequest](square/models/search_transfer_orders_request.py) \| [SearchTransferOrdersRequestDict](square/models/search_transfer_orders_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24798,7 +25564,9 @@ Creates a [transfer_order.updated](webhook:transfer_order.updated) webhook event
 
 ```python
 try:
-    response = client.transfer_order_api.start_transfer_order(transfer_order_id, body)
+    response = client.transfer_order_api.start_transfer_order(
+        "some example string", StartTransferOrderRequest(idempotency_key="some example string")
+    )
     # TODO: Handle 'response' of type StartTransferOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24808,7 +25576,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.transfer_order_api.start_transfer_order(transfer_order_id, body)
+    response = await async_client.transfer_order_api.start_transfer_order(
+        "some example string", StartTransferOrderRequest(idempotency_key="some example string")
+    )
     # TODO: Handle 'response' of type StartTransferOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24826,7 +25596,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>transfer_order_id</code> | <code>str</code> | The ID of the transfer order to start. Must be in DRAFT status. |
 | <code>body</code> | <code>[StartTransferOrderRequest](square/models/start_transfer_order_request.py) \| [StartTransferOrderRequestDict](square/models/start_transfer_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24876,7 +25646,10 @@ Creates a [transfer_order.updated](webhook:transfer_order.updated) webhook event
 
 ```python
 try:
-    response = client.transfer_order_api.update_transfer_order(transfer_order_id, body)
+    response = client.transfer_order_api.update_transfer_order(
+        "some example string",
+        UpdateTransferOrderRequest(idempotency_key="some example string", transfer_order=UpdateTransferOrderData()),
+    )
     # TODO: Handle 'response' of type UpdateTransferOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24886,7 +25659,10 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.transfer_order_api.update_transfer_order(transfer_order_id, body)
+    response = await async_client.transfer_order_api.update_transfer_order(
+        "some example string",
+        UpdateTransferOrderRequest(idempotency_key="some example string", transfer_order=UpdateTransferOrderData()),
+    )
     # TODO: Handle 'response' of type UpdateTransferOrderResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24904,7 +25680,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>transfer_order_id</code> | <code>str</code> | The ID of the transfer order to update |
 | <code>body</code> | <code>[UpdateTransferOrderRequest](square/models/update_transfer_order_request.py) \| [UpdateTransferOrderRequestDict](square/models/update_transfer_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24955,7 +25731,7 @@ Provides summary information for a merchant's online store orders.
 
 ```python
 try:
-    response = client.v1_transactions.v1_list_orders(location_id)
+    response = client.v1_transactions.v1_list_orders("some example string")
     # TODO: Handle 'response' of type list[V1Order]
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24965,7 +25741,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.v1_transactions.v1_list_orders(location_id)
+    response = await async_client.v1_transactions.v1_list_orders("some example string")
     # TODO: Handle 'response' of type list[V1Order]
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -24985,7 +25761,7 @@ except ApiError as e:
 | <code>order</code> | <code>[SortOrderOrStr](square/models/enums/sort_order.py) \| None</code> | The order in which payments are listed in the response.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of payments to return in a single response. This value cannot exceed 200.<br>**Default**: <code>None</code> |
 | <code>batch_token</code> | <code>str \| None</code> | A pagination cursor to retrieve the next set of results for your<br>original query to the endpoint.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25032,7 +25808,7 @@ Provides comprehensive information for a single online store order, including th
 
 ```python
 try:
-    response = client.v1_transactions.v1_retrieve_order(location_id, order_id)
+    response = client.v1_transactions.v1_retrieve_order("some example string", "some example string")
     # TODO: Handle 'response' of type V1Order
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25042,7 +25818,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.v1_transactions.v1_retrieve_order(location_id, order_id)
+    response = await async_client.v1_transactions.v1_retrieve_order("some example string", "some example string")
     # TODO: Handle 'response' of type V1Order
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25060,7 +25836,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | The ID of the order's associated location. |
 | <code>order_id</code> | <code>str</code> | The order's Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25107,7 +25883,9 @@ Updates the details of an online store order. Every update you perform on an ord
 
 ```python
 try:
-    response = client.v1_transactions.v1_update_order(location_id, order_id, body)
+    response = client.v1_transactions.v1_update_order(
+        "some example string", "some example string", V1UpdateOrderRequest(action=V1UpdateOrderRequestAction.COMPLETE)
+    )
     # TODO: Handle 'response' of type V1Order
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25117,7 +25895,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.v1_transactions.v1_update_order(location_id, order_id, body)
+    response = await async_client.v1_transactions.v1_update_order(
+        "some example string", "some example string", V1UpdateOrderRequest(action=V1UpdateOrderRequestAction.COMPLETE)
+    )
     # TODO: Handle 'response' of type V1Order
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25136,7 +25916,7 @@ except ApiError as e:
 | <code>location_id</code> | <code>str</code> | The ID of the order's associated location. |
 | <code>order_id</code> | <code>str</code> | The order's Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint |
 | <code>body</code> | <code>[V1UpdateOrderRequest](square/models/v1_update_order_request.py) \| [V1UpdateOrderRequestDict](square/models/v1_update_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25187,7 +25967,7 @@ Creates one or more [Vendor](entity:Vendor) objects to represent suppliers to a 
 
 ```python
 try:
-    response = client.vendors.bulk_create_vendors(body)
+    response = client.vendors.bulk_create_vendors(BulkCreateVendorsRequest(vendors={"key": Vendor()}))
     # TODO: Handle 'response' of type BulkCreateVendorsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25197,7 +25977,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.vendors.bulk_create_vendors(body)
+    response = await async_client.vendors.bulk_create_vendors(BulkCreateVendorsRequest(vendors={"key": Vendor()}))
     # TODO: Handle 'response' of type BulkCreateVendorsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25214,7 +25994,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkCreateVendorsRequest](square/models/bulk_create_vendors_request.py) \| [BulkCreateVendorsRequestDict](square/models/bulk_create_vendors_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25261,7 +26041,7 @@ Retrieves one or more vendors of specified [Vendor](entity:Vendor) IDs.
 
 ```python
 try:
-    response = client.vendors.bulk_retrieve_vendors(body)
+    response = client.vendors.bulk_retrieve_vendors(BulkRetrieveVendorsRequest())
     # TODO: Handle 'response' of type BulkRetrieveVendorsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25271,7 +26051,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.vendors.bulk_retrieve_vendors(body)
+    response = await async_client.vendors.bulk_retrieve_vendors(BulkRetrieveVendorsRequest())
     # TODO: Handle 'response' of type BulkRetrieveVendorsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25288,7 +26068,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkRetrieveVendorsRequest](square/models/bulk_retrieve_vendors_request.py) \| [BulkRetrieveVendorsRequestDict](square/models/bulk_retrieve_vendors_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25335,7 +26115,9 @@ Updates one or more of existing [Vendor](entity:Vendor) objects as suppliers to 
 
 ```python
 try:
-    response = client.vendors.bulk_update_vendors(body)
+    response = client.vendors.bulk_update_vendors(
+        BulkUpdateVendorsRequest(vendors={"key": UpdateVendorRequest(vendor=Vendor())})
+    )
     # TODO: Handle 'response' of type BulkUpdateVendorsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25345,7 +26127,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.vendors.bulk_update_vendors(body)
+    response = await async_client.vendors.bulk_update_vendors(
+        BulkUpdateVendorsRequest(vendors={"key": UpdateVendorRequest(vendor=Vendor())})
+    )
     # TODO: Handle 'response' of type BulkUpdateVendorsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25362,7 +26146,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkUpdateVendorsRequest](square/models/bulk_update_vendors_request.py) \| [BulkUpdateVendorsRequestDict](square/models/bulk_update_vendors_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25409,7 +26193,7 @@ Creates a single [Vendor](entity:Vendor) object to represent a supplier to a sel
 
 ```python
 try:
-    response = client.vendors.create_vendor(body)
+    response = client.vendors.create_vendor(CreateVendorRequest(idempotency_key="some example string"))
     # TODO: Handle 'response' of type CreateVendorResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25419,7 +26203,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.vendors.create_vendor(body)
+    response = await async_client.vendors.create_vendor(CreateVendorRequest(idempotency_key="some example string"))
     # TODO: Handle 'response' of type CreateVendorResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25436,7 +26220,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateVendorRequest](square/models/create_vendor_request.py) \| [CreateVendorRequestDict](square/models/create_vendor_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25483,7 +26267,7 @@ Retrieves the vendor of a specified [Vendor](entity:Vendor) ID.
 
 ```python
 try:
-    response = client.vendors.retrieve_vendor(vendor_id)
+    response = client.vendors.retrieve_vendor("some example string")
     # TODO: Handle 'response' of type RetrieveVendorResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25493,7 +26277,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.vendors.retrieve_vendor(vendor_id)
+    response = await async_client.vendors.retrieve_vendor("some example string")
     # TODO: Handle 'response' of type RetrieveVendorResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25510,7 +26294,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>vendor_id</code> | <code>str</code> | ID of the [Vendor](entity:Vendor) to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25557,7 +26341,7 @@ Searches for vendors using a filter against supported [Vendor](entity:Vendor) pr
 
 ```python
 try:
-    response = client.vendors.search_vendors(body)
+    response = client.vendors.search_vendors(SearchVendorsRequest())
     # TODO: Handle 'response' of type SearchVendorsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25567,7 +26351,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.vendors.search_vendors(body)
+    response = await async_client.vendors.search_vendors(SearchVendorsRequest())
     # TODO: Handle 'response' of type SearchVendorsResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25584,7 +26368,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchVendorsRequest](square/models/search_vendors_request.py) \| [SearchVendorsRequestDict](square/models/search_vendors_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25631,7 +26415,7 @@ Updates an existing [Vendor](entity:Vendor) object as a supplier to a seller.
 
 ```python
 try:
-    response = client.vendors.update_vendor(vendor_id, body)
+    response = client.vendors.update_vendor("some example string", UpdateVendorRequest(vendor=Vendor()))
     # TODO: Handle 'response' of type UpdateVendorResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25641,7 +26425,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.vendors.update_vendor(vendor_id, body)
+    response = await async_client.vendors.update_vendor("some example string", UpdateVendorRequest(vendor=Vendor()))
     # TODO: Handle 'response' of type UpdateVendorResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25659,7 +26443,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>vendor_id</code> | <code>str</code> | Value sent with the request. |
 | <code>body</code> | <code>[UpdateVendorRequest](square/models/update_vendor_request.py) \| [UpdateVendorRequestDict](square/models/update_vendor_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25710,7 +26494,9 @@ Creates a webhook subscription.
 
 ```python
 try:
-    response = client.webhook_subscriptions.create_webhook_subscription(body)
+    response = client.webhook_subscriptions.create_webhook_subscription(
+        CreateWebhookSubscriptionRequest(subscription=WebhookSubscription())
+    )
     # TODO: Handle 'response' of type CreateWebhookSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25720,7 +26506,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.webhook_subscriptions.create_webhook_subscription(body)
+    response = await async_client.webhook_subscriptions.create_webhook_subscription(
+        CreateWebhookSubscriptionRequest(subscription=WebhookSubscription())
+    )
     # TODO: Handle 'response' of type CreateWebhookSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25737,7 +26525,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateWebhookSubscriptionRequest](square/models/create_webhook_subscription_request.py) \| [CreateWebhookSubscriptionRequestDict](square/models/create_webhook_subscription_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25784,7 +26572,7 @@ Deletes a webhook subscription.
 
 ```python
 try:
-    response = client.webhook_subscriptions.delete_webhook_subscription(subscription_id)
+    response = client.webhook_subscriptions.delete_webhook_subscription("some example string")
     # TODO: Handle 'response' of type DeleteWebhookSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25794,7 +26582,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.webhook_subscriptions.delete_webhook_subscription(subscription_id)
+    response = await async_client.webhook_subscriptions.delete_webhook_subscription("some example string")
     # TODO: Handle 'response' of type DeleteWebhookSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -25811,7 +26599,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25885,7 +26673,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>api_version</code> | <code>str \| None</code> | The API version for which to list event types. Setting this field overrides the default version used by the application.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25962,7 +26750,7 @@ except ApiError as e:
 | <code>include_disabled</code> | <code>bool \| None</code> | Includes disabled [Subscription](entity:WebhookSubscription)s.<br>By default, all enabled [Subscription](entity:WebhookSubscription)s are returned.<br>**Default**: <code>False</code> |
 | <code>sort_order</code> | <code>[SortOrderOrStr](square/models/enums/sort_order.py) \| None</code> | Sorts the returned list by when the [Subscription](entity:WebhookSubscription) was created with the specified order.<br>This field defaults to ASC.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to be returned in a single page.<br>It is possible to receive fewer results than the specified limit on a given page.<br>The default value of 100 is also the maximum allowed value.<br><br>Default: 100<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -26009,7 +26797,7 @@ Retrieves a webhook subscription identified by its ID.
 
 ```python
 try:
-    response = client.webhook_subscriptions.retrieve_webhook_subscription(subscription_id)
+    response = client.webhook_subscriptions.retrieve_webhook_subscription("some example string")
     # TODO: Handle 'response' of type RetrieveWebhookSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -26019,7 +26807,7 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.webhook_subscriptions.retrieve_webhook_subscription(subscription_id)
+    response = await async_client.webhook_subscriptions.retrieve_webhook_subscription("some example string")
     # TODO: Handle 'response' of type RetrieveWebhookSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -26036,7 +26824,7 @@ except ApiError as e:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -26083,7 +26871,9 @@ Tests a webhook subscription by sending a test event to the notification URL.
 
 ```python
 try:
-    response = client.webhook_subscriptions.test_webhook_subscription(subscription_id, body)
+    response = client.webhook_subscriptions.test_webhook_subscription(
+        "some example string", TestWebhookSubscriptionRequest()
+    )
     # TODO: Handle 'response' of type TestWebhookSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -26093,7 +26883,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.webhook_subscriptions.test_webhook_subscription(subscription_id, body)
+    response = await async_client.webhook_subscriptions.test_webhook_subscription(
+        "some example string", TestWebhookSubscriptionRequest()
+    )
     # TODO: Handle 'response' of type TestWebhookSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -26111,7 +26903,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to test. |
 | <code>body</code> | <code>[TestWebhookSubscriptionRequest](square/models/test_webhook_subscription_request.py) \| [TestWebhookSubscriptionRequestDict](square/models/test_webhook_subscription_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -26158,7 +26950,9 @@ Updates a webhook subscription.
 
 ```python
 try:
-    response = client.webhook_subscriptions.update_webhook_subscription(subscription_id, body)
+    response = client.webhook_subscriptions.update_webhook_subscription(
+        "some example string", UpdateWebhookSubscriptionRequest()
+    )
     # TODO: Handle 'response' of type UpdateWebhookSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -26168,7 +26962,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.webhook_subscriptions.update_webhook_subscription(subscription_id, body)
+    response = await async_client.webhook_subscriptions.update_webhook_subscription(
+        "some example string", UpdateWebhookSubscriptionRequest()
+    )
     # TODO: Handle 'response' of type UpdateWebhookSubscriptionResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -26186,7 +26982,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to update. |
 | <code>body</code> | <code>[UpdateWebhookSubscriptionRequest](square/models/update_webhook_subscription_request.py) \| [UpdateWebhookSubscriptionRequestDict](square/models/update_webhook_subscription_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -26233,7 +27029,9 @@ Updates a webhook subscription by replacing the existing signature key with a ne
 
 ```python
 try:
-    response = client.webhook_subscriptions.update_webhook_subscription_signature_key(subscription_id, body)
+    response = client.webhook_subscriptions.update_webhook_subscription_signature_key(
+        "some example string", UpdateWebhookSubscriptionSignatureKeyRequest()
+    )
     # TODO: Handle 'response' of type UpdateWebhookSubscriptionSignatureKeyResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -26243,7 +27041,9 @@ except ApiError as e:
 
 ```python
 try:
-    response = await async_client.webhook_subscriptions.update_webhook_subscription_signature_key(subscription_id, body)
+    response = await async_client.webhook_subscriptions.update_webhook_subscription_signature_key(
+        "some example string", UpdateWebhookSubscriptionSignatureKeyRequest()
+    )
     # TODO: Handle 'response' of type UpdateWebhookSubscriptionSignatureKeyResponse
 except ApiError as e:
     ...  # TODO: Handle 'e.error' of type RawError
@@ -26261,7 +27061,7 @@ except ApiError as e:
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to update. |
 | <code>body</code> | <code>[UpdateWebhookSubscriptionSignatureKeyRequest](square/models/update_webhook_subscription_signature_key_request.py) \| [UpdateWebhookSubscriptionSignatureKeyRequestDict](square/models/update_webhook_subscription_signature_key_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>

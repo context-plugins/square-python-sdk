@@ -59,7 +59,7 @@ class OrderLineItem(SdkBaseModel):
     item_type: Optional[OrderLineItemItemTypeOrStr] = UNSET
     """Represents the line item type."""
 
-    metadata: Optional[dict[str, str | None]] = UNSET
+    metadata: OptionalNullable[dict[str, str]] = UNSET
     """Application-defined data attached to this line item. Metadata fields are intended to store descriptive references
     or associations with an entity in another system or store brief information about the object. Square does not
     process this field; it only stores and returns it in relevant API calls. Do not use metadata to store any sensitive
@@ -77,10 +77,10 @@ class OrderLineItem(SdkBaseModel):
 
     For more information, see `Metadata <https://developer.squareup.com/docs/build-basics/metadata>`__."""
 
-    modifiers: Optional[list[OrderLineItemModifier | None]] = UNSET
+    modifiers: OptionalNullable[list[OrderLineItemModifier]] = UNSET
     """The `CatalogModifier <entity:CatalogModifier>`__s applied to this line item."""
 
-    applied_taxes: Optional[list[OrderLineItemAppliedTax | None]] = UNSET
+    applied_taxes: OptionalNullable[list[OrderLineItemAppliedTax]] = UNSET
     """The list of references to taxes applied to this line item. Each ``OrderLineItemAppliedTax`` has a ``tax_uid``
     that references the ``uid`` of a top-level ``OrderLineItemTax`` applied to the line item. On reads, the amount
     applied is populated.
@@ -91,7 +91,7 @@ class OrderLineItem(SdkBaseModel):
 
     To change the amount of a tax, modify the referenced top-level tax."""
 
-    applied_discounts: Optional[list[OrderLineItemAppliedDiscount | None]] = UNSET
+    applied_discounts: OptionalNullable[list[OrderLineItemAppliedDiscount]] = UNSET
     """The list of references to discounts applied to this line item. Each ``OrderLineItemAppliedDiscount`` has a
     ``discount_uid`` that references the ``uid`` of a top-level ``OrderLineItemDiscounts`` applied to the line item. On
     reads, the amount applied is populated.
@@ -102,7 +102,7 @@ class OrderLineItem(SdkBaseModel):
 
     To change the amount of a discount, modify the referenced top-level discount."""
 
-    applied_service_charges: Optional[list[OrderLineItemAppliedServiceCharge | None]] = UNSET
+    applied_service_charges: OptionalNullable[list[OrderLineItemAppliedServiceCharge]] = UNSET
     """The list of references to service charges applied to this line item. Each ``OrderLineItemAppliedServiceCharge``
     has a ``service_charge_id`` that references the ``uid`` of a top-level ``OrderServiceCharge`` applied to the line
     item. On reads, the amount applied is populated.
@@ -160,24 +160,22 @@ class OrderLineItemDict(TypedDict):
     uid: NotRequired[str | None]
     name: NotRequired[str | None]
     quantity: str
-    quantity_unit: NotRequired[OrderQuantityUnit | OrderQuantityUnitDict]
+    quantity_unit: NotRequired[OrderQuantityUnitDict]
     note: NotRequired[str | None]
     catalog_object_id: NotRequired[str | None]
     catalog_version: NotRequired[int | None]
     variation_name: NotRequired[str | None]
     item_type: NotRequired[OrderLineItemItemTypeOrStr]
-    metadata: NotRequired[dict[str, str | None]]
-    modifiers: NotRequired[list[OrderLineItemModifier | OrderLineItemModifierDict | None]]
-    applied_taxes: NotRequired[list[OrderLineItemAppliedTax | OrderLineItemAppliedTaxDict | None]]
-    applied_discounts: NotRequired[list[OrderLineItemAppliedDiscount | OrderLineItemAppliedDiscountDict | None]]
-    applied_service_charges: NotRequired[
-        list[OrderLineItemAppliedServiceCharge | OrderLineItemAppliedServiceChargeDict | None]
-    ]
-    base_price_money: NotRequired[Money | MoneyDict]
-    variation_total_price_money: NotRequired[Money | MoneyDict]
-    gross_sales_money: NotRequired[Money | MoneyDict]
-    total_tax_money: NotRequired[Money | MoneyDict]
-    total_discount_money: NotRequired[Money | MoneyDict]
-    total_money: NotRequired[Money | MoneyDict]
-    pricing_blocklists: NotRequired[OrderLineItemPricingBlocklists | OrderLineItemPricingBlocklistsDict]
-    total_service_charge_money: NotRequired[Money | MoneyDict]
+    metadata: NotRequired[dict[str, str] | None]
+    modifiers: NotRequired[list[OrderLineItemModifierDict] | None]
+    applied_taxes: NotRequired[list[OrderLineItemAppliedTaxDict] | None]
+    applied_discounts: NotRequired[list[OrderLineItemAppliedDiscountDict] | None]
+    applied_service_charges: NotRequired[list[OrderLineItemAppliedServiceChargeDict] | None]
+    base_price_money: NotRequired[MoneyDict]
+    variation_total_price_money: NotRequired[MoneyDict]
+    gross_sales_money: NotRequired[MoneyDict]
+    total_tax_money: NotRequired[MoneyDict]
+    total_discount_money: NotRequired[MoneyDict]
+    total_money: NotRequired[MoneyDict]
+    pricing_blocklists: NotRequired[OrderLineItemPricingBlocklistsDict]
+    total_service_charge_money: NotRequired[MoneyDict]

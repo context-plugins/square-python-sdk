@@ -19,4 +19,4 @@ class BulkDeleteLocationCustomAttributesResponseLocationCustomAttributeDeleteRes
 
 class BulkDeleteLocationCustomAttributesResponseLocationCustomAttributeDeleteResponseDict(TypedDict):
     location_id: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.obtain_token_request import ObtainTokenRequest, ObtainTokenRequestDict
 from ..models.obtain_token_response import ObtainTokenResponse
@@ -54,14 +56,15 @@ class Oauth:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.obtain_token(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.obtain_token(body, request_options=request_options))
 
     def retrieve_token_status(
         self, *, request_options: RequestOptionsOrDict | None = None
@@ -85,14 +88,15 @@ class Oauth:
         If the access token is expired or not a valid access token, the endpoint returns an ``UNAUTHORIZED`` error.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_token_status(request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_token_status(request_options=request_options))
 
     def revoke_token(
         self, body: RevokeTokenRequest | RevokeTokenRequestDict, *, request_options: RequestOptionsOrDict | None = None
@@ -114,14 +118,15 @@ class Oauth:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.revoke_token(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.revoke_token(body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> OauthWithRawResponse:
@@ -159,14 +164,15 @@ class AsyncOauth:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.obtain_token(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.obtain_token(body, request_options=request_options))
 
     async def retrieve_token_status(
         self, *, request_options: RequestOptionsOrDict | None = None
@@ -190,14 +196,15 @@ class AsyncOauth:
         If the access token is expired or not a valid access token, the endpoint returns an ``UNAUTHORIZED`` error.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.retrieve_token_status(request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.retrieve_token_status(request_options=request_options))
 
     async def revoke_token(
         self, body: RevokeTokenRequest | RevokeTokenRequestDict, *, request_options: RequestOptionsOrDict | None = None
@@ -219,14 +226,15 @@ class AsyncOauth:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.revoke_token(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.revoke_token(body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncOauthWithRawResponse:
@@ -261,7 +269,8 @@ class OauthWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -297,7 +306,8 @@ class OauthWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         If the access token is expired or not a valid access token, the endpoint returns an ``UNAUTHORIZED`` error.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -331,7 +341,8 @@ class OauthWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -374,7 +385,8 @@ class AsyncOauthWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -383,7 +395,7 @@ class AsyncOauthWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             url_template=self._server.default("/oauth2/token"),
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[ObtainTokenRequest | ObtainTokenRequestDict](body),
-            decoder=json_decoder[ObtainTokenResponse],
+            decoder=async_json_decoder[ObtainTokenResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -410,7 +422,8 @@ class AsyncOauthWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         If the access token is expired or not a valid access token, the endpoint returns an ``UNAUTHORIZED`` error.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -419,7 +432,7 @@ class AsyncOauthWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             url_template=self._server.default("/oauth2/token/status"),
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveTokenStatusResponse],
+            decoder=async_json_decoder[RetrieveTokenStatusResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -444,7 +457,8 @@ class AsyncOauthWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -453,7 +467,7 @@ class AsyncOauthWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             url_template=self._server.default("/oauth2/revoke"),
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RevokeTokenRequest | RevokeTokenRequestDict](body),
-            decoder=json_decoder[RevokeTokenResponse],
+            decoder=async_json_decoder[RevokeTokenResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

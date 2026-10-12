@@ -15,5 +15,5 @@ class CreateDeviceCodeResponse(SdkBaseModel):
 
 
 class CreateDeviceCodeResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    device_code: NotRequired[DeviceCode | DeviceCodeDict]
+    errors: NotRequired[list[ErrorDict]]
+    device_code: NotRequired[DeviceCodeDict]

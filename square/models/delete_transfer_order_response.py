@@ -14,4 +14,4 @@ class DeleteTransferOrderResponse(SdkBaseModel):
 
 
 class DeleteTransferOrderResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

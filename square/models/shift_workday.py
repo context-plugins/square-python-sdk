@@ -27,6 +27,6 @@ class ShiftWorkday(SdkBaseModel):
 
 
 class ShiftWorkdayDict(TypedDict):
-    date_range: NotRequired[DateRange | DateRangeDict]
+    date_range: NotRequired[DateRangeDict]
     match_shifts_by: NotRequired[ShiftWorkdayMatcherOrStr]
     default_timezone: NotRequired[str | None]

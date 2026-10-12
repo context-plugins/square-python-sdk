@@ -24,6 +24,6 @@ class SearchVendorsResponse(SdkBaseModel):
 
 
 class SearchVendorsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    vendors: NotRequired[list[Vendor | VendorDict]]
+    errors: NotRequired[list[ErrorDict]]
+    vendors: NotRequired[list[VendorDict]]
     cursor: NotRequired[str]

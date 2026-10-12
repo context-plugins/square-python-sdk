@@ -32,7 +32,7 @@ class SearchEventsResponse(SdkBaseModel):
 
 
 class SearchEventsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    events: NotRequired[list[Event | EventDict]]
-    metadata: NotRequired[list[EventMetadata | EventMetadataDict]]
+    errors: NotRequired[list[ErrorDict]]
+    events: NotRequired[list[EventDict]]
+    metadata: NotRequired[list[EventMetadataDict]]
     cursor: NotRequired[str]

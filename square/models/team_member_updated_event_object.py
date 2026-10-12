@@ -12,4 +12,4 @@ class TeamMemberUpdatedEventObject(SdkBaseModel):
 
 
 class TeamMemberUpdatedEventObjectDict(TypedDict):
-    team_member: NotRequired[TeamMember | TeamMemberDict]
+    team_member: NotRequired[TeamMemberDict]

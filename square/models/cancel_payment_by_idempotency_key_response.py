@@ -15,4 +15,4 @@ class CancelPaymentByIdempotencyKeyResponse(SdkBaseModel):
 
 
 class CancelPaymentByIdempotencyKeyResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

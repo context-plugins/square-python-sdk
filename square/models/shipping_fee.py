@@ -19,4 +19,4 @@ class ShippingFee(SdkBaseModel):
 
 class ShippingFeeDict(TypedDict):
     name: NotRequired[str | None]
-    charge: Money | MoneyDict
+    charge: MoneyDict

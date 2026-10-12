@@ -33,4 +33,4 @@ class OrderLineItemAppliedDiscount(SdkBaseModel):
 class OrderLineItemAppliedDiscountDict(TypedDict):
     uid: NotRequired[str | None]
     discount_uid: str
-    applied_money: NotRequired[Money | MoneyDict]
+    applied_money: NotRequired[MoneyDict]

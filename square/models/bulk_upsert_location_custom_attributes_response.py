@@ -24,13 +24,5 @@ class BulkUpsertLocationCustomAttributesResponse(SdkBaseModel):
 
 
 class BulkUpsertLocationCustomAttributesResponseDict(TypedDict):
-    values: NotRequired[
-        dict[
-            str,
-            (
-                BulkUpsertLocationCustomAttributesResponseLocationCustomAttributeUpsertResponse
-                | BulkUpsertLocationCustomAttributesResponseLocationCustomAttributeUpsertResponseDict
-            ),
-        ]
-    ]
-    errors: NotRequired[list[Error | ErrorDict]]
+    values: NotRequired[dict[str, BulkUpsertLocationCustomAttributesResponseLocationCustomAttributeUpsertResponseDict]]
+    errors: NotRequired[list[ErrorDict]]

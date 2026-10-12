@@ -24,5 +24,5 @@ class RetrieveCustomerGroupResponse(SdkBaseModel):
 
 
 class RetrieveCustomerGroupResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    group: NotRequired[CustomerGroup | CustomerGroupDict]
+    errors: NotRequired[list[ErrorDict]]
+    group: NotRequired[CustomerGroupDict]

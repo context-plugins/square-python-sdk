@@ -19,5 +19,5 @@ class BulkRetrieveBookingsResponse(SdkBaseModel):
 
 
 class BulkRetrieveBookingsResponseDict(TypedDict):
-    bookings: NotRequired[dict[str, RetrieveBookingResponse | RetrieveBookingResponseDict]]
-    errors: NotRequired[list[Error | ErrorDict]]
+    bookings: NotRequired[dict[str, RetrieveBookingResponseDict]]
+    errors: NotRequired[list[ErrorDict]]

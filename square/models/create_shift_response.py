@@ -23,5 +23,5 @@ class CreateShiftResponse(SdkBaseModel):
 
 
 class CreateShiftResponseDict(TypedDict):
-    shift: NotRequired[Shift | ShiftDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    shift: NotRequired[ShiftDict]
+    errors: NotRequired[list[ErrorDict]]

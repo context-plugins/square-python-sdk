@@ -19,6 +19,6 @@ class BatchRetrieveCatalogObjectsResponse(SdkBaseModel):
 
 
 class BatchRetrieveCatalogObjectsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    objects: NotRequired[list[CatalogObject | CatalogObjectDict]]
-    related_objects: NotRequired[list[CatalogObject | CatalogObjectDict]]
+    errors: NotRequired[list[ErrorDict]]
+    objects: NotRequired[list[CatalogObjectDict]]
+    related_objects: NotRequired[list[CatalogObjectDict]]

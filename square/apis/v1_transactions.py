@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.enums.sort_order import SortOrderOrStr
 from ..models.v1_order import V1Order
@@ -42,16 +44,19 @@ class V1Transactions:
             limit: The maximum number of payments to return in a single response. This value cannot exceed 200.
             batch_token: A pagination cursor to retrieve the next set of results for your original query to the
                 endpoint.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.v1_list_orders(
-            location_id, order=order, limit=limit, batch_token=batch_token, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.v1_list_orders(
+                location_id, order=order, limit=limit, batch_token=batch_token, request_options=request_options
+            ),
+        )
 
     def v1_retrieve_order(
         self, location_id: str, order_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -62,16 +67,15 @@ class V1Transactions:
             location_id: The ID of the order's associated location.
             order_id: The order's Square-issued ID. You obtain this value from Order objects returned by the List Orders
                 endpoint
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.v1_retrieve_order(
-            location_id, order_id, request_options=request_options
-        ).unwrap()
+        return unwrap(self._with_raw_response.v1_retrieve_order(location_id, order_id, request_options=request_options))
 
     def v1_update_order(
         self,
@@ -90,16 +94,17 @@ class V1Transactions:
                 endpoint
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.v1_update_order(
-            location_id, order_id, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.v1_update_order(location_id, order_id, body, request_options=request_options)
+        )
 
     @property
     def with_raw_response(self) -> V1TransactionsWithRawResponse:
@@ -127,18 +132,19 @@ class AsyncV1Transactions:
             limit: The maximum number of payments to return in a single response. This value cannot exceed 200.
             batch_token: A pagination cursor to retrieve the next set of results for your original query to the
                 endpoint.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.v1_list_orders(
                 location_id, order=order, limit=limit, batch_token=batch_token, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def v1_retrieve_order(
         self, location_id: str, order_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -149,16 +155,17 @@ class AsyncV1Transactions:
             location_id: The ID of the order's associated location.
             order_id: The order's Square-issued ID. You obtain this value from Order objects returned by the List Orders
                 endpoint
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.v1_retrieve_order(location_id, order_id, request_options=request_options)
-        ).unwrap()
+        )
 
     async def v1_update_order(
         self,
@@ -177,16 +184,17 @@ class AsyncV1Transactions:
                 endpoint
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.v1_update_order(location_id, order_id, body, request_options=request_options)
-        ).unwrap()
+        )
 
     @property
     def with_raw_response(self) -> AsyncV1TransactionsWithRawResponse:
@@ -211,7 +219,8 @@ class V1TransactionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSc
             limit: The maximum number of payments to return in a single response. This value cannot exceed 200.
             batch_token: A pagination cursor to retrieve the next set of results for your original query to the
                 endpoint.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -239,7 +248,8 @@ class V1TransactionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSc
             location_id: The ID of the order's associated location.
             order_id: The order's Square-issued ID. You obtain this value from Order objects returned by the List Orders
                 endpoint
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -270,7 +280,8 @@ class V1TransactionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSc
                 endpoint
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -305,7 +316,8 @@ class AsyncV1TransactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serv
             limit: The maximum number of payments to return in a single response. This value cannot exceed 200.
             batch_token: A pagination cursor to retrieve the next set of results for your original query to the
                 endpoint.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -319,7 +331,7 @@ class AsyncV1TransactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serv
                 param[str | None]("batch_token", batch_token),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[list[V1Order]],
+            decoder=async_json_decoder[list[V1Order]],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -333,7 +345,8 @@ class AsyncV1TransactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serv
             location_id: The ID of the order's associated location.
             order_id: The order's Square-issued ID. You obtain this value from Order objects returned by the List Orders
                 endpoint
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -342,7 +355,7 @@ class AsyncV1TransactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serv
             url_template=self._server.default("/v1/{location_id}/orders/{order_id}"),
             path_params=[param[str]("location_id", location_id), param[str]("order_id", order_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[V1Order],
+            decoder=async_json_decoder[V1Order],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -364,7 +377,8 @@ class AsyncV1TransactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serv
                 endpoint
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -375,7 +389,7 @@ class AsyncV1TransactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serv
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[V1UpdateOrderRequest | V1UpdateOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[V1Order],
+            decoder=async_json_decoder[V1Order],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

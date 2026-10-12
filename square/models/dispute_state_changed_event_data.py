@@ -20,4 +20,4 @@ class DisputeStateChangedEventData(SdkBaseModel):
 class DisputeStateChangedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[DisputeStateChangedEventObject | DisputeStateChangedEventObjectDict]
+    object_: NotRequired[DisputeStateChangedEventObjectDict]

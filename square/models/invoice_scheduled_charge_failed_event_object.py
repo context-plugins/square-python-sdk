@@ -13,4 +13,4 @@ class InvoiceScheduledChargeFailedEventObject(SdkBaseModel):
 
 
 class InvoiceScheduledChargeFailedEventObjectDict(TypedDict):
-    invoice: NotRequired[Invoice | InvoiceDict]
+    invoice: NotRequired[InvoiceDict]

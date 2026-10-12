@@ -21,5 +21,5 @@ class BulkRetrieveChannelsResponse(SdkBaseModel):
 
 
 class BulkRetrieveChannelsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    responses: NotRequired[dict[str, RetrieveChannelResponse | RetrieveChannelResponseDict]]
+    errors: NotRequired[list[ErrorDict]]
+    responses: NotRequired[dict[str, RetrieveChannelResponseDict]]

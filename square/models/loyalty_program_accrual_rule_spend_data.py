@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, SdkBaseModel
+from ..core import UNSET, OptionalNullable, SdkBaseModel
 from .enums.loyalty_program_accrual_rule_tax_mode import LoyaltyProgramAccrualRuleTaxModeOrStr
 from .money import Money, MoneyDict
 
@@ -16,13 +16,13 @@ class LoyaltyProgramAccrualRuleSpendData(SdkBaseModel):
     the sign of the value indicates the purpose of the money transfer. See `Working with Monetary Amounts
     <https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts>`__ for more information."""
 
-    excluded_category_ids: Optional[list[str | None]] = UNSET
+    excluded_category_ids: OptionalNullable[list[str]] = UNSET
     """The IDs of any ``CATEGORY`` catalog objects that are excluded from points accrual.
 
     You can use the `BatchRetrieveCatalogObjects <api-endpoint:Catalog-BatchRetrieveCatalogObjects>`__ endpoint to
     retrieve information about the excluded categories."""
 
-    excluded_item_variation_ids: Optional[list[str | None]] = UNSET
+    excluded_item_variation_ids: OptionalNullable[list[str]] = UNSET
     """The IDs of any ``ITEM_VARIATION`` catalog objects that are excluded from points accrual.
 
     You can use the `BatchRetrieveCatalogObjects <api-endpoint:Catalog-BatchRetrieveCatalogObjects>`__ endpoint to
@@ -34,7 +34,7 @@ class LoyaltyProgramAccrualRuleSpendData(SdkBaseModel):
 
 
 class LoyaltyProgramAccrualRuleSpendDataDict(TypedDict):
-    amount_money: Money | MoneyDict
-    excluded_category_ids: NotRequired[list[str | None]]
-    excluded_item_variation_ids: NotRequired[list[str | None]]
+    amount_money: MoneyDict
+    excluded_category_ids: NotRequired[list[str] | None]
+    excluded_item_variation_ids: NotRequired[list[str] | None]
     tax_mode: LoyaltyProgramAccrualRuleTaxModeOrStr

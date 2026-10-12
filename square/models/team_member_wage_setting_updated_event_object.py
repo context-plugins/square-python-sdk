@@ -13,4 +13,4 @@ class TeamMemberWageSettingUpdatedEventObject(SdkBaseModel):
 
 
 class TeamMemberWageSettingUpdatedEventObjectDict(TypedDict):
-    wage_setting: NotRequired[WageSetting | WageSettingDict]
+    wage_setting: NotRequired[WageSettingDict]

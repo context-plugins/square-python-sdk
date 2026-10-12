@@ -23,6 +23,6 @@ class SearchInvoicesResponse(SdkBaseModel):
 
 
 class SearchInvoicesResponseDict(TypedDict):
-    invoices: NotRequired[list[Invoice | InvoiceDict]]
+    invoices: NotRequired[list[InvoiceDict]]
     cursor: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

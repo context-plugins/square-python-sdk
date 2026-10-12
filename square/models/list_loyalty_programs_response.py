@@ -18,5 +18,5 @@ class ListLoyaltyProgramsResponse(SdkBaseModel):
 
 
 class ListLoyaltyProgramsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    programs: NotRequired[list[LoyaltyProgram | LoyaltyProgramDict]]
+    errors: NotRequired[list[ErrorDict]]
+    programs: NotRequired[list[LoyaltyProgramDict]]

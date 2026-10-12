@@ -82,11 +82,11 @@ class CreateCheckoutRequest(SdkBaseModel):
 
 class CreateCheckoutRequestDict(TypedDict):
     idempotency_key: str
-    order: CreateOrderRequest | CreateOrderRequestDict
+    order: CreateOrderRequestDict
     ask_for_shipping_address: NotRequired[bool]
     merchant_support_email: NotRequired[str]
     pre_populate_buyer_email: NotRequired[str]
-    pre_populate_shipping_address: NotRequired[Address | AddressDict]
+    pre_populate_shipping_address: NotRequired[AddressDict]
     redirect_url: NotRequired[str]
-    additional_recipients: NotRequired[list[ChargeRequestAdditionalRecipient | ChargeRequestAdditionalRecipientDict]]
+    additional_recipients: NotRequired[list[ChargeRequestAdditionalRecipientDict]]
     note: NotRequired[str]

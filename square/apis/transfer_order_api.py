@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.cancel_transfer_order_request import CancelTransferOrderRequest, CancelTransferOrderRequestDict
 from ..models.cancel_transfer_order_response import CancelTransferOrderResponse
@@ -58,16 +60,17 @@ class TransferOrderApi:
             transfer_order_id: The ID of the transfer order to cancel. Must be in STARTED or PARTIALLY_RECEIVED status.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.cancel_transfer_order(
-            transfer_order_id, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.cancel_transfer_order(transfer_order_id, body, request_options=request_options)
+        )
 
     def create_transfer_order(
         self,
@@ -99,14 +102,15 @@ class TransferOrderApi:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_transfer_order(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_transfer_order(body, request_options=request_options))
 
     def delete_transfer_order(
         self, transfer_order_id: str, *, version: int | None = None, request_options: RequestOptionsOrDict | None = None
@@ -120,16 +124,19 @@ class TransferOrderApi:
         Args:
             transfer_order_id: The ID of the transfer order to delete
             version: Version for optimistic concurrency
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_transfer_order(
-            transfer_order_id, version=version, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.delete_transfer_order(
+                transfer_order_id, version=version, request_options=request_options
+            ),
+        )
 
     def receive_transfer_order(
         self,
@@ -162,16 +169,17 @@ class TransferOrderApi:
             transfer_order_id: The ID of the transfer order to receive items for
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.receive_transfer_order(
-            transfer_order_id, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.receive_transfer_order(transfer_order_id, body, request_options=request_options)
+        )
 
     def retrieve_transfer_order(
         self, transfer_order_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -186,16 +194,17 @@ class TransferOrderApi:
 
         Args:
             transfer_order_id: The ID of the transfer order to retrieve
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_transfer_order(
-            transfer_order_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.retrieve_transfer_order(transfer_order_id, request_options=request_options)
+        )
 
     def search_transfer_orders(
         self,
@@ -214,14 +223,15 @@ class TransferOrderApi:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_transfer_orders(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_transfer_orders(body, request_options=request_options))
 
     def start_transfer_order(
         self,
@@ -243,16 +253,17 @@ class TransferOrderApi:
             transfer_order_id: The ID of the transfer order to start. Must be in DRAFT status.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.start_transfer_order(
-            transfer_order_id, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.start_transfer_order(transfer_order_id, body, request_options=request_options)
+        )
 
     def update_transfer_order(
         self,
@@ -270,16 +281,17 @@ class TransferOrderApi:
             transfer_order_id: The ID of the transfer order to update
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_transfer_order(
-            transfer_order_id, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.update_transfer_order(transfer_order_id, body, request_options=request_options)
+        )
 
     @property
     def with_raw_response(self) -> TransferOrderApiWithRawResponse:
@@ -312,18 +324,19 @@ class AsyncTransferOrderApi:
             transfer_order_id: The ID of the transfer order to cancel. Must be in STARTED or PARTIALLY_RECEIVED status.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.cancel_transfer_order(
                 transfer_order_id, body, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def create_transfer_order(
         self,
@@ -355,14 +368,15 @@ class AsyncTransferOrderApi:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_transfer_order(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_transfer_order(body, request_options=request_options))
 
     async def delete_transfer_order(
         self, transfer_order_id: str, *, version: int | None = None, request_options: RequestOptionsOrDict | None = None
@@ -376,18 +390,19 @@ class AsyncTransferOrderApi:
         Args:
             transfer_order_id: The ID of the transfer order to delete
             version: Version for optimistic concurrency
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.delete_transfer_order(
                 transfer_order_id, version=version, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def receive_transfer_order(
         self,
@@ -420,18 +435,19 @@ class AsyncTransferOrderApi:
             transfer_order_id: The ID of the transfer order to receive items for
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.receive_transfer_order(
                 transfer_order_id, body, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_transfer_order(
         self, transfer_order_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -446,16 +462,17 @@ class AsyncTransferOrderApi:
 
         Args:
             transfer_order_id: The ID of the transfer order to retrieve
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_transfer_order(transfer_order_id, request_options=request_options)
-        ).unwrap()
+        )
 
     async def search_transfer_orders(
         self,
@@ -474,14 +491,15 @@ class AsyncTransferOrderApi:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_transfer_orders(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_transfer_orders(body, request_options=request_options))
 
     async def start_transfer_order(
         self,
@@ -503,16 +521,17 @@ class AsyncTransferOrderApi:
             transfer_order_id: The ID of the transfer order to start. Must be in DRAFT status.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.start_transfer_order(transfer_order_id, body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def update_transfer_order(
         self,
@@ -530,18 +549,19 @@ class AsyncTransferOrderApi:
             transfer_order_id: The ID of the transfer order to update
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.update_transfer_order(
                 transfer_order_id, body, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncTransferOrderApiWithRawResponse:
@@ -571,7 +591,8 @@ class TransferOrderApiWithRawResponse(SecuredRawResponse[RawClient, Server, Auth
             transfer_order_id: The ID of the transfer order to cancel. Must be in STARTED or PARTIALLY_RECEIVED status.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -617,7 +638,8 @@ class TransferOrderApiWithRawResponse(SecuredRawResponse[RawClient, Server, Auth
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -644,7 +666,8 @@ class TransferOrderApiWithRawResponse(SecuredRawResponse[RawClient, Server, Auth
         Args:
             transfer_order_id: The ID of the transfer order to delete
             version: Version for optimistic concurrency
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -691,7 +714,8 @@ class TransferOrderApiWithRawResponse(SecuredRawResponse[RawClient, Server, Auth
             transfer_order_id: The ID of the transfer order to receive items for
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -720,7 +744,8 @@ class TransferOrderApiWithRawResponse(SecuredRawResponse[RawClient, Server, Auth
 
         Args:
             transfer_order_id: The ID of the transfer order to retrieve
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -751,7 +776,8 @@ class TransferOrderApiWithRawResponse(SecuredRawResponse[RawClient, Server, Auth
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -786,7 +812,8 @@ class TransferOrderApiWithRawResponse(SecuredRawResponse[RawClient, Server, Auth
             transfer_order_id: The ID of the transfer order to start. Must be in DRAFT status.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -818,7 +845,8 @@ class TransferOrderApiWithRawResponse(SecuredRawResponse[RawClient, Server, Auth
             transfer_order_id: The ID of the transfer order to update
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -858,7 +886,8 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
             transfer_order_id: The ID of the transfer order to cancel. Must be in STARTED or PARTIALLY_RECEIVED status.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -869,7 +898,7 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CancelTransferOrderRequest | CancelTransferOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CancelTransferOrderResponse],
+            decoder=async_json_decoder[CancelTransferOrderResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -904,7 +933,8 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -914,7 +944,7 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateTransferOrderRequest | CreateTransferOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateTransferOrderResponse],
+            decoder=async_json_decoder[CreateTransferOrderResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -931,7 +961,8 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
         Args:
             transfer_order_id: The ID of the transfer order to delete
             version: Version for optimistic concurrency
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -942,7 +973,7 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
             query_params=[param[int | None]("version", version)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeleteTransferOrderResponse],
+            decoder=async_json_decoder[DeleteTransferOrderResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -978,7 +1009,8 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
             transfer_order_id: The ID of the transfer order to receive items for
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -989,7 +1021,7 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[ReceiveTransferOrderRequest | ReceiveTransferOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ReceiveTransferOrderResponse],
+            decoder=async_json_decoder[ReceiveTransferOrderResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1007,7 +1039,8 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
 
         Args:
             transfer_order_id: The ID of the transfer order to retrieve
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1016,7 +1049,7 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
             url_template=self._server.default("/v2/transfer-orders/{transfer_order_id}"),
             path_params=[param[str]("transfer_order_id", transfer_order_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveTransferOrderResponse],
+            decoder=async_json_decoder[RetrieveTransferOrderResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1038,7 +1071,8 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1048,7 +1082,7 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchTransferOrdersRequest | SearchTransferOrdersRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SearchTransferOrdersResponse],
+            decoder=async_json_decoder[SearchTransferOrdersResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1073,7 +1107,8 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
             transfer_order_id: The ID of the transfer order to start. Must be in DRAFT status.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1084,7 +1119,7 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[StartTransferOrderRequest | StartTransferOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[StartTransferOrderResponse],
+            decoder=async_json_decoder[StartTransferOrderResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1105,7 +1140,8 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
             transfer_order_id: The ID of the transfer order to update
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1116,7 +1152,7 @@ class AsyncTransferOrderApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateTransferOrderRequest | UpdateTransferOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateTransferOrderResponse],
+            decoder=async_json_decoder[UpdateTransferOrderResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

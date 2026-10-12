@@ -13,4 +13,4 @@ class InvoiceRefundedEventObject(SdkBaseModel):
 
 
 class InvoiceRefundedEventObjectDict(TypedDict):
-    invoice: NotRequired[Invoice | InvoiceDict]
+    invoice: NotRequired[InvoiceDict]

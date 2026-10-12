@@ -26,5 +26,5 @@ class CatalogMeasurementUnit(SdkBaseModel):
 
 
 class CatalogMeasurementUnitDict(TypedDict):
-    measurement_unit: NotRequired[MeasurementUnit | MeasurementUnitDict]
+    measurement_unit: NotRequired[MeasurementUnitDict]
     precision: NotRequired[int | None]

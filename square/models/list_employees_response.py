@@ -17,6 +17,6 @@ class ListEmployeesResponse(SdkBaseModel):
 
 
 class ListEmployeesResponseDict(TypedDict):
-    employees: NotRequired[list[Employee | EmployeeDict]]
+    employees: NotRequired[list[EmployeeDict]]
     cursor: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

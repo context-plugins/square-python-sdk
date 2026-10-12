@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, SdkBaseModel
+from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
 from .enums.timecard_filter_status import TimecardFilterStatusOrStr
 from .time_range import TimeRange, TimeRangeDict
 from .timecard_workday import TimecardWorkday, TimecardWorkdayDict
@@ -12,7 +12,7 @@ class TimecardFilter(SdkBaseModel):
     """Defines a filter used in a search for ``Timecard`` records. ``AND`` logic is used by Square's servers to apply
     each filter property specified."""
 
-    location_ids: Optional[list[str | None]] = UNSET
+    location_ids: OptionalNullable[list[str]] = UNSET
     """Fetch timecards for the specified location."""
 
     status: Optional[TimecardFilterStatusOrStr] = UNSET
@@ -32,14 +32,14 @@ class TimecardFilter(SdkBaseModel):
     """A ``Timecard`` search query filter parameter that sets a range of days that a ``Timecard`` must start or end in
     before passing the filter condition."""
 
-    team_member_ids: Optional[list[str | None]] = UNSET
+    team_member_ids: OptionalNullable[list[str]] = UNSET
     """Fetch timecards for the specified team members."""
 
 
 class TimecardFilterDict(TypedDict):
-    location_ids: NotRequired[list[str | None]]
+    location_ids: NotRequired[list[str] | None]
     status: NotRequired[TimecardFilterStatusOrStr]
-    start: NotRequired[TimeRange | TimeRangeDict]
-    end: NotRequired[TimeRange | TimeRangeDict]
-    workday: NotRequired[TimecardWorkday | TimecardWorkdayDict]
-    team_member_ids: NotRequired[list[str | None]]
+    start: NotRequired[TimeRangeDict]
+    end: NotRequired[TimeRangeDict]
+    workday: NotRequired[TimecardWorkdayDict]
+    team_member_ids: NotRequired[list[str] | None]

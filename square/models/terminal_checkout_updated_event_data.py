@@ -23,4 +23,4 @@ class TerminalCheckoutUpdatedEventData(SdkBaseModel):
 class TerminalCheckoutUpdatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[TerminalCheckoutUpdatedEventObject | TerminalCheckoutUpdatedEventObjectDict]
+    object_: NotRequired[TerminalCheckoutUpdatedEventObjectDict]

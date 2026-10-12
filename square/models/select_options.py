@@ -22,5 +22,5 @@ class SelectOptions(SdkBaseModel):
 class SelectOptionsDict(TypedDict):
     title: str
     body: str
-    options: list[SelectOption | SelectOptionDict]
-    selected_option: NotRequired[SelectOption | SelectOptionDict]
+    options: list[SelectOptionDict]
+    selected_option: NotRequired[SelectOptionDict]

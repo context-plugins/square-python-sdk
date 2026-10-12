@@ -1,17 +1,16 @@
 from __future__ import annotations
 
-from typing import Literal
-
 from typing_extensions import NotRequired, TypedDict
 
 from ..core import UNSET, Optional, SdkBaseModel
+from .enums.invoice_sort_field import InvoiceSortFieldOrStr
 from .enums.sort_order import SortOrderOrStr
 
 
 class InvoiceSort(SdkBaseModel):
     """Identifies the sort field and sort order."""
 
-    field: Literal["INVOICE_SORT_DATE"] = "INVOICE_SORT_DATE"
+    field: InvoiceSortFieldOrStr
     """The field to use for sorting."""
 
     order: Optional[SortOrderOrStr] = UNSET
@@ -19,5 +18,5 @@ class InvoiceSort(SdkBaseModel):
 
 
 class InvoiceSortDict(TypedDict):
-    field: NotRequired[Literal["INVOICE_SORT_DATE"]]
+    field: InvoiceSortFieldOrStr
     order: NotRequired[SortOrderOrStr]

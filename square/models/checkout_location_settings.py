@@ -16,7 +16,7 @@ class CheckoutLocationSettings(SdkBaseModel):
     customer_notes_enabled: OptionalNullable[bool] = UNSET
     """Indicates whether customers are allowed to leave notes at checkout."""
 
-    policies: Optional[list[CheckoutLocationSettingsPolicy | None]] = UNSET
+    policies: OptionalNullable[list[CheckoutLocationSettingsPolicy]] = UNSET
     """Policy information is displayed at the bottom of the checkout pages. You can set a maximum of two policies."""
 
     branding: Optional[CheckoutLocationSettingsBranding] = UNSET
@@ -30,8 +30,8 @@ class CheckoutLocationSettings(SdkBaseModel):
 class CheckoutLocationSettingsDict(TypedDict):
     location_id: NotRequired[str | None]
     customer_notes_enabled: NotRequired[bool | None]
-    policies: NotRequired[list[CheckoutLocationSettingsPolicy | CheckoutLocationSettingsPolicyDict | None]]
-    branding: NotRequired[CheckoutLocationSettingsBranding | CheckoutLocationSettingsBrandingDict]
-    tipping: NotRequired[CheckoutLocationSettingsTipping | CheckoutLocationSettingsTippingDict]
-    coupons: NotRequired[CheckoutLocationSettingsCoupons | CheckoutLocationSettingsCouponsDict]
+    policies: NotRequired[list[CheckoutLocationSettingsPolicyDict] | None]
+    branding: NotRequired[CheckoutLocationSettingsBrandingDict]
+    tipping: NotRequired[CheckoutLocationSettingsTippingDict]
+    coupons: NotRequired[CheckoutLocationSettingsCouponsDict]
     updated_at: NotRequired[str]

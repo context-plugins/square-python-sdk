@@ -27,6 +27,6 @@ class ListWebhookSubscriptionsResponse(SdkBaseModel):
 
 
 class ListWebhookSubscriptionsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    subscriptions: NotRequired[list[WebhookSubscription | WebhookSubscriptionDict]]
+    errors: NotRequired[list[ErrorDict]]
+    subscriptions: NotRequired[list[WebhookSubscriptionDict]]
     cursor: NotRequired[str]

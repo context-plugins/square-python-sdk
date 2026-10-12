@@ -18,5 +18,5 @@ class InvoiceQuery(SdkBaseModel):
 
 
 class InvoiceQueryDict(TypedDict):
-    filter: InvoiceFilter | InvoiceFilterDict
-    sort: NotRequired[InvoiceSort | InvoiceSortDict]
+    filter: InvoiceFilterDict
+    sort: NotRequired[InvoiceSortDict]

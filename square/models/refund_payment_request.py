@@ -83,8 +83,8 @@ class RefundPaymentRequest(SdkBaseModel):
 
 class RefundPaymentRequestDict(TypedDict):
     idempotency_key: str
-    amount_money: Money | MoneyDict
-    app_fee_money: NotRequired[Money | MoneyDict]
+    amount_money: MoneyDict
+    app_fee_money: NotRequired[MoneyDict]
     payment_id: NotRequired[str | None]
     destination_id: NotRequired[str | None]
     unlinked: NotRequired[bool | None]
@@ -93,5 +93,5 @@ class RefundPaymentRequestDict(TypedDict):
     reason: NotRequired[str | None]
     payment_version_token: NotRequired[str | None]
     team_member_id: NotRequired[str | None]
-    cash_details: NotRequired[DestinationDetailsCashRefundDetails | DestinationDetailsCashRefundDetailsDict]
-    external_details: NotRequired[DestinationDetailsExternalRefundDetails | DestinationDetailsExternalRefundDetailsDict]
+    cash_details: NotRequired[DestinationDetailsCashRefundDetailsDict]
+    external_details: NotRequired[DestinationDetailsExternalRefundDetailsDict]

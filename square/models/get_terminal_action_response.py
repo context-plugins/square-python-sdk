@@ -16,5 +16,5 @@ class GetTerminalActionResponse(SdkBaseModel):
 
 
 class GetTerminalActionResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    action: NotRequired[TerminalAction | TerminalActionDict]
+    errors: NotRequired[list[ErrorDict]]
+    action: NotRequired[TerminalActionDict]

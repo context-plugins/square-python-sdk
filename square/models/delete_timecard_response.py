@@ -15,4 +15,4 @@ class DeleteTimecardResponse(SdkBaseModel):
 
 
 class DeleteTimecardResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

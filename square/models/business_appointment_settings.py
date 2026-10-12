@@ -17,7 +17,7 @@ from .money import Money, MoneyDict
 class BusinessAppointmentSettings(SdkBaseModel):
     """The service appointment settings, including where and how the service is provided."""
 
-    location_types: Optional[list[BusinessAppointmentSettingsBookingLocationTypeOrStr | None]] = UNSET
+    location_types: OptionalNullable[list[BusinessAppointmentSettingsBookingLocationTypeOrStr]] = UNSET
     """Types of the location allowed for bookings. See `BusinessAppointmentSettingsBookingLocationType
     <#type-businessappointmentsettingsbookinglocationtype>`__ for possible values"""
 
@@ -68,7 +68,7 @@ class BusinessAppointmentSettings(SdkBaseModel):
 
 
 class BusinessAppointmentSettingsDict(TypedDict):
-    location_types: NotRequired[list[BusinessAppointmentSettingsBookingLocationTypeOrStr | None]]
+    location_types: NotRequired[list[BusinessAppointmentSettingsBookingLocationTypeOrStr] | None]
     alignment_time: NotRequired[BusinessAppointmentSettingsAlignmentTimeOrStr]
     min_booking_lead_time_seconds: NotRequired[int | None]
     max_booking_lead_time_seconds: NotRequired[int | None]
@@ -77,7 +77,7 @@ class BusinessAppointmentSettingsDict(TypedDict):
     max_appointments_per_day_limit_type: NotRequired[BusinessAppointmentSettingsMaxAppointmentsPerDayLimitTypeOrStr]
     max_appointments_per_day_limit: NotRequired[int | None]
     cancellation_window_seconds: NotRequired[int | None]
-    cancellation_fee_money: NotRequired[Money | MoneyDict]
+    cancellation_fee_money: NotRequired[MoneyDict]
     cancellation_policy: NotRequired[BusinessAppointmentSettingsCancellationPolicyOrStr]
     cancellation_policy_text: NotRequired[str | None]
     skip_booking_flow_staff_selection: NotRequired[bool | None]

@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.cancel_payment_by_idempotency_key_request import (
     CancelPaymentByIdempotencyKeyRequest,
@@ -44,14 +46,15 @@ class Payments:
 
         Args:
             payment_id: The ID of the payment to cancel.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.cancel_payment(payment_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.cancel_payment(payment_id, request_options=request_options))
 
     def cancel_payment_by_idempotency_key(
         self,
@@ -73,14 +76,15 @@ class Payments:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.cancel_payment_by_idempotency_key(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.cancel_payment_by_idempotency_key(body, request_options=request_options))
 
     def complete_payment(
         self,
@@ -97,14 +101,15 @@ class Payments:
             payment_id: The unique ID identifying the payment to be completed.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.complete_payment(payment_id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.complete_payment(payment_id, body, request_options=request_options))
 
     def create_payment(
         self,
@@ -121,14 +126,15 @@ class Payments:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_payment(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_payment(body, request_options=request_options))
 
     def get_payment(
         self, payment_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -137,14 +143,15 @@ class Payments:
 
         Args:
             payment_id: A unique ID for the desired payment.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.get_payment(payment_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.get_payment(payment_id, request_options=request_options))
 
     def list_payments(
         self,
@@ -206,31 +213,34 @@ class Payments:
             updated_at_end_time: Indicates the end of the time range to retrieve payments for, in RFC 3339 format. The
                 range is determined using the ``updated_at`` field for each Payment.
             sort_field: The field used to sort results by. The default is ``CREATED_AT``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_payments(
-            begin_time=begin_time,
-            end_time=end_time,
-            sort_order=sort_order,
-            cursor=cursor,
-            location_id=location_id,
-            total=total,
-            last_4=last_4,
-            card_brand=card_brand,
-            limit=limit,
-            is_offline_payment=is_offline_payment,
-            offline_begin_time=offline_begin_time,
-            offline_end_time=offline_end_time,
-            updated_at_begin_time=updated_at_begin_time,
-            updated_at_end_time=updated_at_end_time,
-            sort_field=sort_field,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_payments(
+                begin_time=begin_time,
+                end_time=end_time,
+                sort_order=sort_order,
+                cursor=cursor,
+                location_id=location_id,
+                total=total,
+                last_4=last_4,
+                card_brand=card_brand,
+                limit=limit,
+                is_offline_payment=is_offline_payment,
+                offline_begin_time=offline_begin_time,
+                offline_end_time=offline_end_time,
+                updated_at_begin_time=updated_at_begin_time,
+                updated_at_end_time=updated_at_end_time,
+                sort_field=sort_field,
+                request_options=request_options,
+            ),
+        )
 
     def update_payment(
         self,
@@ -246,14 +256,15 @@ class Payments:
             payment_id: The ID of the payment to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_payment(payment_id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.update_payment(payment_id, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> PaymentsWithRawResponse:
@@ -271,14 +282,15 @@ class AsyncPayments:
 
         Args:
             payment_id: The ID of the payment to cancel.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.cancel_payment(payment_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.cancel_payment(payment_id, request_options=request_options))
 
     async def cancel_payment_by_idempotency_key(
         self,
@@ -300,16 +312,17 @@ class AsyncPayments:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.cancel_payment_by_idempotency_key(body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def complete_payment(
         self,
@@ -326,16 +339,15 @@ class AsyncPayments:
             payment_id: The unique ID identifying the payment to be completed.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.complete_payment(payment_id, body, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.complete_payment(payment_id, body, request_options=request_options))
 
     async def create_payment(
         self,
@@ -352,14 +364,15 @@ class AsyncPayments:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_payment(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_payment(body, request_options=request_options))
 
     async def get_payment(
         self, payment_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -368,14 +381,15 @@ class AsyncPayments:
 
         Args:
             payment_id: A unique ID for the desired payment.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.get_payment(payment_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.get_payment(payment_id, request_options=request_options))
 
     async def list_payments(
         self,
@@ -437,14 +451,15 @@ class AsyncPayments:
             updated_at_end_time: Indicates the end of the time range to retrieve payments for, in RFC 3339 format. The
                 range is determined using the ``updated_at`` field for each Payment.
             sort_field: The field used to sort results by. The default is ``CREATED_AT``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_payments(
                 begin_time=begin_time,
                 end_time=end_time,
@@ -462,8 +477,8 @@ class AsyncPayments:
                 updated_at_end_time=updated_at_end_time,
                 sort_field=sort_field,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def update_payment(
         self,
@@ -479,16 +494,15 @@ class AsyncPayments:
             payment_id: The ID of the payment to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.update_payment(payment_id, body, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.update_payment(payment_id, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncPaymentsWithRawResponse:
@@ -503,7 +517,8 @@ class PaymentsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             payment_id: The ID of the payment to cancel.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -538,7 +553,8 @@ class PaymentsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -568,7 +584,8 @@ class PaymentsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             payment_id: The unique ID identifying the payment to be completed.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -599,7 +616,8 @@ class PaymentsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -621,7 +639,8 @@ class PaymentsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             payment_id: A unique ID for the desired payment.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -695,7 +714,8 @@ class PaymentsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             updated_at_end_time: Indicates the end of the time range to retrieve payments for, in RFC 3339 format. The
                 range is determined using the ``updated_at`` field for each Payment.
             sort_field: The field used to sort results by. The default is ``CREATED_AT``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -739,7 +759,8 @@ class PaymentsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             payment_id: The ID of the payment to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -764,7 +785,8 @@ class AsyncPaymentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             payment_id: The ID of the payment to cancel.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -774,7 +796,7 @@ class AsyncPaymentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             path_params=[param[str]("payment_id", payment_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CancelPaymentResponse],
+            decoder=async_json_decoder[CancelPaymentResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -799,7 +821,8 @@ class AsyncPaymentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -809,7 +832,7 @@ class AsyncPaymentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CancelPaymentByIdempotencyKeyRequest | CancelPaymentByIdempotencyKeyRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CancelPaymentByIdempotencyKeyResponse],
+            decoder=async_json_decoder[CancelPaymentByIdempotencyKeyResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -829,7 +852,8 @@ class AsyncPaymentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             payment_id: The unique ID identifying the payment to be completed.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -840,7 +864,7 @@ class AsyncPaymentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CompletePaymentRequest | CompletePaymentRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CompletePaymentResponse],
+            decoder=async_json_decoder[CompletePaymentResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -860,7 +884,8 @@ class AsyncPaymentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -870,7 +895,7 @@ class AsyncPaymentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreatePaymentRequest | CreatePaymentRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreatePaymentResponse],
+            decoder=async_json_decoder[CreatePaymentResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -882,7 +907,8 @@ class AsyncPaymentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             payment_id: A unique ID for the desired payment.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -891,7 +917,7 @@ class AsyncPaymentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             url_template=self._server.default("/v2/payments/{payment_id}"),
             path_params=[param[str]("payment_id", payment_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[GetPaymentResponse],
+            decoder=async_json_decoder[GetPaymentResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -956,7 +982,8 @@ class AsyncPaymentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             updated_at_end_time: Indicates the end of the time range to retrieve payments for, in RFC 3339 format. The
                 range is determined using the ``updated_at`` field for each Payment.
             sort_field: The field used to sort results by. The default is ``CREATED_AT``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -981,7 +1008,7 @@ class AsyncPaymentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
                 param[ListPaymentsRequestSortFieldOrStr | None]("sort_field", sort_field),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListPaymentsResponse],
+            decoder=async_json_decoder[ListPaymentsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1000,7 +1027,8 @@ class AsyncPaymentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             payment_id: The ID of the payment to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1011,7 +1039,7 @@ class AsyncPaymentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdatePaymentRequest | UpdatePaymentRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdatePaymentResponse],
+            decoder=async_json_decoder[UpdatePaymentResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

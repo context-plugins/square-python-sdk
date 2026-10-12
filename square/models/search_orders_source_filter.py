@@ -2,13 +2,13 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, SdkBaseModel
+from ..core import UNSET, OptionalNullable, SdkBaseModel
 
 
 class SearchOrdersSourceFilter(SdkBaseModel):
     """A filter based on order ``source`` information."""
 
-    source_names: Optional[list[str | None]] = UNSET
+    source_names: OptionalNullable[list[str]] = UNSET
     """Filters by the `Source <entity:OrderSource>`__ ``name``. The filter returns any orders with a ``source.name``
     that matches any of the listed source names.
 
@@ -16,4 +16,4 @@ class SearchOrdersSourceFilter(SdkBaseModel):
 
 
 class SearchOrdersSourceFilterDict(TypedDict):
-    source_names: NotRequired[list[str | None]]
+    source_names: NotRequired[list[str] | None]

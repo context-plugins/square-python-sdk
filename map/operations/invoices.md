@@ -44,7 +44,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /v2/invoices/{invoice_id}/attachments`
 - **Auth**: `oauth2`
-- **Signature**: `def create_invoice_attachment(invoice_id: str, *, request: CreateInvoiceAttachmentRequest | CreateInvoiceAttachmentRequestDict | None = None, image_file: bytes | None = None, request_options: RequestOptionsOrDict | None = None)`
+- **Signature**: `def create_invoice_attachment(invoice_id: str, *, request: CreateInvoiceAttachmentRequest | CreateInvoiceAttachmentRequestDict | None = None, image_file: FileInput | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `invoice_id`
 - **Params**: `invoice_id` — path · `request` — multipart field · `image_file` — multipart file
 - **Returns (parsed)**: `CreateInvoiceAttachmentResponse`

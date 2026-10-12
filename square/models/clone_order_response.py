@@ -22,5 +22,5 @@ class CloneOrderResponse(SdkBaseModel):
 
 
 class CloneOrderResponseDict(TypedDict):
-    order: NotRequired[Order | OrderDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    order: NotRequired[OrderDict]
+    errors: NotRequired[list[ErrorDict]]

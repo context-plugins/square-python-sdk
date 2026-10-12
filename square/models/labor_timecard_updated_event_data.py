@@ -20,4 +20,4 @@ class LaborTimecardUpdatedEventData(SdkBaseModel):
 class LaborTimecardUpdatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[LaborTimecardUpdatedEventObject | LaborTimecardUpdatedEventObjectDict]
+    object_: NotRequired[LaborTimecardUpdatedEventObjectDict]

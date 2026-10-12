@@ -14,4 +14,4 @@ class ElectronicMoneyDetails(SdkBaseModel):
 
 
 class ElectronicMoneyDetailsDict(TypedDict):
-    felica_details: NotRequired[FelicaDetails | FelicaDetailsDict]
+    felica_details: NotRequired[FelicaDetailsDict]

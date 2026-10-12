@@ -21,5 +21,5 @@ class RetrieveCustomerCustomAttributeResponse(SdkBaseModel):
 
 
 class RetrieveCustomerCustomAttributeResponseDict(TypedDict):
-    custom_attribute: NotRequired[CustomAttribute | CustomAttributeDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    custom_attribute: NotRequired[CustomAttributeDict]
+    errors: NotRequired[list[ErrorDict]]

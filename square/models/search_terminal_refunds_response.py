@@ -22,6 +22,6 @@ class SearchTerminalRefundsResponse(SdkBaseModel):
 
 
 class SearchTerminalRefundsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    refunds: NotRequired[list[TerminalRefund | TerminalRefundDict]]
+    errors: NotRequired[list[ErrorDict]]
+    refunds: NotRequired[list[TerminalRefundDict]]
     cursor: NotRequired[str]

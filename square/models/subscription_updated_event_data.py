@@ -20,4 +20,4 @@ class SubscriptionUpdatedEventData(SdkBaseModel):
 class SubscriptionUpdatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[SubscriptionUpdatedEventObject | SubscriptionUpdatedEventObjectDict]
+    object_: NotRequired[SubscriptionUpdatedEventObjectDict]

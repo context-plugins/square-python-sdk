@@ -16,5 +16,5 @@ class CancelTerminalCheckoutResponse(SdkBaseModel):
 
 
 class CancelTerminalCheckoutResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    checkout: NotRequired[TerminalCheckout | TerminalCheckoutDict]
+    errors: NotRequired[list[ErrorDict]]
+    checkout: NotRequired[TerminalCheckoutDict]

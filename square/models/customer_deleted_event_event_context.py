@@ -18,4 +18,4 @@ class CustomerDeletedEventEventContext(SdkBaseModel):
 
 
 class CustomerDeletedEventEventContextDict(TypedDict):
-    merge: NotRequired[CustomerDeletedEventEventContextMerge | CustomerDeletedEventEventContextMergeDict]
+    merge: NotRequired[CustomerDeletedEventEventContextMergeDict]

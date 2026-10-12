@@ -19,4 +19,4 @@ class BulkDeleteBookingCustomAttributesRequest(SdkBaseModel):
 
 
 class BulkDeleteBookingCustomAttributesRequestDict(TypedDict):
-    values: dict[str, BookingCustomAttributeDeleteRequest | BookingCustomAttributeDeleteRequestDict]
+    values: dict[str, BookingCustomAttributeDeleteRequestDict]

@@ -22,6 +22,6 @@ class ListBreakTypesResponse(SdkBaseModel):
 
 
 class ListBreakTypesResponseDict(TypedDict):
-    break_types: NotRequired[list[BreakType | BreakTypeDict]]
+    break_types: NotRequired[list[BreakTypeDict]]
     cursor: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

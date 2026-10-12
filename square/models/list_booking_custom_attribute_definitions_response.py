@@ -28,6 +28,6 @@ class ListBookingCustomAttributeDefinitionsResponse(SdkBaseModel):
 
 
 class ListBookingCustomAttributeDefinitionsResponseDict(TypedDict):
-    custom_attribute_definitions: NotRequired[list[CustomAttributeDefinition | CustomAttributeDefinitionDict]]
+    custom_attribute_definitions: NotRequired[list[CustomAttributeDefinitionDict]]
     cursor: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

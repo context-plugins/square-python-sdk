@@ -13,4 +13,4 @@ class BankAccountVerifiedEventObject(SdkBaseModel):
 
 
 class BankAccountVerifiedEventObjectDict(TypedDict):
-    bank_account: NotRequired[BankAccount | BankAccountDict]
+    bank_account: NotRequired[BankAccountDict]

@@ -28,4 +28,4 @@ class CatalogItemVariationVendorInformation(SdkBaseModel):
 class CatalogItemVariationVendorInformationDict(TypedDict):
     vendor_id: NotRequired[str | None]
     vendor_code: NotRequired[str | None]
-    unit_cost_money: NotRequired[Money | MoneyDict]
+    unit_cost_money: NotRequired[MoneyDict]

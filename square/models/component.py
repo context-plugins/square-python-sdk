@@ -42,12 +42,8 @@ class Component(SdkBaseModel):
 
 class ComponentDict(TypedDict):
     type_: ComponentComponentTypeOrStr
-    application_details: NotRequired[
-        DeviceComponentDetailsApplicationDetails | DeviceComponentDetailsApplicationDetailsDict
-    ]
-    card_reader_details: NotRequired[
-        DeviceComponentDetailsCardReaderDetails | DeviceComponentDetailsCardReaderDetailsDict
-    ]
-    battery_details: NotRequired[DeviceComponentDetailsBatteryDetails | DeviceComponentDetailsBatteryDetailsDict]
-    wifi_details: NotRequired[DeviceComponentDetailsWiFiDetails | DeviceComponentDetailsWiFiDetailsDict]
-    ethernet_details: NotRequired[DeviceComponentDetailsEthernetDetails | DeviceComponentDetailsEthernetDetailsDict]
+    application_details: NotRequired[DeviceComponentDetailsApplicationDetailsDict]
+    card_reader_details: NotRequired[DeviceComponentDetailsCardReaderDetailsDict]
+    battery_details: NotRequired[DeviceComponentDetailsBatteryDetailsDict]
+    wifi_details: NotRequired[DeviceComponentDetailsWiFiDetailsDict]
+    ethernet_details: NotRequired[DeviceComponentDetailsEthernetDetailsDict]

@@ -58,10 +58,11 @@ from .core import (
     AuthorizationCodeCredentialsOrDict,
     AuthorizationCodeTokenSource,
     HttpClient,
-    HttpxClient,
+    Httpx2Client,
     OAuth2RefreshableScheme,
     RawClient,
     RefreshableTokenSource,
+    RetryOptionsOrDict,
     client_secret_basic,
     no_auth,
     param,
@@ -76,14 +77,16 @@ class SquareClient(BaseSquareClient[RawClient]):
         environment: Environment = "production",
         base_url: str | None = None,
         timeout: float = DEFAULT_TIMEOUT,
+        retry_options: int | RetryOptionsOrDict | None = None,
         custom_http_client: HttpClient | None = None,
         oauth2: AuthorizationCodeCredentialsOrDict[Oauth2Scope] | None = None,
         oauth2_token_source: RefreshableTokenSource[AuthorizationCodeCredentials[Oauth2Scope]] | None = None,
         oauth2_client_secret: str | None = None,
     ) -> None:
-        super().__init__(environment=environment, base_url=base_url, timeout=timeout)
+        super().__init__(environment=environment, base_url=base_url, timeout=timeout, retry_options=retry_options)
         self._raw_client = RawClient(
-            http_client=custom_http_client if custom_http_client is not None else HttpxClient(timeout=timeout),
+            http_client=custom_http_client if custom_http_client is not None else Httpx2Client(timeout=timeout),
+            retry_options=self._retry_options,
             global_headers=[
                 param[str]("User-Agent", "SquareClient/2.0 Python"),
                 param[str]("X-APIMatic-Lang", "Python"),

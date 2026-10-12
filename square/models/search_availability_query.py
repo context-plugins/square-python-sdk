@@ -14,4 +14,4 @@ class SearchAvailabilityQuery(SdkBaseModel):
 
 
 class SearchAvailabilityQueryDict(TypedDict):
-    filter: SearchAvailabilityFilter | SearchAvailabilityFilterDict
+    filter: SearchAvailabilityFilterDict

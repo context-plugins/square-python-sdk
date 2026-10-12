@@ -25,5 +25,5 @@ class BulkPublishScheduledShiftsResponse(SdkBaseModel):
 
 
 class BulkPublishScheduledShiftsResponseDict(TypedDict):
-    responses: NotRequired[dict[str, PublishScheduledShiftResponse | PublishScheduledShiftResponseDict]]
-    errors: NotRequired[list[Error | ErrorDict]]
+    responses: NotRequired[dict[str, PublishScheduledShiftResponseDict]]
+    errors: NotRequired[list[ErrorDict]]

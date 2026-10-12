@@ -47,8 +47,8 @@ class PaymentLinkDict(TypedDict):
     version: int
     description: NotRequired[str | None]
     order_id: NotRequired[str]
-    checkout_options: NotRequired[CheckoutOptions | CheckoutOptionsDict]
-    pre_populated_data: NotRequired[PrePopulatedData | PrePopulatedDataDict]
+    checkout_options: NotRequired[CheckoutOptionsDict]
+    pre_populated_data: NotRequired[PrePopulatedDataDict]
     url: NotRequired[str]
     long_url: NotRequired[str]
     created_at: NotRequired[str]

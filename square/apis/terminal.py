@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.cancel_terminal_action_response import CancelTerminalActionResponse
 from ..models.cancel_terminal_checkout_response import CancelTerminalCheckoutResponse
@@ -53,14 +55,15 @@ class Terminal:
 
         Args:
             action_id: Unique ID for the desired ``TerminalAction``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.cancel_terminal_action(action_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.cancel_terminal_action(action_id, request_options=request_options))
 
     def cancel_terminal_checkout(
         self, checkout_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -69,14 +72,15 @@ class Terminal:
 
         Args:
             checkout_id: The unique ID for the desired ``TerminalCheckout``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.cancel_terminal_checkout(checkout_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.cancel_terminal_checkout(checkout_id, request_options=request_options))
 
     def cancel_terminal_refund(
         self, terminal_refund_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -85,16 +89,17 @@ class Terminal:
 
         Args:
             terminal_refund_id: The unique ID for the desired ``TerminalRefund``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.cancel_terminal_refund(
-            terminal_refund_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.cancel_terminal_refund(terminal_refund_id, request_options=request_options)
+        )
 
     def create_terminal_action(
         self,
@@ -107,14 +112,15 @@ class Terminal:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_terminal_action(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_terminal_action(body, request_options=request_options))
 
     def create_terminal_checkout(
         self,
@@ -128,14 +134,15 @@ class Terminal:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_terminal_checkout(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_terminal_checkout(body, request_options=request_options))
 
     def create_terminal_refund(
         self,
@@ -150,14 +157,15 @@ class Terminal:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_terminal_refund(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_terminal_refund(body, request_options=request_options))
 
     def dismiss_terminal_action(
         self, action_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -170,14 +178,15 @@ class Terminal:
 
         Args:
             action_id: Unique ID for the ``TerminalAction`` associated with the action to be dismissed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.dismiss_terminal_action(action_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.dismiss_terminal_action(action_id, request_options=request_options))
 
     def dismiss_terminal_checkout(
         self, checkout_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -186,14 +195,15 @@ class Terminal:
 
         Args:
             checkout_id: Unique ID for the ``TerminalCheckout`` associated with the checkout to be dismissed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.dismiss_terminal_checkout(checkout_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.dismiss_terminal_checkout(checkout_id, request_options=request_options))
 
     def dismiss_terminal_refund(
         self, terminal_refund_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -202,16 +212,17 @@ class Terminal:
 
         Args:
             terminal_refund_id: Unique ID for the ``TerminalRefund`` associated with the refund to be dismissed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.dismiss_terminal_refund(
-            terminal_refund_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.dismiss_terminal_refund(terminal_refund_id, request_options=request_options)
+        )
 
     def get_terminal_action(
         self, action_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -220,14 +231,15 @@ class Terminal:
 
         Args:
             action_id: Unique ID for the desired ``TerminalAction``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.get_terminal_action(action_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.get_terminal_action(action_id, request_options=request_options))
 
     def get_terminal_checkout(
         self, checkout_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -237,14 +249,15 @@ class Terminal:
 
         Args:
             checkout_id: The unique ID for the desired ``TerminalCheckout``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.get_terminal_checkout(checkout_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.get_terminal_checkout(checkout_id, request_options=request_options))
 
     def get_terminal_refund(
         self, terminal_refund_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -253,14 +266,15 @@ class Terminal:
 
         Args:
             terminal_refund_id: The unique ID for the desired ``TerminalRefund``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.get_terminal_refund(terminal_refund_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.get_terminal_refund(terminal_refund_id, request_options=request_options))
 
     def search_terminal_actions(
         self,
@@ -274,14 +288,15 @@ class Terminal:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_terminal_actions(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_terminal_actions(body, request_options=request_options))
 
     def search_terminal_checkouts(
         self,
@@ -296,14 +311,15 @@ class Terminal:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_terminal_checkouts(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_terminal_checkouts(body, request_options=request_options))
 
     def search_terminal_refunds(
         self,
@@ -317,14 +333,15 @@ class Terminal:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_terminal_refunds(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_terminal_refunds(body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> TerminalWithRawResponse:
@@ -342,16 +359,15 @@ class AsyncTerminal:
 
         Args:
             action_id: Unique ID for the desired ``TerminalAction``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.cancel_terminal_action(action_id, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.cancel_terminal_action(action_id, request_options=request_options))
 
     async def cancel_terminal_checkout(
         self, checkout_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -360,16 +376,17 @@ class AsyncTerminal:
 
         Args:
             checkout_id: The unique ID for the desired ``TerminalCheckout``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.cancel_terminal_checkout(checkout_id, request_options=request_options)
-        ).unwrap()
+        )
 
     async def cancel_terminal_refund(
         self, terminal_refund_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -378,16 +395,17 @@ class AsyncTerminal:
 
         Args:
             terminal_refund_id: The unique ID for the desired ``TerminalRefund``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.cancel_terminal_refund(terminal_refund_id, request_options=request_options)
-        ).unwrap()
+        )
 
     async def create_terminal_action(
         self,
@@ -400,14 +418,15 @@ class AsyncTerminal:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_terminal_action(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_terminal_action(body, request_options=request_options))
 
     async def create_terminal_checkout(
         self,
@@ -421,14 +440,15 @@ class AsyncTerminal:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_terminal_checkout(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_terminal_checkout(body, request_options=request_options))
 
     async def create_terminal_refund(
         self,
@@ -443,14 +463,15 @@ class AsyncTerminal:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_terminal_refund(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_terminal_refund(body, request_options=request_options))
 
     async def dismiss_terminal_action(
         self, action_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -463,16 +484,15 @@ class AsyncTerminal:
 
         Args:
             action_id: Unique ID for the ``TerminalAction`` associated with the action to be dismissed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.dismiss_terminal_action(action_id, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.dismiss_terminal_action(action_id, request_options=request_options))
 
     async def dismiss_terminal_checkout(
         self, checkout_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -481,16 +501,17 @@ class AsyncTerminal:
 
         Args:
             checkout_id: Unique ID for the ``TerminalCheckout`` associated with the checkout to be dismissed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.dismiss_terminal_checkout(checkout_id, request_options=request_options)
-        ).unwrap()
+        )
 
     async def dismiss_terminal_refund(
         self, terminal_refund_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -499,16 +520,17 @@ class AsyncTerminal:
 
         Args:
             terminal_refund_id: Unique ID for the ``TerminalRefund`` associated with the refund to be dismissed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.dismiss_terminal_refund(terminal_refund_id, request_options=request_options)
-        ).unwrap()
+        )
 
     async def get_terminal_action(
         self, action_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -517,14 +539,15 @@ class AsyncTerminal:
 
         Args:
             action_id: Unique ID for the desired ``TerminalAction``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.get_terminal_action(action_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.get_terminal_action(action_id, request_options=request_options))
 
     async def get_terminal_checkout(
         self, checkout_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -534,16 +557,15 @@ class AsyncTerminal:
 
         Args:
             checkout_id: The unique ID for the desired ``TerminalCheckout``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.get_terminal_checkout(checkout_id, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.get_terminal_checkout(checkout_id, request_options=request_options))
 
     async def get_terminal_refund(
         self, terminal_refund_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -552,16 +574,17 @@ class AsyncTerminal:
 
         Args:
             terminal_refund_id: The unique ID for the desired ``TerminalRefund``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.get_terminal_refund(terminal_refund_id, request_options=request_options)
-        ).unwrap()
+        )
 
     async def search_terminal_actions(
         self,
@@ -575,14 +598,15 @@ class AsyncTerminal:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_terminal_actions(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_terminal_actions(body, request_options=request_options))
 
     async def search_terminal_checkouts(
         self,
@@ -597,14 +621,15 @@ class AsyncTerminal:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_terminal_checkouts(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_terminal_checkouts(body, request_options=request_options))
 
     async def search_terminal_refunds(
         self,
@@ -618,14 +643,15 @@ class AsyncTerminal:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_terminal_refunds(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_terminal_refunds(body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncTerminalWithRawResponse:
@@ -640,7 +666,8 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             action_id: Unique ID for the desired ``TerminalAction``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -662,7 +689,8 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             checkout_id: The unique ID for the desired ``TerminalCheckout``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -684,7 +712,8 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             terminal_refund_id: The unique ID for the desired ``TerminalRefund``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -710,7 +739,8 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -737,7 +767,8 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -765,7 +796,8 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -791,7 +823,8 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             action_id: Unique ID for the ``TerminalAction`` associated with the action to be dismissed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -813,7 +846,8 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             checkout_id: Unique ID for the ``TerminalCheckout`` associated with the checkout to be dismissed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -835,7 +869,8 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             terminal_refund_id: Unique ID for the ``TerminalRefund`` associated with the refund to be dismissed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -857,7 +892,8 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             action_id: Unique ID for the desired ``TerminalAction``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -879,7 +915,8 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             checkout_id: The unique ID for the desired ``TerminalCheckout``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -900,7 +937,8 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             terminal_refund_id: The unique ID for the desired ``TerminalRefund``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -926,7 +964,8 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -954,7 +993,8 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -981,7 +1021,8 @@ class TerminalWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1005,7 +1046,8 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             action_id: Unique ID for the desired ``TerminalAction``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1015,7 +1057,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             path_params=[param[str]("action_id", action_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CancelTerminalActionResponse],
+            decoder=async_json_decoder[CancelTerminalActionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1027,7 +1069,8 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             checkout_id: The unique ID for the desired ``TerminalCheckout``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1037,7 +1080,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             path_params=[param[str]("checkout_id", checkout_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CancelTerminalCheckoutResponse],
+            decoder=async_json_decoder[CancelTerminalCheckoutResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1049,7 +1092,8 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             terminal_refund_id: The unique ID for the desired ``TerminalRefund``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1059,7 +1103,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             path_params=[param[str]("terminal_refund_id", terminal_refund_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CancelTerminalRefundResponse],
+            decoder=async_json_decoder[CancelTerminalRefundResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1075,7 +1119,8 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1085,7 +1130,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateTerminalActionRequest | CreateTerminalActionRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateTerminalActionResponse],
+            decoder=async_json_decoder[CreateTerminalActionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1102,7 +1147,8 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1112,7 +1158,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateTerminalCheckoutRequest | CreateTerminalCheckoutRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateTerminalCheckoutResponse],
+            decoder=async_json_decoder[CreateTerminalCheckoutResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1130,7 +1176,8 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1140,7 +1187,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateTerminalRefundRequest | CreateTerminalRefundRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateTerminalRefundResponse],
+            decoder=async_json_decoder[CreateTerminalRefundResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1156,7 +1203,8 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             action_id: Unique ID for the ``TerminalAction`` associated with the action to be dismissed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1166,7 +1214,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             path_params=[param[str]("action_id", action_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DismissTerminalActionResponse],
+            decoder=async_json_decoder[DismissTerminalActionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1178,7 +1226,8 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             checkout_id: Unique ID for the ``TerminalCheckout`` associated with the checkout to be dismissed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1188,7 +1237,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             path_params=[param[str]("checkout_id", checkout_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DismissTerminalCheckoutResponse],
+            decoder=async_json_decoder[DismissTerminalCheckoutResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1200,7 +1249,8 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             terminal_refund_id: Unique ID for the ``TerminalRefund`` associated with the refund to be dismissed.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1210,7 +1260,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             path_params=[param[str]("terminal_refund_id", terminal_refund_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DismissTerminalRefundResponse],
+            decoder=async_json_decoder[DismissTerminalRefundResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1222,7 +1272,8 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             action_id: Unique ID for the desired ``TerminalAction``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1231,7 +1282,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             url_template=self._server.default("/v2/terminals/actions/{action_id}"),
             path_params=[param[str]("action_id", action_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[GetTerminalActionResponse],
+            decoder=async_json_decoder[GetTerminalActionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1244,7 +1295,8 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             checkout_id: The unique ID for the desired ``TerminalCheckout``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1253,7 +1305,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             url_template=self._server.default("/v2/terminals/checkouts/{checkout_id}"),
             path_params=[param[str]("checkout_id", checkout_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[GetTerminalCheckoutResponse],
+            decoder=async_json_decoder[GetTerminalCheckoutResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1265,7 +1317,8 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             terminal_refund_id: The unique ID for the desired ``TerminalRefund``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1274,7 +1327,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             url_template=self._server.default("/v2/terminals/refunds/{terminal_refund_id}"),
             path_params=[param[str]("terminal_refund_id", terminal_refund_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[GetTerminalRefundResponse],
+            decoder=async_json_decoder[GetTerminalRefundResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1291,7 +1344,8 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1301,7 +1355,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchTerminalActionsRequest | SearchTerminalActionsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SearchTerminalActionsResponse],
+            decoder=async_json_decoder[SearchTerminalActionsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1319,7 +1373,8 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1329,7 +1384,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchTerminalCheckoutsRequest | SearchTerminalCheckoutsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SearchTerminalCheckoutsResponse],
+            decoder=async_json_decoder[SearchTerminalCheckoutsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1346,7 +1401,8 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1356,7 +1412,7 @@ class AsyncTerminalWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchTerminalRefundsRequest | SearchTerminalRefundsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SearchTerminalRefundsResponse],
+            decoder=async_json_decoder[SearchTerminalRefundsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

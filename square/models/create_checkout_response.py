@@ -19,5 +19,5 @@ class CreateCheckoutResponse(SdkBaseModel):
 
 
 class CreateCheckoutResponseDict(TypedDict):
-    checkout: NotRequired[Checkout | CheckoutDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    checkout: NotRequired[CheckoutDict]
+    errors: NotRequired[list[ErrorDict]]

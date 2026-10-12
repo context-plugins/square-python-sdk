@@ -20,5 +20,5 @@ class CreateLoyaltyRewardRequest(SdkBaseModel):
 
 
 class CreateLoyaltyRewardRequestDict(TypedDict):
-    reward: LoyaltyReward | LoyaltyRewardDict
+    reward: LoyaltyRewardDict
     idempotency_key: str

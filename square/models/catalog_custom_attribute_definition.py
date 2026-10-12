@@ -79,18 +79,12 @@ class CatalogCustomAttributeDefinitionDict(TypedDict):
     type_: CatalogCustomAttributeDefinitionTypeOrStr
     name: str
     description: NotRequired[str | None]
-    source_application: NotRequired[SourceApplication | SourceApplicationDict]
+    source_application: NotRequired[SourceApplicationDict]
     allowed_object_types: list[CatalogObjectTypeOrStr]
     seller_visibility: NotRequired[CatalogCustomAttributeDefinitionSellerVisibilityOrStr]
     app_visibility: NotRequired[CatalogCustomAttributeDefinitionAppVisibilityOrStr]
-    string_config: NotRequired[
-        CatalogCustomAttributeDefinitionStringConfig | CatalogCustomAttributeDefinitionStringConfigDict
-    ]
-    number_config: NotRequired[
-        CatalogCustomAttributeDefinitionNumberConfig | CatalogCustomAttributeDefinitionNumberConfigDict
-    ]
-    selection_config: NotRequired[
-        CatalogCustomAttributeDefinitionSelectionConfig | CatalogCustomAttributeDefinitionSelectionConfigDict
-    ]
+    string_config: NotRequired[CatalogCustomAttributeDefinitionStringConfigDict]
+    number_config: NotRequired[CatalogCustomAttributeDefinitionNumberConfigDict]
+    selection_config: NotRequired[CatalogCustomAttributeDefinitionSelectionConfigDict]
     custom_attribute_usage_count: NotRequired[int]
     key: NotRequired[str | None]

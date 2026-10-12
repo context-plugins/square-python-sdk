@@ -33,6 +33,6 @@ class GiftCardActivityRefund(SdkBaseModel):
 
 class GiftCardActivityRefundDict(TypedDict):
     redeem_activity_id: NotRequired[str | None]
-    amount_money: NotRequired[Money | MoneyDict]
+    amount_money: NotRequired[MoneyDict]
     reference_id: NotRequired[str | None]
     payment_id: NotRequired[str]

@@ -24,11 +24,5 @@ class BulkDeleteLocationCustomAttributesResponse(SdkBaseModel):
 
 
 class BulkDeleteLocationCustomAttributesResponseDict(TypedDict):
-    values: dict[
-        str,
-        (
-            BulkDeleteLocationCustomAttributesResponseLocationCustomAttributeDeleteResponse
-            | BulkDeleteLocationCustomAttributesResponseLocationCustomAttributeDeleteResponseDict
-        ),
-    ]
-    errors: NotRequired[list[Error | ErrorDict]]
+    values: dict[str, BulkDeleteLocationCustomAttributesResponseLocationCustomAttributeDeleteResponseDict]
+    errors: NotRequired[list[ErrorDict]]

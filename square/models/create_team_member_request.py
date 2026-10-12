@@ -22,4 +22,4 @@ class CreateTeamMemberRequest(SdkBaseModel):
 
 class CreateTeamMemberRequestDict(TypedDict):
     idempotency_key: NotRequired[str]
-    team_member: NotRequired[TeamMember | TeamMemberDict]
+    team_member: NotRequired[TeamMemberDict]

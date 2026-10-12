@@ -20,6 +20,6 @@ class SearchTimecardsRequest(SdkBaseModel):
 
 
 class SearchTimecardsRequestDict(TypedDict):
-    query: NotRequired[TimecardQuery | TimecardQueryDict]
+    query: NotRequired[TimecardQueryDict]
     limit: NotRequired[int]
     cursor: NotRequired[str]

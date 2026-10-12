@@ -14,4 +14,4 @@ class DeleteInvoiceAttachmentResponse(SdkBaseModel):
 
 
 class DeleteInvoiceAttachmentResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

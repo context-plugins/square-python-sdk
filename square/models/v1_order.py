@@ -14,7 +14,7 @@ from .v1_tender import V1Tender, V1TenderDict
 class V1Order(SdkBaseModel):
     """V1Order"""
 
-    errors: Optional[list[Error | None]] = UNSET
+    errors: OptionalNullable[list[Error]] = UNSET
     """Any errors that occurred during the request."""
 
     id: Optional[str] = UNSET
@@ -83,7 +83,7 @@ class V1Order(SdkBaseModel):
     A ``Tender`` object with a type of ``SQUARE_GIFT_CARD`` indicates a gift card was used for some or all of the
     associated payment."""
 
-    order_history: Optional[list[V1OrderHistoryEntry | None]] = UNSET
+    order_history: OptionalNullable[list[V1OrderHistoryEntry]] = UNSET
     """The history of actions associated with the order."""
 
     promo_code: OptionalNullable[str] = UNSET
@@ -97,18 +97,18 @@ class V1Order(SdkBaseModel):
 
 
 class V1OrderDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict | None]]
+    errors: NotRequired[list[ErrorDict] | None]
     id: NotRequired[str]
     buyer_email: NotRequired[str | None]
     recipient_name: NotRequired[str | None]
     recipient_phone_number: NotRequired[str | None]
     state: NotRequired[V1OrderStateOrStr]
-    shipping_address: NotRequired[Address | AddressDict]
-    subtotal_money: NotRequired[V1Money | V1MoneyDict]
-    total_shipping_money: NotRequired[V1Money | V1MoneyDict]
-    total_tax_money: NotRequired[V1Money | V1MoneyDict]
-    total_price_money: NotRequired[V1Money | V1MoneyDict]
-    total_discount_money: NotRequired[V1Money | V1MoneyDict]
+    shipping_address: NotRequired[AddressDict]
+    subtotal_money: NotRequired[V1MoneyDict]
+    total_shipping_money: NotRequired[V1MoneyDict]
+    total_tax_money: NotRequired[V1MoneyDict]
+    total_price_money: NotRequired[V1MoneyDict]
+    total_discount_money: NotRequired[V1MoneyDict]
     created_at: NotRequired[str]
     updated_at: NotRequired[str]
     expires_at: NotRequired[str | None]
@@ -117,8 +117,8 @@ class V1OrderDict(TypedDict):
     completed_note: NotRequired[str | None]
     refunded_note: NotRequired[str | None]
     canceled_note: NotRequired[str | None]
-    tender: NotRequired[V1Tender | V1TenderDict]
-    order_history: NotRequired[list[V1OrderHistoryEntry | V1OrderHistoryEntryDict | None]]
+    tender: NotRequired[V1TenderDict]
+    order_history: NotRequired[list[V1OrderHistoryEntryDict] | None]
     promo_code: NotRequired[str | None]
     btc_receive_address: NotRequired[str | None]
     btc_price_satoshi: NotRequired[float | None]

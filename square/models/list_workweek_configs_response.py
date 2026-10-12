@@ -22,6 +22,6 @@ class ListWorkweekConfigsResponse(SdkBaseModel):
 
 
 class ListWorkweekConfigsResponseDict(TypedDict):
-    workweek_configs: NotRequired[list[WorkweekConfig | WorkweekConfigDict]]
+    workweek_configs: NotRequired[list[WorkweekConfigDict]]
     cursor: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

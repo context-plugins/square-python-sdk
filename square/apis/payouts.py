@@ -8,9 +8,11 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.enums.payout_status import PayoutStatusOrStr
 from ..models.enums.sort_order import SortOrderOrStr
@@ -30,14 +32,15 @@ class Payouts:
 
         Args:
             payout_id: The ID of the payout to retrieve the information for.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.get_payout(payout_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.get_payout(payout_id, request_options=request_options))
 
     def list_payout_entries(
         self,
@@ -62,16 +65,19 @@ class Payouts:
                 results than the specified limit on a given page. The default value of 100 is also the maximum allowed
                 value. If the provided value is greater than 100, it is ignored and the default value is used instead.
                 Default: ``100``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_payout_entries(
-            payout_id, sort_order=sort_order, cursor=cursor, limit=limit, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_payout_entries(
+                payout_id, sort_order=sort_order, cursor=cursor, limit=limit, request_options=request_options
+            ),
+        )
 
     def list_payouts(
         self,
@@ -106,23 +112,26 @@ class Payouts:
                 results than the specified limit on a given page. The default value of 100 is also the maximum allowed
                 value. If the provided value is greater than 100, it is ignored and the default value is used instead.
                 Default: ``100``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_payouts(
-            location_id=location_id,
-            status=status,
-            begin_time=begin_time,
-            end_time=end_time,
-            sort_order=sort_order,
-            cursor=cursor,
-            limit=limit,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_payouts(
+                location_id=location_id,
+                status=status,
+                begin_time=begin_time,
+                end_time=end_time,
+                sort_order=sort_order,
+                cursor=cursor,
+                limit=limit,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> PayoutsWithRawResponse:
@@ -141,14 +150,15 @@ class AsyncPayouts:
 
         Args:
             payout_id: The ID of the payout to retrieve the information for.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.get_payout(payout_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.get_payout(payout_id, request_options=request_options))
 
     async def list_payout_entries(
         self,
@@ -173,18 +183,19 @@ class AsyncPayouts:
                 results than the specified limit on a given page. The default value of 100 is also the maximum allowed
                 value. If the provided value is greater than 100, it is ignored and the default value is used instead.
                 Default: ``100``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_payout_entries(
                 payout_id, sort_order=sort_order, cursor=cursor, limit=limit, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def list_payouts(
         self,
@@ -219,14 +230,15 @@ class AsyncPayouts:
                 results than the specified limit on a given page. The default value of 100 is also the maximum allowed
                 value. If the provided value is greater than 100, it is ignored and the default value is used instead.
                 Default: ``100``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_payouts(
                 location_id=location_id,
                 status=status,
@@ -236,8 +248,8 @@ class AsyncPayouts:
                 cursor=cursor,
                 limit=limit,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncPayoutsWithRawResponse:
@@ -253,7 +265,8 @@ class PayoutsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
 
         Args:
             payout_id: The ID of the payout to retrieve the information for.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -290,7 +303,8 @@ class PayoutsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
                 results than the specified limit on a given page. The default value of 100 is also the maximum allowed
                 value. If the provided value is greater than 100, it is ignored and the default value is used instead.
                 Default: ``100``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -342,7 +356,8 @@ class PayoutsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
                 results than the specified limit on a given page. The default value of 100 is also the maximum allowed
                 value. If the provided value is greater than 100, it is ignored and the default value is used instead.
                 Default: ``100``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -374,7 +389,8 @@ class AsyncPayoutsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
 
         Args:
             payout_id: The ID of the payout to retrieve the information for.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -383,7 +399,7 @@ class AsyncPayoutsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             url_template=self._server.default("/v2/payouts/{payout_id}"),
             path_params=[param[str]("payout_id", payout_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[GetPayoutResponse],
+            decoder=async_json_decoder[GetPayoutResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -411,7 +427,8 @@ class AsyncPayoutsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
                 results than the specified limit on a given page. The default value of 100 is also the maximum allowed
                 value. If the provided value is greater than 100, it is ignored and the default value is used instead.
                 Default: ``100``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -425,7 +442,7 @@ class AsyncPayoutsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
                 param[int | None]("limit", limit),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListPayoutEntriesResponse],
+            decoder=async_json_decoder[ListPayoutEntriesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -463,7 +480,8 @@ class AsyncPayoutsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
                 results than the specified limit on a given page. The default value of 100 is also the maximum allowed
                 value. If the provided value is greater than 100, it is ignored and the default value is used instead.
                 Default: ``100``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -480,7 +498,7 @@ class AsyncPayoutsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
                 param[int | None]("limit", limit),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListPayoutsResponse],
+            decoder=async_json_decoder[ListPayoutsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

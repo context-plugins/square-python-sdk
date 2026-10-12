@@ -5,16 +5,21 @@ from uuid import UUID, uuid4
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
+    AsyncFileInput,
     AsyncRawClient,
+    FileInput,
     RawClient,
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
+    file_part,
     json_body,
     json_decoder,
     multipart_body,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.accept_dispute_response import AcceptDisputeResponse
 from ..models.create_dispute_evidence_file_request import (
@@ -52,21 +57,22 @@ class Disputes:
 
         Args:
             dispute_id: The ID of the dispute you want to accept.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.accept_dispute(dispute_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.accept_dispute(dispute_id, request_options=request_options))
 
     def create_dispute_evidence_file(
         self,
         dispute_id: str,
         *,
         request: CreateDisputeEvidenceFileRequest | CreateDisputeEvidenceFileRequestDict | None = None,
-        image_file: bytes | None = None,
+        image_file: FileInput | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> CreateDisputeEvidenceFileResponse:
         """Uploads a file to use as evidence in a dispute challenge. The endpoint accepts HTTP multipart/form-data file
@@ -76,16 +82,19 @@ class Disputes:
             dispute_id: The ID of the dispute for which you want to upload evidence.
             request: Defines the parameters for a ``CreateDisputeEvidenceFile`` request.
             image_file: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_dispute_evidence_file(
-            dispute_id, request=request, image_file=image_file, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.create_dispute_evidence_file(
+                dispute_id, request=request, image_file=image_file, request_options=request_options
+            ),
+        )
 
     def create_dispute_evidence_text(
         self,
@@ -100,16 +109,17 @@ class Disputes:
             dispute_id: The ID of the dispute for which you want to upload evidence.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_dispute_evidence_text(
-            dispute_id, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.create_dispute_evidence_text(dispute_id, body, request_options=request_options)
+        )
 
     def delete_dispute_evidence(
         self, dispute_id: str, evidence_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -119,16 +129,17 @@ class Disputes:
         Args:
             dispute_id: The ID of the dispute from which you want to remove evidence.
             evidence_id: The ID of the evidence you want to remove.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_dispute_evidence(
-            dispute_id, evidence_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.delete_dispute_evidence(dispute_id, evidence_id, request_options=request_options)
+        )
 
     def list_dispute_evidence(
         self, dispute_id: str, *, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None
@@ -140,16 +151,17 @@ class Disputes:
             cursor: A pagination cursor returned by a previous call to this endpoint. Provide this cursor to retrieve
                 the next set of results for the original query. For more information, see `Pagination
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_dispute_evidence(
-            dispute_id, cursor=cursor, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_dispute_evidence(dispute_id, cursor=cursor, request_options=request_options)
+        )
 
     def list_disputes(
         self,
@@ -168,16 +180,19 @@ class Disputes:
             states: The dispute states used to filter the result. If not specified, the endpoint returns all disputes.
             location_id: The ID of the location for which to return a list of disputes. If not specified, the endpoint
                 returns disputes associated with all locations.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_disputes(
-            cursor=cursor, states=states, location_id=location_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_disputes(
+                cursor=cursor, states=states, location_id=location_id, request_options=request_options
+            ),
+        )
 
     def retrieve_dispute(
         self, dispute_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -186,14 +201,15 @@ class Disputes:
 
         Args:
             dispute_id: The ID of the dispute you want more details about.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_dispute(dispute_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_dispute(dispute_id, request_options=request_options))
 
     def retrieve_dispute_evidence(
         self, dispute_id: str, evidence_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -206,16 +222,17 @@ class Disputes:
         Args:
             dispute_id: The ID of the dispute from which you want to retrieve evidence metadata.
             evidence_id: The ID of the evidence to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_dispute_evidence(
-            dispute_id, evidence_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.retrieve_dispute_evidence(dispute_id, evidence_id, request_options=request_options)
+        )
 
     def submit_evidence(
         self, dispute_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -229,14 +246,15 @@ class Disputes:
 
         Args:
             dispute_id: The ID of the dispute for which you want to submit evidence.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.submit_evidence(dispute_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.submit_evidence(dispute_id, request_options=request_options))
 
     @property
     def with_raw_response(self) -> DisputesWithRawResponse:
@@ -258,21 +276,22 @@ class AsyncDisputes:
 
         Args:
             dispute_id: The ID of the dispute you want to accept.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.accept_dispute(dispute_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.accept_dispute(dispute_id, request_options=request_options))
 
     async def create_dispute_evidence_file(
         self,
         dispute_id: str,
         *,
         request: CreateDisputeEvidenceFileRequest | CreateDisputeEvidenceFileRequestDict | None = None,
-        image_file: bytes | None = None,
+        image_file: AsyncFileInput | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> CreateDisputeEvidenceFileResponse:
         """Uploads a file to use as evidence in a dispute challenge. The endpoint accepts HTTP multipart/form-data file
@@ -282,18 +301,19 @@ class AsyncDisputes:
             dispute_id: The ID of the dispute for which you want to upload evidence.
             request: Defines the parameters for a ``CreateDisputeEvidenceFile`` request.
             image_file: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.create_dispute_evidence_file(
                 dispute_id, request=request, image_file=image_file, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def create_dispute_evidence_text(
         self,
@@ -308,18 +328,19 @@ class AsyncDisputes:
             dispute_id: The ID of the dispute for which you want to upload evidence.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.create_dispute_evidence_text(
                 dispute_id, body, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def delete_dispute_evidence(
         self, dispute_id: str, evidence_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -329,18 +350,19 @@ class AsyncDisputes:
         Args:
             dispute_id: The ID of the dispute from which you want to remove evidence.
             evidence_id: The ID of the evidence you want to remove.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.delete_dispute_evidence(
                 dispute_id, evidence_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def list_dispute_evidence(
         self, dispute_id: str, *, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None
@@ -352,18 +374,19 @@ class AsyncDisputes:
             cursor: A pagination cursor returned by a previous call to this endpoint. Provide this cursor to retrieve
                 the next set of results for the original query. For more information, see `Pagination
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_dispute_evidence(
                 dispute_id, cursor=cursor, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def list_disputes(
         self,
@@ -382,18 +405,19 @@ class AsyncDisputes:
             states: The dispute states used to filter the result. If not specified, the endpoint returns all disputes.
             location_id: The ID of the location for which to return a list of disputes. If not specified, the endpoint
                 returns disputes associated with all locations.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_disputes(
                 cursor=cursor, states=states, location_id=location_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_dispute(
         self, dispute_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -402,14 +426,15 @@ class AsyncDisputes:
 
         Args:
             dispute_id: The ID of the dispute you want more details about.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.retrieve_dispute(dispute_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.retrieve_dispute(dispute_id, request_options=request_options))
 
     async def retrieve_dispute_evidence(
         self, dispute_id: str, evidence_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -422,18 +447,19 @@ class AsyncDisputes:
         Args:
             dispute_id: The ID of the dispute from which you want to retrieve evidence metadata.
             evidence_id: The ID of the evidence to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_dispute_evidence(
                 dispute_id, evidence_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def submit_evidence(
         self, dispute_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -447,14 +473,15 @@ class AsyncDisputes:
 
         Args:
             dispute_id: The ID of the dispute for which you want to submit evidence.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.submit_evidence(dispute_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.submit_evidence(dispute_id, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncDisputesWithRawResponse:
@@ -473,7 +500,8 @@ class DisputesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             dispute_id: The ID of the dispute you want to accept.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -493,7 +521,7 @@ class DisputesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         dispute_id: str,
         *,
         request: CreateDisputeEvidenceFileRequest | CreateDisputeEvidenceFileRequestDict | None = None,
-        image_file: bytes | None = None,
+        image_file: FileInput | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> ApiResult[CreateDisputeEvidenceFileResponse, RawError]:
         """Uploads a file to use as evidence in a dispute challenge. The endpoint accepts HTTP multipart/form-data file
@@ -503,7 +531,8 @@ class DisputesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             dispute_id: The ID of the dispute for which you want to upload evidence.
             request: Defines the parameters for a ``CreateDisputeEvidenceFile`` request.
             image_file: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -513,12 +542,10 @@ class DisputesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             path_params=[param[str]("dispute_id", dispute_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=multipart_body(
-                [
-                    param[CreateDisputeEvidenceFileRequest | CreateDisputeEvidenceFileRequestDict | None](
-                        "request", request
-                    ),
-                ],
-                {"image_file": image_file},
+                param[CreateDisputeEvidenceFileRequest | CreateDisputeEvidenceFileRequestDict | None](
+                    "request", request
+                ),
+                file_part("image_file", image_file) if image_file is not None else None,
             ),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateDisputeEvidenceFileResponse],
@@ -539,7 +566,8 @@ class DisputesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             dispute_id: The ID of the dispute for which you want to upload evidence.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -563,7 +591,8 @@ class DisputesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         Args:
             dispute_id: The ID of the dispute from which you want to remove evidence.
             evidence_id: The ID of the evidence you want to remove.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -588,7 +617,8 @@ class DisputesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             cursor: A pagination cursor returned by a previous call to this endpoint. Provide this cursor to retrieve
                 the next set of results for the original query. For more information, see `Pagination
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -620,7 +650,8 @@ class DisputesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             states: The dispute states used to filter the result. If not specified, the endpoint returns all disputes.
             location_id: The ID of the location for which to return a list of disputes. If not specified, the endpoint
                 returns disputes associated with all locations.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -645,7 +676,8 @@ class DisputesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             dispute_id: The ID of the dispute you want more details about.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -670,7 +702,8 @@ class DisputesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         Args:
             dispute_id: The ID of the dispute from which you want to retrieve evidence metadata.
             evidence_id: The ID of the evidence to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -696,7 +729,8 @@ class DisputesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             dispute_id: The ID of the dispute for which you want to submit evidence.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -724,7 +758,8 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             dispute_id: The ID of the dispute you want to accept.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -734,7 +769,7 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             path_params=[param[str]("dispute_id", dispute_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[AcceptDisputeResponse],
+            decoder=async_json_decoder[AcceptDisputeResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -744,7 +779,7 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         dispute_id: str,
         *,
         request: CreateDisputeEvidenceFileRequest | CreateDisputeEvidenceFileRequestDict | None = None,
-        image_file: bytes | None = None,
+        image_file: AsyncFileInput | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> ApiResult[CreateDisputeEvidenceFileResponse, RawError]:
         """Uploads a file to use as evidence in a dispute challenge. The endpoint accepts HTTP multipart/form-data file
@@ -754,7 +789,8 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             dispute_id: The ID of the dispute for which you want to upload evidence.
             request: Defines the parameters for a ``CreateDisputeEvidenceFile`` request.
             image_file: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -764,15 +800,13 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             path_params=[param[str]("dispute_id", dispute_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=multipart_body(
-                [
-                    param[CreateDisputeEvidenceFileRequest | CreateDisputeEvidenceFileRequestDict | None](
-                        "request", request
-                    ),
-                ],
-                {"image_file": image_file},
+                param[CreateDisputeEvidenceFileRequest | CreateDisputeEvidenceFileRequestDict | None](
+                    "request", request
+                ),
+                file_part("image_file", image_file) if image_file is not None else None,
             ),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateDisputeEvidenceFileResponse],
+            decoder=async_json_decoder[CreateDisputeEvidenceFileResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -790,7 +824,8 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             dispute_id: The ID of the dispute for which you want to upload evidence.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -801,7 +836,7 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateDisputeEvidenceTextRequest | CreateDisputeEvidenceTextRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateDisputeEvidenceTextResponse],
+            decoder=async_json_decoder[CreateDisputeEvidenceTextResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -814,7 +849,8 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         Args:
             dispute_id: The ID of the dispute from which you want to remove evidence.
             evidence_id: The ID of the evidence you want to remove.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -824,7 +860,7 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             path_params=[param[str]("dispute_id", dispute_id), param[str]("evidence_id", evidence_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeleteDisputeEvidenceResponse],
+            decoder=async_json_decoder[DeleteDisputeEvidenceResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -839,7 +875,8 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             cursor: A pagination cursor returned by a previous call to this endpoint. Provide this cursor to retrieve
                 the next set of results for the original query. For more information, see `Pagination
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -849,7 +886,7 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             path_params=[param[str]("dispute_id", dispute_id)],
             query_params=[param[str | None]("cursor", cursor)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListDisputeEvidenceResponse],
+            decoder=async_json_decoder[ListDisputeEvidenceResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -871,7 +908,8 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             states: The dispute states used to filter the result. If not specified, the endpoint returns all disputes.
             location_id: The ID of the location for which to return a list of disputes. If not specified, the endpoint
                 returns disputes associated with all locations.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -884,7 +922,7 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
                 param[str | None]("location_id", location_id),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListDisputesResponse],
+            decoder=async_json_decoder[ListDisputesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -896,7 +934,8 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             dispute_id: The ID of the dispute you want more details about.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -905,7 +944,7 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             url_template=self._server.default("/v2/disputes/{dispute_id}"),
             path_params=[param[str]("dispute_id", dispute_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveDisputeResponse],
+            decoder=async_json_decoder[RetrieveDisputeResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -921,7 +960,8 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         Args:
             dispute_id: The ID of the dispute from which you want to retrieve evidence metadata.
             evidence_id: The ID of the evidence to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -930,7 +970,7 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             url_template=self._server.default("/v2/disputes/{dispute_id}/evidence/{evidence_id}"),
             path_params=[param[str]("dispute_id", dispute_id), param[str]("evidence_id", evidence_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveDisputeEvidenceResponse],
+            decoder=async_json_decoder[RetrieveDisputeEvidenceResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -947,7 +987,8 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             dispute_id: The ID of the dispute for which you want to submit evidence.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -957,7 +998,7 @@ class AsyncDisputesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             path_params=[param[str]("dispute_id", dispute_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SubmitEvidenceResponse],
+            decoder=async_json_decoder[SubmitEvidenceResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

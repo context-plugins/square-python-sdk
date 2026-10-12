@@ -22,5 +22,5 @@ class BulkDeleteOrderCustomAttributesResponse(SdkBaseModel):
 
 
 class BulkDeleteOrderCustomAttributesResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    values: dict[str, DeleteOrderCustomAttributeResponse | DeleteOrderCustomAttributeResponseDict]
+    errors: NotRequired[list[ErrorDict]]
+    values: dict[str, DeleteOrderCustomAttributeResponseDict]

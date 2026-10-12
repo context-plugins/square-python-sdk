@@ -19,5 +19,5 @@ class CreateLoyaltyAccountRequest(SdkBaseModel):
 
 
 class CreateLoyaltyAccountRequestDict(TypedDict):
-    loyalty_account: LoyaltyAccount | LoyaltyAccountDict
+    loyalty_account: LoyaltyAccountDict
     idempotency_key: str

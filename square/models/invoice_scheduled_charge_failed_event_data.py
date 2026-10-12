@@ -23,4 +23,4 @@ class InvoiceScheduledChargeFailedEventData(SdkBaseModel):
 class InvoiceScheduledChargeFailedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[InvoiceScheduledChargeFailedEventObject | InvoiceScheduledChargeFailedEventObjectDict]
+    object_: NotRequired[InvoiceScheduledChargeFailedEventObjectDict]

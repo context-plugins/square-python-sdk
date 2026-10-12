@@ -21,5 +21,5 @@ class GiftCardActivityAdjustIncrement(SdkBaseModel):
 
 
 class GiftCardActivityAdjustIncrementDict(TypedDict):
-    amount_money: Money | MoneyDict
+    amount_money: MoneyDict
     reason: GiftCardActivityAdjustIncrementReasonOrStr

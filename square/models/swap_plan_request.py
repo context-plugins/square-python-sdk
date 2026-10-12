@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
+from ..core import UNSET, OptionalNullable, SdkBaseModel
 from .phase_input import PhaseInput, PhaseInputDict
 
 
@@ -14,10 +14,10 @@ class SwapPlanRequest(SdkBaseModel):
 
     This field is required."""
 
-    phases: Optional[list[PhaseInput | None]] = UNSET
+    phases: OptionalNullable[list[PhaseInput]] = UNSET
     """A list of PhaseInputs, to pass phase-specific information used in the swap."""
 
 
 class SwapPlanRequestDict(TypedDict):
     new_plan_variation_id: NotRequired[str | None]
-    phases: NotRequired[list[PhaseInput | PhaseInputDict | None]]
+    phases: NotRequired[list[PhaseInputDict] | None]

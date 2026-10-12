@@ -12,4 +12,4 @@ class SearchAvailabilityRequest(SdkBaseModel):
 
 
 class SearchAvailabilityRequestDict(TypedDict):
-    query: SearchAvailabilityQuery | SearchAvailabilityQueryDict
+    query: SearchAvailabilityQueryDict

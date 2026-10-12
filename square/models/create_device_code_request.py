@@ -19,4 +19,4 @@ class CreateDeviceCodeRequest(SdkBaseModel):
 
 class CreateDeviceCodeRequestDict(TypedDict):
     idempotency_key: str
-    device_code: DeviceCode | DeviceCodeDict
+    device_code: DeviceCodeDict

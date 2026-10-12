@@ -21,5 +21,5 @@ class CustomerQuery(SdkBaseModel):
 
 
 class CustomerQueryDict(TypedDict):
-    filter: NotRequired[CustomerFilter | CustomerFilterDict]
-    sort: NotRequired[CustomerSort | CustomerSortDict]
+    filter: NotRequired[CustomerFilterDict]
+    sort: NotRequired[CustomerSortDict]

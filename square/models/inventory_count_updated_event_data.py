@@ -20,4 +20,4 @@ class InventoryCountUpdatedEventData(SdkBaseModel):
 class InventoryCountUpdatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[InventoryCountUpdatedEventObject | InventoryCountUpdatedEventObjectDict]
+    object_: NotRequired[InventoryCountUpdatedEventObjectDict]

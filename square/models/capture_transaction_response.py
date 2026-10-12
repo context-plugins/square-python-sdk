@@ -15,4 +15,4 @@ class CaptureTransactionResponse(SdkBaseModel):
 
 
 class CaptureTransactionResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

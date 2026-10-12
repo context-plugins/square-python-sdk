@@ -22,5 +22,5 @@ class UpdateWebhookSubscriptionSignatureKeyResponse(SdkBaseModel):
 
 
 class UpdateWebhookSubscriptionSignatureKeyResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]
     signature_key: NotRequired[str]

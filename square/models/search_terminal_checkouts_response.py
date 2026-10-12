@@ -22,6 +22,6 @@ class SearchTerminalCheckoutsResponse(SdkBaseModel):
 
 
 class SearchTerminalCheckoutsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    checkouts: NotRequired[list[TerminalCheckout | TerminalCheckoutDict]]
+    errors: NotRequired[list[ErrorDict]]
+    checkouts: NotRequired[list[TerminalCheckoutDict]]
     cursor: NotRequired[str]

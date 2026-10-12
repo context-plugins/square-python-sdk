@@ -16,4 +16,4 @@ class UpdateJobRequest(SdkBaseModel):
 
 
 class UpdateJobRequestDict(TypedDict):
-    job: Job | JobDict
+    job: JobDict

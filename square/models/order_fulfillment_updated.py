@@ -30,7 +30,7 @@ class OrderFulfillmentUpdated(SdkBaseModel):
     updated_at: Optional[str] = UNSET
     """The timestamp for when the order was last updated, in RFC 3339 format."""
 
-    fulfillment_update: Optional[list[OrderFulfillmentUpdatedUpdate | None]] = UNSET
+    fulfillment_update: OptionalNullable[list[OrderFulfillmentUpdatedUpdate]] = UNSET
     """The fulfillments that were updated with this version change."""
 
 
@@ -41,4 +41,4 @@ class OrderFulfillmentUpdatedDict(TypedDict):
     state: NotRequired[OrderStateOrStr]
     created_at: NotRequired[str]
     updated_at: NotRequired[str]
-    fulfillment_update: NotRequired[list[OrderFulfillmentUpdatedUpdate | OrderFulfillmentUpdatedUpdateDict | None]]
+    fulfillment_update: NotRequired[list[OrderFulfillmentUpdatedUpdateDict] | None]

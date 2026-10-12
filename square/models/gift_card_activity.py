@@ -120,29 +120,19 @@ class GiftCardActivityDict(TypedDict):
     created_at: NotRequired[str]
     gift_card_id: NotRequired[str | None]
     gift_card_gan: NotRequired[str | None]
-    gift_card_balance_money: NotRequired[Money | MoneyDict]
-    load_activity_details: NotRequired[GiftCardActivityLoad | GiftCardActivityLoadDict]
-    activate_activity_details: NotRequired[GiftCardActivityActivate | GiftCardActivityActivateDict]
-    redeem_activity_details: NotRequired[GiftCardActivityRedeem | GiftCardActivityRedeemDict]
-    clear_balance_activity_details: NotRequired[GiftCardActivityClearBalance | GiftCardActivityClearBalanceDict]
-    deactivate_activity_details: NotRequired[GiftCardActivityDeactivate | GiftCardActivityDeactivateDict]
-    adjust_increment_activity_details: NotRequired[
-        GiftCardActivityAdjustIncrement | GiftCardActivityAdjustIncrementDict
-    ]
-    adjust_decrement_activity_details: NotRequired[
-        GiftCardActivityAdjustDecrement | GiftCardActivityAdjustDecrementDict
-    ]
-    refund_activity_details: NotRequired[GiftCardActivityRefund | GiftCardActivityRefundDict]
-    unlinked_activity_refund_activity_details: NotRequired[
-        GiftCardActivityUnlinkedActivityRefund | GiftCardActivityUnlinkedActivityRefundDict
-    ]
-    import_activity_details: NotRequired[GiftCardActivityImport | GiftCardActivityImportDict]
-    block_activity_details: NotRequired[GiftCardActivityBlock | GiftCardActivityBlockDict]
-    unblock_activity_details: NotRequired[GiftCardActivityUnblock | GiftCardActivityUnblockDict]
-    import_reversal_activity_details: NotRequired[GiftCardActivityImportReversal | GiftCardActivityImportReversalDict]
-    transfer_balance_to_activity_details: NotRequired[
-        GiftCardActivityTransferBalanceTo | GiftCardActivityTransferBalanceToDict
-    ]
-    transfer_balance_from_activity_details: NotRequired[
-        GiftCardActivityTransferBalanceFrom | GiftCardActivityTransferBalanceFromDict
-    ]
+    gift_card_balance_money: NotRequired[MoneyDict]
+    load_activity_details: NotRequired[GiftCardActivityLoadDict]
+    activate_activity_details: NotRequired[GiftCardActivityActivateDict]
+    redeem_activity_details: NotRequired[GiftCardActivityRedeemDict]
+    clear_balance_activity_details: NotRequired[GiftCardActivityClearBalanceDict]
+    deactivate_activity_details: NotRequired[GiftCardActivityDeactivateDict]
+    adjust_increment_activity_details: NotRequired[GiftCardActivityAdjustIncrementDict]
+    adjust_decrement_activity_details: NotRequired[GiftCardActivityAdjustDecrementDict]
+    refund_activity_details: NotRequired[GiftCardActivityRefundDict]
+    unlinked_activity_refund_activity_details: NotRequired[GiftCardActivityUnlinkedActivityRefundDict]
+    import_activity_details: NotRequired[GiftCardActivityImportDict]
+    block_activity_details: NotRequired[GiftCardActivityBlockDict]
+    unblock_activity_details: NotRequired[GiftCardActivityUnblockDict]
+    import_reversal_activity_details: NotRequired[GiftCardActivityImportReversalDict]
+    transfer_balance_to_activity_details: NotRequired[GiftCardActivityTransferBalanceToDict]
+    transfer_balance_from_activity_details: NotRequired[GiftCardActivityTransferBalanceFromDict]

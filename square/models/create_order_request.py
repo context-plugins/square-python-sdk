@@ -24,5 +24,5 @@ class CreateOrderRequest(SdkBaseModel):
 
 
 class CreateOrderRequestDict(TypedDict):
-    order: NotRequired[Order | OrderDict]
+    order: NotRequired[OrderDict]
     idempotency_key: NotRequired[str]

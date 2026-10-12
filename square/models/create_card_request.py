@@ -40,4 +40,4 @@ class CreateCardRequestDict(TypedDict):
     idempotency_key: str
     source_id: str
     verification_token: NotRequired[str]
-    card: Card | CardDict
+    card: CardDict

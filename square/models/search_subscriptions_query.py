@@ -15,4 +15,4 @@ class SearchSubscriptionsQuery(SdkBaseModel):
 
 
 class SearchSubscriptionsQueryDict(TypedDict):
-    filter: NotRequired[SearchSubscriptionsFilter | SearchSubscriptionsFilterDict]
+    filter: NotRequired[SearchSubscriptionsFilterDict]

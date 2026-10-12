@@ -22,4 +22,4 @@ class CreateVendorRequest(SdkBaseModel):
 
 class CreateVendorRequestDict(TypedDict):
     idempotency_key: str
-    vendor: NotRequired[Vendor | VendorDict]
+    vendor: NotRequired[VendorDict]

@@ -14,4 +14,4 @@ class CustomerUpdatedEventObject(SdkBaseModel):
 
 
 class CustomerUpdatedEventObjectDict(TypedDict):
-    customer: NotRequired[Customer | CustomerDict]
+    customer: NotRequired[CustomerDict]

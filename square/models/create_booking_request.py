@@ -17,4 +17,4 @@ class CreateBookingRequest(SdkBaseModel):
 
 class CreateBookingRequestDict(TypedDict):
     idempotency_key: NotRequired[str]
-    booking: Booking | BookingDict
+    booking: BookingDict

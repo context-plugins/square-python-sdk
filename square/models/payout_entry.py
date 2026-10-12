@@ -173,77 +173,35 @@ class PayoutEntryDict(TypedDict):
     payout_id: str
     effective_at: NotRequired[str | None]
     type_: NotRequired[ActivityTypeOrStr]
-    gross_amount_money: NotRequired[Money | MoneyDict]
-    fee_amount_money: NotRequired[Money | MoneyDict]
-    net_amount_money: NotRequired[Money | MoneyDict]
-    type_app_fee_revenue_details: NotRequired[
-        PaymentBalanceActivityAppFeeRevenueDetail | PaymentBalanceActivityAppFeeRevenueDetailDict
-    ]
-    type_app_fee_refund_details: NotRequired[
-        PaymentBalanceActivityAppFeeRefundDetail | PaymentBalanceActivityAppFeeRefundDetailDict
-    ]
-    type_automatic_savings_details: NotRequired[
-        PaymentBalanceActivityAutomaticSavingsDetail | PaymentBalanceActivityAutomaticSavingsDetailDict
-    ]
-    type_automatic_savings_reversed_details: NotRequired[
-        PaymentBalanceActivityAutomaticSavingsReversedDetail | PaymentBalanceActivityAutomaticSavingsReversedDetailDict
-    ]
-    type_charge_details: NotRequired[PaymentBalanceActivityChargeDetail | PaymentBalanceActivityChargeDetailDict]
-    type_deposit_fee_details: NotRequired[
-        PaymentBalanceActivityDepositFeeDetail | PaymentBalanceActivityDepositFeeDetailDict
-    ]
-    type_deposit_fee_reversed_details: NotRequired[
-        PaymentBalanceActivityDepositFeeReversedDetail | PaymentBalanceActivityDepositFeeReversedDetailDict
-    ]
-    type_dispute_details: NotRequired[PaymentBalanceActivityDisputeDetail | PaymentBalanceActivityDisputeDetailDict]
-    type_fee_details: NotRequired[PaymentBalanceActivityFeeDetail | PaymentBalanceActivityFeeDetailDict]
-    type_free_processing_details: NotRequired[
-        PaymentBalanceActivityFreeProcessingDetail | PaymentBalanceActivityFreeProcessingDetailDict
-    ]
-    type_hold_adjustment_details: NotRequired[
-        PaymentBalanceActivityHoldAdjustmentDetail | PaymentBalanceActivityHoldAdjustmentDetailDict
-    ]
-    type_open_dispute_details: NotRequired[
-        PaymentBalanceActivityOpenDisputeDetail | PaymentBalanceActivityOpenDisputeDetailDict
-    ]
-    type_other_details: NotRequired[PaymentBalanceActivityOtherDetail | PaymentBalanceActivityOtherDetailDict]
-    type_other_adjustment_details: NotRequired[
-        PaymentBalanceActivityOtherAdjustmentDetail | PaymentBalanceActivityOtherAdjustmentDetailDict
-    ]
-    type_refund_details: NotRequired[PaymentBalanceActivityRefundDetail | PaymentBalanceActivityRefundDetailDict]
-    type_release_adjustment_details: NotRequired[
-        PaymentBalanceActivityReleaseAdjustmentDetail | PaymentBalanceActivityReleaseAdjustmentDetailDict
-    ]
-    type_reserve_hold_details: NotRequired[
-        PaymentBalanceActivityReserveHoldDetail | PaymentBalanceActivityReserveHoldDetailDict
-    ]
-    type_reserve_release_details: NotRequired[
-        PaymentBalanceActivityReserveReleaseDetail | PaymentBalanceActivityReserveReleaseDetailDict
-    ]
-    type_square_capital_payment_details: NotRequired[
-        PaymentBalanceActivitySquareCapitalPaymentDetail | PaymentBalanceActivitySquareCapitalPaymentDetailDict
-    ]
+    gross_amount_money: NotRequired[MoneyDict]
+    fee_amount_money: NotRequired[MoneyDict]
+    net_amount_money: NotRequired[MoneyDict]
+    type_app_fee_revenue_details: NotRequired[PaymentBalanceActivityAppFeeRevenueDetailDict]
+    type_app_fee_refund_details: NotRequired[PaymentBalanceActivityAppFeeRefundDetailDict]
+    type_automatic_savings_details: NotRequired[PaymentBalanceActivityAutomaticSavingsDetailDict]
+    type_automatic_savings_reversed_details: NotRequired[PaymentBalanceActivityAutomaticSavingsReversedDetailDict]
+    type_charge_details: NotRequired[PaymentBalanceActivityChargeDetailDict]
+    type_deposit_fee_details: NotRequired[PaymentBalanceActivityDepositFeeDetailDict]
+    type_deposit_fee_reversed_details: NotRequired[PaymentBalanceActivityDepositFeeReversedDetailDict]
+    type_dispute_details: NotRequired[PaymentBalanceActivityDisputeDetailDict]
+    type_fee_details: NotRequired[PaymentBalanceActivityFeeDetailDict]
+    type_free_processing_details: NotRequired[PaymentBalanceActivityFreeProcessingDetailDict]
+    type_hold_adjustment_details: NotRequired[PaymentBalanceActivityHoldAdjustmentDetailDict]
+    type_open_dispute_details: NotRequired[PaymentBalanceActivityOpenDisputeDetailDict]
+    type_other_details: NotRequired[PaymentBalanceActivityOtherDetailDict]
+    type_other_adjustment_details: NotRequired[PaymentBalanceActivityOtherAdjustmentDetailDict]
+    type_refund_details: NotRequired[PaymentBalanceActivityRefundDetailDict]
+    type_release_adjustment_details: NotRequired[PaymentBalanceActivityReleaseAdjustmentDetailDict]
+    type_reserve_hold_details: NotRequired[PaymentBalanceActivityReserveHoldDetailDict]
+    type_reserve_release_details: NotRequired[PaymentBalanceActivityReserveReleaseDetailDict]
+    type_square_capital_payment_details: NotRequired[PaymentBalanceActivitySquareCapitalPaymentDetailDict]
     type_square_capital_reversed_payment_details: NotRequired[
-        (
-            PaymentBalanceActivitySquareCapitalReversedPaymentDetail
-            | PaymentBalanceActivitySquareCapitalReversedPaymentDetailDict
-        )
+        PaymentBalanceActivitySquareCapitalReversedPaymentDetailDict
     ]
-    type_tax_on_fee_details: NotRequired[
-        PaymentBalanceActivityTaxOnFeeDetail | PaymentBalanceActivityTaxOnFeeDetailDict
-    ]
-    type_third_party_fee_details: NotRequired[
-        PaymentBalanceActivityThirdPartyFeeDetail | PaymentBalanceActivityThirdPartyFeeDetailDict
-    ]
-    type_third_party_fee_refund_details: NotRequired[
-        PaymentBalanceActivityThirdPartyFeeRefundDetail | PaymentBalanceActivityThirdPartyFeeRefundDetailDict
-    ]
-    type_square_payroll_transfer_details: NotRequired[
-        PaymentBalanceActivitySquarePayrollTransferDetail | PaymentBalanceActivitySquarePayrollTransferDetailDict
-    ]
+    type_tax_on_fee_details: NotRequired[PaymentBalanceActivityTaxOnFeeDetailDict]
+    type_third_party_fee_details: NotRequired[PaymentBalanceActivityThirdPartyFeeDetailDict]
+    type_third_party_fee_refund_details: NotRequired[PaymentBalanceActivityThirdPartyFeeRefundDetailDict]
+    type_square_payroll_transfer_details: NotRequired[PaymentBalanceActivitySquarePayrollTransferDetailDict]
     type_square_payroll_transfer_reversed_details: NotRequired[
-        (
-            PaymentBalanceActivitySquarePayrollTransferReversedDetail
-            | PaymentBalanceActivitySquarePayrollTransferReversedDetailDict
-        )
+        PaymentBalanceActivitySquarePayrollTransferReversedDetailDict
     ]

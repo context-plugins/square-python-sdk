@@ -24,6 +24,6 @@ class TimecardWorkday(SdkBaseModel):
 
 
 class TimecardWorkdayDict(TypedDict):
-    date_range: NotRequired[DateRange | DateRangeDict]
+    date_range: NotRequired[DateRangeDict]
     match_timecards_by: NotRequired[TimecardWorkdayMatcherOrStr]
     default_timezone: NotRequired[str | None]

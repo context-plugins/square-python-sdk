@@ -22,5 +22,5 @@ class CustomerAddressFilter(SdkBaseModel):
 
 
 class CustomerAddressFilterDict(TypedDict):
-    postal_code: NotRequired[CustomerTextFilter | CustomerTextFilterDict]
+    postal_code: NotRequired[CustomerTextFilterDict]
     country: NotRequired[CountryOrStr]

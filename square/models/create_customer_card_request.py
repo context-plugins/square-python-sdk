@@ -34,6 +34,6 @@ class CreateCustomerCardRequest(SdkBaseModel):
 
 class CreateCustomerCardRequestDict(TypedDict):
     card_nonce: str
-    billing_address: NotRequired[Address | AddressDict]
+    billing_address: NotRequired[AddressDict]
     cardholder_name: NotRequired[str]
     verification_token: NotRequired[str]

@@ -25,6 +25,6 @@ class ListEventTypesResponse(SdkBaseModel):
 
 
 class ListEventTypesResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]
     event_types: NotRequired[list[str]]
-    metadata: NotRequired[list[EventTypeMetadata | EventTypeMetadataDict]]
+    metadata: NotRequired[list[EventTypeMetadataDict]]

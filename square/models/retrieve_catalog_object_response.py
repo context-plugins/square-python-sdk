@@ -33,6 +33,6 @@ class RetrieveCatalogObjectResponse(SdkBaseModel):
 
 
 class RetrieveCatalogObjectResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    object_: NotRequired[CatalogObject | CatalogObjectDict]
-    related_objects: NotRequired[list[CatalogObject | CatalogObjectDict]]
+    errors: NotRequired[list[ErrorDict]]
+    object_: NotRequired[CatalogObjectDict]
+    related_objects: NotRequired[list[CatalogObjectDict]]

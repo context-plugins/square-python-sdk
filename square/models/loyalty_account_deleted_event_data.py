@@ -22,4 +22,4 @@ class LoyaltyAccountDeletedEventData(SdkBaseModel):
 class LoyaltyAccountDeletedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[LoyaltyAccountDeletedEventObject | LoyaltyAccountDeletedEventObjectDict]
+    object_: NotRequired[LoyaltyAccountDeletedEventObjectDict]

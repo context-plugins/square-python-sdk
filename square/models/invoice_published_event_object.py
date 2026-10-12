@@ -13,4 +13,4 @@ class InvoicePublishedEventObject(SdkBaseModel):
 
 
 class InvoicePublishedEventObjectDict(TypedDict):
-    invoice: NotRequired[Invoice | InvoiceDict]
+    invoice: NotRequired[InvoiceDict]

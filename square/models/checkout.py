@@ -62,7 +62,7 @@ class Checkout(SdkBaseModel):
     created_at: Optional[str] = UNSET
     """The time when the checkout was created, in RFC 3339 format."""
 
-    additional_recipients: Optional[list[AdditionalRecipient | None]] = UNSET
+    additional_recipients: OptionalNullable[list[AdditionalRecipient]] = UNSET
     """Additional recipients (other than the merchant) receiving a portion of this checkout. For example, fees assessed
     on the purchase by a third party integration."""
 
@@ -73,8 +73,8 @@ class CheckoutDict(TypedDict):
     ask_for_shipping_address: NotRequired[bool | None]
     merchant_support_email: NotRequired[str | None]
     pre_populate_buyer_email: NotRequired[str | None]
-    pre_populate_shipping_address: NotRequired[Address | AddressDict]
+    pre_populate_shipping_address: NotRequired[AddressDict]
     redirect_url: NotRequired[str | None]
-    order: NotRequired[Order | OrderDict]
+    order: NotRequired[OrderDict]
     created_at: NotRequired[str]
-    additional_recipients: NotRequired[list[AdditionalRecipient | AdditionalRecipientDict | None]]
+    additional_recipients: NotRequired[list[AdditionalRecipientDict] | None]

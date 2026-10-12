@@ -14,4 +14,4 @@ class DeleteCustomerCustomAttributeDefinitionResponse(SdkBaseModel):
 
 
 class DeleteCustomerCustomAttributeDefinitionResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

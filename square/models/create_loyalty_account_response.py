@@ -19,5 +19,5 @@ class CreateLoyaltyAccountResponse(SdkBaseModel):
 
 
 class CreateLoyaltyAccountResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    loyalty_account: NotRequired[LoyaltyAccount | LoyaltyAccountDict]
+    errors: NotRequired[list[ErrorDict]]
+    loyalty_account: NotRequired[LoyaltyAccountDict]

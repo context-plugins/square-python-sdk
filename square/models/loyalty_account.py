@@ -58,7 +58,7 @@ class LoyaltyAccount(SdkBaseModel):
     Currently, a loyalty account can only be mapped to a buyer by phone number. For more information, see `Loyalty
     Overview <https://developer.squareup.com/docs/loyalty/overview>`__."""
 
-    expiring_point_deadlines: Optional[list[LoyaltyAccountExpiringPointDeadline | None]] = UNSET
+    expiring_point_deadlines: OptionalNullable[list[LoyaltyAccountExpiringPointDeadline]] = UNSET
     """The schedule for when points expire in the loyalty account balance. This field is present only if the account has
     points that are scheduled to expire.
 
@@ -74,7 +74,5 @@ class LoyaltyAccountDict(TypedDict):
     enrolled_at: NotRequired[str | None]
     created_at: NotRequired[str]
     updated_at: NotRequired[str]
-    mapping: NotRequired[LoyaltyAccountMapping | LoyaltyAccountMappingDict]
-    expiring_point_deadlines: NotRequired[
-        list[LoyaltyAccountExpiringPointDeadline | LoyaltyAccountExpiringPointDeadlineDict | None]
-    ]
+    mapping: NotRequired[LoyaltyAccountMappingDict]
+    expiring_point_deadlines: NotRequired[list[LoyaltyAccountExpiringPointDeadlineDict] | None]

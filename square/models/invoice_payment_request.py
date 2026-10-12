@@ -71,7 +71,7 @@ class InvoicePaymentRequest(SdkBaseModel):
     customer, call `ListCards <api-endpoint:Cards-ListCards>`__ and include the ``customer_id`` of the invoice
     recipient."""
 
-    reminders: Optional[list[InvoicePaymentReminder | None]] = UNSET
+    reminders: OptionalNullable[list[InvoicePaymentReminder]] = UNSET
     """A list of one or more reminders to send for the payment request."""
 
     computed_amount_money: Optional[Money] = UNSET
@@ -98,12 +98,12 @@ class InvoicePaymentRequestDict(TypedDict):
     request_method: NotRequired[InvoiceRequestMethodOrStr]
     request_type: NotRequired[InvoiceRequestTypeOrStr]
     due_date: NotRequired[str | None]
-    fixed_amount_requested_money: NotRequired[Money | MoneyDict]
+    fixed_amount_requested_money: NotRequired[MoneyDict]
     percentage_requested: NotRequired[str | None]
     tipping_enabled: NotRequired[bool | None]
     automatic_payment_source: NotRequired[InvoiceAutomaticPaymentSourceOrStr]
     card_id: NotRequired[str | None]
-    reminders: NotRequired[list[InvoicePaymentReminder | InvoicePaymentReminderDict | None]]
-    computed_amount_money: NotRequired[Money | MoneyDict]
-    total_completed_amount_money: NotRequired[Money | MoneyDict]
-    rounding_adjustment_included_money: NotRequired[Money | MoneyDict]
+    reminders: NotRequired[list[InvoicePaymentReminderDict] | None]
+    computed_amount_money: NotRequired[MoneyDict]
+    total_completed_amount_money: NotRequired[MoneyDict]
+    rounding_adjustment_included_money: NotRequired[MoneyDict]

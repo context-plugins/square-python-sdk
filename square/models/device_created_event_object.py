@@ -11,4 +11,4 @@ class DeviceCreatedEventObject(SdkBaseModel):
 
 
 class DeviceCreatedEventObjectDict(TypedDict):
-    device: NotRequired[Device | DeviceDict]
+    device: NotRequired[DeviceDict]

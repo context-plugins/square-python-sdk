@@ -28,18 +28,7 @@ class CheckoutMerchantSettingsPaymentMethods(SdkBaseModel):
 
 
 class CheckoutMerchantSettingsPaymentMethodsDict(TypedDict):
-    apple_pay: NotRequired[
-        CheckoutMerchantSettingsPaymentMethodsPaymentMethod | CheckoutMerchantSettingsPaymentMethodsPaymentMethodDict
-    ]
-    google_pay: NotRequired[
-        CheckoutMerchantSettingsPaymentMethodsPaymentMethod | CheckoutMerchantSettingsPaymentMethodsPaymentMethodDict
-    ]
-    cash_app: NotRequired[
-        CheckoutMerchantSettingsPaymentMethodsPaymentMethod | CheckoutMerchantSettingsPaymentMethodsPaymentMethodDict
-    ]
-    afterpay_clearpay: NotRequired[
-        (
-            CheckoutMerchantSettingsPaymentMethodsAfterpayClearpay
-            | CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayDict
-        )
-    ]
+    apple_pay: NotRequired[CheckoutMerchantSettingsPaymentMethodsPaymentMethodDict]
+    google_pay: NotRequired[CheckoutMerchantSettingsPaymentMethodsPaymentMethodDict]
+    cash_app: NotRequired[CheckoutMerchantSettingsPaymentMethodsPaymentMethodDict]
+    afterpay_clearpay: NotRequired[CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayDict]

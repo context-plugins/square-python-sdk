@@ -22,5 +22,5 @@ class UpdateTransferOrderRequest(SdkBaseModel):
 
 class UpdateTransferOrderRequestDict(TypedDict):
     idempotency_key: str
-    transfer_order: UpdateTransferOrderData | UpdateTransferOrderDataDict
+    transfer_order: UpdateTransferOrderDataDict
     version: NotRequired[int]

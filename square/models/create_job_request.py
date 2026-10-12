@@ -21,5 +21,5 @@ class CreateJobRequest(SdkBaseModel):
 
 
 class CreateJobRequestDict(TypedDict):
-    job: Job | JobDict
+    job: JobDict
     idempotency_key: str

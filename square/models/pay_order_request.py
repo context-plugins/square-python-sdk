@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
+from ..core import UNSET, OptionalNullable, SdkBaseModel
 
 
 class PayOrderRequest(SdkBaseModel):
@@ -18,11 +18,11 @@ class PayOrderRequest(SdkBaseModel):
     order_version: OptionalNullable[int] = UNSET
     """The version of the order being paid. If not supplied, the latest version will be paid."""
 
-    payment_ids: Optional[list[str | None]] = UNSET
+    payment_ids: OptionalNullable[list[str]] = UNSET
     """The IDs of the `payments <entity:Payment>`__ to collect. The payment total must match the order total."""
 
 
 class PayOrderRequestDict(TypedDict):
     idempotency_key: str
     order_version: NotRequired[int | None]
-    payment_ids: NotRequired[list[str | None]]
+    payment_ids: NotRequired[list[str] | None]

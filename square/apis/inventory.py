@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.batch_change_inventory_request import BatchChangeInventoryRequest, BatchChangeInventoryRequestDict
 from ..models.batch_change_inventory_response import BatchChangeInventoryResponse
@@ -83,14 +85,15 @@ class Inventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.batch_change_inventory(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.batch_change_inventory(body, request_options=request_options))
 
     def batch_retrieve_inventory_changes(
         self,
@@ -108,14 +111,15 @@ class Inventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.batch_retrieve_inventory_changes(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.batch_retrieve_inventory_changes(body, request_options=request_options))
 
     def batch_retrieve_inventory_counts(
         self,
@@ -136,14 +140,15 @@ class Inventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.batch_retrieve_inventory_counts(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.batch_retrieve_inventory_counts(body, request_options=request_options))
 
     def create_inventory_adjustment_reason(
         self,
@@ -156,16 +161,15 @@ class Inventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_inventory_adjustment_reason(
-            body, request_options=request_options
-        ).unwrap()
+        return unwrap(self._with_raw_response.create_inventory_adjustment_reason(body, request_options=request_options))
 
     def delete_inventory_adjustment_reason(
         self,
@@ -178,16 +182,15 @@ class Inventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_inventory_adjustment_reason(
-            body, request_options=request_options
-        ).unwrap()
+        return unwrap(self._with_raw_response.delete_inventory_adjustment_reason(body, request_options=request_options))
 
     def deprecated_batch_change_inventory(
         self,
@@ -201,14 +204,15 @@ class Inventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.deprecated_batch_change_inventory(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.deprecated_batch_change_inventory(body, request_options=request_options))
 
     def deprecated_batch_retrieve_inventory_changes(
         self,
@@ -223,16 +227,17 @@ class Inventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.deprecated_batch_retrieve_inventory_changes(
-            body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.deprecated_batch_retrieve_inventory_changes(body, request_options=request_options)
+        )
 
     def deprecated_batch_retrieve_inventory_counts(
         self,
@@ -246,16 +251,17 @@ class Inventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.deprecated_batch_retrieve_inventory_counts(
-            body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.deprecated_batch_retrieve_inventory_counts(body, request_options=request_options)
+        )
 
     def deprecated_retrieve_inventory_adjustment(
         self, adjustment_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -265,16 +271,19 @@ class Inventory:
 
         Args:
             adjustment_id: ID of the `InventoryAdjustment <entity:InventoryAdjustment>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.deprecated_retrieve_inventory_adjustment(
-            adjustment_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.deprecated_retrieve_inventory_adjustment(
+                adjustment_id, request_options=request_options
+            ),
+        )
 
     def deprecated_retrieve_inventory_physical_count(
         self, physical_count_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -285,16 +294,19 @@ class Inventory:
 
         Args:
             physical_count_id: ID of the `InventoryPhysicalCount <entity:InventoryPhysicalCount>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.deprecated_retrieve_inventory_physical_count(
-            physical_count_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.deprecated_retrieve_inventory_physical_count(
+                physical_count_id, request_options=request_options
+            ),
+        )
 
     def list_inventory_adjustment_reasons(
         self,
@@ -311,16 +323,21 @@ class Inventory:
             include_system_codes: Indicates whether the response should include Square-generated system inventory
                 adjustment reason codes that cannot be used to write adjustments from the Connect API, such as ``SALE``,
                 ``RECOUNT``, ``TRANSFER``, ``IN_TRANSIT``, and ``CANCELED_SALE``. The default value is ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_inventory_adjustment_reasons(
-            include_deleted=include_deleted, include_system_codes=include_system_codes, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_inventory_adjustment_reasons(
+                include_deleted=include_deleted,
+                include_system_codes=include_system_codes,
+                request_options=request_options,
+            ),
+        )
 
     def restore_inventory_adjustment_reason(
         self,
@@ -333,16 +350,17 @@ class Inventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.restore_inventory_adjustment_reason(
-            body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.restore_inventory_adjustment_reason(body, request_options=request_options)
+        )
 
     def retrieve_inventory_adjustment(
         self, adjustment_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -351,16 +369,17 @@ class Inventory:
 
         Args:
             adjustment_id: ID of the `InventoryAdjustment <entity:InventoryAdjustment>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_inventory_adjustment(
-            adjustment_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.retrieve_inventory_adjustment(adjustment_id, request_options=request_options)
+        )
 
     def retrieve_inventory_adjustment_reason(
         self,
@@ -374,16 +393,17 @@ class Inventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_inventory_adjustment_reason(
-            body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.retrieve_inventory_adjustment_reason(body, request_options=request_options)
+        )
 
     def retrieve_inventory_changes(
         self,
@@ -413,16 +433,19 @@ class Inventory:
             cursor: A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next
                 set of results for the original query. See the `Pagination
                 <https://developer.squareup.com/docs/working-with-apis/pagination>`__ guide for more information.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_inventory_changes(
-            catalog_object_id, location_ids=location_ids, cursor=cursor, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.retrieve_inventory_changes(
+                catalog_object_id, location_ids=location_ids, cursor=cursor, request_options=request_options
+            ),
+        )
 
     def retrieve_inventory_count(
         self,
@@ -443,16 +466,19 @@ class Inventory:
             cursor: A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next
                 set of results for the original query. See the `Pagination
                 <https://developer.squareup.com/docs/working-with-apis/pagination>`__ guide for more information.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_inventory_count(
-            catalog_object_id, location_ids=location_ids, cursor=cursor, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.retrieve_inventory_count(
+                catalog_object_id, location_ids=location_ids, cursor=cursor, request_options=request_options
+            ),
+        )
 
     def retrieve_inventory_physical_count(
         self, physical_count_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -462,16 +488,19 @@ class Inventory:
 
         Args:
             physical_count_id: ID of the `InventoryPhysicalCount <entity:InventoryPhysicalCount>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_inventory_physical_count(
-            physical_count_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.retrieve_inventory_physical_count(
+                physical_count_id, request_options=request_options
+            ),
+        )
 
     def update_inventory_adjustment(
         self,
@@ -486,14 +515,15 @@ class Inventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_inventory_adjustment(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.update_inventory_adjustment(body, request_options=request_options))
 
     def update_inventory_adjustment_reason(
         self,
@@ -506,16 +536,15 @@ class Inventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_inventory_adjustment_reason(
-            body, request_options=request_options
-        ).unwrap()
+        return unwrap(self._with_raw_response.update_inventory_adjustment_reason(body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> InventoryWithRawResponse:
@@ -540,14 +569,15 @@ class AsyncInventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.batch_change_inventory(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.batch_change_inventory(body, request_options=request_options))
 
     async def batch_retrieve_inventory_changes(
         self,
@@ -565,16 +595,17 @@ class AsyncInventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.batch_retrieve_inventory_changes(body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def batch_retrieve_inventory_counts(
         self,
@@ -595,16 +626,17 @@ class AsyncInventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.batch_retrieve_inventory_counts(body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def create_inventory_adjustment_reason(
         self,
@@ -617,16 +649,17 @@ class AsyncInventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.create_inventory_adjustment_reason(body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def delete_inventory_adjustment_reason(
         self,
@@ -639,16 +672,17 @@ class AsyncInventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.delete_inventory_adjustment_reason(body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def deprecated_batch_change_inventory(
         self,
@@ -662,16 +696,17 @@ class AsyncInventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.deprecated_batch_change_inventory(body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def deprecated_batch_retrieve_inventory_changes(
         self,
@@ -686,18 +721,19 @@ class AsyncInventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.deprecated_batch_retrieve_inventory_changes(
                 body, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def deprecated_batch_retrieve_inventory_counts(
         self,
@@ -711,18 +747,19 @@ class AsyncInventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.deprecated_batch_retrieve_inventory_counts(
                 body, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def deprecated_retrieve_inventory_adjustment(
         self, adjustment_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -732,18 +769,19 @@ class AsyncInventory:
 
         Args:
             adjustment_id: ID of the `InventoryAdjustment <entity:InventoryAdjustment>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.deprecated_retrieve_inventory_adjustment(
                 adjustment_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def deprecated_retrieve_inventory_physical_count(
         self, physical_count_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -754,18 +792,19 @@ class AsyncInventory:
 
         Args:
             physical_count_id: ID of the `InventoryPhysicalCount <entity:InventoryPhysicalCount>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.deprecated_retrieve_inventory_physical_count(
                 physical_count_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def list_inventory_adjustment_reasons(
         self,
@@ -782,20 +821,21 @@ class AsyncInventory:
             include_system_codes: Indicates whether the response should include Square-generated system inventory
                 adjustment reason codes that cannot be used to write adjustments from the Connect API, such as ``SALE``,
                 ``RECOUNT``, ``TRANSFER``, ``IN_TRANSIT``, and ``CANCELED_SALE``. The default value is ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_inventory_adjustment_reasons(
                 include_deleted=include_deleted,
                 include_system_codes=include_system_codes,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def restore_inventory_adjustment_reason(
         self,
@@ -808,16 +848,17 @@ class AsyncInventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.restore_inventory_adjustment_reason(body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def retrieve_inventory_adjustment(
         self, adjustment_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -826,16 +867,17 @@ class AsyncInventory:
 
         Args:
             adjustment_id: ID of the `InventoryAdjustment <entity:InventoryAdjustment>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_inventory_adjustment(adjustment_id, request_options=request_options)
-        ).unwrap()
+        )
 
     async def retrieve_inventory_adjustment_reason(
         self,
@@ -849,16 +891,17 @@ class AsyncInventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_inventory_adjustment_reason(body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def retrieve_inventory_changes(
         self,
@@ -888,18 +931,19 @@ class AsyncInventory:
             cursor: A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next
                 set of results for the original query. See the `Pagination
                 <https://developer.squareup.com/docs/working-with-apis/pagination>`__ guide for more information.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_inventory_changes(
                 catalog_object_id, location_ids=location_ids, cursor=cursor, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_inventory_count(
         self,
@@ -920,18 +964,19 @@ class AsyncInventory:
             cursor: A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next
                 set of results for the original query. See the `Pagination
                 <https://developer.squareup.com/docs/working-with-apis/pagination>`__ guide for more information.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_inventory_count(
                 catalog_object_id, location_ids=location_ids, cursor=cursor, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_inventory_physical_count(
         self, physical_count_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -941,18 +986,19 @@ class AsyncInventory:
 
         Args:
             physical_count_id: ID of the `InventoryPhysicalCount <entity:InventoryPhysicalCount>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_inventory_physical_count(
                 physical_count_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def update_inventory_adjustment(
         self,
@@ -967,16 +1013,15 @@ class AsyncInventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.update_inventory_adjustment(body, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.update_inventory_adjustment(body, request_options=request_options))
 
     async def update_inventory_adjustment_reason(
         self,
@@ -989,16 +1034,17 @@ class AsyncInventory:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.update_inventory_adjustment_reason(body, request_options=request_options)
-        ).unwrap()
+        )
 
     @property
     def with_raw_response(self) -> AsyncInventoryWithRawResponse:
@@ -1020,7 +1066,8 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1051,7 +1098,8 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1085,7 +1133,8 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1111,7 +1160,8 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1137,7 +1187,8 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1164,7 +1215,8 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1192,7 +1244,8 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1219,7 +1272,8 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1242,7 +1296,8 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
 
         Args:
             adjustment_id: ID of the `InventoryAdjustment <entity:InventoryAdjustment>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1265,7 +1320,8 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
 
         Args:
             physical_count_id: ID of the `InventoryPhysicalCount <entity:InventoryPhysicalCount>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1294,7 +1350,8 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             include_system_codes: Indicates whether the response should include Square-generated system inventory
                 adjustment reason codes that cannot be used to write adjustments from the Connect API, such as ``SALE``,
                 ``RECOUNT``, ``TRANSFER``, ``IN_TRANSIT``, and ``CANCELED_SALE``. The default value is ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1322,7 +1379,8 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1344,7 +1402,8 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
 
         Args:
             adjustment_id: ID of the `InventoryAdjustment <entity:InventoryAdjustment>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1370,7 +1429,8 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1415,7 +1475,8 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             cursor: A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next
                 set of results for the original query. See the `Pagination
                 <https://developer.squareup.com/docs/working-with-apis/pagination>`__ guide for more information.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1449,7 +1510,8 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             cursor: A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next
                 set of results for the original query. See the `Pagination
                 <https://developer.squareup.com/docs/working-with-apis/pagination>`__ guide for more information.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1472,7 +1534,8 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
 
         Args:
             physical_count_id: ID of the `InventoryPhysicalCount <entity:InventoryPhysicalCount>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1499,7 +1562,8 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1525,7 +1589,8 @@ class InventoryWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1556,7 +1621,8 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1566,7 +1632,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchChangeInventoryRequest | BatchChangeInventoryRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BatchChangeInventoryResponse],
+            decoder=async_json_decoder[BatchChangeInventoryResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1587,7 +1653,8 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1597,7 +1664,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchRetrieveInventoryChangesRequest | BatchRetrieveInventoryChangesRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BatchRetrieveInventoryChangesResponse],
+            decoder=async_json_decoder[BatchRetrieveInventoryChangesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1621,7 +1688,8 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1631,7 +1699,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchRetrieveInventoryCountsRequest | BatchRetrieveInventoryCountsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BatchRetrieveInventoryCountsResponse],
+            decoder=async_json_decoder[BatchRetrieveInventoryCountsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1647,7 +1715,8 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1657,7 +1726,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateInventoryAdjustmentReasonRequest | CreateInventoryAdjustmentReasonRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateInventoryAdjustmentReasonResponse],
+            decoder=async_json_decoder[CreateInventoryAdjustmentReasonResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1673,7 +1742,8 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1683,7 +1753,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[DeleteInventoryAdjustmentReasonRequest | DeleteInventoryAdjustmentReasonRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeleteInventoryAdjustmentReasonResponse],
+            decoder=async_json_decoder[DeleteInventoryAdjustmentReasonResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1700,7 +1770,8 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1710,7 +1781,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchChangeInventoryRequest | BatchChangeInventoryRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BatchChangeInventoryResponse],
+            decoder=async_json_decoder[BatchChangeInventoryResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1728,7 +1799,8 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1738,7 +1810,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchRetrieveInventoryChangesRequest | BatchRetrieveInventoryChangesRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BatchRetrieveInventoryChangesResponse],
+            decoder=async_json_decoder[BatchRetrieveInventoryChangesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1755,7 +1827,8 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1765,7 +1838,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchRetrieveInventoryCountsRequest | BatchRetrieveInventoryCountsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BatchRetrieveInventoryCountsResponse],
+            decoder=async_json_decoder[BatchRetrieveInventoryCountsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1778,7 +1851,8 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
 
         Args:
             adjustment_id: ID of the `InventoryAdjustment <entity:InventoryAdjustment>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1787,7 +1861,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             url_template=self._server.default("/v2/inventory/adjustment/{adjustment_id}"),
             path_params=[param[str]("adjustment_id", adjustment_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveInventoryAdjustmentResponse],
+            decoder=async_json_decoder[RetrieveInventoryAdjustmentResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1801,7 +1875,8 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
 
         Args:
             physical_count_id: ID of the `InventoryPhysicalCount <entity:InventoryPhysicalCount>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1810,7 +1885,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             url_template=self._server.default("/v2/inventory/physical-count/{physical_count_id}"),
             path_params=[param[str]("physical_count_id", physical_count_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveInventoryPhysicalCountResponse],
+            decoder=async_json_decoder[RetrieveInventoryPhysicalCountResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1830,7 +1905,8 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             include_system_codes: Indicates whether the response should include Square-generated system inventory
                 adjustment reason codes that cannot be used to write adjustments from the Connect API, such as ``SALE``,
                 ``RECOUNT``, ``TRANSFER``, ``IN_TRANSIT``, and ``CANCELED_SALE``. The default value is ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1842,7 +1918,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
                 param[bool | None]("include_system_codes", include_system_codes),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListInventoryAdjustmentReasonsResponse],
+            decoder=async_json_decoder[ListInventoryAdjustmentReasonsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1858,7 +1934,8 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1868,7 +1945,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RestoreInventoryAdjustmentReasonRequest | RestoreInventoryAdjustmentReasonRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RestoreInventoryAdjustmentReasonResponse],
+            decoder=async_json_decoder[RestoreInventoryAdjustmentReasonResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1880,7 +1957,8 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
 
         Args:
             adjustment_id: ID of the `InventoryAdjustment <entity:InventoryAdjustment>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1889,7 +1967,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             url_template=self._server.default("/v2/inventory/adjustments/{adjustment_id}"),
             path_params=[param[str]("adjustment_id", adjustment_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveInventoryAdjustmentResponse],
+            decoder=async_json_decoder[RetrieveInventoryAdjustmentResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1906,7 +1984,8 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1918,7 +1997,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
                 body
             ),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveInventoryAdjustmentReasonResponse],
+            decoder=async_json_decoder[RetrieveInventoryAdjustmentReasonResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1951,7 +2030,8 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             cursor: A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next
                 set of results for the original query. See the `Pagination
                 <https://developer.squareup.com/docs/working-with-apis/pagination>`__ guide for more information.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1961,7 +2041,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             path_params=[param[str]("catalog_object_id", catalog_object_id)],
             query_params=[param[str | None]("location_ids", location_ids), param[str | None]("cursor", cursor)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveInventoryChangesResponse],
+            decoder=async_json_decoder[RetrieveInventoryChangesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1985,7 +2065,8 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             cursor: A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next
                 set of results for the original query. See the `Pagination
                 <https://developer.squareup.com/docs/working-with-apis/pagination>`__ guide for more information.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1995,7 +2076,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             path_params=[param[str]("catalog_object_id", catalog_object_id)],
             query_params=[param[str | None]("location_ids", location_ids), param[str | None]("cursor", cursor)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveInventoryCountResponse],
+            decoder=async_json_decoder[RetrieveInventoryCountResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2008,7 +2089,8 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
 
         Args:
             physical_count_id: ID of the `InventoryPhysicalCount <entity:InventoryPhysicalCount>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2017,7 +2099,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             url_template=self._server.default("/v2/inventory/physical-counts/{physical_count_id}"),
             path_params=[param[str]("physical_count_id", physical_count_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveInventoryPhysicalCountResponse],
+            decoder=async_json_decoder[RetrieveInventoryPhysicalCountResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2035,7 +2117,8 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2045,7 +2128,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateInventoryAdjustmentRequest | UpdateInventoryAdjustmentRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateInventoryAdjustmentResponse],
+            decoder=async_json_decoder[UpdateInventoryAdjustmentResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2061,7 +2144,8 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2071,7 +2155,7 @@ class AsyncInventoryWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateInventoryAdjustmentReasonRequest | UpdateInventoryAdjustmentReasonRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateInventoryAdjustmentReasonResponse],
+            decoder=async_json_decoder[UpdateInventoryAdjustmentReasonResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

@@ -32,5 +32,5 @@ class CustomerCustomAttributeFilter(SdkBaseModel):
 
 class CustomerCustomAttributeFilterDict(TypedDict):
     key: str
-    filter: NotRequired[CustomerCustomAttributeFilterValue | CustomerCustomAttributeFilterValueDict]
-    updated_at: NotRequired[TimeRange | TimeRangeDict]
+    filter: NotRequired[CustomerCustomAttributeFilterValueDict]
+    updated_at: NotRequired[TimeRangeDict]

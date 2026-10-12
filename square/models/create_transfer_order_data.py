@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
+from ..core import UNSET, OptionalNullable, SdkBaseModel
 from .create_transfer_order_line_data import CreateTransferOrderLineData, CreateTransferOrderLineDataDict
 
 
@@ -32,7 +32,7 @@ class CreateTransferOrderData(SdkBaseModel):
     """ID of the `TeamMember <entity:TeamMember>`__ creating this transfer order. Used for tracking and auditing
     purposes."""
 
-    line_items: Optional[list[CreateTransferOrderLineData | None]] = UNSET
+    line_items: OptionalNullable[list[CreateTransferOrderLineData]] = UNSET
     """List of `CatalogItemVariation <entity:CatalogItemVariation>`__s to transfer, including quantities"""
 
 
@@ -43,4 +43,4 @@ class CreateTransferOrderDataDict(TypedDict):
     notes: NotRequired[str | None]
     tracking_number: NotRequired[str | None]
     created_by_team_member_id: NotRequired[str | None]
-    line_items: NotRequired[list[CreateTransferOrderLineData | CreateTransferOrderLineDataDict | None]]
+    line_items: NotRequired[list[CreateTransferOrderLineDataDict] | None]

@@ -49,7 +49,7 @@ class GiftCardDict(TypedDict):
     type_: GiftCardTypeOrStr
     gan_source: NotRequired[GiftCardGansourceOrStr]
     state: NotRequired[GiftCardStatusOrStr]
-    balance_money: NotRequired[Money | MoneyDict]
+    balance_money: NotRequired[MoneyDict]
     gan: NotRequired[str | None]
     created_at: NotRequired[str]
     customer_ids: NotRequired[list[str]]

@@ -60,5 +60,5 @@ class SearchCatalogItemsRequestDict(TypedDict):
     limit: NotRequired[int]
     sort_order: NotRequired[SortOrderOrStr]
     product_types: NotRequired[list[CatalogItemProductTypeOrStr]]
-    custom_attribute_filters: NotRequired[list[CustomAttributeFilter | CustomAttributeFilterDict]]
+    custom_attribute_filters: NotRequired[list[CustomAttributeFilterDict]]
     archived_state: NotRequired[ArchivedStateOrStr]

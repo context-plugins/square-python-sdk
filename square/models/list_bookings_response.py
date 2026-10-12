@@ -20,6 +20,6 @@ class ListBookingsResponse(SdkBaseModel):
 
 
 class ListBookingsResponseDict(TypedDict):
-    bookings: NotRequired[list[Booking | BookingDict]]
+    bookings: NotRequired[list[BookingDict]]
     cursor: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

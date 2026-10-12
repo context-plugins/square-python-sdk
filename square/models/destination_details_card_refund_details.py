@@ -20,6 +20,6 @@ class DestinationDetailsCardRefundDetails(SdkBaseModel):
 
 
 class DestinationDetailsCardRefundDetailsDict(TypedDict):
-    card: NotRequired[Card | CardDict]
+    card: NotRequired[CardDict]
     entry_method: NotRequired[str | None]
     auth_result_code: NotRequired[str | None]

@@ -16,5 +16,5 @@ class UpdateItemTaxesResponse(SdkBaseModel):
 
 
 class UpdateItemTaxesResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]
     updated_at: NotRequired[str]

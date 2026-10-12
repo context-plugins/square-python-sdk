@@ -99,7 +99,7 @@ class CardDict(TypedDict):
     exp_month: NotRequired[int | None]
     exp_year: NotRequired[int | None]
     cardholder_name: NotRequired[str | None]
-    billing_address: NotRequired[Address | AddressDict]
+    billing_address: NotRequired[AddressDict]
     fingerprint: NotRequired[str]
     customer_id: NotRequired[str | None]
     merchant_id: NotRequired[str]

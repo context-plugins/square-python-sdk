@@ -2,14 +2,14 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
+from ..core import UNSET, OptionalNullable, SdkBaseModel
 
 
 class CustomerCreatedEventEventContextMerge(SdkBaseModel):
     """Information about a merge operation, which creates a new customer using aggregated properties from two or more
     existing customers."""
 
-    from_customer_ids: Optional[list[str | None]] = UNSET
+    from_customer_ids: OptionalNullable[list[str]] = UNSET
     """The IDs of the existing customers that were merged and then deleted."""
 
     to_customer_id: OptionalNullable[str] = UNSET
@@ -17,5 +17,5 @@ class CustomerCreatedEventEventContextMerge(SdkBaseModel):
 
 
 class CustomerCreatedEventEventContextMergeDict(TypedDict):
-    from_customer_ids: NotRequired[list[str | None]]
+    from_customer_ids: NotRequired[list[str] | None]
     to_customer_id: NotRequired[str | None]

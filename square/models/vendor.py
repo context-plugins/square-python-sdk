@@ -29,7 +29,7 @@ class Vendor(SdkBaseModel):
     """Represents a postal address in a country. For more information, see `Working with Addresses
     <https://developer.squareup.com/docs/build-basics/working-with-addresses>`__."""
 
-    contacts: Optional[list[VendorContact | None]] = UNSET
+    contacts: OptionalNullable[list[VendorContact]] = UNSET
     """The contacts of the `Vendor <entity:Vendor>`__."""
 
     account_number: OptionalNullable[str] = UNSET
@@ -50,8 +50,8 @@ class VendorDict(TypedDict):
     created_at: NotRequired[str]
     updated_at: NotRequired[str]
     name: NotRequired[str | None]
-    address: NotRequired[Address | AddressDict]
-    contacts: NotRequired[list[VendorContact | VendorContactDict | None]]
+    address: NotRequired[AddressDict]
+    contacts: NotRequired[list[VendorContactDict] | None]
     account_number: NotRequired[str | None]
     note: NotRequired[str | None]
     version: NotRequired[int]

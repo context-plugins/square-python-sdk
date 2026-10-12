@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.create_webhook_subscription_request import (
     CreateWebhookSubscriptionRequest,
@@ -58,14 +60,15 @@ class WebhookSubscriptions:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_webhook_subscription(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_webhook_subscription(body, request_options=request_options))
 
     def delete_webhook_subscription(
         self, subscription_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -74,16 +77,17 @@ class WebhookSubscriptions:
 
         Args:
             subscription_id: [REQUIRED] The ID of the `Subscription <entity:WebhookSubscription>`__ to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_webhook_subscription(
-            subscription_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.delete_webhook_subscription(subscription_id, request_options=request_options)
+        )
 
     def list_webhook_event_types(
         self, *, api_version: str | None = None, request_options: RequestOptionsOrDict | None = None
@@ -93,16 +97,17 @@ class WebhookSubscriptions:
         Args:
             api_version: The API version for which to list event types. Setting this field overrides the default version
                 used by the application.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_webhook_event_types(
-            api_version=api_version, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_webhook_event_types(api_version=api_version, request_options=request_options)
+        )
 
     def list_webhook_subscriptions(
         self,
@@ -126,20 +131,23 @@ class WebhookSubscriptions:
             limit: The maximum number of results to be returned in a single page. It is possible to receive fewer
                 results than the specified limit on a given page. The default value of 100 is also the maximum allowed
                 value. Default: 100
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_webhook_subscriptions(
-            cursor=cursor,
-            include_disabled=include_disabled,
-            sort_order=sort_order,
-            limit=limit,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_webhook_subscriptions(
+                cursor=cursor,
+                include_disabled=include_disabled,
+                sort_order=sort_order,
+                limit=limit,
+                request_options=request_options,
+            ),
+        )
 
     def retrieve_webhook_subscription(
         self, subscription_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -148,16 +156,17 @@ class WebhookSubscriptions:
 
         Args:
             subscription_id: [REQUIRED] The ID of the `Subscription <entity:WebhookSubscription>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_webhook_subscription(
-            subscription_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.retrieve_webhook_subscription(subscription_id, request_options=request_options)
+        )
 
     def test_webhook_subscription(
         self,
@@ -172,16 +181,17 @@ class WebhookSubscriptions:
             subscription_id: [REQUIRED] The ID of the `Subscription <entity:WebhookSubscription>`__ to test.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.test_webhook_subscription(
-            subscription_id, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.test_webhook_subscription(subscription_id, body, request_options=request_options)
+        )
 
     def update_webhook_subscription(
         self,
@@ -196,16 +206,17 @@ class WebhookSubscriptions:
             subscription_id: [REQUIRED] The ID of the `Subscription <entity:WebhookSubscription>`__ to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_webhook_subscription(
-            subscription_id, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.update_webhook_subscription(subscription_id, body, request_options=request_options)
+        )
 
     def update_webhook_subscription_signature_key(
         self,
@@ -220,16 +231,19 @@ class WebhookSubscriptions:
             subscription_id: [REQUIRED] The ID of the `Subscription <entity:WebhookSubscription>`__ to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_webhook_subscription_signature_key(
-            subscription_id, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.update_webhook_subscription_signature_key(
+                subscription_id, body, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> WebhookSubscriptionsWithRawResponse:
@@ -251,16 +265,15 @@ class AsyncWebhookSubscriptions:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.create_webhook_subscription(body, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.create_webhook_subscription(body, request_options=request_options))
 
     async def delete_webhook_subscription(
         self, subscription_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -269,16 +282,17 @@ class AsyncWebhookSubscriptions:
 
         Args:
             subscription_id: [REQUIRED] The ID of the `Subscription <entity:WebhookSubscription>`__ to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.delete_webhook_subscription(subscription_id, request_options=request_options)
-        ).unwrap()
+        )
 
     async def list_webhook_event_types(
         self, *, api_version: str | None = None, request_options: RequestOptionsOrDict | None = None
@@ -288,18 +302,19 @@ class AsyncWebhookSubscriptions:
         Args:
             api_version: The API version for which to list event types. Setting this field overrides the default version
                 used by the application.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_webhook_event_types(
                 api_version=api_version, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def list_webhook_subscriptions(
         self,
@@ -323,22 +338,23 @@ class AsyncWebhookSubscriptions:
             limit: The maximum number of results to be returned in a single page. It is possible to receive fewer
                 results than the specified limit on a given page. The default value of 100 is also the maximum allowed
                 value. Default: 100
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_webhook_subscriptions(
                 cursor=cursor,
                 include_disabled=include_disabled,
                 sort_order=sort_order,
                 limit=limit,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_webhook_subscription(
         self, subscription_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -347,18 +363,19 @@ class AsyncWebhookSubscriptions:
 
         Args:
             subscription_id: [REQUIRED] The ID of the `Subscription <entity:WebhookSubscription>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_webhook_subscription(
                 subscription_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def test_webhook_subscription(
         self,
@@ -373,18 +390,19 @@ class AsyncWebhookSubscriptions:
             subscription_id: [REQUIRED] The ID of the `Subscription <entity:WebhookSubscription>`__ to test.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.test_webhook_subscription(
                 subscription_id, body, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def update_webhook_subscription(
         self,
@@ -399,18 +417,19 @@ class AsyncWebhookSubscriptions:
             subscription_id: [REQUIRED] The ID of the `Subscription <entity:WebhookSubscription>`__ to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.update_webhook_subscription(
                 subscription_id, body, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def update_webhook_subscription_signature_key(
         self,
@@ -425,18 +444,19 @@ class AsyncWebhookSubscriptions:
             subscription_id: [REQUIRED] The ID of the `Subscription <entity:WebhookSubscription>`__ to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.update_webhook_subscription_signature_key(
                 subscription_id, body, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncWebhookSubscriptionsWithRawResponse:
@@ -455,7 +475,8 @@ class WebhookSubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, 
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -477,7 +498,8 @@ class WebhookSubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, 
 
         Args:
             subscription_id: [REQUIRED] The ID of the `Subscription <entity:WebhookSubscription>`__ to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -500,7 +522,8 @@ class WebhookSubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, 
         Args:
             api_version: The API version for which to list event types. Setting this field overrides the default version
                 used by the application.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -536,7 +559,8 @@ class WebhookSubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, 
             limit: The maximum number of results to be returned in a single page. It is possible to receive fewer
                 results than the specified limit on a given page. The default value of 100 is also the maximum allowed
                 value. Default: 100
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -562,7 +586,8 @@ class WebhookSubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, 
 
         Args:
             subscription_id: [REQUIRED] The ID of the `Subscription <entity:WebhookSubscription>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -589,7 +614,8 @@ class WebhookSubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, 
             subscription_id: [REQUIRED] The ID of the `Subscription <entity:WebhookSubscription>`__ to test.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -618,7 +644,8 @@ class WebhookSubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, 
             subscription_id: [REQUIRED] The ID of the `Subscription <entity:WebhookSubscription>`__ to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -647,7 +674,8 @@ class WebhookSubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, 
             subscription_id: [REQUIRED] The ID of the `Subscription <entity:WebhookSubscription>`__ to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -678,7 +706,8 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -688,7 +717,7 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateWebhookSubscriptionRequest | CreateWebhookSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateWebhookSubscriptionResponse],
+            decoder=async_json_decoder[CreateWebhookSubscriptionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -700,7 +729,8 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
 
         Args:
             subscription_id: [REQUIRED] The ID of the `Subscription <entity:WebhookSubscription>`__ to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -710,7 +740,7 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
             path_params=[param[str]("subscription_id", subscription_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeleteWebhookSubscriptionResponse],
+            decoder=async_json_decoder[DeleteWebhookSubscriptionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -723,7 +753,8 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
         Args:
             api_version: The API version for which to list event types. Setting this field overrides the default version
                 used by the application.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -732,7 +763,7 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
             url_template=self._server.default("/v2/webhooks/event-types"),
             query_params=[param[str | None]("api_version", api_version)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListWebhookEventTypesResponse],
+            decoder=async_json_decoder[ListWebhookEventTypesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -759,7 +790,8 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
             limit: The maximum number of results to be returned in a single page. It is possible to receive fewer
                 results than the specified limit on a given page. The default value of 100 is also the maximum allowed
                 value. Default: 100
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -773,7 +805,7 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
                 param[int | None]("limit", limit),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListWebhookSubscriptionsResponse],
+            decoder=async_json_decoder[ListWebhookSubscriptionsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -785,7 +817,8 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
 
         Args:
             subscription_id: [REQUIRED] The ID of the `Subscription <entity:WebhookSubscription>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -794,7 +827,7 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
             url_template=self._server.default("/v2/webhooks/subscriptions/{subscription_id}"),
             path_params=[param[str]("subscription_id", subscription_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveWebhookSubscriptionResponse],
+            decoder=async_json_decoder[RetrieveWebhookSubscriptionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -812,7 +845,8 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
             subscription_id: [REQUIRED] The ID of the `Subscription <entity:WebhookSubscription>`__ to test.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -823,7 +857,7 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[TestWebhookSubscriptionRequest | TestWebhookSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[TestWebhookSubscriptionResponse],
+            decoder=async_json_decoder[TestWebhookSubscriptionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -841,7 +875,8 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
             subscription_id: [REQUIRED] The ID of the `Subscription <entity:WebhookSubscription>`__ to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -852,7 +887,7 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateWebhookSubscriptionRequest | UpdateWebhookSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateWebhookSubscriptionResponse],
+            decoder=async_json_decoder[UpdateWebhookSubscriptionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -870,7 +905,8 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
             subscription_id: [REQUIRED] The ID of the `Subscription <entity:WebhookSubscription>`__ to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -883,7 +919,7 @@ class AsyncWebhookSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient
                 UpdateWebhookSubscriptionSignatureKeyRequest | UpdateWebhookSubscriptionSignatureKeyRequestDict
             ](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateWebhookSubscriptionSignatureKeyResponse],
+            decoder=async_json_decoder[UpdateWebhookSubscriptionSignatureKeyResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

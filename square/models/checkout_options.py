@@ -13,7 +13,7 @@ class CheckoutOptions(SdkBaseModel):
     allow_tipping: OptionalNullable[bool] = UNSET
     """Indicates whether the payment allows tipping."""
 
-    custom_fields: Optional[list[CustomField | None]] = UNSET
+    custom_fields: OptionalNullable[list[CustomField]] = UNSET
     """The custom fields requesting information from the buyer."""
 
     subscription_plan_id: OptionalNullable[str] = UNSET
@@ -48,13 +48,13 @@ class CheckoutOptions(SdkBaseModel):
 
 class CheckoutOptionsDict(TypedDict):
     allow_tipping: NotRequired[bool | None]
-    custom_fields: NotRequired[list[CustomField | CustomFieldDict | None]]
+    custom_fields: NotRequired[list[CustomFieldDict] | None]
     subscription_plan_id: NotRequired[str | None]
     redirect_url: NotRequired[str | None]
     merchant_support_email: NotRequired[str | None]
     ask_for_shipping_address: NotRequired[bool | None]
-    accepted_payment_methods: NotRequired[AcceptedPaymentMethods | AcceptedPaymentMethodsDict]
-    app_fee_money: NotRequired[Money | MoneyDict]
-    shipping_fee: NotRequired[ShippingFee | ShippingFeeDict]
+    accepted_payment_methods: NotRequired[AcceptedPaymentMethodsDict]
+    app_fee_money: NotRequired[MoneyDict]
+    shipping_fee: NotRequired[ShippingFeeDict]
     enable_coupon: NotRequired[bool | None]
     enable_loyalty: NotRequired[bool | None]

@@ -13,4 +13,4 @@ class InvoiceUpdatedEventObject(SdkBaseModel):
 
 
 class InvoiceUpdatedEventObjectDict(TypedDict):
-    invoice: NotRequired[Invoice | InvoiceDict]
+    invoice: NotRequired[InvoiceDict]

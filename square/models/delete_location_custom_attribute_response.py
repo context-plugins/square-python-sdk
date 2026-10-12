@@ -16,4 +16,4 @@ class DeleteLocationCustomAttributeResponse(SdkBaseModel):
 
 
 class DeleteLocationCustomAttributeResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

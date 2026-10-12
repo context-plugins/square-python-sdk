@@ -17,5 +17,5 @@ class GetPayoutResponse(SdkBaseModel):
 
 
 class GetPayoutResponseDict(TypedDict):
-    payout: NotRequired[Payout | PayoutDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    payout: NotRequired[PayoutDict]
+    errors: NotRequired[list[ErrorDict]]

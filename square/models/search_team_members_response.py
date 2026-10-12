@@ -22,6 +22,6 @@ class SearchTeamMembersResponse(SdkBaseModel):
 
 
 class SearchTeamMembersResponseDict(TypedDict):
-    team_members: NotRequired[list[TeamMember | TeamMemberDict]]
+    team_members: NotRequired[list[TeamMemberDict]]
     cursor: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

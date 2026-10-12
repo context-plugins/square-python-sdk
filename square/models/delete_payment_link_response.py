@@ -17,6 +17,6 @@ class DeletePaymentLinkResponse(SdkBaseModel):
 
 
 class DeletePaymentLinkResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]
     id: NotRequired[str]
     cancelled_order_id: NotRequired[str]

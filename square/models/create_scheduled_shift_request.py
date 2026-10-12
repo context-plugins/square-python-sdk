@@ -21,4 +21,4 @@ class CreateScheduledShiftRequest(SdkBaseModel):
 
 class CreateScheduledShiftRequestDict(TypedDict):
     idempotency_key: NotRequired[str]
-    scheduled_shift: ScheduledShift | ScheduledShiftDict
+    scheduled_shift: ScheduledShiftDict

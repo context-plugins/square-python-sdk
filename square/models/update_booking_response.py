@@ -17,5 +17,5 @@ class UpdateBookingResponse(SdkBaseModel):
 
 
 class UpdateBookingResponseDict(TypedDict):
-    booking: NotRequired[Booking | BookingDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    booking: NotRequired[BookingDict]
+    errors: NotRequired[list[ErrorDict]]

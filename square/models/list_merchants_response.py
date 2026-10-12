@@ -21,6 +21,6 @@ class ListMerchantsResponse(SdkBaseModel):
 
 
 class ListMerchantsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    merchant: NotRequired[list[Merchant | MerchantDict]]
+    errors: NotRequired[list[ErrorDict]]
+    merchant: NotRequired[list[MerchantDict]]
     cursor: NotRequired[int]

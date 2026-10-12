@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.bulk_create_team_members_request import BulkCreateTeamMembersRequest, BulkCreateTeamMembersRequestDict
 from ..models.bulk_create_team_members_response import BulkCreateTeamMembersResponse
@@ -59,14 +61,15 @@ class Team:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.bulk_create_team_members(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.bulk_create_team_members(body, request_options=request_options))
 
     def bulk_update_team_members(
         self,
@@ -83,14 +86,15 @@ class Team:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.bulk_update_team_members(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.bulk_update_team_members(body, request_options=request_options))
 
     def create_job(
         self, body: CreateJobRequest | CreateJobRequestDict, *, request_options: RequestOptionsOrDict | None = None
@@ -101,14 +105,15 @@ class Team:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_job(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_job(body, request_options=request_options))
 
     def create_team_member(
         self,
@@ -127,14 +132,15 @@ class Team:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_team_member(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_team_member(body, request_options=request_options))
 
     def list_jobs(
         self, *, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None
@@ -145,28 +151,30 @@ class Team:
             cursor: The pagination cursor returned by the previous call to this endpoint. Provide this cursor to
                 retrieve the next page of results for your original request. For more information, see `Pagination
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_jobs(cursor=cursor, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.list_jobs(cursor=cursor, request_options=request_options))
 
     def retrieve_job(self, job_id: str, *, request_options: RequestOptionsOrDict | None = None) -> RetrieveJobResponse:
         """Retrieves a specified job.
 
         Args:
             job_id: The ID of the job to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_job(job_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_job(job_id, request_options=request_options))
 
     def retrieve_team_member(
         self, team_member_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -176,14 +184,15 @@ class Team:
 
         Args:
             team_member_id: The ID of the team member to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_team_member(team_member_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_team_member(team_member_id, request_options=request_options))
 
     def retrieve_wage_setting(
         self, team_member_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -198,14 +207,15 @@ class Team:
 
         Args:
             team_member_id: The ID of the team member for which to retrieve the wage setting.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_wage_setting(team_member_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_wage_setting(team_member_id, request_options=request_options))
 
     def search_team_members(
         self,
@@ -219,14 +229,15 @@ class Team:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_team_members(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_team_members(body, request_options=request_options))
 
     def update_job(
         self,
@@ -243,14 +254,15 @@ class Team:
             job_id: The ID of the job to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_job(job_id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.update_job(job_id, body, request_options=request_options))
 
     def update_team_member(
         self,
@@ -267,16 +279,15 @@ class Team:
             team_member_id: The ID of the team member to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_team_member(
-            team_member_id, body, request_options=request_options
-        ).unwrap()
+        return unwrap(self._with_raw_response.update_team_member(team_member_id, body, request_options=request_options))
 
     def update_wage_setting(
         self,
@@ -297,16 +308,17 @@ class Team:
             team_member_id: The ID of the team member for which to update the ``WageSetting`` object.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_wage_setting(
-            team_member_id, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.update_wage_setting(team_member_id, body, request_options=request_options)
+        )
 
     @property
     def with_raw_response(self) -> TeamWithRawResponse:
@@ -334,14 +346,15 @@ class AsyncTeam:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.bulk_create_team_members(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.bulk_create_team_members(body, request_options=request_options))
 
     async def bulk_update_team_members(
         self,
@@ -358,14 +371,15 @@ class AsyncTeam:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.bulk_update_team_members(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.bulk_update_team_members(body, request_options=request_options))
 
     async def create_job(
         self, body: CreateJobRequest | CreateJobRequestDict, *, request_options: RequestOptionsOrDict | None = None
@@ -376,14 +390,15 @@ class AsyncTeam:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_job(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_job(body, request_options=request_options))
 
     async def create_team_member(
         self,
@@ -402,14 +417,15 @@ class AsyncTeam:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_team_member(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_team_member(body, request_options=request_options))
 
     async def list_jobs(
         self, *, cursor: str | None = None, request_options: RequestOptionsOrDict | None = None
@@ -420,14 +436,15 @@ class AsyncTeam:
             cursor: The pagination cursor returned by the previous call to this endpoint. Provide this cursor to
                 retrieve the next page of results for your original request. For more information, see `Pagination
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.list_jobs(cursor=cursor, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.list_jobs(cursor=cursor, request_options=request_options))
 
     async def retrieve_job(
         self, job_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -436,14 +453,15 @@ class AsyncTeam:
 
         Args:
             job_id: The ID of the job to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.retrieve_job(job_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.retrieve_job(job_id, request_options=request_options))
 
     async def retrieve_team_member(
         self, team_member_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -453,16 +471,17 @@ class AsyncTeam:
 
         Args:
             team_member_id: The ID of the team member to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_team_member(team_member_id, request_options=request_options)
-        ).unwrap()
+        )
 
     async def retrieve_wage_setting(
         self, team_member_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -477,16 +496,17 @@ class AsyncTeam:
 
         Args:
             team_member_id: The ID of the team member for which to retrieve the wage setting.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_wage_setting(team_member_id, request_options=request_options)
-        ).unwrap()
+        )
 
     async def search_team_members(
         self,
@@ -500,14 +520,15 @@ class AsyncTeam:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_team_members(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_team_members(body, request_options=request_options))
 
     async def update_job(
         self,
@@ -524,14 +545,15 @@ class AsyncTeam:
             job_id: The ID of the job to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.update_job(job_id, body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.update_job(job_id, body, request_options=request_options))
 
     async def update_team_member(
         self,
@@ -548,16 +570,17 @@ class AsyncTeam:
             team_member_id: The ID of the team member to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.update_team_member(team_member_id, body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def update_wage_setting(
         self,
@@ -578,16 +601,17 @@ class AsyncTeam:
             team_member_id: The ID of the team member for which to update the ``WageSetting`` object.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.update_wage_setting(team_member_id, body, request_options=request_options)
-        ).unwrap()
+        )
 
     @property
     def with_raw_response(self) -> AsyncTeamWithRawResponse:
@@ -612,7 +636,8 @@ class TeamWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -642,7 +667,8 @@ class TeamWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -666,7 +692,8 @@ class TeamWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -698,7 +725,8 @@ class TeamWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -722,7 +750,8 @@ class TeamWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             cursor: The pagination cursor returned by the previous call to this endpoint. Provide this cursor to
                 retrieve the next page of results for your original request. For more information, see `Pagination
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -743,7 +772,8 @@ class TeamWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
 
         Args:
             job_id: The ID of the job to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -765,7 +795,8 @@ class TeamWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
 
         Args:
             team_member_id: The ID of the team member to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -792,7 +823,8 @@ class TeamWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
 
         Args:
             team_member_id: The ID of the team member for which to retrieve the wage setting.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -818,7 +850,8 @@ class TeamWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -848,7 +881,8 @@ class TeamWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             job_id: The ID of the job to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -879,7 +913,8 @@ class TeamWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             team_member_id: The ID of the team member to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -914,7 +949,8 @@ class TeamWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             team_member_id: The ID of the team member for which to update the ``WageSetting`` object.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -949,7 +985,8 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -959,7 +996,7 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkCreateTeamMembersRequest | BulkCreateTeamMembersRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BulkCreateTeamMembersResponse],
+            decoder=async_json_decoder[BulkCreateTeamMembersResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -979,7 +1016,8 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -989,7 +1027,7 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkUpdateTeamMembersRequest | BulkUpdateTeamMembersRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BulkUpdateTeamMembersResponse],
+            decoder=async_json_decoder[BulkUpdateTeamMembersResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1003,7 +1041,8 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1013,7 +1052,7 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateJobRequest | CreateJobRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateJobResponse],
+            decoder=async_json_decoder[CreateJobResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1035,7 +1074,8 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1045,7 +1085,7 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateTeamMemberRequest | CreateTeamMemberRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateTeamMemberResponse],
+            decoder=async_json_decoder[CreateTeamMemberResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1059,7 +1099,8 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             cursor: The pagination cursor returned by the previous call to this endpoint. Provide this cursor to
                 retrieve the next page of results for your original request. For more information, see `Pagination
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1068,7 +1109,7 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             url_template=self._server.default("/v2/team-members/jobs"),
             query_params=[param[str | None]("cursor", cursor)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListJobsResponse],
+            decoder=async_json_decoder[ListJobsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1080,7 +1121,8 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
 
         Args:
             job_id: The ID of the job to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1089,7 +1131,7 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             url_template=self._server.default("/v2/team-members/jobs/{job_id}"),
             path_params=[param[str]("job_id", job_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveJobResponse],
+            decoder=async_json_decoder[RetrieveJobResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1102,7 +1144,8 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
 
         Args:
             team_member_id: The ID of the team member to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1111,7 +1154,7 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             url_template=self._server.default("/v2/team-members/{team_member_id}"),
             path_params=[param[str]("team_member_id", team_member_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveTeamMemberResponse],
+            decoder=async_json_decoder[RetrieveTeamMemberResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1129,7 +1172,8 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
 
         Args:
             team_member_id: The ID of the team member for which to retrieve the wage setting.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1138,7 +1182,7 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             url_template=self._server.default("/v2/team-members/{team_member_id}/wage-setting"),
             path_params=[param[str]("team_member_id", team_member_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveWageSettingResponse],
+            decoder=async_json_decoder[RetrieveWageSettingResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1155,7 +1199,8 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1165,7 +1210,7 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchTeamMembersRequest | SearchTeamMembersRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SearchTeamMembersResponse],
+            decoder=async_json_decoder[SearchTeamMembersResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1185,7 +1230,8 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             job_id: The ID of the job to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1196,7 +1242,7 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateJobRequest | UpdateJobRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateJobResponse],
+            decoder=async_json_decoder[UpdateJobResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1216,7 +1262,8 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             team_member_id: The ID of the team member to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1227,7 +1274,7 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateTeamMemberRequest | UpdateTeamMemberRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateTeamMemberResponse],
+            decoder=async_json_decoder[UpdateTeamMemberResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1251,7 +1298,8 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             team_member_id: The ID of the team member for which to update the ``WageSetting`` object.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1262,7 +1310,7 @@ class AsyncTeamWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, AsyncA
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateWageSettingRequest | UpdateWageSettingRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateWageSettingResponse],
+            decoder=async_json_decoder[UpdateWageSettingResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

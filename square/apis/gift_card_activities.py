@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.create_gift_card_activity_request import CreateGiftCardActivityRequest, CreateGiftCardActivityRequestDict
 from ..models.create_gift_card_activity_response import CreateGiftCardActivityResponse
@@ -37,14 +39,15 @@ class GiftCardActivities:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_gift_card_activity(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_gift_card_activity(body, request_options=request_options))
 
     def list_gift_card_activities(
         self,
@@ -84,24 +87,27 @@ class GiftCardActivities:
                 <https://developer.squareup.com/docs/working-with-apis/pagination>`__.
             sort_order: The order in which the endpoint returns the activities, based on ``created_at``. - ``ASC`` -
                 Oldest to newest. - ``DESC`` - Newest to oldest (default).
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_gift_card_activities(
-            gift_card_id=gift_card_id,
-            type_=type_,
-            location_id=location_id,
-            begin_time=begin_time,
-            end_time=end_time,
-            limit=limit,
-            cursor=cursor,
-            sort_order=sort_order,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_gift_card_activities(
+                gift_card_id=gift_card_id,
+                type_=type_,
+                location_id=location_id,
+                begin_time=begin_time,
+                end_time=end_time,
+                limit=limit,
+                cursor=cursor,
+                sort_order=sort_order,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> GiftCardActivitiesWithRawResponse:
@@ -124,14 +130,15 @@ class AsyncGiftCardActivities:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_gift_card_activity(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_gift_card_activity(body, request_options=request_options))
 
     async def list_gift_card_activities(
         self,
@@ -171,14 +178,15 @@ class AsyncGiftCardActivities:
                 <https://developer.squareup.com/docs/working-with-apis/pagination>`__.
             sort_order: The order in which the endpoint returns the activities, based on ``created_at``. - ``ASC`` -
                 Oldest to newest. - ``DESC`` - Newest to oldest (default).
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_gift_card_activities(
                 gift_card_id=gift_card_id,
                 type_=type_,
@@ -189,8 +197,8 @@ class AsyncGiftCardActivities:
                 cursor=cursor,
                 sort_order=sort_order,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncGiftCardActivitiesWithRawResponse:
@@ -210,7 +218,8 @@ class GiftCardActivitiesWithRawResponse(SecuredRawResponse[RawClient, Server, Au
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -263,7 +272,8 @@ class GiftCardActivitiesWithRawResponse(SecuredRawResponse[RawClient, Server, Au
                 <https://developer.squareup.com/docs/working-with-apis/pagination>`__.
             sort_order: The order in which the endpoint returns the activities, based on ``created_at``. - ``ASC`` -
                 Oldest to newest. - ``DESC`` - Newest to oldest (default).
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -300,7 +310,8 @@ class AsyncGiftCardActivitiesWithRawResponse(SecuredRawResponse[AsyncRawClient, 
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -310,7 +321,7 @@ class AsyncGiftCardActivitiesWithRawResponse(SecuredRawResponse[AsyncRawClient, 
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateGiftCardActivityRequest | CreateGiftCardActivityRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateGiftCardActivityResponse],
+            decoder=async_json_decoder[CreateGiftCardActivityResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -353,7 +364,8 @@ class AsyncGiftCardActivitiesWithRawResponse(SecuredRawResponse[AsyncRawClient, 
                 <https://developer.squareup.com/docs/working-with-apis/pagination>`__.
             sort_order: The order in which the endpoint returns the activities, based on ``created_at``. - ``ASC`` -
                 Oldest to newest. - ``DESC`` - Newest to oldest (default).
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -371,7 +383,7 @@ class AsyncGiftCardActivitiesWithRawResponse(SecuredRawResponse[AsyncRawClient, 
                 param[str | None]("sort_order", sort_order),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListGiftCardActivitiesResponse],
+            decoder=async_json_decoder[ListGiftCardActivitiesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

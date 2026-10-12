@@ -19,4 +19,4 @@ class CreateWebhookSubscriptionRequest(SdkBaseModel):
 
 class CreateWebhookSubscriptionRequestDict(TypedDict):
     idempotency_key: NotRequired[str]
-    subscription: WebhookSubscription | WebhookSubscriptionDict
+    subscription: WebhookSubscriptionDict

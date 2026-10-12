@@ -26,4 +26,4 @@ class ProcessingFee(SdkBaseModel):
 class ProcessingFeeDict(TypedDict):
     effective_at: NotRequired[str | None]
     type_: NotRequired[str | None]
-    amount_money: NotRequired[Money | MoneyDict]
+    amount_money: NotRequired[MoneyDict]

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
+from ..core import UNSET, OptionalNullable, SdkBaseModel
 from .inventory_change import InventoryChange, InventoryChangeDict
 
 
@@ -13,7 +13,7 @@ class BatchChangeInventoryRequest(SdkBaseModel):
     See `Idempotency <https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency>`__ in the `API
     Development 101 <https://developer.squareup.com/docs/buildbasics>`__ section for more information."""
 
-    changes: Optional[list[InventoryChange | None]] = UNSET
+    changes: OptionalNullable[list[InventoryChange]] = UNSET
     """The set of physical counts and inventory adjustments to be made. Changes are applied based on the client-supplied
     timestamp and may be sent out of order."""
 
@@ -24,5 +24,5 @@ class BatchChangeInventoryRequest(SdkBaseModel):
 
 class BatchChangeInventoryRequestDict(TypedDict):
     idempotency_key: str
-    changes: NotRequired[list[InventoryChange | InventoryChangeDict | None]]
+    changes: NotRequired[list[InventoryChangeDict] | None]
     ignore_unchanged_counts: NotRequired[bool | None]

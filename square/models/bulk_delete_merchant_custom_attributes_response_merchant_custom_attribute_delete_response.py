@@ -15,4 +15,4 @@ class BulkDeleteMerchantCustomAttributesResponseMerchantCustomAttributeDeleteRes
 
 
 class BulkDeleteMerchantCustomAttributesResponseMerchantCustomAttributeDeleteResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

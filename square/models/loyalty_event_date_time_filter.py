@@ -16,4 +16,4 @@ class LoyaltyEventDateTimeFilter(SdkBaseModel):
 
 
 class LoyaltyEventDateTimeFilterDict(TypedDict):
-    created_at: TimeRange | TimeRangeDict
+    created_at: TimeRangeDict

@@ -18,5 +18,5 @@ class CustomerDeletedEventObject(SdkBaseModel):
 
 
 class CustomerDeletedEventObjectDict(TypedDict):
-    customer: NotRequired[Customer | CustomerDict]
-    event_context: NotRequired[CustomerDeletedEventEventContext | CustomerDeletedEventEventContextDict]
+    customer: NotRequired[CustomerDict]
+    event_context: NotRequired[CustomerDeletedEventEventContextDict]

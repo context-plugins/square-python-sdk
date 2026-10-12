@@ -13,5 +13,5 @@ class TerminalRefundQuery(SdkBaseModel):
 
 
 class TerminalRefundQueryDict(TypedDict):
-    filter: NotRequired[TerminalRefundQueryFilter | TerminalRefundQueryFilterDict]
-    sort: NotRequired[TerminalRefundQuerySort | TerminalRefundQuerySortDict]
+    filter: NotRequired[TerminalRefundQueryFilterDict]
+    sort: NotRequired[TerminalRefundQuerySortDict]

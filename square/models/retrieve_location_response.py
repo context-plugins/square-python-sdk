@@ -19,5 +19,5 @@ class RetrieveLocationResponse(SdkBaseModel):
 
 
 class RetrieveLocationResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    location: NotRequired[Location | LocationDict]
+    errors: NotRequired[list[ErrorDict]]
+    location: NotRequired[LocationDict]

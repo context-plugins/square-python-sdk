@@ -20,5 +20,5 @@ class RetrieveLoyaltyProgramResponse(SdkBaseModel):
 
 
 class RetrieveLoyaltyProgramResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    program: NotRequired[LoyaltyProgram | LoyaltyProgramDict]
+    errors: NotRequired[list[ErrorDict]]
+    program: NotRequired[LoyaltyProgramDict]

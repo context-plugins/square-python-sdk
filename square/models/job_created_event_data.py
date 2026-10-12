@@ -20,4 +20,4 @@ class JobCreatedEventData(SdkBaseModel):
 class JobCreatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[JobCreatedEventObject | JobCreatedEventObjectDict]
+    object_: NotRequired[JobCreatedEventObjectDict]

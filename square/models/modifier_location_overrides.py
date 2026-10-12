@@ -26,5 +26,5 @@ class ModifierLocationOverrides(SdkBaseModel):
 
 class ModifierLocationOverridesDict(TypedDict):
     location_id: NotRequired[str | None]
-    price_money: NotRequired[Money | MoneyDict]
+    price_money: NotRequired[MoneyDict]
     sold_out: NotRequired[bool]

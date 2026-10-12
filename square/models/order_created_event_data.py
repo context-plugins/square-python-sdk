@@ -20,4 +20,4 @@ class OrderCreatedEventData(SdkBaseModel):
 class OrderCreatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[OrderCreatedObject | OrderCreatedObjectDict]
+    object_: NotRequired[OrderCreatedObjectDict]

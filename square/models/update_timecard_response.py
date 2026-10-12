@@ -20,5 +20,5 @@ class UpdateTimecardResponse(SdkBaseModel):
 
 
 class UpdateTimecardResponseDict(TypedDict):
-    timecard: NotRequired[Timecard | TimecardDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    timecard: NotRequired[TimecardDict]
+    errors: NotRequired[list[ErrorDict]]

@@ -30,6 +30,6 @@ class ShiftWage(SdkBaseModel):
 
 class ShiftWageDict(TypedDict):
     title: NotRequired[str | None]
-    hourly_rate: NotRequired[Money | MoneyDict]
+    hourly_rate: NotRequired[MoneyDict]
     job_id: NotRequired[str]
     tip_eligible: NotRequired[bool | None]

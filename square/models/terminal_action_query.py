@@ -13,5 +13,5 @@ class TerminalActionQuery(SdkBaseModel):
 
 
 class TerminalActionQueryDict(TypedDict):
-    filter: NotRequired[TerminalActionQueryFilter | TerminalActionQueryFilterDict]
-    sort: NotRequired[TerminalActionQuerySort | TerminalActionQuerySortDict]
+    filter: NotRequired[TerminalActionQueryFilterDict]
+    sort: NotRequired[TerminalActionQuerySortDict]

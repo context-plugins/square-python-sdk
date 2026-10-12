@@ -11,4 +11,4 @@ class OrderUpdatedObject(SdkBaseModel):
 
 
 class OrderUpdatedObjectDict(TypedDict):
-    order_updated: NotRequired[OrderUpdated | OrderUpdatedDict]
+    order_updated: NotRequired[OrderUpdatedDict]

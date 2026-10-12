@@ -28,6 +28,6 @@ class ListTransactionsResponse(SdkBaseModel):
 
 
 class ListTransactionsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    transactions: NotRequired[list[Transaction | TransactionDict]]
+    errors: NotRequired[list[ErrorDict]]
+    transactions: NotRequired[list[TransactionDict]]
     cursor: NotRequired[str]

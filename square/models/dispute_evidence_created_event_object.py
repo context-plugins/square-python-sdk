@@ -14,4 +14,4 @@ class DisputeEvidenceCreatedEventObject(SdkBaseModel):
 
 
 class DisputeEvidenceCreatedEventObjectDict(TypedDict):
-    object_: NotRequired[Dispute | DisputeDict]
+    object_: NotRequired[DisputeDict]

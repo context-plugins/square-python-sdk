@@ -44,5 +44,5 @@ class BusinessBookingProfileDict(TypedDict):
     customer_timezone_choice: NotRequired[BusinessBookingProfileCustomerTimezoneChoiceOrStr]
     booking_policy: NotRequired[BusinessBookingProfileBookingPolicyOrStr]
     allow_user_cancel: NotRequired[bool | None]
-    business_appointment_settings: NotRequired[BusinessAppointmentSettings | BusinessAppointmentSettingsDict]
+    business_appointment_settings: NotRequired[BusinessAppointmentSettingsDict]
     support_seller_level_writes: NotRequired[bool | None]

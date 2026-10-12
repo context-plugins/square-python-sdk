@@ -14,4 +14,4 @@ class DisputeEvidenceDeletedEventObject(SdkBaseModel):
 
 
 class DisputeEvidenceDeletedEventObjectDict(TypedDict):
-    object_: NotRequired[Dispute | DisputeDict]
+    object_: NotRequired[DisputeDict]

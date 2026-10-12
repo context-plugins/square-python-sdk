@@ -74,7 +74,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /v2/catalog/images`
 - **Auth**: `oauth2`
-- **Signature**: `def create_catalog_image(*, request: CreateCatalogImageRequest | CreateCatalogImageRequestDict | None = None, image_file: bytes | None = None, request_options: RequestOptionsOrDict | None = None)`
+- **Signature**: `def create_catalog_image(*, request: CreateCatalogImageRequest | CreateCatalogImageRequestDict | None = None, image_file: FileInput | None = None, request_options: RequestOptionsOrDict | None = None)`
 - **Params**: `request` — multipart field · `image_file` — multipart file
 - **Returns (parsed)**: `CreateCatalogImageResponse`
 - **Returns (raw)**: `ApiResult[CreateCatalogImageResponse, RawError]`
@@ -168,7 +168,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `PUT /v2/catalog/images/{image_id}`
 - **Auth**: `oauth2`
-- **Signature**: `def update_catalog_image(image_id: str, *, request: UpdateCatalogImageRequest | UpdateCatalogImageRequestDict | None = None, image_file: bytes | None = None, request_options: RequestOptionsOrDict | None = None)`
+- **Signature**: `def update_catalog_image(image_id: str, *, request: UpdateCatalogImageRequest | UpdateCatalogImageRequestDict | None = None, image_file: FileInput | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `image_id`
 - **Params**: `image_id` — path · `request` — multipart field · `image_file` — multipart file
 - **Returns (parsed)**: `UpdateCatalogImageResponse`

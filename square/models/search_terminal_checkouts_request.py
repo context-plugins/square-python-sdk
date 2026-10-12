@@ -18,6 +18,6 @@ class SearchTerminalCheckoutsRequest(SdkBaseModel):
 
 
 class SearchTerminalCheckoutsRequestDict(TypedDict):
-    query: NotRequired[TerminalCheckoutQuery | TerminalCheckoutQueryDict]
+    query: NotRequired[TerminalCheckoutQueryDict]
     cursor: NotRequired[str]
     limit: NotRequired[int]

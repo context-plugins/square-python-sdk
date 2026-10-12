@@ -29,6 +29,6 @@ class ListMerchantCustomAttributesResponse(SdkBaseModel):
 
 
 class ListMerchantCustomAttributesResponseDict(TypedDict):
-    custom_attributes: NotRequired[list[CustomAttribute | CustomAttributeDict]]
+    custom_attributes: NotRequired[list[CustomAttributeDict]]
     cursor: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

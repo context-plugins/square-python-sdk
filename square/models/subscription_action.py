@@ -23,7 +23,7 @@ class SubscriptionAction(SdkBaseModel):
     monthly_billing_anchor_date: OptionalNullable[int] = UNSET
     """The new billing anchor day value, for a ``CHANGE_BILLING_ANCHOR_DATE`` action."""
 
-    phases: Optional[list[Phase | None]] = UNSET
+    phases: OptionalNullable[list[Phase]] = UNSET
     """A list of Phases, to pass phase-specific information used in the swap."""
 
     new_plan_variation_id: OptionalNullable[str] = UNSET
@@ -35,5 +35,5 @@ class SubscriptionActionDict(TypedDict):
     type_: NotRequired[SubscriptionActionTypeOrStr]
     effective_date: NotRequired[str | None]
     monthly_billing_anchor_date: NotRequired[int | None]
-    phases: NotRequired[list[Phase | PhaseDict | None]]
+    phases: NotRequired[list[PhaseDict] | None]
     new_plan_variation_id: NotRequired[str | None]

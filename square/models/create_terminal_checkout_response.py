@@ -16,5 +16,5 @@ class CreateTerminalCheckoutResponse(SdkBaseModel):
 
 
 class CreateTerminalCheckoutResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    checkout: NotRequired[TerminalCheckout | TerminalCheckoutDict]
+    errors: NotRequired[list[ErrorDict]]
+    checkout: NotRequired[TerminalCheckoutDict]

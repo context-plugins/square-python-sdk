@@ -23,6 +23,6 @@ class ListDisputeEvidenceResponse(SdkBaseModel):
 
 
 class ListDisputeEvidenceResponseDict(TypedDict):
-    evidence: NotRequired[list[DisputeEvidence | DisputeEvidenceDict]]
-    errors: NotRequired[list[Error | ErrorDict]]
+    evidence: NotRequired[list[DisputeEvidenceDict]]
+    errors: NotRequired[list[ErrorDict]]
     cursor: NotRequired[str]

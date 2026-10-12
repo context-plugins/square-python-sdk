@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.bulk_publish_scheduled_shifts_request import (
     BulkPublishScheduledShiftsRequest,
@@ -82,14 +84,15 @@ class Labor:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.bulk_publish_scheduled_shifts(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.bulk_publish_scheduled_shifts(body, request_options=request_options))
 
     def create_break_type(
         self,
@@ -113,14 +116,15 @@ class Labor:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_break_type(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_break_type(body, request_options=request_options))
 
     def create_scheduled_shift(
         self,
@@ -140,14 +144,15 @@ class Labor:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_scheduled_shift(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_scheduled_shift(body, request_options=request_options))
 
     def create_shift(
         self, body: CreateShiftRequest | CreateShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None
@@ -172,14 +177,15 @@ class Labor:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_shift(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_shift(body, request_options=request_options))
 
     def create_timecard(
         self,
@@ -207,122 +213,130 @@ class Labor:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_timecard(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_timecard(body, request_options=request_options))
 
     def delete_break_type(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> DeleteBreakTypeResponse:
         """Deletes an existing ``BreakType``.
 
         A ``BreakType`` can be deleted even if it is referenced from a ``Shift``.
 
         Args:
-            id: The UUID for the ``BreakType`` being deleted.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``BreakType`` being deleted.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_break_type(id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.delete_break_type(id_, request_options=request_options))
 
-    def delete_shift(self, id: str, *, request_options: RequestOptionsOrDict | None = None) -> DeleteShiftResponse:
+    def delete_shift(self, id_: str, *, request_options: RequestOptionsOrDict | None = None) -> DeleteShiftResponse:
         """Deletes a ``Shift``.
 
         Args:
-            id: The UUID for the ``Shift`` being deleted.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``Shift`` being deleted.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_shift(id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.delete_shift(id_, request_options=request_options))
 
     def delete_timecard(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> DeleteTimecardResponse:
         """Deletes a ``Timecard``.
 
         Args:
-            id: The UUID for the ``Timecard`` being deleted.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``Timecard`` being deleted.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_timecard(id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.delete_timecard(id_, request_options=request_options))
 
-    def get_break_type(self, id: str, *, request_options: RequestOptionsOrDict | None = None) -> GetBreakTypeResponse:
+    def get_break_type(self, id_: str, *, request_options: RequestOptionsOrDict | None = None) -> GetBreakTypeResponse:
         """Returns a single ``BreakType`` specified by ``id``.
 
         Args:
-            id: The UUID for the ``BreakType`` being retrieved.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``BreakType`` being retrieved.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.get_break_type(id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.get_break_type(id_, request_options=request_options))
 
     def get_employee_wage(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> GetEmployeeWageResponse:
         """Returns a single ``EmployeeWage`` specified by ``id``.
 
         Args:
-            id: The UUID for the ``EmployeeWage`` being retrieved.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``EmployeeWage`` being retrieved.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.get_employee_wage(id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.get_employee_wage(id_, request_options=request_options))
 
-    def get_shift(self, id: str, *, request_options: RequestOptionsOrDict | None = None) -> GetShiftResponse:
+    def get_shift(self, id_: str, *, request_options: RequestOptionsOrDict | None = None) -> GetShiftResponse:
         """Returns a single ``Shift`` specified by ``id``.
 
         Args:
-            id: The UUID for the ``Shift`` being retrieved.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``Shift`` being retrieved.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.get_shift(id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.get_shift(id_, request_options=request_options))
 
     def get_team_member_wage(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> GetTeamMemberWageResponse:
         """Returns a single ``TeamMemberWage`` specified by ``id``.
 
         Args:
-            id: The UUID for the ``TeamMemberWage`` being retrieved.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``TeamMemberWage`` being retrieved.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.get_team_member_wage(id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.get_team_member_wage(id_, request_options=request_options))
 
     def list_break_types(
         self,
@@ -340,16 +354,19 @@ class Labor:
             limit: The maximum number of ``BreakType`` results to return per page. The number can range between 1 and
                 200. The default is 200.
             cursor: A pointer to the next page of ``BreakType`` results to fetch.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_break_types(
-            location_id=location_id, limit=limit, cursor=cursor, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_break_types(
+                location_id=location_id, limit=limit, cursor=cursor, request_options=request_options
+            ),
+        )
 
     def list_employee_wages(
         self,
@@ -366,16 +383,19 @@ class Labor:
             limit: The maximum number of ``EmployeeWage`` results to return per page. The number can range between 1 and
                 200. The default is 200.
             cursor: A pointer to the next page of ``EmployeeWage`` results to fetch.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_employee_wages(
-            employee_id=employee_id, limit=limit, cursor=cursor, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_employee_wages(
+                employee_id=employee_id, limit=limit, cursor=cursor, request_options=request_options
+            ),
+        )
 
     def list_team_member_wages(
         self,
@@ -392,16 +412,19 @@ class Labor:
             limit: The maximum number of ``TeamMemberWage`` results to return per page. The number can range between 1
                 and 200. The default is 200.
             cursor: A pointer to the next page of ``EmployeeWage`` results to fetch.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_team_member_wages(
-            team_member_id=team_member_id, limit=limit, cursor=cursor, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_team_member_wages(
+                team_member_id=team_member_id, limit=limit, cursor=cursor, request_options=request_options
+            ),
+        )
 
     def list_workweek_configs(
         self,
@@ -415,20 +438,21 @@ class Labor:
         Args:
             limit: The maximum number of ``WorkweekConfigs`` results to return per page.
             cursor: A pointer to the next page of ``WorkweekConfig`` results to fetch.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_workweek_configs(
-            limit=limit, cursor=cursor, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_workweek_configs(limit=limit, cursor=cursor, request_options=request_options)
+        )
 
     def publish_scheduled_shift(
         self,
-        id: str,
+        id_: str,
         body: PublishScheduledShiftRequest | PublishScheduledShiftRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -437,49 +461,52 @@ class Labor:
         field as is and copies it to the ``published_shift_details`` field.
 
         Args:
-            id: The ID of the scheduled shift to publish.
+            id_: The ID of the scheduled shift to publish.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.publish_scheduled_shift(id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.publish_scheduled_shift(id_, body, request_options=request_options))
 
     def retrieve_scheduled_shift(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> RetrieveScheduledShiftResponse:
         """Retrieves a scheduled shift by ID.
 
         Args:
-            id: The ID of the scheduled shift to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The ID of the scheduled shift to retrieve.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_scheduled_shift(id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_scheduled_shift(id_, request_options=request_options))
 
     def retrieve_timecard(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> RetrieveTimecardResponse:
         """Returns a single ``Timecard`` specified by ``id``.
 
         Args:
-            id: The UUID for the ``Timecard`` being retrieved.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``Timecard`` being retrieved.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_timecard(id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_timecard(id_, request_options=request_options))
 
     def search_scheduled_shifts(
         self,
@@ -493,14 +520,15 @@ class Labor:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_scheduled_shifts(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_scheduled_shifts(body, request_options=request_options))
 
     def search_shifts(
         self,
@@ -525,14 +553,15 @@ class Labor:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_shifts(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_shifts(body, request_options=request_options))
 
     def search_timecards(
         self,
@@ -557,18 +586,19 @@ class Labor:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_timecards(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_timecards(body, request_options=request_options))
 
     def update_break_type(
         self,
-        id: str,
+        id_: str,
         body: UpdateBreakTypeRequest | UpdateBreakTypeRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -576,21 +606,22 @@ class Labor:
         """Updates an existing ``BreakType``.
 
         Args:
-            id: The UUID for the ``BreakType`` being updated.
+            id_: The UUID for the ``BreakType`` being updated.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_break_type(id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.update_break_type(id_, body, request_options=request_options))
 
     def update_scheduled_shift(
         self,
-        id: str,
+        id_: str,
         body: UpdateScheduledShiftRequest | UpdateScheduledShiftRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -606,21 +637,22 @@ class Labor:
         and then publish the shift.
 
         Args:
-            id: The ID of the scheduled shift to update.
+            id_: The ID of the scheduled shift to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_scheduled_shift(id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.update_scheduled_shift(id_, body, request_options=request_options))
 
     def update_shift(
         self,
-        id: str,
+        id_: str,
         body: UpdateShiftRequest | UpdateShiftRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -634,21 +666,22 @@ class Labor:
         ``Break``.
 
         Args:
-            id: The ID of the object being updated.
+            id_: The ID of the object being updated.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_shift(id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.update_shift(id_, body, request_options=request_options))
 
     def update_timecard(
         self,
-        id: str,
+        id_: str,
         body: UpdateTimecardRequest | UpdateTimecardRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -662,21 +695,22 @@ class Labor:
         each ``Break``.
 
         Args:
-            id: The ID of the object being updated.
+            id_: The ID of the object being updated.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_timecard(id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.update_timecard(id_, body, request_options=request_options))
 
     def update_workweek_config(
         self,
-        id: str,
+        id_: str,
         body: UpdateWorkweekConfigRequest | UpdateWorkweekConfigRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -684,17 +718,18 @@ class Labor:
         """Updates a ``WorkweekConfig``.
 
         Args:
-            id: The UUID for the ``WorkweekConfig`` object being updated.
+            id_: The UUID for the ``WorkweekConfig`` object being updated.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_workweek_config(id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.update_workweek_config(id_, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> LaborWithRawResponse:
@@ -721,16 +756,17 @@ class AsyncLabor:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.bulk_publish_scheduled_shifts(body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def create_break_type(
         self,
@@ -754,14 +790,15 @@ class AsyncLabor:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_break_type(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_break_type(body, request_options=request_options))
 
     async def create_scheduled_shift(
         self,
@@ -781,14 +818,15 @@ class AsyncLabor:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_scheduled_shift(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_scheduled_shift(body, request_options=request_options))
 
     async def create_shift(
         self, body: CreateShiftRequest | CreateShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None
@@ -813,14 +851,15 @@ class AsyncLabor:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_shift(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_shift(body, request_options=request_options))
 
     async def create_timecard(
         self,
@@ -848,126 +887,134 @@ class AsyncLabor:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_timecard(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_timecard(body, request_options=request_options))
 
     async def delete_break_type(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> DeleteBreakTypeResponse:
         """Deletes an existing ``BreakType``.
 
         A ``BreakType`` can be deleted even if it is referenced from a ``Shift``.
 
         Args:
-            id: The UUID for the ``BreakType`` being deleted.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``BreakType`` being deleted.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.delete_break_type(id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.delete_break_type(id_, request_options=request_options))
 
     async def delete_shift(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> DeleteShiftResponse:
         """Deletes a ``Shift``.
 
         Args:
-            id: The UUID for the ``Shift`` being deleted.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``Shift`` being deleted.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.delete_shift(id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.delete_shift(id_, request_options=request_options))
 
     async def delete_timecard(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> DeleteTimecardResponse:
         """Deletes a ``Timecard``.
 
         Args:
-            id: The UUID for the ``Timecard`` being deleted.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``Timecard`` being deleted.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.delete_timecard(id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.delete_timecard(id_, request_options=request_options))
 
     async def get_break_type(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> GetBreakTypeResponse:
         """Returns a single ``BreakType`` specified by ``id``.
 
         Args:
-            id: The UUID for the ``BreakType`` being retrieved.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``BreakType`` being retrieved.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.get_break_type(id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.get_break_type(id_, request_options=request_options))
 
     async def get_employee_wage(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> GetEmployeeWageResponse:
         """Returns a single ``EmployeeWage`` specified by ``id``.
 
         Args:
-            id: The UUID for the ``EmployeeWage`` being retrieved.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``EmployeeWage`` being retrieved.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.get_employee_wage(id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.get_employee_wage(id_, request_options=request_options))
 
-    async def get_shift(self, id: str, *, request_options: RequestOptionsOrDict | None = None) -> GetShiftResponse:
+    async def get_shift(self, id_: str, *, request_options: RequestOptionsOrDict | None = None) -> GetShiftResponse:
         """Returns a single ``Shift`` specified by ``id``.
 
         Args:
-            id: The UUID for the ``Shift`` being retrieved.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``Shift`` being retrieved.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.get_shift(id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.get_shift(id_, request_options=request_options))
 
     async def get_team_member_wage(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> GetTeamMemberWageResponse:
         """Returns a single ``TeamMemberWage`` specified by ``id``.
 
         Args:
-            id: The UUID for the ``TeamMemberWage`` being retrieved.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``TeamMemberWage`` being retrieved.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.get_team_member_wage(id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.get_team_member_wage(id_, request_options=request_options))
 
     async def list_break_types(
         self,
@@ -985,18 +1032,19 @@ class AsyncLabor:
             limit: The maximum number of ``BreakType`` results to return per page. The number can range between 1 and
                 200. The default is 200.
             cursor: A pointer to the next page of ``BreakType`` results to fetch.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_break_types(
                 location_id=location_id, limit=limit, cursor=cursor, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def list_employee_wages(
         self,
@@ -1013,18 +1061,19 @@ class AsyncLabor:
             limit: The maximum number of ``EmployeeWage`` results to return per page. The number can range between 1 and
                 200. The default is 200.
             cursor: A pointer to the next page of ``EmployeeWage`` results to fetch.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_employee_wages(
                 employee_id=employee_id, limit=limit, cursor=cursor, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def list_team_member_wages(
         self,
@@ -1041,18 +1090,19 @@ class AsyncLabor:
             limit: The maximum number of ``TeamMemberWage`` results to return per page. The number can range between 1
                 and 200. The default is 200.
             cursor: A pointer to the next page of ``EmployeeWage`` results to fetch.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_team_member_wages(
                 team_member_id=team_member_id, limit=limit, cursor=cursor, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def list_workweek_configs(
         self,
@@ -1066,22 +1116,23 @@ class AsyncLabor:
         Args:
             limit: The maximum number of ``WorkweekConfigs`` results to return per page.
             cursor: A pointer to the next page of ``WorkweekConfig`` results to fetch.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_workweek_configs(
                 limit=limit, cursor=cursor, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def publish_scheduled_shift(
         self,
-        id: str,
+        id_: str,
         body: PublishScheduledShiftRequest | PublishScheduledShiftRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -1090,51 +1141,52 @@ class AsyncLabor:
         field as is and copies it to the ``published_shift_details`` field.
 
         Args:
-            id: The ID of the scheduled shift to publish.
+            id_: The ID of the scheduled shift to publish.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.publish_scheduled_shift(id, body, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.publish_scheduled_shift(id_, body, request_options=request_options))
 
     async def retrieve_scheduled_shift(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> RetrieveScheduledShiftResponse:
         """Retrieves a scheduled shift by ID.
 
         Args:
-            id: The ID of the scheduled shift to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The ID of the scheduled shift to retrieve.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.retrieve_scheduled_shift(id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.retrieve_scheduled_shift(id_, request_options=request_options))
 
     async def retrieve_timecard(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> RetrieveTimecardResponse:
         """Returns a single ``Timecard`` specified by ``id``.
 
         Args:
-            id: The UUID for the ``Timecard`` being retrieved.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``Timecard`` being retrieved.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.retrieve_timecard(id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.retrieve_timecard(id_, request_options=request_options))
 
     async def search_scheduled_shifts(
         self,
@@ -1148,14 +1200,15 @@ class AsyncLabor:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_scheduled_shifts(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_scheduled_shifts(body, request_options=request_options))
 
     async def search_shifts(
         self,
@@ -1180,14 +1233,15 @@ class AsyncLabor:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_shifts(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_shifts(body, request_options=request_options))
 
     async def search_timecards(
         self,
@@ -1212,18 +1266,19 @@ class AsyncLabor:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_timecards(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_timecards(body, request_options=request_options))
 
     async def update_break_type(
         self,
-        id: str,
+        id_: str,
         body: UpdateBreakTypeRequest | UpdateBreakTypeRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -1231,21 +1286,22 @@ class AsyncLabor:
         """Updates an existing ``BreakType``.
 
         Args:
-            id: The UUID for the ``BreakType`` being updated.
+            id_: The UUID for the ``BreakType`` being updated.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.update_break_type(id, body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.update_break_type(id_, body, request_options=request_options))
 
     async def update_scheduled_shift(
         self,
-        id: str,
+        id_: str,
         body: UpdateScheduledShiftRequest | UpdateScheduledShiftRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -1261,23 +1317,22 @@ class AsyncLabor:
         and then publish the shift.
 
         Args:
-            id: The ID of the scheduled shift to update.
+            id_: The ID of the scheduled shift to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.update_scheduled_shift(id, body, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.update_scheduled_shift(id_, body, request_options=request_options))
 
     async def update_shift(
         self,
-        id: str,
+        id_: str,
         body: UpdateShiftRequest | UpdateShiftRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -1291,21 +1346,22 @@ class AsyncLabor:
         ``Break``.
 
         Args:
-            id: The ID of the object being updated.
+            id_: The ID of the object being updated.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.update_shift(id, body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.update_shift(id_, body, request_options=request_options))
 
     async def update_timecard(
         self,
-        id: str,
+        id_: str,
         body: UpdateTimecardRequest | UpdateTimecardRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -1319,21 +1375,22 @@ class AsyncLabor:
         each ``Break``.
 
         Args:
-            id: The ID of the object being updated.
+            id_: The ID of the object being updated.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.update_timecard(id, body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.update_timecard(id_, body, request_options=request_options))
 
     async def update_workweek_config(
         self,
-        id: str,
+        id_: str,
         body: UpdateWorkweekConfigRequest | UpdateWorkweekConfigRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -1341,19 +1398,18 @@ class AsyncLabor:
         """Updates a ``WorkweekConfig``.
 
         Args:
-            id: The UUID for the ``WorkweekConfig`` object being updated.
+            id_: The UUID for the ``WorkweekConfig`` object being updated.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.update_workweek_config(id, body, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.update_workweek_config(id_, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncLaborWithRawResponse:
@@ -1377,7 +1433,8 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1414,7 +1471,8 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1447,7 +1505,8 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1485,7 +1544,8 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1526,7 +1586,8 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1542,22 +1603,23 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         )
 
     def delete_break_type(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[DeleteBreakTypeResponse, RawError]:
         """Deletes an existing ``BreakType``.
 
         A ``BreakType`` can be deleted even if it is referenced from a ``Shift``.
 
         Args:
-            id: The UUID for the ``BreakType`` being deleted.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``BreakType`` being deleted.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="DELETE",
             url_template=self._server.default("/v2/labor/break-types/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteBreakTypeResponse],
@@ -1566,20 +1628,21 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         )
 
     def delete_shift(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[DeleteShiftResponse, RawError]:
         """Deletes a ``Shift``.
 
         Args:
-            id: The UUID for the ``Shift`` being deleted.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``Shift`` being deleted.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="DELETE",
             url_template=self._server.default("/v2/labor/shifts/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteShiftResponse],
@@ -1588,20 +1651,21 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         )
 
     def delete_timecard(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[DeleteTimecardResponse, RawError]:
         """Deletes a ``Timecard``.
 
         Args:
-            id: The UUID for the ``Timecard`` being deleted.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``Timecard`` being deleted.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="DELETE",
             url_template=self._server.default("/v2/labor/timecards/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeleteTimecardResponse],
@@ -1610,20 +1674,21 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         )
 
     def get_break_type(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[GetBreakTypeResponse, RawError]:
         """Returns a single ``BreakType`` specified by ``id``.
 
         Args:
-            id: The UUID for the ``BreakType`` being retrieved.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``BreakType`` being retrieved.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="GET",
             url_template=self._server.default("/v2/labor/break-types/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[GetBreakTypeResponse],
             error_mapper=raw_error_response,
@@ -1631,20 +1696,21 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         )
 
     def get_employee_wage(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[GetEmployeeWageResponse, RawError]:
         """Returns a single ``EmployeeWage`` specified by ``id``.
 
         Args:
-            id: The UUID for the ``EmployeeWage`` being retrieved.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``EmployeeWage`` being retrieved.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="GET",
             url_template=self._server.default("/v2/labor/employee-wages/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[GetEmployeeWageResponse],
             error_mapper=raw_error_response,
@@ -1652,20 +1718,21 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         )
 
     def get_shift(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[GetShiftResponse, RawError]:
         """Returns a single ``Shift`` specified by ``id``.
 
         Args:
-            id: The UUID for the ``Shift`` being retrieved.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``Shift`` being retrieved.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="GET",
             url_template=self._server.default("/v2/labor/shifts/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[GetShiftResponse],
             error_mapper=raw_error_response,
@@ -1673,20 +1740,21 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         )
 
     def get_team_member_wage(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[GetTeamMemberWageResponse, RawError]:
         """Returns a single ``TeamMemberWage`` specified by ``id``.
 
         Args:
-            id: The UUID for the ``TeamMemberWage`` being retrieved.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``TeamMemberWage`` being retrieved.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="GET",
             url_template=self._server.default("/v2/labor/team-member-wages/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[GetTeamMemberWageResponse],
             error_mapper=raw_error_response,
@@ -1709,7 +1777,8 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             limit: The maximum number of ``BreakType`` results to return per page. The number can range between 1 and
                 200. The default is 200.
             cursor: A pointer to the next page of ``BreakType`` results to fetch.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1742,7 +1811,8 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             limit: The maximum number of ``EmployeeWage`` results to return per page. The number can range between 1 and
                 200. The default is 200.
             cursor: A pointer to the next page of ``EmployeeWage`` results to fetch.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1775,7 +1845,8 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             limit: The maximum number of ``TeamMemberWage`` results to return per page. The number can range between 1
                 and 200. The default is 200.
             cursor: A pointer to the next page of ``EmployeeWage`` results to fetch.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1805,7 +1876,8 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             limit: The maximum number of ``WorkweekConfigs`` results to return per page.
             cursor: A pointer to the next page of ``WorkweekConfig`` results to fetch.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1821,7 +1893,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
 
     def publish_scheduled_shift(
         self,
-        id: str,
+        id_: str,
         body: PublishScheduledShiftRequest | PublishScheduledShiftRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -1830,17 +1902,18 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         field as is and copies it to the ``published_shift_details`` field.
 
         Args:
-            id: The ID of the scheduled shift to publish.
+            id_: The ID of the scheduled shift to publish.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/labor/scheduled-shifts/{id}/publish"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[PublishScheduledShiftRequest | PublishScheduledShiftRequestDict](body),
             auth_scheme=self._auth.oauth2,
@@ -1850,20 +1923,21 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         )
 
     def retrieve_scheduled_shift(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[RetrieveScheduledShiftResponse, RawError]:
         """Retrieves a scheduled shift by ID.
 
         Args:
-            id: The ID of the scheduled shift to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The ID of the scheduled shift to retrieve.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="GET",
             url_template=self._server.default("/v2/labor/scheduled-shifts/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[RetrieveScheduledShiftResponse],
             error_mapper=raw_error_response,
@@ -1871,20 +1945,21 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         )
 
     def retrieve_timecard(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[RetrieveTimecardResponse, RawError]:
         """Returns a single ``Timecard`` specified by ``id``.
 
         Args:
-            id: The UUID for the ``Timecard`` being retrieved.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``Timecard`` being retrieved.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="GET",
             url_template=self._server.default("/v2/labor/timecards/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[RetrieveTimecardResponse],
             error_mapper=raw_error_response,
@@ -1903,7 +1978,8 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1941,7 +2017,8 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1979,7 +2056,8 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1996,7 +2074,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
 
     def update_break_type(
         self,
-        id: str,
+        id_: str,
         body: UpdateBreakTypeRequest | UpdateBreakTypeRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -2004,17 +2082,18 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         """Updates an existing ``BreakType``.
 
         Args:
-            id: The UUID for the ``BreakType`` being updated.
+            id_: The UUID for the ``BreakType`` being updated.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/labor/break-types/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateBreakTypeRequest | UpdateBreakTypeRequestDict](body),
             auth_scheme=self._auth.oauth2,
@@ -2025,7 +2104,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
 
     def update_scheduled_shift(
         self,
-        id: str,
+        id_: str,
         body: UpdateScheduledShiftRequest | UpdateScheduledShiftRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -2041,17 +2120,18 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         and then publish the shift.
 
         Args:
-            id: The ID of the scheduled shift to update.
+            id_: The ID of the scheduled shift to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/labor/scheduled-shifts/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateScheduledShiftRequest | UpdateScheduledShiftRequestDict](body),
             auth_scheme=self._auth.oauth2,
@@ -2062,7 +2142,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
 
     def update_shift(
         self,
-        id: str,
+        id_: str,
         body: UpdateShiftRequest | UpdateShiftRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -2076,17 +2156,18 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         ``Break``.
 
         Args:
-            id: The ID of the object being updated.
+            id_: The ID of the object being updated.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/labor/shifts/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateShiftRequest | UpdateShiftRequestDict](body),
             auth_scheme=self._auth.oauth2,
@@ -2097,7 +2178,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
 
     def update_timecard(
         self,
-        id: str,
+        id_: str,
         body: UpdateTimecardRequest | UpdateTimecardRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -2111,17 +2192,18 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         each ``Break``.
 
         Args:
-            id: The ID of the object being updated.
+            id_: The ID of the object being updated.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/labor/timecards/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateTimecardRequest | UpdateTimecardRequestDict](body),
             auth_scheme=self._auth.oauth2,
@@ -2132,7 +2214,7 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
 
     def update_workweek_config(
         self,
-        id: str,
+        id_: str,
         body: UpdateWorkweekConfigRequest | UpdateWorkweekConfigRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -2140,17 +2222,18 @@ class LaborWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         """Updates a ``WorkweekConfig``.
 
         Args:
-            id: The UUID for the ``WorkweekConfig`` object being updated.
+            id_: The UUID for the ``WorkweekConfig`` object being updated.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/labor/workweek-configs/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateWorkweekConfigRequest | UpdateWorkweekConfigRequestDict](body),
             auth_scheme=self._auth.oauth2,
@@ -2177,7 +2260,8 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2187,7 +2271,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkPublishScheduledShiftsRequest | BulkPublishScheduledShiftsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BulkPublishScheduledShiftsResponse],
+            decoder=async_json_decoder[BulkPublishScheduledShiftsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2214,7 +2298,8 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2224,7 +2309,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateBreakTypeRequest | CreateBreakTypeRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateBreakTypeResponse],
+            decoder=async_json_decoder[CreateBreakTypeResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2247,7 +2332,8 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2257,7 +2343,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateScheduledShiftRequest | CreateScheduledShiftRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateScheduledShiftResponse],
+            decoder=async_json_decoder[CreateScheduledShiftResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2285,7 +2371,8 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2295,7 +2382,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateShiftRequest | CreateShiftRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateShiftResponse],
+            decoder=async_json_decoder[CreateShiftResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2326,7 +2413,8 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2336,159 +2424,166 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateTimecardRequest | CreateTimecardRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateTimecardResponse],
+            decoder=async_json_decoder[CreateTimecardResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def delete_break_type(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[DeleteBreakTypeResponse, RawError]:
         """Deletes an existing ``BreakType``.
 
         A ``BreakType`` can be deleted even if it is referenced from a ``Shift``.
 
         Args:
-            id: The UUID for the ``BreakType`` being deleted.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``BreakType`` being deleted.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="DELETE",
             url_template=self._server.default("/v2/labor/break-types/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeleteBreakTypeResponse],
+            decoder=async_json_decoder[DeleteBreakTypeResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def delete_shift(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[DeleteShiftResponse, RawError]:
         """Deletes a ``Shift``.
 
         Args:
-            id: The UUID for the ``Shift`` being deleted.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``Shift`` being deleted.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="DELETE",
             url_template=self._server.default("/v2/labor/shifts/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeleteShiftResponse],
+            decoder=async_json_decoder[DeleteShiftResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def delete_timecard(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[DeleteTimecardResponse, RawError]:
         """Deletes a ``Timecard``.
 
         Args:
-            id: The UUID for the ``Timecard`` being deleted.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``Timecard`` being deleted.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="DELETE",
             url_template=self._server.default("/v2/labor/timecards/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeleteTimecardResponse],
+            decoder=async_json_decoder[DeleteTimecardResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def get_break_type(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[GetBreakTypeResponse, RawError]:
         """Returns a single ``BreakType`` specified by ``id``.
 
         Args:
-            id: The UUID for the ``BreakType`` being retrieved.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``BreakType`` being retrieved.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="GET",
             url_template=self._server.default("/v2/labor/break-types/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[GetBreakTypeResponse],
+            decoder=async_json_decoder[GetBreakTypeResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def get_employee_wage(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[GetEmployeeWageResponse, RawError]:
         """Returns a single ``EmployeeWage`` specified by ``id``.
 
         Args:
-            id: The UUID for the ``EmployeeWage`` being retrieved.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``EmployeeWage`` being retrieved.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="GET",
             url_template=self._server.default("/v2/labor/employee-wages/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[GetEmployeeWageResponse],
+            decoder=async_json_decoder[GetEmployeeWageResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def get_shift(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[GetShiftResponse, RawError]:
         """Returns a single ``Shift`` specified by ``id``.
 
         Args:
-            id: The UUID for the ``Shift`` being retrieved.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``Shift`` being retrieved.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="GET",
             url_template=self._server.default("/v2/labor/shifts/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[GetShiftResponse],
+            decoder=async_json_decoder[GetShiftResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def get_team_member_wage(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[GetTeamMemberWageResponse, RawError]:
         """Returns a single ``TeamMemberWage`` specified by ``id``.
 
         Args:
-            id: The UUID for the ``TeamMemberWage`` being retrieved.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``TeamMemberWage`` being retrieved.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="GET",
             url_template=self._server.default("/v2/labor/team-member-wages/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[GetTeamMemberWageResponse],
+            decoder=async_json_decoder[GetTeamMemberWageResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2509,7 +2604,8 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             limit: The maximum number of ``BreakType`` results to return per page. The number can range between 1 and
                 200. The default is 200.
             cursor: A pointer to the next page of ``BreakType`` results to fetch.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2522,7 +2618,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 param[str | None]("cursor", cursor),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListBreakTypesResponse],
+            decoder=async_json_decoder[ListBreakTypesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2542,7 +2638,8 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             limit: The maximum number of ``EmployeeWage`` results to return per page. The number can range between 1 and
                 200. The default is 200.
             cursor: A pointer to the next page of ``EmployeeWage`` results to fetch.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2555,7 +2652,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 param[str | None]("cursor", cursor),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListEmployeeWagesResponse],
+            decoder=async_json_decoder[ListEmployeeWagesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2575,7 +2672,8 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             limit: The maximum number of ``TeamMemberWage`` results to return per page. The number can range between 1
                 and 200. The default is 200.
             cursor: A pointer to the next page of ``EmployeeWage`` results to fetch.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2588,7 +2686,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 param[str | None]("cursor", cursor),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListTeamMemberWagesResponse],
+            decoder=async_json_decoder[ListTeamMemberWagesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2605,7 +2703,8 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         Args:
             limit: The maximum number of ``WorkweekConfigs`` results to return per page.
             cursor: A pointer to the next page of ``WorkweekConfig`` results to fetch.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2614,14 +2713,14 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             url_template=self._server.default("/v2/labor/workweek-configs"),
             query_params=[param[int | None]("limit", limit), param[str | None]("cursor", cursor)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListWorkweekConfigsResponse],
+            decoder=async_json_decoder[ListWorkweekConfigsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def publish_scheduled_shift(
         self,
-        id: str,
+        id_: str,
         body: PublishScheduledShiftRequest | PublishScheduledShiftRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -2630,63 +2729,66 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         field as is and copies it to the ``published_shift_details`` field.
 
         Args:
-            id: The ID of the scheduled shift to publish.
+            id_: The ID of the scheduled shift to publish.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="POST",
             url_template=self._server.default("/v2/labor/scheduled-shifts/{id}/publish"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[PublishScheduledShiftRequest | PublishScheduledShiftRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[PublishScheduledShiftResponse],
+            decoder=async_json_decoder[PublishScheduledShiftResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def retrieve_scheduled_shift(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[RetrieveScheduledShiftResponse, RawError]:
         """Retrieves a scheduled shift by ID.
 
         Args:
-            id: The ID of the scheduled shift to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The ID of the scheduled shift to retrieve.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="GET",
             url_template=self._server.default("/v2/labor/scheduled-shifts/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveScheduledShiftResponse],
+            decoder=async_json_decoder[RetrieveScheduledShiftResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def retrieve_timecard(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[RetrieveTimecardResponse, RawError]:
         """Returns a single ``Timecard`` specified by ``id``.
 
         Args:
-            id: The UUID for the ``Timecard`` being retrieved.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The UUID for the ``Timecard`` being retrieved.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="GET",
             url_template=self._server.default("/v2/labor/timecards/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveTimecardResponse],
+            decoder=async_json_decoder[RetrieveTimecardResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2703,7 +2805,8 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2713,7 +2816,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchScheduledShiftsRequest | SearchScheduledShiftsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SearchScheduledShiftsResponse],
+            decoder=async_json_decoder[SearchScheduledShiftsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2741,7 +2844,8 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2751,7 +2855,7 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchShiftsRequest | SearchShiftsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SearchShiftsResponse],
+            decoder=async_json_decoder[SearchShiftsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2779,7 +2883,8 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2789,14 +2894,14 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchTimecardsRequest | SearchTimecardsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SearchTimecardsResponse],
+            decoder=async_json_decoder[SearchTimecardsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def update_break_type(
         self,
-        id: str,
+        id_: str,
         body: UpdateBreakTypeRequest | UpdateBreakTypeRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -2804,28 +2909,29 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         """Updates an existing ``BreakType``.
 
         Args:
-            id: The UUID for the ``BreakType`` being updated.
+            id_: The UUID for the ``BreakType`` being updated.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/labor/break-types/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateBreakTypeRequest | UpdateBreakTypeRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateBreakTypeResponse],
+            decoder=async_json_decoder[UpdateBreakTypeResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def update_scheduled_shift(
         self,
-        id: str,
+        id_: str,
         body: UpdateScheduledShiftRequest | UpdateScheduledShiftRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -2841,28 +2947,29 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         and then publish the shift.
 
         Args:
-            id: The ID of the scheduled shift to update.
+            id_: The ID of the scheduled shift to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/labor/scheduled-shifts/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateScheduledShiftRequest | UpdateScheduledShiftRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateScheduledShiftResponse],
+            decoder=async_json_decoder[UpdateScheduledShiftResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def update_shift(
         self,
-        id: str,
+        id_: str,
         body: UpdateShiftRequest | UpdateShiftRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -2876,28 +2983,29 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         ``Break``.
 
         Args:
-            id: The ID of the object being updated.
+            id_: The ID of the object being updated.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/labor/shifts/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateShiftRequest | UpdateShiftRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateShiftResponse],
+            decoder=async_json_decoder[UpdateShiftResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def update_timecard(
         self,
-        id: str,
+        id_: str,
         body: UpdateTimecardRequest | UpdateTimecardRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -2911,28 +3019,29 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         each ``Break``.
 
         Args:
-            id: The ID of the object being updated.
+            id_: The ID of the object being updated.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/labor/timecards/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateTimecardRequest | UpdateTimecardRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateTimecardResponse],
+            decoder=async_json_decoder[UpdateTimecardResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def update_workweek_config(
         self,
-        id: str,
+        id_: str,
         body: UpdateWorkweekConfigRequest | UpdateWorkweekConfigRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -2940,21 +3049,22 @@ class AsyncLaborWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         """Updates a ``WorkweekConfig``.
 
         Args:
-            id: The UUID for the ``WorkweekConfig`` object being updated.
+            id_: The UUID for the ``WorkweekConfig`` object being updated.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/labor/workweek-configs/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateWorkweekConfigRequest | UpdateWorkweekConfigRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateWorkweekConfigResponse],
+            decoder=async_json_decoder[UpdateWorkweekConfigResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

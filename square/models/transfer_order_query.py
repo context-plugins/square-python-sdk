@@ -18,5 +18,5 @@ class TransferOrderQuery(SdkBaseModel):
 
 
 class TransferOrderQueryDict(TypedDict):
-    filter: NotRequired[TransferOrderFilter | TransferOrderFilterDict]
-    sort: NotRequired[TransferOrderSort | TransferOrderSortDict]
+    filter: NotRequired[TransferOrderFilterDict]
+    sort: NotRequired[TransferOrderSortDict]

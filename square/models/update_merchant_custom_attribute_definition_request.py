@@ -20,5 +20,5 @@ class UpdateMerchantCustomAttributeDefinitionRequest(SdkBaseModel):
 
 
 class UpdateMerchantCustomAttributeDefinitionRequestDict(TypedDict):
-    custom_attribute_definition: CustomAttributeDefinition | CustomAttributeDefinitionDict
+    custom_attribute_definition: CustomAttributeDefinitionDict
     idempotency_key: NotRequired[str | None]

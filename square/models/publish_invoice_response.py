@@ -19,5 +19,5 @@ class PublishInvoiceResponse(SdkBaseModel):
 
 
 class PublishInvoiceResponseDict(TypedDict):
-    invoice: NotRequired[Invoice | InvoiceDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    invoice: NotRequired[InvoiceDict]
+    errors: NotRequired[list[ErrorDict]]

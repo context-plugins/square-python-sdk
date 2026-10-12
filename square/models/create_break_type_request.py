@@ -19,4 +19,4 @@ class CreateBreakTypeRequest(SdkBaseModel):
 
 class CreateBreakTypeRequestDict(TypedDict):
     idempotency_key: NotRequired[str]
-    break_type: BreakType | BreakTypeDict
+    break_type: BreakTypeDict

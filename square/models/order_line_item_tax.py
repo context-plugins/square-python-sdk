@@ -34,7 +34,7 @@ class OrderLineItemTax(SdkBaseModel):
     """The percentage of the tax, as a string representation of a decimal number. For example, a value of ``"7.25"``
     corresponds to a percentage of 7.25%."""
 
-    metadata: Optional[dict[str, str | None]] = UNSET
+    metadata: OptionalNullable[dict[str, str]] = UNSET
     """Application-defined data attached to this tax. Metadata fields are intended to store descriptive references or
     associations with an entity in another system or store brief information about the object. Square does not process
     this field; it only stores and returns it in relevant API calls. Do not use metadata to store any sensitive
@@ -74,7 +74,7 @@ class OrderLineItemTaxDict(TypedDict):
     name: NotRequired[str | None]
     type_: NotRequired[OrderLineItemTaxTypeOrStr]
     percentage: NotRequired[str | None]
-    metadata: NotRequired[dict[str, str | None]]
-    applied_money: NotRequired[Money | MoneyDict]
+    metadata: NotRequired[dict[str, str] | None]
+    applied_money: NotRequired[MoneyDict]
     scope: NotRequired[OrderLineItemTaxScopeOrStr]
     auto_applied: NotRequired[bool]

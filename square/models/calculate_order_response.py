@@ -19,5 +19,5 @@ class CalculateOrderResponse(SdkBaseModel):
 
 
 class CalculateOrderResponseDict(TypedDict):
-    order: NotRequired[Order | OrderDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    order: NotRequired[OrderDict]
+    errors: NotRequired[list[ErrorDict]]

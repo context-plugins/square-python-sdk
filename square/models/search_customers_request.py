@@ -37,5 +37,5 @@ class SearchCustomersRequest(SdkBaseModel):
 class SearchCustomersRequestDict(TypedDict):
     cursor: NotRequired[str]
     limit: NotRequired[int]
-    query: NotRequired[CustomerQuery | CustomerQueryDict]
+    query: NotRequired[CustomerQueryDict]
     count: NotRequired[bool]

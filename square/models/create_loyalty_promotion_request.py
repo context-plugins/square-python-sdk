@@ -21,5 +21,5 @@ class CreateLoyaltyPromotionRequest(SdkBaseModel):
 
 
 class CreateLoyaltyPromotionRequestDict(TypedDict):
-    loyalty_promotion: LoyaltyPromotion | LoyaltyPromotionDict
+    loyalty_promotion: LoyaltyPromotionDict
     idempotency_key: str

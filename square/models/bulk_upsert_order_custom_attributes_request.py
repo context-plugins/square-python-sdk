@@ -17,10 +17,4 @@ class BulkUpsertOrderCustomAttributesRequest(SdkBaseModel):
 
 
 class BulkUpsertOrderCustomAttributesRequestDict(TypedDict):
-    values: dict[
-        str,
-        (
-            BulkUpsertOrderCustomAttributesRequestUpsertCustomAttribute
-            | BulkUpsertOrderCustomAttributesRequestUpsertCustomAttributeDict
-        ),
-    ]
+    values: dict[str, BulkUpsertOrderCustomAttributesRequestUpsertCustomAttributeDict]

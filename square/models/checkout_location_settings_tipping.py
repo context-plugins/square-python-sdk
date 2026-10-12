@@ -7,7 +7,7 @@ from .money import Money, MoneyDict
 
 
 class CheckoutLocationSettingsTipping(SdkBaseModel):
-    percentages: Optional[list[int | None]] = UNSET
+    percentages: OptionalNullable[list[int]] = UNSET
     """Set three custom percentage amounts that buyers can select at checkout. If Smart Tip is enabled, this only
     applies to transactions totaling $10 or more."""
 
@@ -21,7 +21,7 @@ class CheckoutLocationSettingsTipping(SdkBaseModel):
     """Set the pre-selected percentage amounts that appear at checkout. If Smart Tip is enabled, this only applies to
     transactions totaling $10 or more."""
 
-    smart_tips: Optional[list[Money | None]] = UNSET
+    smart_tips: OptionalNullable[list[Money]] = UNSET
     """Show the Smart Tip Amounts for this location."""
 
     default_smart_tip: Optional[Money] = UNSET
@@ -32,8 +32,8 @@ class CheckoutLocationSettingsTipping(SdkBaseModel):
 
 
 class CheckoutLocationSettingsTippingDict(TypedDict):
-    percentages: NotRequired[list[int | None]]
+    percentages: NotRequired[list[int] | None]
     smart_tipping_enabled: NotRequired[bool | None]
     default_percent: NotRequired[int | None]
-    smart_tips: NotRequired[list[Money | MoneyDict | None]]
-    default_smart_tip: NotRequired[Money | MoneyDict]
+    smart_tips: NotRequired[list[MoneyDict] | None]
+    default_smart_tip: NotRequired[MoneyDict]

@@ -23,16 +23,6 @@ class CheckoutMerchantSettingsPaymentMethodsAfterpayClearpay(SdkBaseModel):
 
 
 class CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayDict(TypedDict):
-    order_eligibility_range: NotRequired[
-        (
-            CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayEligibilityRange
-            | CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayEligibilityRangeDict
-        )
-    ]
-    item_eligibility_range: NotRequired[
-        (
-            CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayEligibilityRange
-            | CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayEligibilityRangeDict
-        )
-    ]
+    order_eligibility_range: NotRequired[CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayEligibilityRangeDict]
+    item_eligibility_range: NotRequired[CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayEligibilityRangeDict]
     enabled: NotRequired[bool]

@@ -20,5 +20,5 @@ class ListCashDrawerShiftEventsResponse(SdkBaseModel):
 
 class ListCashDrawerShiftEventsResponseDict(TypedDict):
     cursor: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
-    cash_drawer_shift_events: NotRequired[list[CashDrawerShiftEvent | CashDrawerShiftEventDict]]
+    errors: NotRequired[list[ErrorDict]]
+    cash_drawer_shift_events: NotRequired[list[CashDrawerShiftEventDict]]

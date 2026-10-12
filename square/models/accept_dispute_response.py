@@ -19,5 +19,5 @@ class AcceptDisputeResponse(SdkBaseModel):
 
 
 class AcceptDisputeResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    dispute: NotRequired[Dispute | DisputeDict]
+    errors: NotRequired[list[ErrorDict]]
+    dispute: NotRequired[DisputeDict]

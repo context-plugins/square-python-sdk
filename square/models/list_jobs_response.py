@@ -24,6 +24,6 @@ class ListJobsResponse(SdkBaseModel):
 
 
 class ListJobsResponseDict(TypedDict):
-    jobs: NotRequired[list[Job | JobDict]]
+    jobs: NotRequired[list[JobDict]]
     cursor: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

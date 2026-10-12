@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
+from ..core import UNSET, OptionalNullable, SdkBaseModel
 
 
 class TipSettings(SdkBaseModel):
@@ -16,7 +16,7 @@ class TipSettings(SdkBaseModel):
     custom_tip_field: OptionalNullable[bool] = UNSET
     """Indicates whether custom tip amounts are allowed during the checkout flow. Defaults to false."""
 
-    tip_percentages: Optional[list[int | None]] = UNSET
+    tip_percentages: OptionalNullable[list[int]] = UNSET
     """A list of tip percentages that should be presented during the checkout flow, specified as up to 3 non-negative
     integers from 0 to 100 (inclusive). Defaults to 15, 20, and 25."""
 
@@ -40,5 +40,5 @@ class TipSettingsDict(TypedDict):
     allow_tipping: NotRequired[bool | None]
     separate_tip_screen: NotRequired[bool | None]
     custom_tip_field: NotRequired[bool | None]
-    tip_percentages: NotRequired[list[int | None]]
+    tip_percentages: NotRequired[list[int] | None]
     smart_tipping: NotRequired[bool | None]

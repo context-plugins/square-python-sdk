@@ -27,6 +27,6 @@ class SearchSubscriptionsResponse(SdkBaseModel):
 
 
 class SearchSubscriptionsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    subscriptions: NotRequired[list[Subscription | SubscriptionDict]]
+    errors: NotRequired[list[ErrorDict]]
+    subscriptions: NotRequired[list[SubscriptionDict]]
     cursor: NotRequired[str]

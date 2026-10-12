@@ -18,5 +18,5 @@ class ListSitesResponse(SdkBaseModel):
 
 
 class ListSitesResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    sites: NotRequired[list[Site | SiteDict]]
+    errors: NotRequired[list[ErrorDict]]
+    sites: NotRequired[list[SiteDict]]

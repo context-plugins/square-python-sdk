@@ -22,5 +22,5 @@ class CreateSubscriptionResponse(SdkBaseModel):
 
 
 class CreateSubscriptionResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    subscription: NotRequired[Subscription | SubscriptionDict]
+    errors: NotRequired[list[ErrorDict]]
+    subscription: NotRequired[SubscriptionDict]

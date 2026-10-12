@@ -25,6 +25,6 @@ class SearchInvoicesRequest(SdkBaseModel):
 
 
 class SearchInvoicesRequestDict(TypedDict):
-    query: InvoiceQuery | InvoiceQueryDict
+    query: InvoiceQueryDict
     limit: NotRequired[int]
     cursor: NotRequired[str]

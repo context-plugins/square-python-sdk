@@ -27,4 +27,4 @@ class OrderLineItemAppliedServiceCharge(SdkBaseModel):
 class OrderLineItemAppliedServiceChargeDict(TypedDict):
     uid: NotRequired[str | None]
     service_charge_uid: str
-    applied_money: NotRequired[Money | MoneyDict]
+    applied_money: NotRequired[MoneyDict]

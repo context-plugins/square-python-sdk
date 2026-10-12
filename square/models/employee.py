@@ -27,7 +27,7 @@ class Employee(SdkBaseModel):
     """The employee's phone number in E.164 format, i.e. "+12125554250"
     """
 
-    location_ids: Optional[list[str | None]] = UNSET
+    location_ids: OptionalNullable[list[str]] = UNSET
     """A list of location IDs where this employee has access to."""
 
     status: Optional[EmployeeStatusOrStr] = UNSET
@@ -52,7 +52,7 @@ class EmployeeDict(TypedDict):
     last_name: NotRequired[str | None]
     email: NotRequired[str | None]
     phone_number: NotRequired[str | None]
-    location_ids: NotRequired[list[str | None]]
+    location_ids: NotRequired[list[str] | None]
     status: NotRequired[EmployeeStatusOrStr]
     is_owner: NotRequired[bool | None]
     created_at: NotRequired[str]

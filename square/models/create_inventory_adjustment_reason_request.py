@@ -20,4 +20,4 @@ class CreateInventoryAdjustmentReasonRequest(SdkBaseModel):
 
 class CreateInventoryAdjustmentReasonRequestDict(TypedDict):
     idempotency_key: str
-    adjustment_reason: InventoryAdjustmentReason | InventoryAdjustmentReasonDict
+    adjustment_reason: InventoryAdjustmentReasonDict

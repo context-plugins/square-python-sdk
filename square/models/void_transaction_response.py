@@ -15,4 +15,4 @@ class VoidTransactionResponse(SdkBaseModel):
 
 
 class VoidTransactionResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

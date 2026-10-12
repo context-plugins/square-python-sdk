@@ -21,4 +21,4 @@ class UpdateVendorRequest(SdkBaseModel):
 
 class UpdateVendorRequestDict(TypedDict):
     idempotency_key: NotRequired[str | None]
-    vendor: Vendor | VendorDict
+    vendor: VendorDict

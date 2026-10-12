@@ -24,5 +24,5 @@ class BulkUpsertBookingCustomAttributesResponse(SdkBaseModel):
 
 
 class BulkUpsertBookingCustomAttributesResponseDict(TypedDict):
-    values: NotRequired[dict[str, BookingCustomAttributeUpsertResponse | BookingCustomAttributeUpsertResponseDict]]
-    errors: NotRequired[list[Error | ErrorDict]]
+    values: NotRequired[dict[str, BookingCustomAttributeUpsertResponseDict]]
+    errors: NotRequired[list[ErrorDict]]

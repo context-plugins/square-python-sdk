@@ -44,9 +44,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `DELETE /v2/online-checkout/payment-links/{id}`
 - **Auth**: `oauth2`
-- **Signature**: `def delete_payment_link(id: str, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`
-- **Params**: `id` — path
+- **Signature**: `def delete_payment_link(id_: str, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`
+- **Params**: `id_` — path `id`
 - **Returns (parsed)**: `DeletePaymentLinkResponse`
 - **Returns (raw)**: `ApiResult[DeletePaymentLinkResponse, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -101,9 +101,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /v2/online-checkout/payment-links/{id}`
 - **Auth**: `oauth2`
-- **Signature**: `def retrieve_payment_link(id: str, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`
-- **Params**: `id` — path
+- **Signature**: `def retrieve_payment_link(id_: str, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`
+- **Params**: `id_` — path `id`
 - **Returns (parsed)**: `RetrievePaymentLinkResponse`
 - **Returns (raw)**: `ApiResult[RetrievePaymentLinkResponse, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -150,9 +150,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `PUT /v2/online-checkout/payment-links/{id}`
 - **Auth**: `oauth2`
-- **Signature**: `def update_payment_link(id: str, body: UpdatePaymentLinkRequest | UpdatePaymentLinkRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`, `body`
-- **Params**: `id` — path · `body` — JSON body
+- **Signature**: `def update_payment_link(id_: str, body: UpdatePaymentLinkRequest | UpdatePaymentLinkRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`, `body`
+- **Params**: `id_` — path `id` · `body` — JSON body
 - **Returns (parsed)**: `UpdatePaymentLinkResponse`
 - **Returns (raw)**: `ApiResult[UpdatePaymentLinkResponse, RawError]`
 - **Error**: `RawError` — **Case B**

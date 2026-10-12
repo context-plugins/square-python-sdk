@@ -20,5 +20,5 @@ class GetEmployeeWageResponse(SdkBaseModel):
 
 
 class GetEmployeeWageResponseDict(TypedDict):
-    employee_wage: NotRequired[EmployeeWage | EmployeeWageDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    employee_wage: NotRequired[EmployeeWageDict]
+    errors: NotRequired[list[ErrorDict]]

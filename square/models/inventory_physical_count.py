@@ -71,7 +71,7 @@ class InventoryPhysicalCountDict(TypedDict):
     state: NotRequired[InventoryStateOrStr]
     location_id: NotRequired[str | None]
     quantity: NotRequired[str | None]
-    source: NotRequired[SourceApplication | SourceApplicationDict]
+    source: NotRequired[SourceApplicationDict]
     employee_id: NotRequired[str | None]
     team_member_id: NotRequired[str | None]
     occurred_at: NotRequired[str | None]

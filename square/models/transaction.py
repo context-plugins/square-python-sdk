@@ -23,10 +23,10 @@ class Transaction(SdkBaseModel):
     created_at: Optional[str] = UNSET
     """The timestamp for when the transaction was created, in RFC 3339 format."""
 
-    tenders: Optional[list[Tender | None]] = UNSET
+    tenders: OptionalNullable[list[Tender]] = UNSET
     """The tenders used to pay in the transaction."""
 
-    refunds: Optional[list[Refund | None]] = UNSET
+    refunds: OptionalNullable[list[Refund]] = UNSET
     """Refunds that have been applied to any tender in the transaction."""
 
     reference_id: OptionalNullable[str] = UNSET
@@ -59,10 +59,10 @@ class TransactionDict(TypedDict):
     id: NotRequired[str]
     location_id: NotRequired[str | None]
     created_at: NotRequired[str]
-    tenders: NotRequired[list[Tender | TenderDict | None]]
-    refunds: NotRequired[list[Refund | RefundDict | None]]
+    tenders: NotRequired[list[TenderDict] | None]
+    refunds: NotRequired[list[RefundDict] | None]
     reference_id: NotRequired[str | None]
     product: NotRequired[TransactionProductOrStr]
     client_id: NotRequired[str | None]
-    shipping_address: NotRequired[Address | AddressDict]
+    shipping_address: NotRequired[AddressDict]
     order_id: NotRequired[str | None]

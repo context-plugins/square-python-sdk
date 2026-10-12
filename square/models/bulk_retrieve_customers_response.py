@@ -23,5 +23,5 @@ class BulkRetrieveCustomersResponse(SdkBaseModel):
 
 
 class BulkRetrieveCustomersResponseDict(TypedDict):
-    responses: NotRequired[dict[str, RetrieveCustomerResponse | RetrieveCustomerResponseDict]]
-    errors: NotRequired[list[Error | ErrorDict]]
+    responses: NotRequired[dict[str, RetrieveCustomerResponseDict]]
+    errors: NotRequired[list[ErrorDict]]

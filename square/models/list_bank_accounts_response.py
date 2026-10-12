@@ -24,6 +24,6 @@ class ListBankAccountsResponse(SdkBaseModel):
 
 
 class ListBankAccountsResponseDict(TypedDict):
-    bank_accounts: NotRequired[list[BankAccount | BankAccountDict]]
-    errors: NotRequired[list[Error | ErrorDict]]
+    bank_accounts: NotRequired[list[BankAccountDict]]
+    errors: NotRequired[list[ErrorDict]]
     cursor: NotRequired[str]

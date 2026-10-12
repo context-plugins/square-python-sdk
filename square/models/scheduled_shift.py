@@ -37,8 +37,8 @@ class ScheduledShift(SdkBaseModel):
 
 class ScheduledShiftDict(TypedDict):
     id: NotRequired[str]
-    draft_shift_details: NotRequired[ScheduledShiftDetails | ScheduledShiftDetailsDict]
-    published_shift_details: NotRequired[ScheduledShiftDetails | ScheduledShiftDetailsDict]
+    draft_shift_details: NotRequired[ScheduledShiftDetailsDict]
+    published_shift_details: NotRequired[ScheduledShiftDetailsDict]
     version: NotRequired[int]
     created_at: NotRequired[str]
     updated_at: NotRequired[str]

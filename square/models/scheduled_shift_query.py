@@ -20,5 +20,5 @@ class ScheduledShiftQuery(SdkBaseModel):
 
 
 class ScheduledShiftQueryDict(TypedDict):
-    filter: NotRequired[ScheduledShiftFilter | ScheduledShiftFilterDict]
-    sort: NotRequired[ScheduledShiftSort | ScheduledShiftSortDict]
+    filter: NotRequired[ScheduledShiftFilterDict]
+    sort: NotRequired[ScheduledShiftSortDict]

@@ -21,6 +21,6 @@ class SearchTransferOrdersResponse(SdkBaseModel):
 
 
 class SearchTransferOrdersResponseDict(TypedDict):
-    transfer_orders: NotRequired[list[TransferOrder | TransferOrderDict]]
+    transfer_orders: NotRequired[list[TransferOrderDict]]
     cursor: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

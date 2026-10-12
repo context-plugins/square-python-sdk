@@ -20,10 +20,4 @@ class BulkUpsertLocationCustomAttributesRequest(SdkBaseModel):
 
 
 class BulkUpsertLocationCustomAttributesRequestDict(TypedDict):
-    values: dict[
-        str,
-        (
-            BulkUpsertLocationCustomAttributesRequestLocationCustomAttributeUpsertRequest
-            | BulkUpsertLocationCustomAttributesRequestLocationCustomAttributeUpsertRequestDict
-        ),
-    ]
+    values: dict[str, BulkUpsertLocationCustomAttributesRequestLocationCustomAttributeUpsertRequestDict]

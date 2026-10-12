@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.bulk_delete_booking_custom_attributes_request import (
     BulkDeleteBookingCustomAttributesRequest,
@@ -73,16 +75,17 @@ class BookingCustomAttributes:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.bulk_delete_booking_custom_attributes(
-            body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.bulk_delete_booking_custom_attributes(body, request_options=request_options)
+        )
 
     def bulk_upsert_booking_custom_attributes(
         self,
@@ -102,16 +105,17 @@ class BookingCustomAttributes:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.bulk_upsert_booking_custom_attributes(
-            body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.bulk_upsert_booking_custom_attributes(body, request_options=request_options)
+        )
 
     def create_booking_custom_attribute_definition(
         self,
@@ -131,16 +135,17 @@ class BookingCustomAttributes:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_booking_custom_attribute_definition(
-            body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.create_booking_custom_attribute_definition(body, request_options=request_options)
+        )
 
     def delete_booking_custom_attribute(
         self, booking_id: str, key: str, *, request_options: RequestOptionsOrDict | None = None
@@ -159,16 +164,17 @@ class BookingCustomAttributes:
             key: The key of the custom attribute to delete. This key must match the ``key`` of a custom attribute
                 definition in the Square seller account. If the requesting application is not the definition owner, you
                 must use the qualified key.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_booking_custom_attribute(
-            booking_id, key, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.delete_booking_custom_attribute(booking_id, key, request_options=request_options)
+        )
 
     def delete_booking_custom_attribute_definition(
         self, key: str, *, request_options: RequestOptionsOrDict | None = None
@@ -184,16 +190,17 @@ class BookingCustomAttributes:
 
         Args:
             key: The key of the custom attribute definition to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_booking_custom_attribute_definition(
-            key, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.delete_booking_custom_attribute_definition(key, request_options=request_options)
+        )
 
     def list_booking_custom_attribute_definitions(
         self,
@@ -216,16 +223,19 @@ class BookingCustomAttributes:
             cursor: The cursor returned in the paged response from the previous call to this endpoint. Provide this
                 cursor to retrieve the next page of results for your original request. For more information, see
                 `Pagination <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_booking_custom_attribute_definitions(
-            limit=limit, cursor=cursor, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_booking_custom_attribute_definitions(
+                limit=limit, cursor=cursor, request_options=request_options
+            ),
+        )
 
     def list_booking_custom_attributes(
         self,
@@ -255,16 +265,23 @@ class BookingCustomAttributes:
                 <entity:CustomAttributeDefinition>`__ in the ``definition`` field of each custom attribute. Set this
                 parameter to ``true`` to get the name and description of each custom attribute, information about the
                 data type, or other definition details. The default value is ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_booking_custom_attributes(
-            booking_id, limit=limit, cursor=cursor, with_definitions=with_definitions, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_booking_custom_attributes(
+                booking_id,
+                limit=limit,
+                cursor=cursor,
+                with_definitions=with_definitions,
+                request_options=request_options,
+            ),
+        )
 
     def retrieve_booking_custom_attribute(
         self,
@@ -294,16 +311,19 @@ class BookingCustomAttributes:
                 guarantee that you receive the most up-to-date data. When included in the request, Square returns the
                 specified version or a higher version if one exists. If the specified version is higher than the current
                 version, Square returns a ``BAD_REQUEST`` error.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_booking_custom_attribute(
-            booking_id, key, with_definition=with_definition, version=version, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.retrieve_booking_custom_attribute(
+                booking_id, key, with_definition=with_definition, version=version, request_options=request_options
+            ),
+        )
 
     def retrieve_booking_custom_attribute_definition(
         self, key: str, *, version: int | None = None, request_options: RequestOptionsOrDict | None = None
@@ -321,16 +341,19 @@ class BookingCustomAttributes:
                 to guarantee that you receive the most up-to-date data. When included in the request, Square returns the
                 specified version or a higher version if one exists. If the specified version is higher than the current
                 version, Square returns a ``BAD_REQUEST`` error.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_booking_custom_attribute_definition(
-            key, version=version, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.retrieve_booking_custom_attribute_definition(
+                key, version=version, request_options=request_options
+            ),
+        )
 
     def update_booking_custom_attribute_definition(
         self,
@@ -352,16 +375,19 @@ class BookingCustomAttributes:
             key: The key of the custom attribute definition to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_booking_custom_attribute_definition(
-            key, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.update_booking_custom_attribute_definition(
+                key, body, request_options=request_options
+            ),
+        )
 
     def upsert_booking_custom_attribute(
         self,
@@ -387,16 +413,19 @@ class BookingCustomAttributes:
                 owner, you must use the qualified key.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.upsert_booking_custom_attribute(
-            booking_id, key, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.upsert_booking_custom_attribute(
+                booking_id, key, body, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> BookingCustomAttributesWithRawResponse:
@@ -425,16 +454,17 @@ class AsyncBookingCustomAttributes:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.bulk_delete_booking_custom_attributes(body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def bulk_upsert_booking_custom_attributes(
         self,
@@ -454,16 +484,17 @@ class AsyncBookingCustomAttributes:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.bulk_upsert_booking_custom_attributes(body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def create_booking_custom_attribute_definition(
         self,
@@ -483,18 +514,19 @@ class AsyncBookingCustomAttributes:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.create_booking_custom_attribute_definition(
                 body, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def delete_booking_custom_attribute(
         self, booking_id: str, key: str, *, request_options: RequestOptionsOrDict | None = None
@@ -513,18 +545,19 @@ class AsyncBookingCustomAttributes:
             key: The key of the custom attribute to delete. This key must match the ``key`` of a custom attribute
                 definition in the Square seller account. If the requesting application is not the definition owner, you
                 must use the qualified key.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.delete_booking_custom_attribute(
                 booking_id, key, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def delete_booking_custom_attribute_definition(
         self, key: str, *, request_options: RequestOptionsOrDict | None = None
@@ -540,18 +573,19 @@ class AsyncBookingCustomAttributes:
 
         Args:
             key: The key of the custom attribute definition to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.delete_booking_custom_attribute_definition(
                 key, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def list_booking_custom_attribute_definitions(
         self,
@@ -574,18 +608,19 @@ class AsyncBookingCustomAttributes:
             cursor: The cursor returned in the paged response from the previous call to this endpoint. Provide this
                 cursor to retrieve the next page of results for your original request. For more information, see
                 `Pagination <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_booking_custom_attribute_definitions(
                 limit=limit, cursor=cursor, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def list_booking_custom_attributes(
         self,
@@ -615,22 +650,23 @@ class AsyncBookingCustomAttributes:
                 <entity:CustomAttributeDefinition>`__ in the ``definition`` field of each custom attribute. Set this
                 parameter to ``true`` to get the name and description of each custom attribute, information about the
                 data type, or other definition details. The default value is ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_booking_custom_attributes(
                 booking_id,
                 limit=limit,
                 cursor=cursor,
                 with_definitions=with_definitions,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_booking_custom_attribute(
         self,
@@ -660,18 +696,19 @@ class AsyncBookingCustomAttributes:
                 guarantee that you receive the most up-to-date data. When included in the request, Square returns the
                 specified version or a higher version if one exists. If the specified version is higher than the current
                 version, Square returns a ``BAD_REQUEST`` error.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_booking_custom_attribute(
                 booking_id, key, with_definition=with_definition, version=version, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_booking_custom_attribute_definition(
         self, key: str, *, version: int | None = None, request_options: RequestOptionsOrDict | None = None
@@ -689,18 +726,19 @@ class AsyncBookingCustomAttributes:
                 to guarantee that you receive the most up-to-date data. When included in the request, Square returns the
                 specified version or a higher version if one exists. If the specified version is higher than the current
                 version, Square returns a ``BAD_REQUEST`` error.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_booking_custom_attribute_definition(
                 key, version=version, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def update_booking_custom_attribute_definition(
         self,
@@ -722,18 +760,19 @@ class AsyncBookingCustomAttributes:
             key: The key of the custom attribute definition to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.update_booking_custom_attribute_definition(
                 key, body, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def upsert_booking_custom_attribute(
         self,
@@ -759,18 +798,19 @@ class AsyncBookingCustomAttributes:
                 owner, you must use the qualified key.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.upsert_booking_custom_attribute(
                 booking_id, key, body, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncBookingCustomAttributesWithRawResponse:
@@ -796,7 +836,8 @@ class BookingCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serve
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -831,7 +872,8 @@ class BookingCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serve
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -866,7 +908,8 @@ class BookingCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serve
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -900,7 +943,8 @@ class BookingCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serve
             key: The key of the custom attribute to delete. This key must match the ``key`` of a custom attribute
                 definition in the Square seller account. If the requesting application is not the definition owner, you
                 must use the qualified key.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -929,7 +973,8 @@ class BookingCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serve
 
         Args:
             key: The key of the custom attribute definition to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -965,7 +1010,8 @@ class BookingCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serve
             cursor: The cursor returned in the paged response from the previous call to this endpoint. Provide this
                 cursor to retrieve the next page of results for your original request. For more information, see
                 `Pagination <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1007,7 +1053,8 @@ class BookingCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serve
                 <entity:CustomAttributeDefinition>`__ in the ``definition`` field of each custom attribute. Set this
                 parameter to ``true`` to get the name and description of each custom attribute, information about the
                 data type, or other definition details. The default value is ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1054,7 +1101,8 @@ class BookingCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serve
                 guarantee that you receive the most up-to-date data. When included in the request, Square returns the
                 specified version or a higher version if one exists. If the specified version is higher than the current
                 version, Square returns a ``BAD_REQUEST`` error.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1087,7 +1135,8 @@ class BookingCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serve
                 to guarantee that you receive the most up-to-date data. When included in the request, Square returns the
                 specified version or a higher version if one exists. If the specified version is higher than the current
                 version, Square returns a ``BAD_REQUEST`` error.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1122,7 +1171,8 @@ class BookingCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serve
             key: The key of the custom attribute definition to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1164,7 +1214,8 @@ class BookingCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Serve
                 owner, you must use the qualified key.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1200,7 +1251,8 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1212,7 +1264,7 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
                 body
             ),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BulkDeleteBookingCustomAttributesResponse],
+            decoder=async_json_decoder[BulkDeleteBookingCustomAttributesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1235,7 +1287,8 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1247,7 +1300,7 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
                 body
             ),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BulkUpsertBookingCustomAttributesResponse],
+            decoder=async_json_decoder[BulkUpsertBookingCustomAttributesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1270,7 +1323,8 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1282,7 +1336,7 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
                 CreateBookingCustomAttributeDefinitionRequest | CreateBookingCustomAttributeDefinitionRequestDict
             ](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateBookingCustomAttributeDefinitionResponse],
+            decoder=async_json_decoder[CreateBookingCustomAttributeDefinitionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1304,7 +1358,8 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
             key: The key of the custom attribute to delete. This key must match the ``key`` of a custom attribute
                 definition in the Square seller account. If the requesting application is not the definition owner, you
                 must use the qualified key.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1314,7 +1369,7 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
             path_params=[param[str]("booking_id", booking_id), param[str]("key", key)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeleteBookingCustomAttributeResponse],
+            decoder=async_json_decoder[DeleteBookingCustomAttributeResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1333,7 +1388,8 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
 
         Args:
             key: The key of the custom attribute definition to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1343,7 +1399,7 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
             path_params=[param[str]("key", key)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeleteBookingCustomAttributeDefinitionResponse],
+            decoder=async_json_decoder[DeleteBookingCustomAttributeDefinitionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1369,7 +1425,8 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
             cursor: The cursor returned in the paged response from the previous call to this endpoint. Provide this
                 cursor to retrieve the next page of results for your original request. For more information, see
                 `Pagination <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1378,7 +1435,7 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
             url_template=self._server.default("/v2/bookings/custom-attribute-definitions"),
             query_params=[param[int | None]("limit", limit), param[str | None]("cursor", cursor)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListBookingCustomAttributeDefinitionsResponse],
+            decoder=async_json_decoder[ListBookingCustomAttributeDefinitionsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1411,7 +1468,8 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
                 <entity:CustomAttributeDefinition>`__ in the ``definition`` field of each custom attribute. Set this
                 parameter to ``true`` to get the name and description of each custom attribute, information about the
                 data type, or other definition details. The default value is ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1425,7 +1483,7 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
                 param[bool | None]("with_definitions", with_definitions),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListBookingCustomAttributesResponse],
+            decoder=async_json_decoder[ListBookingCustomAttributesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1458,7 +1516,8 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
                 guarantee that you receive the most up-to-date data. When included in the request, Square returns the
                 specified version or a higher version if one exists. If the specified version is higher than the current
                 version, Square returns a ``BAD_REQUEST`` error.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1470,7 +1529,7 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
                 param[bool | None]("with_definition", with_definition), param[int | None]("version", version)
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveBookingCustomAttributeResponse],
+            decoder=async_json_decoder[RetrieveBookingCustomAttributeResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1491,7 +1550,8 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
                 to guarantee that you receive the most up-to-date data. When included in the request, Square returns the
                 specified version or a higher version if one exists. If the specified version is higher than the current
                 version, Square returns a ``BAD_REQUEST`` error.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1501,7 +1561,7 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
             path_params=[param[str]("key", key)],
             query_params=[param[int | None]("version", version)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveBookingCustomAttributeDefinitionResponse],
+            decoder=async_json_decoder[RetrieveBookingCustomAttributeDefinitionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1526,7 +1586,8 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
             key: The key of the custom attribute definition to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1539,7 +1600,7 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
                 UpdateBookingCustomAttributeDefinitionRequest | UpdateBookingCustomAttributeDefinitionRequestDict
             ](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateBookingCustomAttributeDefinitionResponse],
+            decoder=async_json_decoder[UpdateBookingCustomAttributeDefinitionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1568,7 +1629,8 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
                 owner, you must use the qualified key.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1579,7 +1641,7 @@ class AsyncBookingCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawCli
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpsertBookingCustomAttributeRequest | UpsertBookingCustomAttributeRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpsertBookingCustomAttributeResponse],
+            decoder=async_json_decoder[UpsertBookingCustomAttributeResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

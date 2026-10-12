@@ -34,7 +34,7 @@ class OrderQuantityUnit(SdkBaseModel):
 
 
 class OrderQuantityUnitDict(TypedDict):
-    measurement_unit: NotRequired[MeasurementUnit | MeasurementUnitDict]
+    measurement_unit: NotRequired[MeasurementUnitDict]
     precision: NotRequired[int | None]
     catalog_object_id: NotRequired[str | None]
     catalog_version: NotRequired[int | None]

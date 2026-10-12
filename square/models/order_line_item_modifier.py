@@ -41,7 +41,7 @@ class OrderLineItemModifier(SdkBaseModel):
     the sign of the value indicates the purpose of the money transfer. See `Working with Monetary Amounts
     <https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts>`__ for more information."""
 
-    metadata: Optional[dict[str, str | None]] = UNSET
+    metadata: OptionalNullable[dict[str, str]] = UNSET
     """Application-defined data attached to this order. Metadata fields are intended to store descriptive references or
     associations with an entity in another system or store brief information about the object. Square does not process
     this field; it only stores and returns it in relevant API calls. Do not use metadata to store any sensitive
@@ -69,7 +69,7 @@ class OrderLineItemModifierDict(TypedDict):
     catalog_version: NotRequired[int | None]
     name: NotRequired[str | None]
     quantity: NotRequired[str | None]
-    base_price_money: NotRequired[Money | MoneyDict]
-    total_price_money: NotRequired[Money | MoneyDict]
-    metadata: NotRequired[dict[str, str | None]]
+    base_price_money: NotRequired[MoneyDict]
+    total_price_money: NotRequired[MoneyDict]
+    metadata: NotRequired[dict[str, str] | None]
     parent_modifier_uid: NotRequired[str | None]

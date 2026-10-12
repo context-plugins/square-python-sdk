@@ -17,4 +17,4 @@ class VendorUpdatedEventObject(SdkBaseModel):
 
 class VendorUpdatedEventObjectDict(TypedDict):
     operation: NotRequired[VendorUpdatedEventObjectOperationOrStr]
-    vendor: NotRequired[Vendor | VendorDict]
+    vendor: NotRequired[VendorDict]

@@ -37,4 +37,4 @@ class MerchantCustomAttributeDefinitionOwnedDeletedEventDict(TypedDict):
     type_: NotRequired[str | None]
     event_id: NotRequired[str | None]
     created_at: NotRequired[str]
-    data: NotRequired[CustomAttributeDefinitionEventData | CustomAttributeDefinitionEventDataDict]
+    data: NotRequired[CustomAttributeDefinitionEventDataDict]

@@ -24,7 +24,7 @@ class BatchUpsertCatalogObjectsResponse(SdkBaseModel):
 
 
 class BatchUpsertCatalogObjectsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    objects: NotRequired[list[CatalogObject | CatalogObjectDict]]
+    errors: NotRequired[list[ErrorDict]]
+    objects: NotRequired[list[CatalogObjectDict]]
     updated_at: NotRequired[str]
-    id_mappings: NotRequired[list[CatalogIdMapping | CatalogIdMappingDict]]
+    id_mappings: NotRequired[list[CatalogIdMappingDict]]

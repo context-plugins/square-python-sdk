@@ -48,9 +48,7 @@ class LoyaltyProgramAccrualRule(SdkBaseModel):
 class LoyaltyProgramAccrualRuleDict(TypedDict):
     accrual_type: LoyaltyProgramAccrualRuleTypeOrStr
     points: NotRequired[int | None]
-    visit_data: NotRequired[LoyaltyProgramAccrualRuleVisitData | LoyaltyProgramAccrualRuleVisitDataDict]
-    spend_data: NotRequired[LoyaltyProgramAccrualRuleSpendData | LoyaltyProgramAccrualRuleSpendDataDict]
-    item_variation_data: NotRequired[
-        LoyaltyProgramAccrualRuleItemVariationData | LoyaltyProgramAccrualRuleItemVariationDataDict
-    ]
-    category_data: NotRequired[LoyaltyProgramAccrualRuleCategoryData | LoyaltyProgramAccrualRuleCategoryDataDict]
+    visit_data: NotRequired[LoyaltyProgramAccrualRuleVisitDataDict]
+    spend_data: NotRequired[LoyaltyProgramAccrualRuleSpendDataDict]
+    item_variation_data: NotRequired[LoyaltyProgramAccrualRuleItemVariationDataDict]
+    category_data: NotRequired[LoyaltyProgramAccrualRuleCategoryDataDict]

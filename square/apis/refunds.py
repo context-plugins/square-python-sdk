@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.enums.list_payment_refunds_request_sort_field import ListPaymentRefundsRequestSortFieldOrStr
 from ..models.get_payment_refund_response import GetPaymentRefundResponse
@@ -34,14 +36,15 @@ class Refunds:
 
         Args:
             refund_id: The unique ID for the desired ``PaymentRefund``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.get_payment_refund(refund_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.get_payment_refund(refund_id, request_options=request_options))
 
     def list_payment_refunds(
         self,
@@ -97,27 +100,30 @@ class Refunds:
                 format. The range is determined using the ``updated_at`` field for each ``PaymentRefund``. Default: The
                 current time.
             sort_field: The field used to sort results by. The default is ``CREATED_AT``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_payment_refunds(
-            begin_time=begin_time,
-            end_time=end_time,
-            sort_order=sort_order,
-            cursor=cursor,
-            location_id=location_id,
-            status=status,
-            source_type=source_type,
-            limit=limit,
-            updated_at_begin_time=updated_at_begin_time,
-            updated_at_end_time=updated_at_end_time,
-            sort_field=sort_field,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_payment_refunds(
+                begin_time=begin_time,
+                end_time=end_time,
+                sort_order=sort_order,
+                cursor=cursor,
+                location_id=location_id,
+                status=status,
+                source_type=source_type,
+                limit=limit,
+                updated_at_begin_time=updated_at_begin_time,
+                updated_at_end_time=updated_at_end_time,
+                sort_field=sort_field,
+                request_options=request_options,
+            ),
+        )
 
     def refund_payment(
         self,
@@ -132,14 +138,15 @@ class Refunds:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.refund_payment(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.refund_payment(body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> RefundsWithRawResponse:
@@ -157,14 +164,15 @@ class AsyncRefunds:
 
         Args:
             refund_id: The unique ID for the desired ``PaymentRefund``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.get_payment_refund(refund_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.get_payment_refund(refund_id, request_options=request_options))
 
     async def list_payment_refunds(
         self,
@@ -220,14 +228,15 @@ class AsyncRefunds:
                 format. The range is determined using the ``updated_at`` field for each ``PaymentRefund``. Default: The
                 current time.
             sort_field: The field used to sort results by. The default is ``CREATED_AT``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_payment_refunds(
                 begin_time=begin_time,
                 end_time=end_time,
@@ -241,8 +250,8 @@ class AsyncRefunds:
                 updated_at_end_time=updated_at_end_time,
                 sort_field=sort_field,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def refund_payment(
         self,
@@ -257,14 +266,15 @@ class AsyncRefunds:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.refund_payment(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.refund_payment(body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncRefundsWithRawResponse:
@@ -279,7 +289,8 @@ class RefundsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
 
         Args:
             refund_id: The unique ID for the desired ``PaymentRefund``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -347,7 +358,8 @@ class RefundsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
                 format. The range is determined using the ``updated_at`` field for each ``PaymentRefund``. Default: The
                 current time.
             sort_field: The field used to sort results by. The default is ``CREATED_AT``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -386,7 +398,8 @@ class RefundsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -410,7 +423,8 @@ class AsyncRefundsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
 
         Args:
             refund_id: The unique ID for the desired ``PaymentRefund``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -419,7 +433,7 @@ class AsyncRefundsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             url_template=self._server.default("/v2/refunds/{refund_id}"),
             path_params=[param[str]("refund_id", refund_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[GetPaymentRefundResponse],
+            decoder=async_json_decoder[GetPaymentRefundResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -478,7 +492,8 @@ class AsyncRefundsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
                 format. The range is determined using the ``updated_at`` field for each ``PaymentRefund``. Default: The
                 current time.
             sort_field: The field used to sort results by. The default is ``CREATED_AT``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -499,7 +514,7 @@ class AsyncRefundsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
                 param[ListPaymentRefundsRequestSortFieldOrStr | None]("sort_field", sort_field),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListPaymentRefundsResponse],
+            decoder=async_json_decoder[ListPaymentRefundsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -517,7 +532,8 @@ class AsyncRefundsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -527,7 +543,7 @@ class AsyncRefundsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RefundPaymentRequest | RefundPaymentRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RefundPaymentResponse],
+            decoder=async_json_decoder[RefundPaymentResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

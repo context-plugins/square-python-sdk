@@ -48,5 +48,5 @@ class CreateCatalogImageRequest(SdkBaseModel):
 class CreateCatalogImageRequestDict(TypedDict):
     idempotency_key: str
     object_id: NotRequired[str]
-    image: CatalogObject | CatalogObjectDict
+    image: CatalogObjectDict
     is_primary: NotRequired[bool]

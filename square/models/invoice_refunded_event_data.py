@@ -20,4 +20,4 @@ class InvoiceRefundedEventData(SdkBaseModel):
 class InvoiceRefundedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[InvoiceRefundedEventObject | InvoiceRefundedEventObjectDict]
+    object_: NotRequired[InvoiceRefundedEventObjectDict]

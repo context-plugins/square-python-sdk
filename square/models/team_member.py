@@ -62,5 +62,5 @@ class TeamMemberDict(TypedDict):
     phone_number: NotRequired[str | None]
     created_at: NotRequired[str]
     updated_at: NotRequired[str]
-    assigned_locations: NotRequired[TeamMemberAssignedLocations | TeamMemberAssignedLocationsDict]
-    wage_setting: NotRequired[WageSetting | WageSettingDict]
+    assigned_locations: NotRequired[TeamMemberAssignedLocationsDict]
+    wage_setting: NotRequired[WageSettingDict]

@@ -21,5 +21,5 @@ class RetrieveJobResponse(SdkBaseModel):
 
 
 class RetrieveJobResponseDict(TypedDict):
-    job: NotRequired[Job | JobDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    job: NotRequired[JobDict]
+    errors: NotRequired[list[ErrorDict]]

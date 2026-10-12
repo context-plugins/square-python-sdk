@@ -27,6 +27,6 @@ class ListSubscriptionEventsResponse(SdkBaseModel):
 
 
 class ListSubscriptionEventsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    subscription_events: NotRequired[list[SubscriptionEvent | SubscriptionEventDict]]
+    errors: NotRequired[list[ErrorDict]]
+    subscription_events: NotRequired[list[SubscriptionEventDict]]
     cursor: NotRequired[str]

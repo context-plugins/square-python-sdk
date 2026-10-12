@@ -14,4 +14,4 @@ class UpdateWebhookSubscriptionRequest(SdkBaseModel):
 
 
 class UpdateWebhookSubscriptionRequestDict(TypedDict):
-    subscription: NotRequired[WebhookSubscription | WebhookSubscriptionDict]
+    subscription: NotRequired[WebhookSubscriptionDict]

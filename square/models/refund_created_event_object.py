@@ -13,4 +13,4 @@ class RefundCreatedEventObject(SdkBaseModel):
 
 
 class RefundCreatedEventObjectDict(TypedDict):
-    refund: NotRequired[PaymentRefund | PaymentRefundDict]
+    refund: NotRequired[PaymentRefundDict]

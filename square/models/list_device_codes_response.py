@@ -23,6 +23,6 @@ class ListDeviceCodesResponse(SdkBaseModel):
 
 
 class ListDeviceCodesResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    device_codes: NotRequired[list[DeviceCode | DeviceCodeDict]]
+    errors: NotRequired[list[ErrorDict]]
+    device_codes: NotRequired[list[DeviceCodeDict]]
     cursor: NotRequired[str]

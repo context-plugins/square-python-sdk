@@ -23,5 +23,5 @@ class RetrieveTransactionResponse(SdkBaseModel):
 
 
 class RetrieveTransactionResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    transaction: NotRequired[Transaction | TransactionDict]
+    errors: NotRequired[list[ErrorDict]]
+    transaction: NotRequired[TransactionDict]

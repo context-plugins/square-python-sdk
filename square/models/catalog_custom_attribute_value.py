@@ -32,7 +32,7 @@ class CatalogCustomAttributeValue(SdkBaseModel):
     boolean_value: OptionalNullable[bool] = UNSET
     """A ``true`` or ``false`` value. Populated if ``type`` = ``BOOLEAN``."""
 
-    selection_uid_values: Optional[list[str | None]] = UNSET
+    selection_uid_values: OptionalNullable[list[str]] = UNSET
     """One or more choices from ``allowed_selections``. Populated if ``type`` = ``SELECTION``."""
 
     key: Optional[str] = UNSET
@@ -50,5 +50,5 @@ class CatalogCustomAttributeValueDict(TypedDict):
     type_: NotRequired[CatalogCustomAttributeDefinitionTypeOrStr]
     number_value: NotRequired[str | None]
     boolean_value: NotRequired[bool | None]
-    selection_uid_values: NotRequired[list[str | None]]
+    selection_uid_values: NotRequired[list[str] | None]
     key: NotRequired[str]

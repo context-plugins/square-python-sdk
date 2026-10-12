@@ -22,6 +22,6 @@ class SearchShiftsResponse(SdkBaseModel):
 
 
 class SearchShiftsResponseDict(TypedDict):
-    shifts: NotRequired[list[Shift | ShiftDict]]
+    shifts: NotRequired[list[ShiftDict]]
     cursor: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

@@ -17,5 +17,5 @@ class RetrieveDisputeEvidenceResponse(SdkBaseModel):
 
 
 class RetrieveDisputeEvidenceResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    evidence: NotRequired[DisputeEvidence | DisputeEvidenceDict]
+    errors: NotRequired[list[ErrorDict]]
+    evidence: NotRequired[DisputeEvidenceDict]

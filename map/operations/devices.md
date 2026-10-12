@@ -42,9 +42,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /v2/devices/codes/{id}`
 - **Auth**: `oauth2`
-- **Signature**: `def get_device_code(id: str, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`
-- **Params**: `id` — path
+- **Signature**: `def get_device_code(id_: str, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`
+- **Params**: `id_` — path `id`
 - **Returns (parsed)**: `GetDeviceCodeResponse`
 - **Returns (raw)**: `ApiResult[GetDeviceCodeResponse, RawError]`
 - **Error**: `RawError` — **Case B**

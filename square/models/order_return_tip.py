@@ -27,6 +27,6 @@ class OrderReturnTip(SdkBaseModel):
 
 class OrderReturnTipDict(TypedDict):
     uid: NotRequired[str | None]
-    applied_money: NotRequired[Money | MoneyDict]
+    applied_money: NotRequired[MoneyDict]
     source_tender_uid: NotRequired[str | None]
     source_tender_id: NotRequired[str | None]

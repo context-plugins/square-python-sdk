@@ -36,6 +36,6 @@ class TeamMemberWageDict(TypedDict):
     id: NotRequired[str]
     team_member_id: NotRequired[str | None]
     title: NotRequired[str | None]
-    hourly_rate: NotRequired[Money | MoneyDict]
+    hourly_rate: NotRequired[MoneyDict]
     job_id: NotRequired[str | None]
     tip_eligible: NotRequired[bool | None]

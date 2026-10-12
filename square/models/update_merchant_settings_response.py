@@ -15,5 +15,5 @@ class UpdateMerchantSettingsResponse(SdkBaseModel):
 
 
 class UpdateMerchantSettingsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    merchant_settings: NotRequired[CheckoutMerchantSettings | CheckoutMerchantSettingsDict]
+    errors: NotRequired[list[ErrorDict]]
+    merchant_settings: NotRequired[CheckoutMerchantSettingsDict]

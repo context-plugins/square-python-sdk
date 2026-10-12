@@ -29,6 +29,6 @@ class TerminalActionQueryFilter(SdkBaseModel):
 
 class TerminalActionQueryFilterDict(TypedDict):
     device_id: NotRequired[str | None]
-    created_at: NotRequired[TimeRange | TimeRangeDict]
+    created_at: NotRequired[TimeRangeDict]
     status: NotRequired[str | None]
     type_: NotRequired[TerminalActionActionTypeOrStr]

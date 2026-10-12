@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.create_card_request import CreateCardRequest, CreateCardRequestDict
 from ..models.create_card_response import CreateCardResponse
@@ -36,14 +38,15 @@ class Cards:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_card(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_card(body, request_options=request_options))
 
     def disable_card(self, card_id: str, *, request_options: RequestOptionsOrDict | None = None) -> DisableCardResponse:
         """Disables the card, preventing any further updates or charges. Disabling an already disabled card is allowed
@@ -51,14 +54,15 @@ class Cards:
 
         Args:
             card_id: Unique ID for the desired Card.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.disable_card(card_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.disable_card(card_id, request_options=request_options))
 
     def list_cards(
         self,
@@ -83,21 +87,24 @@ class Cards:
             reference_id: Limit results to cards associated with the reference_id supplied.
             sort_order: Sorts the returned list by when the card was created with the specified order. This field
                 defaults to ASC.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_cards(
-            cursor=cursor,
-            customer_id=customer_id,
-            include_disabled=include_disabled,
-            reference_id=reference_id,
-            sort_order=sort_order,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_cards(
+                cursor=cursor,
+                customer_id=customer_id,
+                include_disabled=include_disabled,
+                reference_id=reference_id,
+                sort_order=sort_order,
+                request_options=request_options,
+            ),
+        )
 
     def retrieve_card(
         self, card_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -106,14 +113,15 @@ class Cards:
 
         Args:
             card_id: Unique ID for the desired Card.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_card(card_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_card(card_id, request_options=request_options))
 
     @property
     def with_raw_response(self) -> CardsWithRawResponse:
@@ -132,14 +140,15 @@ class AsyncCards:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_card(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_card(body, request_options=request_options))
 
     async def disable_card(
         self, card_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -149,14 +158,15 @@ class AsyncCards:
 
         Args:
             card_id: Unique ID for the desired Card.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.disable_card(card_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.disable_card(card_id, request_options=request_options))
 
     async def list_cards(
         self,
@@ -181,14 +191,15 @@ class AsyncCards:
             reference_id: Limit results to cards associated with the reference_id supplied.
             sort_order: Sorts the returned list by when the card was created with the specified order. This field
                 defaults to ASC.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_cards(
                 cursor=cursor,
                 customer_id=customer_id,
@@ -196,8 +207,8 @@ class AsyncCards:
                 reference_id=reference_id,
                 sort_order=sort_order,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_card(
         self, card_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -206,14 +217,15 @@ class AsyncCards:
 
         Args:
             card_id: Unique ID for the desired Card.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.retrieve_card(card_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.retrieve_card(card_id, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncCardsWithRawResponse:
@@ -229,7 +241,8 @@ class CardsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -252,7 +265,8 @@ class CardsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
 
         Args:
             card_id: Unique ID for the desired Card.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -290,7 +304,8 @@ class CardsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             reference_id: Limit results to cards associated with the reference_id supplied.
             sort_order: Sorts the returned list by when the card was created with the specified order. This field
                 defaults to ASC.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -317,7 +332,8 @@ class CardsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
 
         Args:
             card_id: Unique ID for the desired Card.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -341,7 +357,8 @@ class AsyncCardsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -351,7 +368,7 @@ class AsyncCardsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateCardRequest | CreateCardRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateCardResponse],
+            decoder=async_json_decoder[CreateCardResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -364,7 +381,8 @@ class AsyncCardsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
 
         Args:
             card_id: Unique ID for the desired Card.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -374,7 +392,7 @@ class AsyncCardsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             path_params=[param[str]("card_id", card_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DisableCardResponse],
+            decoder=async_json_decoder[DisableCardResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -402,7 +420,8 @@ class AsyncCardsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             reference_id: Limit results to cards associated with the reference_id supplied.
             sort_order: Sorts the returned list by when the card was created with the specified order. This field
                 defaults to ASC.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -417,7 +436,7 @@ class AsyncCardsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
                 param[SortOrderOrStr | None]("sort_order", sort_order),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListCardsResponse],
+            decoder=async_json_decoder[ListCardsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -429,7 +448,8 @@ class AsyncCardsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
 
         Args:
             card_id: Unique ID for the desired Card.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -438,7 +458,7 @@ class AsyncCardsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             url_template=self._server.default("/v2/cards/{card_id}"),
             path_params=[param[str]("card_id", card_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveCardResponse],
+            decoder=async_json_decoder[RetrieveCardResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

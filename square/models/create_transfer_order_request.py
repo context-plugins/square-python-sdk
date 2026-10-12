@@ -21,4 +21,4 @@ class CreateTransferOrderRequest(SdkBaseModel):
 
 class CreateTransferOrderRequestDict(TypedDict):
     idempotency_key: str
-    transfer_order: CreateTransferOrderData | CreateTransferOrderDataDict
+    transfer_order: CreateTransferOrderDataDict

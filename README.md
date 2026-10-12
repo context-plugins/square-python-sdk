@@ -15,18 +15,18 @@ Use Square APIs to manage and run business including payment, customer, product,
 
 ## Installation
 
-Install the Python SDK from PyPI, with whichever package manager your project uses:
+Add the Python SDK to your project from its folder, with whichever package manager your project uses. Give each tool a path containing a slash, such as `../square` — a bare folder name is looked up on PyPI instead, and resolves to whatever project holds that name there:
 
 ```bash
-pip install square
+pip install <path-to-sdk>
 ```
 
 ```bash
-uv add square
+uv add <path-to-sdk>
 ```
 
 ```bash
-poetry add square
+poetry add <path-to-sdk>
 ```
 
 ---
@@ -98,7 +98,7 @@ async def main() -> None:
 run(main())
 ```
 
-Alternatively, scope it -- `async with AsyncSquareClient(...) as client:` closes the pool on exit. Only the async spelling is `aclose`, matching httpx; see [Best Practices](#best-practices).
+Alternatively, scope it -- `async with AsyncSquareClient(...) as client:` closes the pool on exit. Only the async spelling is `aclose`, matching httpx2; see [Best Practices](#best-practices).
 
 `AsyncClient` is the exported alias. Each client accepts **only** its own transport argument and its own prompt flavour; passing the other's is a `TypeError` at runtime and an error under mypy.
 
@@ -129,6 +129,8 @@ Consult the map before scanning or grepping the source: it answers call-level co
 > connection reuse and leaks pools that are never closed.
 
 Match the disposal to the client's lifetime: an application-lifetime client is closed once at shutdown with `close()` / `aclose()`; where the lifetime fits a block, `with SquareClient() as client:` / `async with AsyncSquareClient() as client:` releases it automatically. Both are idempotent, but a closed client is not reusable: the next call raises. The client closes **whatever transport it holds**, including one you supplied via `custom_http_client` / `custom_async_http_client`; if you intend to reuse your own transport across clients, don't hand its lifetime to a `with` block.
+
+**Retries are on by default**: a failed idempotent request — a retryable status or no response at all — is sent again up to three times before the call gives up. Pass `retry_options=0` to turn it off, for instance in a test that stubs an error response; the policy and its defaults are under **Retries** in the SDK map.
 
 ## License
 

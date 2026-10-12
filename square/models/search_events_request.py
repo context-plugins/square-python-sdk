@@ -32,4 +32,4 @@ class SearchEventsRequest(SdkBaseModel):
 class SearchEventsRequestDict(TypedDict):
     cursor: NotRequired[str]
     limit: NotRequired[int]
-    query: NotRequired[SearchEventsQuery | SearchEventsQueryDict]
+    query: NotRequired[SearchEventsQueryDict]

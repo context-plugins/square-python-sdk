@@ -35,6 +35,6 @@ class SearchOrdersRequest(SdkBaseModel):
 class SearchOrdersRequestDict(TypedDict):
     location_ids: NotRequired[list[str]]
     cursor: NotRequired[str]
-    query: NotRequired[SearchOrdersQuery | SearchOrdersQueryDict]
+    query: NotRequired[SearchOrdersQueryDict]
     limit: NotRequired[int]
     return_entries: NotRequired[bool]

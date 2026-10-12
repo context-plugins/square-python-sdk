@@ -18,5 +18,5 @@ class UpdatePaymentResponse(SdkBaseModel):
 
 
 class UpdatePaymentResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    payment: NotRequired[Payment | PaymentDict]
+    errors: NotRequired[list[ErrorDict]]
+    payment: NotRequired[PaymentDict]

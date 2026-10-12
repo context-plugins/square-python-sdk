@@ -24,6 +24,6 @@ class ScheduledShiftWorkday(SdkBaseModel):
 
 
 class ScheduledShiftWorkdayDict(TypedDict):
-    date_range: NotRequired[DateRange | DateRangeDict]
+    date_range: NotRequired[DateRangeDict]
     match_scheduled_shifts_by: NotRequired[ScheduledShiftWorkdayMatcherOrStr]
     default_timezone: NotRequired[str | None]

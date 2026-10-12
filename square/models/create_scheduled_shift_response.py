@@ -21,5 +21,5 @@ class CreateScheduledShiftResponse(SdkBaseModel):
 
 
 class CreateScheduledShiftResponseDict(TypedDict):
-    scheduled_shift: NotRequired[ScheduledShift | ScheduledShiftDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    scheduled_shift: NotRequired[ScheduledShiftDict]
+    errors: NotRequired[list[ErrorDict]]

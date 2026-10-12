@@ -75,7 +75,7 @@ class Tender(SdkBaseModel):
     square_account_details: Optional[TenderSquareAccountDetails] = UNSET
     """Represents the details of a tender with ``type`` ``SQUARE_ACCOUNT``."""
 
-    additional_recipients: Optional[list[AdditionalRecipient | None]] = UNSET
+    additional_recipients: OptionalNullable[list[AdditionalRecipient]] = UNSET
     """Additional recipients (other than the merchant) receiving a portion of this tender. For example, fees assessed on
     the purchase by a third party integration."""
 
@@ -90,15 +90,15 @@ class TenderDict(TypedDict):
     transaction_id: NotRequired[str | None]
     created_at: NotRequired[str]
     note: NotRequired[str | None]
-    amount_money: NotRequired[Money | MoneyDict]
-    tip_money: NotRequired[Money | MoneyDict]
-    processing_fee_money: NotRequired[Money | MoneyDict]
+    amount_money: NotRequired[MoneyDict]
+    tip_money: NotRequired[MoneyDict]
+    processing_fee_money: NotRequired[MoneyDict]
     customer_id: NotRequired[str | None]
     type_: TenderTypeOrStr
-    card_details: NotRequired[TenderCardDetails | TenderCardDetailsDict]
-    cash_details: NotRequired[TenderCashDetails | TenderCashDetailsDict]
-    bank_account_details: NotRequired[TenderBankAccountDetails | TenderBankAccountDetailsDict]
-    buy_now_pay_later_details: NotRequired[TenderBuyNowPayLaterDetails | TenderBuyNowPayLaterDetailsDict]
-    square_account_details: NotRequired[TenderSquareAccountDetails | TenderSquareAccountDetailsDict]
-    additional_recipients: NotRequired[list[AdditionalRecipient | AdditionalRecipientDict | None]]
+    card_details: NotRequired[TenderCardDetailsDict]
+    cash_details: NotRequired[TenderCashDetailsDict]
+    bank_account_details: NotRequired[TenderBankAccountDetailsDict]
+    buy_now_pay_later_details: NotRequired[TenderBuyNowPayLaterDetailsDict]
+    square_account_details: NotRequired[TenderSquareAccountDetailsDict]
+    additional_recipients: NotRequired[list[AdditionalRecipientDict] | None]
     payment_id: NotRequired[str | None]

@@ -13,7 +13,7 @@ class WageSetting(SdkBaseModel):
     team_member_id: OptionalNullable[str] = UNSET
     """The ID of the team member associated with the wage setting."""
 
-    job_assignments: Optional[list[JobAssignment | None]] = UNSET
+    job_assignments: OptionalNullable[list[JobAssignment]] = UNSET
     """**Required** The ordered list of jobs that the team member is assigned to. The first job assignment is considered
     the team member's primary job."""
 
@@ -35,7 +35,7 @@ class WageSetting(SdkBaseModel):
 
 class WageSettingDict(TypedDict):
     team_member_id: NotRequired[str | None]
-    job_assignments: NotRequired[list[JobAssignment | JobAssignmentDict | None]]
+    job_assignments: NotRequired[list[JobAssignmentDict] | None]
     is_overtime_exempt: NotRequired[bool | None]
     version: NotRequired[int]
     created_at: NotRequired[str]

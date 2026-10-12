@@ -43,7 +43,7 @@ class MeasurementUnit(SdkBaseModel):
 
 
 class MeasurementUnitDict(TypedDict):
-    custom_unit: NotRequired[MeasurementUnitCustom | MeasurementUnitCustomDict]
+    custom_unit: NotRequired[MeasurementUnitCustomDict]
     area_unit: NotRequired[MeasurementUnitAreaOrStr]
     length_unit: NotRequired[MeasurementUnitLengthOrStr]
     volume_unit: NotRequired[MeasurementUnitVolumeOrStr]

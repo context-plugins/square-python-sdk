@@ -24,6 +24,6 @@ class GiftCardActivityUnlinkedActivityRefund(SdkBaseModel):
 
 
 class GiftCardActivityUnlinkedActivityRefundDict(TypedDict):
-    amount_money: Money | MoneyDict
+    amount_money: MoneyDict
     reference_id: NotRequired[str | None]
     payment_id: NotRequired[str]

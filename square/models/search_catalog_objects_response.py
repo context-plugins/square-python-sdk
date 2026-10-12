@@ -27,8 +27,8 @@ class SearchCatalogObjectsResponse(SdkBaseModel):
 
 
 class SearchCatalogObjectsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]
     cursor: NotRequired[str]
-    objects: NotRequired[list[CatalogObject | CatalogObjectDict]]
-    related_objects: NotRequired[list[CatalogObject | CatalogObjectDict]]
+    objects: NotRequired[list[CatalogObjectDict]]
+    related_objects: NotRequired[list[CatalogObjectDict]]
     latest_time: NotRequired[str]

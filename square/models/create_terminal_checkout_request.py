@@ -20,4 +20,4 @@ class CreateTerminalCheckoutRequest(SdkBaseModel):
 
 class CreateTerminalCheckoutRequestDict(TypedDict):
     idempotency_key: str
-    checkout: TerminalCheckout | TerminalCheckoutDict
+    checkout: TerminalCheckoutDict

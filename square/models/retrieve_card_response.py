@@ -22,5 +22,5 @@ class RetrieveCardResponse(SdkBaseModel):
 
 
 class RetrieveCardResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    card: NotRequired[Card | CardDict]
+    errors: NotRequired[list[ErrorDict]]
+    card: NotRequired[CardDict]

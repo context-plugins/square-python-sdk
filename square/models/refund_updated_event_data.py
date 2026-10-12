@@ -20,4 +20,4 @@ class RefundUpdatedEventData(SdkBaseModel):
 class RefundUpdatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[RefundUpdatedEventObject | RefundUpdatedEventObjectDict]
+    object_: NotRequired[RefundUpdatedEventObjectDict]

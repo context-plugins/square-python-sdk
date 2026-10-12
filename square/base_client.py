@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Generic
 
-from .core import RawClientT
+from .core import RawClientT, RetryOptions, RetryOptionsOrDict
 from .server.environment import Environment, validate_environment
 from .server.server import Server
 from .server.server_config import CustomConfig, ProductionConfig, SandboxConfig, ServerConfig
@@ -14,7 +14,12 @@ class BaseSquareClient(Generic[RawClientT]):
     _raw_client: RawClientT
 
     def __init__(
-        self, *, environment: Environment = "production", base_url: str | None = None, timeout: float = DEFAULT_TIMEOUT
+        self,
+        *,
+        environment: Environment = "production",
+        base_url: str | None = None,
+        timeout: float = DEFAULT_TIMEOUT,
+        retry_options: int | RetryOptionsOrDict | None = None,
     ) -> None:
         if not timeout > 0:
             raise ValueError(f"timeout must be greater than 0; got {timeout!r}")
@@ -30,3 +35,4 @@ class BaseSquareClient(Generic[RawClientT]):
                 else ServerConfig()
             ),
         )
+        self._retry_options = RetryOptions.coerce(retry_options)

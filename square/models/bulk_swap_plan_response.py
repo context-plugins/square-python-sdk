@@ -18,5 +18,5 @@ class BulkSwapPlanResponse(SdkBaseModel):
 
 
 class BulkSwapPlanResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]
     affected_subscriptions: NotRequired[int]

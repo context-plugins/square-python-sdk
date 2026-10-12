@@ -68,7 +68,7 @@ class CatalogItemVariation(SdkBaseModel):
     the sign of the value indicates the purpose of the money transfer. See `Working with Monetary Amounts
     <https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts>`__ for more information."""
 
-    location_overrides: Optional[list[ItemVariationLocationOverrides | None]] = UNSET
+    location_overrides: OptionalNullable[list[ItemVariationLocationOverrides]] = UNSET
     """Per-location price and inventory overrides."""
 
     track_inventory: OptionalNullable[bool] = UNSET
@@ -99,7 +99,7 @@ class CatalogItemVariation(SdkBaseModel):
     """If the ``CatalogItem`` that owns this item variation is of type ``APPOINTMENTS_SERVICE``, a bool representing
     whether this service is available for booking."""
 
-    item_option_values: Optional[list[CatalogItemOptionValueForItemVariation | None]] = UNSET
+    item_option_values: OptionalNullable[list[CatalogItemOptionValueForItemVariation]] = UNSET
     """List of item option values associated with this item variation. Listed in the same order as the item options of
     the parent item."""
 
@@ -117,11 +117,11 @@ class CatalogItemVariation(SdkBaseModel):
     both stockable and sellable, the inventory count of a stockable variation keeps track of the number of units of this
     variation in stock and is not an indicator of the number of units of the variation that can be sold."""
 
-    image_ids: Optional[list[str | None]] = UNSET
+    image_ids: OptionalNullable[list[str]] = UNSET
     """The IDs of images associated with this ``CatalogItemVariation`` instance. These images will be shown to customers
     in Square Online Store."""
 
-    team_member_ids: Optional[list[str | None]] = UNSET
+    team_member_ids: OptionalNullable[list[str]] = UNSET
     """Tokens of employees that can perform the service represented by this variation. Only valid for variations of type
     ``APPOINTMENTS_SERVICE``."""
 
@@ -134,7 +134,7 @@ class CatalogItemVariation(SdkBaseModel):
     name. e.g., customer name might be "Mega-Jumbo Triplesized" and the kitchen name is "Large container"
     """
 
-    vendor_information: Optional[list[CatalogItemVariationVendorInformation | None]] = UNSET
+    vendor_information: OptionalNullable[list[CatalogItemVariationVendorInformation]] = UNSET
     """Details of the vendor this product is purchased from. This field can be set only if the seller has an active
     subscription to either Square for Retail Premium or Square for Restaurants Premium."""
 
@@ -146,24 +146,20 @@ class CatalogItemVariationDict(TypedDict):
     upc: NotRequired[str | None]
     ordinal: NotRequired[int]
     pricing_type: NotRequired[CatalogPricingTypeOrStr]
-    price_money: NotRequired[Money | MoneyDict]
-    location_overrides: NotRequired[list[ItemVariationLocationOverrides | ItemVariationLocationOverridesDict | None]]
+    price_money: NotRequired[MoneyDict]
+    location_overrides: NotRequired[list[ItemVariationLocationOverridesDict] | None]
     track_inventory: NotRequired[bool | None]
     inventory_alert_type: NotRequired[InventoryAlertTypeOrStr]
     inventory_alert_threshold: NotRequired[int | None]
     user_data: NotRequired[str | None]
     service_duration: NotRequired[int | None]
     available_for_booking: NotRequired[bool | None]
-    item_option_values: NotRequired[
-        list[CatalogItemOptionValueForItemVariation | CatalogItemOptionValueForItemVariationDict | None]
-    ]
+    item_option_values: NotRequired[list[CatalogItemOptionValueForItemVariationDict] | None]
     measurement_unit_id: NotRequired[str | None]
     sellable: NotRequired[bool | None]
     stockable: NotRequired[bool | None]
-    image_ids: NotRequired[list[str | None]]
-    team_member_ids: NotRequired[list[str | None]]
-    stockable_conversion: NotRequired[CatalogStockConversion | CatalogStockConversionDict]
+    image_ids: NotRequired[list[str] | None]
+    team_member_ids: NotRequired[list[str] | None]
+    stockable_conversion: NotRequired[CatalogStockConversionDict]
     kitchen_name: NotRequired[str | None]
-    vendor_information: NotRequired[
-        list[CatalogItemVariationVendorInformation | CatalogItemVariationVendorInformationDict | None]
-    ]
+    vendor_information: NotRequired[list[CatalogItemVariationVendorInformationDict] | None]

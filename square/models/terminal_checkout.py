@@ -91,12 +91,12 @@ class TerminalCheckout(SdkBaseModel):
 
 class TerminalCheckoutDict(TypedDict):
     id: NotRequired[str]
-    amount_money: Money | MoneyDict
+    amount_money: MoneyDict
     reference_id: NotRequired[str | None]
     note: NotRequired[str | None]
     order_id: NotRequired[str | None]
-    payment_options: NotRequired[PaymentOptions | PaymentOptionsDict]
-    device_options: DeviceCheckoutOptions | DeviceCheckoutOptionsDict
+    payment_options: NotRequired[PaymentOptionsDict]
+    device_options: DeviceCheckoutOptionsDict
     deadline_duration: NotRequired[str | None]
     status: NotRequired[str]
     cancel_reason: NotRequired[ActionCancelReasonOrStr]
@@ -108,6 +108,6 @@ class TerminalCheckoutDict(TypedDict):
     payment_type: NotRequired[CheckoutOptionsPaymentTypeOrStr]
     team_member_id: NotRequired[str | None]
     customer_id: NotRequired[str | None]
-    app_fee_money: NotRequired[Money | MoneyDict]
+    app_fee_money: NotRequired[MoneyDict]
     statement_description_identifier: NotRequired[str | None]
-    tip_money: NotRequired[Money | MoneyDict]
+    tip_money: NotRequired[MoneyDict]

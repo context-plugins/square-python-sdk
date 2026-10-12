@@ -38,5 +38,5 @@ class OrderLineItemAppliedTax(SdkBaseModel):
 class OrderLineItemAppliedTaxDict(TypedDict):
     uid: NotRequired[str | None]
     tax_uid: str
-    applied_money: NotRequired[Money | MoneyDict]
+    applied_money: NotRequired[MoneyDict]
     auto_applied: NotRequired[bool]

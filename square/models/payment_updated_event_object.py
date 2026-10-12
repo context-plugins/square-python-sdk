@@ -12,4 +12,4 @@ class PaymentUpdatedEventObject(SdkBaseModel):
 
 
 class PaymentUpdatedEventObjectDict(TypedDict):
-    payment: NotRequired[Payment | PaymentDict]
+    payment: NotRequired[PaymentDict]

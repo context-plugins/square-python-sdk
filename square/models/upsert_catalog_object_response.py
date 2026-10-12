@@ -33,6 +33,6 @@ class UpsertCatalogObjectResponse(SdkBaseModel):
 
 
 class UpsertCatalogObjectResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    catalog_object: NotRequired[CatalogObject | CatalogObjectDict]
-    id_mappings: NotRequired[list[CatalogIdMapping | CatalogIdMappingDict]]
+    errors: NotRequired[list[ErrorDict]]
+    catalog_object: NotRequired[CatalogObjectDict]
+    id_mappings: NotRequired[list[CatalogIdMappingDict]]

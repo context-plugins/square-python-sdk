@@ -22,6 +22,6 @@ class SearchTimecardsResponse(SdkBaseModel):
 
 
 class SearchTimecardsResponseDict(TypedDict):
-    timecards: NotRequired[list[Timecard | TimecardDict]]
+    timecards: NotRequired[list[TimecardDict]]
     cursor: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

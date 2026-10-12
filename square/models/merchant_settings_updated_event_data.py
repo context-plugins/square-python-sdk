@@ -23,4 +23,4 @@ class MerchantSettingsUpdatedEventData(SdkBaseModel):
 class MerchantSettingsUpdatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[MerchantSettingsUpdatedEventObject | MerchantSettingsUpdatedEventObjectDict]
+    object_: NotRequired[MerchantSettingsUpdatedEventObjectDict]

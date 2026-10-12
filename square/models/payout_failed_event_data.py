@@ -20,4 +20,4 @@ class PayoutFailedEventData(SdkBaseModel):
 class PayoutFailedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[PayoutFailedEventObject | PayoutFailedEventObjectDict]
+    object_: NotRequired[PayoutFailedEventObjectDict]

@@ -80,5 +80,5 @@ class ObtainTokenResponseDict(TypedDict):
     id_token: NotRequired[str]
     refresh_token: NotRequired[str]
     short_lived: NotRequired[bool]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]
     refresh_token_expires_at: NotRequired[str]

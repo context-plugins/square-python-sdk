@@ -5,16 +5,21 @@ from uuid import UUID, uuid4
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
+    AsyncFileInput,
     AsyncRawClient,
+    FileInput,
     RawClient,
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
+    file_part,
     json_body,
     json_decoder,
     multipart_body,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.batch_delete_catalog_objects_request import (
     BatchDeleteCatalogObjectsRequest,
@@ -80,14 +85,15 @@ class Catalog:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.batch_delete_catalog_objects(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.batch_delete_catalog_objects(body, request_options=request_options))
 
     def batch_retrieve_catalog_objects(
         self,
@@ -103,14 +109,15 @@ class Catalog:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.batch_retrieve_catalog_objects(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.batch_retrieve_catalog_objects(body, request_options=request_options))
 
     def batch_upsert_catalog_objects(
         self,
@@ -138,34 +145,36 @@ class Catalog:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.batch_upsert_catalog_objects(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.batch_upsert_catalog_objects(body, request_options=request_options))
 
     def catalog_info(self, *, request_options: RequestOptionsOrDict | None = None) -> CatalogInfoResponse:
         """Retrieves information about the Square Catalog API, such as batch size limits that can be used by the
         ``BatchUpsertCatalogObjects`` endpoint.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.catalog_info(request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.catalog_info(request_options=request_options))
 
     def create_catalog_image(
         self,
         *,
         request: CreateCatalogImageRequest | CreateCatalogImageRequestDict | None = None,
-        image_file: bytes | None = None,
+        image_file: FileInput | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> CreateCatalogImageResponse:
         """Uploads an image file to be represented by a `CatalogImage <entity:CatalogImage>`__ object that can be linked
@@ -178,16 +187,19 @@ class Catalog:
         Args:
             request: Value sent with the request.
             image_file: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_catalog_image(
-            request=request, image_file=image_file, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.create_catalog_image(
+                request=request, image_file=image_file, request_options=request_options
+            ),
+        )
 
     def delete_catalog_object(
         self, object_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -205,14 +217,15 @@ class Catalog:
             object_id: The ID of the catalog object to be deleted. When an object is deleted, other objects in the graph
                 that depend on that object will be deleted as well (for example, deleting a catalog item will delete its
                 catalog item variations).
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_catalog_object(object_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.delete_catalog_object(object_id, request_options=request_options))
 
     def list_catalog(
         self,
@@ -251,16 +264,19 @@ class Catalog:
                 to retrieve historical versions of objects. The specified version value is matched against the
                 `CatalogObject <entity:CatalogObject>`__s' ``version`` attribute. If not included, results will be from
                 the current version of the catalog.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_catalog(
-            cursor=cursor, types=types, catalog_version=catalog_version, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_catalog(
+                cursor=cursor, types=types, catalog_version=catalog_version, request_options=request_options
+            ),
+        )
 
     def retrieve_catalog_object(
         self,
@@ -298,20 +314,23 @@ class Catalog:
                 specifies the path that starts with the immediate parent category of the returned category and ends with
                 its root category. If the returned category is a top-level category, the ``path_to_root`` list is empty
                 and is not returned in the response payload.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_catalog_object(
-            object_id,
-            include_related_objects=include_related_objects,
-            catalog_version=catalog_version,
-            include_category_path_to_root=include_category_path_to_root,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.retrieve_catalog_object(
+                object_id,
+                include_related_objects=include_related_objects,
+                catalog_version=catalog_version,
+                include_category_path_to_root=include_category_path_to_root,
+                request_options=request_options,
+            ),
+        )
 
     def search_catalog_items(
         self,
@@ -336,14 +355,15 @@ class Catalog:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_catalog_items(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_catalog_items(body, request_options=request_options))
 
     def search_catalog_objects(
         self,
@@ -374,21 +394,22 @@ class Catalog:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_catalog_objects(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_catalog_objects(body, request_options=request_options))
 
     def update_catalog_image(
         self,
         image_id: str,
         *,
         request: UpdateCatalogImageRequest | UpdateCatalogImageRequestDict | None = None,
-        image_file: bytes | None = None,
+        image_file: FileInput | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> UpdateCatalogImageResponse:
         """Uploads a new image file to replace the existing one in the specified `CatalogImage <entity:CatalogImage>`__
@@ -401,16 +422,19 @@ class Catalog:
             image_id: The ID of the ``CatalogImage`` object to update the encapsulated image file.
             request: Value sent with the request.
             image_file: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_catalog_image(
-            image_id, request=request, image_file=image_file, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.update_catalog_image(
+                image_id, request=request, image_file=image_file, request_options=request_options
+            ),
+        )
 
     def update_item_modifier_lists(
         self,
@@ -424,14 +448,15 @@ class Catalog:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_item_modifier_lists(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.update_item_modifier_lists(body, request_options=request_options))
 
     def update_item_taxes(
         self,
@@ -445,14 +470,15 @@ class Catalog:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_item_taxes(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.update_item_taxes(body, request_options=request_options))
 
     def upsert_catalog_object(
         self,
@@ -473,14 +499,15 @@ class Catalog:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.upsert_catalog_object(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.upsert_catalog_object(body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> CatalogWithRawResponse:
@@ -512,16 +539,15 @@ class AsyncCatalog:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.batch_delete_catalog_objects(body, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.batch_delete_catalog_objects(body, request_options=request_options))
 
     async def batch_retrieve_catalog_objects(
         self,
@@ -537,16 +563,17 @@ class AsyncCatalog:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.batch_retrieve_catalog_objects(body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def batch_upsert_catalog_objects(
         self,
@@ -574,36 +601,36 @@ class AsyncCatalog:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.batch_upsert_catalog_objects(body, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.batch_upsert_catalog_objects(body, request_options=request_options))
 
     async def catalog_info(self, *, request_options: RequestOptionsOrDict | None = None) -> CatalogInfoResponse:
         """Retrieves information about the Square Catalog API, such as batch size limits that can be used by the
         ``BatchUpsertCatalogObjects`` endpoint.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.catalog_info(request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.catalog_info(request_options=request_options))
 
     async def create_catalog_image(
         self,
         *,
         request: CreateCatalogImageRequest | CreateCatalogImageRequestDict | None = None,
-        image_file: bytes | None = None,
+        image_file: AsyncFileInput | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> CreateCatalogImageResponse:
         """Uploads an image file to be represented by a `CatalogImage <entity:CatalogImage>`__ object that can be linked
@@ -616,18 +643,19 @@ class AsyncCatalog:
         Args:
             request: Value sent with the request.
             image_file: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.create_catalog_image(
                 request=request, image_file=image_file, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def delete_catalog_object(
         self, object_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -645,16 +673,15 @@ class AsyncCatalog:
             object_id: The ID of the catalog object to be deleted. When an object is deleted, other objects in the graph
                 that depend on that object will be deleted as well (for example, deleting a catalog item will delete its
                 catalog item variations).
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.delete_catalog_object(object_id, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.delete_catalog_object(object_id, request_options=request_options))
 
     async def list_catalog(
         self,
@@ -693,18 +720,19 @@ class AsyncCatalog:
                 to retrieve historical versions of objects. The specified version value is matched against the
                 `CatalogObject <entity:CatalogObject>`__s' ``version`` attribute. If not included, results will be from
                 the current version of the catalog.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_catalog(
                 cursor=cursor, types=types, catalog_version=catalog_version, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_catalog_object(
         self,
@@ -742,22 +770,23 @@ class AsyncCatalog:
                 specifies the path that starts with the immediate parent category of the returned category and ends with
                 its root category. If the returned category is a top-level category, the ``path_to_root`` list is empty
                 and is not returned in the response payload.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_catalog_object(
                 object_id,
                 include_related_objects=include_related_objects,
                 catalog_version=catalog_version,
                 include_category_path_to_root=include_category_path_to_root,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def search_catalog_items(
         self,
@@ -782,14 +811,15 @@ class AsyncCatalog:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_catalog_items(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_catalog_items(body, request_options=request_options))
 
     async def search_catalog_objects(
         self,
@@ -820,21 +850,22 @@ class AsyncCatalog:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_catalog_objects(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_catalog_objects(body, request_options=request_options))
 
     async def update_catalog_image(
         self,
         image_id: str,
         *,
         request: UpdateCatalogImageRequest | UpdateCatalogImageRequestDict | None = None,
-        image_file: bytes | None = None,
+        image_file: AsyncFileInput | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> UpdateCatalogImageResponse:
         """Uploads a new image file to replace the existing one in the specified `CatalogImage <entity:CatalogImage>`__
@@ -847,18 +878,19 @@ class AsyncCatalog:
             image_id: The ID of the ``CatalogImage`` object to update the encapsulated image file.
             request: Value sent with the request.
             image_file: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.update_catalog_image(
                 image_id, request=request, image_file=image_file, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def update_item_modifier_lists(
         self,
@@ -872,16 +904,15 @@ class AsyncCatalog:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.update_item_modifier_lists(body, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.update_item_modifier_lists(body, request_options=request_options))
 
     async def update_item_taxes(
         self,
@@ -895,14 +926,15 @@ class AsyncCatalog:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.update_item_taxes(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.update_item_taxes(body, request_options=request_options))
 
     async def upsert_catalog_object(
         self,
@@ -923,14 +955,15 @@ class AsyncCatalog:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.upsert_catalog_object(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.upsert_catalog_object(body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncCatalogWithRawResponse:
@@ -959,7 +992,8 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -988,7 +1022,8 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1029,7 +1064,8 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1051,7 +1087,8 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         ``BatchUpsertCatalogObjects`` endpoint.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1068,7 +1105,7 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         self,
         *,
         request: CreateCatalogImageRequest | CreateCatalogImageRequestDict | None = None,
-        image_file: bytes | None = None,
+        image_file: FileInput | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> ApiResult[CreateCatalogImageResponse, RawError]:
         """Uploads an image file to be represented by a `CatalogImage <entity:CatalogImage>`__ object that can be linked
@@ -1081,7 +1118,8 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             request: Value sent with the request.
             image_file: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1090,8 +1128,8 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             url_template=self._server.default("/v2/catalog/images"),
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=multipart_body(
-                [param[CreateCatalogImageRequest | CreateCatalogImageRequestDict | None]("request", request)],
-                {"image_file": image_file},
+                param[CreateCatalogImageRequest | CreateCatalogImageRequestDict | None]("request", request),
+                file_part("image_file", image_file) if image_file is not None else None,
             ),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateCatalogImageResponse],
@@ -1115,7 +1153,8 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             object_id: The ID of the catalog object to be deleted. When an object is deleted, other objects in the graph
                 that depend on that object will be deleted as well (for example, deleting a catalog item will delete its
                 catalog item variations).
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1167,7 +1206,8 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
                 to retrieve historical versions of objects. The specified version value is matched against the
                 `CatalogObject <entity:CatalogObject>`__s' ``version`` attribute. If not included, results will be from
                 the current version of the catalog.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1221,7 +1261,8 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
                 specifies the path that starts with the immediate parent category of the returned category and ends with
                 its root category. If the returned category is a top-level category, the ``path_to_root`` list is empty
                 and is not returned in the response payload.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1263,7 +1304,8 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1307,7 +1349,8 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1327,7 +1370,7 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         image_id: str,
         *,
         request: UpdateCatalogImageRequest | UpdateCatalogImageRequestDict | None = None,
-        image_file: bytes | None = None,
+        image_file: FileInput | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> ApiResult[UpdateCatalogImageResponse, RawError]:
         """Uploads a new image file to replace the existing one in the specified `CatalogImage <entity:CatalogImage>`__
@@ -1340,7 +1383,8 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             image_id: The ID of the ``CatalogImage`` object to update the encapsulated image file.
             request: Value sent with the request.
             image_file: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1350,8 +1394,8 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             path_params=[param[str]("image_id", image_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=multipart_body(
-                [param[UpdateCatalogImageRequest | UpdateCatalogImageRequestDict | None]("request", request)],
-                {"image_file": image_file},
+                param[UpdateCatalogImageRequest | UpdateCatalogImageRequestDict | None]("request", request),
+                file_part("image_file", image_file) if image_file is not None else None,
             ),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[UpdateCatalogImageResponse],
@@ -1371,7 +1415,8 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1398,7 +1443,8 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1432,7 +1478,8 @@ class CatalogWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1470,7 +1517,8 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1480,7 +1528,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchDeleteCatalogObjectsRequest | BatchDeleteCatalogObjectsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BatchDeleteCatalogObjectsResponse],
+            decoder=async_json_decoder[BatchDeleteCatalogObjectsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1499,7 +1547,8 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1509,7 +1558,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchRetrieveCatalogObjectsRequest | BatchRetrieveCatalogObjectsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BatchRetrieveCatalogObjectsResponse],
+            decoder=async_json_decoder[BatchRetrieveCatalogObjectsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1540,7 +1589,8 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1550,7 +1600,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchUpsertCatalogObjectsRequest | BatchUpsertCatalogObjectsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BatchUpsertCatalogObjectsResponse],
+            decoder=async_json_decoder[BatchUpsertCatalogObjectsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1562,7 +1612,8 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         ``BatchUpsertCatalogObjects`` endpoint.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1570,7 +1621,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             http_method="GET",
             url_template=self._server.default("/v2/catalog/info"),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CatalogInfoResponse],
+            decoder=async_json_decoder[CatalogInfoResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1579,7 +1630,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         self,
         *,
         request: CreateCatalogImageRequest | CreateCatalogImageRequestDict | None = None,
-        image_file: bytes | None = None,
+        image_file: AsyncFileInput | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> ApiResult[CreateCatalogImageResponse, RawError]:
         """Uploads an image file to be represented by a `CatalogImage <entity:CatalogImage>`__ object that can be linked
@@ -1592,7 +1643,8 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             request: Value sent with the request.
             image_file: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1601,11 +1653,11 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             url_template=self._server.default("/v2/catalog/images"),
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=multipart_body(
-                [param[CreateCatalogImageRequest | CreateCatalogImageRequestDict | None]("request", request)],
-                {"image_file": image_file},
+                param[CreateCatalogImageRequest | CreateCatalogImageRequestDict | None]("request", request),
+                file_part("image_file", image_file) if image_file is not None else None,
             ),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateCatalogImageResponse],
+            decoder=async_json_decoder[CreateCatalogImageResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1626,7 +1678,8 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             object_id: The ID of the catalog object to be deleted. When an object is deleted, other objects in the graph
                 that depend on that object will be deleted as well (for example, deleting a catalog item will delete its
                 catalog item variations).
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1636,7 +1689,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             path_params=[param[str]("object_id", object_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeleteCatalogObjectResponse],
+            decoder=async_json_decoder[DeleteCatalogObjectResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1678,7 +1731,8 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
                 to retrieve historical versions of objects. The specified version value is matched against the
                 `CatalogObject <entity:CatalogObject>`__s' ``version`` attribute. If not included, results will be from
                 the current version of the catalog.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1691,7 +1745,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
                 param[int | None]("catalog_version", catalog_version),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListCatalogResponse],
+            decoder=async_json_decoder[ListCatalogResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1732,7 +1786,8 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
                 specifies the path that starts with the immediate parent category of the returned category and ends with
                 its root category. If the returned category is a top-level category, the ``path_to_root`` list is empty
                 and is not returned in the response payload.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1746,7 +1801,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
                 param[bool | None]("include_category_path_to_root", include_category_path_to_root),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveCatalogObjectResponse],
+            decoder=async_json_decoder[RetrieveCatalogObjectResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1774,7 +1829,8 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1784,7 +1840,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchCatalogItemsRequest | SearchCatalogItemsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SearchCatalogItemsResponse],
+            decoder=async_json_decoder[SearchCatalogItemsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1818,7 +1874,8 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1828,7 +1885,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchCatalogObjectsRequest | SearchCatalogObjectsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SearchCatalogObjectsResponse],
+            decoder=async_json_decoder[SearchCatalogObjectsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1838,7 +1895,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         image_id: str,
         *,
         request: UpdateCatalogImageRequest | UpdateCatalogImageRequestDict | None = None,
-        image_file: bytes | None = None,
+        image_file: AsyncFileInput | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> ApiResult[UpdateCatalogImageResponse, RawError]:
         """Uploads a new image file to replace the existing one in the specified `CatalogImage <entity:CatalogImage>`__
@@ -1851,7 +1908,8 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             image_id: The ID of the ``CatalogImage`` object to update the encapsulated image file.
             request: Value sent with the request.
             image_file: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1861,11 +1919,11 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             path_params=[param[str]("image_id", image_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=multipart_body(
-                [param[UpdateCatalogImageRequest | UpdateCatalogImageRequestDict | None]("request", request)],
-                {"image_file": image_file},
+                param[UpdateCatalogImageRequest | UpdateCatalogImageRequestDict | None]("request", request),
+                file_part("image_file", image_file) if image_file is not None else None,
             ),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateCatalogImageResponse],
+            decoder=async_json_decoder[UpdateCatalogImageResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1882,7 +1940,8 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1892,7 +1951,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateItemModifierListsRequest | UpdateItemModifierListsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateItemModifierListsResponse],
+            decoder=async_json_decoder[UpdateItemModifierListsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1909,7 +1968,8 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1919,7 +1979,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateItemTaxesRequest | UpdateItemTaxesRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateItemTaxesResponse],
+            decoder=async_json_decoder[UpdateItemTaxesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1943,7 +2003,8 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1953,7 +2014,7 @@ class AsyncCatalogWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpsertCatalogObjectRequest | UpsertCatalogObjectRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpsertCatalogObjectResponse],
+            decoder=async_json_decoder[UpsertCatalogObjectResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

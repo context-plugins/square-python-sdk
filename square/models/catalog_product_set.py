@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
+from ..core import UNSET, OptionalNullable, SdkBaseModel
 
 
 class CatalogProductSet(SdkBaseModel):
@@ -14,7 +14,7 @@ class CatalogProductSet(SdkBaseModel):
     name: OptionalNullable[str] = UNSET
     """User-defined name for the product set. For example, "Clearance Items" or "Winter Sale Items"."""
 
-    product_ids_any: Optional[list[str | None]] = UNSET
+    product_ids_any: OptionalNullable[list[str]] = UNSET
     """Unique IDs for any ``CatalogObject`` included in this product set. Any number of these catalog objects can be in
     an order for a pricing rule to apply.
 
@@ -25,7 +25,7 @@ class CatalogProductSet(SdkBaseModel):
 
     Max: 5000 catalog object IDs."""
 
-    product_ids_all: Optional[list[str | None]] = UNSET
+    product_ids_all: OptionalNullable[list[str]] = UNSET
     """Unique IDs for any ``CatalogObject`` included in this product set. All objects in this set must be included in an
     order for a pricing rule to apply.
 
@@ -54,8 +54,8 @@ class CatalogProductSet(SdkBaseModel):
 
 class CatalogProductSetDict(TypedDict):
     name: NotRequired[str | None]
-    product_ids_any: NotRequired[list[str | None]]
-    product_ids_all: NotRequired[list[str | None]]
+    product_ids_any: NotRequired[list[str] | None]
+    product_ids_all: NotRequired[list[str] | None]
     quantity_exact: NotRequired[int | None]
     quantity_min: NotRequired[int | None]
     quantity_max: NotRequired[int | None]

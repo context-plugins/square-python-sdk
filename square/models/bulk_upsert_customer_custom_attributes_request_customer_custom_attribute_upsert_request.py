@@ -25,5 +25,5 @@ class BulkUpsertCustomerCustomAttributesRequestCustomerCustomAttributeUpsertRequ
 
 class BulkUpsertCustomerCustomAttributesRequestCustomerCustomAttributeUpsertRequestDict(TypedDict):
     customer_id: str
-    custom_attribute: CustomAttribute | CustomAttributeDict
+    custom_attribute: CustomAttributeDict
     idempotency_key: NotRequired[str | None]

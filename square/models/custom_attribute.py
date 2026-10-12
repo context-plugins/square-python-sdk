@@ -58,6 +58,6 @@ class CustomAttributeDict(TypedDict):
     value: NotRequired[Any | None]
     version: NotRequired[int]
     visibility: NotRequired[CustomAttributeDefinitionVisibilityOrStr]
-    definition: NotRequired[CustomAttributeDefinition | CustomAttributeDefinitionDict]
+    definition: NotRequired[CustomAttributeDefinitionDict]
     updated_at: NotRequired[str]
     created_at: NotRequired[str]

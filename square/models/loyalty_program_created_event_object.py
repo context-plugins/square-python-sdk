@@ -16,4 +16,4 @@ class LoyaltyProgramCreatedEventObject(SdkBaseModel):
 
 
 class LoyaltyProgramCreatedEventObjectDict(TypedDict):
-    loyalty_program: NotRequired[LoyaltyProgram | LoyaltyProgramDict]
+    loyalty_program: NotRequired[LoyaltyProgramDict]

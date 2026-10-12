@@ -18,5 +18,5 @@ class SearchEventsQuery(SdkBaseModel):
 
 
 class SearchEventsQueryDict(TypedDict):
-    filter: NotRequired[SearchEventsFilter | SearchEventsFilterDict]
-    sort: NotRequired[SearchEventsSort | SearchEventsSortDict]
+    filter: NotRequired[SearchEventsFilterDict]
+    sort: NotRequired[SearchEventsSortDict]

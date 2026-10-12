@@ -18,5 +18,5 @@ class CustomerCreatedEventObject(SdkBaseModel):
 
 
 class CustomerCreatedEventObjectDict(TypedDict):
-    customer: NotRequired[Customer | CustomerDict]
-    event_context: NotRequired[CustomerCreatedEventEventContext | CustomerCreatedEventEventContextDict]
+    customer: NotRequired[CustomerDict]
+    event_context: NotRequired[CustomerCreatedEventEventContextDict]

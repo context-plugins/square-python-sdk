@@ -41,8 +41,8 @@ class OrderMoneyAmounts(SdkBaseModel):
 
 
 class OrderMoneyAmountsDict(TypedDict):
-    total_money: NotRequired[Money | MoneyDict]
-    tax_money: NotRequired[Money | MoneyDict]
-    discount_money: NotRequired[Money | MoneyDict]
-    tip_money: NotRequired[Money | MoneyDict]
-    service_charge_money: NotRequired[Money | MoneyDict]
+    total_money: NotRequired[MoneyDict]
+    tax_money: NotRequired[MoneyDict]
+    discount_money: NotRequired[MoneyDict]
+    tip_money: NotRequired[MoneyDict]
+    service_charge_money: NotRequired[MoneyDict]

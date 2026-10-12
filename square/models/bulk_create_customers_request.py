@@ -20,4 +20,4 @@ class BulkCreateCustomersRequest(SdkBaseModel):
 
 
 class BulkCreateCustomersRequestDict(TypedDict):
-    customers: dict[str, BulkCreateCustomerData | BulkCreateCustomerDataDict]
+    customers: dict[str, BulkCreateCustomerDataDict]

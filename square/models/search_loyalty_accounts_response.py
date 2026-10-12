@@ -22,6 +22,6 @@ class SearchLoyaltyAccountsResponse(SdkBaseModel):
 
 
 class SearchLoyaltyAccountsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    loyalty_accounts: NotRequired[list[LoyaltyAccount | LoyaltyAccountDict]]
+    errors: NotRequired[list[ErrorDict]]
+    loyalty_accounts: NotRequired[list[LoyaltyAccountDict]]
     cursor: NotRequired[str]

@@ -67,7 +67,7 @@ class TerminalRefundDict(TypedDict):
     refund_id: NotRequired[str]
     payment_id: str
     order_id: NotRequired[str]
-    amount_money: Money | MoneyDict
+    amount_money: MoneyDict
     reason: str
     device_id: str
     deadline_duration: NotRequired[str | None]

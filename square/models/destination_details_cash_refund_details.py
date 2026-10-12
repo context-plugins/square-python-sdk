@@ -23,5 +23,5 @@ class DestinationDetailsCashRefundDetails(SdkBaseModel):
 
 
 class DestinationDetailsCashRefundDetailsDict(TypedDict):
-    seller_supplied_money: Money | MoneyDict
-    change_back_money: NotRequired[Money | MoneyDict]
+    seller_supplied_money: MoneyDict
+    change_back_money: NotRequired[MoneyDict]

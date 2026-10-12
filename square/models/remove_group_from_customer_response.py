@@ -15,4 +15,4 @@ class RemoveGroupFromCustomerResponse(SdkBaseModel):
 
 
 class RemoveGroupFromCustomerResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

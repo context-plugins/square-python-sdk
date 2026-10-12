@@ -21,6 +21,6 @@ class AccumulateLoyaltyPointsRequest(SdkBaseModel):
 
 
 class AccumulateLoyaltyPointsRequestDict(TypedDict):
-    accumulate_points: LoyaltyEventAccumulatePoints | LoyaltyEventAccumulatePointsDict
+    accumulate_points: LoyaltyEventAccumulatePointsDict
     idempotency_key: str
     location_id: str

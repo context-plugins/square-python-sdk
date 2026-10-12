@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
+from ..core import UNSET, OptionalNullable, SdkBaseModel
 
 
 class ObtainTokenRequest(SdkBaseModel):
@@ -54,7 +54,7 @@ class ObtainTokenRequest(SdkBaseModel):
     Required if ``grant_type`` is ``migration_token``. For more information, see `Migrate to Using Refresh Tokens
     <https://developer.squareup.com/docs/oauth-api/migrate-to-refresh-tokens>`__."""
 
-    scopes: Optional[list[str | None]] = UNSET
+    scopes: OptionalNullable[list[str]] = UNSET
     """The list of permissions that are explicitly requested for the access token. For example,
     ["MERCHANT_PROFILE_READ","PAYMENTS_READ","BANK_ACCOUNTS_READ"].
 
@@ -87,7 +87,7 @@ class ObtainTokenRequestDict(TypedDict):
     grant_type: str
     refresh_token: NotRequired[str | None]
     migration_token: NotRequired[str | None]
-    scopes: NotRequired[list[str | None]]
+    scopes: NotRequired[list[str] | None]
     short_lived: NotRequired[bool | None]
     code_verifier: NotRequired[str | None]
     use_jwt: NotRequired[bool | None]

@@ -22,4 +22,4 @@ class SegmentFilter(SdkBaseModel):
 
 class SegmentFilterDict(TypedDict):
     service_variation_id: str
-    team_member_id_filter: NotRequired[FilterValue | FilterValueDict]
+    team_member_id_filter: NotRequired[FilterValueDict]

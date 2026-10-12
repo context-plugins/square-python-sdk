@@ -25,6 +25,6 @@ class PayoutFee(SdkBaseModel):
 
 
 class PayoutFeeDict(TypedDict):
-    amount_money: NotRequired[Money | MoneyDict]
+    amount_money: NotRequired[MoneyDict]
     effective_at: NotRequired[str | None]
     type_: NotRequired[PayoutFeeTypeOrStr]

@@ -17,5 +17,5 @@ class GiftCardCustomerLinkedEventObject(SdkBaseModel):
 
 
 class GiftCardCustomerLinkedEventObjectDict(TypedDict):
-    gift_card: NotRequired[GiftCard | GiftCardDict]
+    gift_card: NotRequired[GiftCardDict]
     linked_customer_id: NotRequired[str | None]

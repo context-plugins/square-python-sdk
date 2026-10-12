@@ -31,7 +31,7 @@ class CatalogModifier(SdkBaseModel):
     modifier_list_id: OptionalNullable[str] = UNSET
     """The ID of the ``CatalogModifierList`` associated with this modifier."""
 
-    location_overrides: Optional[list[ModifierLocationOverrides | None]] = UNSET
+    location_overrides: OptionalNullable[list[ModifierLocationOverrides]] = UNSET
     """Location-specific price overrides."""
 
     kitchen_name: OptionalNullable[str] = UNSET
@@ -50,11 +50,11 @@ class CatalogModifier(SdkBaseModel):
 
 class CatalogModifierDict(TypedDict):
     name: NotRequired[str | None]
-    price_money: NotRequired[Money | MoneyDict]
+    price_money: NotRequired[MoneyDict]
     on_by_default: NotRequired[bool | None]
     ordinal: NotRequired[int | None]
     modifier_list_id: NotRequired[str | None]
-    location_overrides: NotRequired[list[ModifierLocationOverrides | ModifierLocationOverridesDict | None]]
+    location_overrides: NotRequired[list[ModifierLocationOverridesDict] | None]
     kitchen_name: NotRequired[str | None]
     image_id: NotRequired[str | None]
     hidden_online: NotRequired[bool | None]

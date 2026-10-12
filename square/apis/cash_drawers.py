@@ -8,9 +8,11 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.enums.sort_order import SortOrderOrStr
 from ..models.list_cash_drawer_shift_events_response import ListCashDrawerShiftEventsResponse
@@ -39,16 +41,19 @@ class CashDrawers:
             location_id: The ID of the location to list cash drawer shifts for.
             limit: Number of resources to be returned in a page of results (200 by default, 1000 max).
             cursor: Opaque cursor for fetching the next page of results.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_cash_drawer_shift_events(
-            shift_id, location_id, limit=limit, cursor=cursor, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_cash_drawer_shift_events(
+                shift_id, location_id, limit=limit, cursor=cursor, request_options=request_options
+            ),
+        )
 
     def list_cash_drawer_shifts(
         self,
@@ -71,22 +76,25 @@ class CashDrawers:
             end_time: The exclusive end date of the query on opened_at, in ISO 8601 format.
             limit: Number of cash drawer shift events in a page of results (200 by default, 1000 max).
             cursor: Opaque cursor for fetching the next page of results.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_cash_drawer_shifts(
-            location_id,
-            sort_order=sort_order,
-            begin_time=begin_time,
-            end_time=end_time,
-            limit=limit,
-            cursor=cursor,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_cash_drawer_shifts(
+                location_id,
+                sort_order=sort_order,
+                begin_time=begin_time,
+                end_time=end_time,
+                limit=limit,
+                cursor=cursor,
+                request_options=request_options,
+            ),
+        )
 
     def retrieve_cash_drawer_shift(
         self, shift_id: str, location_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -97,16 +105,17 @@ class CashDrawers:
         Args:
             shift_id: The shift ID.
             location_id: The ID of the location to retrieve cash drawer shifts from.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_cash_drawer_shift(
-            shift_id, location_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.retrieve_cash_drawer_shift(shift_id, location_id, request_options=request_options)
+        )
 
     @property
     def with_raw_response(self) -> CashDrawersWithRawResponse:
@@ -133,18 +142,19 @@ class AsyncCashDrawers:
             location_id: The ID of the location to list cash drawer shifts for.
             limit: Number of resources to be returned in a page of results (200 by default, 1000 max).
             cursor: Opaque cursor for fetching the next page of results.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_cash_drawer_shift_events(
                 shift_id, location_id, limit=limit, cursor=cursor, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def list_cash_drawer_shifts(
         self,
@@ -167,14 +177,15 @@ class AsyncCashDrawers:
             end_time: The exclusive end date of the query on opened_at, in ISO 8601 format.
             limit: Number of cash drawer shift events in a page of results (200 by default, 1000 max).
             cursor: Opaque cursor for fetching the next page of results.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_cash_drawer_shifts(
                 location_id,
                 sort_order=sort_order,
@@ -183,8 +194,8 @@ class AsyncCashDrawers:
                 limit=limit,
                 cursor=cursor,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_cash_drawer_shift(
         self, shift_id: str, location_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -195,18 +206,19 @@ class AsyncCashDrawers:
         Args:
             shift_id: The shift ID.
             location_id: The ID of the location to retrieve cash drawer shifts from.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_cash_drawer_shift(
                 shift_id, location_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncCashDrawersWithRawResponse:
@@ -230,7 +242,8 @@ class CashDrawersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchem
             location_id: The ID of the location to list cash drawer shifts for.
             limit: Number of resources to be returned in a page of results (200 by default, 1000 max).
             cursor: Opaque cursor for fetching the next page of results.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -270,7 +283,8 @@ class CashDrawersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchem
             end_time: The exclusive end date of the query on opened_at, in ISO 8601 format.
             limit: Number of cash drawer shift events in a page of results (200 by default, 1000 max).
             cursor: Opaque cursor for fetching the next page of results.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -300,7 +314,8 @@ class CashDrawersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchem
         Args:
             shift_id: The shift ID.
             location_id: The ID of the location to retrieve cash drawer shifts from.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -333,7 +348,8 @@ class AsyncCashDrawersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
             location_id: The ID of the location to list cash drawer shifts for.
             limit: Number of resources to be returned in a page of results (200 by default, 1000 max).
             cursor: Opaque cursor for fetching the next page of results.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -347,7 +363,7 @@ class AsyncCashDrawersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
                 param[str | None]("cursor", cursor),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListCashDrawerShiftEventsResponse],
+            decoder=async_json_decoder[ListCashDrawerShiftEventsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -373,7 +389,8 @@ class AsyncCashDrawersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
             end_time: The exclusive end date of the query on opened_at, in ISO 8601 format.
             limit: Number of cash drawer shift events in a page of results (200 by default, 1000 max).
             cursor: Opaque cursor for fetching the next page of results.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -389,7 +406,7 @@ class AsyncCashDrawersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
                 param[str | None]("cursor", cursor),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListCashDrawerShiftsResponse],
+            decoder=async_json_decoder[ListCashDrawerShiftsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -403,7 +420,8 @@ class AsyncCashDrawersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
         Args:
             shift_id: The shift ID.
             location_id: The ID of the location to retrieve cash drawer shifts from.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -413,7 +431,7 @@ class AsyncCashDrawersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
             path_params=[param[str]("shift_id", shift_id)],
             query_params=[param[str]("location_id", location_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveCashDrawerShiftResponse],
+            decoder=async_json_decoder[RetrieveCashDrawerShiftResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

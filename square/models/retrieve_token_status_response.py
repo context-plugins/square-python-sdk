@@ -32,4 +32,4 @@ class RetrieveTokenStatusResponseDict(TypedDict):
     expires_at: NotRequired[str]
     client_id: NotRequired[str]
     merchant_id: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

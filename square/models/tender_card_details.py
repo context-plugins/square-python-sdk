@@ -24,5 +24,5 @@ class TenderCardDetails(SdkBaseModel):
 
 class TenderCardDetailsDict(TypedDict):
     status: NotRequired[TenderCardDetailsStatusOrStr]
-    card: NotRequired[Card | CardDict]
+    card: NotRequired[CardDict]
     entry_method: NotRequired[TenderCardDetailsEntryMethodOrStr]

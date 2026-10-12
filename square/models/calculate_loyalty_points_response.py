@@ -22,6 +22,6 @@ class CalculateLoyaltyPointsResponse(SdkBaseModel):
 
 
 class CalculateLoyaltyPointsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]
     points: NotRequired[int]
     promotion_points: NotRequired[int]

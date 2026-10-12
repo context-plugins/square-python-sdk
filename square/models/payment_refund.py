@@ -49,7 +49,7 @@ class PaymentRefund(SdkBaseModel):
     the sign of the value indicates the purpose of the money transfer. See `Working with Monetary Amounts
     <https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts>`__ for more information."""
 
-    processing_fee: Optional[list[ProcessingFee | None]] = UNSET
+    processing_fee: OptionalNullable[list[ProcessingFee]] = UNSET
     """Processing fees and fee adjustments assessed by Square for this refund."""
 
     payment_id: OptionalNullable[str] = UNSET
@@ -80,10 +80,10 @@ class PaymentRefundDict(TypedDict):
     location_id: NotRequired[str | None]
     unlinked: NotRequired[bool]
     destination_type: NotRequired[str | None]
-    destination_details: NotRequired[DestinationDetails | DestinationDetailsDict]
-    amount_money: Money | MoneyDict
-    app_fee_money: NotRequired[Money | MoneyDict]
-    processing_fee: NotRequired[list[ProcessingFee | ProcessingFeeDict | None]]
+    destination_details: NotRequired[DestinationDetailsDict]
+    amount_money: MoneyDict
+    app_fee_money: NotRequired[MoneyDict]
+    processing_fee: NotRequired[list[ProcessingFeeDict] | None]
     payment_id: NotRequired[str | None]
     order_id: NotRequired[str | None]
     reason: NotRequired[str | None]

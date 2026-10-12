@@ -45,10 +45,10 @@ class Order(SdkBaseModel):
     to customers. Omitting this field might result in the creation of new `instant profiles
     <https://developer.squareup.com/docs/customers-api/what-it-does#instant-profiles>`__."""
 
-    line_items: Optional[list[OrderLineItem | None]] = UNSET
+    line_items: OptionalNullable[list[OrderLineItem]] = UNSET
     """The line items included in the order."""
 
-    taxes: Optional[list[OrderLineItemTax | None]] = UNSET
+    taxes: OptionalNullable[list[OrderLineItemTax]] = UNSET
     """The list of all taxes associated with the order.
 
     Taxes can be scoped to either ``ORDER`` or ``LINE_ITEM``. For taxes with ``LINE_ITEM`` scope, an
@@ -60,7 +60,7 @@ class Order(SdkBaseModel):
     __IMPORTANT__: If ``LINE_ITEM`` scope is set on any taxes in this field, using the deprecated ``line_items.taxes``
     field results in an error. Use ``line_items.applied_taxes`` instead."""
 
-    discounts: Optional[list[OrderLineItemDiscount | None]] = UNSET
+    discounts: OptionalNullable[list[OrderLineItemDiscount]] = UNSET
     """The list of all discounts associated with the order.
 
     Discounts can be scoped to either ``ORDER`` or ``LINE_ITEM``. For discounts scoped to ``LINE_ITEM``, an
@@ -70,10 +70,10 @@ class Order(SdkBaseModel):
     __IMPORTANT__: If ``LINE_ITEM`` scope is set on any discounts in this field, using the deprecated
     ``line_items.discounts`` field results in an error. Use ``line_items.applied_discounts`` instead."""
 
-    service_charges: Optional[list[OrderServiceCharge | None]] = UNSET
+    service_charges: OptionalNullable[list[OrderServiceCharge]] = UNSET
     """A list of service charges applied to the order."""
 
-    fulfillments: Optional[list[Fulfillment | None]] = UNSET
+    fulfillments: OptionalNullable[list[Fulfillment]] = UNSET
     """Details about order fulfillment.
 
     Orders can only be created with at most one fulfillment. However, orders returned by the API might contain multiple
@@ -99,7 +99,7 @@ class Order(SdkBaseModel):
     refunds: Optional[list[Refund]] = UNSET
     """The refunds that are part of this order."""
 
-    metadata: Optional[dict[str, str | None]] = UNSET
+    metadata: OptionalNullable[dict[str, str]] = UNSET
     """Application-defined data attached to this order. Metadata fields are intended to store descriptive references or
     associations with an entity in another system or store brief information about the object. Square does not process
     this field; it only stores and returns it in relevant API calls. Do not use metadata to store any sensitive
@@ -192,31 +192,31 @@ class OrderDict(TypedDict):
     id: NotRequired[str]
     location_id: str
     reference_id: NotRequired[str | None]
-    source: NotRequired[OrderSource | OrderSourceDict]
+    source: NotRequired[OrderSourceDict]
     customer_id: NotRequired[str | None]
-    line_items: NotRequired[list[OrderLineItem | OrderLineItemDict | None]]
-    taxes: NotRequired[list[OrderLineItemTax | OrderLineItemTaxDict | None]]
-    discounts: NotRequired[list[OrderLineItemDiscount | OrderLineItemDiscountDict | None]]
-    service_charges: NotRequired[list[OrderServiceCharge | OrderServiceChargeDict | None]]
-    fulfillments: NotRequired[list[Fulfillment | FulfillmentDict | None]]
-    returns: NotRequired[list[OrderReturn | OrderReturnDict]]
-    return_amounts: NotRequired[OrderMoneyAmounts | OrderMoneyAmountsDict]
-    net_amounts: NotRequired[OrderMoneyAmounts | OrderMoneyAmountsDict]
-    rounding_adjustment: NotRequired[OrderRoundingAdjustment | OrderRoundingAdjustmentDict]
-    tenders: NotRequired[list[Tender | TenderDict]]
-    refunds: NotRequired[list[Refund | RefundDict]]
-    metadata: NotRequired[dict[str, str | None]]
+    line_items: NotRequired[list[OrderLineItemDict] | None]
+    taxes: NotRequired[list[OrderLineItemTaxDict] | None]
+    discounts: NotRequired[list[OrderLineItemDiscountDict] | None]
+    service_charges: NotRequired[list[OrderServiceChargeDict] | None]
+    fulfillments: NotRequired[list[FulfillmentDict] | None]
+    returns: NotRequired[list[OrderReturnDict]]
+    return_amounts: NotRequired[OrderMoneyAmountsDict]
+    net_amounts: NotRequired[OrderMoneyAmountsDict]
+    rounding_adjustment: NotRequired[OrderRoundingAdjustmentDict]
+    tenders: NotRequired[list[TenderDict]]
+    refunds: NotRequired[list[RefundDict]]
+    metadata: NotRequired[dict[str, str] | None]
     created_at: NotRequired[str]
     updated_at: NotRequired[str]
     closed_at: NotRequired[str]
     state: NotRequired[OrderStateOrStr]
     version: NotRequired[int]
-    total_money: NotRequired[Money | MoneyDict]
-    total_tax_money: NotRequired[Money | MoneyDict]
-    total_discount_money: NotRequired[Money | MoneyDict]
-    total_tip_money: NotRequired[Money | MoneyDict]
-    total_service_charge_money: NotRequired[Money | MoneyDict]
+    total_money: NotRequired[MoneyDict]
+    total_tax_money: NotRequired[MoneyDict]
+    total_discount_money: NotRequired[MoneyDict]
+    total_tip_money: NotRequired[MoneyDict]
+    total_service_charge_money: NotRequired[MoneyDict]
     ticket_name: NotRequired[str | None]
-    pricing_options: NotRequired[OrderPricingOptions | OrderPricingOptionsDict]
-    rewards: NotRequired[list[OrderReward | OrderRewardDict]]
-    net_amount_due_money: NotRequired[Money | MoneyDict]
+    pricing_options: NotRequired[OrderPricingOptionsDict]
+    rewards: NotRequired[list[OrderRewardDict]]
+    net_amount_due_money: NotRequired[MoneyDict]

@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.create_location_request import CreateLocationRequest, CreateLocationRequestDict
 from ..models.create_location_response import CreateLocationResponse
@@ -43,28 +45,30 @@ class Locations:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_location(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_location(body, request_options=request_options))
 
     def list_locations(self, *, request_options: RequestOptionsOrDict | None = None) -> ListLocationsResponse:
         """Provides details about all of the seller's `locations <https://developer.squareup.com/docs/locations-api>`__,
         including those with an inactive status. Locations are listed alphabetically by ``name``.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_locations(request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.list_locations(request_options=request_options))
 
     def retrieve_location(
         self, location_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -74,14 +78,15 @@ class Locations:
 
         Args:
             location_id: The ID of the location to retrieve. Specify the string "main" to return the main location.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_location(location_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_location(location_id, request_options=request_options))
 
     def update_location(
         self,
@@ -96,14 +101,15 @@ class Locations:
             location_id: The ID of the location to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_location(location_id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.update_location(location_id, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> LocationsWithRawResponse:
@@ -129,28 +135,30 @@ class AsyncLocations:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_location(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_location(body, request_options=request_options))
 
     async def list_locations(self, *, request_options: RequestOptionsOrDict | None = None) -> ListLocationsResponse:
         """Provides details about all of the seller's `locations <https://developer.squareup.com/docs/locations-api>`__,
         including those with an inactive status. Locations are listed alphabetically by ``name``.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.list_locations(request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.list_locations(request_options=request_options))
 
     async def retrieve_location(
         self, location_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -160,14 +168,15 @@ class AsyncLocations:
 
         Args:
             location_id: The ID of the location to retrieve. Specify the string "main" to return the main location.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.retrieve_location(location_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.retrieve_location(location_id, request_options=request_options))
 
     async def update_location(
         self,
@@ -182,16 +191,15 @@ class AsyncLocations:
             location_id: The ID of the location to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.update_location(location_id, body, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.update_location(location_id, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncLocationsWithRawResponse:
@@ -214,7 +222,8 @@ class LocationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -236,7 +245,8 @@ class LocationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         including those with an inactive status. Locations are listed alphabetically by ``name``.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -257,7 +267,8 @@ class LocationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
 
         Args:
             location_id: The ID of the location to retrieve. Specify the string "main" to return the main location.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -284,7 +295,8 @@ class LocationsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             location_id: The ID of the location to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -317,7 +329,8 @@ class AsyncLocationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -327,7 +340,7 @@ class AsyncLocationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateLocationRequest | CreateLocationRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateLocationResponse],
+            decoder=async_json_decoder[CreateLocationResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -339,7 +352,8 @@ class AsyncLocationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         including those with an inactive status. Locations are listed alphabetically by ``name``.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -347,7 +361,7 @@ class AsyncLocationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             http_method="GET",
             url_template=self._server.default("/v2/locations"),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListLocationsResponse],
+            decoder=async_json_decoder[ListLocationsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -360,7 +374,8 @@ class AsyncLocationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
 
         Args:
             location_id: The ID of the location to retrieve. Specify the string "main" to return the main location.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -369,7 +384,7 @@ class AsyncLocationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             url_template=self._server.default("/v2/locations/{location_id}"),
             path_params=[param[str]("location_id", location_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveLocationResponse],
+            decoder=async_json_decoder[RetrieveLocationResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -387,7 +402,8 @@ class AsyncLocationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             location_id: The ID of the location to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -398,7 +414,7 @@ class AsyncLocationsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateLocationRequest | UpdateLocationRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateLocationResponse],
+            decoder=async_json_decoder[UpdateLocationResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

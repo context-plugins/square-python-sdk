@@ -23,4 +23,4 @@ class LaborScheduledShiftUpdatedEventData(SdkBaseModel):
 class LaborScheduledShiftUpdatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[LaborScheduledShiftUpdatedEventObject | LaborScheduledShiftUpdatedEventObjectDict]
+    object_: NotRequired[LaborScheduledShiftUpdatedEventObjectDict]

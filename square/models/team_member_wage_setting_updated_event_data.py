@@ -23,4 +23,4 @@ class TeamMemberWageSettingUpdatedEventData(SdkBaseModel):
 class TeamMemberWageSettingUpdatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[TeamMemberWageSettingUpdatedEventObject | TeamMemberWageSettingUpdatedEventObjectDict]
+    object_: NotRequired[TeamMemberWageSettingUpdatedEventObjectDict]

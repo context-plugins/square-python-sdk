@@ -40,4 +40,4 @@ class BatchUpsertCatalogObjectsRequest(SdkBaseModel):
 
 class BatchUpsertCatalogObjectsRequestDict(TypedDict):
     idempotency_key: str
-    batches: list[CatalogObjectBatch | CatalogObjectBatchDict]
+    batches: list[CatalogObjectBatchDict]

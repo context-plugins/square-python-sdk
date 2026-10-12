@@ -21,5 +21,5 @@ class UpdatePaymentRequest(SdkBaseModel):
 
 
 class UpdatePaymentRequestDict(TypedDict):
-    payment: NotRequired[Payment | PaymentDict]
+    payment: NotRequired[PaymentDict]
     idempotency_key: str

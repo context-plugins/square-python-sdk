@@ -20,4 +20,4 @@ class TeamMemberUpdatedEventData(SdkBaseModel):
 class TeamMemberUpdatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[TeamMemberUpdatedEventObject | TeamMemberUpdatedEventObjectDict]
+    object_: NotRequired[TeamMemberUpdatedEventObjectDict]

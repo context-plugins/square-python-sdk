@@ -26,4 +26,4 @@ class OrderRoundingAdjustment(SdkBaseModel):
 class OrderRoundingAdjustmentDict(TypedDict):
     uid: NotRequired[str | None]
     name: NotRequired[str | None]
-    amount_money: NotRequired[Money | MoneyDict]
+    amount_money: NotRequired[MoneyDict]

@@ -13,4 +13,4 @@ class PayoutSentEventObject(SdkBaseModel):
 
 
 class PayoutSentEventObjectDict(TypedDict):
-    payout: NotRequired[Payout | PayoutDict]
+    payout: NotRequired[PayoutDict]

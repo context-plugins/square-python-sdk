@@ -30,5 +30,5 @@ class UpdateTransferOrderResponse(SdkBaseModel):
 
 
 class UpdateTransferOrderResponseDict(TypedDict):
-    transfer_order: NotRequired[TransferOrder | TransferOrderDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    transfer_order: NotRequired[TransferOrderDict]
+    errors: NotRequired[list[ErrorDict]]

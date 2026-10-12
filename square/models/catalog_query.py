@@ -87,15 +87,13 @@ class CatalogQuery(SdkBaseModel):
 
 
 class CatalogQueryDict(TypedDict):
-    sorted_attribute_query: NotRequired[CatalogQuerySortedAttribute | CatalogQuerySortedAttributeDict]
-    exact_query: NotRequired[CatalogQueryExact | CatalogQueryExactDict]
-    set_query: NotRequired[CatalogQuerySet | CatalogQuerySetDict]
-    prefix_query: NotRequired[CatalogQueryPrefix | CatalogQueryPrefixDict]
-    range_query: NotRequired[CatalogQueryRange | CatalogQueryRangeDict]
-    text_query: NotRequired[CatalogQueryText | CatalogQueryTextDict]
-    items_for_tax_query: NotRequired[CatalogQueryItemsForTax | CatalogQueryItemsForTaxDict]
-    items_for_modifier_list_query: NotRequired[CatalogQueryItemsForModifierList | CatalogQueryItemsForModifierListDict]
-    items_for_item_options_query: NotRequired[CatalogQueryItemsForItemOptions | CatalogQueryItemsForItemOptionsDict]
-    item_variations_for_item_option_values_query: NotRequired[
-        CatalogQueryItemVariationsForItemOptionValues | CatalogQueryItemVariationsForItemOptionValuesDict
-    ]
+    sorted_attribute_query: NotRequired[CatalogQuerySortedAttributeDict]
+    exact_query: NotRequired[CatalogQueryExactDict]
+    set_query: NotRequired[CatalogQuerySetDict]
+    prefix_query: NotRequired[CatalogQueryPrefixDict]
+    range_query: NotRequired[CatalogQueryRangeDict]
+    text_query: NotRequired[CatalogQueryTextDict]
+    items_for_tax_query: NotRequired[CatalogQueryItemsForTaxDict]
+    items_for_modifier_list_query: NotRequired[CatalogQueryItemsForModifierListDict]
+    items_for_item_options_query: NotRequired[CatalogQueryItemsForItemOptionsDict]
+    item_variations_for_item_option_values_query: NotRequired[CatalogQueryItemVariationsForItemOptionValuesDict]

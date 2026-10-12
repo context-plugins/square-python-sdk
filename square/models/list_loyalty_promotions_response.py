@@ -26,6 +26,6 @@ class ListLoyaltyPromotionsResponse(SdkBaseModel):
 
 
 class ListLoyaltyPromotionsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    loyalty_promotions: NotRequired[list[LoyaltyPromotion | LoyaltyPromotionDict]]
+    errors: NotRequired[list[ErrorDict]]
+    loyalty_promotions: NotRequired[list[LoyaltyPromotionDict]]
     cursor: NotRequired[str]

@@ -26,6 +26,6 @@ class ListPaymentRefundsResponse(SdkBaseModel):
 
 
 class ListPaymentRefundsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    refunds: NotRequired[list[PaymentRefund | PaymentRefundDict]]
+    errors: NotRequired[list[ErrorDict]]
+    refunds: NotRequired[list[PaymentRefundDict]]
     cursor: NotRequired[str]

@@ -20,5 +20,5 @@ class BulkUpdateTeamMembersResponse(SdkBaseModel):
 
 
 class BulkUpdateTeamMembersResponseDict(TypedDict):
-    team_members: NotRequired[dict[str, UpdateTeamMemberResponse | UpdateTeamMemberResponseDict]]
-    errors: NotRequired[list[Error | ErrorDict]]
+    team_members: NotRequired[dict[str, UpdateTeamMemberResponseDict]]
+    errors: NotRequired[list[ErrorDict]]

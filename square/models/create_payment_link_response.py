@@ -17,6 +17,6 @@ class CreatePaymentLinkResponse(SdkBaseModel):
 
 
 class CreatePaymentLinkResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    payment_link: NotRequired[PaymentLink | PaymentLinkDict]
-    related_resources: NotRequired[PaymentLinkRelatedResources | PaymentLinkRelatedResourcesDict]
+    errors: NotRequired[list[ErrorDict]]
+    payment_link: NotRequired[PaymentLinkDict]
+    related_resources: NotRequired[PaymentLinkRelatedResourcesDict]

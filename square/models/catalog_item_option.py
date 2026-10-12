@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
+from ..core import UNSET, OptionalNullable, SdkBaseModel
 from .catalog_object import CatalogObject, CatalogObjectDict
 
 
@@ -24,7 +24,7 @@ class CatalogItemOption(SdkBaseModel):
     show_colors: OptionalNullable[bool] = UNSET
     """If true, display colors for entries in ``values`` when present."""
 
-    values: Optional[list[CatalogObject | None]] = UNSET
+    values: OptionalNullable[list[CatalogObject]] = UNSET
     """A list of CatalogObjects containing the ``CatalogItemOptionValue``s for this item."""
 
 
@@ -33,4 +33,4 @@ class CatalogItemOptionDict(TypedDict):
     display_name: NotRequired[str | None]
     description: NotRequired[str | None]
     show_colors: NotRequired[bool | None]
-    values: NotRequired[list[CatalogObject | CatalogObjectDict | None]]
+    values: NotRequired[list[CatalogObjectDict] | None]

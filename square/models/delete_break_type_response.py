@@ -15,4 +15,4 @@ class DeleteBreakTypeResponse(SdkBaseModel):
 
 
 class DeleteBreakTypeResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

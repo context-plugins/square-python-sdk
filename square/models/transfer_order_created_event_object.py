@@ -24,4 +24,4 @@ class TransferOrderCreatedEventObject(SdkBaseModel):
 
 
 class TransferOrderCreatedEventObjectDict(TypedDict):
-    transfer_order: NotRequired[TransferOrder | TransferOrderDict]
+    transfer_order: NotRequired[TransferOrderDict]

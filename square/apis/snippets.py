@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.delete_snippet_response import DeleteSnippetResponse
 from ..models.retrieve_snippet_response import RetrieveSnippetResponse
@@ -40,14 +42,15 @@ class Snippets:
 
         Args:
             site_id: The ID of the site that contains the snippet.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_snippet(site_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.delete_snippet(site_id, request_options=request_options))
 
     def retrieve_snippet(
         self, site_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -64,14 +67,15 @@ class Snippets:
 
         Args:
             site_id: The ID of the site that contains the snippet.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_snippet(site_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_snippet(site_id, request_options=request_options))
 
     def upsert_snippet(
         self,
@@ -95,14 +99,15 @@ class Snippets:
             site_id: The ID of the site where you want to add or update the snippet.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.upsert_snippet(site_id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.upsert_snippet(site_id, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> SnippetsWithRawResponse:
@@ -127,14 +132,15 @@ class AsyncSnippets:
 
         Args:
             site_id: The ID of the site that contains the snippet.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.delete_snippet(site_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.delete_snippet(site_id, request_options=request_options))
 
     async def retrieve_snippet(
         self, site_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -151,14 +157,15 @@ class AsyncSnippets:
 
         Args:
             site_id: The ID of the site that contains the snippet.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.retrieve_snippet(site_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.retrieve_snippet(site_id, request_options=request_options))
 
     async def upsert_snippet(
         self,
@@ -182,14 +189,15 @@ class AsyncSnippets:
             site_id: The ID of the site where you want to add or update the snippet.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.upsert_snippet(site_id, body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.upsert_snippet(site_id, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncSnippetsWithRawResponse:
@@ -211,7 +219,8 @@ class SnippetsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             site_id: The ID of the site that contains the snippet.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -241,7 +250,8 @@ class SnippetsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             site_id: The ID of the site that contains the snippet.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -277,7 +287,8 @@ class SnippetsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             site_id: The ID of the site where you want to add or update the snippet.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -309,7 +320,8 @@ class AsyncSnippetsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             site_id: The ID of the site that contains the snippet.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -319,7 +331,7 @@ class AsyncSnippetsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             path_params=[param[str]("site_id", site_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeleteSnippetResponse],
+            decoder=async_json_decoder[DeleteSnippetResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -339,7 +351,8 @@ class AsyncSnippetsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             site_id: The ID of the site that contains the snippet.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -348,7 +361,7 @@ class AsyncSnippetsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             url_template=self._server.default("/v2/sites/{site_id}/snippet"),
             path_params=[param[str]("site_id", site_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveSnippetResponse],
+            decoder=async_json_decoder[RetrieveSnippetResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -375,7 +388,8 @@ class AsyncSnippetsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             site_id: The ID of the site where you want to add or update the snippet.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -386,7 +400,7 @@ class AsyncSnippetsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpsertSnippetRequest | UpsertSnippetRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpsertSnippetResponse],
+            decoder=async_json_decoder[UpsertSnippetResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

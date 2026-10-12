@@ -18,4 +18,4 @@ class UpdateShiftRequest(SdkBaseModel):
 
 
 class UpdateShiftRequestDict(TypedDict):
-    shift: Shift | ShiftDict
+    shift: ShiftDict

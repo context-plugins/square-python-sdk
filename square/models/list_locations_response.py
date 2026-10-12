@@ -21,5 +21,5 @@ class ListLocationsResponse(SdkBaseModel):
 
 
 class ListLocationsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    locations: NotRequired[list[Location | LocationDict]]
+    errors: NotRequired[list[ErrorDict]]
+    locations: NotRequired[list[LocationDict]]

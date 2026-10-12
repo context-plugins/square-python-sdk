@@ -13,19 +13,19 @@ from .inventory_adjustment_reason_id import InventoryAdjustmentReasonId, Invento
 
 
 class BatchRetrieveInventoryChangesRequest(SdkBaseModel):
-    catalog_object_ids: Optional[list[str | None]] = UNSET
+    catalog_object_ids: OptionalNullable[list[str]] = UNSET
     """The filter to return results by ``CatalogObject`` ID. The filter is only applicable when set. The default value
     is null."""
 
-    location_ids: Optional[list[str | None]] = UNSET
+    location_ids: OptionalNullable[list[str]] = UNSET
     """The filter to return results by ``Location`` ID. The filter is only applicable when set. The default value is
     null."""
 
-    types: Optional[list[InventoryChangeTypeOrStr | None]] = UNSET
+    types: OptionalNullable[list[InventoryChangeTypeOrStr]] = UNSET
     """The filter to return results by ``InventoryChangeType`` values other than ``TRANSFER``. The default value is
     ``[PHYSICAL_COUNT, ADJUSTMENT]``."""
 
-    states: Optional[list[InventoryStateOrStr | None]] = UNSET
+    states: OptionalNullable[list[InventoryStateOrStr]] = UNSET
     """The filter to return ``ADJUSTMENT`` query results by ``InventoryState``. This filter is only applied when set.
     The default value is null."""
 
@@ -48,19 +48,19 @@ class BatchRetrieveInventoryChangesRequest(SdkBaseModel):
     """The number of `records <entity:InventoryChange>`__ to return."""
 
     sort: Optional[BatchRetrieveInventoryChangesSort] = UNSET
-    reason_ids: Optional[list[InventoryAdjustmentReasonId | None]] = UNSET
+    reason_ids: OptionalNullable[list[InventoryAdjustmentReasonId]] = UNSET
     """The filter to return ``ADJUSTMENT`` query results by inventory adjustment reason. This filter is only applied
     when set. The request cannot include both ``reason_ids`` and ``states``."""
 
 
 class BatchRetrieveInventoryChangesRequestDict(TypedDict):
-    catalog_object_ids: NotRequired[list[str | None]]
-    location_ids: NotRequired[list[str | None]]
-    types: NotRequired[list[InventoryChangeTypeOrStr | None]]
-    states: NotRequired[list[InventoryStateOrStr | None]]
+    catalog_object_ids: NotRequired[list[str] | None]
+    location_ids: NotRequired[list[str] | None]
+    types: NotRequired[list[InventoryChangeTypeOrStr] | None]
+    states: NotRequired[list[InventoryStateOrStr] | None]
     updated_after: NotRequired[str | None]
     updated_before: NotRequired[str | None]
     cursor: NotRequired[str | None]
     limit: NotRequired[int | None]
-    sort: NotRequired[BatchRetrieveInventoryChangesSort | BatchRetrieveInventoryChangesSortDict]
-    reason_ids: NotRequired[list[InventoryAdjustmentReasonId | InventoryAdjustmentReasonIdDict | None]]
+    sort: NotRequired[BatchRetrieveInventoryChangesSortDict]
+    reason_ids: NotRequired[list[InventoryAdjustmentReasonIdDict] | None]

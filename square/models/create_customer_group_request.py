@@ -23,4 +23,4 @@ class CreateCustomerGroupRequest(SdkBaseModel):
 
 class CreateCustomerGroupRequestDict(TypedDict):
     idempotency_key: NotRequired[str]
-    group: CustomerGroup | CustomerGroupDict
+    group: CustomerGroupDict

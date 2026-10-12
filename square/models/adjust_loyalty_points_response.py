@@ -19,5 +19,5 @@ class AdjustLoyaltyPointsResponse(SdkBaseModel):
 
 
 class AdjustLoyaltyPointsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    event: NotRequired[LoyaltyEvent | LoyaltyEventDict]
+    errors: NotRequired[list[ErrorDict]]
+    event: NotRequired[LoyaltyEventDict]

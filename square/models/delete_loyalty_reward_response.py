@@ -14,4 +14,4 @@ class DeleteLoyaltyRewardResponse(SdkBaseModel):
 
 
 class DeleteLoyaltyRewardResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

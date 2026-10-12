@@ -34,5 +34,5 @@ class DeviceComponentDetailsWiFiDetailsDict(TypedDict):
     ssid: NotRequired[str | None]
     ip_address_v4: NotRequired[str | None]
     secure_connection: NotRequired[str | None]
-    signal_strength: NotRequired[DeviceComponentDetailsMeasurement | DeviceComponentDetailsMeasurementDict]
+    signal_strength: NotRequired[DeviceComponentDetailsMeasurementDict]
     mac_address: NotRequired[str | None]

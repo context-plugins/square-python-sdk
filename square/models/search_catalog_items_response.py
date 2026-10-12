@@ -25,7 +25,7 @@ class SearchCatalogItemsResponse(SdkBaseModel):
 
 
 class SearchCatalogItemsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    items: NotRequired[list[CatalogObject | CatalogObjectDict]]
+    errors: NotRequired[list[ErrorDict]]
+    items: NotRequired[list[CatalogObjectDict]]
     cursor: NotRequired[str]
     matched_variation_ids: NotRequired[list[str]]

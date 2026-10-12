@@ -30,6 +30,6 @@ class CatalogQuickAmount(SdkBaseModel):
 
 class CatalogQuickAmountDict(TypedDict):
     type_: CatalogQuickAmountTypeOrStr
-    amount: Money | MoneyDict
+    amount: MoneyDict
     score: NotRequired[int | None]
     ordinal: NotRequired[int | None]

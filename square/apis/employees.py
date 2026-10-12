@@ -8,9 +8,11 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.enums.employee_status import EmployeeStatusOrStr
 from ..models.list_employees_response import ListEmployeesResponse
@@ -38,32 +40,36 @@ class Employees:
             status: Specifies the EmployeeStatus to filter the employee by.
             limit: The number of employees to be returned on each page.
             cursor: The token required to retrieve the specified page of results.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_employees(
-            location_id=location_id, status=status, limit=limit, cursor=cursor, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_employees(
+                location_id=location_id, status=status, limit=limit, cursor=cursor, request_options=request_options
+            ),
+        )
 
     def retrieve_employee(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> RetrieveEmployeeResponse:
         """Send a ``GET`` request.
 
         Args:
-            id: UUID for the employee that was requested.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: UUID for the employee that was requested.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_employee(id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_employee(id_, request_options=request_options))
 
     @property
     def with_raw_response(self) -> EmployeesWithRawResponse:
@@ -90,34 +96,36 @@ class AsyncEmployees:
             status: Specifies the EmployeeStatus to filter the employee by.
             limit: The number of employees to be returned on each page.
             cursor: The token required to retrieve the specified page of results.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_employees(
                 location_id=location_id, status=status, limit=limit, cursor=cursor, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_employee(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> RetrieveEmployeeResponse:
         """Send a ``GET`` request.
 
         Args:
-            id: UUID for the employee that was requested.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: UUID for the employee that was requested.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.retrieve_employee(id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.retrieve_employee(id_, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncEmployeesWithRawResponse:
@@ -141,7 +149,8 @@ class EmployeesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             status: Specifies the EmployeeStatus to filter the employee by.
             limit: The number of employees to be returned on each page.
             cursor: The token required to retrieve the specified page of results.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -161,20 +170,21 @@ class EmployeesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         )
 
     def retrieve_employee(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[RetrieveEmployeeResponse, RawError]:
         """Send a ``GET`` request.
 
         Args:
-            id: UUID for the employee that was requested.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: UUID for the employee that was requested.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="GET",
             url_template=self._server.default("/v2/employees/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[RetrieveEmployeeResponse],
             error_mapper=raw_error_response,
@@ -199,7 +209,8 @@ class AsyncEmployeesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             status: Specifies the EmployeeStatus to filter the employee by.
             limit: The number of employees to be returned on each page.
             cursor: The token required to retrieve the specified page of results.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -213,28 +224,29 @@ class AsyncEmployeesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
                 param[str | None]("cursor", cursor),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListEmployeesResponse],
+            decoder=async_json_decoder[ListEmployeesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def retrieve_employee(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[RetrieveEmployeeResponse, RawError]:
         """Send a ``GET`` request.
 
         Args:
-            id: UUID for the employee that was requested.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: UUID for the employee that was requested.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="GET",
             url_template=self._server.default("/v2/employees/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveEmployeeResponse],
+            decoder=async_json_decoder[RetrieveEmployeeResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

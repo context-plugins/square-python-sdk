@@ -14,7 +14,7 @@ class SearchTeamMembersFilter(SdkBaseModel):
     ```
     returns only active team members assigned to either location "A" or "B"."""
 
-    location_ids: Optional[list[str | None]] = UNSET
+    location_ids: OptionalNullable[list[str]] = UNSET
     """When present, filters by team members assigned to the specified locations. When empty, includes team members
     assigned to any location."""
 
@@ -26,6 +26,6 @@ class SearchTeamMembersFilter(SdkBaseModel):
 
 
 class SearchTeamMembersFilterDict(TypedDict):
-    location_ids: NotRequired[list[str | None]]
+    location_ids: NotRequired[list[str] | None]
     status: NotRequired[TeamMemberStatusOrStr]
     is_owner: NotRequired[bool | None]

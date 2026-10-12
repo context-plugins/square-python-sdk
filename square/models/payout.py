@@ -49,7 +49,7 @@ class Payout(SdkBaseModel):
     settled. SIMPLE payouts do not have any payout entries associated with them and will show up as one of the payout
     entries in a future BATCH payout."""
 
-    payout_fee: Optional[list[PayoutFee | None]] = UNSET
+    payout_fee: OptionalNullable[list[PayoutFee]] = UNSET
     """A list of transfer fees and any taxes on the fees assessed by Square for this payout."""
 
     arrival_date: OptionalNullable[str] = UNSET
@@ -67,10 +67,10 @@ class PayoutDict(TypedDict):
     location_id: str
     created_at: NotRequired[str]
     updated_at: NotRequired[str]
-    amount_money: NotRequired[Money | MoneyDict]
-    destination: NotRequired[Destination | DestinationDict]
+    amount_money: NotRequired[MoneyDict]
+    destination: NotRequired[DestinationDict]
     version: NotRequired[int]
     type_: NotRequired[PayoutTypeOrStr]
-    payout_fee: NotRequired[list[PayoutFee | PayoutFeeDict | None]]
+    payout_fee: NotRequired[list[PayoutFeeDict] | None]
     arrival_date: NotRequired[str | None]
     end_to_end_id: NotRequired[str | None]

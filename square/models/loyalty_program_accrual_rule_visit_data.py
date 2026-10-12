@@ -22,5 +22,5 @@ class LoyaltyProgramAccrualRuleVisitData(SdkBaseModel):
 
 
 class LoyaltyProgramAccrualRuleVisitDataDict(TypedDict):
-    minimum_amount_money: NotRequired[Money | MoneyDict]
+    minimum_amount_money: NotRequired[MoneyDict]
     tax_mode: LoyaltyProgramAccrualRuleTaxModeOrStr

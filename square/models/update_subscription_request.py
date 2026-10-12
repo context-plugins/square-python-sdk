@@ -18,4 +18,4 @@ class UpdateSubscriptionRequest(SdkBaseModel):
 
 
 class UpdateSubscriptionRequestDict(TypedDict):
-    subscription: NotRequired[Subscription | SubscriptionDict]
+    subscription: NotRequired[SubscriptionDict]

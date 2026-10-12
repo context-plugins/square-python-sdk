@@ -21,6 +21,6 @@ class DeleteCatalogObjectResponse(SdkBaseModel):
 
 
 class DeleteCatalogObjectResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]
     deleted_object_ids: NotRequired[list[str]]
     deleted_at: NotRequired[str]

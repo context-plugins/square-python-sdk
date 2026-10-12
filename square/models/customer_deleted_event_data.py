@@ -23,4 +23,4 @@ class CustomerDeletedEventData(SdkBaseModel):
 class CustomerDeletedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[CustomerDeletedEventObject | CustomerDeletedEventObjectDict]
+    object_: NotRequired[CustomerDeletedEventObjectDict]

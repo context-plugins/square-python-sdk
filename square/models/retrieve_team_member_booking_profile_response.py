@@ -17,5 +17,5 @@ class RetrieveTeamMemberBookingProfileResponse(SdkBaseModel):
 
 
 class RetrieveTeamMemberBookingProfileResponseDict(TypedDict):
-    team_member_booking_profile: NotRequired[TeamMemberBookingProfile | TeamMemberBookingProfileDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    team_member_booking_profile: NotRequired[TeamMemberBookingProfileDict]
+    errors: NotRequired[list[ErrorDict]]

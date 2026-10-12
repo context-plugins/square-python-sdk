@@ -20,4 +20,4 @@ class CreateTerminalActionRequest(SdkBaseModel):
 
 class CreateTerminalActionRequestDict(TypedDict):
     idempotency_key: str
-    action: TerminalAction | TerminalActionDict
+    action: TerminalActionDict

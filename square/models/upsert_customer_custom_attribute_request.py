@@ -20,5 +20,5 @@ class UpsertCustomerCustomAttributeRequest(SdkBaseModel):
 
 
 class UpsertCustomerCustomAttributeRequestDict(TypedDict):
-    custom_attribute: CustomAttribute | CustomAttributeDict
+    custom_attribute: CustomAttributeDict
     idempotency_key: NotRequired[str | None]

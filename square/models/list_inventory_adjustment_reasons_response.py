@@ -19,5 +19,5 @@ class ListInventoryAdjustmentReasonsResponse(SdkBaseModel):
 
 
 class ListInventoryAdjustmentReasonsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    adjustment_reasons: NotRequired[list[InventoryAdjustmentReason | InventoryAdjustmentReasonDict]]
+    errors: NotRequired[list[ErrorDict]]
+    adjustment_reasons: NotRequired[list[InventoryAdjustmentReasonDict]]

@@ -15,4 +15,4 @@ class DeleteShiftResponse(SdkBaseModel):
 
 
 class DeleteShiftResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, SdkBaseModel
+from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
 from .enums.shift_filter_status import ShiftFilterStatusOrStr
 from .shift_workday import ShiftWorkday, ShiftWorkdayDict
 from .time_range import TimeRange, TimeRangeDict
@@ -15,10 +15,10 @@ class ShiftFilter(SdkBaseModel):
     Deprecated at Square API version 2025-05-21. See the `migration notes
     <https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes>`__."""
 
-    location_ids: Optional[list[str | None]] = UNSET
+    location_ids: OptionalNullable[list[str]] = UNSET
     """Fetch shifts for the specified location."""
 
-    employee_ids: Optional[list[str | None]] = UNSET
+    employee_ids: OptionalNullable[list[str]] = UNSET
     """Fetch shifts for the specified employees. DEPRECATED at version 2020-08-26. Use ``team_member_ids`` instead."""
 
     status: Optional[ShiftFilterStatusOrStr] = UNSET
@@ -44,15 +44,15 @@ class ShiftFilter(SdkBaseModel):
     Deprecated at Square API version 2025-05-21. See the `migration notes
     <https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes>`__."""
 
-    team_member_ids: Optional[list[str | None]] = UNSET
+    team_member_ids: OptionalNullable[list[str]] = UNSET
     """Fetch shifts for the specified team members. Replaced ``employee_ids`` at version "2020-08-26"."""
 
 
 class ShiftFilterDict(TypedDict):
-    location_ids: NotRequired[list[str | None]]
-    employee_ids: NotRequired[list[str | None]]
+    location_ids: NotRequired[list[str] | None]
+    employee_ids: NotRequired[list[str] | None]
     status: NotRequired[ShiftFilterStatusOrStr]
-    start: NotRequired[TimeRange | TimeRangeDict]
-    end: NotRequired[TimeRange | TimeRangeDict]
-    workday: NotRequired[ShiftWorkday | ShiftWorkdayDict]
-    team_member_ids: NotRequired[list[str | None]]
+    start: NotRequired[TimeRangeDict]
+    end: NotRequired[TimeRangeDict]
+    workday: NotRequired[ShiftWorkdayDict]
+    team_member_ids: NotRequired[list[str] | None]

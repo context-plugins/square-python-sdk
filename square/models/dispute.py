@@ -39,7 +39,7 @@ class Dispute(SdkBaseModel):
     disputed_payment: Optional[DisputedPayment] = UNSET
     """The payment the cardholder disputed."""
 
-    evidence_ids: Optional[list[str | None]] = UNSET
+    evidence_ids: OptionalNullable[list[str]] = UNSET
     """The IDs of the evidence associated with the dispute."""
 
     card_brand: Optional[CardBrandOrStr] = UNSET
@@ -70,12 +70,12 @@ class Dispute(SdkBaseModel):
 class DisputeDict(TypedDict):
     dispute_id: NotRequired[str | None]
     id: NotRequired[str]
-    amount_money: NotRequired[Money | MoneyDict]
+    amount_money: NotRequired[MoneyDict]
     reason: NotRequired[DisputeReasonOrStr]
     state: NotRequired[DisputeStateOrStr]
     due_at: NotRequired[str | None]
-    disputed_payment: NotRequired[DisputedPayment | DisputedPaymentDict]
-    evidence_ids: NotRequired[list[str | None]]
+    disputed_payment: NotRequired[DisputedPaymentDict]
+    evidence_ids: NotRequired[list[str] | None]
     card_brand: NotRequired[CardBrandOrStr]
     created_at: NotRequired[str]
     updated_at: NotRequired[str]

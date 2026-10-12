@@ -33,7 +33,7 @@ class GiftCardActivityLoad(SdkBaseModel):
     Applications that use a custom order processing system can use this field to track information related to an order
     or payment."""
 
-    buyer_payment_instrument_ids: Optional[list[str | None]] = UNSET
+    buyer_payment_instrument_ids: OptionalNullable[list[str]] = UNSET
     """The payment instrument IDs used to process the order for the additional funds, such as a credit card ID or bank
     account ID.
 
@@ -48,8 +48,8 @@ class GiftCardActivityLoad(SdkBaseModel):
 
 
 class GiftCardActivityLoadDict(TypedDict):
-    amount_money: NotRequired[Money | MoneyDict]
+    amount_money: NotRequired[MoneyDict]
     order_id: NotRequired[str | None]
     line_item_uid: NotRequired[str | None]
     reference_id: NotRequired[str | None]
-    buyer_payment_instrument_ids: NotRequired[list[str | None]]
+    buyer_payment_instrument_ids: NotRequired[list[str] | None]

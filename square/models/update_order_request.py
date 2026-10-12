@@ -16,7 +16,7 @@ class UpdateOrderRequest(SdkBaseModel):
 
     All Connect V2 Transactions have all been converted to Orders including all associated itemization data."""
 
-    fields_to_clear: Optional[list[str | None]] = UNSET
+    fields_to_clear: OptionalNullable[list[str]] = UNSET
     """The `dot notation paths
     <https://developer.squareup.com/docs/orders-api/manage-orders/update-orders#identifying-fields-to-delete>`__ fields
     to clear. For example, ``line_items[uid].note``. For more information, see `Deleting fields
@@ -34,6 +34,6 @@ class UpdateOrderRequest(SdkBaseModel):
 
 
 class UpdateOrderRequestDict(TypedDict):
-    order: NotRequired[Order | OrderDict]
-    fields_to_clear: NotRequired[list[str | None]]
+    order: NotRequired[OrderDict]
+    fields_to_clear: NotRequired[list[str] | None]
     idempotency_key: NotRequired[str | None]

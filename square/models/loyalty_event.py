@@ -70,16 +70,14 @@ class LoyaltyEventDict(TypedDict):
     id: str
     type_: LoyaltyEventTypeOrStr
     created_at: str
-    accumulate_points: NotRequired[LoyaltyEventAccumulatePoints | LoyaltyEventAccumulatePointsDict]
-    create_reward: NotRequired[LoyaltyEventCreateReward | LoyaltyEventCreateRewardDict]
-    redeem_reward: NotRequired[LoyaltyEventRedeemReward | LoyaltyEventRedeemRewardDict]
-    delete_reward: NotRequired[LoyaltyEventDeleteReward | LoyaltyEventDeleteRewardDict]
-    adjust_points: NotRequired[LoyaltyEventAdjustPoints | LoyaltyEventAdjustPointsDict]
+    accumulate_points: NotRequired[LoyaltyEventAccumulatePointsDict]
+    create_reward: NotRequired[LoyaltyEventCreateRewardDict]
+    redeem_reward: NotRequired[LoyaltyEventRedeemRewardDict]
+    delete_reward: NotRequired[LoyaltyEventDeleteRewardDict]
+    adjust_points: NotRequired[LoyaltyEventAdjustPointsDict]
     loyalty_account_id: str
     location_id: NotRequired[str]
     source: LoyaltyEventSourceOrStr
-    expire_points: NotRequired[LoyaltyEventExpirePoints | LoyaltyEventExpirePointsDict]
-    other_event: NotRequired[LoyaltyEventOther | LoyaltyEventOtherDict]
-    accumulate_promotion_points: NotRequired[
-        LoyaltyEventAccumulatePromotionPoints | LoyaltyEventAccumulatePromotionPointsDict
-    ]
+    expire_points: NotRequired[LoyaltyEventExpirePointsDict]
+    other_event: NotRequired[LoyaltyEventOtherDict]
+    accumulate_promotion_points: NotRequired[LoyaltyEventAccumulatePromotionPointsDict]

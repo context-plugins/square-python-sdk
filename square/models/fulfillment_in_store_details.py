@@ -43,7 +43,7 @@ class FulfillmentInStoreDetails(SdkBaseModel):
 
 class FulfillmentInStoreDetailsDict(TypedDict):
     note: NotRequired[str | None]
-    recipient: NotRequired[FulfillmentRecipient | FulfillmentRecipientDict]
+    recipient: NotRequired[FulfillmentRecipientDict]
     placed_at: NotRequired[str | None]
     completed_at: NotRequired[str]
     in_progress_at: NotRequired[str]

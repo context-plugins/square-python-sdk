@@ -23,4 +23,4 @@ class DisputeEvidenceDeletedEventData(SdkBaseModel):
 class DisputeEvidenceDeletedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[DisputeEvidenceDeletedEventObject | DisputeEvidenceDeletedEventObjectDict]
+    object_: NotRequired[DisputeEvidenceDeletedEventObjectDict]

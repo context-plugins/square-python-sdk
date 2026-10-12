@@ -16,5 +16,5 @@ class RetrieveInventoryAdjustmentResponse(SdkBaseModel):
 
 
 class RetrieveInventoryAdjustmentResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    adjustment: NotRequired[InventoryAdjustment | InventoryAdjustmentDict]
+    errors: NotRequired[list[ErrorDict]]
+    adjustment: NotRequired[InventoryAdjustmentDict]

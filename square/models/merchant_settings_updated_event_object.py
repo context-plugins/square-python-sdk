@@ -11,4 +11,4 @@ class MerchantSettingsUpdatedEventObject(SdkBaseModel):
 
 
 class MerchantSettingsUpdatedEventObjectDict(TypedDict):
-    merchant_settings: NotRequired[CheckoutMerchantSettings | CheckoutMerchantSettingsDict]
+    merchant_settings: NotRequired[CheckoutMerchantSettingsDict]

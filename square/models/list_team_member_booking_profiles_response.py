@@ -22,6 +22,6 @@ class ListTeamMemberBookingProfilesResponse(SdkBaseModel):
 
 
 class ListTeamMemberBookingProfilesResponseDict(TypedDict):
-    team_member_booking_profiles: NotRequired[list[TeamMemberBookingProfile | TeamMemberBookingProfileDict]]
+    team_member_booking_profiles: NotRequired[list[TeamMemberBookingProfileDict]]
     cursor: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

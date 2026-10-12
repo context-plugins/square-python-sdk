@@ -18,5 +18,5 @@ class RetrieveEmployeeResponse(SdkBaseModel):
 
 
 class RetrieveEmployeeResponseDict(TypedDict):
-    employee: NotRequired[Employee | EmployeeDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    employee: NotRequired[EmployeeDict]
+    errors: NotRequired[list[ErrorDict]]

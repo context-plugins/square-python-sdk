@@ -20,4 +20,4 @@ class DeviceCreatedEventData(SdkBaseModel):
 class DeviceCreatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[DeviceCreatedEventObject | DeviceCreatedEventObjectDict]
+    object_: NotRequired[DeviceCreatedEventObjectDict]

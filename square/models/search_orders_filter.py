@@ -42,8 +42,8 @@ class SearchOrdersFilter(SdkBaseModel):
 
 
 class SearchOrdersFilterDict(TypedDict):
-    state_filter: NotRequired[SearchOrdersStateFilter | SearchOrdersStateFilterDict]
-    date_time_filter: NotRequired[SearchOrdersDateTimeFilter | SearchOrdersDateTimeFilterDict]
-    fulfillment_filter: NotRequired[SearchOrdersFulfillmentFilter | SearchOrdersFulfillmentFilterDict]
-    source_filter: NotRequired[SearchOrdersSourceFilter | SearchOrdersSourceFilterDict]
-    customer_filter: NotRequired[SearchOrdersCustomerFilter | SearchOrdersCustomerFilterDict]
+    state_filter: NotRequired[SearchOrdersStateFilterDict]
+    date_time_filter: NotRequired[SearchOrdersDateTimeFilterDict]
+    fulfillment_filter: NotRequired[SearchOrdersFulfillmentFilterDict]
+    source_filter: NotRequired[SearchOrdersSourceFilterDict]
+    customer_filter: NotRequired[SearchOrdersCustomerFilterDict]

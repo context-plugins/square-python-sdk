@@ -19,4 +19,4 @@ class CreateTimecardRequest(SdkBaseModel):
 
 class CreateTimecardRequestDict(TypedDict):
     idempotency_key: NotRequired[str]
-    timecard: Timecard | TimecardDict
+    timecard: TimecardDict

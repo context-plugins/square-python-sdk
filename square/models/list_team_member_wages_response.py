@@ -22,6 +22,6 @@ class ListTeamMemberWagesResponse(SdkBaseModel):
 
 
 class ListTeamMemberWagesResponseDict(TypedDict):
-    team_member_wages: NotRequired[list[TeamMemberWage | TeamMemberWageDict]]
+    team_member_wages: NotRequired[list[TeamMemberWageDict]]
     cursor: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

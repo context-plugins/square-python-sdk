@@ -23,6 +23,6 @@ class SearchLoyaltyEventsRequest(SdkBaseModel):
 
 
 class SearchLoyaltyEventsRequestDict(TypedDict):
-    query: NotRequired[LoyaltyEventQuery | LoyaltyEventQueryDict]
+    query: NotRequired[LoyaltyEventQueryDict]
     limit: NotRequired[int]
     cursor: NotRequired[str]

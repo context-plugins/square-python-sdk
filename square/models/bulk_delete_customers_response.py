@@ -23,5 +23,5 @@ class BulkDeleteCustomersResponse(SdkBaseModel):
 
 
 class BulkDeleteCustomersResponseDict(TypedDict):
-    responses: NotRequired[dict[str, DeleteCustomerResponse | DeleteCustomerResponseDict]]
-    errors: NotRequired[list[Error | ErrorDict]]
+    responses: NotRequired[dict[str, DeleteCustomerResponseDict]]
+    errors: NotRequired[list[ErrorDict]]

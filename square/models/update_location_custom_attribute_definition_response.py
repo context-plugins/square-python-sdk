@@ -21,5 +21,5 @@ class UpdateLocationCustomAttributeDefinitionResponse(SdkBaseModel):
 
 
 class UpdateLocationCustomAttributeDefinitionResponseDict(TypedDict):
-    custom_attribute_definition: NotRequired[CustomAttributeDefinition | CustomAttributeDefinitionDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    custom_attribute_definition: NotRequired[CustomAttributeDefinitionDict]
+    errors: NotRequired[list[ErrorDict]]

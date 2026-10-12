@@ -19,10 +19,4 @@ class BulkDeleteLocationCustomAttributesRequest(SdkBaseModel):
 
 
 class BulkDeleteLocationCustomAttributesRequestDict(TypedDict):
-    values: dict[
-        str,
-        (
-            BulkDeleteLocationCustomAttributesRequestLocationCustomAttributeDeleteRequest
-            | BulkDeleteLocationCustomAttributesRequestLocationCustomAttributeDeleteRequestDict
-        ),
-    ]
+    values: dict[str, BulkDeleteLocationCustomAttributesRequestLocationCustomAttributeDeleteRequestDict]

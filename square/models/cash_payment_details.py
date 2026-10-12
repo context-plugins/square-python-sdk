@@ -24,5 +24,5 @@ class CashPaymentDetails(SdkBaseModel):
 
 
 class CashPaymentDetailsDict(TypedDict):
-    buyer_supplied_money: Money | MoneyDict
-    change_back_money: NotRequired[Money | MoneyDict]
+    buyer_supplied_money: MoneyDict
+    change_back_money: NotRequired[MoneyDict]

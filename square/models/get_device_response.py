@@ -15,5 +15,5 @@ class GetDeviceResponse(SdkBaseModel):
 
 
 class GetDeviceResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    device: NotRequired[Device | DeviceDict]
+    errors: NotRequired[list[ErrorDict]]
+    device: NotRequired[DeviceDict]

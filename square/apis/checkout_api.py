@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.create_checkout_request import CreateCheckoutRequest, CreateCheckoutRequestDict
 from ..models.create_checkout_response import CreateCheckoutResponse
@@ -54,14 +56,15 @@ class CheckoutApi:
             location_id: The ID of the business location to associate the checkout with.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_checkout(location_id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_checkout(location_id, body, request_options=request_options))
 
     def create_payment_link(
         self,
@@ -75,30 +78,32 @@ class CheckoutApi:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_payment_link(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_payment_link(body, request_options=request_options))
 
     def delete_payment_link(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> DeletePaymentLinkResponse:
         """Deletes a payment link.
 
         Args:
-            id: The ID of the payment link to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The ID of the payment link to delete.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_payment_link(id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.delete_payment_link(id_, request_options=request_options))
 
     def list_payment_links(
         self,
@@ -117,16 +122,17 @@ class CheckoutApi:
             limit: A limit on the number of results to return per page. The limit is advisory and the implementation
                 might return more or less results. If the supplied limit is negative, zero, or greater than the maximum
                 limit of 1000, it is ignored. Default value: ``100``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_payment_links(
-            cursor=cursor, limit=limit, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_payment_links(cursor=cursor, limit=limit, request_options=request_options)
+        )
 
     def retrieve_location_settings(
         self, location_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -135,14 +141,15 @@ class CheckoutApi:
 
         Args:
             location_id: The ID of the location for which to retrieve settings.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_location_settings(location_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_location_settings(location_id, request_options=request_options))
 
     def retrieve_merchant_settings(
         self, *, request_options: RequestOptionsOrDict | None = None
@@ -150,30 +157,32 @@ class CheckoutApi:
         """Retrieves the merchant-level settings for a Square-hosted checkout page.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_merchant_settings(request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_merchant_settings(request_options=request_options))
 
     def retrieve_payment_link(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> RetrievePaymentLinkResponse:
         """Retrieves a payment link.
 
         Args:
-            id: The ID of link to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The ID of link to retrieve.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_payment_link(id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_payment_link(id_, request_options=request_options))
 
     def update_location_settings(
         self,
@@ -188,16 +197,17 @@ class CheckoutApi:
             location_id: The ID of the location for which to retrieve settings.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_location_settings(
-            location_id, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.update_location_settings(location_id, body, request_options=request_options)
+        )
 
     def update_merchant_settings(
         self,
@@ -210,18 +220,19 @@ class CheckoutApi:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_merchant_settings(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.update_merchant_settings(body, request_options=request_options))
 
     def update_payment_link(
         self,
-        id: str,
+        id_: str,
         body: UpdatePaymentLinkRequest | UpdatePaymentLinkRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -231,17 +242,18 @@ class CheckoutApi:
         ``version``, ``URL``, or ``timestamp`` field.
 
         Args:
-            id: The ID of the payment link to update.
+            id_: The ID of the payment link to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_payment_link(id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.update_payment_link(id_, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> CheckoutApiWithRawResponse:
@@ -269,16 +281,15 @@ class AsyncCheckoutApi:
             location_id: The ID of the business location to associate the checkout with.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.create_checkout(location_id, body, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.create_checkout(location_id, body, request_options=request_options))
 
     async def create_payment_link(
         self,
@@ -292,30 +303,32 @@ class AsyncCheckoutApi:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_payment_link(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_payment_link(body, request_options=request_options))
 
     async def delete_payment_link(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> DeletePaymentLinkResponse:
         """Deletes a payment link.
 
         Args:
-            id: The ID of the payment link to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The ID of the payment link to delete.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.delete_payment_link(id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.delete_payment_link(id_, request_options=request_options))
 
     async def list_payment_links(
         self,
@@ -334,18 +347,19 @@ class AsyncCheckoutApi:
             limit: A limit on the number of results to return per page. The limit is advisory and the implementation
                 might return more or less results. If the supplied limit is negative, zero, or greater than the maximum
                 limit of 1000, it is ignored. Default value: ``100``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_payment_links(
                 cursor=cursor, limit=limit, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_location_settings(
         self, location_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -354,16 +368,17 @@ class AsyncCheckoutApi:
 
         Args:
             location_id: The ID of the location for which to retrieve settings.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_location_settings(location_id, request_options=request_options)
-        ).unwrap()
+        )
 
     async def retrieve_merchant_settings(
         self, *, request_options: RequestOptionsOrDict | None = None
@@ -371,30 +386,32 @@ class AsyncCheckoutApi:
         """Retrieves the merchant-level settings for a Square-hosted checkout page.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.retrieve_merchant_settings(request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.retrieve_merchant_settings(request_options=request_options))
 
     async def retrieve_payment_link(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> RetrievePaymentLinkResponse:
         """Retrieves a payment link.
 
         Args:
-            id: The ID of link to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The ID of link to retrieve.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.retrieve_payment_link(id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.retrieve_payment_link(id_, request_options=request_options))
 
     async def update_location_settings(
         self,
@@ -409,16 +426,17 @@ class AsyncCheckoutApi:
             location_id: The ID of the location for which to retrieve settings.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.update_location_settings(location_id, body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def update_merchant_settings(
         self,
@@ -431,18 +449,19 @@ class AsyncCheckoutApi:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.update_merchant_settings(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.update_merchant_settings(body, request_options=request_options))
 
     async def update_payment_link(
         self,
-        id: str,
+        id_: str,
         body: UpdatePaymentLinkRequest | UpdatePaymentLinkRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -452,17 +471,18 @@ class AsyncCheckoutApi:
         ``version``, ``URL``, or ``timestamp`` field.
 
         Args:
-            id: The ID of the payment link to update.
+            id_: The ID of the payment link to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.update_payment_link(id, body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.update_payment_link(id_, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncCheckoutApiWithRawResponse:
@@ -487,7 +507,8 @@ class CheckoutApiWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchem
             location_id: The ID of the business location to associate the checkout with.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -515,7 +536,8 @@ class CheckoutApiWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchem
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -531,20 +553,21 @@ class CheckoutApiWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchem
         )
 
     def delete_payment_link(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[DeletePaymentLinkResponse, RawError]:
         """Deletes a payment link.
 
         Args:
-            id: The ID of the payment link to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The ID of the payment link to delete.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="DELETE",
             url_template=self._server.default("/v2/online-checkout/payment-links/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[DeletePaymentLinkResponse],
@@ -569,7 +592,8 @@ class CheckoutApiWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchem
             limit: A limit on the number of results to return per page. The limit is advisory and the implementation
                 might return more or less results. If the supplied limit is negative, zero, or greater than the maximum
                 limit of 1000, it is ignored. Default value: ``100``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -590,7 +614,8 @@ class CheckoutApiWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchem
 
         Args:
             location_id: The ID of the location for which to retrieve settings.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -610,7 +635,8 @@ class CheckoutApiWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchem
         """Retrieves the merchant-level settings for a Square-hosted checkout page.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -624,20 +650,21 @@ class CheckoutApiWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchem
         )
 
     def retrieve_payment_link(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[RetrievePaymentLinkResponse, RawError]:
         """Retrieves a payment link.
 
         Args:
-            id: The ID of link to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The ID of link to retrieve.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="GET",
             url_template=self._server.default("/v2/online-checkout/payment-links/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[RetrievePaymentLinkResponse],
             error_mapper=raw_error_response,
@@ -657,7 +684,8 @@ class CheckoutApiWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchem
             location_id: The ID of the location for which to retrieve settings.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -684,7 +712,8 @@ class CheckoutApiWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchem
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -701,7 +730,7 @@ class CheckoutApiWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchem
 
     def update_payment_link(
         self,
-        id: str,
+        id_: str,
         body: UpdatePaymentLinkRequest | UpdatePaymentLinkRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -711,17 +740,18 @@ class CheckoutApiWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchem
         ``version``, ``URL``, or ``timestamp`` field.
 
         Args:
-            id: The ID of the payment link to update.
+            id_: The ID of the payment link to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/online-checkout/payment-links/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdatePaymentLinkRequest | UpdatePaymentLinkRequestDict](body),
             auth_scheme=self._auth.oauth2,
@@ -749,7 +779,8 @@ class AsyncCheckoutApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
             location_id: The ID of the business location to associate the checkout with.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -760,7 +791,7 @@ class AsyncCheckoutApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateCheckoutRequest | CreateCheckoutRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateCheckoutResponse],
+            decoder=async_json_decoder[CreateCheckoutResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -777,7 +808,8 @@ class AsyncCheckoutApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -787,29 +819,30 @@ class AsyncCheckoutApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreatePaymentLinkRequest | CreatePaymentLinkRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreatePaymentLinkResponse],
+            decoder=async_json_decoder[CreatePaymentLinkResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def delete_payment_link(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[DeletePaymentLinkResponse, RawError]:
         """Deletes a payment link.
 
         Args:
-            id: The ID of the payment link to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The ID of the payment link to delete.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="DELETE",
             url_template=self._server.default("/v2/online-checkout/payment-links/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeletePaymentLinkResponse],
+            decoder=async_json_decoder[DeletePaymentLinkResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -831,7 +864,8 @@ class AsyncCheckoutApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
             limit: A limit on the number of results to return per page. The limit is advisory and the implementation
                 might return more or less results. If the supplied limit is negative, zero, or greater than the maximum
                 limit of 1000, it is ignored. Default value: ``100``
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -840,7 +874,7 @@ class AsyncCheckoutApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
             url_template=self._server.default("/v2/online-checkout/payment-links"),
             query_params=[param[str | None]("cursor", cursor), param[int | None]("limit", limit)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListPaymentLinksResponse],
+            decoder=async_json_decoder[ListPaymentLinksResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -852,7 +886,8 @@ class AsyncCheckoutApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
 
         Args:
             location_id: The ID of the location for which to retrieve settings.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -861,7 +896,7 @@ class AsyncCheckoutApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
             url_template=self._server.default("/v2/online-checkout/location-settings/{location_id}"),
             path_params=[param[str]("location_id", location_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveLocationSettingsResponse],
+            decoder=async_json_decoder[RetrieveLocationSettingsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -872,7 +907,8 @@ class AsyncCheckoutApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
         """Retrieves the merchant-level settings for a Square-hosted checkout page.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -880,28 +916,29 @@ class AsyncCheckoutApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
             http_method="GET",
             url_template=self._server.default("/v2/online-checkout/merchant-settings"),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveMerchantSettingsResponse],
+            decoder=async_json_decoder[RetrieveMerchantSettingsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def retrieve_payment_link(
-        self, id: str, *, request_options: RequestOptionsOrDict | None = None
+        self, id_: str, *, request_options: RequestOptionsOrDict | None = None
     ) -> ApiResult[RetrievePaymentLinkResponse, RawError]:
         """Retrieves a payment link.
 
         Args:
-            id: The ID of link to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            id_: The ID of link to retrieve.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="GET",
             url_template=self._server.default("/v2/online-checkout/payment-links/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrievePaymentLinkResponse],
+            decoder=async_json_decoder[RetrievePaymentLinkResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -919,7 +956,8 @@ class AsyncCheckoutApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
             location_id: The ID of the location for which to retrieve settings.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -930,7 +968,7 @@ class AsyncCheckoutApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateLocationSettingsRequest | UpdateLocationSettingsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateLocationSettingsResponse],
+            decoder=async_json_decoder[UpdateLocationSettingsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -946,7 +984,8 @@ class AsyncCheckoutApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -956,14 +995,14 @@ class AsyncCheckoutApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateMerchantSettingsRequest | UpdateMerchantSettingsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateMerchantSettingsResponse],
+            decoder=async_json_decoder[UpdateMerchantSettingsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
 
     async def update_payment_link(
         self,
-        id: str,
+        id_: str,
         body: UpdatePaymentLinkRequest | UpdatePaymentLinkRequestDict,
         *,
         request_options: RequestOptionsOrDict | None = None,
@@ -973,21 +1012,22 @@ class AsyncCheckoutApiWithRawResponse(SecuredRawResponse[AsyncRawClient, Server,
         ``version``, ``URL``, or ``timestamp`` field.
 
         Args:
-            id: The ID of the payment link to update.
+            id_: The ID of the payment link to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
         return await self._client.execute(
             http_method="PUT",
             url_template=self._server.default("/v2/online-checkout/payment-links/{id}"),
-            path_params=[param[str]("id", id)],
+            path_params=[param[str]("id", id_)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdatePaymentLinkRequest | UpdatePaymentLinkRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdatePaymentLinkResponse],
+            decoder=async_json_decoder[UpdatePaymentLinkResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

@@ -16,4 +16,4 @@ class BulkUpdateVendorsRequest(SdkBaseModel):
 
 
 class BulkUpdateVendorsRequestDict(TypedDict):
-    vendors: dict[str, UpdateVendorRequest | UpdateVendorRequestDict]
+    vendors: dict[str, UpdateVendorRequestDict]

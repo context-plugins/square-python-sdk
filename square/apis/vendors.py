@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.bulk_create_vendors_request import BulkCreateVendorsRequest, BulkCreateVendorsRequestDict
 from ..models.bulk_create_vendors_response import BulkCreateVendorsResponse
@@ -46,14 +48,15 @@ class Vendors:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.bulk_create_vendors(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.bulk_create_vendors(body, request_options=request_options))
 
     def bulk_retrieve_vendors(
         self,
@@ -66,14 +69,15 @@ class Vendors:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.bulk_retrieve_vendors(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.bulk_retrieve_vendors(body, request_options=request_options))
 
     def bulk_update_vendors(
         self,
@@ -86,14 +90,15 @@ class Vendors:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.bulk_update_vendors(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.bulk_update_vendors(body, request_options=request_options))
 
     def create_vendor(
         self,
@@ -106,14 +111,15 @@ class Vendors:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_vendor(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_vendor(body, request_options=request_options))
 
     def retrieve_vendor(
         self, vendor_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -122,14 +128,15 @@ class Vendors:
 
         Args:
             vendor_id: ID of the `Vendor <entity:Vendor>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_vendor(vendor_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_vendor(vendor_id, request_options=request_options))
 
     def search_vendors(
         self,
@@ -143,14 +150,15 @@ class Vendors:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_vendors(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_vendors(body, request_options=request_options))
 
     def update_vendor(
         self,
@@ -165,14 +173,15 @@ class Vendors:
             vendor_id: Value sent with the request.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_vendor(vendor_id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.update_vendor(vendor_id, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> VendorsWithRawResponse:
@@ -194,14 +203,15 @@ class AsyncVendors:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.bulk_create_vendors(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.bulk_create_vendors(body, request_options=request_options))
 
     async def bulk_retrieve_vendors(
         self,
@@ -214,14 +224,15 @@ class AsyncVendors:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.bulk_retrieve_vendors(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.bulk_retrieve_vendors(body, request_options=request_options))
 
     async def bulk_update_vendors(
         self,
@@ -234,14 +245,15 @@ class AsyncVendors:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.bulk_update_vendors(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.bulk_update_vendors(body, request_options=request_options))
 
     async def create_vendor(
         self,
@@ -254,14 +266,15 @@ class AsyncVendors:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_vendor(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_vendor(body, request_options=request_options))
 
     async def retrieve_vendor(
         self, vendor_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -270,14 +283,15 @@ class AsyncVendors:
 
         Args:
             vendor_id: ID of the `Vendor <entity:Vendor>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.retrieve_vendor(vendor_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.retrieve_vendor(vendor_id, request_options=request_options))
 
     async def search_vendors(
         self,
@@ -291,14 +305,15 @@ class AsyncVendors:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_vendors(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_vendors(body, request_options=request_options))
 
     async def update_vendor(
         self,
@@ -313,14 +328,15 @@ class AsyncVendors:
             vendor_id: Value sent with the request.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.update_vendor(vendor_id, body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.update_vendor(vendor_id, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncVendorsWithRawResponse:
@@ -339,7 +355,8 @@ class VendorsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -365,7 +382,8 @@ class VendorsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -391,7 +409,8 @@ class VendorsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -417,7 +436,8 @@ class VendorsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -439,7 +459,8 @@ class VendorsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
 
         Args:
             vendor_id: ID of the `Vendor <entity:Vendor>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -465,7 +486,8 @@ class VendorsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -493,7 +515,8 @@ class VendorsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             vendor_id: Value sent with the request.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -522,7 +545,8 @@ class AsyncVendorsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -532,7 +556,7 @@ class AsyncVendorsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkCreateVendorsRequest | BulkCreateVendorsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BulkCreateVendorsResponse],
+            decoder=async_json_decoder[BulkCreateVendorsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -548,7 +572,8 @@ class AsyncVendorsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -558,7 +583,7 @@ class AsyncVendorsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkRetrieveVendorsRequest | BulkRetrieveVendorsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BulkRetrieveVendorsResponse],
+            decoder=async_json_decoder[BulkRetrieveVendorsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -574,7 +599,8 @@ class AsyncVendorsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -584,7 +610,7 @@ class AsyncVendorsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkUpdateVendorsRequest | BulkUpdateVendorsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BulkUpdateVendorsResponse],
+            decoder=async_json_decoder[BulkUpdateVendorsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -600,7 +626,8 @@ class AsyncVendorsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -610,7 +637,7 @@ class AsyncVendorsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateVendorRequest | CreateVendorRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateVendorResponse],
+            decoder=async_json_decoder[CreateVendorResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -622,7 +649,8 @@ class AsyncVendorsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
 
         Args:
             vendor_id: ID of the `Vendor <entity:Vendor>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -631,7 +659,7 @@ class AsyncVendorsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             url_template=self._server.default("/v2/vendors/{vendor_id}"),
             path_params=[param[str]("vendor_id", vendor_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveVendorResponse],
+            decoder=async_json_decoder[RetrieveVendorResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -648,7 +676,8 @@ class AsyncVendorsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -658,7 +687,7 @@ class AsyncVendorsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchVendorsRequest | SearchVendorsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SearchVendorsResponse],
+            decoder=async_json_decoder[SearchVendorsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -676,7 +705,8 @@ class AsyncVendorsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             vendor_id: Value sent with the request.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -687,7 +717,7 @@ class AsyncVendorsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateVendorRequest | UpdateVendorRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateVendorResponse],
+            decoder=async_json_decoder[UpdateVendorResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

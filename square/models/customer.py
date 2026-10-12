@@ -63,10 +63,10 @@ class Customer(SdkBaseModel):
     creation_source: Optional[CustomerCreationSourceOrStr] = UNSET
     """Indicates the method used to create the customer profile."""
 
-    group_ids: Optional[list[str | None]] = UNSET
+    group_ids: OptionalNullable[list[str]] = UNSET
     """The IDs of `customer groups <entity:CustomerGroup>`__ the customer belongs to."""
 
-    segment_ids: Optional[list[str | None]] = UNSET
+    segment_ids: OptionalNullable[list[str]] = UNSET
     """The IDs of `customer segments <entity:CustomerSegment>`__ the customer belongs to."""
 
     version: Optional[int] = UNSET
@@ -88,14 +88,14 @@ class CustomerDict(TypedDict):
     nickname: NotRequired[str | None]
     company_name: NotRequired[str | None]
     email_address: NotRequired[str | None]
-    address: NotRequired[Address | AddressDict]
+    address: NotRequired[AddressDict]
     phone_number: NotRequired[str | None]
     birthday: NotRequired[str | None]
     reference_id: NotRequired[str | None]
     note: NotRequired[str | None]
-    preferences: NotRequired[CustomerPreferences | CustomerPreferencesDict]
+    preferences: NotRequired[CustomerPreferencesDict]
     creation_source: NotRequired[CustomerCreationSourceOrStr]
-    group_ids: NotRequired[list[str | None]]
-    segment_ids: NotRequired[list[str | None]]
+    group_ids: NotRequired[list[str] | None]
+    segment_ids: NotRequired[list[str] | None]
     version: NotRequired[int]
-    tax_ids: NotRequired[CustomerTaxIds | CustomerTaxIdsDict]
+    tax_ids: NotRequired[CustomerTaxIdsDict]

@@ -23,6 +23,6 @@ class ListPayoutsResponse(SdkBaseModel):
 
 
 class ListPayoutsResponseDict(TypedDict):
-    payouts: NotRequired[list[Payout | PayoutDict]]
+    payouts: NotRequired[list[PayoutDict]]
     cursor: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

@@ -11,4 +11,4 @@ class UpdateMerchantSettingsRequest(SdkBaseModel):
 
 
 class UpdateMerchantSettingsRequestDict(TypedDict):
-    merchant_settings: CheckoutMerchantSettings | CheckoutMerchantSettingsDict
+    merchant_settings: CheckoutMerchantSettingsDict

@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
+from ..core import UNSET, OptionalNullable, SdkBaseModel
 from .subscription_phase import SubscriptionPhase, SubscriptionPhaseDict
 
 if TYPE_CHECKING:
@@ -19,17 +19,17 @@ class CatalogSubscriptionPlan(SdkBaseModel):
     name: str
     """The name of the plan."""
 
-    phases: Optional[list[SubscriptionPhase | None]] = UNSET
+    phases: OptionalNullable[list[SubscriptionPhase]] = UNSET
     """A list of SubscriptionPhase containing the `SubscriptionPhase <entity:SubscriptionPhase>`__ for this plan. This
     field it required. Not including this field will throw a REQUIRED_FIELD_MISSING error"""
 
-    subscription_plan_variations: Optional[list[CatalogObject | None]] = UNSET
+    subscription_plan_variations: OptionalNullable[list[CatalogObject]] = UNSET
     """The list of subscription plan variations available for this product"""
 
-    eligible_item_ids: Optional[list[str | None]] = UNSET
+    eligible_item_ids: OptionalNullable[list[str]] = UNSET
     """The list of IDs of ``CatalogItems`` that are eligible for subscription by this SubscriptionPlan's variations."""
 
-    eligible_category_ids: Optional[list[str | None]] = UNSET
+    eligible_category_ids: OptionalNullable[list[str]] = UNSET
     """The list of IDs of ``CatalogCategory`` that are eligible for subscription by this SubscriptionPlan's
     variations."""
 
@@ -39,8 +39,8 @@ class CatalogSubscriptionPlan(SdkBaseModel):
 
 class CatalogSubscriptionPlanDict(TypedDict):
     name: str
-    phases: NotRequired[list[SubscriptionPhase | SubscriptionPhaseDict | None]]
-    subscription_plan_variations: NotRequired[list[CatalogObject | CatalogObjectDict | None]]
-    eligible_item_ids: NotRequired[list[str | None]]
-    eligible_category_ids: NotRequired[list[str | None]]
+    phases: NotRequired[list[SubscriptionPhaseDict] | None]
+    subscription_plan_variations: NotRequired[list[CatalogObjectDict] | None]
+    eligible_item_ids: NotRequired[list[str] | None]
+    eligible_category_ids: NotRequired[list[str] | None]
     all_items: NotRequired[bool | None]

@@ -42,7 +42,7 @@ class Fulfillment(SdkBaseModel):
     An order cannot be marked as ``COMPLETED`` before all fulfillments are ``COMPLETED``, ``CANCELED``, or ``FAILED``.
     Fulfillments can be created and completed independently before order completion."""
 
-    metadata: Optional[dict[str, str | None]] = UNSET
+    metadata: OptionalNullable[dict[str, str]] = UNSET
     """Application-defined data attached to this fulfillment. Metadata fields are intended to store descriptive
     references or associations with an entity in another system or store brief information about the object. Square does
     not process this field; it only stores and returns it in relevant API calls. Do not use metadata to store any
@@ -78,9 +78,9 @@ class FulfillmentDict(TypedDict):
     type_: NotRequired[FulfillmentTypeOrStr]
     state: NotRequired[FulfillmentStateOrStr]
     line_item_application: NotRequired[FulfillmentFulfillmentLineItemApplicationOrStr]
-    entries: NotRequired[list[FulfillmentFulfillmentEntry | FulfillmentFulfillmentEntryDict]]
-    metadata: NotRequired[dict[str, str | None]]
-    pickup_details: NotRequired[FulfillmentPickupDetails | FulfillmentPickupDetailsDict]
-    shipment_details: NotRequired[FulfillmentShipmentDetails | FulfillmentShipmentDetailsDict]
-    delivery_details: NotRequired[FulfillmentDeliveryDetails | FulfillmentDeliveryDetailsDict]
-    in_store_details: NotRequired[FulfillmentInStoreDetails | FulfillmentInStoreDetailsDict]
+    entries: NotRequired[list[FulfillmentFulfillmentEntryDict]]
+    metadata: NotRequired[dict[str, str] | None]
+    pickup_details: NotRequired[FulfillmentPickupDetailsDict]
+    shipment_details: NotRequired[FulfillmentShipmentDetailsDict]
+    delivery_details: NotRequired[FulfillmentDeliveryDetailsDict]
+    in_store_details: NotRequired[FulfillmentInStoreDetailsDict]

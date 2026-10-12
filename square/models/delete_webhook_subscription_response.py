@@ -15,4 +15,4 @@ class DeleteWebhookSubscriptionResponse(SdkBaseModel):
 
 
 class DeleteWebhookSubscriptionResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

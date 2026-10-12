@@ -20,4 +20,4 @@ class CreateGiftCardActivityRequest(SdkBaseModel):
 
 class CreateGiftCardActivityRequestDict(TypedDict):
     idempotency_key: str
-    gift_card_activity: GiftCardActivity | GiftCardActivityDict
+    gift_card_activity: GiftCardActivityDict

@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.batch_retrieve_orders_request import BatchRetrieveOrdersRequest, BatchRetrieveOrdersRequestDict
 from ..models.batch_retrieve_orders_response import BatchRetrieveOrdersResponse
@@ -50,14 +52,15 @@ class Orders:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.batch_retrieve_orders(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.batch_retrieve_orders(body, request_options=request_options))
 
     def calculate_order(
         self,
@@ -70,14 +73,15 @@ class Orders:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.calculate_order(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.calculate_order(body, request_options=request_options))
 
     def clone_order(
         self, body: CloneOrderRequest | CloneOrderRequestDict, *, request_options: RequestOptionsOrDict | None = None
@@ -88,14 +92,15 @@ class Orders:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.clone_order(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.clone_order(body, request_options=request_options))
 
     def create_order(
         self, body: CreateOrderRequest | CreateOrderRequestDict, *, request_options: RequestOptionsOrDict | None = None
@@ -111,14 +116,15 @@ class Orders:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_order(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_order(body, request_options=request_options))
 
     def pay_order(
         self,
@@ -146,14 +152,15 @@ class Orders:
             order_id: The ID of the order being paid.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.pay_order(order_id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.pay_order(order_id, body, request_options=request_options))
 
     def retrieve_order(
         self, order_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -162,14 +169,15 @@ class Orders:
 
         Args:
             order_id: The ID of the order to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_order(order_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_order(order_id, request_options=request_options))
 
     def search_orders(
         self,
@@ -196,14 +204,15 @@ class Orders:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_orders(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_orders(body, request_options=request_options))
 
     def update_order(
         self,
@@ -232,14 +241,15 @@ class Orders:
             order_id: The ID of the order to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_order(order_id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.update_order(order_id, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> OrdersWithRawResponse:
@@ -263,14 +273,15 @@ class AsyncOrders:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.batch_retrieve_orders(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.batch_retrieve_orders(body, request_options=request_options))
 
     async def calculate_order(
         self,
@@ -283,14 +294,15 @@ class AsyncOrders:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.calculate_order(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.calculate_order(body, request_options=request_options))
 
     async def clone_order(
         self, body: CloneOrderRequest | CloneOrderRequestDict, *, request_options: RequestOptionsOrDict | None = None
@@ -301,14 +313,15 @@ class AsyncOrders:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.clone_order(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.clone_order(body, request_options=request_options))
 
     async def create_order(
         self, body: CreateOrderRequest | CreateOrderRequestDict, *, request_options: RequestOptionsOrDict | None = None
@@ -324,14 +337,15 @@ class AsyncOrders:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_order(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_order(body, request_options=request_options))
 
     async def pay_order(
         self,
@@ -359,14 +373,15 @@ class AsyncOrders:
             order_id: The ID of the order being paid.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.pay_order(order_id, body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.pay_order(order_id, body, request_options=request_options))
 
     async def retrieve_order(
         self, order_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -375,14 +390,15 @@ class AsyncOrders:
 
         Args:
             order_id: The ID of the order to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.retrieve_order(order_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.retrieve_order(order_id, request_options=request_options))
 
     async def search_orders(
         self,
@@ -409,14 +425,15 @@ class AsyncOrders:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_orders(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_orders(body, request_options=request_options))
 
     async def update_order(
         self,
@@ -445,14 +462,15 @@ class AsyncOrders:
             order_id: The ID of the order to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.update_order(order_id, body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.update_order(order_id, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncOrdersWithRawResponse:
@@ -473,7 +491,8 @@ class OrdersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -499,7 +518,8 @@ class OrdersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -523,7 +543,8 @@ class OrdersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -552,7 +573,8 @@ class OrdersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -593,7 +615,8 @@ class OrdersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             order_id: The ID of the order being paid.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -616,7 +639,8 @@ class OrdersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
 
         Args:
             order_id: The ID of the order to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -655,7 +679,8 @@ class OrdersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -697,7 +722,8 @@ class OrdersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
             order_id: The ID of the order to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -728,7 +754,8 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -738,7 +765,7 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BatchRetrieveOrdersRequest | BatchRetrieveOrdersRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BatchRetrieveOrdersResponse],
+            decoder=async_json_decoder[BatchRetrieveOrdersResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -754,7 +781,8 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -764,7 +792,7 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CalculateOrderRequest | CalculateOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CalculateOrderResponse],
+            decoder=async_json_decoder[CalculateOrderResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -778,7 +806,8 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -788,7 +817,7 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CloneOrderRequest | CloneOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CloneOrderResponse],
+            decoder=async_json_decoder[CloneOrderResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -807,7 +836,8 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -817,7 +847,7 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateOrderRequest | CreateOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateOrderResponse],
+            decoder=async_json_decoder[CreateOrderResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -848,7 +878,8 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
             order_id: The ID of the order being paid.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -859,7 +890,7 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[PayOrderRequest | PayOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[PayOrderResponse],
+            decoder=async_json_decoder[PayOrderResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -871,7 +902,8 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
 
         Args:
             order_id: The ID of the order to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -880,7 +912,7 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
             url_template=self._server.default("/v2/orders/{order_id}"),
             path_params=[param[str]("order_id", order_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveOrderResponse],
+            decoder=async_json_decoder[RetrieveOrderResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -910,7 +942,8 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -920,7 +953,7 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchOrdersRequest | SearchOrdersRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SearchOrdersResponse],
+            decoder=async_json_decoder[SearchOrdersResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -952,7 +985,8 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
             order_id: The ID of the order to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -963,7 +997,7 @@ class AsyncOrdersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateOrderRequest | UpdateOrderRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateOrderResponse],
+            decoder=async_json_decoder[UpdateOrderResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

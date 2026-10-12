@@ -20,6 +20,6 @@ class ListLocationBookingProfilesResponse(SdkBaseModel):
 
 
 class ListLocationBookingProfilesResponseDict(TypedDict):
-    location_booking_profiles: NotRequired[list[LocationBookingProfile | LocationBookingProfileDict]]
+    location_booking_profiles: NotRequired[list[LocationBookingProfileDict]]
     cursor: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

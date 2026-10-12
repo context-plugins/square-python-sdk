@@ -33,7 +33,7 @@ class BankAccountPaymentDetails(SdkBaseModel):
     ach_details: Optional[Achdetails] = UNSET
     """ACH-specific details about ``BANK_ACCOUNT`` type payments with the ``transfer_type`` of ``ACH``."""
 
-    errors: Optional[list[Error | None]] = UNSET
+    errors: OptionalNullable[list[Error]] = UNSET
     """Information about errors encountered during the request."""
 
 
@@ -44,5 +44,5 @@ class BankAccountPaymentDetailsDict(TypedDict):
     fingerprint: NotRequired[str | None]
     country: NotRequired[str | None]
     statement_description: NotRequired[str | None]
-    ach_details: NotRequired[Achdetails | AchdetailsDict]
-    errors: NotRequired[list[Error | ErrorDict | None]]
+    ach_details: NotRequired[AchdetailsDict]
+    errors: NotRequired[list[ErrorDict] | None]

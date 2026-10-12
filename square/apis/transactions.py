@@ -10,9 +10,11 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.capture_transaction_response import CaptureTransactionResponse
 from ..models.enums.sort_order import SortOrderOrStr
@@ -38,16 +40,17 @@ class Transactions:
         Args:
             location_id: Value sent with the request.
             transaction_id: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.capture_transaction(
-            location_id, transaction_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.capture_transaction(location_id, transaction_id, request_options=request_options)
+        )
 
     def list_transactions(
         self,
@@ -79,21 +82,24 @@ class Transactions:
             cursor: A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next
                 set of results for your original query. See `Paginating results
                 <https://developer.squareup.com/docs/working-with-apis/pagination>`__ for more information.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_transactions(
-            location_id,
-            begin_time=begin_time,
-            end_time=end_time,
-            sort_order=sort_order,
-            cursor=cursor,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_transactions(
+                location_id,
+                begin_time=begin_time,
+                end_time=end_time,
+                sort_order=sort_order,
+                cursor=cursor,
+                request_options=request_options,
+            ),
+        )
 
     def retrieve_transaction(
         self, location_id: str, transaction_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -103,16 +109,17 @@ class Transactions:
         Args:
             location_id: The ID of the transaction's associated location.
             transaction_id: The ID of the transaction to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_transaction(
-            location_id, transaction_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.retrieve_transaction(location_id, transaction_id, request_options=request_options)
+        )
 
     def void_transaction(
         self, location_id: str, transaction_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -126,16 +133,17 @@ class Transactions:
         Args:
             location_id: Value sent with the request.
             transaction_id: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.void_transaction(
-            location_id, transaction_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.void_transaction(location_id, transaction_id, request_options=request_options)
+        )
 
     @property
     def with_raw_response(self) -> TransactionsWithRawResponse:
@@ -158,18 +166,19 @@ class AsyncTransactions:
         Args:
             location_id: Value sent with the request.
             transaction_id: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.capture_transaction(
                 location_id, transaction_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def list_transactions(
         self,
@@ -201,14 +210,15 @@ class AsyncTransactions:
             cursor: A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next
                 set of results for your original query. See `Paginating results
                 <https://developer.squareup.com/docs/working-with-apis/pagination>`__ for more information.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_transactions(
                 location_id,
                 begin_time=begin_time,
@@ -216,8 +226,8 @@ class AsyncTransactions:
                 sort_order=sort_order,
                 cursor=cursor,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_transaction(
         self, location_id: str, transaction_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -227,18 +237,19 @@ class AsyncTransactions:
         Args:
             location_id: The ID of the transaction's associated location.
             transaction_id: The ID of the transaction to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_transaction(
                 location_id, transaction_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def void_transaction(
         self, location_id: str, transaction_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -252,16 +263,17 @@ class AsyncTransactions:
         Args:
             location_id: Value sent with the request.
             transaction_id: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.void_transaction(location_id, transaction_id, request_options=request_options)
-        ).unwrap()
+        )
 
     @property
     def with_raw_response(self) -> AsyncTransactionsWithRawResponse:
@@ -281,7 +293,8 @@ class TransactionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSche
         Args:
             location_id: Value sent with the request.
             transaction_id: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -326,7 +339,8 @@ class TransactionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSche
             cursor: A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next
                 set of results for your original query. See `Paginating results
                 <https://developer.squareup.com/docs/working-with-apis/pagination>`__ for more information.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -354,7 +368,8 @@ class TransactionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSche
         Args:
             location_id: The ID of the transaction's associated location.
             transaction_id: The ID of the transaction to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -380,7 +395,8 @@ class TransactionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSche
         Args:
             location_id: Value sent with the request.
             transaction_id: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -409,7 +425,8 @@ class AsyncTransactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
         Args:
             location_id: Value sent with the request.
             transaction_id: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -419,7 +436,7 @@ class AsyncTransactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
             path_params=[param[str]("location_id", location_id), param[str]("transaction_id", transaction_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CaptureTransactionResponse],
+            decoder=async_json_decoder[CaptureTransactionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -454,7 +471,8 @@ class AsyncTransactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
             cursor: A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next
                 set of results for your original query. See `Paginating results
                 <https://developer.squareup.com/docs/working-with-apis/pagination>`__ for more information.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -469,7 +487,7 @@ class AsyncTransactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
                 param[str | None]("cursor", cursor),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListTransactionsResponse],
+            decoder=async_json_decoder[ListTransactionsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -482,7 +500,8 @@ class AsyncTransactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
         Args:
             location_id: The ID of the transaction's associated location.
             transaction_id: The ID of the transaction to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -491,7 +510,7 @@ class AsyncTransactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
             url_template=self._server.default("/v2/locations/{location_id}/transactions/{transaction_id}"),
             path_params=[param[str]("location_id", location_id), param[str]("transaction_id", transaction_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveTransactionResponse],
+            decoder=async_json_decoder[RetrieveTransactionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -508,7 +527,8 @@ class AsyncTransactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
         Args:
             location_id: Value sent with the request.
             transaction_id: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -518,7 +538,7 @@ class AsyncTransactionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
             path_params=[param[str]("location_id", location_id), param[str]("transaction_id", transaction_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[VoidTransactionResponse],
+            decoder=async_json_decoder[VoidTransactionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

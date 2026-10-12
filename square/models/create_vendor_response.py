@@ -18,5 +18,5 @@ class CreateVendorResponse(SdkBaseModel):
 
 
 class CreateVendorResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    vendor: NotRequired[Vendor | VendorDict]
+    errors: NotRequired[list[ErrorDict]]
+    vendor: NotRequired[VendorDict]

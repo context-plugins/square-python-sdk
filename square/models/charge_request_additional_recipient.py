@@ -26,4 +26,4 @@ class ChargeRequestAdditionalRecipient(SdkBaseModel):
 class ChargeRequestAdditionalRecipientDict(TypedDict):
     location_id: str
     description: str
-    amount_money: Money | MoneyDict
+    amount_money: MoneyDict

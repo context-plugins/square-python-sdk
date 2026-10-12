@@ -2,20 +2,20 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, SdkBaseModel
+from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
 from .time_range import TimeRange, TimeRangeDict
 
 
 class SearchEventsFilter(SdkBaseModel):
     """Criteria to filter events by."""
 
-    event_types: Optional[list[str | None]] = UNSET
+    event_types: OptionalNullable[list[str]] = UNSET
     """Filter events by event types."""
 
-    merchant_ids: Optional[list[str | None]] = UNSET
+    merchant_ids: OptionalNullable[list[str]] = UNSET
     """Filter events by merchant."""
 
-    location_ids: Optional[list[str | None]] = UNSET
+    location_ids: OptionalNullable[list[str]] = UNSET
     """Filter events by location."""
 
     created_at: Optional[TimeRange] = UNSET
@@ -25,7 +25,7 @@ class SearchEventsFilter(SdkBaseModel):
 
 
 class SearchEventsFilterDict(TypedDict):
-    event_types: NotRequired[list[str | None]]
-    merchant_ids: NotRequired[list[str | None]]
-    location_ids: NotRequired[list[str | None]]
-    created_at: NotRequired[TimeRange | TimeRangeDict]
+    event_types: NotRequired[list[str] | None]
+    merchant_ids: NotRequired[list[str] | None]
+    location_ids: NotRequired[list[str] | None]
+    created_at: NotRequired[TimeRangeDict]

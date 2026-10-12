@@ -24,6 +24,6 @@ class ListOrderCustomAttributeDefinitionsResponse(SdkBaseModel):
 
 
 class ListOrderCustomAttributeDefinitionsResponseDict(TypedDict):
-    custom_attribute_definitions: list[CustomAttributeDefinition | CustomAttributeDefinitionDict]
+    custom_attribute_definitions: list[CustomAttributeDefinitionDict]
     cursor: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

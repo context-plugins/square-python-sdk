@@ -11,4 +11,4 @@ class LocationSettingsUpdatedEventObject(SdkBaseModel):
 
 
 class LocationSettingsUpdatedEventObjectDict(TypedDict):
-    location_settings: NotRequired[CheckoutLocationSettings | CheckoutLocationSettingsDict]
+    location_settings: NotRequired[CheckoutLocationSettingsDict]

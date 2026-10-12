@@ -11,4 +11,4 @@ class OrderCreatedObject(SdkBaseModel):
 
 
 class OrderCreatedObjectDict(TypedDict):
-    order_created: NotRequired[OrderCreated | OrderCreatedDict]
+    order_created: NotRequired[OrderCreatedDict]

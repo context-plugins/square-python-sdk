@@ -20,4 +20,4 @@ class DisputeEvidenceAddedEventData(SdkBaseModel):
 class DisputeEvidenceAddedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[DisputeEvidenceAddedEventObject | DisputeEvidenceAddedEventObjectDict]
+    object_: NotRequired[DisputeEvidenceAddedEventObjectDict]

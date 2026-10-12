@@ -13,5 +13,5 @@ class TerminalCheckoutQuery(SdkBaseModel):
 
 
 class TerminalCheckoutQueryDict(TypedDict):
-    filter: NotRequired[TerminalCheckoutQueryFilter | TerminalCheckoutQueryFilterDict]
-    sort: NotRequired[TerminalCheckoutQuerySort | TerminalCheckoutQuerySortDict]
+    filter: NotRequired[TerminalCheckoutQueryFilterDict]
+    sort: NotRequired[TerminalCheckoutQuerySortDict]

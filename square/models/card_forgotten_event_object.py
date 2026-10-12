@@ -11,4 +11,4 @@ class CardForgottenEventObject(SdkBaseModel):
 
 
 class CardForgottenEventObjectDict(TypedDict):
-    card: NotRequired[CardForgottenEventCard | CardForgottenEventCardDict]
+    card: NotRequired[CardForgottenEventCardDict]

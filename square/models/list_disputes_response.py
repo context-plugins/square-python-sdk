@@ -23,6 +23,6 @@ class ListDisputesResponse(SdkBaseModel):
 
 
 class ListDisputesResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    disputes: NotRequired[list[Dispute | DisputeDict]]
+    errors: NotRequired[list[ErrorDict]]
+    disputes: NotRequired[list[DisputeDict]]
     cursor: NotRequired[str]

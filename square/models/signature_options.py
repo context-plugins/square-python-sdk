@@ -20,4 +20,4 @@ class SignatureOptions(SdkBaseModel):
 class SignatureOptionsDict(TypedDict):
     title: str
     body: str
-    signature: NotRequired[list[SignatureImage | SignatureImageDict]]
+    signature: NotRequired[list[SignatureImageDict]]

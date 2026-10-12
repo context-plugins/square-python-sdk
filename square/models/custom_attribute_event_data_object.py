@@ -13,4 +13,4 @@ class CustomAttributeEventDataObject(SdkBaseModel):
 
 
 class CustomAttributeEventDataObjectDict(TypedDict):
-    custom_attribute: NotRequired[CustomAttribute | CustomAttributeDict]
+    custom_attribute: NotRequired[CustomAttributeDict]

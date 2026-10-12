@@ -65,12 +65,12 @@ class CustomerFilter(SdkBaseModel):
 
 
 class CustomerFilterDict(TypedDict):
-    creation_source: NotRequired[CustomerCreationSourceFilter | CustomerCreationSourceFilterDict]
-    created_at: NotRequired[TimeRange | TimeRangeDict]
-    updated_at: NotRequired[TimeRange | TimeRangeDict]
-    email_address: NotRequired[CustomerTextFilter | CustomerTextFilterDict]
-    phone_number: NotRequired[CustomerTextFilter | CustomerTextFilterDict]
-    reference_id: NotRequired[CustomerTextFilter | CustomerTextFilterDict]
-    group_ids: NotRequired[FilterValue | FilterValueDict]
-    custom_attribute: NotRequired[CustomerCustomAttributeFilters | CustomerCustomAttributeFiltersDict]
-    segment_ids: NotRequired[FilterValue | FilterValueDict]
+    creation_source: NotRequired[CustomerCreationSourceFilterDict]
+    created_at: NotRequired[TimeRangeDict]
+    updated_at: NotRequired[TimeRangeDict]
+    email_address: NotRequired[CustomerTextFilterDict]
+    phone_number: NotRequired[CustomerTextFilterDict]
+    reference_id: NotRequired[CustomerTextFilterDict]
+    group_ids: NotRequired[FilterValueDict]
+    custom_attribute: NotRequired[CustomerCustomAttributeFiltersDict]
+    segment_ids: NotRequired[FilterValueDict]

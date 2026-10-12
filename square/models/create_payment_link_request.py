@@ -42,8 +42,8 @@ class CreatePaymentLinkRequest(SdkBaseModel):
 class CreatePaymentLinkRequestDict(TypedDict):
     idempotency_key: NotRequired[str]
     description: NotRequired[str]
-    quick_pay: NotRequired[QuickPay | QuickPayDict]
-    order: NotRequired[Order | OrderDict]
-    checkout_options: NotRequired[CheckoutOptions | CheckoutOptionsDict]
-    pre_populated_data: NotRequired[PrePopulatedData | PrePopulatedDataDict]
+    quick_pay: NotRequired[QuickPayDict]
+    order: NotRequired[OrderDict]
+    checkout_options: NotRequired[CheckoutOptionsDict]
+    pre_populated_data: NotRequired[PrePopulatedDataDict]
     payment_note: NotRequired[str]

@@ -43,4 +43,4 @@ class ExternalPaymentDetailsDict(TypedDict):
     type_: str
     source: str
     source_id: NotRequired[str | None]
-    source_fee_money: NotRequired[Money | MoneyDict]
+    source_fee_money: NotRequired[MoneyDict]

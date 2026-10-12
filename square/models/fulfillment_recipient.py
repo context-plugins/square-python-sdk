@@ -42,4 +42,4 @@ class FulfillmentRecipientDict(TypedDict):
     display_name: NotRequired[str | None]
     email_address: NotRequired[str | None]
     phone_number: NotRequired[str | None]
-    address: NotRequired[Address | AddressDict]
+    address: NotRequired[AddressDict]

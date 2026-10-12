@@ -20,4 +20,4 @@ class TerminalActionUpdatedEventData(SdkBaseModel):
 class TerminalActionUpdatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[TerminalActionUpdatedEventObject | TerminalActionUpdatedEventObjectDict]
+    object_: NotRequired[TerminalActionUpdatedEventObjectDict]

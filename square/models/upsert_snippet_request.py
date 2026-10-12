@@ -15,4 +15,4 @@ class UpsertSnippetRequest(SdkBaseModel):
 
 
 class UpsertSnippetRequestDict(TypedDict):
-    snippet: Snippet | SnippetDict
+    snippet: SnippetDict

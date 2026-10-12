@@ -19,4 +19,4 @@ class UpdateInventoryAdjustmentRequest(SdkBaseModel):
 
 class UpdateInventoryAdjustmentRequestDict(TypedDict):
     idempotency_key: str
-    adjustment: InventoryAdjustment | InventoryAdjustmentDict
+    adjustment: InventoryAdjustmentDict

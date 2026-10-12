@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.create_bank_account_request import CreateBankAccountRequest, CreateBankAccountRequestDict
 from ..models.create_bank_account_response import CreateBankAccountResponse
@@ -39,14 +41,15 @@ class BankAccounts:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_bank_account(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_bank_account(body, request_options=request_options))
 
     def disable_bank_account(
         self, bank_account_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -55,14 +58,15 @@ class BankAccounts:
 
         Args:
             bank_account_id: The ID of the bank account to disable.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.disable_bank_account(bank_account_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.disable_bank_account(bank_account_id, request_options=request_options))
 
     def get_bank_account(
         self, bank_account_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -71,14 +75,15 @@ class BankAccounts:
 
         Args:
             bank_account_id: Square-issued ID of the desired ``BankAccount``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.get_bank_account(bank_account_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.get_bank_account(bank_account_id, request_options=request_options))
 
     def get_bank_account_by_v1_id(
         self, v1_bank_account_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -89,16 +94,17 @@ class BankAccounts:
             v1_bank_account_id: Connect V1 ID of the desired ``BankAccount``. For more information, see `Retrieve a bank
                 account by using an ID issued by V1 Bank Accounts API
                 <https://developer.squareup.com/docs/bank-accounts-api#retrieve-a-bank-account-by-using-an-id-issued-by-v1-bank-accounts-api>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.get_bank_account_by_v1_id(
-            v1_bank_account_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.get_bank_account_by_v1_id(v1_bank_account_id, request_options=request_options)
+        )
 
     def list_bank_accounts(
         self,
@@ -121,20 +127,23 @@ class BankAccounts:
                 belonging to a specific location.
             customer_id: Customer ID. You can specify this optional filter to retrieve only the linked bank accounts
                 belonging to a specific customer.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_bank_accounts(
-            cursor=cursor,
-            limit=limit,
-            location_id=location_id,
-            customer_id=customer_id,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_bank_accounts(
+                cursor=cursor,
+                limit=limit,
+                location_id=location_id,
+                customer_id=customer_id,
+                request_options=request_options,
+            ),
+        )
 
     @property
     def with_raw_response(self) -> BankAccountsWithRawResponse:
@@ -156,14 +165,15 @@ class AsyncBankAccounts:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_bank_account(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_bank_account(body, request_options=request_options))
 
     async def disable_bank_account(
         self, bank_account_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -172,16 +182,17 @@ class AsyncBankAccounts:
 
         Args:
             bank_account_id: The ID of the bank account to disable.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.disable_bank_account(bank_account_id, request_options=request_options)
-        ).unwrap()
+        )
 
     async def get_bank_account(
         self, bank_account_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -190,16 +201,15 @@ class AsyncBankAccounts:
 
         Args:
             bank_account_id: Square-issued ID of the desired ``BankAccount``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.get_bank_account(bank_account_id, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.get_bank_account(bank_account_id, request_options=request_options))
 
     async def get_bank_account_by_v1_id(
         self, v1_bank_account_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -210,16 +220,17 @@ class AsyncBankAccounts:
             v1_bank_account_id: Connect V1 ID of the desired ``BankAccount``. For more information, see `Retrieve a bank
                 account by using an ID issued by V1 Bank Accounts API
                 <https://developer.squareup.com/docs/bank-accounts-api#retrieve-a-bank-account-by-using-an-id-issued-by-v1-bank-accounts-api>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.get_bank_account_by_v1_id(v1_bank_account_id, request_options=request_options)
-        ).unwrap()
+        )
 
     async def list_bank_accounts(
         self,
@@ -242,22 +253,23 @@ class AsyncBankAccounts:
                 belonging to a specific location.
             customer_id: Customer ID. You can specify this optional filter to retrieve only the linked bank accounts
                 belonging to a specific customer.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_bank_accounts(
                 cursor=cursor,
                 limit=limit,
                 location_id=location_id,
                 customer_id=customer_id,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncBankAccountsWithRawResponse:
@@ -276,7 +288,8 @@ class BankAccountsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSche
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -298,7 +311,8 @@ class BankAccountsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSche
 
         Args:
             bank_account_id: The ID of the bank account to disable.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -320,7 +334,8 @@ class BankAccountsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSche
 
         Args:
             bank_account_id: Square-issued ID of the desired ``BankAccount``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -343,7 +358,8 @@ class BankAccountsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSche
             v1_bank_account_id: Connect V1 ID of the desired ``BankAccount``. For more information, see `Retrieve a bank
                 account by using an ID issued by V1 Bank Accounts API
                 <https://developer.squareup.com/docs/bank-accounts-api#retrieve-a-bank-account-by-using-an-id-issued-by-v1-bank-accounts-api>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -378,7 +394,8 @@ class BankAccountsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSche
                 belonging to a specific location.
             customer_id: Customer ID. You can specify this optional filter to retrieve only the linked bank accounts
                 belonging to a specific customer.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -410,7 +427,8 @@ class AsyncBankAccountsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -420,7 +438,7 @@ class AsyncBankAccountsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateBankAccountRequest | CreateBankAccountRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateBankAccountResponse],
+            decoder=async_json_decoder[CreateBankAccountResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -432,7 +450,8 @@ class AsyncBankAccountsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
 
         Args:
             bank_account_id: The ID of the bank account to disable.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -442,7 +461,7 @@ class AsyncBankAccountsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
             path_params=[param[str]("bank_account_id", bank_account_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DisableBankAccountResponse],
+            decoder=async_json_decoder[DisableBankAccountResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -454,7 +473,8 @@ class AsyncBankAccountsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
 
         Args:
             bank_account_id: Square-issued ID of the desired ``BankAccount``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -463,7 +483,7 @@ class AsyncBankAccountsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
             url_template=self._server.default("/v2/bank-accounts/{bank_account_id}"),
             path_params=[param[str]("bank_account_id", bank_account_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[GetBankAccountResponse],
+            decoder=async_json_decoder[GetBankAccountResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -477,7 +497,8 @@ class AsyncBankAccountsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
             v1_bank_account_id: Connect V1 ID of the desired ``BankAccount``. For more information, see `Retrieve a bank
                 account by using an ID issued by V1 Bank Accounts API
                 <https://developer.squareup.com/docs/bank-accounts-api#retrieve-a-bank-account-by-using-an-id-issued-by-v1-bank-accounts-api>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -486,7 +507,7 @@ class AsyncBankAccountsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
             url_template=self._server.default("/v2/bank-accounts/by-v1-id/{v1_bank_account_id}"),
             path_params=[param[str]("v1_bank_account_id", v1_bank_account_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[GetBankAccountByV1IdResponse],
+            decoder=async_json_decoder[GetBankAccountByV1IdResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -512,7 +533,8 @@ class AsyncBankAccountsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
                 belonging to a specific location.
             customer_id: Customer ID. You can specify this optional filter to retrieve only the linked bank accounts
                 belonging to a specific customer.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -526,7 +548,7 @@ class AsyncBankAccountsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server
                 param[str | None]("customer_id", customer_id),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListBankAccountsResponse],
+            decoder=async_json_decoder[ListBankAccountsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

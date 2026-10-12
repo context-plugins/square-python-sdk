@@ -20,4 +20,4 @@ class PaymentUpdatedEventData(SdkBaseModel):
 class PaymentUpdatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[PaymentUpdatedEventObject | PaymentUpdatedEventObjectDict]
+    object_: NotRequired[PaymentUpdatedEventObjectDict]

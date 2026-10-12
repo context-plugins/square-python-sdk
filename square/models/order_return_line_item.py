@@ -51,15 +51,15 @@ class OrderReturnLineItem(SdkBaseModel):
     item_type: Optional[OrderLineItemItemTypeOrStr] = UNSET
     """Represents the line item type."""
 
-    return_modifiers: Optional[list[OrderReturnLineItemModifier | None]] = UNSET
+    return_modifiers: OptionalNullable[list[OrderReturnLineItemModifier]] = UNSET
     """The `CatalogModifier <entity:CatalogModifier>`__s applied to this line item."""
 
-    applied_taxes: Optional[list[OrderLineItemAppliedTax | None]] = UNSET
+    applied_taxes: OptionalNullable[list[OrderLineItemAppliedTax]] = UNSET
     """The list of references to ``OrderReturnTax`` entities applied to the return line item. Each
     ``OrderLineItemAppliedTax`` has a ``tax_uid`` that references the ``uid`` of a top-level ``OrderReturnTax`` applied
     to the return line item. On reads, the applied amount is populated."""
 
-    applied_discounts: Optional[list[OrderLineItemAppliedDiscount | None]] = UNSET
+    applied_discounts: OptionalNullable[list[OrderLineItemAppliedDiscount]] = UNSET
     """The list of references to ``OrderReturnDiscount`` entities applied to the return line item. Each
     ``OrderLineItemAppliedDiscount`` has a ``discount_uid`` that references the ``uid`` of a top-level
     ``OrderReturnDiscount`` applied to the return line item. On reads, the applied amount is populated."""
@@ -100,7 +100,7 @@ class OrderReturnLineItem(SdkBaseModel):
     the sign of the value indicates the purpose of the money transfer. See `Working with Monetary Amounts
     <https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts>`__ for more information."""
 
-    applied_service_charges: Optional[list[OrderLineItemAppliedServiceCharge | None]] = UNSET
+    applied_service_charges: OptionalNullable[list[OrderLineItemAppliedServiceCharge]] = UNSET
     """The list of references to ``OrderReturnServiceCharge`` entities applied to the return line item. Each
     ``OrderLineItemAppliedServiceCharge`` has a ``service_charge_uid`` that references the ``uid`` of a top-level
     ``OrderReturnServiceCharge`` applied to the return line item. On reads, the applied amount is populated."""
@@ -117,22 +117,20 @@ class OrderReturnLineItemDict(TypedDict):
     source_line_item_uid: NotRequired[str | None]
     name: NotRequired[str | None]
     quantity: str
-    quantity_unit: NotRequired[OrderQuantityUnit | OrderQuantityUnitDict]
+    quantity_unit: NotRequired[OrderQuantityUnitDict]
     note: NotRequired[str | None]
     catalog_object_id: NotRequired[str | None]
     catalog_version: NotRequired[int | None]
     variation_name: NotRequired[str | None]
     item_type: NotRequired[OrderLineItemItemTypeOrStr]
-    return_modifiers: NotRequired[list[OrderReturnLineItemModifier | OrderReturnLineItemModifierDict | None]]
-    applied_taxes: NotRequired[list[OrderLineItemAppliedTax | OrderLineItemAppliedTaxDict | None]]
-    applied_discounts: NotRequired[list[OrderLineItemAppliedDiscount | OrderLineItemAppliedDiscountDict | None]]
-    base_price_money: NotRequired[Money | MoneyDict]
-    variation_total_price_money: NotRequired[Money | MoneyDict]
-    gross_return_money: NotRequired[Money | MoneyDict]
-    total_tax_money: NotRequired[Money | MoneyDict]
-    total_discount_money: NotRequired[Money | MoneyDict]
-    total_money: NotRequired[Money | MoneyDict]
-    applied_service_charges: NotRequired[
-        list[OrderLineItemAppliedServiceCharge | OrderLineItemAppliedServiceChargeDict | None]
-    ]
-    total_service_charge_money: NotRequired[Money | MoneyDict]
+    return_modifiers: NotRequired[list[OrderReturnLineItemModifierDict] | None]
+    applied_taxes: NotRequired[list[OrderLineItemAppliedTaxDict] | None]
+    applied_discounts: NotRequired[list[OrderLineItemAppliedDiscountDict] | None]
+    base_price_money: NotRequired[MoneyDict]
+    variation_total_price_money: NotRequired[MoneyDict]
+    gross_return_money: NotRequired[MoneyDict]
+    total_tax_money: NotRequired[MoneyDict]
+    total_discount_money: NotRequired[MoneyDict]
+    total_money: NotRequired[MoneyDict]
+    applied_service_charges: NotRequired[list[OrderLineItemAppliedServiceChargeDict] | None]
+    total_service_charge_money: NotRequired[MoneyDict]

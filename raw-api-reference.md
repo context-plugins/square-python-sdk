@@ -45,7 +45,7 @@ To learn more about the Web Payments SDK and how to add Apple Pay, see [Take an 
 **Sync**
 
 ```python
-result = client.apple_pay.with_raw_response.register_domain(body)
+result = client.apple_pay.with_raw_response.register_domain(RegisterDomainRequest(domain_name="some example string"))
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RegisterDomainResponse
@@ -56,7 +56,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.apple_pay.with_raw_response.register_domain(body)
+result = await async_client.apple_pay.with_raw_response.register_domain(
+    RegisterDomainRequest(domain_name="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RegisterDomainResponse
@@ -75,7 +77,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[RegisterDomainRequest](square/models/register_domain_request.py) \| [RegisterDomainRequestDict](square/models/register_domain_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -127,7 +129,9 @@ Store a bank account on file for a square account
 **Sync**
 
 ```python
-result = client.bank_accounts.with_raw_response.create_bank_account(body)
+result = client.bank_accounts.with_raw_response.create_bank_account(
+    CreateBankAccountRequest(idempotency_key="some example string", source_id="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateBankAccountResponse
@@ -138,7 +142,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.bank_accounts.with_raw_response.create_bank_account(body)
+result = await async_client.bank_accounts.with_raw_response.create_bank_account(
+    CreateBankAccountRequest(idempotency_key="some example string", source_id="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateBankAccountResponse
@@ -157,7 +163,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateBankAccountRequest](square/models/create_bank_account_request.py) \| [CreateBankAccountRequestDict](square/models/create_bank_account_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -205,7 +211,7 @@ Disable a bank account.
 **Sync**
 
 ```python
-result = client.bank_accounts.with_raw_response.disable_bank_account(bank_account_id)
+result = client.bank_accounts.with_raw_response.disable_bank_account("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DisableBankAccountResponse
@@ -216,7 +222,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.bank_accounts.with_raw_response.disable_bank_account(bank_account_id)
+result = await async_client.bank_accounts.with_raw_response.disable_bank_account("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DisableBankAccountResponse
@@ -235,7 +241,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>bank_account_id</code> | <code>str</code> | The ID of the bank account to disable. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -283,7 +289,7 @@ Retrieve details of a [BankAccount](entity:BankAccount) bank account linked to a
 **Sync**
 
 ```python
-result = client.bank_accounts.with_raw_response.get_bank_account(bank_account_id)
+result = client.bank_accounts.with_raw_response.get_bank_account("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetBankAccountResponse
@@ -294,7 +300,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.bank_accounts.with_raw_response.get_bank_account(bank_account_id)
+result = await async_client.bank_accounts.with_raw_response.get_bank_account("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetBankAccountResponse
@@ -313,7 +319,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>bank_account_id</code> | <code>str</code> | Square-issued ID of the desired `BankAccount`. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -361,7 +367,7 @@ Returns details of a [BankAccount](entity:BankAccount) identified by V1 bank acc
 **Sync**
 
 ```python
-result = client.bank_accounts.with_raw_response.get_bank_account_by_v1_id(v1_bank_account_id)
+result = client.bank_accounts.with_raw_response.get_bank_account_by_v1_id("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetBankAccountByV1IdResponse
@@ -372,7 +378,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.bank_accounts.with_raw_response.get_bank_account_by_v1_id(v1_bank_account_id)
+result = await async_client.bank_accounts.with_raw_response.get_bank_account_by_v1_id("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetBankAccountByV1IdResponse
@@ -391,7 +397,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>v1_bank_account_id</code> | <code>str</code> | Connect V1 ID of the desired `BankAccount`. For more information, see <br>[Retrieve a bank account by using an ID issued by V1 Bank Accounts API](https://developer.squareup.com/docs/bank-accounts-api#retrieve-a-bank-account-by-using-an-id-issued-by-v1-bank-accounts-api). |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -472,7 +478,7 @@ match result:
 | <code>limit</code> | <code>int \| None</code> | Upper limit on the number of bank accounts to return in the response.<br>Currently, 1000 is the largest supported limit. You can specify a limit<br>of up to 1000 bank accounts. This is also the default limit.<br>**Default**: <code>None</code> |
 | <code>location_id</code> | <code>str \| None</code> | Location ID. You can specify this optional filter<br>to retrieve only the linked bank accounts belonging to a specific location.<br>**Default**: <code>None</code> |
 | <code>customer_id</code> | <code>str \| None</code> | Customer ID. You can specify this optional filter<br>to retrieve only the linked bank accounts belonging to a specific customer.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -530,7 +536,11 @@ or *Appointments Premium*.
 **Sync**
 
 ```python
-result = client.booking_custom_attributes.with_raw_response.bulk_delete_booking_custom_attributes(body)
+result = client.booking_custom_attributes.with_raw_response.bulk_delete_booking_custom_attributes(
+    BulkDeleteBookingCustomAttributesRequest(
+        values={"key": BookingCustomAttributeDeleteRequest(booking_id="some example string", key="some example string")}
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkDeleteBookingCustomAttributesResponse
@@ -541,7 +551,11 @@ match result:
 **Async**
 
 ```python
-result = await async_client.booking_custom_attributes.with_raw_response.bulk_delete_booking_custom_attributes(body)
+result = await async_client.booking_custom_attributes.with_raw_response.bulk_delete_booking_custom_attributes(
+    BulkDeleteBookingCustomAttributesRequest(
+        values={"key": BookingCustomAttributeDeleteRequest(booking_id="some example string", key="some example string")}
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkDeleteBookingCustomAttributesResponse
@@ -560,7 +574,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkDeleteBookingCustomAttributesRequest](square/models/bulk_delete_booking_custom_attributes_request.py) \| [BulkDeleteBookingCustomAttributesRequestDict](square/models/bulk_delete_booking_custom_attributes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -614,7 +628,15 @@ or *Appointments Premium*.
 **Sync**
 
 ```python
-result = client.booking_custom_attributes.with_raw_response.bulk_upsert_booking_custom_attributes(body)
+result = client.booking_custom_attributes.with_raw_response.bulk_upsert_booking_custom_attributes(
+    BulkUpsertBookingCustomAttributesRequest(
+        values={
+            "key": BookingCustomAttributeUpsertRequest(
+                booking_id="some example string", custom_attribute=CustomAttribute()
+            ),
+        },
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkUpsertBookingCustomAttributesResponse
@@ -625,7 +647,15 @@ match result:
 **Async**
 
 ```python
-result = await async_client.booking_custom_attributes.with_raw_response.bulk_upsert_booking_custom_attributes(body)
+result = await async_client.booking_custom_attributes.with_raw_response.bulk_upsert_booking_custom_attributes(
+    BulkUpsertBookingCustomAttributesRequest(
+        values={
+            "key": BookingCustomAttributeUpsertRequest(
+                booking_id="some example string", custom_attribute=CustomAttribute()
+            ),
+        },
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkUpsertBookingCustomAttributesResponse
@@ -644,7 +674,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkUpsertBookingCustomAttributesRequest](square/models/bulk_upsert_booking_custom_attributes_request.py) \| [BulkUpsertBookingCustomAttributesRequestDict](square/models/bulk_upsert_booking_custom_attributes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -698,7 +728,9 @@ or *Appointments Premium*.
 **Sync**
 
 ```python
-result = client.booking_custom_attributes.with_raw_response.create_booking_custom_attribute_definition(body)
+result = client.booking_custom_attributes.with_raw_response.create_booking_custom_attribute_definition(
+    CreateBookingCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateBookingCustomAttributeDefinitionResponse
@@ -709,7 +741,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.booking_custom_attributes.with_raw_response.create_booking_custom_attribute_definition(body)
+result = await async_client.booking_custom_attributes.with_raw_response.create_booking_custom_attribute_definition(
+    CreateBookingCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateBookingCustomAttributeDefinitionResponse
@@ -728,7 +762,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateBookingCustomAttributeDefinitionRequest](square/models/create_booking_custom_attribute_definition_request.py) \| [CreateBookingCustomAttributeDefinitionRequestDict](square/models/create_booking_custom_attribute_definition_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -782,7 +816,9 @@ or *Appointments Premium*.
 **Sync**
 
 ```python
-result = client.booking_custom_attributes.with_raw_response.delete_booking_custom_attribute(booking_id, key)
+result = client.booking_custom_attributes.with_raw_response.delete_booking_custom_attribute(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteBookingCustomAttributeResponse
@@ -793,7 +829,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.booking_custom_attributes.with_raw_response.delete_booking_custom_attribute(booking_id, key)
+result = await async_client.booking_custom_attributes.with_raw_response.delete_booking_custom_attribute(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteBookingCustomAttributeResponse
@@ -813,7 +851,7 @@ match result:
 | --- | --- | --- |
 | <code>booking_id</code> | <code>str</code> | The ID of the target [booking](entity:Booking). |
 | <code>key</code> | <code>str</code> | The key of the custom attribute to delete. This key must match the `key` of a custom<br>attribute definition in the Square seller account. If the requesting application is not the<br>definition owner, you must use the qualified key. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -867,7 +905,9 @@ or *Appointments Premium*.
 **Sync**
 
 ```python
-result = client.booking_custom_attributes.with_raw_response.delete_booking_custom_attribute_definition(key)
+result = client.booking_custom_attributes.with_raw_response.delete_booking_custom_attribute_definition(
+    "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteBookingCustomAttributeDefinitionResponse
@@ -878,7 +918,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.booking_custom_attributes.with_raw_response.delete_booking_custom_attribute_definition(key)
+result = await async_client.booking_custom_attributes.with_raw_response.delete_booking_custom_attribute_definition(
+    "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteBookingCustomAttributeDefinitionResponse
@@ -897,7 +939,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -979,7 +1021,7 @@ match result:
 | --- | --- | --- |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response. This limit is advisory.<br>The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100.<br>The default value is 20. For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint.<br>Provide this cursor to retrieve the next page of results for your original request.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1030,7 +1072,7 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 **Sync**
 
 ```python
-result = client.booking_custom_attributes.with_raw_response.list_booking_custom_attributes(booking_id)
+result = client.booking_custom_attributes.with_raw_response.list_booking_custom_attributes("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListBookingCustomAttributesResponse
@@ -1041,7 +1083,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.booking_custom_attributes.with_raw_response.list_booking_custom_attributes(booking_id)
+result = await async_client.booking_custom_attributes.with_raw_response.list_booking_custom_attributes(
+    "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListBookingCustomAttributesResponse
@@ -1063,7 +1107,7 @@ match result:
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response. This limit is advisory.<br>The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100.<br>The default value is 20. For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint.<br>Provide this cursor to retrieve the next page of results for your original request. For more<br>information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>with_definitions</code> | <code>bool \| None</code> | Indicates whether to return the [custom attribute definition](entity:CustomAttributeDefinition) in the `definition` field of each<br>custom attribute. Set this parameter to `true` to get the name and description of each custom<br>attribute, information about the data type, or other definition details. The default value is `false`.<br>**Default**: <code>False</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1114,7 +1158,9 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 **Sync**
 
 ```python
-result = client.booking_custom_attributes.with_raw_response.retrieve_booking_custom_attribute(booking_id, key)
+result = client.booking_custom_attributes.with_raw_response.retrieve_booking_custom_attribute(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveBookingCustomAttributeResponse
@@ -1126,7 +1172,7 @@ match result:
 
 ```python
 result = await async_client.booking_custom_attributes.with_raw_response.retrieve_booking_custom_attribute(
-    booking_id, key
+    "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -1149,7 +1195,7 @@ match result:
 | <code>key</code> | <code>str</code> | The key of the custom attribute to retrieve. This key must match the `key` of a custom<br>attribute definition in the Square seller account. If the requesting application is not the<br>definition owner, you must use the qualified key. |
 | <code>with_definition</code> | <code>bool \| None</code> | Indicates whether to return the [custom attribute definition](entity:CustomAttributeDefinition) in the `definition` field of<br>the custom attribute. Set this parameter to `true` to get the name and description of the custom<br>attribute, information about the data type, or other definition details. The default value is `false`.<br>**Default**: <code>False</code> |
 | <code>version</code> | <code>int \| None</code> | The current version of the custom attribute, which is used for strongly consistent reads to<br>guarantee that you receive the most up-to-date data. When included in the request, Square<br>returns the specified version or a higher version if one exists. If the specified version is<br>higher than the current version, Square returns a `BAD_REQUEST` error.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1200,7 +1246,9 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 **Sync**
 
 ```python
-result = client.booking_custom_attributes.with_raw_response.retrieve_booking_custom_attribute_definition(key)
+result = client.booking_custom_attributes.with_raw_response.retrieve_booking_custom_attribute_definition(
+    "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveBookingCustomAttributeDefinitionResponse
@@ -1212,7 +1260,7 @@ match result:
 
 ```python
 result = await async_client.booking_custom_attributes.with_raw_response.retrieve_booking_custom_attribute_definition(
-    key
+    "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -1233,7 +1281,7 @@ match result:
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to retrieve. If the requesting application<br>is not the definition owner, you must use the qualified key. |
 | <code>version</code> | <code>int \| None</code> | The current version of the custom attribute definition, which is used for strongly consistent<br>reads to guarantee that you receive the most up-to-date data. When included in the request,<br>Square returns the specified version or a higher version if one exists. If the specified version<br>is higher than the current version, Square returns a `BAD_REQUEST` error.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1287,7 +1335,10 @@ or *Appointments Premium*.
 **Sync**
 
 ```python
-result = client.booking_custom_attributes.with_raw_response.update_booking_custom_attribute_definition(key, body)
+result = client.booking_custom_attributes.with_raw_response.update_booking_custom_attribute_definition(
+    "some example string",
+    UpdateBookingCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition()),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateBookingCustomAttributeDefinitionResponse
@@ -1299,7 +1350,8 @@ match result:
 
 ```python
 result = await async_client.booking_custom_attributes.with_raw_response.update_booking_custom_attribute_definition(
-    key, body
+    "some example string",
+    UpdateBookingCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition()),
 )
 match result:
     case Success(payload=payload):
@@ -1320,7 +1372,7 @@ match result:
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to update. |
 | <code>body</code> | <code>[UpdateBookingCustomAttributeDefinitionRequest](square/models/update_booking_custom_attribute_definition_request.py) \| [UpdateBookingCustomAttributeDefinitionRequestDict](square/models/update_booking_custom_attribute_definition_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1374,7 +1426,11 @@ or *Appointments Premium*.
 **Sync**
 
 ```python
-result = client.booking_custom_attributes.with_raw_response.upsert_booking_custom_attribute(booking_id, key, body)
+result = client.booking_custom_attributes.with_raw_response.upsert_booking_custom_attribute(
+    "some example string",
+    "some example string",
+    UpsertBookingCustomAttributeRequest(custom_attribute=CustomAttribute()),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpsertBookingCustomAttributeResponse
@@ -1386,7 +1442,9 @@ match result:
 
 ```python
 result = await async_client.booking_custom_attributes.with_raw_response.upsert_booking_custom_attribute(
-    booking_id, key, body
+    "some example string",
+    "some example string",
+    UpsertBookingCustomAttributeRequest(custom_attribute=CustomAttribute()),
 )
 match result:
     case Success(payload=payload):
@@ -1408,7 +1466,7 @@ match result:
 | <code>booking_id</code> | <code>str</code> | The ID of the target [booking](entity:Booking). |
 | <code>key</code> | <code>str</code> | The key of the custom attribute to create or update. This key must match the `key` of a<br>custom attribute definition in the Square seller account. If the requesting application is not<br>the definition owner, you must use the qualified key. |
 | <code>body</code> | <code>[UpsertBookingCustomAttributeRequest](square/models/upsert_booking_custom_attribute_request.py) \| [UpsertBookingCustomAttributeRequestDict](square/models/upsert_booking_custom_attribute_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1463,7 +1521,9 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 **Sync**
 
 ```python
-result = client.bookings.with_raw_response.bulk_retrieve_bookings(body)
+result = client.bookings.with_raw_response.bulk_retrieve_bookings(
+    BulkRetrieveBookingsRequest(booking_ids=["some example string"])
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkRetrieveBookingsResponse
@@ -1474,7 +1534,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.bookings.with_raw_response.bulk_retrieve_bookings(body)
+result = await async_client.bookings.with_raw_response.bulk_retrieve_bookings(
+    BulkRetrieveBookingsRequest(booking_ids=["some example string"])
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkRetrieveBookingsResponse
@@ -1493,7 +1555,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkRetrieveBookingsRequest](square/models/bulk_retrieve_bookings_request.py) \| [BulkRetrieveBookingsRequestDict](square/models/bulk_retrieve_bookings_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1541,7 +1603,9 @@ Retrieves one or more team members' booking profiles.
 **Sync**
 
 ```python
-result = client.bookings.with_raw_response.bulk_retrieve_team_member_booking_profiles(body)
+result = client.bookings.with_raw_response.bulk_retrieve_team_member_booking_profiles(
+    BulkRetrieveTeamMemberBookingProfilesRequest(team_member_ids=["some example string"])
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkRetrieveTeamMemberBookingProfilesResponse
@@ -1552,7 +1616,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.bookings.with_raw_response.bulk_retrieve_team_member_booking_profiles(body)
+result = await async_client.bookings.with_raw_response.bulk_retrieve_team_member_booking_profiles(
+    BulkRetrieveTeamMemberBookingProfilesRequest(team_member_ids=["some example string"])
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkRetrieveTeamMemberBookingProfilesResponse
@@ -1571,7 +1637,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkRetrieveTeamMemberBookingProfilesRequest](square/models/bulk_retrieve_team_member_booking_profiles_request.py) \| [BulkRetrieveTeamMemberBookingProfilesRequestDict](square/models/bulk_retrieve_team_member_booking_profiles_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1625,7 +1691,7 @@ or *Appointments Premium*.
 **Sync**
 
 ```python
-result = client.bookings.with_raw_response.cancel_booking(booking_id, body)
+result = client.bookings.with_raw_response.cancel_booking("some example string", CancelBookingRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CancelBookingResponse
@@ -1636,7 +1702,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.bookings.with_raw_response.cancel_booking(booking_id, body)
+result = await async_client.bookings.with_raw_response.cancel_booking("some example string", CancelBookingRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CancelBookingResponse
@@ -1656,7 +1722,7 @@ match result:
 | --- | --- | --- |
 | <code>booking_id</code> | <code>str</code> | The ID of the [Booking](entity:Booking) object representing the to-be-cancelled booking. |
 | <code>body</code> | <code>[CancelBookingRequest](square/models/cancel_booking_request.py) \| [CancelBookingRequestDict](square/models/cancel_booking_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1717,7 +1783,7 @@ or *Appointments Premium*.
 **Sync**
 
 ```python
-result = client.bookings.with_raw_response.create_booking(body)
+result = client.bookings.with_raw_response.create_booking(CreateBookingRequest(booking=Booking()))
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateBookingResponse
@@ -1728,7 +1794,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.bookings.with_raw_response.create_booking(body)
+result = await async_client.bookings.with_raw_response.create_booking(CreateBookingRequest(booking=Booking()))
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateBookingResponse
@@ -1747,7 +1813,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateBookingRequest](square/models/create_booking_request.py) \| [CreateBookingRequestDict](square/models/create_booking_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1834,7 +1900,7 @@ match result:
 | <code>location_id</code> | <code>str \| None</code> | The location for which to retrieve bookings. If this is not set, all locations' bookings are retrieved.<br>**Default**: <code>None</code> |
 | <code>start_at_min</code> | <code>str \| None</code> | The RFC 3339 timestamp specifying the earliest of the start time. If this is not set, the current time is used.<br>**Default**: <code>None</code> |
 | <code>start_at_max</code> | <code>str \| None</code> | The RFC 3339 timestamp specifying the latest of the start time. If this is not set, the time of 31 days after `start_at_min` is used.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1913,7 +1979,7 @@ match result:
 | --- | --- | --- |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a paged response.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The pagination cursor from the preceding response to return the next page of the results. Do not set this when retrieving the first page of the results.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -1994,7 +2060,7 @@ match result:
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a paged response.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The pagination cursor from the preceding response to return the next page of the results. Do not set this when retrieving the first page of the results.<br>**Default**: <code>None</code> |
 | <code>location_id</code> | <code>str \| None</code> | Indicates whether to include only team members enabled at the given location in the returned result.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2045,7 +2111,7 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 **Sync**
 
 ```python
-result = client.bookings.with_raw_response.retrieve_booking(booking_id)
+result = client.bookings.with_raw_response.retrieve_booking("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveBookingResponse
@@ -2056,7 +2122,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.bookings.with_raw_response.retrieve_booking(booking_id)
+result = await async_client.bookings.with_raw_response.retrieve_booking("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveBookingResponse
@@ -2075,7 +2141,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>booking_id</code> | <code>str</code> | The ID of the [Booking](entity:Booking) object representing the to-be-retrieved booking. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2152,7 +2218,7 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2200,7 +2266,7 @@ Retrieves a seller's location booking profile.
 **Sync**
 
 ```python
-result = client.bookings.with_raw_response.retrieve_location_booking_profile(location_id)
+result = client.bookings.with_raw_response.retrieve_location_booking_profile("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveLocationBookingProfileResponse
@@ -2211,7 +2277,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.bookings.with_raw_response.retrieve_location_booking_profile(location_id)
+result = await async_client.bookings.with_raw_response.retrieve_location_booking_profile("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveLocationBookingProfileResponse
@@ -2230,7 +2296,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | The ID of the location to retrieve the booking profile. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2278,7 +2344,7 @@ Retrieves a team member's booking profile.
 **Sync**
 
 ```python
-result = client.bookings.with_raw_response.retrieve_team_member_booking_profile(team_member_id)
+result = client.bookings.with_raw_response.retrieve_team_member_booking_profile("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveTeamMemberBookingProfileResponse
@@ -2289,7 +2355,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.bookings.with_raw_response.retrieve_team_member_booking_profile(team_member_id)
+result = await async_client.bookings.with_raw_response.retrieve_team_member_booking_profile("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveTeamMemberBookingProfileResponse
@@ -2308,7 +2374,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>team_member_id</code> | <code>str</code> | The ID of the team member to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2359,7 +2425,11 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 **Sync**
 
 ```python
-result = client.bookings.with_raw_response.search_availability(body)
+result = client.bookings.with_raw_response.search_availability(
+    SearchAvailabilityRequest(
+        query=SearchAvailabilityQuery(filter=SearchAvailabilityFilter(start_at_range=TimeRange()))
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchAvailabilityResponse
@@ -2370,7 +2440,11 @@ match result:
 **Async**
 
 ```python
-result = await async_client.bookings.with_raw_response.search_availability(body)
+result = await async_client.bookings.with_raw_response.search_availability(
+    SearchAvailabilityRequest(
+        query=SearchAvailabilityQuery(filter=SearchAvailabilityFilter(start_at_range=TimeRange()))
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchAvailabilityResponse
@@ -2389,7 +2463,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchAvailabilityRequest](square/models/search_availability_request.py) \| [SearchAvailabilityRequestDict](square/models/search_availability_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2443,7 +2517,9 @@ or *Appointments Premium*.
 **Sync**
 
 ```python
-result = client.bookings.with_raw_response.update_booking(booking_id, body)
+result = client.bookings.with_raw_response.update_booking(
+    "some example string", UpdateBookingRequest(booking=Booking())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateBookingResponse
@@ -2454,7 +2530,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.bookings.with_raw_response.update_booking(booking_id, body)
+result = await async_client.bookings.with_raw_response.update_booking(
+    "some example string", UpdateBookingRequest(booking=Booking())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateBookingResponse
@@ -2474,7 +2552,7 @@ match result:
 | --- | --- | --- |
 | <code>booking_id</code> | <code>str</code> | The ID of the [Booking](entity:Booking) object representing the to-be-updated booking. |
 | <code>body</code> | <code>[UpdateBookingRequest](square/models/update_booking_request.py) \| [UpdateBookingRequestDict](square/models/update_booking_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2526,7 +2604,9 @@ Adds a card on file to an existing merchant.
 **Sync**
 
 ```python
-result = client.cards.with_raw_response.create_card(body)
+result = client.cards.with_raw_response.create_card(
+    CreateCardRequest(idempotency_key="some example string", source_id="some example string", card=Card())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateCardResponse
@@ -2537,7 +2617,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.cards.with_raw_response.create_card(body)
+result = await async_client.cards.with_raw_response.create_card(
+    CreateCardRequest(idempotency_key="some example string", source_id="some example string", card=Card())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateCardResponse
@@ -2556,7 +2638,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateCardRequest](square/models/create_card_request.py) \| [CreateCardRequestDict](square/models/create_card_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2605,7 +2687,7 @@ Disabling an already disabled card is allowed but has no effect.
 **Sync**
 
 ```python
-result = client.cards.with_raw_response.disable_card(card_id)
+result = client.cards.with_raw_response.disable_card("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DisableCardResponse
@@ -2616,7 +2698,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.cards.with_raw_response.disable_card(card_id)
+result = await async_client.cards.with_raw_response.disable_card("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DisableCardResponse
@@ -2635,7 +2717,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>card_id</code> | <code>str</code> | Unique ID for the desired Card. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2718,7 +2800,7 @@ match result:
 | <code>include_disabled</code> | <code>bool \| None</code> | Includes disabled cards.<br>By default, all enabled cards owned by the merchant are returned.<br>**Default**: <code>False</code> |
 | <code>reference_id</code> | <code>str \| None</code> | Limit results to cards associated with the reference_id supplied.<br>**Default**: <code>None</code> |
 | <code>sort_order</code> | <code>[SortOrderOrStr](square/models/enums/sort_order.py) \| None</code> | Sorts the returned list by when the card was created with the specified order.<br>This field defaults to ASC.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2766,7 +2848,7 @@ Retrieves details for a specific Card.
 **Sync**
 
 ```python
-result = client.cards.with_raw_response.retrieve_card(card_id)
+result = client.cards.with_raw_response.retrieve_card("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveCardResponse
@@ -2777,7 +2859,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.cards.with_raw_response.retrieve_card(card_id)
+result = await async_client.cards.with_raw_response.retrieve_card("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveCardResponse
@@ -2796,7 +2878,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>card_id</code> | <code>str</code> | Unique ID for the desired Card. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2848,7 +2930,9 @@ Provides a paginated list of events for a single cash drawer shift.
 **Sync**
 
 ```python
-result = client.cash_drawers.with_raw_response.list_cash_drawer_shift_events(shift_id, location_id)
+result = client.cash_drawers.with_raw_response.list_cash_drawer_shift_events(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListCashDrawerShiftEventsResponse
@@ -2859,7 +2943,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.cash_drawers.with_raw_response.list_cash_drawer_shift_events(shift_id, location_id)
+result = await async_client.cash_drawers.with_raw_response.list_cash_drawer_shift_events(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListCashDrawerShiftEventsResponse
@@ -2881,7 +2967,7 @@ match result:
 | <code>location_id</code> | <code>str</code> | The ID of the location to list cash drawer shifts for. |
 | <code>limit</code> | <code>int \| None</code> | Number of resources to be returned in a page of results (200 by<br>default, 1000 max).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Opaque cursor for fetching the next page of results.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -2930,7 +3016,7 @@ in a date range.
 **Sync**
 
 ```python
-result = client.cash_drawers.with_raw_response.list_cash_drawer_shifts(location_id)
+result = client.cash_drawers.with_raw_response.list_cash_drawer_shifts("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListCashDrawerShiftsResponse
@@ -2941,7 +3027,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.cash_drawers.with_raw_response.list_cash_drawer_shifts(location_id)
+result = await async_client.cash_drawers.with_raw_response.list_cash_drawer_shifts("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListCashDrawerShiftsResponse
@@ -2965,7 +3051,7 @@ match result:
 | <code>end_time</code> | <code>str \| None</code> | The exclusive end date of the query on opened_at, in ISO 8601 format.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | Number of cash drawer shift events in a page of results (200 by<br>default, 1000 max).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Opaque cursor for fetching the next page of results.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3014,7 +3100,7 @@ Provides the summary details for a single cash drawer shift. See
 **Sync**
 
 ```python
-result = client.cash_drawers.with_raw_response.retrieve_cash_drawer_shift(shift_id, location_id)
+result = client.cash_drawers.with_raw_response.retrieve_cash_drawer_shift("some example string", "some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveCashDrawerShiftResponse
@@ -3025,7 +3111,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.cash_drawers.with_raw_response.retrieve_cash_drawer_shift(shift_id, location_id)
+result = await async_client.cash_drawers.with_raw_response.retrieve_cash_drawer_shift(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveCashDrawerShiftResponse
@@ -3045,7 +3133,7 @@ match result:
 | --- | --- | --- |
 | <code>shift_id</code> | <code>str</code> | The shift ID. |
 | <code>location_id</code> | <code>str</code> | The ID of the location to retrieve cash drawer shifts from. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3110,7 +3198,9 @@ delete requests are rejected with the `429` error code.
 **Sync**
 
 ```python
-result = client.catalog.with_raw_response.batch_delete_catalog_objects(body)
+result = client.catalog.with_raw_response.batch_delete_catalog_objects(
+    BatchDeleteCatalogObjectsRequest(object_ids=["some example string"])
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BatchDeleteCatalogObjectsResponse
@@ -3121,7 +3211,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.catalog.with_raw_response.batch_delete_catalog_objects(body)
+result = await async_client.catalog.with_raw_response.batch_delete_catalog_objects(
+    BatchDeleteCatalogObjectsRequest(object_ids=["some example string"])
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BatchDeleteCatalogObjectsResponse
@@ -3140,7 +3232,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BatchDeleteCatalogObjectsRequest](square/models/batch_delete_catalog_objects_request.py) \| [BatchDeleteCatalogObjectsRequestDict](square/models/batch_delete_catalog_objects_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3193,7 +3285,9 @@ any [CatalogTax](entity:CatalogTax) objects that apply to it.
 **Sync**
 
 ```python
-result = client.catalog.with_raw_response.batch_retrieve_catalog_objects(body)
+result = client.catalog.with_raw_response.batch_retrieve_catalog_objects(
+    BatchRetrieveCatalogObjectsRequest(object_ids=["some example string"])
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BatchRetrieveCatalogObjectsResponse
@@ -3204,7 +3298,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.catalog.with_raw_response.batch_retrieve_catalog_objects(body)
+result = await async_client.catalog.with_raw_response.batch_retrieve_catalog_objects(
+    BatchRetrieveCatalogObjectsRequest(object_ids=["some example string"])
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BatchRetrieveCatalogObjectsResponse
@@ -3223,7 +3319,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BatchRetrieveCatalogObjectsRequest](square/models/batch_retrieve_catalog_objects_request.py) \| [BatchRetrieveCatalogObjectsRequestDict](square/models/batch_retrieve_catalog_objects_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3289,7 +3385,12 @@ and parallel writes to the same seller will contend with each other, producing `
 **Sync**
 
 ```python
-result = client.catalog.with_raw_response.batch_upsert_catalog_objects(body)
+result = client.catalog.with_raw_response.batch_upsert_catalog_objects(
+    BatchUpsertCatalogObjectsRequest(
+        idempotency_key="some example string",
+        batches=[CatalogObjectBatch(objects=[CatalogObject(type_=CatalogObjectType.ITEM, id="some example string")])],
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BatchUpsertCatalogObjectsResponse
@@ -3300,7 +3401,12 @@ match result:
 **Async**
 
 ```python
-result = await async_client.catalog.with_raw_response.batch_upsert_catalog_objects(body)
+result = await async_client.catalog.with_raw_response.batch_upsert_catalog_objects(
+    BatchUpsertCatalogObjectsRequest(
+        idempotency_key="some example string",
+        batches=[CatalogObjectBatch(objects=[CatalogObject(type_=CatalogObjectType.ITEM, id="some example string")])],
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BatchUpsertCatalogObjectsResponse
@@ -3319,7 +3425,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BatchUpsertCatalogObjectsRequest](square/models/batch_upsert_catalog_objects_request.py) \| [BatchUpsertCatalogObjectsRequestDict](square/models/batch_upsert_catalog_objects_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3397,7 +3503,7 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3422,7 +3528,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def create_catalog_image(*, request: CreateCatalogImageRequest | CreateCatalogImageRequestDict | None = None, image_file: bytes | None = None, request_options: RequestOptionsOrDict | None = None) -> ApiResult[CreateCatalogImageResponse, RawError]</code></summary>
+<summary><code>def create_catalog_image(*, request: CreateCatalogImageRequest | CreateCatalogImageRequestDict | None = None, image_file: FileInput | None = None, request_options: RequestOptionsOrDict | None = None) -> ApiResult[CreateCatalogImageResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -3480,8 +3586,8 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>request</code> | <code>[CreateCatalogImageRequest](square/models/create_catalog_image_request.py) \| [CreateCatalogImageRequestDict](square/models/create_catalog_image_request.py) \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>image_file</code> | <code>bytes \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>image_file</code> | <code>FileInput \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3538,7 +3644,7 @@ delete requests are rejected with the `429` error code.
 **Sync**
 
 ```python
-result = client.catalog.with_raw_response.delete_catalog_object(object_id)
+result = client.catalog.with_raw_response.delete_catalog_object("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteCatalogObjectResponse
@@ -3549,7 +3655,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.catalog.with_raw_response.delete_catalog_object(object_id)
+result = await async_client.catalog.with_raw_response.delete_catalog_object("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteCatalogObjectResponse
@@ -3568,7 +3674,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>object_id</code> | <code>str</code> | The ID of the catalog object to be deleted. When an object is deleted, other<br>objects in the graph that depend on that object will be deleted as well (for example, deleting a<br>catalog item will delete its catalog item variations). |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3657,7 +3763,7 @@ match result:
 | <code>cursor</code> | <code>str \| None</code> | The pagination cursor returned in the previous response. Leave unset for an initial request.<br>The page size is currently set to be 100.<br>See [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination) for more information.<br>**Default**: <code>None</code> |
 | <code>types</code> | <code>str \| None</code> | An optional case-insensitive, comma-separated list of object types to retrieve.<br><br>The valid values are defined in the [CatalogObjectType](entity:CatalogObjectType) enum, for example,<br>`ITEM`, `ITEM_VARIATION`, `CATEGORY`, `DISCOUNT`, `TAX`,<br>`MODIFIER`, `MODIFIER_LIST`, `IMAGE`, etc.<br><br>If this is unspecified, the operation returns objects of all the top level types at the version<br>of the Square API used to make the request. Object types that are nested onto other object types<br>are not included in the defaults.<br><br>At the current API version the default object types are:<br>ITEM, CATEGORY, TAX, DISCOUNT, MODIFIER_LIST, <br>PRICING_RULE, PRODUCT_SET, TIME_PERIOD, MEASUREMENT_UNIT,<br>SUBSCRIPTION_PLAN, ITEM_OPTION, CUSTOM_ATTRIBUTE_DEFINITION, QUICK_AMOUNT_SETTINGS.<br>**Default**: <code>None</code> |
 | <code>catalog_version</code> | <code>int \| None</code> | The specific version of the catalog objects to be included in the response.<br>This allows you to retrieve historical versions of objects. The specified version value is matched against<br>the [CatalogObject](entity:CatalogObject)s' `version` attribute.  If not included, results will be from the<br>current version of the catalog.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3711,7 +3817,7 @@ any [CatalogTax](entity:CatalogTax) objects that apply to it.
 **Sync**
 
 ```python
-result = client.catalog.with_raw_response.retrieve_catalog_object(object_id)
+result = client.catalog.with_raw_response.retrieve_catalog_object("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveCatalogObjectResponse
@@ -3722,7 +3828,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.catalog.with_raw_response.retrieve_catalog_object(object_id)
+result = await async_client.catalog.with_raw_response.retrieve_catalog_object("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveCatalogObjectResponse
@@ -3744,7 +3850,7 @@ match result:
 | <code>include_related_objects</code> | <code>bool \| None</code> | If `true`, the response will include additional objects that are related to the<br>requested objects. Related objects are defined as any objects referenced by ID by the results in the `objects` field<br>of the response. These objects are put in the `related_objects` field. Setting this to `true` is<br>helpful when the objects are needed for immediate display to a user.<br>This process only goes one level deep. Objects referenced by the related objects will not be included. For example,<br><br>if the `objects` field of the response contains a CatalogItem, its associated<br>CatalogCategory objects, CatalogTax objects, CatalogImage objects and<br>CatalogModifierLists will be returned in the `related_objects` field of the<br>response. If the `objects` field of the response contains a CatalogItemVariation,<br>its parent CatalogItem will be returned in the `related_objects` field of<br>the response.<br><br>Default value: `false`<br>**Default**: <code>False</code> |
 | <code>catalog_version</code> | <code>int \| None</code> | Requests objects as of a specific version of the catalog. This allows you to retrieve historical<br>versions of objects. The value to retrieve a specific version of an object can be found<br>in the version field of [CatalogObject](entity:CatalogObject)s. If not included, results will<br>be from the current version of the catalog.<br>**Default**: <code>None</code> |
 | <code>include_category_path_to_root</code> | <code>bool \| None</code> | Specifies whether or not to include the `path_to_root` list for each returned category instance. The `path_to_root` list consists<br>of `CategoryPathToRootNode` objects and specifies the path that starts with the immediate parent category of the returned category<br>and ends with its root category. If the returned category is a top-level category, the `path_to_root` list is empty and is not returned<br>in the response payload.<br>**Default**: <code>False</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3801,7 +3907,7 @@ endpoint in the following aspects:
 **Sync**
 
 ```python
-result = client.catalog.with_raw_response.search_catalog_items(body)
+result = client.catalog.with_raw_response.search_catalog_items(SearchCatalogItemsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchCatalogItemsResponse
@@ -3812,7 +3918,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.catalog.with_raw_response.search_catalog_items(body)
+result = await async_client.catalog.with_raw_response.search_catalog_items(SearchCatalogItemsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchCatalogItemsResponse
@@ -3831,7 +3937,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchCatalogItemsRequest](square/models/search_catalog_items_request.py) \| [SearchCatalogItemsRequestDict](square/models/search_catalog_items_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3893,7 +3999,7 @@ the previous version.
 **Sync**
 
 ```python
-result = client.catalog.with_raw_response.search_catalog_objects(body)
+result = client.catalog.with_raw_response.search_catalog_objects(SearchCatalogObjectsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchCatalogObjectsResponse
@@ -3904,7 +4010,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.catalog.with_raw_response.search_catalog_objects(body)
+result = await async_client.catalog.with_raw_response.search_catalog_objects(SearchCatalogObjectsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchCatalogObjectsResponse
@@ -3923,7 +4029,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchCatalogObjectsRequest](square/models/search_catalog_objects_request.py) \| [SearchCatalogObjectsRequestDict](square/models/search_catalog_objects_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -3948,7 +4054,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def update_catalog_image(image_id: str, *, request: UpdateCatalogImageRequest | UpdateCatalogImageRequestDict | None = None, image_file: bytes | None = None, request_options: RequestOptionsOrDict | None = None) -> ApiResult[UpdateCatalogImageResponse, RawError]</code></summary>
+<summary><code>def update_catalog_image(image_id: str, *, request: UpdateCatalogImageRequest | UpdateCatalogImageRequestDict | None = None, image_file: FileInput | None = None, request_options: RequestOptionsOrDict | None = None) -> ApiResult[UpdateCatalogImageResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -3974,7 +4080,7 @@ JPEG, PJPEG, PNG, or GIF format. The maximum file size is 15MB.
 **Sync**
 
 ```python
-result = client.catalog.with_raw_response.update_catalog_image(image_id)
+result = client.catalog.with_raw_response.update_catalog_image("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateCatalogImageResponse
@@ -3985,7 +4091,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.catalog.with_raw_response.update_catalog_image(image_id)
+result = await async_client.catalog.with_raw_response.update_catalog_image("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateCatalogImageResponse
@@ -4005,8 +4111,8 @@ match result:
 | --- | --- | --- |
 | <code>image_id</code> | <code>str</code> | The ID of the `CatalogImage` object to update the encapsulated image file. |
 | <code>request</code> | <code>[UpdateCatalogImageRequest](square/models/update_catalog_image_request.py) \| [UpdateCatalogImageRequestDict](square/models/update_catalog_image_request.py) \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>image_file</code> | <code>bytes \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>image_file</code> | <code>FileInput \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4056,7 +4162,9 @@ to perform an upsert on the entire item.
 **Sync**
 
 ```python
-result = client.catalog.with_raw_response.update_item_modifier_lists(body)
+result = client.catalog.with_raw_response.update_item_modifier_lists(
+    UpdateItemModifierListsRequest(item_ids=["some example string"])
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateItemModifierListsResponse
@@ -4067,7 +4175,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.catalog.with_raw_response.update_item_modifier_lists(body)
+result = await async_client.catalog.with_raw_response.update_item_modifier_lists(
+    UpdateItemModifierListsRequest(item_ids=["some example string"])
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateItemModifierListsResponse
@@ -4086,7 +4196,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[UpdateItemModifierListsRequest](square/models/update_item_modifier_lists_request.py) \| [UpdateItemModifierListsRequestDict](square/models/update_item_modifier_lists_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4136,7 +4246,7 @@ upsert on the entire item.
 **Sync**
 
 ```python
-result = client.catalog.with_raw_response.update_item_taxes(body)
+result = client.catalog.with_raw_response.update_item_taxes(UpdateItemTaxesRequest(item_ids=["some example string"]))
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateItemTaxesResponse
@@ -4147,7 +4257,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.catalog.with_raw_response.update_item_taxes(body)
+result = await async_client.catalog.with_raw_response.update_item_taxes(
+    UpdateItemTaxesRequest(item_ids=["some example string"])
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateItemTaxesResponse
@@ -4166,7 +4278,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[UpdateItemTaxesRequest](square/models/update_item_taxes_request.py) \| [UpdateItemTaxesRequestDict](square/models/update_item_taxes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4222,7 +4334,12 @@ update requests are rejected with the `429` error code.
 **Sync**
 
 ```python
-result = client.catalog.with_raw_response.upsert_catalog_object(body)
+result = client.catalog.with_raw_response.upsert_catalog_object(
+    UpsertCatalogObjectRequest(
+        idempotency_key="some example string",
+        object_=CatalogObject(type_=CatalogObjectType.ITEM, id="some example string"),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpsertCatalogObjectResponse
@@ -4233,7 +4350,12 @@ match result:
 **Async**
 
 ```python
-result = await async_client.catalog.with_raw_response.upsert_catalog_object(body)
+result = await async_client.catalog.with_raw_response.upsert_catalog_object(
+    UpsertCatalogObjectRequest(
+        idempotency_key="some example string",
+        object_=CatalogObject(type_=CatalogObjectType.ITEM, id="some example string"),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpsertCatalogObjectResponse
@@ -4252,7 +4374,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[UpsertCatalogObjectRequest](square/models/upsert_catalog_object_request.py) \| [UpsertCatalogObjectRequestDict](square/models/upsert_catalog_object_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4304,7 +4426,9 @@ Send a `POST` request.
 **Sync**
 
 ```python
-result = client.channels.with_raw_response.bulk_retrieve_channels(body)
+result = client.channels.with_raw_response.bulk_retrieve_channels(
+    BulkRetrieveChannelsRequest(channel_ids=["some example string"])
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkRetrieveChannelsResponse
@@ -4315,7 +4439,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.channels.with_raw_response.bulk_retrieve_channels(body)
+result = await async_client.channels.with_raw_response.bulk_retrieve_channels(
+    BulkRetrieveChannelsRequest(channel_ids=["some example string"])
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkRetrieveChannelsResponse
@@ -4334,7 +4460,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkRetrieveChannelsRequest](square/models/bulk_retrieve_channels_request.py) \| [BulkRetrieveChannelsRequestDict](square/models/bulk_retrieve_channels_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4416,7 +4542,7 @@ match result:
 | <code>status</code> | <code>[ChannelStatusOrStr](square/models/enums/channel_status.py) \| None</code> | Status of channel<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | Cursor to fetch the next result<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | Maximum number of results to return.<br>When not provided the returned results will be cap at 100 channels.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4464,7 +4590,7 @@ Send a `GET` request.
 **Sync**
 
 ```python
-result = client.channels.with_raw_response.retrieve_channel(channel_id)
+result = client.channels.with_raw_response.retrieve_channel("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveChannelResponse
@@ -4475,7 +4601,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.channels.with_raw_response.retrieve_channel(channel_id)
+result = await async_client.channels.with_raw_response.retrieve_channel("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveChannelResponse
@@ -4494,7 +4620,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>channel_id</code> | <code>str</code> | A channel id |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4551,7 +4677,9 @@ For more information, see [Checkout API highlights](https://developer.squareup.c
 **Sync**
 
 ```python
-result = client.checkout_api.with_raw_response.create_checkout(location_id, body)
+result = client.checkout_api.with_raw_response.create_checkout(
+    "some example string", CreateCheckoutRequest(idempotency_key="some example string", order=CreateOrderRequest())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateCheckoutResponse
@@ -4562,7 +4690,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.checkout_api.with_raw_response.create_checkout(location_id, body)
+result = await async_client.checkout_api.with_raw_response.create_checkout(
+    "some example string", CreateCheckoutRequest(idempotency_key="some example string", order=CreateOrderRequest())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateCheckoutResponse
@@ -4582,7 +4712,7 @@ match result:
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | The ID of the business location to associate the checkout with. |
 | <code>body</code> | <code>[CreateCheckoutRequest](square/models/create_checkout_request.py) \| [CreateCheckoutRequestDict](square/models/create_checkout_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4630,7 +4760,7 @@ Creates a Square-hosted checkout page. Applications can share the resulting paym
 **Sync**
 
 ```python
-result = client.checkout_api.with_raw_response.create_payment_link(body)
+result = client.checkout_api.with_raw_response.create_payment_link(CreatePaymentLinkRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreatePaymentLinkResponse
@@ -4641,7 +4771,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.checkout_api.with_raw_response.create_payment_link(body)
+result = await async_client.checkout_api.with_raw_response.create_payment_link(CreatePaymentLinkRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreatePaymentLinkResponse
@@ -4660,7 +4790,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreatePaymentLinkRequest](square/models/create_payment_link_request.py) \| [CreatePaymentLinkRequestDict](square/models/create_payment_link_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4685,7 +4815,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def delete_payment_link(id: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[DeletePaymentLinkResponse, RawError]</code></summary>
+<summary><code>def delete_payment_link(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[DeletePaymentLinkResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -4708,7 +4838,7 @@ Deletes a payment link.
 **Sync**
 
 ```python
-result = client.checkout_api.with_raw_response.delete_payment_link(id)
+result = client.checkout_api.with_raw_response.delete_payment_link("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeletePaymentLinkResponse
@@ -4719,7 +4849,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.checkout_api.with_raw_response.delete_payment_link(id)
+result = await async_client.checkout_api.with_raw_response.delete_payment_link("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeletePaymentLinkResponse
@@ -4737,8 +4867,8 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The ID of the payment link to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The ID of the payment link to delete. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4817,7 +4947,7 @@ match result:
 | --- | --- | --- |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br>If a cursor is not provided, the endpoint returns the first page of the results.<br>For more  information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | A limit on the number of results to return per page. The limit is advisory and<br>the implementation might return more or less results. If the supplied limit is negative, zero, or<br>greater than the maximum limit of 1000, it is ignored.<br><br>Default value: `100`<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4865,7 +4995,7 @@ Retrieves the location-level settings for a Square-hosted checkout page.
 **Sync**
 
 ```python
-result = client.checkout_api.with_raw_response.retrieve_location_settings(location_id)
+result = client.checkout_api.with_raw_response.retrieve_location_settings("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveLocationSettingsResponse
@@ -4876,7 +5006,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.checkout_api.with_raw_response.retrieve_location_settings(location_id)
+result = await async_client.checkout_api.with_raw_response.retrieve_location_settings("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveLocationSettingsResponse
@@ -4895,7 +5025,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | The ID of the location for which to retrieve settings. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4972,7 +5102,7 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -4997,7 +5127,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def retrieve_payment_link(id: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[RetrievePaymentLinkResponse, RawError]</code></summary>
+<summary><code>def retrieve_payment_link(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[RetrievePaymentLinkResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -5020,7 +5150,7 @@ Retrieves a payment link.
 **Sync**
 
 ```python
-result = client.checkout_api.with_raw_response.retrieve_payment_link(id)
+result = client.checkout_api.with_raw_response.retrieve_payment_link("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrievePaymentLinkResponse
@@ -5031,7 +5161,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.checkout_api.with_raw_response.retrieve_payment_link(id)
+result = await async_client.checkout_api.with_raw_response.retrieve_payment_link("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrievePaymentLinkResponse
@@ -5049,8 +5179,8 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The ID of link to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The ID of link to retrieve. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5098,7 +5228,9 @@ Updates the location-level settings for a Square-hosted checkout page.
 **Sync**
 
 ```python
-result = client.checkout_api.with_raw_response.update_location_settings(location_id, body)
+result = client.checkout_api.with_raw_response.update_location_settings(
+    "some example string", UpdateLocationSettingsRequest(location_settings=CheckoutLocationSettings())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateLocationSettingsResponse
@@ -5109,7 +5241,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.checkout_api.with_raw_response.update_location_settings(location_id, body)
+result = await async_client.checkout_api.with_raw_response.update_location_settings(
+    "some example string", UpdateLocationSettingsRequest(location_settings=CheckoutLocationSettings())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateLocationSettingsResponse
@@ -5129,7 +5263,7 @@ match result:
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | The ID of the location for which to retrieve settings. |
 | <code>body</code> | <code>[UpdateLocationSettingsRequest](square/models/update_location_settings_request.py) \| [UpdateLocationSettingsRequestDict](square/models/update_location_settings_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5177,7 +5311,9 @@ Updates the merchant-level settings for a Square-hosted checkout page.
 **Sync**
 
 ```python
-result = client.checkout_api.with_raw_response.update_merchant_settings(body)
+result = client.checkout_api.with_raw_response.update_merchant_settings(
+    UpdateMerchantSettingsRequest(merchant_settings=CheckoutMerchantSettings())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateMerchantSettingsResponse
@@ -5188,7 +5324,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.checkout_api.with_raw_response.update_merchant_settings(body)
+result = await async_client.checkout_api.with_raw_response.update_merchant_settings(
+    UpdateMerchantSettingsRequest(merchant_settings=CheckoutMerchantSettings())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateMerchantSettingsResponse
@@ -5207,7 +5345,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[UpdateMerchantSettingsRequest](square/models/update_merchant_settings_request.py) \| [UpdateMerchantSettingsRequestDict](square/models/update_merchant_settings_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5232,7 +5370,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def update_payment_link(id: str, body: UpdatePaymentLinkRequest | UpdatePaymentLinkRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[UpdatePaymentLinkResponse, RawError]</code></summary>
+<summary><code>def update_payment_link(id_: str, body: UpdatePaymentLinkRequest | UpdatePaymentLinkRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[UpdatePaymentLinkResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -5257,7 +5395,9 @@ You cannot update other fields such as the `order_id`, `version`, `URL`, or `tim
 **Sync**
 
 ```python
-result = client.checkout_api.with_raw_response.update_payment_link(id, body)
+result = client.checkout_api.with_raw_response.update_payment_link(
+    "some example string", UpdatePaymentLinkRequest(payment_link=PaymentLink(version=1))
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdatePaymentLinkResponse
@@ -5268,7 +5408,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.checkout_api.with_raw_response.update_payment_link(id, body)
+result = await async_client.checkout_api.with_raw_response.update_payment_link(
+    "some example string", UpdatePaymentLinkRequest(payment_link=PaymentLink(version=1))
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdatePaymentLinkResponse
@@ -5286,9 +5428,9 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The ID of the payment link to update. |
+| <code>id_</code> | <code>str</code> | The ID of the payment link to update. |
 | <code>body</code> | <code>[UpdatePaymentLinkRequest](square/models/update_payment_link_request.py) \| [UpdatePaymentLinkRequestDict](square/models/update_payment_link_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5353,7 +5495,15 @@ must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attribut
 **Sync**
 
 ```python
-result = client.customer_custom_attributes.with_raw_response.bulk_upsert_customer_custom_attributes(body)
+result = client.customer_custom_attributes.with_raw_response.bulk_upsert_customer_custom_attributes(
+    BulkUpsertCustomerCustomAttributesRequest(
+        values={
+            "key": BulkUpsertCustomerCustomAttributesRequestCustomerCustomAttributeUpsertRequest(
+                customer_id="some example string", custom_attribute=CustomAttribute()
+            ),
+        },
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkUpsertCustomerCustomAttributesResponse
@@ -5364,7 +5514,15 @@ match result:
 **Async**
 
 ```python
-result = await async_client.customer_custom_attributes.with_raw_response.bulk_upsert_customer_custom_attributes(body)
+result = await async_client.customer_custom_attributes.with_raw_response.bulk_upsert_customer_custom_attributes(
+    BulkUpsertCustomerCustomAttributesRequest(
+        values={
+            "key": BulkUpsertCustomerCustomAttributesRequestCustomerCustomAttributeUpsertRequest(
+                customer_id="some example string", custom_attribute=CustomAttribute()
+            ),
+        },
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkUpsertCustomerCustomAttributesResponse
@@ -5383,7 +5541,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkUpsertCustomerCustomAttributesRequest](square/models/bulk_upsert_customer_custom_attributes_request.py) \| [BulkUpsertCustomerCustomAttributesRequestDict](square/models/bulk_upsert_customer_custom_attributes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5441,7 +5599,9 @@ Sellers can view all custom attributes in exported customer data, including thos
 **Sync**
 
 ```python
-result = client.customer_custom_attributes.with_raw_response.create_customer_custom_attribute_definition(body)
+result = client.customer_custom_attributes.with_raw_response.create_customer_custom_attribute_definition(
+    CreateCustomerCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateCustomerCustomAttributeDefinitionResponse
@@ -5453,7 +5613,7 @@ match result:
 
 ```python
 result = await async_client.customer_custom_attributes.with_raw_response.create_customer_custom_attribute_definition(
-    body
+    CreateCustomerCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition())
 )
 match result:
     case Success(payload=payload):
@@ -5473,7 +5633,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateCustomerCustomAttributeDefinitionRequest](square/models/create_customer_custom_attribute_definition_request.py) \| [CreateCustomerCustomAttributeDefinitionRequestDict](square/models/create_customer_custom_attribute_definition_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5525,7 +5685,9 @@ To delete a custom attribute owned by another application, the `visibility` sett
 **Sync**
 
 ```python
-result = client.customer_custom_attributes.with_raw_response.delete_customer_custom_attribute(customer_id, key)
+result = client.customer_custom_attributes.with_raw_response.delete_customer_custom_attribute(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteCustomerCustomAttributeResponse
@@ -5537,7 +5699,7 @@ match result:
 
 ```python
 result = await async_client.customer_custom_attributes.with_raw_response.delete_customer_custom_attribute(
-    customer_id, key
+    "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -5558,7 +5720,7 @@ match result:
 | --- | --- | --- |
 | <code>customer_id</code> | <code>str</code> | The ID of the target [customer profile](entity:Customer). |
 | <code>key</code> | <code>str</code> | The key of the custom attribute to delete. This key must match the `key` of a custom<br>attribute definition in the Square seller account. If the requesting application is not the<br>definition owner, you must use the qualified key. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5611,7 +5773,9 @@ Only the definition owner can delete a custom attribute definition.
 **Sync**
 
 ```python
-result = client.customer_custom_attributes.with_raw_response.delete_customer_custom_attribute_definition(key)
+result = client.customer_custom_attributes.with_raw_response.delete_customer_custom_attribute_definition(
+    "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteCustomerCustomAttributeDefinitionResponse
@@ -5623,7 +5787,7 @@ match result:
 
 ```python
 result = await async_client.customer_custom_attributes.with_raw_response.delete_customer_custom_attribute_definition(
-    key
+    "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -5643,7 +5807,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5727,7 +5891,7 @@ match result:
 | --- | --- | --- |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response. This limit is advisory.<br>The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100.<br>The default value is 20. For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint.<br>Provide this cursor to retrieve the next page of results for your original request.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5782,7 +5946,7 @@ and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 **Sync**
 
 ```python
-result = client.customer_custom_attributes.with_raw_response.list_customer_custom_attributes(customer_id)
+result = client.customer_custom_attributes.with_raw_response.list_customer_custom_attributes("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListCustomerCustomAttributesResponse
@@ -5793,7 +5957,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.customer_custom_attributes.with_raw_response.list_customer_custom_attributes(customer_id)
+result = await async_client.customer_custom_attributes.with_raw_response.list_customer_custom_attributes(
+    "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListCustomerCustomAttributesResponse
@@ -5815,7 +5981,7 @@ match result:
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response. This limit is advisory.<br>The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100.<br>The default value is 20. For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint.<br>Provide this cursor to retrieve the next page of results for your original request. For more<br>information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>with_definitions</code> | <code>bool \| None</code> | Indicates whether to return the [custom attribute definition](entity:CustomAttributeDefinition) in the `definition` field of each<br>custom attribute. Set this parameter to `true` to get the name and description of each custom<br>attribute, information about the data type, or other definition details. The default value is `false`.<br>**Default**: <code>False</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5870,7 +6036,9 @@ To retrieve a custom attribute owned by another application, the `visibility` se
 **Sync**
 
 ```python
-result = client.customer_custom_attributes.with_raw_response.retrieve_customer_custom_attribute(customer_id, key)
+result = client.customer_custom_attributes.with_raw_response.retrieve_customer_custom_attribute(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveCustomerCustomAttributeResponse
@@ -5882,7 +6050,7 @@ match result:
 
 ```python
 result = await async_client.customer_custom_attributes.with_raw_response.retrieve_customer_custom_attribute(
-    customer_id, key
+    "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -5905,7 +6073,7 @@ match result:
 | <code>key</code> | <code>str</code> | The key of the custom attribute to retrieve. This key must match the `key` of a custom<br>attribute definition in the Square seller account. If the requesting application is not the<br>definition owner, you must use the qualified key. |
 | <code>with_definition</code> | <code>bool \| None</code> | Indicates whether to return the [custom attribute definition](entity:CustomAttributeDefinition) in the `definition` field of<br>the custom attribute. Set this parameter to `true` to get the name and description of the custom<br>attribute, information about the data type, or other definition details. The default value is `false`.<br>**Default**: <code>False</code> |
 | <code>version</code> | <code>int \| None</code> | The current version of the custom attribute, which is used for strongly consistent reads to<br>guarantee that you receive the most up-to-date data. When included in the request, Square<br>returns the specified version or a higher version if one exists. If the specified version is<br>higher than the current version, Square returns a `BAD_REQUEST` error.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -5957,7 +6125,9 @@ setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note t
 **Sync**
 
 ```python
-result = client.customer_custom_attributes.with_raw_response.retrieve_customer_custom_attribute_definition(key)
+result = client.customer_custom_attributes.with_raw_response.retrieve_customer_custom_attribute_definition(
+    "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveCustomerCustomAttributeDefinitionResponse
@@ -5969,7 +6139,7 @@ match result:
 
 ```python
 result = await async_client.customer_custom_attributes.with_raw_response.retrieve_customer_custom_attribute_definition(
-    key
+    "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -5990,7 +6160,7 @@ match result:
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to retrieve. If the requesting application<br>is not the definition owner, you must use the qualified key. |
 | <code>version</code> | <code>int \| None</code> | The current version of the custom attribute definition, which is used for strongly consistent<br>reads to guarantee that you receive the most up-to-date data. When included in the request,<br>Square returns the specified version or a higher version if one exists. If the specified version<br>is higher than the current version, Square returns a `BAD_REQUEST` error.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6044,7 +6214,10 @@ all custom attributes in exported customer data, including those set to `VISIBIL
 **Sync**
 
 ```python
-result = client.customer_custom_attributes.with_raw_response.update_customer_custom_attribute_definition(key, body)
+result = client.customer_custom_attributes.with_raw_response.update_customer_custom_attribute_definition(
+    "some example string",
+    UpdateCustomerCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition()),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateCustomerCustomAttributeDefinitionResponse
@@ -6056,7 +6229,8 @@ match result:
 
 ```python
 result = await async_client.customer_custom_attributes.with_raw_response.update_customer_custom_attribute_definition(
-    key, body
+    "some example string",
+    UpdateCustomerCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition()),
 )
 match result:
     case Success(payload=payload):
@@ -6077,7 +6251,7 @@ match result:
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to update. |
 | <code>body</code> | <code>[UpdateCustomerCustomAttributeDefinitionRequest](square/models/update_customer_custom_attribute_definition_request.py) \| [UpdateCustomerCustomAttributeDefinitionRequestDict](square/models/update_customer_custom_attribute_definition_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6133,7 +6307,11 @@ must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attribut
 **Sync**
 
 ```python
-result = client.customer_custom_attributes.with_raw_response.upsert_customer_custom_attribute(customer_id, key, body)
+result = client.customer_custom_attributes.with_raw_response.upsert_customer_custom_attribute(
+    "some example string",
+    "some example string",
+    UpsertCustomerCustomAttributeRequest(custom_attribute=CustomAttribute()),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpsertCustomerCustomAttributeResponse
@@ -6145,7 +6323,9 @@ match result:
 
 ```python
 result = await async_client.customer_custom_attributes.with_raw_response.upsert_customer_custom_attribute(
-    customer_id, key, body
+    "some example string",
+    "some example string",
+    UpsertCustomerCustomAttributeRequest(custom_attribute=CustomAttribute()),
 )
 match result:
     case Success(payload=payload):
@@ -6167,7 +6347,7 @@ match result:
 | <code>customer_id</code> | <code>str</code> | The ID of the target [customer profile](entity:Customer). |
 | <code>key</code> | <code>str</code> | The key of the custom attribute to create or update. This key must match the `key` of a<br>custom attribute definition in the Square seller account. If the requesting application is not<br>the definition owner, you must use the qualified key. |
 | <code>body</code> | <code>[UpsertCustomerCustomAttributeRequest](square/models/upsert_customer_custom_attribute_request.py) \| [UpsertCustomerCustomAttributeRequestDict](square/models/upsert_customer_custom_attribute_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6221,7 +6401,9 @@ The request must include the `name` value of the group.
 **Sync**
 
 ```python
-result = client.customer_groups.with_raw_response.create_customer_group(body)
+result = client.customer_groups.with_raw_response.create_customer_group(
+    CreateCustomerGroupRequest(group=CustomerGroup(name="some example string"))
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateCustomerGroupResponse
@@ -6232,7 +6414,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.customer_groups.with_raw_response.create_customer_group(body)
+result = await async_client.customer_groups.with_raw_response.create_customer_group(
+    CreateCustomerGroupRequest(group=CustomerGroup(name="some example string"))
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateCustomerGroupResponse
@@ -6251,7 +6435,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateCustomerGroupRequest](square/models/create_customer_group_request.py) \| [CreateCustomerGroupRequestDict](square/models/create_customer_group_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6299,7 +6483,7 @@ Deletes a customer group as identified by the `group_id` value.
 **Sync**
 
 ```python
-result = client.customer_groups.with_raw_response.delete_customer_group(group_id)
+result = client.customer_groups.with_raw_response.delete_customer_group("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteCustomerGroupResponse
@@ -6310,7 +6494,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.customer_groups.with_raw_response.delete_customer_group(group_id)
+result = await async_client.customer_groups.with_raw_response.delete_customer_group("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteCustomerGroupResponse
@@ -6329,7 +6513,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>group_id</code> | <code>str</code> | The ID of the customer group to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6408,7 +6592,7 @@ match result:
 | --- | --- | --- |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for your original query.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single page. This limit is advisory. The response might contain more or fewer results.<br>If the limit is less than 1 or greater than 50, Square returns a `400 VALUE_TOO_LOW` or `400 VALUE_TOO_HIGH` error. The default value is 50.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6456,7 +6640,7 @@ Retrieves a specific customer group as identified by the `group_id` value.
 **Sync**
 
 ```python
-result = client.customer_groups.with_raw_response.retrieve_customer_group(group_id)
+result = client.customer_groups.with_raw_response.retrieve_customer_group("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveCustomerGroupResponse
@@ -6467,7 +6651,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.customer_groups.with_raw_response.retrieve_customer_group(group_id)
+result = await async_client.customer_groups.with_raw_response.retrieve_customer_group("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveCustomerGroupResponse
@@ -6486,7 +6670,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>group_id</code> | <code>str</code> | The ID of the customer group to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6534,7 +6718,9 @@ Updates a customer group as identified by the `group_id` value.
 **Sync**
 
 ```python
-result = client.customer_groups.with_raw_response.update_customer_group(group_id, body)
+result = client.customer_groups.with_raw_response.update_customer_group(
+    "some example string", UpdateCustomerGroupRequest(group=CustomerGroup(name="some example string"))
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateCustomerGroupResponse
@@ -6545,7 +6731,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.customer_groups.with_raw_response.update_customer_group(group_id, body)
+result = await async_client.customer_groups.with_raw_response.update_customer_group(
+    "some example string", UpdateCustomerGroupRequest(group=CustomerGroup(name="some example string"))
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateCustomerGroupResponse
@@ -6565,7 +6753,7 @@ match result:
 | --- | --- | --- |
 | <code>group_id</code> | <code>str</code> | The ID of the customer group to update. |
 | <code>body</code> | <code>[UpdateCustomerGroupRequest](square/models/update_customer_group_request.py) \| [UpdateCustomerGroupRequestDict](square/models/update_customer_group_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6648,7 +6836,7 @@ match result:
 | --- | --- | --- |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by previous calls to `ListCustomerSegments`.<br>This cursor is used to retrieve the next set of query results.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single page. This limit is advisory. The response might contain more or fewer results.<br>If the specified limit is less than 1 or greater than 50, Square returns a `400 VALUE_TOO_LOW` or `400 VALUE_TOO_HIGH` error. The default value is 50.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6696,7 +6884,7 @@ Retrieves a specific customer segment as identified by the `segment_id` value.
 **Sync**
 
 ```python
-result = client.customer_segments.with_raw_response.retrieve_customer_segment(segment_id)
+result = client.customer_segments.with_raw_response.retrieve_customer_segment("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveCustomerSegmentResponse
@@ -6707,7 +6895,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.customer_segments.with_raw_response.retrieve_customer_segment(segment_id)
+result = await async_client.customer_segments.with_raw_response.retrieve_customer_segment("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveCustomerSegmentResponse
@@ -6726,7 +6914,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>segment_id</code> | <code>str</code> | The Square-issued ID of the customer segment. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6781,7 +6969,7 @@ and the customer group is identified by the `group_id` value.
 **Sync**
 
 ```python
-result = client.customers.with_raw_response.add_group_to_customer(customer_id, group_id)
+result = client.customers.with_raw_response.add_group_to_customer("some example string", "some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AddGroupToCustomerResponse
@@ -6792,7 +6980,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.customers.with_raw_response.add_group_to_customer(customer_id, group_id)
+result = await async_client.customers.with_raw_response.add_group_to_customer(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AddGroupToCustomerResponse
@@ -6812,7 +7002,7 @@ match result:
 | --- | --- | --- |
 | <code>customer_id</code> | <code>str</code> | The ID of the customer to add to a group. |
 | <code>group_id</code> | <code>str</code> | The ID of the customer group to add the customer to. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6870,7 +7060,9 @@ You must provide at least one of the following values in each create request:
 **Sync**
 
 ```python
-result = client.customers.with_raw_response.bulk_create_customers(body)
+result = client.customers.with_raw_response.bulk_create_customers(
+    BulkCreateCustomersRequest(customers={"key": BulkCreateCustomerData()})
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkCreateCustomersResponse
@@ -6881,7 +7073,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.customers.with_raw_response.bulk_create_customers(body)
+result = await async_client.customers.with_raw_response.bulk_create_customers(
+    BulkCreateCustomersRequest(customers={"key": BulkCreateCustomerData()})
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkCreateCustomersResponse
@@ -6900,7 +7094,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkCreateCustomersRequest](square/models/bulk_create_customers_request.py) \| [BulkCreateCustomersRequestDict](square/models/bulk_create_customers_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -6950,7 +7144,9 @@ The endpoint takes a list of customer IDs and returns a map of responses.
 **Sync**
 
 ```python
-result = client.customers.with_raw_response.bulk_delete_customers(body)
+result = client.customers.with_raw_response.bulk_delete_customers(
+    BulkDeleteCustomersRequest(customer_ids=["some example string"])
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkDeleteCustomersResponse
@@ -6961,7 +7157,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.customers.with_raw_response.bulk_delete_customers(body)
+result = await async_client.customers.with_raw_response.bulk_delete_customers(
+    BulkDeleteCustomersRequest(customer_ids=["some example string"])
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkDeleteCustomersResponse
@@ -6980,7 +7178,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkDeleteCustomersRequest](square/models/bulk_delete_customers_request.py) \| [BulkDeleteCustomersRequestDict](square/models/bulk_delete_customers_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7030,7 +7228,9 @@ This endpoint takes a list of customer IDs and returns a map of responses.
 **Sync**
 
 ```python
-result = client.customers.with_raw_response.bulk_retrieve_customers(body)
+result = client.customers.with_raw_response.bulk_retrieve_customers(
+    BulkRetrieveCustomersRequest(customer_ids=["some example string"])
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkRetrieveCustomersResponse
@@ -7041,7 +7241,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.customers.with_raw_response.bulk_retrieve_customers(body)
+result = await async_client.customers.with_raw_response.bulk_retrieve_customers(
+    BulkRetrieveCustomersRequest(customer_ids=["some example string"])
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkRetrieveCustomersResponse
@@ -7060,7 +7262,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkRetrieveCustomersRequest](square/models/bulk_retrieve_customers_request.py) \| [BulkRetrieveCustomersRequestDict](square/models/bulk_retrieve_customers_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7110,7 +7312,9 @@ This endpoint takes a map of individual update requests and returns a map of res
 **Sync**
 
 ```python
-result = client.customers.with_raw_response.bulk_update_customers(body)
+result = client.customers.with_raw_response.bulk_update_customers(
+    BulkUpdateCustomersRequest(customers={"key": BulkUpdateCustomerData()})
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkUpdateCustomersResponse
@@ -7121,7 +7325,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.customers.with_raw_response.bulk_update_customers(body)
+result = await async_client.customers.with_raw_response.bulk_update_customers(
+    BulkUpdateCustomersRequest(customers={"key": BulkUpdateCustomerData()})
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkUpdateCustomersResponse
@@ -7140,7 +7346,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkUpdateCustomersRequest](square/models/bulk_update_customers_request.py) \| [BulkUpdateCustomersRequestDict](square/models/bulk_update_customers_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7197,7 +7403,7 @@ endpoint:
 **Sync**
 
 ```python
-result = client.customers.with_raw_response.create_customer(body)
+result = client.customers.with_raw_response.create_customer(CreateCustomerRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateCustomerResponse
@@ -7208,7 +7414,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.customers.with_raw_response.create_customer(body)
+result = await async_client.customers.with_raw_response.create_customer(CreateCustomerRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateCustomerResponse
@@ -7227,7 +7433,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateCustomerRequest](square/models/create_customer_request.py) \| [CreateCustomerRequestDict](square/models/create_customer_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7279,7 +7485,9 @@ with the provided nonce during the _first_ call.
 **Sync**
 
 ```python
-result = client.customers.with_raw_response.create_customer_card(customer_id, body)
+result = client.customers.with_raw_response.create_customer_card(
+    "some example string", CreateCustomerCardRequest(card_nonce="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateCustomerCardResponse
@@ -7290,7 +7498,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.customers.with_raw_response.create_customer_card(customer_id, body)
+result = await async_client.customers.with_raw_response.create_customer_card(
+    "some example string", CreateCustomerCardRequest(card_nonce="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateCustomerCardResponse
@@ -7310,7 +7520,7 @@ match result:
 | --- | --- | --- |
 | <code>customer_id</code> | <code>str</code> | The Square ID of the customer profile the card is linked to. |
 | <code>body</code> | <code>[CreateCustomerCardRequest](square/models/create_customer_card_request.py) \| [CreateCustomerCardRequestDict](square/models/create_customer_card_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7360,7 +7570,7 @@ To delete a customer profile that was created by merging existing profiles, you 
 **Sync**
 
 ```python
-result = client.customers.with_raw_response.delete_customer(customer_id)
+result = client.customers.with_raw_response.delete_customer("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteCustomerResponse
@@ -7371,7 +7581,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.customers.with_raw_response.delete_customer(customer_id)
+result = await async_client.customers.with_raw_response.delete_customer("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteCustomerResponse
@@ -7391,7 +7601,7 @@ match result:
 | --- | --- | --- |
 | <code>customer_id</code> | <code>str</code> | The ID of the customer to delete. |
 | <code>version</code> | <code>int \| None</code> | The current version of the customer profile.<br><br>As a best practice, you should include this parameter to enable [optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency) control.  For more information, see [Delete a customer profile](https://developer.squareup.com/docs/customers-api/use-the-api/keep-records#delete-customer-profile).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7439,7 +7649,7 @@ Removes a card on file from a customer.
 **Sync**
 
 ```python
-result = client.customers.with_raw_response.delete_customer_card(customer_id, card_id)
+result = client.customers.with_raw_response.delete_customer_card("some example string", "some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteCustomerCardResponse
@@ -7450,7 +7660,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.customers.with_raw_response.delete_customer_card(customer_id, card_id)
+result = await async_client.customers.with_raw_response.delete_customer_card(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteCustomerCardResponse
@@ -7470,7 +7682,7 @@ match result:
 | --- | --- | --- |
 | <code>customer_id</code> | <code>str</code> | The ID of the customer that the card on file belongs to. |
 | <code>card_id</code> | <code>str</code> | The ID of the card on file to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7556,7 +7768,7 @@ match result:
 | <code>sort_field</code> | <code>[CustomerSortFieldOrStr](square/models/enums/customer_sort_field.py) \| None</code> | Indicates how customers should be sorted.<br><br>The default value is `DEFAULT`.<br>**Default**: <code>None</code> |
 | <code>sort_order</code> | <code>[SortOrderOrStr](square/models/enums/sort_order.py) \| None</code> | Indicates whether customers should be sorted in ascending (`ASC`) or<br>descending (`DESC`) order.<br><br>The default value is `ASC`.<br>**Default**: <code>None</code> |
 | <code>count</code> | <code>bool \| None</code> | Indicates whether to return the total count of customers in the `count` field of the response.<br><br>The default value is `false`.<br>**Default**: <code>False</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7607,7 +7819,7 @@ and the customer group is identified by the `group_id` value.
 **Sync**
 
 ```python
-result = client.customers.with_raw_response.remove_group_from_customer(customer_id, group_id)
+result = client.customers.with_raw_response.remove_group_from_customer("some example string", "some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RemoveGroupFromCustomerResponse
@@ -7618,7 +7830,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.customers.with_raw_response.remove_group_from_customer(customer_id, group_id)
+result = await async_client.customers.with_raw_response.remove_group_from_customer(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RemoveGroupFromCustomerResponse
@@ -7638,7 +7852,7 @@ match result:
 | --- | --- | --- |
 | <code>customer_id</code> | <code>str</code> | The ID of the customer to remove from the group. |
 | <code>group_id</code> | <code>str</code> | The ID of the customer group to remove the customer from. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7686,7 +7900,7 @@ Returns details for a single customer.
 **Sync**
 
 ```python
-result = client.customers.with_raw_response.retrieve_customer(customer_id)
+result = client.customers.with_raw_response.retrieve_customer("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveCustomerResponse
@@ -7697,7 +7911,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.customers.with_raw_response.retrieve_customer(customer_id)
+result = await async_client.customers.with_raw_response.retrieve_customer("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveCustomerResponse
@@ -7716,7 +7930,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>customer_id</code> | <code>str</code> | The ID of the customer to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7772,7 +7986,7 @@ profiles can take closer to one minute or longer, especially during network inci
 **Sync**
 
 ```python
-result = client.customers.with_raw_response.search_customers(body)
+result = client.customers.with_raw_response.search_customers(SearchCustomersRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchCustomersResponse
@@ -7783,7 +7997,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.customers.with_raw_response.search_customers(body)
+result = await async_client.customers.with_raw_response.search_customers(SearchCustomersRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchCustomersResponse
@@ -7802,7 +8016,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchCustomersRequest](square/models/search_customers_request.py) \| [SearchCustomersRequestDict](square/models/search_customers_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7853,7 +8067,7 @@ To update a customer profile that was created by merging existing profiles, you 
 **Sync**
 
 ```python
-result = client.customers.with_raw_response.update_customer(customer_id, body)
+result = client.customers.with_raw_response.update_customer("some example string", UpdateCustomerRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateCustomerResponse
@@ -7864,7 +8078,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.customers.with_raw_response.update_customer(customer_id, body)
+result = await async_client.customers.with_raw_response.update_customer("some example string", UpdateCustomerRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateCustomerResponse
@@ -7884,7 +8098,7 @@ match result:
 | --- | --- | --- |
 | <code>customer_id</code> | <code>str</code> | The ID of the customer to update. |
 | <code>body</code> | <code>[UpdateCustomerRequest](square/models/update_customer_request.py) \| [UpdateCustomerRequestDict](square/models/update_customer_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -7937,7 +8151,11 @@ terminal mode.
 **Sync**
 
 ```python
-result = client.devices.with_raw_response.create_device_code(body)
+result = client.devices.with_raw_response.create_device_code(
+    CreateDeviceCodeRequest(
+        idempotency_key="some example string", device_code=DeviceCode(product_type=ProductType.TERMINAL_API)
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateDeviceCodeResponse
@@ -7948,7 +8166,11 @@ match result:
 **Async**
 
 ```python
-result = await async_client.devices.with_raw_response.create_device_code(body)
+result = await async_client.devices.with_raw_response.create_device_code(
+    CreateDeviceCodeRequest(
+        idempotency_key="some example string", device_code=DeviceCode(product_type=ProductType.TERMINAL_API)
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateDeviceCodeResponse
@@ -7967,7 +8189,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateDeviceCodeRequest](square/models/create_device_code_request.py) \| [CreateDeviceCodeRequestDict](square/models/create_device_code_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8015,7 +8237,7 @@ Retrieves Device with the associated `device_id`.
 **Sync**
 
 ```python
-result = client.devices.with_raw_response.get_device(device_id)
+result = client.devices.with_raw_response.get_device("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetDeviceResponse
@@ -8026,7 +8248,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.devices.with_raw_response.get_device(device_id)
+result = await async_client.devices.with_raw_response.get_device("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetDeviceResponse
@@ -8045,7 +8267,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>device_id</code> | <code>str</code> | The unique ID for the desired `Device`. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8070,7 +8292,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def get_device_code(id: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[GetDeviceCodeResponse, RawError]</code></summary>
+<summary><code>def get_device_code(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[GetDeviceCodeResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -8093,7 +8315,7 @@ Retrieves DeviceCode with the associated ID.
 **Sync**
 
 ```python
-result = client.devices.with_raw_response.get_device_code(id)
+result = client.devices.with_raw_response.get_device_code("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetDeviceCodeResponse
@@ -8104,7 +8326,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.devices.with_raw_response.get_device_code(id)
+result = await async_client.devices.with_raw_response.get_device_code("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetDeviceCodeResponse
@@ -8122,8 +8344,8 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The unique identifier for the device code. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The unique identifier for the device code. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8204,7 +8426,7 @@ match result:
 | <code>location_id</code> | <code>str \| None</code> | If specified, only returns DeviceCodes of the specified location.<br>Returns DeviceCodes of all locations if empty.<br>**Default**: <code>None</code> |
 | <code>product_type</code> | <code>[ProductTypeOrStr](square/models/enums/product_type.py) \| None</code> | If specified, only returns DeviceCodes targeting the specified product type.<br>Returns DeviceCodes of all product types if empty.<br>**Default**: <code>None</code> |
 | <code>status</code> | <code>[DeviceCodeStatusOrStr](square/models/enums/device_code_status.py) \| None</code> | If specified, returns DeviceCodes with the specified statuses.<br>Returns DeviceCodes of status `PAIRED` and `UNPAIRED` if empty.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8286,7 +8508,7 @@ match result:
 | <code>sort_order</code> | <code>[SortOrderOrStr](square/models/enums/sort_order.py) \| None</code> | The order in which results are listed.<br>- `ASC` - Oldest to newest.<br>- `DESC` - Newest to oldest (default).<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The number of results to return in a single page.<br>**Default**: <code>None</code> |
 | <code>location_id</code> | <code>str \| None</code> | If present, only returns devices at the target location.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8342,7 +8564,7 @@ does not have sufficient funds, Square debits the associated bank account.
 **Sync**
 
 ```python
-result = client.disputes.with_raw_response.accept_dispute(dispute_id)
+result = client.disputes.with_raw_response.accept_dispute("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AcceptDisputeResponse
@@ -8353,7 +8575,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.disputes.with_raw_response.accept_dispute(dispute_id)
+result = await async_client.disputes.with_raw_response.accept_dispute("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AcceptDisputeResponse
@@ -8372,7 +8594,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>dispute_id</code> | <code>str</code> | The ID of the dispute you want to accept. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8397,7 +8619,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def create_dispute_evidence_file(dispute_id: str, *, request: CreateDisputeEvidenceFileRequest | CreateDisputeEvidenceFileRequestDict | None = None, image_file: bytes | None = None, request_options: RequestOptionsOrDict | None = None) -> ApiResult[CreateDisputeEvidenceFileResponse, RawError]</code></summary>
+<summary><code>def create_dispute_evidence_file(dispute_id: str, *, request: CreateDisputeEvidenceFileRequest | CreateDisputeEvidenceFileRequestDict | None = None, image_file: FileInput | None = None, request_options: RequestOptionsOrDict | None = None) -> ApiResult[CreateDisputeEvidenceFileResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -8421,7 +8643,7 @@ multipart/form-data file uploads in HEIC, HEIF, JPEG, PDF, PNG, and TIFF formats
 **Sync**
 
 ```python
-result = client.disputes.with_raw_response.create_dispute_evidence_file(dispute_id)
+result = client.disputes.with_raw_response.create_dispute_evidence_file("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateDisputeEvidenceFileResponse
@@ -8432,7 +8654,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.disputes.with_raw_response.create_dispute_evidence_file(dispute_id)
+result = await async_client.disputes.with_raw_response.create_dispute_evidence_file("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateDisputeEvidenceFileResponse
@@ -8452,8 +8674,8 @@ match result:
 | --- | --- | --- |
 | <code>dispute_id</code> | <code>str</code> | The ID of the dispute for which you want to upload evidence. |
 | <code>request</code> | <code>[CreateDisputeEvidenceFileRequest](square/models/create_dispute_evidence_file_request.py) \| [CreateDisputeEvidenceFileRequestDict](square/models/create_dispute_evidence_file_request.py) \| None</code> | Defines the parameters for a `CreateDisputeEvidenceFile` request.<br>**Default**: <code>None</code> |
-| <code>image_file</code> | <code>bytes \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>image_file</code> | <code>FileInput \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8501,7 +8723,10 @@ Uploads text to use as evidence for a dispute challenge.
 **Sync**
 
 ```python
-result = client.disputes.with_raw_response.create_dispute_evidence_text(dispute_id, body)
+result = client.disputes.with_raw_response.create_dispute_evidence_text(
+    "some example string",
+    CreateDisputeEvidenceTextRequest(idempotency_key="some example string", evidence_text="some example string"),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateDisputeEvidenceTextResponse
@@ -8512,7 +8737,10 @@ match result:
 **Async**
 
 ```python
-result = await async_client.disputes.with_raw_response.create_dispute_evidence_text(dispute_id, body)
+result = await async_client.disputes.with_raw_response.create_dispute_evidence_text(
+    "some example string",
+    CreateDisputeEvidenceTextRequest(idempotency_key="some example string", evidence_text="some example string"),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateDisputeEvidenceTextResponse
@@ -8532,7 +8760,7 @@ match result:
 | --- | --- | --- |
 | <code>dispute_id</code> | <code>str</code> | The ID of the dispute for which you want to upload evidence. |
 | <code>body</code> | <code>[CreateDisputeEvidenceTextRequest](square/models/create_dispute_evidence_text_request.py) \| [CreateDisputeEvidenceTextRequestDict](square/models/create_dispute_evidence_text_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8581,7 +8809,7 @@ Square does not send the bank any evidence that is removed.
 **Sync**
 
 ```python
-result = client.disputes.with_raw_response.delete_dispute_evidence(dispute_id, evidence_id)
+result = client.disputes.with_raw_response.delete_dispute_evidence("some example string", "some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteDisputeEvidenceResponse
@@ -8592,7 +8820,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.disputes.with_raw_response.delete_dispute_evidence(dispute_id, evidence_id)
+result = await async_client.disputes.with_raw_response.delete_dispute_evidence(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteDisputeEvidenceResponse
@@ -8612,7 +8842,7 @@ match result:
 | --- | --- | --- |
 | <code>dispute_id</code> | <code>str</code> | The ID of the dispute from which you want to remove evidence. |
 | <code>evidence_id</code> | <code>str</code> | The ID of the evidence you want to remove. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8660,7 +8890,7 @@ Returns a list of evidence associated with a dispute.
 **Sync**
 
 ```python
-result = client.disputes.with_raw_response.list_dispute_evidence(dispute_id)
+result = client.disputes.with_raw_response.list_dispute_evidence("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListDisputeEvidenceResponse
@@ -8671,7 +8901,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.disputes.with_raw_response.list_dispute_evidence(dispute_id)
+result = await async_client.disputes.with_raw_response.list_dispute_evidence("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListDisputeEvidenceResponse
@@ -8691,7 +8921,7 @@ match result:
 | --- | --- | --- |
 | <code>dispute_id</code> | <code>str</code> | The ID of the dispute. |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8771,7 +9001,7 @@ match result:
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>states</code> | <code>[DisputeStateOrStr](square/models/enums/dispute_state.py) \| None</code> | The dispute states used to filter the result. If not specified, the endpoint returns all disputes.<br>**Default**: <code>None</code> |
 | <code>location_id</code> | <code>str \| None</code> | The ID of the location for which to return a list of disputes.<br>If not specified, the endpoint returns disputes associated with all locations.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8819,7 +9049,7 @@ Returns details about a specific dispute.
 **Sync**
 
 ```python
-result = client.disputes.with_raw_response.retrieve_dispute(dispute_id)
+result = client.disputes.with_raw_response.retrieve_dispute("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveDisputeResponse
@@ -8830,7 +9060,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.disputes.with_raw_response.retrieve_dispute(dispute_id)
+result = await async_client.disputes.with_raw_response.retrieve_dispute("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveDisputeResponse
@@ -8849,7 +9079,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>dispute_id</code> | <code>str</code> | The ID of the dispute you want more details about. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8899,7 +9129,7 @@ You must maintain a copy of any evidence uploaded if you want to reference it la
 **Sync**
 
 ```python
-result = client.disputes.with_raw_response.retrieve_dispute_evidence(dispute_id, evidence_id)
+result = client.disputes.with_raw_response.retrieve_dispute_evidence("some example string", "some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveDisputeEvidenceResponse
@@ -8910,7 +9140,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.disputes.with_raw_response.retrieve_dispute_evidence(dispute_id, evidence_id)
+result = await async_client.disputes.with_raw_response.retrieve_dispute_evidence(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveDisputeEvidenceResponse
@@ -8930,7 +9162,7 @@ match result:
 | --- | --- | --- |
 | <code>dispute_id</code> | <code>str</code> | The ID of the dispute from which you want to retrieve evidence metadata. |
 | <code>evidence_id</code> | <code>str</code> | The ID of the evidence to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -8984,7 +9216,7 @@ a dispute after submission.
 **Sync**
 
 ```python
-result = client.disputes.with_raw_response.submit_evidence(dispute_id)
+result = client.disputes.with_raw_response.submit_evidence("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SubmitEvidenceResponse
@@ -8995,7 +9227,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.disputes.with_raw_response.submit_evidence(dispute_id)
+result = await async_client.disputes.with_raw_response.submit_evidence("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SubmitEvidenceResponse
@@ -9014,7 +9246,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>dispute_id</code> | <code>str</code> | The ID of the dispute for which you want to submit evidence. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9099,7 +9331,7 @@ match result:
 | <code>status</code> | <code>[EmployeeStatusOrStr](square/models/enums/employee_status.py) \| None</code> | Specifies the EmployeeStatus to filter the employee by.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The number of employees to be returned on each page.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The token required to retrieve the specified page of results.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9124,7 +9356,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def retrieve_employee(id: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[RetrieveEmployeeResponse, RawError]</code></summary>
+<summary><code>def retrieve_employee(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[RetrieveEmployeeResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -9147,7 +9379,7 @@ Send a `GET` request.
 **Sync**
 
 ```python
-result = client.employees.with_raw_response.retrieve_employee(id)
+result = client.employees.with_raw_response.retrieve_employee("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveEmployeeResponse
@@ -9158,7 +9390,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.employees.with_raw_response.retrieve_employee(id)
+result = await async_client.employees.with_raw_response.retrieve_employee("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveEmployeeResponse
@@ -9176,8 +9408,8 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | UUID for the employee that was requested. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | UUID for the employee that was requested. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9260,7 +9492,7 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9337,7 +9569,7 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9415,7 +9647,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>api_version</code> | <code>str \| None</code> | The API version for which to list event types. Setting this field overrides the default version used by the application.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9463,7 +9695,7 @@ Search for Square API events that occur within a 28-day timeframe.
 **Sync**
 
 ```python
-result = client.events.with_raw_response.search_events(body)
+result = client.events.with_raw_response.search_events(SearchEventsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchEventsResponse
@@ -9474,7 +9706,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.events.with_raw_response.search_events(body)
+result = await async_client.events.with_raw_response.search_events(SearchEventsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchEventsResponse
@@ -9493,7 +9725,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchEventsRequest](square/models/search_events_request.py) \| [SearchEventsRequestDict](square/models/search_events_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9546,7 +9778,12 @@ For example, create an `ACTIVATE` activity to activate a gift card with an initi
 **Sync**
 
 ```python
-result = client.gift_card_activities.with_raw_response.create_gift_card_activity(body)
+result = client.gift_card_activities.with_raw_response.create_gift_card_activity(
+    CreateGiftCardActivityRequest(
+        idempotency_key="some example string",
+        gift_card_activity=GiftCardActivity(type_=GiftCardActivityType.ACTIVATE, location_id="some example string"),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateGiftCardActivityResponse
@@ -9557,7 +9794,12 @@ match result:
 **Async**
 
 ```python
-result = await async_client.gift_card_activities.with_raw_response.create_gift_card_activity(body)
+result = await async_client.gift_card_activities.with_raw_response.create_gift_card_activity(
+    CreateGiftCardActivityRequest(
+        idempotency_key="some example string",
+        gift_card_activity=GiftCardActivity(type_=GiftCardActivityType.ACTIVATE, location_id="some example string"),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateGiftCardActivityResponse
@@ -9576,7 +9818,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateGiftCardActivityRequest](square/models/create_gift_card_activity_request.py) \| [CreateGiftCardActivityRequestDict](square/models/create_gift_card_activity_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9664,7 +9906,7 @@ match result:
 | <code>limit</code> | <code>int \| None</code> | If a limit is provided, the endpoint returns the specified number <br>of results (or fewer) per page. The maximum value is 100. The default value is 50.<br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br>If a cursor is not provided, the endpoint returns the first page of the results.<br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).<br>**Default**: <code>None</code> |
 | <code>sort_order</code> | <code>str \| None</code> | The order in which the endpoint returns the activities, based on `created_at`.<br>- `ASC` - Oldest to newest.<br>- `DESC` - Newest to oldest (default).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9720,7 +9962,13 @@ to refund a payment to the new gift card.
 **Sync**
 
 ```python
-result = client.gift_cards.with_raw_response.create_gift_card(body)
+result = client.gift_cards.with_raw_response.create_gift_card(
+    CreateGiftCardRequest(
+        idempotency_key="some example string",
+        location_id="some example string",
+        gift_card=GiftCard(type_=GiftCardType.PHYSICAL),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateGiftCardResponse
@@ -9731,7 +9979,13 @@ match result:
 **Async**
 
 ```python
-result = await async_client.gift_cards.with_raw_response.create_gift_card(body)
+result = await async_client.gift_cards.with_raw_response.create_gift_card(
+    CreateGiftCardRequest(
+        idempotency_key="some example string",
+        location_id="some example string",
+        gift_card=GiftCard(type_=GiftCardType.PHYSICAL),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateGiftCardResponse
@@ -9750,7 +10004,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateGiftCardRequest](square/models/create_gift_card_request.py) \| [CreateGiftCardRequestDict](square/models/create_gift_card_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9798,7 +10052,9 @@ Links a customer to a gift card, which is also referred to as adding a card on f
 **Sync**
 
 ```python
-result = client.gift_cards.with_raw_response.link_customer_to_gift_card(gift_card_id, body)
+result = client.gift_cards.with_raw_response.link_customer_to_gift_card(
+    "some example string", LinkCustomerToGiftCardRequest(customer_id="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type LinkCustomerToGiftCardResponse
@@ -9809,7 +10065,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.gift_cards.with_raw_response.link_customer_to_gift_card(gift_card_id, body)
+result = await async_client.gift_cards.with_raw_response.link_customer_to_gift_card(
+    "some example string", LinkCustomerToGiftCardRequest(customer_id="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type LinkCustomerToGiftCardResponse
@@ -9829,7 +10087,7 @@ match result:
 | --- | --- | --- |
 | <code>gift_card_id</code> | <code>str</code> | The ID of the gift card to be linked. |
 | <code>body</code> | <code>[LinkCustomerToGiftCardRequest](square/models/link_customer_to_gift_card_request.py) \| [LinkCustomerToGiftCardRequestDict](square/models/link_customer_to_gift_card_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9912,7 +10170,7 @@ match result:
 | <code>limit</code> | <code>int \| None</code> | If a limit is provided, the endpoint returns only the specified number of results per page.<br>The maximum value is 200. The default value is 30.<br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br>If a cursor is not provided, the endpoint returns the first page of the results. <br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).<br>**Default**: <code>None</code> |
 | <code>customer_id</code> | <code>str \| None</code> | If a customer ID is provided, the endpoint returns only the gift cards linked to the specified customer.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -9937,7 +10195,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def retrieve_gift_card(id: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[RetrieveGiftCardResponse, RawError]</code></summary>
+<summary><code>def retrieve_gift_card(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[RetrieveGiftCardResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -9960,7 +10218,7 @@ Retrieves a gift card using the gift card ID.
 **Sync**
 
 ```python
-result = client.gift_cards.with_raw_response.retrieve_gift_card(id)
+result = client.gift_cards.with_raw_response.retrieve_gift_card("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveGiftCardResponse
@@ -9971,7 +10229,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.gift_cards.with_raw_response.retrieve_gift_card(id)
+result = await async_client.gift_cards.with_raw_response.retrieve_gift_card("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveGiftCardResponse
@@ -9989,8 +10247,8 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The ID of the gift card to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The ID of the gift card to retrieve. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10038,7 +10296,9 @@ Retrieves a gift card using the gift card account number (GAN).
 **Sync**
 
 ```python
-result = client.gift_cards.with_raw_response.retrieve_gift_card_from_gan(body)
+result = client.gift_cards.with_raw_response.retrieve_gift_card_from_gan(
+    RetrieveGiftCardFromGanrequest(gan="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveGiftCardFromGanresponse
@@ -10049,7 +10309,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.gift_cards.with_raw_response.retrieve_gift_card_from_gan(body)
+result = await async_client.gift_cards.with_raw_response.retrieve_gift_card_from_gan(
+    RetrieveGiftCardFromGanrequest(gan="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveGiftCardFromGanresponse
@@ -10068,7 +10330,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[RetrieveGiftCardFromGanrequest](square/models/retrieve_gift_card_from_ganrequest.py) \| [RetrieveGiftCardFromGanrequestDict](square/models/retrieve_gift_card_from_ganrequest.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10116,7 +10378,9 @@ Retrieves a gift card using a secure payment token that represents the gift card
 **Sync**
 
 ```python
-result = client.gift_cards.with_raw_response.retrieve_gift_card_from_nonce(body)
+result = client.gift_cards.with_raw_response.retrieve_gift_card_from_nonce(
+    RetrieveGiftCardFromNonceRequest(nonce="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveGiftCardFromNonceResponse
@@ -10127,7 +10391,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.gift_cards.with_raw_response.retrieve_gift_card_from_nonce(body)
+result = await async_client.gift_cards.with_raw_response.retrieve_gift_card_from_nonce(
+    RetrieveGiftCardFromNonceRequest(nonce="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveGiftCardFromNonceResponse
@@ -10146,7 +10412,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[RetrieveGiftCardFromNonceRequest](square/models/retrieve_gift_card_from_nonce_request.py) \| [RetrieveGiftCardFromNonceRequestDict](square/models/retrieve_gift_card_from_nonce_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10194,7 +10460,9 @@ Unlinks a customer from a gift card, which is also referred to as removing a car
 **Sync**
 
 ```python
-result = client.gift_cards.with_raw_response.unlink_customer_from_gift_card(gift_card_id, body)
+result = client.gift_cards.with_raw_response.unlink_customer_from_gift_card(
+    "some example string", UnlinkCustomerFromGiftCardRequest(customer_id="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UnlinkCustomerFromGiftCardResponse
@@ -10205,7 +10473,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.gift_cards.with_raw_response.unlink_customer_from_gift_card(gift_card_id, body)
+result = await async_client.gift_cards.with_raw_response.unlink_customer_from_gift_card(
+    "some example string", UnlinkCustomerFromGiftCardRequest(customer_id="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UnlinkCustomerFromGiftCardResponse
@@ -10225,7 +10495,7 @@ match result:
 | --- | --- | --- |
 | <code>gift_card_id</code> | <code>str</code> | The ID of the gift card to be unlinked. |
 | <code>body</code> | <code>[UnlinkCustomerFromGiftCardRequest](square/models/unlink_customer_from_gift_card_request.py) \| [UnlinkCustomerFromGiftCardRequestDict](square/models/unlink_customer_from_gift_card_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10281,7 +10551,9 @@ On failure: returns a list of related errors.
 **Sync**
 
 ```python
-result = client.inventory.with_raw_response.batch_change_inventory(body)
+result = client.inventory.with_raw_response.batch_change_inventory(
+    BatchChangeInventoryRequest(idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BatchChangeInventoryResponse
@@ -10292,7 +10564,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.inventory.with_raw_response.batch_change_inventory(body)
+result = await async_client.inventory.with_raw_response.batch_change_inventory(
+    BatchChangeInventoryRequest(idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BatchChangeInventoryResponse
@@ -10311,7 +10585,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BatchChangeInventoryRequest](square/models/batch_change_inventory_request.py) \| [BatchChangeInventoryRequestDict](square/models/batch_change_inventory_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10366,7 +10640,7 @@ that cannot be handled by other, simpler endpoints.
 **Sync**
 
 ```python
-result = client.inventory.with_raw_response.batch_retrieve_inventory_changes(body)
+result = client.inventory.with_raw_response.batch_retrieve_inventory_changes(BatchRetrieveInventoryChangesRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BatchRetrieveInventoryChangesResponse
@@ -10377,7 +10651,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.inventory.with_raw_response.batch_retrieve_inventory_changes(body)
+result = await async_client.inventory.with_raw_response.batch_retrieve_inventory_changes(
+    BatchRetrieveInventoryChangesRequest()
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BatchRetrieveInventoryChangesResponse
@@ -10396,7 +10672,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BatchRetrieveInventoryChangesRequest](square/models/batch_retrieve_inventory_changes_request.py) \| [BatchRetrieveInventoryChangesRequestDict](square/models/batch_retrieve_inventory_changes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10454,7 +10730,7 @@ in response to receiving a Webhook notification.
 **Sync**
 
 ```python
-result = client.inventory.with_raw_response.batch_retrieve_inventory_counts(body)
+result = client.inventory.with_raw_response.batch_retrieve_inventory_counts(BatchRetrieveInventoryCountsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BatchRetrieveInventoryCountsResponse
@@ -10465,7 +10741,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.inventory.with_raw_response.batch_retrieve_inventory_counts(body)
+result = await async_client.inventory.with_raw_response.batch_retrieve_inventory_counts(
+    BatchRetrieveInventoryCountsRequest()
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BatchRetrieveInventoryCountsResponse
@@ -10484,7 +10762,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BatchRetrieveInventoryCountsRequest](square/models/batch_retrieve_inventory_counts_request.py) \| [BatchRetrieveInventoryCountsRequestDict](square/models/batch_retrieve_inventory_counts_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10532,7 +10810,14 @@ Creates a custom inventory adjustment reason.
 **Sync**
 
 ```python
-result = client.inventory.with_raw_response.create_inventory_adjustment_reason(body)
+result = client.inventory.with_raw_response.create_inventory_adjustment_reason(
+    CreateInventoryAdjustmentReasonRequest(
+        idempotency_key="some example string",
+        adjustment_reason=InventoryAdjustmentReason(
+            id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED)
+        ),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateInventoryAdjustmentReasonResponse
@@ -10543,7 +10828,14 @@ match result:
 **Async**
 
 ```python
-result = await async_client.inventory.with_raw_response.create_inventory_adjustment_reason(body)
+result = await async_client.inventory.with_raw_response.create_inventory_adjustment_reason(
+    CreateInventoryAdjustmentReasonRequest(
+        idempotency_key="some example string",
+        adjustment_reason=InventoryAdjustmentReason(
+            id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED)
+        ),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateInventoryAdjustmentReasonResponse
@@ -10562,7 +10854,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateInventoryAdjustmentReasonRequest](square/models/create_inventory_adjustment_reason_request.py) \| [CreateInventoryAdjustmentReasonRequestDict](square/models/create_inventory_adjustment_reason_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10610,7 +10902,11 @@ Soft deletes a custom inventory adjustment reason.
 **Sync**
 
 ```python
-result = client.inventory.with_raw_response.delete_inventory_adjustment_reason(body)
+result = client.inventory.with_raw_response.delete_inventory_adjustment_reason(
+    DeleteInventoryAdjustmentReasonRequest(
+        reason_id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED)
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteInventoryAdjustmentReasonResponse
@@ -10621,7 +10917,11 @@ match result:
 **Async**
 
 ```python
-result = await async_client.inventory.with_raw_response.delete_inventory_adjustment_reason(body)
+result = await async_client.inventory.with_raw_response.delete_inventory_adjustment_reason(
+    DeleteInventoryAdjustmentReasonRequest(
+        reason_id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED)
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteInventoryAdjustmentReasonResponse
@@ -10640,7 +10940,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[DeleteInventoryAdjustmentReasonRequest](square/models/delete_inventory_adjustment_reason_request.py) \| [DeleteInventoryAdjustmentReasonRequestDict](square/models/delete_inventory_adjustment_reason_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10689,7 +10989,9 @@ is updated to conform to the standard convention.
 **Sync**
 
 ```python
-result = client.inventory.with_raw_response.deprecated_batch_change_inventory(body)
+result = client.inventory.with_raw_response.deprecated_batch_change_inventory(
+    BatchChangeInventoryRequest(idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BatchChangeInventoryResponse
@@ -10700,7 +11002,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.inventory.with_raw_response.deprecated_batch_change_inventory(body)
+result = await async_client.inventory.with_raw_response.deprecated_batch_change_inventory(
+    BatchChangeInventoryRequest(idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BatchChangeInventoryResponse
@@ -10719,7 +11023,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BatchChangeInventoryRequest](square/models/batch_change_inventory_request.py) \| [BatchChangeInventoryRequestDict](square/models/batch_change_inventory_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10768,7 +11072,9 @@ is updated to conform to the standard convention.
 **Sync**
 
 ```python
-result = client.inventory.with_raw_response.deprecated_batch_retrieve_inventory_changes(body)
+result = client.inventory.with_raw_response.deprecated_batch_retrieve_inventory_changes(
+    BatchRetrieveInventoryChangesRequest()
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BatchRetrieveInventoryChangesResponse
@@ -10779,7 +11085,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.inventory.with_raw_response.deprecated_batch_retrieve_inventory_changes(body)
+result = await async_client.inventory.with_raw_response.deprecated_batch_retrieve_inventory_changes(
+    BatchRetrieveInventoryChangesRequest()
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BatchRetrieveInventoryChangesResponse
@@ -10798,7 +11106,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BatchRetrieveInventoryChangesRequest](square/models/batch_retrieve_inventory_changes_request.py) \| [BatchRetrieveInventoryChangesRequestDict](square/models/batch_retrieve_inventory_changes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10847,7 +11155,9 @@ is updated to conform to the standard convention.
 **Sync**
 
 ```python
-result = client.inventory.with_raw_response.deprecated_batch_retrieve_inventory_counts(body)
+result = client.inventory.with_raw_response.deprecated_batch_retrieve_inventory_counts(
+    BatchRetrieveInventoryCountsRequest()
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BatchRetrieveInventoryCountsResponse
@@ -10858,7 +11168,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.inventory.with_raw_response.deprecated_batch_retrieve_inventory_counts(body)
+result = await async_client.inventory.with_raw_response.deprecated_batch_retrieve_inventory_counts(
+    BatchRetrieveInventoryCountsRequest()
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BatchRetrieveInventoryCountsResponse
@@ -10877,7 +11189,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BatchRetrieveInventoryCountsRequest](square/models/batch_retrieve_inventory_counts_request.py) \| [BatchRetrieveInventoryCountsRequestDict](square/models/batch_retrieve_inventory_counts_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -10926,7 +11238,7 @@ is updated to conform to the standard convention.
 **Sync**
 
 ```python
-result = client.inventory.with_raw_response.deprecated_retrieve_inventory_adjustment(adjustment_id)
+result = client.inventory.with_raw_response.deprecated_retrieve_inventory_adjustment("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveInventoryAdjustmentResponse
@@ -10937,7 +11249,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.inventory.with_raw_response.deprecated_retrieve_inventory_adjustment(adjustment_id)
+result = await async_client.inventory.with_raw_response.deprecated_retrieve_inventory_adjustment("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveInventoryAdjustmentResponse
@@ -10956,7 +11268,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>adjustment_id</code> | <code>str</code> | ID of the [InventoryAdjustment](entity:InventoryAdjustment) to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11005,7 +11317,7 @@ is updated to conform to the standard convention.
 **Sync**
 
 ```python
-result = client.inventory.with_raw_response.deprecated_retrieve_inventory_physical_count(physical_count_id)
+result = client.inventory.with_raw_response.deprecated_retrieve_inventory_physical_count("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveInventoryPhysicalCountResponse
@@ -11016,7 +11328,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.inventory.with_raw_response.deprecated_retrieve_inventory_physical_count(physical_count_id)
+result = await async_client.inventory.with_raw_response.deprecated_retrieve_inventory_physical_count(
+    "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveInventoryPhysicalCountResponse
@@ -11035,7 +11349,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>physical_count_id</code> | <code>str</code> | ID of the<br>[InventoryPhysicalCount](entity:InventoryPhysicalCount) to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11115,7 +11429,7 @@ match result:
 | --- | --- | --- |
 | <code>include_deleted</code> | <code>bool \| None</code> | Indicates whether the response should include deleted custom inventory<br>adjustment reasons. The default value is `false`.<br>**Default**: <code>False</code> |
 | <code>include_system_codes</code> | <code>bool \| None</code> | Indicates whether the response should include Square-generated system<br>inventory adjustment reason codes that cannot be used to write adjustments<br>from the Connect API, such as `SALE`, `RECOUNT`, `TRANSFER`, `IN_TRANSIT`,<br>and `CANCELED_SALE`. The default value is `false`.<br>**Default**: <code>False</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11163,7 +11477,11 @@ Restores a soft-deleted custom inventory adjustment reason.
 **Sync**
 
 ```python
-result = client.inventory.with_raw_response.restore_inventory_adjustment_reason(body)
+result = client.inventory.with_raw_response.restore_inventory_adjustment_reason(
+    RestoreInventoryAdjustmentReasonRequest(
+        reason_id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED)
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RestoreInventoryAdjustmentReasonResponse
@@ -11174,7 +11492,11 @@ match result:
 **Async**
 
 ```python
-result = await async_client.inventory.with_raw_response.restore_inventory_adjustment_reason(body)
+result = await async_client.inventory.with_raw_response.restore_inventory_adjustment_reason(
+    RestoreInventoryAdjustmentReasonRequest(
+        reason_id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED)
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RestoreInventoryAdjustmentReasonResponse
@@ -11193,7 +11515,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[RestoreInventoryAdjustmentReasonRequest](square/models/restore_inventory_adjustment_reason_request.py) \| [RestoreInventoryAdjustmentReasonRequestDict](square/models/restore_inventory_adjustment_reason_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11242,7 +11564,7 @@ with the provided `adjustment_id`.
 **Sync**
 
 ```python
-result = client.inventory.with_raw_response.retrieve_inventory_adjustment(adjustment_id)
+result = client.inventory.with_raw_response.retrieve_inventory_adjustment("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveInventoryAdjustmentResponse
@@ -11253,7 +11575,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.inventory.with_raw_response.retrieve_inventory_adjustment(adjustment_id)
+result = await async_client.inventory.with_raw_response.retrieve_inventory_adjustment("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveInventoryAdjustmentResponse
@@ -11272,7 +11594,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>adjustment_id</code> | <code>str</code> | ID of the [InventoryAdjustment](entity:InventoryAdjustment) to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11321,7 +11643,11 @@ Returns the inventory adjustment reason identified by the provided
 **Sync**
 
 ```python
-result = client.inventory.with_raw_response.retrieve_inventory_adjustment_reason(body)
+result = client.inventory.with_raw_response.retrieve_inventory_adjustment_reason(
+    RetrieveInventoryAdjustmentReasonRequest(
+        reason_id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED)
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveInventoryAdjustmentReasonResponse
@@ -11332,7 +11658,11 @@ match result:
 **Async**
 
 ```python
-result = await async_client.inventory.with_raw_response.retrieve_inventory_adjustment_reason(body)
+result = await async_client.inventory.with_raw_response.retrieve_inventory_adjustment_reason(
+    RetrieveInventoryAdjustmentReasonRequest(
+        reason_id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED)
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveInventoryAdjustmentReasonResponse
@@ -11351,7 +11681,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[RetrieveInventoryAdjustmentReasonRequest](square/models/retrieve_inventory_adjustment_reason_request.py) \| [RetrieveInventoryAdjustmentReasonRequestDict](square/models/retrieve_inventory_adjustment_reason_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11411,7 +11741,7 @@ sophisticated queries, use a batch endpoint.
 **Sync**
 
 ```python
-result = client.inventory.with_raw_response.retrieve_inventory_changes(catalog_object_id)
+result = client.inventory.with_raw_response.retrieve_inventory_changes("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveInventoryChangesResponse
@@ -11422,7 +11752,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.inventory.with_raw_response.retrieve_inventory_changes(catalog_object_id)
+result = await async_client.inventory.with_raw_response.retrieve_inventory_changes("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveInventoryChangesResponse
@@ -11443,7 +11773,7 @@ match result:
 | <code>catalog_object_id</code> | <code>str</code> | ID of the [CatalogObject](entity:CatalogObject) to retrieve. |
 | <code>location_ids</code> | <code>str \| None</code> | The [Location](entity:Location) IDs to look up as a comma-separated<br>list. An empty list queries all locations.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this to retrieve the next set of results for the original query.<br><br>See the [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11494,7 +11824,7 @@ For more sophisticated queries, use a batch endpoint.
 **Sync**
 
 ```python
-result = client.inventory.with_raw_response.retrieve_inventory_count(catalog_object_id)
+result = client.inventory.with_raw_response.retrieve_inventory_count("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveInventoryCountResponse
@@ -11505,7 +11835,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.inventory.with_raw_response.retrieve_inventory_count(catalog_object_id)
+result = await async_client.inventory.with_raw_response.retrieve_inventory_count("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveInventoryCountResponse
@@ -11526,7 +11856,7 @@ match result:
 | <code>catalog_object_id</code> | <code>str</code> | ID of the [CatalogObject](entity:CatalogObject) to retrieve. |
 | <code>location_ids</code> | <code>str \| None</code> | The [Location](entity:Location) IDs to look up as a comma-separated<br>list. An empty list queries all locations.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this to retrieve the next set of results for the original query.<br><br>See the [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11575,7 +11905,7 @@ object with the provided `physical_count_id`.
 **Sync**
 
 ```python
-result = client.inventory.with_raw_response.retrieve_inventory_physical_count(physical_count_id)
+result = client.inventory.with_raw_response.retrieve_inventory_physical_count("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveInventoryPhysicalCountResponse
@@ -11586,7 +11916,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.inventory.with_raw_response.retrieve_inventory_physical_count(physical_count_id)
+result = await async_client.inventory.with_raw_response.retrieve_inventory_physical_count("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveInventoryPhysicalCountResponse
@@ -11605,7 +11935,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>physical_count_id</code> | <code>str</code> | ID of the<br>[InventoryPhysicalCount](entity:InventoryPhysicalCount) to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11656,7 +11986,9 @@ On failure: returns a list of related errors.
 **Sync**
 
 ```python
-result = client.inventory.with_raw_response.update_inventory_adjustment(body)
+result = client.inventory.with_raw_response.update_inventory_adjustment(
+    UpdateInventoryAdjustmentRequest(idempotency_key="some example string", adjustment=InventoryAdjustment())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateInventoryAdjustmentResponse
@@ -11667,7 +11999,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.inventory.with_raw_response.update_inventory_adjustment(body)
+result = await async_client.inventory.with_raw_response.update_inventory_adjustment(
+    UpdateInventoryAdjustmentRequest(idempotency_key="some example string", adjustment=InventoryAdjustment())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateInventoryAdjustmentResponse
@@ -11686,7 +12020,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[UpdateInventoryAdjustmentRequest](square/models/update_inventory_adjustment_request.py) \| [UpdateInventoryAdjustmentRequestDict](square/models/update_inventory_adjustment_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11734,7 +12068,14 @@ Updates a custom inventory adjustment reason.
 **Sync**
 
 ```python
-result = client.inventory.with_raw_response.update_inventory_adjustment_reason(body)
+result = client.inventory.with_raw_response.update_inventory_adjustment_reason(
+    UpdateInventoryAdjustmentReasonRequest(
+        reason_id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED),
+        adjustment_reason=InventoryAdjustmentReason(
+            id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED)
+        ),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateInventoryAdjustmentReasonResponse
@@ -11745,7 +12086,14 @@ match result:
 **Async**
 
 ```python
-result = await async_client.inventory.with_raw_response.update_inventory_adjustment_reason(body)
+result = await async_client.inventory.with_raw_response.update_inventory_adjustment_reason(
+    UpdateInventoryAdjustmentReasonRequest(
+        reason_id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED),
+        adjustment_reason=InventoryAdjustmentReason(
+            id=InventoryAdjustmentReasonId(type_=InventoryAdjustmentReasonIdType.RECEIVED)
+        ),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateInventoryAdjustmentReasonResponse
@@ -11764,7 +12112,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[UpdateInventoryAdjustmentReasonRequest](square/models/update_inventory_adjustment_reason_request.py) \| [UpdateInventoryAdjustmentReasonRequestDict](square/models/update_inventory_adjustment_reason_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11819,7 +12167,7 @@ You cannot cancel an invoice in the `DRAFT` state or in a terminal state: `PAID`
 **Sync**
 
 ```python
-result = client.invoices.with_raw_response.cancel_invoice(invoice_id, body)
+result = client.invoices.with_raw_response.cancel_invoice("some example string", CancelInvoiceRequest(version=1))
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CancelInvoiceResponse
@@ -11830,7 +12178,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.invoices.with_raw_response.cancel_invoice(invoice_id, body)
+result = await async_client.invoices.with_raw_response.cancel_invoice(
+    "some example string", CancelInvoiceRequest(version=1)
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CancelInvoiceResponse
@@ -11850,7 +12200,7 @@ match result:
 | --- | --- | --- |
 | <code>invoice_id</code> | <code>str</code> | The ID of the [invoice](entity:Invoice) to cancel. |
 | <code>body</code> | <code>[CancelInvoiceRequest](square/models/cancel_invoice_request.py) \| [CancelInvoiceRequestDict](square/models/cancel_invoice_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11902,7 +12252,7 @@ You must publish the invoice before Square can process it (send it to the custom
 **Sync**
 
 ```python
-result = client.invoices.with_raw_response.create_invoice(body)
+result = client.invoices.with_raw_response.create_invoice(CreateInvoiceRequest(invoice=Invoice()))
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateInvoiceResponse
@@ -11913,7 +12263,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.invoices.with_raw_response.create_invoice(body)
+result = await async_client.invoices.with_raw_response.create_invoice(CreateInvoiceRequest(invoice=Invoice()))
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateInvoiceResponse
@@ -11932,7 +12282,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateInvoiceRequest](square/models/create_invoice_request.py) \| [CreateInvoiceRequestDict](square/models/create_invoice_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -11957,7 +12307,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def create_invoice_attachment(invoice_id: str, *, request: CreateInvoiceAttachmentRequest | CreateInvoiceAttachmentRequestDict | None = None, image_file: bytes | None = None, request_options: RequestOptionsOrDict | None = None) -> ApiResult[CreateInvoiceAttachmentResponse, RawError]</code></summary>
+<summary><code>def create_invoice_attachment(invoice_id: str, *, request: CreateInvoiceAttachmentRequest | CreateInvoiceAttachmentRequestDict | None = None, image_file: FileInput | None = None, request_options: RequestOptionsOrDict | None = None) -> ApiResult[CreateInvoiceAttachmentResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -11987,7 +12337,7 @@ __NOTE:__ When testing in the Sandbox environment, the total file size is limite
 **Sync**
 
 ```python
-result = client.invoices.with_raw_response.create_invoice_attachment(invoice_id)
+result = client.invoices.with_raw_response.create_invoice_attachment("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateInvoiceAttachmentResponse
@@ -11998,7 +12348,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.invoices.with_raw_response.create_invoice_attachment(invoice_id)
+result = await async_client.invoices.with_raw_response.create_invoice_attachment("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateInvoiceAttachmentResponse
@@ -12018,8 +12368,8 @@ match result:
 | --- | --- | --- |
 | <code>invoice_id</code> | <code>str</code> | The ID of the [invoice](entity:Invoice) to attach the file to. |
 | <code>request</code> | <code>[CreateInvoiceAttachmentRequest](square/models/create_invoice_attachment_request.py) \| [CreateInvoiceAttachmentRequestDict](square/models/create_invoice_attachment_request.py) \| None</code> | Represents a [CreateInvoiceAttachment](api-endpoint:Invoices-CreateInvoiceAttachment) request.<br>**Default**: <code>None</code> |
-| <code>image_file</code> | <code>bytes \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>image_file</code> | <code>FileInput \| None</code> | Value sent with the request.<br>**Default**: <code>None</code> |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12069,7 +12419,7 @@ invoice (you cannot delete a published invoice, including one that is scheduled 
 **Sync**
 
 ```python
-result = client.invoices.with_raw_response.delete_invoice(invoice_id)
+result = client.invoices.with_raw_response.delete_invoice("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteInvoiceResponse
@@ -12080,7 +12430,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.invoices.with_raw_response.delete_invoice(invoice_id)
+result = await async_client.invoices.with_raw_response.delete_invoice("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteInvoiceResponse
@@ -12100,7 +12450,7 @@ match result:
 | --- | --- | --- |
 | <code>invoice_id</code> | <code>str</code> | The ID of the invoice to delete. |
 | <code>version</code> | <code>int \| None</code> | The version of the [invoice](entity:Invoice) to delete.<br>If you do not know the version, you can call [GetInvoice](api-endpoint:Invoices-GetInvoice) or <br>[ListInvoices](api-endpoint:Invoices-ListInvoices).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12149,7 +12499,7 @@ from invoices in the `DRAFT`, `SCHEDULED`, `UNPAID`, or `PARTIALLY_PAID` state.
 **Sync**
 
 ```python
-result = client.invoices.with_raw_response.delete_invoice_attachment(invoice_id, attachment_id)
+result = client.invoices.with_raw_response.delete_invoice_attachment("some example string", "some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteInvoiceAttachmentResponse
@@ -12160,7 +12510,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.invoices.with_raw_response.delete_invoice_attachment(invoice_id, attachment_id)
+result = await async_client.invoices.with_raw_response.delete_invoice_attachment(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteInvoiceAttachmentResponse
@@ -12180,7 +12532,7 @@ match result:
 | --- | --- | --- |
 | <code>invoice_id</code> | <code>str</code> | The ID of the [invoice](entity:Invoice) to delete the attachment from. |
 | <code>attachment_id</code> | <code>str</code> | The ID of the [attachment](entity:InvoiceAttachment) to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12228,7 +12580,7 @@ Retrieves an invoice by invoice ID.
 **Sync**
 
 ```python
-result = client.invoices.with_raw_response.get_invoice(invoice_id)
+result = client.invoices.with_raw_response.get_invoice("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetInvoiceResponse
@@ -12239,7 +12591,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.invoices.with_raw_response.get_invoice(invoice_id)
+result = await async_client.invoices.with_raw_response.get_invoice("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetInvoiceResponse
@@ -12258,7 +12610,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>invoice_id</code> | <code>str</code> | The ID of the invoice to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12308,7 +12660,7 @@ use in a subsequent request to retrieve the next set of invoices.
 **Sync**
 
 ```python
-result = client.invoices.with_raw_response.list_invoices(location_id)
+result = client.invoices.with_raw_response.list_invoices("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListInvoicesResponse
@@ -12319,7 +12671,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.invoices.with_raw_response.list_invoices(location_id)
+result = await async_client.invoices.with_raw_response.list_invoices("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListInvoicesResponse
@@ -12340,7 +12692,7 @@ match result:
 | <code>location_id</code> | <code>str</code> | The ID of the location for which to list invoices. |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint. <br>Provide this cursor to retrieve the next set of results for your original query.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of invoices to return (200 is the maximum `limit`). <br>If not provided, the server uses a default limit of 100 invoices.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12401,7 +12753,7 @@ and `PAYMENTS_WRITE` are required when publishing invoices configured for card-o
 **Sync**
 
 ```python
-result = client.invoices.with_raw_response.publish_invoice(invoice_id, body)
+result = client.invoices.with_raw_response.publish_invoice("some example string", PublishInvoiceRequest(version=1))
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type PublishInvoiceResponse
@@ -12412,7 +12764,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.invoices.with_raw_response.publish_invoice(invoice_id, body)
+result = await async_client.invoices.with_raw_response.publish_invoice(
+    "some example string", PublishInvoiceRequest(version=1)
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type PublishInvoiceResponse
@@ -12432,7 +12786,7 @@ match result:
 | --- | --- | --- |
 | <code>invoice_id</code> | <code>str</code> | The ID of the invoice to publish. |
 | <code>body</code> | <code>[PublishInvoiceRequest](square/models/publish_invoice_request.py) \| [PublishInvoiceRequestDict](square/models/publish_invoice_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12486,7 +12840,9 @@ that you use in a subsequent request to retrieve the next set of invoices.
 **Sync**
 
 ```python
-result = client.invoices.with_raw_response.search_invoices(body)
+result = client.invoices.with_raw_response.search_invoices(
+    SearchInvoicesRequest(query=InvoiceQuery(filter=InvoiceFilter(location_ids=["some example string"])))
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchInvoicesResponse
@@ -12497,7 +12853,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.invoices.with_raw_response.search_invoices(body)
+result = await async_client.invoices.with_raw_response.search_invoices(
+    SearchInvoicesRequest(query=InvoiceQuery(filter=InvoiceFilter(location_ids=["some example string"])))
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchInvoicesResponse
@@ -12516,7 +12874,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchInvoicesRequest](square/models/search_invoices_request.py) \| [SearchInvoicesRequestDict](square/models/search_invoices_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12567,7 +12925,9 @@ Some restrictions apply to updating invoices. For example, you cannot change the
 **Sync**
 
 ```python
-result = client.invoices.with_raw_response.update_invoice(invoice_id, body)
+result = client.invoices.with_raw_response.update_invoice(
+    "some example string", UpdateInvoiceRequest(invoice=Invoice())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateInvoiceResponse
@@ -12578,7 +12938,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.invoices.with_raw_response.update_invoice(invoice_id, body)
+result = await async_client.invoices.with_raw_response.update_invoice(
+    "some example string", UpdateInvoiceRequest(invoice=Invoice())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateInvoiceResponse
@@ -12598,7 +12960,7 @@ match result:
 | --- | --- | --- |
 | <code>invoice_id</code> | <code>str</code> | The ID of the invoice to update. |
 | <code>body</code> | <code>[UpdateInvoiceRequest](square/models/update_invoice_request.py) \| [UpdateInvoiceRequestDict](square/models/update_invoice_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12655,7 +13017,9 @@ The minimum `start_at` and maximum `end_at` timestamps of all shifts in a
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.bulk_publish_scheduled_shifts(body)
+result = client.labor.with_raw_response.bulk_publish_scheduled_shifts(
+    BulkPublishScheduledShiftsRequest(scheduled_shifts={"key": BulkPublishScheduledShiftsData()})
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkPublishScheduledShiftsResponse
@@ -12666,7 +13030,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.bulk_publish_scheduled_shifts(body)
+result = await async_client.labor.with_raw_response.bulk_publish_scheduled_shifts(
+    BulkPublishScheduledShiftsRequest(scheduled_shifts={"key": BulkPublishScheduledShiftsData()})
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkPublishScheduledShiftsResponse
@@ -12685,7 +13051,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkPublishScheduledShiftsRequest](square/models/bulk_publish_scheduled_shifts_request.py) \| [BulkPublishScheduledShiftsRequestDict](square/models/bulk_publish_scheduled_shifts_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12746,7 +13112,16 @@ is returned.
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.create_break_type(body)
+result = client.labor.with_raw_response.create_break_type(
+    CreateBreakTypeRequest(
+        break_type=BreakType(
+            location_id="some example string",
+            break_name="some example string",
+            expected_duration="some example string",
+            is_paid=True,
+        ),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateBreakTypeResponse
@@ -12757,7 +13132,16 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.create_break_type(body)
+result = await async_client.labor.with_raw_response.create_break_type(
+    CreateBreakTypeRequest(
+        break_type=BreakType(
+            location_id="some example string",
+            break_name="some example string",
+            expected_duration="some example string",
+            is_paid=True,
+        ),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateBreakTypeResponse
@@ -12776,7 +13160,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateBreakTypeRequest](square/models/create_break_type_request.py) \| [CreateBreakTypeRequestDict](square/models/create_break_type_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12831,7 +13215,9 @@ The following `draft_shift_details` fields are required:
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.create_scheduled_shift(body)
+result = client.labor.with_raw_response.create_scheduled_shift(
+    CreateScheduledShiftRequest(scheduled_shift=ScheduledShift())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateScheduledShiftResponse
@@ -12842,7 +13228,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.create_scheduled_shift(body)
+result = await async_client.labor.with_raw_response.create_scheduled_shift(
+    CreateScheduledShiftRequest(scheduled_shift=ScheduledShift())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateScheduledShiftResponse
@@ -12861,7 +13249,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateScheduledShiftRequest](square/models/create_scheduled_shift_request.py) \| [CreateScheduledShiftRequestDict](square/models/create_scheduled_shift_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -12926,7 +13314,9 @@ the `Shift.end_at`, or both.
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.create_shift(body)
+result = client.labor.with_raw_response.create_shift(
+    CreateShiftRequest(shift=Shift(location_id="some example string", start_at="some example string"))
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateShiftResponse
@@ -12937,7 +13327,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.create_shift(body)
+result = await async_client.labor.with_raw_response.create_shift(
+    CreateShiftRequest(shift=Shift(location_id="some example string", start_at="some example string"))
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateShiftResponse
@@ -12956,7 +13348,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateShiftRequest](square/models/create_shift_request.py) \| [CreateShiftRequestDict](square/models/create_shift_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13021,7 +13413,13 @@ the `Timecard.end_at`, or both.
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.create_timecard(body)
+result = client.labor.with_raw_response.create_timecard(
+    CreateTimecardRequest(
+        timecard=Timecard(
+            location_id="some example string", start_at="some example string", team_member_id="some example string"
+        ),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateTimecardResponse
@@ -13032,7 +13430,13 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.create_timecard(body)
+result = await async_client.labor.with_raw_response.create_timecard(
+    CreateTimecardRequest(
+        timecard=Timecard(
+            location_id="some example string", start_at="some example string", team_member_id="some example string"
+        ),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateTimecardResponse
@@ -13051,7 +13455,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateTimecardRequest](square/models/create_timecard_request.py) \| [CreateTimecardRequestDict](square/models/create_timecard_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13076,7 +13480,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def delete_break_type(id: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[DeleteBreakTypeResponse, RawError]</code></summary>
+<summary><code>def delete_break_type(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[DeleteBreakTypeResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -13101,7 +13505,7 @@ A `BreakType` can be deleted even if it is referenced from a `Shift`.
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.delete_break_type(id)
+result = client.labor.with_raw_response.delete_break_type("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteBreakTypeResponse
@@ -13112,7 +13516,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.delete_break_type(id)
+result = await async_client.labor.with_raw_response.delete_break_type("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteBreakTypeResponse
@@ -13130,8 +13534,8 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The UUID for the `BreakType` being deleted. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The UUID for the `BreakType` being deleted. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13156,7 +13560,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def delete_shift(id: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[DeleteShiftResponse, RawError]</code></summary>
+<summary><code>def delete_shift(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[DeleteShiftResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -13179,7 +13583,7 @@ Deletes a `Shift`.
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.delete_shift(id)
+result = client.labor.with_raw_response.delete_shift("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteShiftResponse
@@ -13190,7 +13594,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.delete_shift(id)
+result = await async_client.labor.with_raw_response.delete_shift("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteShiftResponse
@@ -13208,8 +13612,8 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The UUID for the `Shift` being deleted. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The UUID for the `Shift` being deleted. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13234,7 +13638,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def delete_timecard(id: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[DeleteTimecardResponse, RawError]</code></summary>
+<summary><code>def delete_timecard(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[DeleteTimecardResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -13257,7 +13661,7 @@ Deletes a `Timecard`.
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.delete_timecard(id)
+result = client.labor.with_raw_response.delete_timecard("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteTimecardResponse
@@ -13268,7 +13672,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.delete_timecard(id)
+result = await async_client.labor.with_raw_response.delete_timecard("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteTimecardResponse
@@ -13286,8 +13690,8 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The UUID for the `Timecard` being deleted. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The UUID for the `Timecard` being deleted. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13312,7 +13716,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def get_break_type(id: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[GetBreakTypeResponse, RawError]</code></summary>
+<summary><code>def get_break_type(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[GetBreakTypeResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -13335,7 +13739,7 @@ Returns a single `BreakType` specified by `id`.
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.get_break_type(id)
+result = client.labor.with_raw_response.get_break_type("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetBreakTypeResponse
@@ -13346,7 +13750,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.get_break_type(id)
+result = await async_client.labor.with_raw_response.get_break_type("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetBreakTypeResponse
@@ -13364,8 +13768,8 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The UUID for the `BreakType` being retrieved. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The UUID for the `BreakType` being retrieved. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13390,7 +13794,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def get_employee_wage(id: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[GetEmployeeWageResponse, RawError]</code></summary>
+<summary><code>def get_employee_wage(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[GetEmployeeWageResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -13413,7 +13817,7 @@ Returns a single `EmployeeWage` specified by `id`.
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.get_employee_wage(id)
+result = client.labor.with_raw_response.get_employee_wage("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetEmployeeWageResponse
@@ -13424,7 +13828,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.get_employee_wage(id)
+result = await async_client.labor.with_raw_response.get_employee_wage("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetEmployeeWageResponse
@@ -13442,8 +13846,8 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The UUID for the `EmployeeWage` being retrieved. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The UUID for the `EmployeeWage` being retrieved. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13468,7 +13872,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def get_shift(id: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[GetShiftResponse, RawError]</code></summary>
+<summary><code>def get_shift(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[GetShiftResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -13491,7 +13895,7 @@ Returns a single `Shift` specified by `id`.
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.get_shift(id)
+result = client.labor.with_raw_response.get_shift("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetShiftResponse
@@ -13502,7 +13906,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.get_shift(id)
+result = await async_client.labor.with_raw_response.get_shift("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetShiftResponse
@@ -13520,8 +13924,8 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The UUID for the `Shift` being retrieved. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The UUID for the `Shift` being retrieved. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13546,7 +13950,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def get_team_member_wage(id: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[GetTeamMemberWageResponse, RawError]</code></summary>
+<summary><code>def get_team_member_wage(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[GetTeamMemberWageResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -13569,7 +13973,7 @@ Returns a single `TeamMemberWage` specified by `id`.
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.get_team_member_wage(id)
+result = client.labor.with_raw_response.get_team_member_wage("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetTeamMemberWageResponse
@@ -13580,7 +13984,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.get_team_member_wage(id)
+result = await async_client.labor.with_raw_response.get_team_member_wage("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetTeamMemberWageResponse
@@ -13598,8 +14002,8 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The UUID for the `TeamMemberWage` being retrieved. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The UUID for the `TeamMemberWage` being retrieved. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13679,7 +14083,7 @@ match result:
 | <code>location_id</code> | <code>str \| None</code> | Filter the returned `BreakType` results to only those that are associated with the<br>specified location.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of `BreakType` results to return per page. The number can range between 1<br>and 200. The default is 200.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pointer to the next page of `BreakType` results to fetch.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13759,7 +14163,7 @@ match result:
 | <code>employee_id</code> | <code>str \| None</code> | Filter the returned wages to only those that are associated with the specified employee.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of `EmployeeWage` results to return per page. The number can range between<br>1 and 200. The default is 200.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pointer to the next page of `EmployeeWage` results to fetch.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13839,7 +14243,7 @@ match result:
 | <code>team_member_id</code> | <code>str \| None</code> | Filter the returned wages to only those that are associated with the<br>specified team member.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of `TeamMemberWage` results to return per page. The number can range between<br>1 and 200. The default is 200.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pointer to the next page of `EmployeeWage` results to fetch.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13918,7 +14322,7 @@ match result:
 | --- | --- | --- |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of `WorkweekConfigs` results to return per page.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pointer to the next page of `WorkweekConfig` results to fetch.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -13943,7 +14347,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def publish_scheduled_shift(id: str, body: PublishScheduledShiftRequest | PublishScheduledShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[PublishScheduledShiftResponse, RawError]</code></summary>
+<summary><code>def publish_scheduled_shift(id_: str, body: PublishScheduledShiftRequest | PublishScheduledShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[PublishScheduledShiftResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -13967,7 +14371,9 @@ Publishes a scheduled shift. When a scheduled shift is published, Square keeps t
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.publish_scheduled_shift(id, body)
+result = client.labor.with_raw_response.publish_scheduled_shift(
+    "some example string", PublishScheduledShiftRequest(idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type PublishScheduledShiftResponse
@@ -13978,7 +14384,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.publish_scheduled_shift(id, body)
+result = await async_client.labor.with_raw_response.publish_scheduled_shift(
+    "some example string", PublishScheduledShiftRequest(idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type PublishScheduledShiftResponse
@@ -13996,9 +14404,9 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The ID of the scheduled shift to publish. |
+| <code>id_</code> | <code>str</code> | The ID of the scheduled shift to publish. |
 | <code>body</code> | <code>[PublishScheduledShiftRequest](square/models/publish_scheduled_shift_request.py) \| [PublishScheduledShiftRequestDict](square/models/publish_scheduled_shift_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14023,7 +14431,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def retrieve_scheduled_shift(id: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[RetrieveScheduledShiftResponse, RawError]</code></summary>
+<summary><code>def retrieve_scheduled_shift(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[RetrieveScheduledShiftResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -14046,7 +14454,7 @@ Retrieves a scheduled shift by ID.
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.retrieve_scheduled_shift(id)
+result = client.labor.with_raw_response.retrieve_scheduled_shift("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveScheduledShiftResponse
@@ -14057,7 +14465,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.retrieve_scheduled_shift(id)
+result = await async_client.labor.with_raw_response.retrieve_scheduled_shift("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveScheduledShiftResponse
@@ -14075,8 +14483,8 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The ID of the scheduled shift to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The ID of the scheduled shift to retrieve. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14101,7 +14509,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def retrieve_timecard(id: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[RetrieveTimecardResponse, RawError]</code></summary>
+<summary><code>def retrieve_timecard(id_: str, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[RetrieveTimecardResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -14124,7 +14532,7 @@ Returns a single `Timecard` specified by `id`.
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.retrieve_timecard(id)
+result = client.labor.with_raw_response.retrieve_timecard("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveTimecardResponse
@@ -14135,7 +14543,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.retrieve_timecard(id)
+result = await async_client.labor.with_raw_response.retrieve_timecard("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveTimecardResponse
@@ -14153,8 +14561,8 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The UUID for the `Timecard` being retrieved. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>id_</code> | <code>str</code> | The UUID for the `Timecard` being retrieved. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14203,7 +14611,7 @@ By default, results are sorted by `start_at` in ascending order.
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.search_scheduled_shifts(body)
+result = client.labor.with_raw_response.search_scheduled_shifts(SearchScheduledShiftsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchScheduledShiftsResponse
@@ -14214,7 +14622,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.search_scheduled_shifts(body)
+result = await async_client.labor.with_raw_response.search_scheduled_shifts(SearchScheduledShiftsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchScheduledShiftsResponse
@@ -14233,7 +14641,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchScheduledShiftsRequest](square/models/search_scheduled_shifts_request.py) \| [SearchScheduledShiftsRequestDict](square/models/search_scheduled_shifts_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14294,7 +14702,7 @@ The list can be sorted by:
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.search_shifts(body)
+result = client.labor.with_raw_response.search_shifts(SearchShiftsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchShiftsResponse
@@ -14305,7 +14713,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.search_shifts(body)
+result = await async_client.labor.with_raw_response.search_shifts(SearchShiftsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchShiftsResponse
@@ -14324,7 +14732,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchShiftsRequest](square/models/search_shifts_request.py) \| [SearchShiftsRequestDict](square/models/search_shifts_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14385,7 +14793,7 @@ The list can be sorted by:
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.search_timecards(body)
+result = client.labor.with_raw_response.search_timecards(SearchTimecardsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchTimecardsResponse
@@ -14396,7 +14804,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.search_timecards(body)
+result = await async_client.labor.with_raw_response.search_timecards(SearchTimecardsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchTimecardsResponse
@@ -14415,7 +14823,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchTimecardsRequest](square/models/search_timecards_request.py) \| [SearchTimecardsRequestDict](square/models/search_timecards_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14440,7 +14848,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def update_break_type(id: str, body: UpdateBreakTypeRequest | UpdateBreakTypeRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[UpdateBreakTypeResponse, RawError]</code></summary>
+<summary><code>def update_break_type(id_: str, body: UpdateBreakTypeRequest | UpdateBreakTypeRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[UpdateBreakTypeResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -14463,7 +14871,17 @@ Updates an existing `BreakType`.
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.update_break_type(id, body)
+result = client.labor.with_raw_response.update_break_type(
+    "some example string",
+    UpdateBreakTypeRequest(
+        break_type=BreakType(
+            location_id="some example string",
+            break_name="some example string",
+            expected_duration="some example string",
+            is_paid=True,
+        ),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateBreakTypeResponse
@@ -14474,7 +14892,17 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.update_break_type(id, body)
+result = await async_client.labor.with_raw_response.update_break_type(
+    "some example string",
+    UpdateBreakTypeRequest(
+        break_type=BreakType(
+            location_id="some example string",
+            break_name="some example string",
+            expected_duration="some example string",
+            is_paid=True,
+        ),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateBreakTypeResponse
@@ -14492,9 +14920,9 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The UUID for the `BreakType` being updated. |
+| <code>id_</code> | <code>str</code> | The UUID for the `BreakType` being updated. |
 | <code>body</code> | <code>[UpdateBreakTypeRequest](square/models/update_break_type_request.py) \| [UpdateBreakTypeRequestDict](square/models/update_break_type_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14519,7 +14947,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def update_scheduled_shift(id: str, body: UpdateScheduledShiftRequest | UpdateScheduledShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[UpdateScheduledShiftResponse, RawError]</code></summary>
+<summary><code>def update_scheduled_shift(id_: str, body: UpdateScheduledShiftRequest | UpdateScheduledShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[UpdateScheduledShiftResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -14551,7 +14979,9 @@ and then publish the shift.
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.update_scheduled_shift(id, body)
+result = client.labor.with_raw_response.update_scheduled_shift(
+    "some example string", UpdateScheduledShiftRequest(scheduled_shift=ScheduledShift())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateScheduledShiftResponse
@@ -14562,7 +14992,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.update_scheduled_shift(id, body)
+result = await async_client.labor.with_raw_response.update_scheduled_shift(
+    "some example string", UpdateScheduledShiftRequest(scheduled_shift=ScheduledShift())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateScheduledShiftResponse
@@ -14580,9 +15012,9 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The ID of the scheduled shift to update. |
+| <code>id_</code> | <code>str</code> | The ID of the scheduled shift to update. |
 | <code>body</code> | <code>[UpdateScheduledShiftRequest](square/models/update_scheduled_shift_request.py) \| [UpdateScheduledShiftRequestDict](square/models/update_scheduled_shift_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14607,7 +15039,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def update_shift(id: str, body: UpdateShiftRequest | UpdateShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[UpdateShiftResponse, RawError]</code></summary>
+<summary><code>def update_shift(id_: str, body: UpdateShiftRequest | UpdateShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[UpdateShiftResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -14636,7 +15068,10 @@ set on each `Break`.
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.update_shift(id, body)
+result = client.labor.with_raw_response.update_shift(
+    "some example string",
+    UpdateShiftRequest(shift=Shift(location_id="some example string", start_at="some example string")),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateShiftResponse
@@ -14647,7 +15082,10 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.update_shift(id, body)
+result = await async_client.labor.with_raw_response.update_shift(
+    "some example string",
+    UpdateShiftRequest(shift=Shift(location_id="some example string", start_at="some example string")),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateShiftResponse
@@ -14665,9 +15103,9 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The ID of the object being updated. |
+| <code>id_</code> | <code>str</code> | The ID of the object being updated. |
 | <code>body</code> | <code>[UpdateShiftRequest](square/models/update_shift_request.py) \| [UpdateShiftRequestDict](square/models/update_shift_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14692,7 +15130,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def update_timecard(id: str, body: UpdateTimecardRequest | UpdateTimecardRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[UpdateTimecardResponse, RawError]</code></summary>
+<summary><code>def update_timecard(id_: str, body: UpdateTimecardRequest | UpdateTimecardRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[UpdateTimecardResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -14721,7 +15159,14 @@ set on each `Break`.
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.update_timecard(id, body)
+result = client.labor.with_raw_response.update_timecard(
+    "some example string",
+    UpdateTimecardRequest(
+        timecard=Timecard(
+            location_id="some example string", start_at="some example string", team_member_id="some example string"
+        ),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateTimecardResponse
@@ -14732,7 +15177,14 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.update_timecard(id, body)
+result = await async_client.labor.with_raw_response.update_timecard(
+    "some example string",
+    UpdateTimecardRequest(
+        timecard=Timecard(
+            location_id="some example string", start_at="some example string", team_member_id="some example string"
+        ),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateTimecardResponse
@@ -14750,9 +15202,9 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The ID of the object being updated. |
+| <code>id_</code> | <code>str</code> | The ID of the object being updated. |
 | <code>body</code> | <code>[UpdateTimecardRequest](square/models/update_timecard_request.py) \| [UpdateTimecardRequestDict](square/models/update_timecard_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14777,7 +15229,7 @@ match result:
 </details>
 
 <details>
-<summary><code>def update_workweek_config(id: str, body: UpdateWorkweekConfigRequest | UpdateWorkweekConfigRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[UpdateWorkweekConfigResponse, RawError]</code></summary>
+<summary><code>def update_workweek_config(id_: str, body: UpdateWorkweekConfigRequest | UpdateWorkweekConfigRequestDict, *, request_options: RequestOptionsOrDict | None = None) -> ApiResult[UpdateWorkweekConfigResponse, RawError]</code></summary>
 
 <dl>
 <dd>
@@ -14800,7 +15252,12 @@ Updates a `WorkweekConfig`.
 **Sync**
 
 ```python
-result = client.labor.with_raw_response.update_workweek_config(id, body)
+result = client.labor.with_raw_response.update_workweek_config(
+    "some example string",
+    UpdateWorkweekConfigRequest(
+        workweek_config=WorkweekConfig(start_of_week=Weekday.MON, start_of_day_local_time="some example string")
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateWorkweekConfigResponse
@@ -14811,7 +15268,12 @@ match result:
 **Async**
 
 ```python
-result = await async_client.labor.with_raw_response.update_workweek_config(id, body)
+result = await async_client.labor.with_raw_response.update_workweek_config(
+    "some example string",
+    UpdateWorkweekConfigRequest(
+        workweek_config=WorkweekConfig(start_of_week=Weekday.MON, start_of_day_local_time="some example string")
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateWorkweekConfigResponse
@@ -14829,9 +15291,9 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>id</code> | <code>str</code> | The UUID for the `WorkweekConfig` object being updated. |
+| <code>id_</code> | <code>str</code> | The UUID for the `WorkweekConfig` object being updated. |
 | <code>body</code> | <code>[UpdateWorkweekConfigRequest](square/models/update_workweek_config_request.py) \| [UpdateWorkweekConfigRequestDict](square/models/update_workweek_config_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14885,7 +15347,11 @@ To delete a custom attribute owned by another application, the `visibility` sett
 **Sync**
 
 ```python
-result = client.location_custom_attributes.with_raw_response.bulk_delete_location_custom_attributes(body)
+result = client.location_custom_attributes.with_raw_response.bulk_delete_location_custom_attributes(
+    BulkDeleteLocationCustomAttributesRequest(
+        values={"key": BulkDeleteLocationCustomAttributesRequestLocationCustomAttributeDeleteRequest()}
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkDeleteLocationCustomAttributesResponse
@@ -14896,7 +15362,11 @@ match result:
 **Async**
 
 ```python
-result = await async_client.location_custom_attributes.with_raw_response.bulk_delete_location_custom_attributes(body)
+result = await async_client.location_custom_attributes.with_raw_response.bulk_delete_location_custom_attributes(
+    BulkDeleteLocationCustomAttributesRequest(
+        values={"key": BulkDeleteLocationCustomAttributesRequestLocationCustomAttributeDeleteRequest()}
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkDeleteLocationCustomAttributesResponse
@@ -14915,7 +15385,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkDeleteLocationCustomAttributesRequest](square/models/bulk_delete_location_custom_attributes_request.py) \| [BulkDeleteLocationCustomAttributesRequestDict](square/models/bulk_delete_location_custom_attributes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -14972,7 +15442,15 @@ must be `VISIBILITY_READ_WRITE_VALUES`.
 **Sync**
 
 ```python
-result = client.location_custom_attributes.with_raw_response.bulk_upsert_location_custom_attributes(body)
+result = client.location_custom_attributes.with_raw_response.bulk_upsert_location_custom_attributes(
+    BulkUpsertLocationCustomAttributesRequest(
+        values={
+            "key": BulkUpsertLocationCustomAttributesRequestLocationCustomAttributeUpsertRequest(
+                location_id="some example string", custom_attribute=CustomAttribute()
+            ),
+        },
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkUpsertLocationCustomAttributesResponse
@@ -14983,7 +15461,15 @@ match result:
 **Async**
 
 ```python
-result = await async_client.location_custom_attributes.with_raw_response.bulk_upsert_location_custom_attributes(body)
+result = await async_client.location_custom_attributes.with_raw_response.bulk_upsert_location_custom_attributes(
+    BulkUpsertLocationCustomAttributesRequest(
+        values={
+            "key": BulkUpsertLocationCustomAttributesRequestLocationCustomAttributeUpsertRequest(
+                location_id="some example string", custom_attribute=CustomAttribute()
+            ),
+        },
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkUpsertLocationCustomAttributesResponse
@@ -15002,7 +15488,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkUpsertLocationCustomAttributesRequest](square/models/bulk_upsert_location_custom_attributes_request.py) \| [BulkUpsertLocationCustomAttributesRequestDict](square/models/bulk_upsert_location_custom_attributes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15056,7 +15542,9 @@ to set the custom attribute for locations.
 **Sync**
 
 ```python
-result = client.location_custom_attributes.with_raw_response.create_location_custom_attribute_definition(body)
+result = client.location_custom_attributes.with_raw_response.create_location_custom_attribute_definition(
+    CreateLocationCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateLocationCustomAttributeDefinitionResponse
@@ -15068,7 +15556,7 @@ match result:
 
 ```python
 result = await async_client.location_custom_attributes.with_raw_response.create_location_custom_attribute_definition(
-    body
+    CreateLocationCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition())
 )
 match result:
     case Success(payload=payload):
@@ -15088,7 +15576,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateLocationCustomAttributeDefinitionRequest](square/models/create_location_custom_attribute_definition_request.py) \| [CreateLocationCustomAttributeDefinitionRequestDict](square/models/create_location_custom_attribute_definition_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15138,7 +15626,9 @@ To delete a custom attribute owned by another application, the `visibility` sett
 **Sync**
 
 ```python
-result = client.location_custom_attributes.with_raw_response.delete_location_custom_attribute(location_id, key)
+result = client.location_custom_attributes.with_raw_response.delete_location_custom_attribute(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteLocationCustomAttributeResponse
@@ -15150,7 +15640,7 @@ match result:
 
 ```python
 result = await async_client.location_custom_attributes.with_raw_response.delete_location_custom_attribute(
-    location_id, key
+    "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -15171,7 +15661,7 @@ match result:
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | The ID of the target [location](entity:Location). |
 | <code>key</code> | <code>str</code> | The key of the custom attribute to delete. This key must match the `key` of a custom<br>attribute definition in the Square seller account. If the requesting application is not the<br>definition owner, you must use the qualified key. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15222,7 +15712,9 @@ Only the definition owner can delete a custom attribute definition.
 **Sync**
 
 ```python
-result = client.location_custom_attributes.with_raw_response.delete_location_custom_attribute_definition(key)
+result = client.location_custom_attributes.with_raw_response.delete_location_custom_attribute_definition(
+    "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteLocationCustomAttributeDefinitionResponse
@@ -15234,7 +15726,7 @@ match result:
 
 ```python
 result = await async_client.location_custom_attributes.with_raw_response.delete_location_custom_attribute_definition(
-    key
+    "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -15254,7 +15746,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15337,7 +15829,7 @@ match result:
 | <code>visibility_filter</code> | <code>[VisibilityFilterOrStr](square/models/enums/visibility_filter.py) \| None</code> | Filters the `CustomAttributeDefinition` results by their `visibility` values.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response. This limit is advisory.<br>The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100.<br>The default value is 20. For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint.<br>Provide this cursor to retrieve the next page of results for your original request.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15390,7 +15882,7 @@ and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 **Sync**
 
 ```python
-result = client.location_custom_attributes.with_raw_response.list_location_custom_attributes(location_id)
+result = client.location_custom_attributes.with_raw_response.list_location_custom_attributes("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListLocationCustomAttributesResponse
@@ -15401,7 +15893,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.location_custom_attributes.with_raw_response.list_location_custom_attributes(location_id)
+result = await async_client.location_custom_attributes.with_raw_response.list_location_custom_attributes(
+    "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListLocationCustomAttributesResponse
@@ -15424,7 +15918,7 @@ match result:
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response. This limit is advisory.<br>The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100.<br>The default value is 20. For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint.<br>Provide this cursor to retrieve the next page of results for your original request. For more<br>information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>with_definitions</code> | <code>bool \| None</code> | Indicates whether to return the [custom attribute definition](entity:CustomAttributeDefinition) in the `definition` field of each<br>custom attribute. Set this parameter to `true` to get the name and description of each custom<br>attribute, information about the data type, or other definition details. The default value is `false`.<br>**Default**: <code>False</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15476,7 +15970,9 @@ To retrieve a custom attribute owned by another application, the `visibility` se
 **Sync**
 
 ```python
-result = client.location_custom_attributes.with_raw_response.retrieve_location_custom_attribute(location_id, key)
+result = client.location_custom_attributes.with_raw_response.retrieve_location_custom_attribute(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveLocationCustomAttributeResponse
@@ -15488,7 +15984,7 @@ match result:
 
 ```python
 result = await async_client.location_custom_attributes.with_raw_response.retrieve_location_custom_attribute(
-    location_id, key
+    "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -15511,7 +16007,7 @@ match result:
 | <code>key</code> | <code>str</code> | The key of the custom attribute to retrieve. This key must match the `key` of a custom<br>attribute definition in the Square seller account. If the requesting application is not the<br>definition owner, you must use the qualified key. |
 | <code>with_definition</code> | <code>bool \| None</code> | Indicates whether to return the [custom attribute definition](entity:CustomAttributeDefinition) in the `definition` field of<br>the custom attribute. Set this parameter to `true` to get the name and description of the custom<br>attribute, information about the data type, or other definition details. The default value is `false`.<br>**Default**: <code>False</code> |
 | <code>version</code> | <code>int \| None</code> | The current version of the custom attribute, which is used for strongly consistent reads to<br>guarantee that you receive the most up-to-date data. When included in the request, Square<br>returns the specified version or a higher version if one exists. If the specified version is<br>higher than the current version, Square returns a `BAD_REQUEST` error.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15561,7 +16057,9 @@ setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 **Sync**
 
 ```python
-result = client.location_custom_attributes.with_raw_response.retrieve_location_custom_attribute_definition(key)
+result = client.location_custom_attributes.with_raw_response.retrieve_location_custom_attribute_definition(
+    "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveLocationCustomAttributeDefinitionResponse
@@ -15573,7 +16071,7 @@ match result:
 
 ```python
 result = await async_client.location_custom_attributes.with_raw_response.retrieve_location_custom_attribute_definition(
-    key
+    "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -15594,7 +16092,7 @@ match result:
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to retrieve. If the requesting application<br>is not the definition owner, you must use the qualified key. |
 | <code>version</code> | <code>int \| None</code> | The current version of the custom attribute definition, which is used for strongly consistent<br>reads to guarantee that you receive the most up-to-date data. When included in the request,<br>Square returns the specified version or a higher version if one exists. If the specified version<br>is higher than the current version, Square returns a `BAD_REQUEST` error.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15645,7 +16143,10 @@ Only the definition owner can update a custom attribute definition.
 **Sync**
 
 ```python
-result = client.location_custom_attributes.with_raw_response.update_location_custom_attribute_definition(key, body)
+result = client.location_custom_attributes.with_raw_response.update_location_custom_attribute_definition(
+    "some example string",
+    UpdateLocationCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition()),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateLocationCustomAttributeDefinitionResponse
@@ -15657,7 +16158,8 @@ match result:
 
 ```python
 result = await async_client.location_custom_attributes.with_raw_response.update_location_custom_attribute_definition(
-    key, body
+    "some example string",
+    UpdateLocationCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition()),
 )
 match result:
     case Success(payload=payload):
@@ -15678,7 +16180,7 @@ match result:
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to update. |
 | <code>body</code> | <code>[UpdateLocationCustomAttributeDefinitionRequest](square/models/update_location_custom_attribute_definition_request.py) \| [UpdateLocationCustomAttributeDefinitionRequestDict](square/models/update_location_custom_attribute_definition_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15731,7 +16233,11 @@ must be `VISIBILITY_READ_WRITE_VALUES`.
 **Sync**
 
 ```python
-result = client.location_custom_attributes.with_raw_response.upsert_location_custom_attribute(location_id, key, body)
+result = client.location_custom_attributes.with_raw_response.upsert_location_custom_attribute(
+    "some example string",
+    "some example string",
+    UpsertLocationCustomAttributeRequest(custom_attribute=CustomAttribute()),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpsertLocationCustomAttributeResponse
@@ -15743,7 +16249,9 @@ match result:
 
 ```python
 result = await async_client.location_custom_attributes.with_raw_response.upsert_location_custom_attribute(
-    location_id, key, body
+    "some example string",
+    "some example string",
+    UpsertLocationCustomAttributeRequest(custom_attribute=CustomAttribute()),
 )
 match result:
     case Success(payload=payload):
@@ -15765,7 +16273,7 @@ match result:
 | <code>location_id</code> | <code>str</code> | The ID of the target [location](entity:Location). |
 | <code>key</code> | <code>str</code> | The key of the custom attribute to create or update. This key must match the `key` of a<br>custom attribute definition in the Square seller account. If the requesting application is not<br>the definition owner, you must use the qualified key. |
 | <code>body</code> | <code>[UpsertLocationCustomAttributeRequest](square/models/upsert_location_custom_attribute_request.py) \| [UpsertLocationCustomAttributeRequestDict](square/models/upsert_location_custom_attribute_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15823,7 +16331,7 @@ each location has a sensible and unique name.
 **Sync**
 
 ```python
-result = client.locations.with_raw_response.create_location(body)
+result = client.locations.with_raw_response.create_location(CreateLocationRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateLocationResponse
@@ -15834,7 +16342,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.locations.with_raw_response.create_location(body)
+result = await async_client.locations.with_raw_response.create_location(CreateLocationRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateLocationResponse
@@ -15853,7 +16361,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateLocationRequest](square/models/create_location_request.py) \| [CreateLocationRequestDict](square/models/create_location_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15931,7 +16439,7 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -15980,7 +16488,7 @@ as the location ID to retrieve details of the [main location](https://developer.
 **Sync**
 
 ```python
-result = client.locations.with_raw_response.retrieve_location(location_id)
+result = client.locations.with_raw_response.retrieve_location("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveLocationResponse
@@ -15991,7 +16499,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.locations.with_raw_response.retrieve_location(location_id)
+result = await async_client.locations.with_raw_response.retrieve_location("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveLocationResponse
@@ -16010,7 +16518,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | The ID of the location to retrieve. Specify the string<br>"main" to return the main location. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16058,7 +16566,7 @@ Updates a [location](https://developer.squareup.com/docs/locations-api).
 **Sync**
 
 ```python
-result = client.locations.with_raw_response.update_location(location_id, body)
+result = client.locations.with_raw_response.update_location("some example string", UpdateLocationRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateLocationResponse
@@ -16069,7 +16577,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.locations.with_raw_response.update_location(location_id, body)
+result = await async_client.locations.with_raw_response.update_location("some example string", UpdateLocationRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateLocationResponse
@@ -16089,7 +16597,7 @@ match result:
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | The ID of the location to update. |
 | <code>body</code> | <code>[UpdateLocationRequest](square/models/update_location_request.py) \| [UpdateLocationRequestDict](square/models/update_location_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16154,7 +16662,14 @@ to compute the points earned from the base loyalty program. For information abou
 **Sync**
 
 ```python
-result = client.loyalty.with_raw_response.accumulate_loyalty_points(account_id, body)
+result = client.loyalty.with_raw_response.accumulate_loyalty_points(
+    "some example string",
+    AccumulateLoyaltyPointsRequest(
+        accumulate_points=LoyaltyEventAccumulatePoints(),
+        idempotency_key="some example string",
+        location_id="some example string",
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AccumulateLoyaltyPointsResponse
@@ -16165,7 +16680,14 @@ match result:
 **Async**
 
 ```python
-result = await async_client.loyalty.with_raw_response.accumulate_loyalty_points(account_id, body)
+result = await async_client.loyalty.with_raw_response.accumulate_loyalty_points(
+    "some example string",
+    AccumulateLoyaltyPointsRequest(
+        accumulate_points=LoyaltyEventAccumulatePoints(),
+        idempotency_key="some example string",
+        location_id="some example string",
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AccumulateLoyaltyPointsResponse
@@ -16185,7 +16707,7 @@ match result:
 | --- | --- | --- |
 | <code>account_id</code> | <code>str</code> | The ID of the target [loyalty account](entity:LoyaltyAccount). |
 | <code>body</code> | <code>[AccumulateLoyaltyPointsRequest](square/models/accumulate_loyalty_points_request.py) \| [AccumulateLoyaltyPointsRequestDict](square/models/accumulate_loyalty_points_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16237,7 +16759,10 @@ to add points when a buyer pays for the purchase.
 **Sync**
 
 ```python
-result = client.loyalty.with_raw_response.adjust_loyalty_points(account_id, body)
+result = client.loyalty.with_raw_response.adjust_loyalty_points(
+    "some example string",
+    AdjustLoyaltyPointsRequest(idempotency_key="some example string", adjust_points=LoyaltyEventAdjustPoints(points=1)),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdjustLoyaltyPointsResponse
@@ -16248,7 +16773,10 @@ match result:
 **Async**
 
 ```python
-result = await async_client.loyalty.with_raw_response.adjust_loyalty_points(account_id, body)
+result = await async_client.loyalty.with_raw_response.adjust_loyalty_points(
+    "some example string",
+    AdjustLoyaltyPointsRequest(idempotency_key="some example string", adjust_points=LoyaltyEventAdjustPoints(points=1)),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type AdjustLoyaltyPointsResponse
@@ -16268,7 +16796,7 @@ match result:
 | --- | --- | --- |
 | <code>account_id</code> | <code>str</code> | The ID of the target [loyalty account](entity:LoyaltyAccount). |
 | <code>body</code> | <code>[AdjustLoyaltyPointsRequest](square/models/adjust_loyalty_points_request.py) \| [AdjustLoyaltyPointsRequestDict](square/models/adjust_loyalty_points_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16330,7 +16858,9 @@ to calculate whether the purchase also qualifies for promotion points. For more 
 **Sync**
 
 ```python
-result = client.loyalty.with_raw_response.calculate_loyalty_points(program_id, body)
+result = client.loyalty.with_raw_response.calculate_loyalty_points(
+    "some example string", CalculateLoyaltyPointsRequest()
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CalculateLoyaltyPointsResponse
@@ -16341,7 +16871,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.loyalty.with_raw_response.calculate_loyalty_points(program_id, body)
+result = await async_client.loyalty.with_raw_response.calculate_loyalty_points(
+    "some example string", CalculateLoyaltyPointsRequest()
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CalculateLoyaltyPointsResponse
@@ -16361,7 +16893,7 @@ match result:
 | --- | --- | --- |
 | <code>program_id</code> | <code>str</code> | The ID of the [loyalty program](entity:LoyaltyProgram), which defines the rules for accruing points. |
 | <code>body</code> | <code>[CalculateLoyaltyPointsRequest](square/models/calculate_loyalty_points_request.py) \| [CalculateLoyaltyPointsRequestDict](square/models/calculate_loyalty_points_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16414,7 +16946,7 @@ This endpoint sets the loyalty promotion to the `CANCELED` state
 **Sync**
 
 ```python
-result = client.loyalty.with_raw_response.cancel_loyalty_promotion(promotion_id, program_id)
+result = client.loyalty.with_raw_response.cancel_loyalty_promotion("some example string", "some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CancelLoyaltyPromotionResponse
@@ -16425,7 +16957,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.loyalty.with_raw_response.cancel_loyalty_promotion(promotion_id, program_id)
+result = await async_client.loyalty.with_raw_response.cancel_loyalty_promotion(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CancelLoyaltyPromotionResponse
@@ -16445,7 +16979,7 @@ match result:
 | --- | --- | --- |
 | <code>promotion_id</code> | <code>str</code> | The ID of the [loyalty promotion](entity:LoyaltyPromotion) to cancel. You can cancel a<br>promotion that has an `ACTIVE` or `SCHEDULED` status. |
 | <code>program_id</code> | <code>str</code> | The ID of the base [loyalty program](entity:LoyaltyProgram). |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16493,7 +17027,11 @@ Creates a loyalty account. To create a loyalty account, you must provide the `pr
 **Sync**
 
 ```python
-result = client.loyalty.with_raw_response.create_loyalty_account(body)
+result = client.loyalty.with_raw_response.create_loyalty_account(
+    CreateLoyaltyAccountRequest(
+        loyalty_account=LoyaltyAccount(program_id="some example string"), idempotency_key="some example string"
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateLoyaltyAccountResponse
@@ -16504,7 +17042,11 @@ match result:
 **Async**
 
 ```python
-result = await async_client.loyalty.with_raw_response.create_loyalty_account(body)
+result = await async_client.loyalty.with_raw_response.create_loyalty_account(
+    CreateLoyaltyAccountRequest(
+        loyalty_account=LoyaltyAccount(program_id="some example string"), idempotency_key="some example string"
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateLoyaltyAccountResponse
@@ -16523,7 +17065,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateLoyaltyAccountRequest](square/models/create_loyalty_account_request.py) \| [CreateLoyaltyAccountRequestDict](square/models/create_loyalty_account_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16576,7 +17118,17 @@ This endpoint sets the loyalty promotion to the `ACTIVE` or `SCHEDULED` status, 
 **Sync**
 
 ```python
-result = client.loyalty.with_raw_response.create_loyalty_promotion(program_id, body)
+result = client.loyalty.with_raw_response.create_loyalty_promotion(
+    "some example string",
+    CreateLoyaltyPromotionRequest(
+        loyalty_promotion=LoyaltyPromotion(
+            name="some example string",
+            incentive=LoyaltyPromotionIncentive(type_=LoyaltyPromotionIncentiveType.POINTS_MULTIPLIER),
+            available_time=LoyaltyPromotionAvailableTimeData(time_periods=["some example string"]),
+        ),
+        idempotency_key="some example string",
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateLoyaltyPromotionResponse
@@ -16587,7 +17139,17 @@ match result:
 **Async**
 
 ```python
-result = await async_client.loyalty.with_raw_response.create_loyalty_promotion(program_id, body)
+result = await async_client.loyalty.with_raw_response.create_loyalty_promotion(
+    "some example string",
+    CreateLoyaltyPromotionRequest(
+        loyalty_promotion=LoyaltyPromotion(
+            name="some example string",
+            incentive=LoyaltyPromotionIncentive(type_=LoyaltyPromotionIncentiveType.POINTS_MULTIPLIER),
+            available_time=LoyaltyPromotionAvailableTimeData(time_periods=["some example string"]),
+        ),
+        idempotency_key="some example string",
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateLoyaltyPromotionResponse
@@ -16607,7 +17169,7 @@ match result:
 | --- | --- | --- |
 | <code>program_id</code> | <code>str</code> | The ID of the [loyalty program](entity:LoyaltyProgram) to associate with the promotion.<br>To get the program ID, call [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram)<br>using the `main` keyword. |
 | <code>body</code> | <code>[CreateLoyaltyPromotionRequest](square/models/create_loyalty_promotion_request.py) \| [CreateLoyaltyPromotionRequestDict](square/models/create_loyalty_promotion_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16662,7 +17224,12 @@ not available for the buyer to redeem another reward.
 **Sync**
 
 ```python
-result = client.loyalty.with_raw_response.create_loyalty_reward(body)
+result = client.loyalty.with_raw_response.create_loyalty_reward(
+    CreateLoyaltyRewardRequest(
+        reward=LoyaltyReward(loyalty_account_id="some example string", reward_tier_id="some example string"),
+        idempotency_key="some example string",
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateLoyaltyRewardResponse
@@ -16673,7 +17240,12 @@ match result:
 **Async**
 
 ```python
-result = await async_client.loyalty.with_raw_response.create_loyalty_reward(body)
+result = await async_client.loyalty.with_raw_response.create_loyalty_reward(
+    CreateLoyaltyRewardRequest(
+        reward=LoyaltyReward(loyalty_account_id="some example string", reward_tier_id="some example string"),
+        idempotency_key="some example string",
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateLoyaltyRewardResponse
@@ -16692,7 +17264,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateLoyaltyRewardRequest](square/models/create_loyalty_reward_request.py) \| [CreateLoyaltyRewardRequestDict](square/models/create_loyalty_reward_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16748,7 +17320,7 @@ You cannot delete a reward that has reached the terminal state (REDEEMED).
 **Sync**
 
 ```python
-result = client.loyalty.with_raw_response.delete_loyalty_reward(reward_id)
+result = client.loyalty.with_raw_response.delete_loyalty_reward("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteLoyaltyRewardResponse
@@ -16759,7 +17331,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.loyalty.with_raw_response.delete_loyalty_reward(reward_id)
+result = await async_client.loyalty.with_raw_response.delete_loyalty_reward("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteLoyaltyRewardResponse
@@ -16778,7 +17350,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>reward_id</code> | <code>str</code> | The ID of the [loyalty reward](entity:LoyaltyReward) to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16858,7 +17430,7 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16907,7 +17479,7 @@ Results are sorted by the `created_at` date in descending order (newest to oldes
 **Sync**
 
 ```python
-result = client.loyalty.with_raw_response.list_loyalty_promotions(program_id)
+result = client.loyalty.with_raw_response.list_loyalty_promotions("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListLoyaltyPromotionsResponse
@@ -16918,7 +17490,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.loyalty.with_raw_response.list_loyalty_promotions(program_id)
+result = await async_client.loyalty.with_raw_response.list_loyalty_promotions("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListLoyaltyPromotionsResponse
@@ -16940,7 +17512,7 @@ match result:
 | <code>status</code> | <code>[LoyaltyPromotionStatusOrStr](square/models/enums/loyalty_promotion_status.py) \| None</code> | The status to filter the results by. If a status is provided, only loyalty promotions<br>with the specified status are returned. Otherwise, all loyalty promotions associated with<br>the loyalty program are returned.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint.<br>Provide this cursor to retrieve the next page of results for your original request.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response.<br>The minimum value is 1 and the maximum value is 30. The default value is 30.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -16998,7 +17570,10 @@ to the account.
 **Sync**
 
 ```python
-result = client.loyalty.with_raw_response.redeem_loyalty_reward(reward_id, body)
+result = client.loyalty.with_raw_response.redeem_loyalty_reward(
+    "some example string",
+    RedeemLoyaltyRewardRequest(idempotency_key="some example string", location_id="some example string"),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RedeemLoyaltyRewardResponse
@@ -17009,7 +17584,10 @@ match result:
 **Async**
 
 ```python
-result = await async_client.loyalty.with_raw_response.redeem_loyalty_reward(reward_id, body)
+result = await async_client.loyalty.with_raw_response.redeem_loyalty_reward(
+    "some example string",
+    RedeemLoyaltyRewardRequest(idempotency_key="some example string", location_id="some example string"),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RedeemLoyaltyRewardResponse
@@ -17029,7 +17607,7 @@ match result:
 | --- | --- | --- |
 | <code>reward_id</code> | <code>str</code> | The ID of the [loyalty reward](entity:LoyaltyReward) to redeem. |
 | <code>body</code> | <code>[RedeemLoyaltyRewardRequest](square/models/redeem_loyalty_reward_request.py) \| [RedeemLoyaltyRewardRequestDict](square/models/redeem_loyalty_reward_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17077,7 +17655,7 @@ Retrieves a loyalty account.
 **Sync**
 
 ```python
-result = client.loyalty.with_raw_response.retrieve_loyalty_account(account_id)
+result = client.loyalty.with_raw_response.retrieve_loyalty_account("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveLoyaltyAccountResponse
@@ -17088,7 +17666,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.loyalty.with_raw_response.retrieve_loyalty_account(account_id)
+result = await async_client.loyalty.with_raw_response.retrieve_loyalty_account("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveLoyaltyAccountResponse
@@ -17107,7 +17685,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>account_id</code> | <code>str</code> | The ID of the [loyalty account](entity:LoyaltyAccount) to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17157,7 +17735,7 @@ Loyalty programs define how buyers can earn points and redeem points for rewards
 **Sync**
 
 ```python
-result = client.loyalty.with_raw_response.retrieve_loyalty_program(program_id)
+result = client.loyalty.with_raw_response.retrieve_loyalty_program("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveLoyaltyProgramResponse
@@ -17168,7 +17746,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.loyalty.with_raw_response.retrieve_loyalty_program(program_id)
+result = await async_client.loyalty.with_raw_response.retrieve_loyalty_program("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveLoyaltyProgramResponse
@@ -17187,7 +17765,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>program_id</code> | <code>str</code> | The ID of the loyalty program or the keyword `main`. Either value can be used to retrieve the single loyalty program that belongs to the seller. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17235,7 +17813,7 @@ Retrieves a loyalty promotion.
 **Sync**
 
 ```python
-result = client.loyalty.with_raw_response.retrieve_loyalty_promotion(promotion_id, program_id)
+result = client.loyalty.with_raw_response.retrieve_loyalty_promotion("some example string", "some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveLoyaltyPromotionResponse
@@ -17246,7 +17824,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.loyalty.with_raw_response.retrieve_loyalty_promotion(promotion_id, program_id)
+result = await async_client.loyalty.with_raw_response.retrieve_loyalty_promotion(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveLoyaltyPromotionResponse
@@ -17266,7 +17846,7 @@ match result:
 | --- | --- | --- |
 | <code>promotion_id</code> | <code>str</code> | The ID of the [loyalty promotion](entity:LoyaltyPromotion) to retrieve. |
 | <code>program_id</code> | <code>str</code> | The ID of the base [loyalty program](entity:LoyaltyProgram). To get the program ID,<br>call [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram) using the `main` keyword. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17314,7 +17894,7 @@ Retrieves a loyalty reward.
 **Sync**
 
 ```python
-result = client.loyalty.with_raw_response.retrieve_loyalty_reward(reward_id)
+result = client.loyalty.with_raw_response.retrieve_loyalty_reward("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveLoyaltyRewardResponse
@@ -17325,7 +17905,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.loyalty.with_raw_response.retrieve_loyalty_reward(reward_id)
+result = await async_client.loyalty.with_raw_response.retrieve_loyalty_reward("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveLoyaltyRewardResponse
@@ -17344,7 +17924,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>reward_id</code> | <code>str</code> | The ID of the [loyalty reward](entity:LoyaltyReward) to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17396,7 +17976,7 @@ Search results are sorted by `created_at` in ascending order.
 **Sync**
 
 ```python
-result = client.loyalty.with_raw_response.search_loyalty_accounts(body)
+result = client.loyalty.with_raw_response.search_loyalty_accounts(SearchLoyaltyAccountsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchLoyaltyAccountsResponse
@@ -17407,7 +17987,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.loyalty.with_raw_response.search_loyalty_accounts(body)
+result = await async_client.loyalty.with_raw_response.search_loyalty_accounts(SearchLoyaltyAccountsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchLoyaltyAccountsResponse
@@ -17426,7 +18006,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchLoyaltyAccountsRequest](square/models/search_loyalty_accounts_request.py) \| [SearchLoyaltyAccountsRequestDict](square/models/search_loyalty_accounts_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17481,7 +18061,7 @@ Search results are sorted by `created_at` in descending order.
 **Sync**
 
 ```python
-result = client.loyalty.with_raw_response.search_loyalty_events(body)
+result = client.loyalty.with_raw_response.search_loyalty_events(SearchLoyaltyEventsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchLoyaltyEventsResponse
@@ -17492,7 +18072,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.loyalty.with_raw_response.search_loyalty_events(body)
+result = await async_client.loyalty.with_raw_response.search_loyalty_events(SearchLoyaltyEventsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchLoyaltyEventsResponse
@@ -17511,7 +18091,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchLoyaltyEventsRequest](square/models/search_loyalty_events_request.py) \| [SearchLoyaltyEventsRequestDict](square/models/search_loyalty_events_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17565,7 +18145,7 @@ Search results are sorted by `updated_at` in descending order.
 **Sync**
 
 ```python
-result = client.loyalty.with_raw_response.search_loyalty_rewards(body)
+result = client.loyalty.with_raw_response.search_loyalty_rewards(SearchLoyaltyRewardsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchLoyaltyRewardsResponse
@@ -17576,7 +18156,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.loyalty.with_raw_response.search_loyalty_rewards(body)
+result = await async_client.loyalty.with_raw_response.search_loyalty_rewards(SearchLoyaltyRewardsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchLoyaltyRewardsResponse
@@ -17595,7 +18175,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchLoyaltyRewardsRequest](square/models/search_loyalty_rewards_request.py) \| [SearchLoyaltyRewardsRequestDict](square/models/search_loyalty_rewards_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17649,7 +18229,11 @@ To delete a custom attribute owned by another application, the `visibility` sett
 **Sync**
 
 ```python
-result = client.merchant_custom_attributes.with_raw_response.bulk_delete_merchant_custom_attributes(body)
+result = client.merchant_custom_attributes.with_raw_response.bulk_delete_merchant_custom_attributes(
+    BulkDeleteMerchantCustomAttributesRequest(
+        values={"key": BulkDeleteMerchantCustomAttributesRequestMerchantCustomAttributeDeleteRequest()}
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkDeleteMerchantCustomAttributesResponse
@@ -17660,7 +18244,11 @@ match result:
 **Async**
 
 ```python
-result = await async_client.merchant_custom_attributes.with_raw_response.bulk_delete_merchant_custom_attributes(body)
+result = await async_client.merchant_custom_attributes.with_raw_response.bulk_delete_merchant_custom_attributes(
+    BulkDeleteMerchantCustomAttributesRequest(
+        values={"key": BulkDeleteMerchantCustomAttributesRequestMerchantCustomAttributeDeleteRequest()}
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkDeleteMerchantCustomAttributesResponse
@@ -17679,7 +18267,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkDeleteMerchantCustomAttributesRequest](square/models/bulk_delete_merchant_custom_attributes_request.py) \| [BulkDeleteMerchantCustomAttributesRequestDict](square/models/bulk_delete_merchant_custom_attributes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17736,7 +18324,15 @@ must be `VISIBILITY_READ_WRITE_VALUES`.
 **Sync**
 
 ```python
-result = client.merchant_custom_attributes.with_raw_response.bulk_upsert_merchant_custom_attributes(body)
+result = client.merchant_custom_attributes.with_raw_response.bulk_upsert_merchant_custom_attributes(
+    BulkUpsertMerchantCustomAttributesRequest(
+        values={
+            "key": BulkUpsertMerchantCustomAttributesRequestMerchantCustomAttributeUpsertRequest(
+                merchant_id="some example string", custom_attribute=CustomAttribute()
+            ),
+        },
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkUpsertMerchantCustomAttributesResponse
@@ -17747,7 +18343,15 @@ match result:
 **Async**
 
 ```python
-result = await async_client.merchant_custom_attributes.with_raw_response.bulk_upsert_merchant_custom_attributes(body)
+result = await async_client.merchant_custom_attributes.with_raw_response.bulk_upsert_merchant_custom_attributes(
+    BulkUpsertMerchantCustomAttributesRequest(
+        values={
+            "key": BulkUpsertMerchantCustomAttributesRequestMerchantCustomAttributeUpsertRequest(
+                merchant_id="some example string", custom_attribute=CustomAttribute()
+            ),
+        },
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkUpsertMerchantCustomAttributesResponse
@@ -17766,7 +18370,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkUpsertMerchantCustomAttributesRequest](square/models/bulk_upsert_merchant_custom_attributes_request.py) \| [BulkUpsertMerchantCustomAttributesRequestDict](square/models/bulk_upsert_merchant_custom_attributes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17820,7 +18424,9 @@ to set the custom attribute for a merchant.
 **Sync**
 
 ```python
-result = client.merchant_custom_attributes.with_raw_response.create_merchant_custom_attribute_definition(body)
+result = client.merchant_custom_attributes.with_raw_response.create_merchant_custom_attribute_definition(
+    CreateMerchantCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateMerchantCustomAttributeDefinitionResponse
@@ -17832,7 +18438,7 @@ match result:
 
 ```python
 result = await async_client.merchant_custom_attributes.with_raw_response.create_merchant_custom_attribute_definition(
-    body
+    CreateMerchantCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition())
 )
 match result:
     case Success(payload=payload):
@@ -17852,7 +18458,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateMerchantCustomAttributeDefinitionRequest](square/models/create_merchant_custom_attribute_definition_request.py) \| [CreateMerchantCustomAttributeDefinitionRequestDict](square/models/create_merchant_custom_attribute_definition_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17902,7 +18508,9 @@ To delete a custom attribute owned by another application, the `visibility` sett
 **Sync**
 
 ```python
-result = client.merchant_custom_attributes.with_raw_response.delete_merchant_custom_attribute(merchant_id, key)
+result = client.merchant_custom_attributes.with_raw_response.delete_merchant_custom_attribute(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteMerchantCustomAttributeResponse
@@ -17914,7 +18522,7 @@ match result:
 
 ```python
 result = await async_client.merchant_custom_attributes.with_raw_response.delete_merchant_custom_attribute(
-    merchant_id, key
+    "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -17935,7 +18543,7 @@ match result:
 | --- | --- | --- |
 | <code>merchant_id</code> | <code>str</code> | The ID of the target [merchant](entity:Merchant). |
 | <code>key</code> | <code>str</code> | The key of the custom attribute to delete. This key must match the `key` of a custom<br>attribute definition in the Square seller account. If the requesting application is not the<br>definition owner, you must use the qualified key. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -17986,7 +18594,9 @@ Only the definition owner can delete a custom attribute definition.
 **Sync**
 
 ```python
-result = client.merchant_custom_attributes.with_raw_response.delete_merchant_custom_attribute_definition(key)
+result = client.merchant_custom_attributes.with_raw_response.delete_merchant_custom_attribute_definition(
+    "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteMerchantCustomAttributeDefinitionResponse
@@ -17998,7 +18608,7 @@ match result:
 
 ```python
 result = await async_client.merchant_custom_attributes.with_raw_response.delete_merchant_custom_attribute_definition(
-    key
+    "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -18018,7 +18628,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18101,7 +18711,7 @@ match result:
 | <code>visibility_filter</code> | <code>[VisibilityFilterOrStr](square/models/enums/visibility_filter.py) \| None</code> | Filters the `CustomAttributeDefinition` results by their `visibility` values.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response. This limit is advisory.<br>The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100.<br>The default value is 20. For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint.<br>Provide this cursor to retrieve the next page of results for your original request.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18154,7 +18764,7 @@ and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 **Sync**
 
 ```python
-result = client.merchant_custom_attributes.with_raw_response.list_merchant_custom_attributes(merchant_id)
+result = client.merchant_custom_attributes.with_raw_response.list_merchant_custom_attributes("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListMerchantCustomAttributesResponse
@@ -18165,7 +18775,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.merchant_custom_attributes.with_raw_response.list_merchant_custom_attributes(merchant_id)
+result = await async_client.merchant_custom_attributes.with_raw_response.list_merchant_custom_attributes(
+    "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListMerchantCustomAttributesResponse
@@ -18188,7 +18800,7 @@ match result:
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response. This limit is advisory.<br>The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100.<br>The default value is 20. For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint.<br>Provide this cursor to retrieve the next page of results for your original request. For more<br>information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>with_definitions</code> | <code>bool \| None</code> | Indicates whether to return the [custom attribute definition](entity:CustomAttributeDefinition) in the `definition` field of each<br>custom attribute. Set this parameter to `true` to get the name and description of each custom<br>attribute, information about the data type, or other definition details. The default value is `false`.<br>**Default**: <code>False</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18240,7 +18852,9 @@ To retrieve a custom attribute owned by another application, the `visibility` se
 **Sync**
 
 ```python
-result = client.merchant_custom_attributes.with_raw_response.retrieve_merchant_custom_attribute(merchant_id, key)
+result = client.merchant_custom_attributes.with_raw_response.retrieve_merchant_custom_attribute(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveMerchantCustomAttributeResponse
@@ -18252,7 +18866,7 @@ match result:
 
 ```python
 result = await async_client.merchant_custom_attributes.with_raw_response.retrieve_merchant_custom_attribute(
-    merchant_id, key
+    "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -18275,7 +18889,7 @@ match result:
 | <code>key</code> | <code>str</code> | The key of the custom attribute to retrieve. This key must match the `key` of a custom<br>attribute definition in the Square seller account. If the requesting application is not the<br>definition owner, you must use the qualified key. |
 | <code>with_definition</code> | <code>bool \| None</code> | Indicates whether to return the [custom attribute definition](entity:CustomAttributeDefinition) in the `definition` field of<br>the custom attribute. Set this parameter to `true` to get the name and description of the custom<br>attribute, information about the data type, or other definition details. The default value is `false`.<br>**Default**: <code>False</code> |
 | <code>version</code> | <code>int \| None</code> | The current version of the custom attribute, which is used for strongly consistent reads to<br>guarantee that you receive the most up-to-date data. When included in the request, Square<br>returns the specified version or a higher version if one exists. If the specified version is<br>higher than the current version, Square returns a `BAD_REQUEST` error.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18325,7 +18939,9 @@ setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 **Sync**
 
 ```python
-result = client.merchant_custom_attributes.with_raw_response.retrieve_merchant_custom_attribute_definition(key)
+result = client.merchant_custom_attributes.with_raw_response.retrieve_merchant_custom_attribute_definition(
+    "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveMerchantCustomAttributeDefinitionResponse
@@ -18337,7 +18953,7 @@ match result:
 
 ```python
 result = await async_client.merchant_custom_attributes.with_raw_response.retrieve_merchant_custom_attribute_definition(
-    key
+    "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -18358,7 +18974,7 @@ match result:
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to retrieve. If the requesting application<br>is not the definition owner, you must use the qualified key. |
 | <code>version</code> | <code>int \| None</code> | The current version of the custom attribute definition, which is used for strongly consistent<br>reads to guarantee that you receive the most up-to-date data. When included in the request,<br>Square returns the specified version or a higher version if one exists. If the specified version<br>is higher than the current version, Square returns a `BAD_REQUEST` error.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18409,7 +19025,10 @@ Only the definition owner can update a custom attribute definition.
 **Sync**
 
 ```python
-result = client.merchant_custom_attributes.with_raw_response.update_merchant_custom_attribute_definition(key, body)
+result = client.merchant_custom_attributes.with_raw_response.update_merchant_custom_attribute_definition(
+    "some example string",
+    UpdateMerchantCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition()),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateMerchantCustomAttributeDefinitionResponse
@@ -18421,7 +19040,8 @@ match result:
 
 ```python
 result = await async_client.merchant_custom_attributes.with_raw_response.update_merchant_custom_attribute_definition(
-    key, body
+    "some example string",
+    UpdateMerchantCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition()),
 )
 match result:
     case Success(payload=payload):
@@ -18442,7 +19062,7 @@ match result:
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to update. |
 | <code>body</code> | <code>[UpdateMerchantCustomAttributeDefinitionRequest](square/models/update_merchant_custom_attribute_definition_request.py) \| [UpdateMerchantCustomAttributeDefinitionRequestDict](square/models/update_merchant_custom_attribute_definition_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18495,7 +19115,11 @@ must be `VISIBILITY_READ_WRITE_VALUES`.
 **Sync**
 
 ```python
-result = client.merchant_custom_attributes.with_raw_response.upsert_merchant_custom_attribute(merchant_id, key, body)
+result = client.merchant_custom_attributes.with_raw_response.upsert_merchant_custom_attribute(
+    "some example string",
+    "some example string",
+    UpsertMerchantCustomAttributeRequest(custom_attribute=CustomAttribute()),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpsertMerchantCustomAttributeResponse
@@ -18507,7 +19131,9 @@ match result:
 
 ```python
 result = await async_client.merchant_custom_attributes.with_raw_response.upsert_merchant_custom_attribute(
-    merchant_id, key, body
+    "some example string",
+    "some example string",
+    UpsertMerchantCustomAttributeRequest(custom_attribute=CustomAttribute()),
 )
 match result:
     case Success(payload=payload):
@@ -18529,7 +19155,7 @@ match result:
 | <code>merchant_id</code> | <code>str</code> | The ID of the target [merchant](entity:Merchant). |
 | <code>key</code> | <code>str</code> | The key of the custom attribute to create or update. This key must match the `key` of a<br>custom attribute definition in the Square seller account. If the requesting application is not<br>the definition owner, you must use the qualified key. |
 | <code>body</code> | <code>[UpsertMerchantCustomAttributeRequest](square/models/upsert_merchant_custom_attribute_request.py) \| [UpsertMerchantCustomAttributeRequestDict](square/models/upsert_merchant_custom_attribute_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18620,7 +19246,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>cursor</code> | <code>int \| None</code> | The cursor generated by the previous response.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18668,7 +19294,7 @@ Retrieves the `Merchant` object for the given `merchant_id`.
 **Sync**
 
 ```python
-result = client.merchants.with_raw_response.retrieve_merchant(merchant_id)
+result = client.merchants.with_raw_response.retrieve_merchant("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveMerchantResponse
@@ -18679,7 +19305,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.merchants.with_raw_response.retrieve_merchant(merchant_id)
+result = await async_client.merchants.with_raw_response.retrieve_merchant("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveMerchantResponse
@@ -18698,7 +19324,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>merchant_id</code> | <code>str</code> | The ID of the merchant to retrieve. If the string "me" is supplied as the ID,<br>then retrieve the merchant that is currently accessible to this call. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18770,7 +19396,9 @@ Application clients should never interact directly with OAuth tokens.
 **Sync**
 
 ```python
-result = client.oauth.with_raw_response.obtain_token(body)
+result = client.oauth.with_raw_response.obtain_token(
+    ObtainTokenRequest(client_id="some example string", grant_type="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ObtainTokenResponse
@@ -18781,7 +19409,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.oauth.with_raw_response.obtain_token(body)
+result = await async_client.oauth.with_raw_response.obtain_token(
+    ObtainTokenRequest(client_id="some example string", grant_type="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ObtainTokenResponse
@@ -18800,7 +19430,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[ObtainTokenRequest](square/models/obtain_token_request.py) \| [ObtainTokenRequestDict](square/models/obtain_token_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18890,7 +19520,7 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -18951,7 +19581,7 @@ page for your application in the Developer Dashboard.
 **Sync**
 
 ```python
-result = client.oauth.with_raw_response.revoke_token(body)
+result = client.oauth.with_raw_response.revoke_token(RevokeTokenRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RevokeTokenResponse
@@ -18962,7 +19592,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.oauth.with_raw_response.revoke_token(body)
+result = await async_client.oauth.with_raw_response.revoke_token(RevokeTokenRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RevokeTokenResponse
@@ -18981,7 +19611,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[RevokeTokenRequest](square/models/revoke_token_request.py) \| [RevokeTokenRequestDict](square/models/revoke_token_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19046,7 +19676,11 @@ must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attribut
 **Sync**
 
 ```python
-result = client.order_custom_attributes.with_raw_response.bulk_delete_order_custom_attributes(body)
+result = client.order_custom_attributes.with_raw_response.bulk_delete_order_custom_attributes(
+    BulkDeleteOrderCustomAttributesRequest(
+        values={"key": BulkDeleteOrderCustomAttributesRequestDeleteCustomAttribute(order_id="some example string")}
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkDeleteOrderCustomAttributesResponse
@@ -19057,7 +19691,11 @@ match result:
 **Async**
 
 ```python
-result = await async_client.order_custom_attributes.with_raw_response.bulk_delete_order_custom_attributes(body)
+result = await async_client.order_custom_attributes.with_raw_response.bulk_delete_order_custom_attributes(
+    BulkDeleteOrderCustomAttributesRequest(
+        values={"key": BulkDeleteOrderCustomAttributesRequestDeleteCustomAttribute(order_id="some example string")}
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkDeleteOrderCustomAttributesResponse
@@ -19076,7 +19714,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkDeleteOrderCustomAttributesRequest](square/models/bulk_delete_order_custom_attributes_request.py) \| [BulkDeleteOrderCustomAttributesRequestDict](square/models/bulk_delete_order_custom_attributes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19137,7 +19775,15 @@ must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attribut
 **Sync**
 
 ```python
-result = client.order_custom_attributes.with_raw_response.bulk_upsert_order_custom_attributes(body)
+result = client.order_custom_attributes.with_raw_response.bulk_upsert_order_custom_attributes(
+    BulkUpsertOrderCustomAttributesRequest(
+        values={
+            "key": BulkUpsertOrderCustomAttributesRequestUpsertCustomAttribute(
+                custom_attribute=CustomAttribute(), order_id="some example string"
+            ),
+        },
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkUpsertOrderCustomAttributesResponse
@@ -19148,7 +19794,15 @@ match result:
 **Async**
 
 ```python
-result = await async_client.order_custom_attributes.with_raw_response.bulk_upsert_order_custom_attributes(body)
+result = await async_client.order_custom_attributes.with_raw_response.bulk_upsert_order_custom_attributes(
+    BulkUpsertOrderCustomAttributesRequest(
+        values={
+            "key": BulkUpsertOrderCustomAttributesRequestUpsertCustomAttribute(
+                custom_attribute=CustomAttribute(), order_id="some example string"
+            ),
+        },
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkUpsertOrderCustomAttributesResponse
@@ -19167,7 +19821,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkUpsertOrderCustomAttributesRequest](square/models/bulk_upsert_order_custom_attributes_request.py) \| [BulkUpsertOrderCustomAttributesRequestDict](square/models/bulk_upsert_order_custom_attributes_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19219,7 +19873,9 @@ in the Square seller account.
 **Sync**
 
 ```python
-result = client.order_custom_attributes.with_raw_response.create_order_custom_attribute_definition(body)
+result = client.order_custom_attributes.with_raw_response.create_order_custom_attribute_definition(
+    CreateOrderCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateOrderCustomAttributeDefinitionResponse
@@ -19230,7 +19886,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.order_custom_attributes.with_raw_response.create_order_custom_attribute_definition(body)
+result = await async_client.order_custom_attributes.with_raw_response.create_order_custom_attribute_definition(
+    CreateOrderCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateOrderCustomAttributeDefinitionResponse
@@ -19249,7 +19907,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateOrderCustomAttributeDefinitionRequest](square/models/create_order_custom_attribute_definition_request.py) \| [CreateOrderCustomAttributeDefinitionRequestDict](square/models/create_order_custom_attribute_definition_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19301,7 +19959,9 @@ To delete a custom attribute owned by another application, the `visibility` sett
 **Sync**
 
 ```python
-result = client.order_custom_attributes.with_raw_response.delete_order_custom_attribute(order_id, custom_attribute_key)
+result = client.order_custom_attributes.with_raw_response.delete_order_custom_attribute(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteOrderCustomAttributeResponse
@@ -19313,7 +19973,7 @@ match result:
 
 ```python
 result = await async_client.order_custom_attributes.with_raw_response.delete_order_custom_attribute(
-    order_id, custom_attribute_key
+    "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -19334,7 +19994,7 @@ match result:
 | --- | --- | --- |
 | <code>order_id</code> | <code>str</code> | The ID of the target [order](entity:Order). |
 | <code>custom_attribute_key</code> | <code>str</code> | The key of the custom attribute to delete.  This key must match the key of an<br>existing custom attribute definition. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19384,7 +20044,9 @@ Only the definition owner can delete a custom attribute definition.
 **Sync**
 
 ```python
-result = client.order_custom_attributes.with_raw_response.delete_order_custom_attribute_definition(key)
+result = client.order_custom_attributes.with_raw_response.delete_order_custom_attribute_definition(
+    "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteOrderCustomAttributeDefinitionResponse
@@ -19395,7 +20057,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.order_custom_attributes.with_raw_response.delete_order_custom_attribute_definition(key)
+result = await async_client.order_custom_attributes.with_raw_response.delete_order_custom_attribute_definition(
+    "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteOrderCustomAttributeDefinitionResponse
@@ -19414,7 +20078,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19499,7 +20163,7 @@ match result:
 | <code>visibility_filter</code> | <code>[VisibilityFilterOrStr](square/models/enums/visibility_filter.py) \| None</code> | Requests that all of the custom attributes be returned, or only those that are read-only or read-write.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint. <br>Provide this cursor to retrieve the next page of results for your original request. <br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response. This limit is advisory. <br>The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100. <br>The default value is 20.<br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19554,7 +20218,7 @@ and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 **Sync**
 
 ```python
-result = client.order_custom_attributes.with_raw_response.list_order_custom_attributes(order_id)
+result = client.order_custom_attributes.with_raw_response.list_order_custom_attributes("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListOrderCustomAttributesResponse
@@ -19565,7 +20229,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.order_custom_attributes.with_raw_response.list_order_custom_attributes(order_id)
+result = await async_client.order_custom_attributes.with_raw_response.list_order_custom_attributes(
+    "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListOrderCustomAttributesResponse
@@ -19588,7 +20254,7 @@ match result:
 | <code>cursor</code> | <code>str \| None</code> | The cursor returned in the paged response from the previous call to this endpoint. <br>Provide this cursor to retrieve the next page of results for your original request. <br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to return in a single paged response. This limit is advisory. <br>The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100. <br>The default value is 20.<br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).<br>**Default**: <code>None</code> |
 | <code>with_definitions</code> | <code>bool \| None</code> | Indicates whether to return the [custom attribute definition](entity:CustomAttributeDefinition) in the `definition` field of each<br>custom attribute. Set this parameter to `true` to get the name and description of each custom attribute, <br>information about the data type, or other definition details. The default value is `false`.<br>**Default**: <code>False</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19644,7 +20310,7 @@ also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
 
 ```python
 result = client.order_custom_attributes.with_raw_response.retrieve_order_custom_attribute(
-    order_id, custom_attribute_key
+    "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -19657,7 +20323,7 @@ match result:
 
 ```python
 result = await async_client.order_custom_attributes.with_raw_response.retrieve_order_custom_attribute(
-    order_id, custom_attribute_key
+    "some example string", "some example string"
 )
 match result:
     case Success(payload=payload):
@@ -19680,7 +20346,7 @@ match result:
 | <code>custom_attribute_key</code> | <code>str</code> | The key of the custom attribute to retrieve.  This key must match the key of an<br>existing custom attribute definition. |
 | <code>version</code> | <code>int \| None</code> | To enable [optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency)<br>control, include this optional field and specify the current version of the custom attribute.<br>**Default**: <code>None</code> |
 | <code>with_definition</code> | <code>bool \| None</code> | Indicates whether to return the [custom attribute definition](entity:CustomAttributeDefinition) in the `definition` field of each <br>custom attribute. Set this parameter to `true` to get the name and description of each custom attribute, <br>information about the data type, or other definition details. The default value is `false`.<br>**Default**: <code>False</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19732,7 +20398,9 @@ setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note t
 **Sync**
 
 ```python
-result = client.order_custom_attributes.with_raw_response.retrieve_order_custom_attribute_definition(key)
+result = client.order_custom_attributes.with_raw_response.retrieve_order_custom_attribute_definition(
+    "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveOrderCustomAttributeDefinitionResponse
@@ -19743,7 +20411,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.order_custom_attributes.with_raw_response.retrieve_order_custom_attribute_definition(key)
+result = await async_client.order_custom_attributes.with_raw_response.retrieve_order_custom_attribute_definition(
+    "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveOrderCustomAttributeDefinitionResponse
@@ -19763,7 +20433,7 @@ match result:
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to retrieve. |
 | <code>version</code> | <code>int \| None</code> | To enable [optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency)<br>control, include this optional field and specify the current version of the custom attribute.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19813,7 +20483,10 @@ Only the definition owner can update a custom attribute definition. Note that se
 **Sync**
 
 ```python
-result = client.order_custom_attributes.with_raw_response.update_order_custom_attribute_definition(key, body)
+result = client.order_custom_attributes.with_raw_response.update_order_custom_attribute_definition(
+    "some example string",
+    UpdateOrderCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition()),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateOrderCustomAttributeDefinitionResponse
@@ -19825,7 +20498,8 @@ match result:
 
 ```python
 result = await async_client.order_custom_attributes.with_raw_response.update_order_custom_attribute_definition(
-    key, body
+    "some example string",
+    UpdateOrderCustomAttributeDefinitionRequest(custom_attribute_definition=CustomAttributeDefinition()),
 )
 match result:
     case Success(payload=payload):
@@ -19846,7 +20520,7 @@ match result:
 | --- | --- | --- |
 | <code>key</code> | <code>str</code> | The key of the custom attribute definition to update. |
 | <code>body</code> | <code>[UpdateOrderCustomAttributeDefinitionRequest](square/models/update_order_custom_attribute_definition_request.py) \| [UpdateOrderCustomAttributeDefinitionRequestDict](square/models/update_order_custom_attribute_definition_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19903,7 +20577,7 @@ must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attribut
 
 ```python
 result = client.order_custom_attributes.with_raw_response.upsert_order_custom_attribute(
-    order_id, custom_attribute_key, body
+    "some example string", "some example string", UpsertOrderCustomAttributeRequest(custom_attribute=CustomAttribute())
 )
 match result:
     case Success(payload=payload):
@@ -19916,7 +20590,7 @@ match result:
 
 ```python
 result = await async_client.order_custom_attributes.with_raw_response.upsert_order_custom_attribute(
-    order_id, custom_attribute_key, body
+    "some example string", "some example string", UpsertOrderCustomAttributeRequest(custom_attribute=CustomAttribute())
 )
 match result:
     case Success(payload=payload):
@@ -19938,7 +20612,7 @@ match result:
 | <code>order_id</code> | <code>str</code> | The ID of the target [order](entity:Order). |
 | <code>custom_attribute_key</code> | <code>str</code> | The key of the custom attribute to create or update.  This key must match the key <br>of an existing custom attribute definition. |
 | <code>body</code> | <code>[UpsertOrderCustomAttributeRequest](square/models/upsert_order_custom_attribute_request.py) \| [UpsertOrderCustomAttributeRequestDict](square/models/upsert_order_custom_attribute_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -19992,7 +20666,9 @@ If a given order ID does not exist, the ID is ignored instead of generating an e
 **Sync**
 
 ```python
-result = client.orders.with_raw_response.batch_retrieve_orders(body)
+result = client.orders.with_raw_response.batch_retrieve_orders(
+    BatchRetrieveOrdersRequest(order_ids=["some example string"])
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BatchRetrieveOrdersResponse
@@ -20003,7 +20679,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.orders.with_raw_response.batch_retrieve_orders(body)
+result = await async_client.orders.with_raw_response.batch_retrieve_orders(
+    BatchRetrieveOrdersRequest(order_ids=["some example string"])
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BatchRetrieveOrdersResponse
@@ -20022,7 +20700,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BatchRetrieveOrdersRequest](square/models/batch_retrieve_orders_request.py) \| [BatchRetrieveOrdersRequestDict](square/models/batch_retrieve_orders_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20070,7 +20748,9 @@ Enables applications to preview order pricing without creating an order.
 **Sync**
 
 ```python
-result = client.orders.with_raw_response.calculate_order(body)
+result = client.orders.with_raw_response.calculate_order(
+    CalculateOrderRequest(order=Order(location_id="some example string"))
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CalculateOrderResponse
@@ -20081,7 +20761,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.orders.with_raw_response.calculate_order(body)
+result = await async_client.orders.with_raw_response.calculate_order(
+    CalculateOrderRequest(order=Order(location_id="some example string"))
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CalculateOrderResponse
@@ -20100,7 +20782,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CalculateOrderRequest](square/models/calculate_order_request.py) \| [CalculateOrderRequestDict](square/models/calculate_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20149,7 +20831,7 @@ only the core fields (such as line items, taxes, and discounts) copied from the 
 **Sync**
 
 ```python
-result = client.orders.with_raw_response.clone_order(body)
+result = client.orders.with_raw_response.clone_order(CloneOrderRequest(order_id="some example string"))
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CloneOrderResponse
@@ -20160,7 +20842,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.orders.with_raw_response.clone_order(body)
+result = await async_client.orders.with_raw_response.clone_order(CloneOrderRequest(order_id="some example string"))
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CloneOrderResponse
@@ -20179,7 +20861,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CloneOrderRequest](square/models/clone_order_request.py) \| [CloneOrderRequestDict](square/models/clone_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20233,7 +20915,7 @@ You can modify open orders using the [UpdateOrder](api-endpoint:Orders-UpdateOrd
 **Sync**
 
 ```python
-result = client.orders.with_raw_response.create_order(body)
+result = client.orders.with_raw_response.create_order(CreateOrderRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateOrderResponse
@@ -20244,7 +20926,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.orders.with_raw_response.create_order(body)
+result = await async_client.orders.with_raw_response.create_order(CreateOrderRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateOrderResponse
@@ -20263,7 +20945,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateOrderRequest](square/models/create_order_request.py) \| [CreateOrderRequestDict](square/models/create_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20324,7 +21006,9 @@ Using a delayed capture payment with `PayOrder` completes the approved payment.
 **Sync**
 
 ```python
-result = client.orders.with_raw_response.pay_order(order_id, body)
+result = client.orders.with_raw_response.pay_order(
+    "some example string", PayOrderRequest(idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type PayOrderResponse
@@ -20335,7 +21019,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.orders.with_raw_response.pay_order(order_id, body)
+result = await async_client.orders.with_raw_response.pay_order(
+    "some example string", PayOrderRequest(idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type PayOrderResponse
@@ -20355,7 +21041,7 @@ match result:
 | --- | --- | --- |
 | <code>order_id</code> | <code>str</code> | The ID of the order being paid. |
 | <code>body</code> | <code>[PayOrderRequest](square/models/pay_order_request.py) \| [PayOrderRequestDict](square/models/pay_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20403,7 +21089,7 @@ Retrieves an [Order](entity:Order) by ID.
 **Sync**
 
 ```python
-result = client.orders.with_raw_response.retrieve_order(order_id)
+result = client.orders.with_raw_response.retrieve_order("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveOrderResponse
@@ -20414,7 +21100,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.orders.with_raw_response.retrieve_order(order_id)
+result = await async_client.orders.with_raw_response.retrieve_order("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveOrderResponse
@@ -20433,7 +21119,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>order_id</code> | <code>str</code> | The ID of the order to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20497,7 +21183,7 @@ not the time it was subsequently transmitted to Square.
 **Sync**
 
 ```python
-result = client.orders.with_raw_response.search_orders(body)
+result = client.orders.with_raw_response.search_orders(SearchOrdersRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchOrdersResponse
@@ -20508,7 +21194,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.orders.with_raw_response.search_orders(body)
+result = await async_client.orders.with_raw_response.search_orders(SearchOrdersRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchOrdersResponse
@@ -20527,7 +21213,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchOrdersRequest](square/models/search_orders_request.py) \| [SearchOrdersRequestDict](square/models/search_orders_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20589,7 +21275,7 @@ To pay for an order, see
 **Sync**
 
 ```python
-result = client.orders.with_raw_response.update_order(order_id, body)
+result = client.orders.with_raw_response.update_order("some example string", UpdateOrderRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateOrderResponse
@@ -20600,7 +21286,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.orders.with_raw_response.update_order(order_id, body)
+result = await async_client.orders.with_raw_response.update_order("some example string", UpdateOrderRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateOrderResponse
@@ -20620,7 +21306,7 @@ match result:
 | --- | --- | --- |
 | <code>order_id</code> | <code>str</code> | The ID of the order to update. |
 | <code>body</code> | <code>[UpdateOrderRequest](square/models/update_order_request.py) \| [UpdateOrderRequestDict](square/models/update_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20673,7 +21359,7 @@ the APPROVED `status`.
 **Sync**
 
 ```python
-result = client.payments.with_raw_response.cancel_payment(payment_id)
+result = client.payments.with_raw_response.cancel_payment("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CancelPaymentResponse
@@ -20684,7 +21370,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.payments.with_raw_response.cancel_payment(payment_id)
+result = await async_client.payments.with_raw_response.cancel_payment("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CancelPaymentResponse
@@ -20703,7 +21389,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>payment_id</code> | <code>str</code> | The ID of the payment to cancel. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20761,7 +21447,9 @@ returns successfully.
 **Sync**
 
 ```python
-result = client.payments.with_raw_response.cancel_payment_by_idempotency_key(body)
+result = client.payments.with_raw_response.cancel_payment_by_idempotency_key(
+    CancelPaymentByIdempotencyKeyRequest(idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CancelPaymentByIdempotencyKeyResponse
@@ -20772,7 +21460,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.payments.with_raw_response.cancel_payment_by_idempotency_key(body)
+result = await async_client.payments.with_raw_response.cancel_payment_by_idempotency_key(
+    CancelPaymentByIdempotencyKeyRequest(idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CancelPaymentByIdempotencyKeyResponse
@@ -20791,7 +21481,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CancelPaymentByIdempotencyKeyRequest](square/models/cancel_payment_by_idempotency_key_request.py) \| [CancelPaymentByIdempotencyKeyRequestDict](square/models/cancel_payment_by_idempotency_key_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20842,7 +21532,7 @@ You can use this endpoint to complete a payment with the APPROVED `status`.
 **Sync**
 
 ```python
-result = client.payments.with_raw_response.complete_payment(payment_id, body)
+result = client.payments.with_raw_response.complete_payment("some example string", CompletePaymentRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CompletePaymentResponse
@@ -20853,7 +21543,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.payments.with_raw_response.complete_payment(payment_id, body)
+result = await async_client.payments.with_raw_response.complete_payment("some example string", CompletePaymentRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CompletePaymentResponse
@@ -20873,7 +21563,7 @@ match result:
 | --- | --- | --- |
 | <code>payment_id</code> | <code>str</code> | The unique ID identifying the payment to be completed. |
 | <code>body</code> | <code>[CompletePaymentRequest](square/models/complete_payment_request.py) \| [CompletePaymentRequestDict](square/models/complete_payment_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -20928,7 +21618,9 @@ The endpoint creates a
 **Sync**
 
 ```python
-result = client.payments.with_raw_response.create_payment(body)
+result = client.payments.with_raw_response.create_payment(
+    CreatePaymentRequest(source_id="some example string", idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreatePaymentResponse
@@ -20939,7 +21631,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.payments.with_raw_response.create_payment(body)
+result = await async_client.payments.with_raw_response.create_payment(
+    CreatePaymentRequest(source_id="some example string", idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreatePaymentResponse
@@ -20958,7 +21652,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreatePaymentRequest](square/models/create_payment_request.py) \| [CreatePaymentRequestDict](square/models/create_payment_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21006,7 +21700,7 @@ Retrieves details for a specific payment.
 **Sync**
 
 ```python
-result = client.payments.with_raw_response.get_payment(payment_id)
+result = client.payments.with_raw_response.get_payment("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetPaymentResponse
@@ -21017,7 +21711,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.payments.with_raw_response.get_payment(payment_id)
+result = await async_client.payments.with_raw_response.get_payment("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetPaymentResponse
@@ -21036,7 +21730,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>payment_id</code> | <code>str</code> | A unique ID for the desired payment. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21133,7 +21827,7 @@ match result:
 | <code>updated_at_begin_time</code> | <code>str \| None</code> | Indicates the start of the time range to retrieve payments for, in RFC 3339 format.  The<br>range is determined using the `updated_at` field for each Payment.<br>**Default**: <code>None</code> |
 | <code>updated_at_end_time</code> | <code>str \| None</code> | Indicates the end of the time range to retrieve payments for, in RFC 3339 format.  The<br>range is determined using the `updated_at` field for each Payment.<br>**Default**: <code>None</code> |
 | <code>sort_field</code> | <code>[ListPaymentsRequestSortFieldOrStr](square/models/enums/list_payments_request_sort_field.py) \| None</code> | The field used to sort results by. The default is `CREATED_AT`.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21182,7 +21876,9 @@ You can update the `amount_money` and `tip_money` using this endpoint.
 **Sync**
 
 ```python
-result = client.payments.with_raw_response.update_payment(payment_id, body)
+result = client.payments.with_raw_response.update_payment(
+    "some example string", UpdatePaymentRequest(idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdatePaymentResponse
@@ -21193,7 +21889,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.payments.with_raw_response.update_payment(payment_id, body)
+result = await async_client.payments.with_raw_response.update_payment(
+    "some example string", UpdatePaymentRequest(idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdatePaymentResponse
@@ -21213,7 +21911,7 @@ match result:
 | --- | --- | --- |
 | <code>payment_id</code> | <code>str</code> | The ID of the payment to update. |
 | <code>body</code> | <code>[UpdatePaymentRequest](square/models/update_payment_request.py) \| [UpdatePaymentRequestDict](square/models/update_payment_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21266,7 +21964,7 @@ To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
 **Sync**
 
 ```python
-result = client.payouts.with_raw_response.get_payout(payout_id)
+result = client.payouts.with_raw_response.get_payout("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetPayoutResponse
@@ -21277,7 +21975,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.payouts.with_raw_response.get_payout(payout_id)
+result = await async_client.payouts.with_raw_response.get_payout("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetPayoutResponse
@@ -21296,7 +21994,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>payout_id</code> | <code>str</code> | The ID of the payout to retrieve the information for. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21345,7 +22043,7 @@ To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
 **Sync**
 
 ```python
-result = client.payouts.with_raw_response.list_payout_entries(payout_id)
+result = client.payouts.with_raw_response.list_payout_entries("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListPayoutEntriesResponse
@@ -21356,7 +22054,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.payouts.with_raw_response.list_payout_entries(payout_id)
+result = await async_client.payouts.with_raw_response.list_payout_entries("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListPayoutEntriesResponse
@@ -21378,7 +22076,7 @@ match result:
 | <code>sort_order</code> | <code>[SortOrderOrStr](square/models/enums/sort_order.py) \| None</code> | The order in which payout entries are listed.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>If request parameters change between requests, subsequent results may contain duplicates or missing records.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to be returned in a single page.<br>It is possible to receive fewer results than the specified limit on a given page.<br>The default value of 100 is also the maximum allowed value. If the provided value is<br>greater than 100, it is ignored and the default value is used instead.<br>Default: `100`<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21464,7 +22162,7 @@ match result:
 | <code>sort_order</code> | <code>[SortOrderOrStr](square/models/enums/sort_order.py) \| None</code> | The order in which payouts are listed.<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>If request parameters change between requests, subsequent results may contain duplicates or missing records.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to be returned in a single page.<br>It is possible to receive fewer results than the specified limit on a given page.<br>The default value of 100 is also the maximum allowed value. If the provided value is<br>greater than 100, it is ignored and the default value is used instead.<br>Default: `100`<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21516,7 +22214,7 @@ Retrieves a specific refund using the `refund_id`.
 **Sync**
 
 ```python
-result = client.refunds.with_raw_response.get_payment_refund(refund_id)
+result = client.refunds.with_raw_response.get_payment_refund("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetPaymentRefundResponse
@@ -21527,7 +22225,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.refunds.with_raw_response.get_payment_refund(refund_id)
+result = await async_client.refunds.with_raw_response.get_payment_refund("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetPaymentRefundResponse
@@ -21546,7 +22244,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>refund_id</code> | <code>str</code> | The unique ID for the desired `PaymentRefund`. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21639,7 +22337,7 @@ match result:
 | <code>updated_at_begin_time</code> | <code>str \| None</code> | Indicates the start of the time range to retrieve each `PaymentRefund` for, in RFC 3339<br>format.  The range is determined using the `updated_at` field for each `PaymentRefund`.<br><br>Default: If omitted, the time range starts at `begin_time`.<br>**Default**: <code>None</code> |
 | <code>updated_at_end_time</code> | <code>str \| None</code> | Indicates the end of the time range to retrieve each `PaymentRefund` for, in RFC 3339<br>format.  The range is determined using the `updated_at` field for each `PaymentRefund`.<br><br>Default: The current time.<br>**Default**: <code>None</code> |
 | <code>sort_field</code> | <code>[ListPaymentRefundsRequestSortFieldOrStr](square/models/enums/list_payment_refunds_request_sort_field.py) \| None</code> | The field used to sort results by. The default is `CREATED_AT`.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21690,7 +22388,9 @@ refund of a cash or external payment. For more information, see
 **Sync**
 
 ```python
-result = client.refunds.with_raw_response.refund_payment(body)
+result = client.refunds.with_raw_response.refund_payment(
+    RefundPaymentRequest(idempotency_key="some example string", amount_money=Money())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RefundPaymentResponse
@@ -21701,7 +22401,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.refunds.with_raw_response.refund_payment(body)
+result = await async_client.refunds.with_raw_response.refund_payment(
+    RefundPaymentRequest(idempotency_key="some example string", amount_money=Money())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RefundPaymentResponse
@@ -21720,7 +22422,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[RefundPaymentRequest](square/models/refund_payment_request.py) \| [RefundPaymentRequestDict](square/models/refund_payment_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21803,7 +22505,7 @@ match result:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21860,7 +22562,7 @@ __Note:__ Square Online APIs are publicly available as part of an early access p
 **Sync**
 
 ```python
-result = client.snippets.with_raw_response.delete_snippet(site_id)
+result = client.snippets.with_raw_response.delete_snippet("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteSnippetResponse
@@ -21871,7 +22573,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.snippets.with_raw_response.delete_snippet(site_id)
+result = await async_client.snippets.with_raw_response.delete_snippet("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteSnippetResponse
@@ -21890,7 +22592,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>site_id</code> | <code>str</code> | The ID of the site that contains the snippet. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -21943,7 +22645,7 @@ __Note:__ Square Online APIs are publicly available as part of an early access p
 **Sync**
 
 ```python
-result = client.snippets.with_raw_response.retrieve_snippet(site_id)
+result = client.snippets.with_raw_response.retrieve_snippet("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveSnippetResponse
@@ -21954,7 +22656,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.snippets.with_raw_response.retrieve_snippet(site_id)
+result = await async_client.snippets.with_raw_response.retrieve_snippet("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveSnippetResponse
@@ -21973,7 +22675,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>site_id</code> | <code>str</code> | The ID of the site that contains the snippet. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22027,7 +22729,9 @@ __Note:__ Square Online APIs are publicly available as part of an early access p
 **Sync**
 
 ```python
-result = client.snippets.with_raw_response.upsert_snippet(site_id, body)
+result = client.snippets.with_raw_response.upsert_snippet(
+    "some example string", UpsertSnippetRequest(snippet=Snippet(content="some example string"))
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpsertSnippetResponse
@@ -22038,7 +22742,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.snippets.with_raw_response.upsert_snippet(site_id, body)
+result = await async_client.snippets.with_raw_response.upsert_snippet(
+    "some example string", UpsertSnippetRequest(snippet=Snippet(content="some example string"))
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpsertSnippetResponse
@@ -22058,7 +22764,7 @@ match result:
 | --- | --- | --- |
 | <code>site_id</code> | <code>str</code> | The ID of the site where you want to add or update the snippet. |
 | <code>body</code> | <code>[UpsertSnippetRequest](square/models/upsert_snippet_request.py) \| [UpsertSnippetRequestDict](square/models/upsert_snippet_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22111,7 +22817,13 @@ variation. For more information, see [Swap Subscription Plan Variations](https:/
 **Sync**
 
 ```python
-result = client.subscriptions.with_raw_response.bulk_swap_plan(body)
+result = client.subscriptions.with_raw_response.bulk_swap_plan(
+    BulkSwapPlanRequest(
+        new_plan_variation_id="some example string",
+        old_plan_variation_id="some example string",
+        location_id="some example string",
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkSwapPlanResponse
@@ -22122,7 +22834,13 @@ match result:
 **Async**
 
 ```python
-result = await async_client.subscriptions.with_raw_response.bulk_swap_plan(body)
+result = await async_client.subscriptions.with_raw_response.bulk_swap_plan(
+    BulkSwapPlanRequest(
+        new_plan_variation_id="some example string",
+        old_plan_variation_id="some example string",
+        location_id="some example string",
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkSwapPlanResponse
@@ -22141,7 +22859,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkSwapPlanRequest](square/models/bulk_swap_plan_request.py) \| [BulkSwapPlanRequestDict](square/models/bulk_swap_plan_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22191,7 +22909,7 @@ the subscription status changes from ACTIVE to CANCELED.
 **Sync**
 
 ```python
-result = client.subscriptions.with_raw_response.cancel_subscription(subscription_id)
+result = client.subscriptions.with_raw_response.cancel_subscription("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CancelSubscriptionResponse
@@ -22202,7 +22920,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.subscriptions.with_raw_response.cancel_subscription(subscription_id)
+result = await async_client.subscriptions.with_raw_response.cancel_subscription("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CancelSubscriptionResponse
@@ -22221,7 +22939,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | The ID of the subscription to cancel. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22270,7 +22988,9 @@ for a subscription.
 **Sync**
 
 ```python
-result = client.subscriptions.with_raw_response.change_billing_anchor_date(subscription_id, body)
+result = client.subscriptions.with_raw_response.change_billing_anchor_date(
+    "some example string", ChangeBillingAnchorDateRequest()
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChangeBillingAnchorDateResponse
@@ -22281,7 +23001,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.subscriptions.with_raw_response.change_billing_anchor_date(subscription_id, body)
+result = await async_client.subscriptions.with_raw_response.change_billing_anchor_date(
+    "some example string", ChangeBillingAnchorDateRequest()
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ChangeBillingAnchorDateResponse
@@ -22301,7 +23023,7 @@ match result:
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | The ID of the subscription to update the billing anchor date. |
 | <code>body</code> | <code>[ChangeBillingAnchorDateRequest](square/models/change_billing_anchor_date_request.py) \| [ChangeBillingAnchorDateRequestDict](square/models/change_billing_anchor_date_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22356,7 +23078,9 @@ For more information, see [Create a subscription](https://developer.squareup.com
 **Sync**
 
 ```python
-result = client.subscriptions.with_raw_response.create_subscription(body)
+result = client.subscriptions.with_raw_response.create_subscription(
+    CreateSubscriptionRequest(location_id="some example string", customer_id="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateSubscriptionResponse
@@ -22367,7 +23091,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.subscriptions.with_raw_response.create_subscription(body)
+result = await async_client.subscriptions.with_raw_response.create_subscription(
+    CreateSubscriptionRequest(location_id="some example string", customer_id="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateSubscriptionResponse
@@ -22386,7 +23112,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateSubscriptionRequest](square/models/create_subscription_request.py) \| [CreateSubscriptionRequestDict](square/models/create_subscription_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22434,7 +23160,7 @@ Deletes a scheduled action for a subscription.
 **Sync**
 
 ```python
-result = client.subscriptions.with_raw_response.delete_subscription_action(subscription_id, action_id)
+result = client.subscriptions.with_raw_response.delete_subscription_action("some example string", "some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteSubscriptionActionResponse
@@ -22445,7 +23171,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.subscriptions.with_raw_response.delete_subscription_action(subscription_id, action_id)
+result = await async_client.subscriptions.with_raw_response.delete_subscription_action(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteSubscriptionActionResponse
@@ -22465,7 +23193,7 @@ match result:
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | The ID of the subscription the targeted action is to act upon. |
 | <code>action_id</code> | <code>str</code> | The ID of the targeted action to be deleted. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22513,7 +23241,7 @@ Lists all [events](https://developer.squareup.com/docs/subscriptions-api/actions
 **Sync**
 
 ```python
-result = client.subscriptions.with_raw_response.list_subscription_events(subscription_id)
+result = client.subscriptions.with_raw_response.list_subscription_events("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListSubscriptionEventsResponse
@@ -22524,7 +23252,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.subscriptions.with_raw_response.list_subscription_events(subscription_id)
+result = await async_client.subscriptions.with_raw_response.list_subscription_events("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListSubscriptionEventsResponse
@@ -22545,7 +23273,7 @@ match result:
 | <code>subscription_id</code> | <code>str</code> | The ID of the subscription to retrieve the events for. |
 | <code>cursor</code> | <code>str \| None</code> | When the total number of resulting subscription events exceeds the limit of a paged response, <br>specify the cursor returned from a preceding response here to fetch the next set of results.<br>If the cursor is unset, the response contains the last page of the results.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The upper limit on the number of subscription events to return<br>in a paged response.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22593,7 +23321,7 @@ Schedules a `PAUSE` action to pause an active subscription.
 **Sync**
 
 ```python
-result = client.subscriptions.with_raw_response.pause_subscription(subscription_id, body)
+result = client.subscriptions.with_raw_response.pause_subscription("some example string", PauseSubscriptionRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type PauseSubscriptionResponse
@@ -22604,7 +23332,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.subscriptions.with_raw_response.pause_subscription(subscription_id, body)
+result = await async_client.subscriptions.with_raw_response.pause_subscription(
+    "some example string", PauseSubscriptionRequest()
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type PauseSubscriptionResponse
@@ -22624,7 +23354,7 @@ match result:
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | The ID of the subscription to pause. |
 | <code>body</code> | <code>[PauseSubscriptionRequest](square/models/pause_subscription_request.py) \| [PauseSubscriptionRequestDict](square/models/pause_subscription_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22672,7 +23402,7 @@ Schedules a `RESUME` action to resume a paused or a deactivated subscription.
 **Sync**
 
 ```python
-result = client.subscriptions.with_raw_response.resume_subscription(subscription_id, body)
+result = client.subscriptions.with_raw_response.resume_subscription("some example string", ResumeSubscriptionRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ResumeSubscriptionResponse
@@ -22683,7 +23413,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.subscriptions.with_raw_response.resume_subscription(subscription_id, body)
+result = await async_client.subscriptions.with_raw_response.resume_subscription(
+    "some example string", ResumeSubscriptionRequest()
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ResumeSubscriptionResponse
@@ -22703,7 +23435,7 @@ match result:
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | The ID of the subscription to resume. |
 | <code>body</code> | <code>[ResumeSubscriptionRequest](square/models/resume_subscription_request.py) \| [ResumeSubscriptionRequestDict](square/models/resume_subscription_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22751,7 +23483,7 @@ Retrieves a specific subscription.
 **Sync**
 
 ```python
-result = client.subscriptions.with_raw_response.retrieve_subscription(subscription_id)
+result = client.subscriptions.with_raw_response.retrieve_subscription("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveSubscriptionResponse
@@ -22762,7 +23494,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.subscriptions.with_raw_response.retrieve_subscription(subscription_id)
+result = await async_client.subscriptions.with_raw_response.retrieve_subscription("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveSubscriptionResponse
@@ -22782,7 +23514,7 @@ match result:
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | The ID of the subscription to retrieve. |
 | <code>include</code> | <code>str \| None</code> | A query parameter to specify related information to be included in the response. <br><br>The supported query parameter values are: <br><br>- `actions`: to include scheduled actions on the targeted subscription.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22843,7 +23575,7 @@ customer by subscription creation date.
 **Sync**
 
 ```python
-result = client.subscriptions.with_raw_response.search_subscriptions(body)
+result = client.subscriptions.with_raw_response.search_subscriptions(SearchSubscriptionsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchSubscriptionsResponse
@@ -22854,7 +23586,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.subscriptions.with_raw_response.search_subscriptions(body)
+result = await async_client.subscriptions.with_raw_response.search_subscriptions(SearchSubscriptionsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchSubscriptionsResponse
@@ -22873,7 +23605,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchSubscriptionsRequest](square/models/search_subscriptions_request.py) \| [SearchSubscriptionsRequestDict](square/models/search_subscriptions_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -22922,7 +23654,7 @@ For more information, see [Swap Subscription Plan Variations](https://developer.
 **Sync**
 
 ```python
-result = client.subscriptions.with_raw_response.swap_plan(subscription_id, body)
+result = client.subscriptions.with_raw_response.swap_plan("some example string", SwapPlanRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SwapPlanResponse
@@ -22933,7 +23665,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.subscriptions.with_raw_response.swap_plan(subscription_id, body)
+result = await async_client.subscriptions.with_raw_response.swap_plan("some example string", SwapPlanRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SwapPlanResponse
@@ -22953,7 +23685,7 @@ match result:
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | The ID of the subscription to swap the subscription plan for. |
 | <code>body</code> | <code>[SwapPlanRequest](square/models/swap_plan_request.py) \| [SwapPlanRequestDict](square/models/swap_plan_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23002,7 +23734,7 @@ To clear a field, set its value to `null`.
 **Sync**
 
 ```python
-result = client.subscriptions.with_raw_response.update_subscription(subscription_id, body)
+result = client.subscriptions.with_raw_response.update_subscription("some example string", UpdateSubscriptionRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateSubscriptionResponse
@@ -23013,7 +23745,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.subscriptions.with_raw_response.update_subscription(subscription_id, body)
+result = await async_client.subscriptions.with_raw_response.update_subscription(
+    "some example string", UpdateSubscriptionRequest()
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateSubscriptionResponse
@@ -23033,7 +23767,7 @@ match result:
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | The ID of the subscription to update. |
 | <code>body</code> | <code>[UpdateSubscriptionRequest](square/models/update_subscription_request.py) \| [UpdateSubscriptionRequestDict](square/models/update_subscription_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23090,7 +23824,9 @@ Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/t
 **Sync**
 
 ```python
-result = client.team.with_raw_response.bulk_create_team_members(body)
+result = client.team.with_raw_response.bulk_create_team_members(
+    BulkCreateTeamMembersRequest(team_members={"key": CreateTeamMemberRequest()})
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkCreateTeamMembersResponse
@@ -23101,7 +23837,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.team.with_raw_response.bulk_create_team_members(body)
+result = await async_client.team.with_raw_response.bulk_create_team_members(
+    BulkCreateTeamMembersRequest(team_members={"key": CreateTeamMemberRequest()})
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkCreateTeamMembersResponse
@@ -23120,7 +23858,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkCreateTeamMembersRequest](square/models/bulk_create_team_members_request.py) \| [BulkCreateTeamMembersRequestDict](square/models/bulk_create_team_members_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23172,7 +23910,9 @@ Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/t
 **Sync**
 
 ```python
-result = client.team.with_raw_response.bulk_update_team_members(body)
+result = client.team.with_raw_response.bulk_update_team_members(
+    BulkUpdateTeamMembersRequest(team_members={"key": UpdateTeamMemberRequest()})
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkUpdateTeamMembersResponse
@@ -23183,7 +23923,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.team.with_raw_response.bulk_update_team_members(body)
+result = await async_client.team.with_raw_response.bulk_update_team_members(
+    BulkUpdateTeamMembersRequest(team_members={"key": UpdateTeamMemberRequest()})
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkUpdateTeamMembersResponse
@@ -23202,7 +23944,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkUpdateTeamMembersRequest](square/models/bulk_update_team_members_request.py) \| [BulkUpdateTeamMembersRequestDict](square/models/bulk_update_team_members_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23251,7 +23993,7 @@ compensation is defined in a [job assignment](entity:JobAssignment) in a team me
 **Sync**
 
 ```python
-result = client.team.with_raw_response.create_job(body)
+result = client.team.with_raw_response.create_job(CreateJobRequest(job=Job(), idempotency_key="some example string"))
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateJobResponse
@@ -23262,7 +24004,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.team.with_raw_response.create_job(body)
+result = await async_client.team.with_raw_response.create_job(
+    CreateJobRequest(job=Job(), idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateJobResponse
@@ -23281,7 +24025,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateJobRequest](square/models/create_job_request.py) \| [CreateJobRequestDict](square/models/create_job_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23334,7 +24078,7 @@ Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/t
 **Sync**
 
 ```python
-result = client.team.with_raw_response.create_team_member(body)
+result = client.team.with_raw_response.create_team_member(CreateTeamMemberRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateTeamMemberResponse
@@ -23345,7 +24089,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.team.with_raw_response.create_team_member(body)
+result = await async_client.team.with_raw_response.create_team_member(CreateTeamMemberRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateTeamMemberResponse
@@ -23364,7 +24108,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateTeamMemberRequest](square/models/create_team_member_request.py) \| [CreateTeamMemberRequestDict](square/models/create_team_member_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23442,7 +24186,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>cursor</code> | <code>str \| None</code> | The pagination cursor returned by the previous call to this endpoint. Provide this<br>cursor to retrieve the next page of results for your original request. For more information,<br>see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23490,7 +24234,7 @@ Retrieves a specified job.
 **Sync**
 
 ```python
-result = client.team.with_raw_response.retrieve_job(job_id)
+result = client.team.with_raw_response.retrieve_job("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveJobResponse
@@ -23501,7 +24245,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.team.with_raw_response.retrieve_job(job_id)
+result = await async_client.team.with_raw_response.retrieve_job("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveJobResponse
@@ -23520,7 +24264,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>job_id</code> | <code>str</code> | The ID of the job to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23569,7 +24313,7 @@ Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/t
 **Sync**
 
 ```python
-result = client.team.with_raw_response.retrieve_team_member(team_member_id)
+result = client.team.with_raw_response.retrieve_team_member("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveTeamMemberResponse
@@ -23580,7 +24324,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.team.with_raw_response.retrieve_team_member(team_member_id)
+result = await async_client.team.with_raw_response.retrieve_team_member("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveTeamMemberResponse
@@ -23599,7 +24343,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>team_member_id</code> | <code>str</code> | The ID of the team member to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23652,7 +24396,7 @@ to get this information directly from the `TeamMember.wage_setting` field.
 **Sync**
 
 ```python
-result = client.team.with_raw_response.retrieve_wage_setting(team_member_id)
+result = client.team.with_raw_response.retrieve_wage_setting("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveWageSettingResponse
@@ -23663,7 +24407,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.team.with_raw_response.retrieve_wage_setting(team_member_id)
+result = await async_client.team.with_raw_response.retrieve_wage_setting("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveWageSettingResponse
@@ -23682,7 +24426,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>team_member_id</code> | <code>str</code> | The ID of the team member for which to retrieve the wage setting. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23732,7 +24476,7 @@ the team member is the Square account owner.
 **Sync**
 
 ```python
-result = client.team.with_raw_response.search_team_members(body)
+result = client.team.with_raw_response.search_team_members(SearchTeamMembersRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchTeamMembersResponse
@@ -23743,7 +24487,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.team.with_raw_response.search_team_members(body)
+result = await async_client.team.with_raw_response.search_team_members(SearchTeamMembersRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchTeamMembersResponse
@@ -23762,7 +24506,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchTeamMembersRequest](square/models/search_team_members_request.py) \| [SearchTeamMembersRequestDict](square/models/search_team_members_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23812,7 +24556,7 @@ tip eligibility propagate to all `TeamMemberWage` objects that reference the job
 **Sync**
 
 ```python
-result = client.team.with_raw_response.update_job(job_id, body)
+result = client.team.with_raw_response.update_job("some example string", UpdateJobRequest(job=Job()))
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateJobResponse
@@ -23823,7 +24567,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.team.with_raw_response.update_job(job_id, body)
+result = await async_client.team.with_raw_response.update_job("some example string", UpdateJobRequest(job=Job()))
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateJobResponse
@@ -23843,7 +24587,7 @@ match result:
 | --- | --- | --- |
 | <code>job_id</code> | <code>str</code> | The ID of the job to update. |
 | <code>body</code> | <code>[UpdateJobRequest](square/models/update_job_request.py) \| [UpdateJobRequestDict](square/models/update_job_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23892,7 +24636,7 @@ Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/t
 **Sync**
 
 ```python
-result = client.team.with_raw_response.update_team_member(team_member_id, body)
+result = client.team.with_raw_response.update_team_member("some example string", UpdateTeamMemberRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateTeamMemberResponse
@@ -23903,7 +24647,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.team.with_raw_response.update_team_member(team_member_id, body)
+result = await async_client.team.with_raw_response.update_team_member("some example string", UpdateTeamMemberRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateTeamMemberResponse
@@ -23923,7 +24667,7 @@ match result:
 | --- | --- | --- |
 | <code>team_member_id</code> | <code>str</code> | The ID of the team member to update. |
 | <code>body</code> | <code>[UpdateTeamMemberRequest](square/models/update_team_member_request.py) \| [UpdateTeamMemberRequestDict](square/models/update_team_member_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -23978,7 +24722,9 @@ to manage the `TeamMember.wage_setting` field directly.
 **Sync**
 
 ```python
-result = client.team.with_raw_response.update_wage_setting(team_member_id, body)
+result = client.team.with_raw_response.update_wage_setting(
+    "some example string", UpdateWageSettingRequest(wage_setting=WageSetting())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateWageSettingResponse
@@ -23989,7 +24735,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.team.with_raw_response.update_wage_setting(team_member_id, body)
+result = await async_client.team.with_raw_response.update_wage_setting(
+    "some example string", UpdateWageSettingRequest(wage_setting=WageSetting())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateWageSettingResponse
@@ -24009,7 +24757,7 @@ match result:
 | --- | --- | --- |
 | <code>team_member_id</code> | <code>str</code> | The ID of the team member for which to update the `WageSetting` object. |
 | <code>body</code> | <code>[UpdateWageSettingRequest](square/models/update_wage_setting_request.py) \| [UpdateWageSettingRequestDict](square/models/update_wage_setting_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24061,7 +24809,7 @@ Cancels a Terminal action request if the status of the request permits it.
 **Sync**
 
 ```python
-result = client.terminal.with_raw_response.cancel_terminal_action(action_id)
+result = client.terminal.with_raw_response.cancel_terminal_action("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CancelTerminalActionResponse
@@ -24072,7 +24820,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.terminal.with_raw_response.cancel_terminal_action(action_id)
+result = await async_client.terminal.with_raw_response.cancel_terminal_action("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CancelTerminalActionResponse
@@ -24091,7 +24839,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>action_id</code> | <code>str</code> | Unique ID for the desired `TerminalAction`. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24139,7 +24887,7 @@ Cancels a Terminal checkout request if the status of the request permits it.
 **Sync**
 
 ```python
-result = client.terminal.with_raw_response.cancel_terminal_checkout(checkout_id)
+result = client.terminal.with_raw_response.cancel_terminal_checkout("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CancelTerminalCheckoutResponse
@@ -24150,7 +24898,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.terminal.with_raw_response.cancel_terminal_checkout(checkout_id)
+result = await async_client.terminal.with_raw_response.cancel_terminal_checkout("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CancelTerminalCheckoutResponse
@@ -24169,7 +24917,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>checkout_id</code> | <code>str</code> | The unique ID for the desired `TerminalCheckout`. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24217,7 +24965,7 @@ Cancels an Interac Terminal refund request by refund request ID if the status of
 **Sync**
 
 ```python
-result = client.terminal.with_raw_response.cancel_terminal_refund(terminal_refund_id)
+result = client.terminal.with_raw_response.cancel_terminal_refund("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CancelTerminalRefundResponse
@@ -24228,7 +24976,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.terminal.with_raw_response.cancel_terminal_refund(terminal_refund_id)
+result = await async_client.terminal.with_raw_response.cancel_terminal_refund("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CancelTerminalRefundResponse
@@ -24247,7 +24995,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>terminal_refund_id</code> | <code>str</code> | The unique ID for the desired `TerminalRefund`. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24295,7 +25043,9 @@ Creates a Terminal action request and sends it to the specified device.
 **Sync**
 
 ```python
-result = client.terminal.with_raw_response.create_terminal_action(body)
+result = client.terminal.with_raw_response.create_terminal_action(
+    CreateTerminalActionRequest(idempotency_key="some example string", action=TerminalAction())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateTerminalActionResponse
@@ -24306,7 +25056,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.terminal.with_raw_response.create_terminal_action(body)
+result = await async_client.terminal.with_raw_response.create_terminal_action(
+    CreateTerminalActionRequest(idempotency_key="some example string", action=TerminalAction())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateTerminalActionResponse
@@ -24325,7 +25077,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateTerminalActionRequest](square/models/create_terminal_action_request.py) \| [CreateTerminalActionRequestDict](square/models/create_terminal_action_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24374,7 +25126,14 @@ for the requested amount.
 **Sync**
 
 ```python
-result = client.terminal.with_raw_response.create_terminal_checkout(body)
+result = client.terminal.with_raw_response.create_terminal_checkout(
+    CreateTerminalCheckoutRequest(
+        idempotency_key="some example string",
+        checkout=TerminalCheckout(
+            amount_money=Money(), device_options=DeviceCheckoutOptions(device_id="some example string")
+        ),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateTerminalCheckoutResponse
@@ -24385,7 +25144,14 @@ match result:
 **Async**
 
 ```python
-result = await async_client.terminal.with_raw_response.create_terminal_checkout(body)
+result = await async_client.terminal.with_raw_response.create_terminal_checkout(
+    CreateTerminalCheckoutRequest(
+        idempotency_key="some example string",
+        checkout=TerminalCheckout(
+            amount_money=Money(), device_options=DeviceCheckoutOptions(device_id="some example string")
+        ),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateTerminalCheckoutResponse
@@ -24404,7 +25170,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateTerminalCheckoutRequest](square/models/create_terminal_checkout_request.py) \| [CreateTerminalCheckoutRequestDict](square/models/create_terminal_checkout_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24452,7 +25218,9 @@ Creates a request to refund an Interac payment completed on a Square Terminal. R
 **Sync**
 
 ```python
-result = client.terminal.with_raw_response.create_terminal_refund(body)
+result = client.terminal.with_raw_response.create_terminal_refund(
+    CreateTerminalRefundRequest(idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateTerminalRefundResponse
@@ -24463,7 +25231,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.terminal.with_raw_response.create_terminal_refund(body)
+result = await async_client.terminal.with_raw_response.create_terminal_refund(
+    CreateTerminalRefundRequest(idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateTerminalRefundResponse
@@ -24482,7 +25252,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateTerminalRefundRequest](square/models/create_terminal_refund_request.py) \| [CreateTerminalRefundRequestDict](square/models/create_terminal_refund_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24532,7 +25302,7 @@ See [Link and Dismiss Actions](https://developer.squareup.com/docs/terminal-api/
 **Sync**
 
 ```python
-result = client.terminal.with_raw_response.dismiss_terminal_action(action_id)
+result = client.terminal.with_raw_response.dismiss_terminal_action("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DismissTerminalActionResponse
@@ -24543,7 +25313,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.terminal.with_raw_response.dismiss_terminal_action(action_id)
+result = await async_client.terminal.with_raw_response.dismiss_terminal_action("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DismissTerminalActionResponse
@@ -24562,7 +25332,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>action_id</code> | <code>str</code> | Unique ID for the `TerminalAction` associated with the action to be dismissed. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24610,7 +25380,7 @@ Dismisses a Terminal checkout request if the status and type of the request perm
 **Sync**
 
 ```python
-result = client.terminal.with_raw_response.dismiss_terminal_checkout(checkout_id)
+result = client.terminal.with_raw_response.dismiss_terminal_checkout("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DismissTerminalCheckoutResponse
@@ -24621,7 +25391,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.terminal.with_raw_response.dismiss_terminal_checkout(checkout_id)
+result = await async_client.terminal.with_raw_response.dismiss_terminal_checkout("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DismissTerminalCheckoutResponse
@@ -24640,7 +25410,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>checkout_id</code> | <code>str</code> | Unique ID for the `TerminalCheckout` associated with the checkout to be dismissed. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24688,7 +25458,7 @@ Dismisses a Terminal refund request if the status and type of the request permit
 **Sync**
 
 ```python
-result = client.terminal.with_raw_response.dismiss_terminal_refund(terminal_refund_id)
+result = client.terminal.with_raw_response.dismiss_terminal_refund("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DismissTerminalRefundResponse
@@ -24699,7 +25469,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.terminal.with_raw_response.dismiss_terminal_refund(terminal_refund_id)
+result = await async_client.terminal.with_raw_response.dismiss_terminal_refund("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DismissTerminalRefundResponse
@@ -24718,7 +25488,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>terminal_refund_id</code> | <code>str</code> | Unique ID for the `TerminalRefund` associated with the refund to be dismissed. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24766,7 +25536,7 @@ Retrieves a Terminal action request by `action_id`. Terminal action requests are
 **Sync**
 
 ```python
-result = client.terminal.with_raw_response.get_terminal_action(action_id)
+result = client.terminal.with_raw_response.get_terminal_action("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetTerminalActionResponse
@@ -24777,7 +25547,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.terminal.with_raw_response.get_terminal_action(action_id)
+result = await async_client.terminal.with_raw_response.get_terminal_action("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetTerminalActionResponse
@@ -24796,7 +25566,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>action_id</code> | <code>str</code> | Unique ID for the desired `TerminalAction`. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24844,7 +25614,7 @@ Retrieves a Terminal checkout request by `checkout_id`. Terminal checkout reques
 **Sync**
 
 ```python
-result = client.terminal.with_raw_response.get_terminal_checkout(checkout_id)
+result = client.terminal.with_raw_response.get_terminal_checkout("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetTerminalCheckoutResponse
@@ -24855,7 +25625,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.terminal.with_raw_response.get_terminal_checkout(checkout_id)
+result = await async_client.terminal.with_raw_response.get_terminal_checkout("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetTerminalCheckoutResponse
@@ -24874,7 +25644,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>checkout_id</code> | <code>str</code> | The unique ID for the desired `TerminalCheckout`. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -24922,7 +25692,7 @@ Retrieves an Interac Terminal refund object by ID. Terminal refund objects are a
 **Sync**
 
 ```python
-result = client.terminal.with_raw_response.get_terminal_refund(terminal_refund_id)
+result = client.terminal.with_raw_response.get_terminal_refund("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetTerminalRefundResponse
@@ -24933,7 +25703,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.terminal.with_raw_response.get_terminal_refund(terminal_refund_id)
+result = await async_client.terminal.with_raw_response.get_terminal_refund("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type GetTerminalRefundResponse
@@ -24952,7 +25722,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>terminal_refund_id</code> | <code>str</code> | The unique ID for the desired `TerminalRefund`. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25000,7 +25770,7 @@ Retrieves a filtered list of Terminal action requests created by the account mak
 **Sync**
 
 ```python
-result = client.terminal.with_raw_response.search_terminal_actions(body)
+result = client.terminal.with_raw_response.search_terminal_actions(SearchTerminalActionsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchTerminalActionsResponse
@@ -25011,7 +25781,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.terminal.with_raw_response.search_terminal_actions(body)
+result = await async_client.terminal.with_raw_response.search_terminal_actions(SearchTerminalActionsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchTerminalActionsResponse
@@ -25030,7 +25800,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchTerminalActionsRequest](square/models/search_terminal_actions_request.py) \| [SearchTerminalActionsRequestDict](square/models/search_terminal_actions_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25078,7 +25848,7 @@ Returns a filtered list of Terminal checkout requests created by the application
 **Sync**
 
 ```python
-result = client.terminal.with_raw_response.search_terminal_checkouts(body)
+result = client.terminal.with_raw_response.search_terminal_checkouts(SearchTerminalCheckoutsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchTerminalCheckoutsResponse
@@ -25089,7 +25859,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.terminal.with_raw_response.search_terminal_checkouts(body)
+result = await async_client.terminal.with_raw_response.search_terminal_checkouts(SearchTerminalCheckoutsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchTerminalCheckoutsResponse
@@ -25108,7 +25878,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchTerminalCheckoutsRequest](square/models/search_terminal_checkouts_request.py) \| [SearchTerminalCheckoutsRequestDict](square/models/search_terminal_checkouts_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25156,7 +25926,7 @@ Retrieves a filtered list of Interac Terminal refund requests created by the sel
 **Sync**
 
 ```python
-result = client.terminal.with_raw_response.search_terminal_refunds(body)
+result = client.terminal.with_raw_response.search_terminal_refunds(SearchTerminalRefundsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchTerminalRefundsResponse
@@ -25167,7 +25937,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.terminal.with_raw_response.search_terminal_refunds(body)
+result = await async_client.terminal.with_raw_response.search_terminal_refunds(SearchTerminalRefundsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchTerminalRefundsResponse
@@ -25186,7 +25956,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchTerminalRefundsRequest](square/models/search_terminal_refunds_request.py) \| [SearchTerminalRefundsRequestDict](square/models/search_terminal_refunds_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25242,7 +26012,7 @@ for more information.
 **Sync**
 
 ```python
-result = client.transactions.with_raw_response.capture_transaction(location_id, transaction_id)
+result = client.transactions.with_raw_response.capture_transaction("some example string", "some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CaptureTransactionResponse
@@ -25253,7 +26023,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.transactions.with_raw_response.capture_transaction(location_id, transaction_id)
+result = await async_client.transactions.with_raw_response.capture_transaction(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CaptureTransactionResponse
@@ -25273,7 +26045,7 @@ match result:
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | Value sent with the request. |
 | <code>transaction_id</code> | <code>str</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25326,7 +26098,7 @@ Max results per [page](https://developer.squareup.com/docs/working-with-apis/pag
 **Sync**
 
 ```python
-result = client.transactions.with_raw_response.list_transactions(location_id)
+result = client.transactions.with_raw_response.list_transactions("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListTransactionsResponse
@@ -25337,7 +26109,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.transactions.with_raw_response.list_transactions(location_id)
+result = await async_client.transactions.with_raw_response.list_transactions("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ListTransactionsResponse
@@ -25360,7 +26132,7 @@ match result:
 | <code>end_time</code> | <code>str \| None</code> | The end of the requested reporting period, in RFC 3339 format.<br><br>See [Date ranges](https://developer.squareup.com/docs/build-basics/working-with-dates) for details on date inclusivity/exclusivity.<br><br>Default value: The current time.<br>**Default**: <code>None</code> |
 | <code>sort_order</code> | <code>[SortOrderOrStr](square/models/enums/sort_order.py) \| None</code> | The order in which results are listed in the response (`ASC` for<br>oldest first, `DESC` for newest first).<br><br>Default value: `DESC`<br>**Default**: <code>None</code> |
 | <code>cursor</code> | <code>str \| None</code> | A pagination cursor returned by a previous call to this endpoint.<br>Provide this to retrieve the next set of results for your original query.<br><br>See [Paginating results](https://developer.squareup.com/docs/working-with-apis/pagination) for more information.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25408,7 +26180,7 @@ Retrieves details for a single transaction.
 **Sync**
 
 ```python
-result = client.transactions.with_raw_response.retrieve_transaction(location_id, transaction_id)
+result = client.transactions.with_raw_response.retrieve_transaction("some example string", "some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveTransactionResponse
@@ -25419,7 +26191,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.transactions.with_raw_response.retrieve_transaction(location_id, transaction_id)
+result = await async_client.transactions.with_raw_response.retrieve_transaction(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveTransactionResponse
@@ -25439,7 +26213,7 @@ match result:
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | The ID of the transaction's associated location. |
 | <code>transaction_id</code> | <code>str</code> | The ID of the transaction to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25491,7 +26265,7 @@ for more information.
 **Sync**
 
 ```python
-result = client.transactions.with_raw_response.void_transaction(location_id, transaction_id)
+result = client.transactions.with_raw_response.void_transaction("some example string", "some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type VoidTransactionResponse
@@ -25502,7 +26276,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.transactions.with_raw_response.void_transaction(location_id, transaction_id)
+result = await async_client.transactions.with_raw_response.void_transaction(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type VoidTransactionResponse
@@ -25522,7 +26298,7 @@ match result:
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | Value sent with the request. |
 | <code>transaction_id</code> | <code>str</code> | Value sent with the request. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25583,7 +26359,9 @@ Creates a [transfer_order.updated](webhook:transfer_order.updated) webhook event
 **Sync**
 
 ```python
-result = client.transfer_order_api.with_raw_response.cancel_transfer_order(transfer_order_id, body)
+result = client.transfer_order_api.with_raw_response.cancel_transfer_order(
+    "some example string", CancelTransferOrderRequest(idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CancelTransferOrderResponse
@@ -25594,7 +26372,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.transfer_order_api.with_raw_response.cancel_transfer_order(transfer_order_id, body)
+result = await async_client.transfer_order_api.with_raw_response.cancel_transfer_order(
+    "some example string", CancelTransferOrderRequest(idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CancelTransferOrderResponse
@@ -25614,7 +26394,7 @@ match result:
 | --- | --- | --- |
 | <code>transfer_order_id</code> | <code>str</code> | The ID of the transfer order to cancel. Must be in STARTED or PARTIALLY_RECEIVED status. |
 | <code>body</code> | <code>[CancelTransferOrderRequest](square/models/cancel_transfer_order_request.py) \| [CancelTransferOrderRequestDict](square/models/cancel_transfer_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25681,7 +26461,14 @@ Creates a [transfer_order.created](webhook:transfer_order.created) webhook event
 **Sync**
 
 ```python
-result = client.transfer_order_api.with_raw_response.create_transfer_order(body)
+result = client.transfer_order_api.with_raw_response.create_transfer_order(
+    CreateTransferOrderRequest(
+        idempotency_key="some example string",
+        transfer_order=CreateTransferOrderData(
+            source_location_id="some example string", destination_location_id="some example string"
+        ),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateTransferOrderResponse
@@ -25692,7 +26479,14 @@ match result:
 **Async**
 
 ```python
-result = await async_client.transfer_order_api.with_raw_response.create_transfer_order(body)
+result = await async_client.transfer_order_api.with_raw_response.create_transfer_order(
+    CreateTransferOrderRequest(
+        idempotency_key="some example string",
+        transfer_order=CreateTransferOrderData(
+            source_location_id="some example string", destination_location_id="some example string"
+        ),
+    ),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateTransferOrderResponse
@@ -25711,7 +26505,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateTransferOrderRequest](square/models/create_transfer_order_request.py) \| [CreateTransferOrderRequestDict](square/models/create_transfer_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25763,7 +26557,7 @@ Creates a [transfer_order.deleted](webhook:transfer_order.deleted) webhook event
 **Sync**
 
 ```python
-result = client.transfer_order_api.with_raw_response.delete_transfer_order(transfer_order_id)
+result = client.transfer_order_api.with_raw_response.delete_transfer_order("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteTransferOrderResponse
@@ -25774,7 +26568,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.transfer_order_api.with_raw_response.delete_transfer_order(transfer_order_id)
+result = await async_client.transfer_order_api.with_raw_response.delete_transfer_order("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteTransferOrderResponse
@@ -25794,7 +26588,7 @@ match result:
 | --- | --- | --- |
 | <code>transfer_order_id</code> | <code>str</code> | The ID of the transfer order to delete |
 | <code>version</code> | <code>int \| None</code> | Version for optimistic concurrency<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25857,7 +26651,10 @@ Creates a [transfer_order.updated](webhook:transfer_order.updated) webhook event
 **Sync**
 
 ```python
-result = client.transfer_order_api.with_raw_response.receive_transfer_order(transfer_order_id, body)
+result = client.transfer_order_api.with_raw_response.receive_transfer_order(
+    "some example string",
+    ReceiveTransferOrderRequest(idempotency_key="some example string", receipt=TransferOrderGoodsReceipt()),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ReceiveTransferOrderResponse
@@ -25868,7 +26665,10 @@ match result:
 **Async**
 
 ```python
-result = await async_client.transfer_order_api.with_raw_response.receive_transfer_order(transfer_order_id, body)
+result = await async_client.transfer_order_api.with_raw_response.receive_transfer_order(
+    "some example string",
+    ReceiveTransferOrderRequest(idempotency_key="some example string", receipt=TransferOrderGoodsReceipt()),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type ReceiveTransferOrderResponse
@@ -25888,7 +26688,7 @@ match result:
 | --- | --- | --- |
 | <code>transfer_order_id</code> | <code>str</code> | The ID of the transfer order to receive items for |
 | <code>body</code> | <code>[ReceiveTransferOrderRequest](square/models/receive_transfer_order_request.py) \| [ReceiveTransferOrderRequestDict](square/models/receive_transfer_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -25942,7 +26742,7 @@ order details including:
 **Sync**
 
 ```python
-result = client.transfer_order_api.with_raw_response.retrieve_transfer_order(transfer_order_id)
+result = client.transfer_order_api.with_raw_response.retrieve_transfer_order("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveTransferOrderResponse
@@ -25953,7 +26753,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.transfer_order_api.with_raw_response.retrieve_transfer_order(transfer_order_id)
+result = await async_client.transfer_order_api.with_raw_response.retrieve_transfer_order("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveTransferOrderResponse
@@ -25972,7 +26772,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>transfer_order_id</code> | <code>str</code> | The ID of the transfer order to retrieve |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -26026,7 +26826,7 @@ Common search scenarios:
 **Sync**
 
 ```python
-result = client.transfer_order_api.with_raw_response.search_transfer_orders(body)
+result = client.transfer_order_api.with_raw_response.search_transfer_orders(SearchTransferOrdersRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchTransferOrdersResponse
@@ -26037,7 +26837,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.transfer_order_api.with_raw_response.search_transfer_orders(body)
+result = await async_client.transfer_order_api.with_raw_response.search_transfer_orders(SearchTransferOrdersRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchTransferOrdersResponse
@@ -26056,7 +26856,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchTransferOrdersRequest](square/models/search_transfer_orders_request.py) \| [SearchTransferOrdersRequestDict](square/models/search_transfer_orders_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -26111,7 +26911,9 @@ Creates a [transfer_order.updated](webhook:transfer_order.updated) webhook event
 **Sync**
 
 ```python
-result = client.transfer_order_api.with_raw_response.start_transfer_order(transfer_order_id, body)
+result = client.transfer_order_api.with_raw_response.start_transfer_order(
+    "some example string", StartTransferOrderRequest(idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type StartTransferOrderResponse
@@ -26122,7 +26924,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.transfer_order_api.with_raw_response.start_transfer_order(transfer_order_id, body)
+result = await async_client.transfer_order_api.with_raw_response.start_transfer_order(
+    "some example string", StartTransferOrderRequest(idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type StartTransferOrderResponse
@@ -26142,7 +26946,7 @@ match result:
 | --- | --- | --- |
 | <code>transfer_order_id</code> | <code>str</code> | The ID of the transfer order to start. Must be in DRAFT status. |
 | <code>body</code> | <code>[StartTransferOrderRequest](square/models/start_transfer_order_request.py) \| [StartTransferOrderRequestDict](square/models/start_transfer_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -26193,7 +26997,10 @@ Creates a [transfer_order.updated](webhook:transfer_order.updated) webhook event
 **Sync**
 
 ```python
-result = client.transfer_order_api.with_raw_response.update_transfer_order(transfer_order_id, body)
+result = client.transfer_order_api.with_raw_response.update_transfer_order(
+    "some example string",
+    UpdateTransferOrderRequest(idempotency_key="some example string", transfer_order=UpdateTransferOrderData()),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateTransferOrderResponse
@@ -26204,7 +27011,10 @@ match result:
 **Async**
 
 ```python
-result = await async_client.transfer_order_api.with_raw_response.update_transfer_order(transfer_order_id, body)
+result = await async_client.transfer_order_api.with_raw_response.update_transfer_order(
+    "some example string",
+    UpdateTransferOrderRequest(idempotency_key="some example string", transfer_order=UpdateTransferOrderData()),
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateTransferOrderResponse
@@ -26224,7 +27034,7 @@ match result:
 | --- | --- | --- |
 | <code>transfer_order_id</code> | <code>str</code> | The ID of the transfer order to update |
 | <code>body</code> | <code>[UpdateTransferOrderRequest](square/models/update_transfer_order_request.py) \| [UpdateTransferOrderRequestDict](square/models/update_transfer_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -26276,7 +27086,7 @@ Provides summary information for a merchant's online store orders.
 **Sync**
 
 ```python
-result = client.v1_transactions.with_raw_response.v1_list_orders(location_id)
+result = client.v1_transactions.with_raw_response.v1_list_orders("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type list[V1Order]
@@ -26287,7 +27097,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.v1_transactions.with_raw_response.v1_list_orders(location_id)
+result = await async_client.v1_transactions.with_raw_response.v1_list_orders("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type list[V1Order]
@@ -26309,7 +27119,7 @@ match result:
 | <code>order</code> | <code>[SortOrderOrStr](square/models/enums/sort_order.py) \| None</code> | The order in which payments are listed in the response.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of payments to return in a single response. This value cannot exceed 200.<br>**Default**: <code>None</code> |
 | <code>batch_token</code> | <code>str \| None</code> | A pagination cursor to retrieve the next set of results for your<br>original query to the endpoint.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -26357,7 +27167,7 @@ Provides comprehensive information for a single online store order, including th
 **Sync**
 
 ```python
-result = client.v1_transactions.with_raw_response.v1_retrieve_order(location_id, order_id)
+result = client.v1_transactions.with_raw_response.v1_retrieve_order("some example string", "some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type V1Order
@@ -26368,7 +27178,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.v1_transactions.with_raw_response.v1_retrieve_order(location_id, order_id)
+result = await async_client.v1_transactions.with_raw_response.v1_retrieve_order(
+    "some example string", "some example string"
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type V1Order
@@ -26388,7 +27200,7 @@ match result:
 | --- | --- | --- |
 | <code>location_id</code> | <code>str</code> | The ID of the order's associated location. |
 | <code>order_id</code> | <code>str</code> | The order's Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -26436,7 +27248,9 @@ Updates the details of an online store order. Every update you perform on an ord
 **Sync**
 
 ```python
-result = client.v1_transactions.with_raw_response.v1_update_order(location_id, order_id, body)
+result = client.v1_transactions.with_raw_response.v1_update_order(
+    "some example string", "some example string", V1UpdateOrderRequest(action=V1UpdateOrderRequestAction.COMPLETE)
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type V1Order
@@ -26447,7 +27261,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.v1_transactions.with_raw_response.v1_update_order(location_id, order_id, body)
+result = await async_client.v1_transactions.with_raw_response.v1_update_order(
+    "some example string", "some example string", V1UpdateOrderRequest(action=V1UpdateOrderRequestAction.COMPLETE)
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type V1Order
@@ -26468,7 +27284,7 @@ match result:
 | <code>location_id</code> | <code>str</code> | The ID of the order's associated location. |
 | <code>order_id</code> | <code>str</code> | The order's Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint |
 | <code>body</code> | <code>[V1UpdateOrderRequest](square/models/v1_update_order_request.py) \| [V1UpdateOrderRequestDict](square/models/v1_update_order_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -26520,7 +27336,7 @@ Creates one or more [Vendor](entity:Vendor) objects to represent suppliers to a 
 **Sync**
 
 ```python
-result = client.vendors.with_raw_response.bulk_create_vendors(body)
+result = client.vendors.with_raw_response.bulk_create_vendors(BulkCreateVendorsRequest(vendors={"key": Vendor()}))
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkCreateVendorsResponse
@@ -26531,7 +27347,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.vendors.with_raw_response.bulk_create_vendors(body)
+result = await async_client.vendors.with_raw_response.bulk_create_vendors(
+    BulkCreateVendorsRequest(vendors={"key": Vendor()})
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkCreateVendorsResponse
@@ -26550,7 +27368,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkCreateVendorsRequest](square/models/bulk_create_vendors_request.py) \| [BulkCreateVendorsRequestDict](square/models/bulk_create_vendors_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -26598,7 +27416,7 @@ Retrieves one or more vendors of specified [Vendor](entity:Vendor) IDs.
 **Sync**
 
 ```python
-result = client.vendors.with_raw_response.bulk_retrieve_vendors(body)
+result = client.vendors.with_raw_response.bulk_retrieve_vendors(BulkRetrieveVendorsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkRetrieveVendorsResponse
@@ -26609,7 +27427,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.vendors.with_raw_response.bulk_retrieve_vendors(body)
+result = await async_client.vendors.with_raw_response.bulk_retrieve_vendors(BulkRetrieveVendorsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkRetrieveVendorsResponse
@@ -26628,7 +27446,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkRetrieveVendorsRequest](square/models/bulk_retrieve_vendors_request.py) \| [BulkRetrieveVendorsRequestDict](square/models/bulk_retrieve_vendors_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -26676,7 +27494,9 @@ Updates one or more of existing [Vendor](entity:Vendor) objects as suppliers to 
 **Sync**
 
 ```python
-result = client.vendors.with_raw_response.bulk_update_vendors(body)
+result = client.vendors.with_raw_response.bulk_update_vendors(
+    BulkUpdateVendorsRequest(vendors={"key": UpdateVendorRequest(vendor=Vendor())})
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkUpdateVendorsResponse
@@ -26687,7 +27507,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.vendors.with_raw_response.bulk_update_vendors(body)
+result = await async_client.vendors.with_raw_response.bulk_update_vendors(
+    BulkUpdateVendorsRequest(vendors={"key": UpdateVendorRequest(vendor=Vendor())})
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type BulkUpdateVendorsResponse
@@ -26706,7 +27528,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[BulkUpdateVendorsRequest](square/models/bulk_update_vendors_request.py) \| [BulkUpdateVendorsRequestDict](square/models/bulk_update_vendors_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -26754,7 +27576,7 @@ Creates a single [Vendor](entity:Vendor) object to represent a supplier to a sel
 **Sync**
 
 ```python
-result = client.vendors.with_raw_response.create_vendor(body)
+result = client.vendors.with_raw_response.create_vendor(CreateVendorRequest(idempotency_key="some example string"))
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateVendorResponse
@@ -26765,7 +27587,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.vendors.with_raw_response.create_vendor(body)
+result = await async_client.vendors.with_raw_response.create_vendor(
+    CreateVendorRequest(idempotency_key="some example string")
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateVendorResponse
@@ -26784,7 +27608,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateVendorRequest](square/models/create_vendor_request.py) \| [CreateVendorRequestDict](square/models/create_vendor_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -26832,7 +27656,7 @@ Retrieves the vendor of a specified [Vendor](entity:Vendor) ID.
 **Sync**
 
 ```python
-result = client.vendors.with_raw_response.retrieve_vendor(vendor_id)
+result = client.vendors.with_raw_response.retrieve_vendor("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveVendorResponse
@@ -26843,7 +27667,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.vendors.with_raw_response.retrieve_vendor(vendor_id)
+result = await async_client.vendors.with_raw_response.retrieve_vendor("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveVendorResponse
@@ -26862,7 +27686,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>vendor_id</code> | <code>str</code> | ID of the [Vendor](entity:Vendor) to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -26910,7 +27734,7 @@ Searches for vendors using a filter against supported [Vendor](entity:Vendor) pr
 **Sync**
 
 ```python
-result = client.vendors.with_raw_response.search_vendors(body)
+result = client.vendors.with_raw_response.search_vendors(SearchVendorsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchVendorsResponse
@@ -26921,7 +27745,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.vendors.with_raw_response.search_vendors(body)
+result = await async_client.vendors.with_raw_response.search_vendors(SearchVendorsRequest())
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type SearchVendorsResponse
@@ -26940,7 +27764,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[SearchVendorsRequest](square/models/search_vendors_request.py) \| [SearchVendorsRequestDict](square/models/search_vendors_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -26988,7 +27812,7 @@ Updates an existing [Vendor](entity:Vendor) object as a supplier to a seller.
 **Sync**
 
 ```python
-result = client.vendors.with_raw_response.update_vendor(vendor_id, body)
+result = client.vendors.with_raw_response.update_vendor("some example string", UpdateVendorRequest(vendor=Vendor()))
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateVendorResponse
@@ -26999,7 +27823,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.vendors.with_raw_response.update_vendor(vendor_id, body)
+result = await async_client.vendors.with_raw_response.update_vendor(
+    "some example string", UpdateVendorRequest(vendor=Vendor())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateVendorResponse
@@ -27019,7 +27845,7 @@ match result:
 | --- | --- | --- |
 | <code>vendor_id</code> | <code>str</code> | Value sent with the request. |
 | <code>body</code> | <code>[UpdateVendorRequest](square/models/update_vendor_request.py) \| [UpdateVendorRequestDict](square/models/update_vendor_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -27071,7 +27897,9 @@ Creates a webhook subscription.
 **Sync**
 
 ```python
-result = client.webhook_subscriptions.with_raw_response.create_webhook_subscription(body)
+result = client.webhook_subscriptions.with_raw_response.create_webhook_subscription(
+    CreateWebhookSubscriptionRequest(subscription=WebhookSubscription())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateWebhookSubscriptionResponse
@@ -27082,7 +27910,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.webhook_subscriptions.with_raw_response.create_webhook_subscription(body)
+result = await async_client.webhook_subscriptions.with_raw_response.create_webhook_subscription(
+    CreateWebhookSubscriptionRequest(subscription=WebhookSubscription())
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type CreateWebhookSubscriptionResponse
@@ -27101,7 +27931,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>body</code> | <code>[CreateWebhookSubscriptionRequest](square/models/create_webhook_subscription_request.py) \| [CreateWebhookSubscriptionRequestDict](square/models/create_webhook_subscription_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -27149,7 +27979,7 @@ Deletes a webhook subscription.
 **Sync**
 
 ```python
-result = client.webhook_subscriptions.with_raw_response.delete_webhook_subscription(subscription_id)
+result = client.webhook_subscriptions.with_raw_response.delete_webhook_subscription("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteWebhookSubscriptionResponse
@@ -27160,7 +27990,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.webhook_subscriptions.with_raw_response.delete_webhook_subscription(subscription_id)
+result = await async_client.webhook_subscriptions.with_raw_response.delete_webhook_subscription("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type DeleteWebhookSubscriptionResponse
@@ -27179,7 +28009,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to delete. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -27257,7 +28087,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>api_version</code> | <code>str \| None</code> | The API version for which to list event types. Setting this field overrides the default version used by the application.<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -27338,7 +28168,7 @@ match result:
 | <code>include_disabled</code> | <code>bool \| None</code> | Includes disabled [Subscription](entity:WebhookSubscription)s.<br>By default, all enabled [Subscription](entity:WebhookSubscription)s are returned.<br>**Default**: <code>False</code> |
 | <code>sort_order</code> | <code>[SortOrderOrStr](square/models/enums/sort_order.py) \| None</code> | Sorts the returned list by when the [Subscription](entity:WebhookSubscription) was created with the specified order.<br>This field defaults to ASC.<br>**Default**: <code>None</code> |
 | <code>limit</code> | <code>int \| None</code> | The maximum number of results to be returned in a single page.<br>It is possible to receive fewer results than the specified limit on a given page.<br>The default value of 100 is also the maximum allowed value.<br><br>Default: 100<br>**Default**: <code>None</code> |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -27386,7 +28216,7 @@ Retrieves a webhook subscription identified by its ID.
 **Sync**
 
 ```python
-result = client.webhook_subscriptions.with_raw_response.retrieve_webhook_subscription(subscription_id)
+result = client.webhook_subscriptions.with_raw_response.retrieve_webhook_subscription("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveWebhookSubscriptionResponse
@@ -27397,7 +28227,7 @@ match result:
 **Async**
 
 ```python
-result = await async_client.webhook_subscriptions.with_raw_response.retrieve_webhook_subscription(subscription_id)
+result = await async_client.webhook_subscriptions.with_raw_response.retrieve_webhook_subscription("some example string")
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type RetrieveWebhookSubscriptionResponse
@@ -27416,7 +28246,7 @@ match result:
 | Name | Type | Description |
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to retrieve. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -27464,7 +28294,9 @@ Tests a webhook subscription by sending a test event to the notification URL.
 **Sync**
 
 ```python
-result = client.webhook_subscriptions.with_raw_response.test_webhook_subscription(subscription_id, body)
+result = client.webhook_subscriptions.with_raw_response.test_webhook_subscription(
+    "some example string", TestWebhookSubscriptionRequest()
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type TestWebhookSubscriptionResponse
@@ -27475,7 +28307,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.webhook_subscriptions.with_raw_response.test_webhook_subscription(subscription_id, body)
+result = await async_client.webhook_subscriptions.with_raw_response.test_webhook_subscription(
+    "some example string", TestWebhookSubscriptionRequest()
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type TestWebhookSubscriptionResponse
@@ -27495,7 +28329,7 @@ match result:
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to test. |
 | <code>body</code> | <code>[TestWebhookSubscriptionRequest](square/models/test_webhook_subscription_request.py) \| [TestWebhookSubscriptionRequestDict](square/models/test_webhook_subscription_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -27543,7 +28377,9 @@ Updates a webhook subscription.
 **Sync**
 
 ```python
-result = client.webhook_subscriptions.with_raw_response.update_webhook_subscription(subscription_id, body)
+result = client.webhook_subscriptions.with_raw_response.update_webhook_subscription(
+    "some example string", UpdateWebhookSubscriptionRequest()
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateWebhookSubscriptionResponse
@@ -27554,7 +28390,9 @@ match result:
 **Async**
 
 ```python
-result = await async_client.webhook_subscriptions.with_raw_response.update_webhook_subscription(subscription_id, body)
+result = await async_client.webhook_subscriptions.with_raw_response.update_webhook_subscription(
+    "some example string", UpdateWebhookSubscriptionRequest()
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateWebhookSubscriptionResponse
@@ -27574,7 +28412,7 @@ match result:
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to update. |
 | <code>body</code> | <code>[UpdateWebhookSubscriptionRequest](square/models/update_webhook_subscription_request.py) \| [UpdateWebhookSubscriptionRequestDict](square/models/update_webhook_subscription_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>
@@ -27622,7 +28460,9 @@ Updates a webhook subscription by replacing the existing signature key with a ne
 **Sync**
 
 ```python
-result = client.webhook_subscriptions.with_raw_response.update_webhook_subscription_signature_key(subscription_id, body)
+result = client.webhook_subscriptions.with_raw_response.update_webhook_subscription_signature_key(
+    "some example string", UpdateWebhookSubscriptionSignatureKeyRequest()
+)
 match result:
     case Success(payload=payload):
         ...  # TODO: Handle 'payload' of type UpdateWebhookSubscriptionSignatureKeyResponse
@@ -27634,7 +28474,7 @@ match result:
 
 ```python
 result = await async_client.webhook_subscriptions.with_raw_response.update_webhook_subscription_signature_key(
-    subscription_id, body
+    "some example string", UpdateWebhookSubscriptionSignatureKeyRequest()
 )
 match result:
     case Success(payload=payload):
@@ -27655,7 +28495,7 @@ match result:
 | --- | --- | --- |
 | <code>subscription_id</code> | <code>str</code> | [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to update. |
 | <code>body</code> | <code>[UpdateWebhookSubscriptionSignatureKeyRequest](square/models/update_webhook_subscription_signature_key_request.py) \| [UpdateWebhookSubscriptionSignatureKeyRequestDict](square/models/update_webhook_subscription_signature_key_request.py)</code> | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout or extra headers. |
+| <code>request_options</code> | <code>[RequestOptionsOrDict](square/core/request_options.py) \| None</code> | Per-call overrides for this one request, such as a timeout, extra headers, or its retry count and statuses. |
 
 </dd>
 </dl>

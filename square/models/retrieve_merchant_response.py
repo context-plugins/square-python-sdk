@@ -18,5 +18,5 @@ class RetrieveMerchantResponse(SdkBaseModel):
 
 
 class RetrieveMerchantResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    merchant: NotRequired[Merchant | MerchantDict]
+    errors: NotRequired[list[ErrorDict]]
+    merchant: NotRequired[MerchantDict]

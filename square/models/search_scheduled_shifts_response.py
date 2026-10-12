@@ -23,6 +23,6 @@ class SearchScheduledShiftsResponse(SdkBaseModel):
 
 
 class SearchScheduledShiftsResponseDict(TypedDict):
-    scheduled_shifts: NotRequired[list[ScheduledShift | ScheduledShiftDict]]
+    scheduled_shifts: NotRequired[list[ScheduledShiftDict]]
     cursor: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

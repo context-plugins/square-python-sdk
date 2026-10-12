@@ -23,6 +23,6 @@ class SearchLoyaltyEventsResponse(SdkBaseModel):
 
 
 class SearchLoyaltyEventsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    events: NotRequired[list[LoyaltyEvent | LoyaltyEventDict]]
+    errors: NotRequired[list[ErrorDict]]
+    events: NotRequired[list[LoyaltyEventDict]]
     cursor: NotRequired[str]

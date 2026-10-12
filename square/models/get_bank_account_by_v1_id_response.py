@@ -19,5 +19,5 @@ class GetBankAccountByV1IdResponse(SdkBaseModel):
 
 
 class GetBankAccountByV1IdResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    bank_account: NotRequired[BankAccount | BankAccountDict]
+    errors: NotRequired[list[ErrorDict]]
+    bank_account: NotRequired[BankAccountDict]

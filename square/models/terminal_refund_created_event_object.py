@@ -13,4 +13,4 @@ class TerminalRefundCreatedEventObject(SdkBaseModel):
 
 
 class TerminalRefundCreatedEventObjectDict(TypedDict):
-    refund: NotRequired[TerminalRefund | TerminalRefundDict]
+    refund: NotRequired[TerminalRefundDict]

@@ -24,4 +24,4 @@ class CreateGiftCardRequest(SdkBaseModel):
 class CreateGiftCardRequestDict(TypedDict):
     idempotency_key: str
     location_id: str
-    gift_card: GiftCard | GiftCardDict
+    gift_card: GiftCardDict

@@ -24,5 +24,5 @@ class BulkDeleteBookingCustomAttributesResponse(SdkBaseModel):
 
 
 class BulkDeleteBookingCustomAttributesResponseDict(TypedDict):
-    values: NotRequired[dict[str, BookingCustomAttributeDeleteResponse | BookingCustomAttributeDeleteResponseDict]]
-    errors: NotRequired[list[Error | ErrorDict]]
+    values: NotRequired[dict[str, BookingCustomAttributeDeleteResponseDict]]
+    errors: NotRequired[list[ErrorDict]]

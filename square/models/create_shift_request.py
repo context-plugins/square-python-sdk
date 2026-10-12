@@ -22,4 +22,4 @@ class CreateShiftRequest(SdkBaseModel):
 
 class CreateShiftRequestDict(TypedDict):
     idempotency_key: NotRequired[str]
-    shift: Shift | ShiftDict
+    shift: ShiftDict

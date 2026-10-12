@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.register_domain_request import RegisterDomainRequest, RegisterDomainRequestDict
 from ..models.register_domain_response import RegisterDomainResponse
@@ -49,14 +51,15 @@ class ApplePay:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.register_domain(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.register_domain(body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> ApplePayWithRawResponse:
@@ -92,14 +95,15 @@ class AsyncApplePay:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.register_domain(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.register_domain(body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncApplePayWithRawResponse:
@@ -132,7 +136,8 @@ class ApplePayWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -174,7 +179,8 @@ class AsyncApplePayWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -184,7 +190,7 @@ class AsyncApplePayWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RegisterDomainRequest | RegisterDomainRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RegisterDomainResponse],
+            decoder=async_json_decoder[RegisterDomainResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

@@ -58,9 +58,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /v2/gift-cards/{id}`
 - **Auth**: `oauth2`
-- **Signature**: `def retrieve_gift_card(id: str, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`
-- **Params**: `id` — path
+- **Signature**: `def retrieve_gift_card(id_: str, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`
+- **Params**: `id_` — path `id`
 - **Returns (parsed)**: `RetrieveGiftCardResponse`
 - **Returns (raw)**: `ApiResult[RetrieveGiftCardResponse, RawError]`
 - **Error**: `RawError` — **Case B**

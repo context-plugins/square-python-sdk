@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, SdkBaseModel
+from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
 from .enums.loyalty_program_status import LoyaltyProgramStatusOrStr
 from .loyalty_program_accrual_rule import LoyaltyProgramAccrualRule, LoyaltyProgramAccrualRuleDict
 from .loyalty_program_expiration_policy import LoyaltyProgramExpirationPolicy, LoyaltyProgramExpirationPolicyDict
@@ -21,7 +21,7 @@ class LoyaltyProgram(SdkBaseModel):
     status: Optional[LoyaltyProgramStatusOrStr] = UNSET
     """Indicates whether the program is currently active."""
 
-    reward_tiers: Optional[list[LoyaltyProgramRewardTier | None]] = UNSET
+    reward_tiers: OptionalNullable[list[LoyaltyProgramRewardTier]] = UNSET
     """The list of rewards for buyers, sorted by ascending points."""
 
     expiration_policy: Optional[LoyaltyProgramExpirationPolicy] = UNSET
@@ -30,7 +30,7 @@ class LoyaltyProgram(SdkBaseModel):
     terminology: Optional[LoyaltyProgramTerminology] = UNSET
     """Represents the naming used for loyalty points."""
 
-    location_ids: Optional[list[str | None]] = UNSET
+    location_ids: OptionalNullable[list[str]] = UNSET
     """The `locations <entity:Location>`__ at which the program is active."""
 
     created_at: Optional[str] = UNSET
@@ -39,7 +39,7 @@ class LoyaltyProgram(SdkBaseModel):
     updated_at: Optional[str] = UNSET
     """The timestamp when the reward was last updated, in RFC 3339 format."""
 
-    accrual_rules: Optional[list[LoyaltyProgramAccrualRule | None]] = UNSET
+    accrual_rules: OptionalNullable[list[LoyaltyProgramAccrualRule]] = UNSET
     """Defines how buyers can earn loyalty points from the base loyalty program. To check for associated `loyalty
     promotions <entity:LoyaltyPromotion>`__ that enable buyers to earn extra points, call `ListLoyaltyPromotions
     <api-endpoint:Loyalty-ListLoyaltyPromotions>`__."""
@@ -48,10 +48,10 @@ class LoyaltyProgram(SdkBaseModel):
 class LoyaltyProgramDict(TypedDict):
     id: NotRequired[str]
     status: NotRequired[LoyaltyProgramStatusOrStr]
-    reward_tiers: NotRequired[list[LoyaltyProgramRewardTier | LoyaltyProgramRewardTierDict | None]]
-    expiration_policy: NotRequired[LoyaltyProgramExpirationPolicy | LoyaltyProgramExpirationPolicyDict]
-    terminology: NotRequired[LoyaltyProgramTerminology | LoyaltyProgramTerminologyDict]
-    location_ids: NotRequired[list[str | None]]
+    reward_tiers: NotRequired[list[LoyaltyProgramRewardTierDict] | None]
+    expiration_policy: NotRequired[LoyaltyProgramExpirationPolicyDict]
+    terminology: NotRequired[LoyaltyProgramTerminologyDict]
+    location_ids: NotRequired[list[str] | None]
     created_at: NotRequired[str]
     updated_at: NotRequired[str]
-    accrual_rules: NotRequired[list[LoyaltyProgramAccrualRule | LoyaltyProgramAccrualRuleDict | None]]
+    accrual_rules: NotRequired[list[LoyaltyProgramAccrualRuleDict] | None]

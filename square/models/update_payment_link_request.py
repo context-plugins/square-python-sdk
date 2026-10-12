@@ -11,4 +11,4 @@ class UpdatePaymentLinkRequest(SdkBaseModel):
 
 
 class UpdatePaymentLinkRequestDict(TypedDict):
-    payment_link: PaymentLink | PaymentLinkDict
+    payment_link: PaymentLinkDict

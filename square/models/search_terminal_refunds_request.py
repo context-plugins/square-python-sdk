@@ -17,6 +17,6 @@ class SearchTerminalRefundsRequest(SdkBaseModel):
 
 
 class SearchTerminalRefundsRequestDict(TypedDict):
-    query: NotRequired[TerminalRefundQuery | TerminalRefundQueryDict]
+    query: NotRequired[TerminalRefundQueryDict]
     cursor: NotRequired[str]
     limit: NotRequired[int]

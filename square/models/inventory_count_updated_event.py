@@ -30,4 +30,4 @@ class InventoryCountUpdatedEventDict(TypedDict):
     type_: NotRequired[str | None]
     event_id: NotRequired[str | None]
     created_at: NotRequired[str]
-    data: NotRequired[InventoryCountUpdatedEventData | InventoryCountUpdatedEventDataDict]
+    data: NotRequired[InventoryCountUpdatedEventDataDict]

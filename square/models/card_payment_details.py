@@ -89,7 +89,7 @@ class CardPaymentDetails(SdkBaseModel):
 
 class CardPaymentDetailsDict(TypedDict):
     status: NotRequired[str]
-    card: NotRequired[Card | CardDict]
+    card: NotRequired[CardDict]
     entry_method: NotRequired[str]
     cvv_status: NotRequired[str]
     avs_status: NotRequired[str]
@@ -100,9 +100,9 @@ class CardPaymentDetailsDict(TypedDict):
     verification_method: NotRequired[str]
     verification_results: NotRequired[str]
     statement_description: NotRequired[str]
-    device_details: NotRequired[DeviceDetails | DeviceDetailsDict]
-    card_payment_timeline: NotRequired[CardPaymentTimeline | CardPaymentTimelineDict]
+    device_details: NotRequired[DeviceDetailsDict]
+    card_payment_timeline: NotRequired[CardPaymentTimelineDict]
     refund_requires_card_presence: NotRequired[bool]
-    errors: NotRequired[list[Error | ErrorDict]]
-    applied_card_surcharge_details: NotRequired[CardSurchargeDetails | CardSurchargeDetailsDict]
+    errors: NotRequired[list[ErrorDict]]
+    applied_card_surcharge_details: NotRequired[CardSurchargeDetailsDict]
     wallet_type: NotRequired[str]

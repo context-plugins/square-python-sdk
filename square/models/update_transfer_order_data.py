@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
+from ..core import UNSET, OptionalNullable, SdkBaseModel
 from .update_transfer_order_line_data import UpdateTransferOrderLineData, UpdateTransferOrderLineDataDict
 
 
@@ -26,7 +26,7 @@ class UpdateTransferOrderData(SdkBaseModel):
     tracking_number: OptionalNullable[str] = UNSET
     """Shipment tracking number"""
 
-    line_items: Optional[list[UpdateTransferOrderLineData | None]] = UNSET
+    line_items: OptionalNullable[list[UpdateTransferOrderLineData]] = UNSET
     """List of items being transferred"""
 
 
@@ -36,4 +36,4 @@ class UpdateTransferOrderDataDict(TypedDict):
     expected_at: NotRequired[str | None]
     notes: NotRequired[str | None]
     tracking_number: NotRequired[str | None]
-    line_items: NotRequired[list[UpdateTransferOrderLineData | UpdateTransferOrderLineDataDict | None]]
+    line_items: NotRequired[list[UpdateTransferOrderLineDataDict] | None]

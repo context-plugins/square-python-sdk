@@ -26,6 +26,6 @@ class BuyNowPayLaterDetails(SdkBaseModel):
 
 class BuyNowPayLaterDetailsDict(TypedDict):
     brand: NotRequired[str | None]
-    afterpay_details: NotRequired[AfterpayDetails | AfterpayDetailsDict]
-    clearpay_details: NotRequired[ClearpayDetails | ClearpayDetailsDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    afterpay_details: NotRequired[AfterpayDetailsDict]
+    clearpay_details: NotRequired[ClearpayDetailsDict]
+    errors: NotRequired[list[ErrorDict]]

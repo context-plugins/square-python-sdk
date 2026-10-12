@@ -14,6 +14,4 @@ class CatalogVersionUpdatedEventObject(SdkBaseModel):
 
 
 class CatalogVersionUpdatedEventObjectDict(TypedDict):
-    catalog_version: NotRequired[
-        CatalogVersionUpdatedEventCatalogVersion | CatalogVersionUpdatedEventCatalogVersionDict
-    ]
+    catalog_version: NotRequired[CatalogVersionUpdatedEventCatalogVersionDict]

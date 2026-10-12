@@ -21,4 +21,4 @@ class GiftCardActivityTransferBalanceTo(SdkBaseModel):
 
 class GiftCardActivityTransferBalanceToDict(TypedDict):
     transfer_from_gift_card_id: str
-    amount_money: Money | MoneyDict
+    amount_money: MoneyDict

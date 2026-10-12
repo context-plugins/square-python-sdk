@@ -38,5 +38,5 @@ class ReceiveTransferOrderRequest(SdkBaseModel):
 
 class ReceiveTransferOrderRequestDict(TypedDict):
     idempotency_key: str
-    receipt: TransferOrderGoodsReceipt | TransferOrderGoodsReceiptDict
+    receipt: TransferOrderGoodsReceiptDict
     version: NotRequired[int]

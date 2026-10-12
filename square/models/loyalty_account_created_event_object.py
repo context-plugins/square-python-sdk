@@ -13,4 +13,4 @@ class LoyaltyAccountCreatedEventObject(SdkBaseModel):
 
 
 class LoyaltyAccountCreatedEventObjectDict(TypedDict):
-    loyalty_account: NotRequired[LoyaltyAccount | LoyaltyAccountDict]
+    loyalty_account: NotRequired[LoyaltyAccountDict]

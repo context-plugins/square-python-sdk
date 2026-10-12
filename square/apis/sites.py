@@ -8,8 +8,10 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_decoder,
     raw_error_response,
+    unwrap,
 )
 from ..models.list_sites_response import ListSitesResponse
 from ..server.server import Server
@@ -28,14 +30,15 @@ class Sites:
         <https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis>`__.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_sites(request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.list_sites(request_options=request_options))
 
     @property
     def with_raw_response(self) -> SitesWithRawResponse:
@@ -55,14 +58,15 @@ class AsyncSites:
         <https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis>`__.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.list_sites(request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.list_sites(request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncSitesWithRawResponse:
@@ -81,7 +85,8 @@ class SitesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         <https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis>`__.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -107,7 +112,8 @@ class AsyncSitesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
         <https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis>`__.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -115,7 +121,7 @@ class AsyncSitesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Async
             http_method="GET",
             url_template=self._server.default("/v2/sites"),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListSitesResponse],
+            decoder=async_json_decoder[ListSitesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

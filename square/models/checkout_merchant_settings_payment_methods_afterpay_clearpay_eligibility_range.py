@@ -23,5 +23,5 @@ class CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayEligibilityRange(Sdk
 
 
 class CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayEligibilityRangeDict(TypedDict):
-    min: Money | MoneyDict
-    max: Money | MoneyDict
+    min: MoneyDict
+    max: MoneyDict

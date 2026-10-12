@@ -14,4 +14,4 @@ class DeleteOrderCustomAttributeResponse(SdkBaseModel):
 
 
 class DeleteOrderCustomAttributeResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

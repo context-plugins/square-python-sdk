@@ -5,16 +5,21 @@ from uuid import UUID, uuid4
 from ..auth import AsyncAuthSchemes, AuthSchemes
 from ..core import (
     ApiResult,
+    AsyncFileInput,
     AsyncRawClient,
+    FileInput,
     RawClient,
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
+    file_part,
     json_body,
     json_decoder,
     multipart_body,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.cancel_invoice_request import CancelInvoiceRequest, CancelInvoiceRequestDict
 from ..models.cancel_invoice_response import CancelInvoiceResponse
@@ -58,14 +63,15 @@ class Invoices:
             invoice_id: The ID of the `invoice <entity:Invoice>`__ to cancel.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.cancel_invoice(invoice_id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.cancel_invoice(invoice_id, body, request_options=request_options))
 
     def create_invoice(
         self,
@@ -81,21 +87,22 @@ class Invoices:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_invoice(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_invoice(body, request_options=request_options))
 
     def create_invoice_attachment(
         self,
         invoice_id: str,
         *,
         request: CreateInvoiceAttachmentRequest | CreateInvoiceAttachmentRequestDict | None = None,
-        image_file: bytes | None = None,
+        image_file: FileInput | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> CreateInvoiceAttachmentResponse:
         """Uploads a file and attaches it to an invoice. This endpoint accepts HTTP multipart/form-data file uploads
@@ -111,16 +118,19 @@ class Invoices:
             invoice_id: The ID of the `invoice <entity:Invoice>`__ to attach the file to.
             request: Represents a `CreateInvoiceAttachment <api-endpoint:Invoices-CreateInvoiceAttachment>`__ request.
             image_file: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_invoice_attachment(
-            invoice_id, request=request, image_file=image_file, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.create_invoice_attachment(
+                invoice_id, request=request, image_file=image_file, request_options=request_options
+            ),
+        )
 
     def delete_invoice(
         self, invoice_id: str, *, version: int | None = None, request_options: RequestOptionsOrDict | None = None
@@ -134,16 +144,17 @@ class Invoices:
             version: The version of the `invoice <entity:Invoice>`__ to delete. If you do not know the version, you can
                 call `GetInvoice <api-endpoint:Invoices-GetInvoice>`__ or `ListInvoices
                 <api-endpoint:Invoices-ListInvoices>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_invoice(
-            invoice_id, version=version, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.delete_invoice(invoice_id, version=version, request_options=request_options)
+        )
 
     def delete_invoice_attachment(
         self, invoice_id: str, attachment_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -154,16 +165,19 @@ class Invoices:
         Args:
             invoice_id: The ID of the `invoice <entity:Invoice>`__ to delete the attachment from.
             attachment_id: The ID of the `attachment <entity:InvoiceAttachment>`__ to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_invoice_attachment(
-            invoice_id, attachment_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.delete_invoice_attachment(
+                invoice_id, attachment_id, request_options=request_options
+            ),
+        )
 
     def get_invoice(
         self, invoice_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -172,14 +186,15 @@ class Invoices:
 
         Args:
             invoice_id: The ID of the invoice to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.get_invoice(invoice_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.get_invoice(invoice_id, request_options=request_options))
 
     def list_invoices(
         self,
@@ -199,16 +214,19 @@ class Invoices:
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
             limit: The maximum number of invoices to return (200 is the maximum ``limit``). If not provided, the server
                 uses a default limit of 100 invoices.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_invoices(
-            location_id, cursor=cursor, limit=limit, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_invoices(
+                location_id, cursor=cursor, limit=limit, request_options=request_options
+            ),
+        )
 
     def publish_invoice(
         self,
@@ -234,14 +252,15 @@ class Invoices:
             invoice_id: The ID of the invoice to publish.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.publish_invoice(invoice_id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.publish_invoice(invoice_id, body, request_options=request_options))
 
     def search_invoices(
         self,
@@ -259,14 +278,15 @@ class Invoices:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_invoices(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_invoices(body, request_options=request_options))
 
     def update_invoice(
         self,
@@ -283,14 +303,15 @@ class Invoices:
             invoice_id: The ID of the invoice to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_invoice(invoice_id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.update_invoice(invoice_id, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> InvoicesWithRawResponse:
@@ -317,16 +338,15 @@ class AsyncInvoices:
             invoice_id: The ID of the `invoice <entity:Invoice>`__ to cancel.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.cancel_invoice(invoice_id, body, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.cancel_invoice(invoice_id, body, request_options=request_options))
 
     async def create_invoice(
         self,
@@ -342,21 +362,22 @@ class AsyncInvoices:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_invoice(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_invoice(body, request_options=request_options))
 
     async def create_invoice_attachment(
         self,
         invoice_id: str,
         *,
         request: CreateInvoiceAttachmentRequest | CreateInvoiceAttachmentRequestDict | None = None,
-        image_file: bytes | None = None,
+        image_file: AsyncFileInput | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> CreateInvoiceAttachmentResponse:
         """Uploads a file and attaches it to an invoice. This endpoint accepts HTTP multipart/form-data file uploads
@@ -372,18 +393,19 @@ class AsyncInvoices:
             invoice_id: The ID of the `invoice <entity:Invoice>`__ to attach the file to.
             request: Represents a `CreateInvoiceAttachment <api-endpoint:Invoices-CreateInvoiceAttachment>`__ request.
             image_file: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.create_invoice_attachment(
                 invoice_id, request=request, image_file=image_file, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def delete_invoice(
         self, invoice_id: str, *, version: int | None = None, request_options: RequestOptionsOrDict | None = None
@@ -397,16 +419,17 @@ class AsyncInvoices:
             version: The version of the `invoice <entity:Invoice>`__ to delete. If you do not know the version, you can
                 call `GetInvoice <api-endpoint:Invoices-GetInvoice>`__ or `ListInvoices
                 <api-endpoint:Invoices-ListInvoices>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.delete_invoice(invoice_id, version=version, request_options=request_options)
-        ).unwrap()
+        )
 
     async def delete_invoice_attachment(
         self, invoice_id: str, attachment_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -417,18 +440,19 @@ class AsyncInvoices:
         Args:
             invoice_id: The ID of the `invoice <entity:Invoice>`__ to delete the attachment from.
             attachment_id: The ID of the `attachment <entity:InvoiceAttachment>`__ to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.delete_invoice_attachment(
                 invoice_id, attachment_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def get_invoice(
         self, invoice_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -437,14 +461,15 @@ class AsyncInvoices:
 
         Args:
             invoice_id: The ID of the invoice to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.get_invoice(invoice_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.get_invoice(invoice_id, request_options=request_options))
 
     async def list_invoices(
         self,
@@ -464,18 +489,19 @@ class AsyncInvoices:
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
             limit: The maximum number of invoices to return (200 is the maximum ``limit``). If not provided, the server
                 uses a default limit of 100 invoices.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_invoices(
                 location_id, cursor=cursor, limit=limit, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def publish_invoice(
         self,
@@ -501,16 +527,15 @@ class AsyncInvoices:
             invoice_id: The ID of the invoice to publish.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.publish_invoice(invoice_id, body, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.publish_invoice(invoice_id, body, request_options=request_options))
 
     async def search_invoices(
         self,
@@ -528,14 +553,15 @@ class AsyncInvoices:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_invoices(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_invoices(body, request_options=request_options))
 
     async def update_invoice(
         self,
@@ -552,16 +578,15 @@ class AsyncInvoices:
             invoice_id: The ID of the invoice to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.update_invoice(invoice_id, body, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.update_invoice(invoice_id, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncInvoicesWithRawResponse:
@@ -585,7 +610,8 @@ class InvoicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             invoice_id: The ID of the `invoice <entity:Invoice>`__ to cancel.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -615,7 +641,8 @@ class InvoicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -635,7 +662,7 @@ class InvoicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         invoice_id: str,
         *,
         request: CreateInvoiceAttachmentRequest | CreateInvoiceAttachmentRequestDict | None = None,
-        image_file: bytes | None = None,
+        image_file: FileInput | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> ApiResult[CreateInvoiceAttachmentResponse, RawError]:
         """Uploads a file and attaches it to an invoice. This endpoint accepts HTTP multipart/form-data file uploads
@@ -651,7 +678,8 @@ class InvoicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             invoice_id: The ID of the `invoice <entity:Invoice>`__ to attach the file to.
             request: Represents a `CreateInvoiceAttachment <api-endpoint:Invoices-CreateInvoiceAttachment>`__ request.
             image_file: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -661,8 +689,8 @@ class InvoicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             path_params=[param[str]("invoice_id", invoice_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=multipart_body(
-                [param[CreateInvoiceAttachmentRequest | CreateInvoiceAttachmentRequestDict | None]("request", request)],
-                {"image_file": image_file},
+                param[CreateInvoiceAttachmentRequest | CreateInvoiceAttachmentRequestDict | None]("request", request),
+                file_part("image_file", image_file) if image_file is not None else None,
             ),
             auth_scheme=self._auth.oauth2,
             decoder=json_decoder[CreateInvoiceAttachmentResponse],
@@ -682,7 +710,8 @@ class InvoicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             version: The version of the `invoice <entity:Invoice>`__ to delete. If you do not know the version, you can
                 call `GetInvoice <api-endpoint:Invoices-GetInvoice>`__ or `ListInvoices
                 <api-endpoint:Invoices-ListInvoices>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -707,7 +736,8 @@ class InvoicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         Args:
             invoice_id: The ID of the `invoice <entity:Invoice>`__ to delete the attachment from.
             attachment_id: The ID of the `attachment <entity:InvoiceAttachment>`__ to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -729,7 +759,8 @@ class InvoicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             invoice_id: The ID of the invoice to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -761,7 +792,8 @@ class InvoicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
             limit: The maximum number of invoices to return (200 is the maximum ``limit``). If not provided, the server
                 uses a default limit of 100 invoices.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -803,7 +835,8 @@ class InvoicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             invoice_id: The ID of the invoice to publish.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -835,7 +868,8 @@ class InvoicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -865,7 +899,8 @@ class InvoicesWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             invoice_id: The ID of the invoice to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -899,7 +934,8 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             invoice_id: The ID of the `invoice <entity:Invoice>`__ to cancel.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -910,7 +946,7 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CancelInvoiceRequest | CancelInvoiceRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CancelInvoiceResponse],
+            decoder=async_json_decoder[CancelInvoiceResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -929,7 +965,8 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -939,7 +976,7 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateInvoiceRequest | CreateInvoiceRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateInvoiceResponse],
+            decoder=async_json_decoder[CreateInvoiceResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -949,7 +986,7 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         invoice_id: str,
         *,
         request: CreateInvoiceAttachmentRequest | CreateInvoiceAttachmentRequestDict | None = None,
-        image_file: bytes | None = None,
+        image_file: AsyncFileInput | None = None,
         request_options: RequestOptionsOrDict | None = None,
     ) -> ApiResult[CreateInvoiceAttachmentResponse, RawError]:
         """Uploads a file and attaches it to an invoice. This endpoint accepts HTTP multipart/form-data file uploads
@@ -965,7 +1002,8 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             invoice_id: The ID of the `invoice <entity:Invoice>`__ to attach the file to.
             request: Represents a `CreateInvoiceAttachment <api-endpoint:Invoices-CreateInvoiceAttachment>`__ request.
             image_file: Value sent with the request.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -975,11 +1013,11 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             path_params=[param[str]("invoice_id", invoice_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=multipart_body(
-                [param[CreateInvoiceAttachmentRequest | CreateInvoiceAttachmentRequestDict | None]("request", request)],
-                {"image_file": image_file},
+                param[CreateInvoiceAttachmentRequest | CreateInvoiceAttachmentRequestDict | None]("request", request),
+                file_part("image_file", image_file) if image_file is not None else None,
             ),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateInvoiceAttachmentResponse],
+            decoder=async_json_decoder[CreateInvoiceAttachmentResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -996,7 +1034,8 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             version: The version of the `invoice <entity:Invoice>`__ to delete. If you do not know the version, you can
                 call `GetInvoice <api-endpoint:Invoices-GetInvoice>`__ or `ListInvoices
                 <api-endpoint:Invoices-ListInvoices>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1007,7 +1046,7 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             query_params=[param[int | None]("version", version)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeleteInvoiceResponse],
+            decoder=async_json_decoder[DeleteInvoiceResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1021,7 +1060,8 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         Args:
             invoice_id: The ID of the `invoice <entity:Invoice>`__ to delete the attachment from.
             attachment_id: The ID of the `attachment <entity:InvoiceAttachment>`__ to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1031,7 +1071,7 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             path_params=[param[str]("invoice_id", invoice_id), param[str]("attachment_id", attachment_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeleteInvoiceAttachmentResponse],
+            decoder=async_json_decoder[DeleteInvoiceAttachmentResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1043,7 +1083,8 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             invoice_id: The ID of the invoice to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1052,7 +1093,7 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             url_template=self._server.default("/v2/invoices/{invoice_id}"),
             path_params=[param[str]("invoice_id", invoice_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[GetInvoiceResponse],
+            decoder=async_json_decoder[GetInvoiceResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1075,7 +1116,8 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
             limit: The maximum number of invoices to return (200 is the maximum ``limit``). If not provided, the server
                 uses a default limit of 100 invoices.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1088,7 +1130,7 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
                 param[int | None]("limit", limit),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListInvoicesResponse],
+            decoder=async_json_decoder[ListInvoicesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1117,7 +1159,8 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             invoice_id: The ID of the invoice to publish.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1128,7 +1171,7 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[PublishInvoiceRequest | PublishInvoiceRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[PublishInvoiceResponse],
+            decoder=async_json_decoder[PublishInvoiceResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1149,7 +1192,8 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1159,7 +1203,7 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchInvoicesRequest | SearchInvoicesRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SearchInvoicesResponse],
+            decoder=async_json_decoder[SearchInvoicesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1179,7 +1223,8 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             invoice_id: The ID of the invoice to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1190,7 +1235,7 @@ class AsyncInvoicesWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateInvoiceRequest | UpdateInvoiceRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateInvoiceResponse],
+            decoder=async_json_decoder[UpdateInvoiceResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

@@ -20,4 +20,4 @@ class DeviceCodePairedEventData(SdkBaseModel):
 class DeviceCodePairedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[DeviceCodePairedEventObject | DeviceCodePairedEventObjectDict]
+    object_: NotRequired[DeviceCodePairedEventObjectDict]

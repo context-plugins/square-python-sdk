@@ -43,7 +43,7 @@ class Shift(SdkBaseModel):
     Deprecated at Square API version 2025-05-21. See the `migration notes
     <https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes>`__."""
 
-    breaks: Optional[list[BreakModel | None]] = UNSET
+    breaks: OptionalNullable[list[BreakModel]] = UNSET
     """A list of all the paid or unpaid breaks that were taken during this shift."""
 
     status: Optional[ShiftStatusOrStr] = UNSET
@@ -80,11 +80,11 @@ class ShiftDict(TypedDict):
     timezone: NotRequired[str | None]
     start_at: str
     end_at: NotRequired[str | None]
-    wage: NotRequired[ShiftWage | ShiftWageDict]
-    breaks: NotRequired[list[BreakModel | BreakModelDict | None]]
+    wage: NotRequired[ShiftWageDict]
+    breaks: NotRequired[list[BreakModelDict] | None]
     status: NotRequired[ShiftStatusOrStr]
     version: NotRequired[int]
     created_at: NotRequired[str]
     updated_at: NotRequired[str]
     team_member_id: NotRequired[str | None]
-    declared_cash_tip_money: NotRequired[Money | MoneyDict]
+    declared_cash_tip_money: NotRequired[MoneyDict]

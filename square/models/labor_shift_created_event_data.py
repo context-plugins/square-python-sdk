@@ -20,4 +20,4 @@ class LaborShiftCreatedEventData(SdkBaseModel):
 class LaborShiftCreatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[LaborShiftCreatedEventObject | LaborShiftCreatedEventObjectDict]
+    object_: NotRequired[LaborShiftCreatedEventObjectDict]

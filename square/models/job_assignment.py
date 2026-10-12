@@ -39,7 +39,7 @@ class JobAssignment(SdkBaseModel):
 class JobAssignmentDict(TypedDict):
     job_title: NotRequired[str | None]
     pay_type: JobAssignmentPayTypeOrStr
-    hourly_rate: NotRequired[Money | MoneyDict]
-    annual_rate: NotRequired[Money | MoneyDict]
+    hourly_rate: NotRequired[MoneyDict]
+    annual_rate: NotRequired[MoneyDict]
     weekly_hours: NotRequired[int | None]
     job_id: NotRequired[str | None]

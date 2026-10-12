@@ -2,16 +2,16 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
+from ..core import UNSET, OptionalNullable, SdkBaseModel
 from .enums.inventory_state import InventoryStateOrStr
 
 
 class BatchRetrieveInventoryCountsRequest(SdkBaseModel):
-    catalog_object_ids: Optional[list[str | None]] = UNSET
+    catalog_object_ids: OptionalNullable[list[str]] = UNSET
     """The filter to return results by ``CatalogObject`` ID. The filter is applicable only when set. The default is
     null."""
 
-    location_ids: Optional[list[str | None]] = UNSET
+    location_ids: OptionalNullable[list[str]] = UNSET
     """The filter to return results by ``Location`` ID. This filter is applicable only when set. The default is null."""
 
     updated_after: OptionalNullable[str] = UNSET
@@ -25,7 +25,7 @@ class BatchRetrieveInventoryCountsRequest(SdkBaseModel):
     See the `Pagination <https://developer.squareup.com/docs/working-with-apis/pagination>`__ guide for more
     information."""
 
-    states: Optional[list[InventoryStateOrStr | None]] = UNSET
+    states: OptionalNullable[list[InventoryStateOrStr]] = UNSET
     """The filter to return results by ``InventoryState``. The filter is only applicable when set. Ignored are untracked
     states of ``NONE``, ``SOLD``, and ``UNLINKED_RETURN``. The default is null."""
 
@@ -34,9 +34,9 @@ class BatchRetrieveInventoryCountsRequest(SdkBaseModel):
 
 
 class BatchRetrieveInventoryCountsRequestDict(TypedDict):
-    catalog_object_ids: NotRequired[list[str | None]]
-    location_ids: NotRequired[list[str | None]]
+    catalog_object_ids: NotRequired[list[str] | None]
+    location_ids: NotRequired[list[str] | None]
     updated_after: NotRequired[str | None]
     cursor: NotRequired[str | None]
-    states: NotRequired[list[InventoryStateOrStr | None]]
+    states: NotRequired[list[InventoryStateOrStr] | None]
     limit: NotRequired[int | None]

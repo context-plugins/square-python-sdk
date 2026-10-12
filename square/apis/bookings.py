@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.bulk_retrieve_bookings_request import BulkRetrieveBookingsRequest, BulkRetrieveBookingsRequestDict
 from ..models.bulk_retrieve_bookings_response import BulkRetrieveBookingsResponse
@@ -59,14 +61,15 @@ class Bookings:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.bulk_retrieve_bookings(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.bulk_retrieve_bookings(body, request_options=request_options))
 
     def bulk_retrieve_team_member_booking_profiles(
         self,
@@ -79,16 +82,17 @@ class Bookings:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.bulk_retrieve_team_member_booking_profiles(
-            body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.bulk_retrieve_team_member_booking_profiles(body, request_options=request_options)
+        )
 
     def cancel_booking(
         self,
@@ -110,14 +114,15 @@ class Bookings:
             booking_id: The ID of the `Booking <entity:Booking>`__ object representing the to-be-cancelled booking.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.cancel_booking(booking_id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.cancel_booking(booking_id, body, request_options=request_options))
 
     def create_booking(
         self,
@@ -144,14 +149,15 @@ class Bookings:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_booking(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_booking(body, request_options=request_options))
 
     def list_bookings(
         self,
@@ -185,23 +191,26 @@ class Bookings:
                 current time is used.
             start_at_max: The RFC 3339 timestamp specifying the latest of the start time. If this is not set, the time
                 of 31 days after ``start_at_min`` is used.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_bookings(
-            limit=limit,
-            cursor=cursor,
-            customer_id=customer_id,
-            team_member_id=team_member_id,
-            location_id=location_id,
-            start_at_min=start_at_min,
-            start_at_max=start_at_max,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_bookings(
+                limit=limit,
+                cursor=cursor,
+                customer_id=customer_id,
+                team_member_id=team_member_id,
+                location_id=location_id,
+                start_at_min=start_at_min,
+                start_at_max=start_at_max,
+                request_options=request_options,
+            ),
+        )
 
     def list_location_booking_profiles(
         self,
@@ -216,16 +225,19 @@ class Bookings:
             limit: The maximum number of results to return in a paged response.
             cursor: The pagination cursor from the preceding response to return the next page of the results. Do not set
                 this when retrieving the first page of the results.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_location_booking_profiles(
-            limit=limit, cursor=cursor, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_location_booking_profiles(
+                limit=limit, cursor=cursor, request_options=request_options
+            ),
+        )
 
     def list_team_member_booking_profiles(
         self,
@@ -246,20 +258,23 @@ class Bookings:
                 this when retrieving the first page of the results.
             location_id: Indicates whether to include only team members enabled at the given location in the returned
                 result.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_team_member_booking_profiles(
-            bookable_only=bookable_only,
-            limit=limit,
-            cursor=cursor,
-            location_id=location_id,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_team_member_booking_profiles(
+                bookable_only=bookable_only,
+                limit=limit,
+                cursor=cursor,
+                location_id=location_id,
+                request_options=request_options,
+            ),
+        )
 
     def retrieve_booking(
         self, booking_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -272,14 +287,15 @@ class Bookings:
 
         Args:
             booking_id: The ID of the `Booking <entity:Booking>`__ object representing the to-be-retrieved booking.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_booking(booking_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_booking(booking_id, request_options=request_options))
 
     def retrieve_business_booking_profile(
         self, *, request_options: RequestOptionsOrDict | None = None
@@ -287,14 +303,15 @@ class Bookings:
         """Retrieves a seller's booking profile.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_business_booking_profile(request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_business_booking_profile(request_options=request_options))
 
     def retrieve_location_booking_profile(
         self, location_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -303,16 +320,17 @@ class Bookings:
 
         Args:
             location_id: The ID of the location to retrieve the booking profile.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_location_booking_profile(
-            location_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.retrieve_location_booking_profile(location_id, request_options=request_options)
+        )
 
     def retrieve_team_member_booking_profile(
         self, team_member_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -321,16 +339,19 @@ class Bookings:
 
         Args:
             team_member_id: The ID of the team member to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_team_member_booking_profile(
-            team_member_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.retrieve_team_member_booking_profile(
+                team_member_id, request_options=request_options
+            ),
+        )
 
     def search_availability(
         self,
@@ -347,14 +368,15 @@ class Bookings:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_availability(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_availability(body, request_options=request_options))
 
     def update_booking(
         self,
@@ -376,14 +398,15 @@ class Bookings:
             booking_id: The ID of the `Booking <entity:Booking>`__ object representing the to-be-updated booking.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_booking(booking_id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.update_booking(booking_id, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> BookingsWithRawResponse:
@@ -409,14 +432,15 @@ class AsyncBookings:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.bulk_retrieve_bookings(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.bulk_retrieve_bookings(body, request_options=request_options))
 
     async def bulk_retrieve_team_member_booking_profiles(
         self,
@@ -429,18 +453,19 @@ class AsyncBookings:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.bulk_retrieve_team_member_booking_profiles(
                 body, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def cancel_booking(
         self,
@@ -462,16 +487,15 @@ class AsyncBookings:
             booking_id: The ID of the `Booking <entity:Booking>`__ object representing the to-be-cancelled booking.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.cancel_booking(booking_id, body, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.cancel_booking(booking_id, body, request_options=request_options))
 
     async def create_booking(
         self,
@@ -498,14 +522,15 @@ class AsyncBookings:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_booking(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_booking(body, request_options=request_options))
 
     async def list_bookings(
         self,
@@ -539,14 +564,15 @@ class AsyncBookings:
                 current time is used.
             start_at_max: The RFC 3339 timestamp specifying the latest of the start time. If this is not set, the time
                 of 31 days after ``start_at_min`` is used.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_bookings(
                 limit=limit,
                 cursor=cursor,
@@ -556,8 +582,8 @@ class AsyncBookings:
                 start_at_min=start_at_min,
                 start_at_max=start_at_max,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def list_location_booking_profiles(
         self,
@@ -572,18 +598,19 @@ class AsyncBookings:
             limit: The maximum number of results to return in a paged response.
             cursor: The pagination cursor from the preceding response to return the next page of the results. Do not set
                 this when retrieving the first page of the results.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_location_booking_profiles(
                 limit=limit, cursor=cursor, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def list_team_member_booking_profiles(
         self,
@@ -604,22 +631,23 @@ class AsyncBookings:
                 this when retrieving the first page of the results.
             location_id: Indicates whether to include only team members enabled at the given location in the returned
                 result.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_team_member_booking_profiles(
                 bookable_only=bookable_only,
                 limit=limit,
                 cursor=cursor,
                 location_id=location_id,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_booking(
         self, booking_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -632,14 +660,15 @@ class AsyncBookings:
 
         Args:
             booking_id: The ID of the `Booking <entity:Booking>`__ object representing the to-be-retrieved booking.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.retrieve_booking(booking_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.retrieve_booking(booking_id, request_options=request_options))
 
     async def retrieve_business_booking_profile(
         self, *, request_options: RequestOptionsOrDict | None = None
@@ -647,16 +676,15 @@ class AsyncBookings:
         """Retrieves a seller's booking profile.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.retrieve_business_booking_profile(request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.retrieve_business_booking_profile(request_options=request_options))
 
     async def retrieve_location_booking_profile(
         self, location_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -665,18 +693,19 @@ class AsyncBookings:
 
         Args:
             location_id: The ID of the location to retrieve the booking profile.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_location_booking_profile(
                 location_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_team_member_booking_profile(
         self, team_member_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -685,18 +714,19 @@ class AsyncBookings:
 
         Args:
             team_member_id: The ID of the team member to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_team_member_booking_profile(
                 team_member_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def search_availability(
         self,
@@ -713,14 +743,15 @@ class AsyncBookings:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_availability(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_availability(body, request_options=request_options))
 
     async def update_booking(
         self,
@@ -742,16 +773,15 @@ class AsyncBookings:
             booking_id: The ID of the `Booking <entity:Booking>`__ object representing the to-be-updated booking.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.update_booking(booking_id, body, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.update_booking(booking_id, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncBookingsWithRawResponse:
@@ -774,7 +804,8 @@ class BookingsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -800,7 +831,8 @@ class BookingsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -837,7 +869,8 @@ class BookingsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             booking_id: The ID of the `Booking <entity:Booking>`__ object representing the to-be-cancelled booking.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -878,7 +911,8 @@ class BookingsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -925,7 +959,8 @@ class BookingsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
                 current time is used.
             start_at_max: The RFC 3339 timestamp specifying the latest of the start time. If this is not set, the time
                 of 31 days after ``start_at_min`` is used.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -960,7 +995,8 @@ class BookingsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             limit: The maximum number of results to return in a paged response.
             cursor: The pagination cursor from the preceding response to return the next page of the results. Do not set
                 this when retrieving the first page of the results.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -993,7 +1029,8 @@ class BookingsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
                 this when retrieving the first page of the results.
             location_id: Indicates whether to include only team members enabled at the given location in the returned
                 result.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1023,7 +1060,8 @@ class BookingsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             booking_id: The ID of the `Booking <entity:Booking>`__ object representing the to-be-retrieved booking.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1043,7 +1081,8 @@ class BookingsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         """Retrieves a seller's booking profile.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1063,7 +1102,8 @@ class BookingsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             location_id: The ID of the location to retrieve the booking profile.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1084,7 +1124,8 @@ class BookingsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
 
         Args:
             team_member_id: The ID of the team member to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1113,7 +1154,8 @@ class BookingsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1148,7 +1190,8 @@ class BookingsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]
             booking_id: The ID of the `Booking <entity:Booking>`__ object representing the to-be-updated booking.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1181,7 +1224,8 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1191,7 +1235,7 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkRetrieveBookingsRequest | BulkRetrieveBookingsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BulkRetrieveBookingsResponse],
+            decoder=async_json_decoder[BulkRetrieveBookingsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1207,7 +1251,8 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1219,7 +1264,7 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
                 BulkRetrieveTeamMemberBookingProfilesRequest | BulkRetrieveTeamMemberBookingProfilesRequestDict
             ](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BulkRetrieveTeamMemberBookingProfilesResponse],
+            decoder=async_json_decoder[BulkRetrieveTeamMemberBookingProfilesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1244,7 +1289,8 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             booking_id: The ID of the `Booking <entity:Booking>`__ object representing the to-be-cancelled booking.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1255,7 +1301,7 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CancelBookingRequest | CancelBookingRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CancelBookingResponse],
+            decoder=async_json_decoder[CancelBookingResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1285,7 +1331,8 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1295,7 +1342,7 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateBookingRequest | CreateBookingRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateBookingResponse],
+            decoder=async_json_decoder[CreateBookingResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1332,7 +1379,8 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
                 current time is used.
             start_at_max: The RFC 3339 timestamp specifying the latest of the start time. If this is not set, the time
                 of 31 days after ``start_at_min`` is used.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1349,7 +1397,7 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
                 param[str | None]("start_at_max", start_at_max),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListBookingsResponse],
+            decoder=async_json_decoder[ListBookingsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1367,7 +1415,8 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             limit: The maximum number of results to return in a paged response.
             cursor: The pagination cursor from the preceding response to return the next page of the results. Do not set
                 this when retrieving the first page of the results.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1376,7 +1425,7 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             url_template=self._server.default("/v2/bookings/location-booking-profiles"),
             query_params=[param[int | None]("limit", limit), param[str | None]("cursor", cursor)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListLocationBookingProfilesResponse],
+            decoder=async_json_decoder[ListLocationBookingProfilesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1400,7 +1449,8 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
                 this when retrieving the first page of the results.
             location_id: Indicates whether to include only team members enabled at the given location in the returned
                 result.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1414,7 +1464,7 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
                 param[str | None]("location_id", location_id),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListTeamMemberBookingProfilesResponse],
+            decoder=async_json_decoder[ListTeamMemberBookingProfilesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1430,7 +1480,8 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             booking_id: The ID of the `Booking <entity:Booking>`__ object representing the to-be-retrieved booking.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1439,7 +1490,7 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             url_template=self._server.default("/v2/bookings/{booking_id}"),
             path_params=[param[str]("booking_id", booking_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveBookingResponse],
+            decoder=async_json_decoder[RetrieveBookingResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1450,7 +1501,8 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         """Retrieves a seller's booking profile.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1458,7 +1510,7 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             http_method="GET",
             url_template=self._server.default("/v2/bookings/business-booking-profile"),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveBusinessBookingProfileResponse],
+            decoder=async_json_decoder[RetrieveBusinessBookingProfileResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1470,7 +1522,8 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             location_id: The ID of the location to retrieve the booking profile.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1479,7 +1532,7 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             url_template=self._server.default("/v2/bookings/location-booking-profiles/{location_id}"),
             path_params=[param[str]("location_id", location_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveLocationBookingProfileResponse],
+            decoder=async_json_decoder[RetrieveLocationBookingProfileResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1491,7 +1544,8 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
 
         Args:
             team_member_id: The ID of the team member to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1500,7 +1554,7 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             url_template=self._server.default("/v2/bookings/team-member-booking-profiles/{team_member_id}"),
             path_params=[param[str]("team_member_id", team_member_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveTeamMemberBookingProfileResponse],
+            decoder=async_json_decoder[RetrieveTeamMemberBookingProfileResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1520,7 +1574,8 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1530,7 +1585,7 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchAvailabilityRequest | SearchAvailabilityRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SearchAvailabilityResponse],
+            decoder=async_json_decoder[SearchAvailabilityResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1555,7 +1610,8 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             booking_id: The ID of the `Booking <entity:Booking>`__ object representing the to-be-updated booking.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1566,7 +1622,7 @@ class AsyncBookingsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, As
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateBookingRequest | UpdateBookingRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateBookingResponse],
+            decoder=async_json_decoder[UpdateBookingResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

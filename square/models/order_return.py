@@ -21,21 +21,21 @@ class OrderReturn(SdkBaseModel):
     source_order_id: OptionalNullable[str] = UNSET
     """An order that contains the original sale of these return line items. This is unset for unlinked returns."""
 
-    return_line_items: Optional[list[OrderReturnLineItem | None]] = UNSET
+    return_line_items: OptionalNullable[list[OrderReturnLineItem]] = UNSET
     """A collection of line items that are being returned."""
 
-    return_service_charges: Optional[list[OrderReturnServiceCharge | None]] = UNSET
+    return_service_charges: OptionalNullable[list[OrderReturnServiceCharge]] = UNSET
     """A collection of service charges that are being returned."""
 
-    return_taxes: Optional[list[OrderReturnTax | None]] = UNSET
+    return_taxes: OptionalNullable[list[OrderReturnTax]] = UNSET
     """A collection of references to taxes being returned for an order, including the total applied tax amount to be
     returned. The taxes must reference a top-level tax ID from the source order."""
 
-    return_discounts: Optional[list[OrderReturnDiscount | None]] = UNSET
+    return_discounts: OptionalNullable[list[OrderReturnDiscount]] = UNSET
     """A collection of references to discounts being returned for an order, including the total applied discount amount
     to be returned. The discounts must reference a top-level discount ID from the source order."""
 
-    return_tips: Optional[list[OrderReturnTip | None]] = UNSET
+    return_tips: OptionalNullable[list[OrderReturnTip]] = UNSET
     """A collection of references to tips being returned for an order."""
 
     rounding_adjustment: Optional[OrderRoundingAdjustment] = UNSET
@@ -49,10 +49,10 @@ class OrderReturn(SdkBaseModel):
 class OrderReturnDict(TypedDict):
     uid: NotRequired[str | None]
     source_order_id: NotRequired[str | None]
-    return_line_items: NotRequired[list[OrderReturnLineItem | OrderReturnLineItemDict | None]]
-    return_service_charges: NotRequired[list[OrderReturnServiceCharge | OrderReturnServiceChargeDict | None]]
-    return_taxes: NotRequired[list[OrderReturnTax | OrderReturnTaxDict | None]]
-    return_discounts: NotRequired[list[OrderReturnDiscount | OrderReturnDiscountDict | None]]
-    return_tips: NotRequired[list[OrderReturnTip | OrderReturnTipDict | None]]
-    rounding_adjustment: NotRequired[OrderRoundingAdjustment | OrderRoundingAdjustmentDict]
-    return_amounts: NotRequired[OrderMoneyAmounts | OrderMoneyAmountsDict]
+    return_line_items: NotRequired[list[OrderReturnLineItemDict] | None]
+    return_service_charges: NotRequired[list[OrderReturnServiceChargeDict] | None]
+    return_taxes: NotRequired[list[OrderReturnTaxDict] | None]
+    return_discounts: NotRequired[list[OrderReturnDiscountDict] | None]
+    return_tips: NotRequired[list[OrderReturnTipDict] | None]
+    rounding_adjustment: NotRequired[OrderRoundingAdjustmentDict]
+    return_amounts: NotRequired[OrderMoneyAmountsDict]

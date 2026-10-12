@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.accumulate_loyalty_points_request import (
     AccumulateLoyaltyPointsRequest,
@@ -81,16 +83,17 @@ class Loyalty:
             account_id: The ID of the target `loyalty account <entity:LoyaltyAccount>`__.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.accumulate_loyalty_points(
-            account_id, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.accumulate_loyalty_points(account_id, body, request_options=request_options)
+        )
 
     def adjust_loyalty_points(
         self,
@@ -109,14 +112,15 @@ class Loyalty:
             account_id: The ID of the target `loyalty account <entity:LoyaltyAccount>`__.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.adjust_loyalty_points(account_id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.adjust_loyalty_points(account_id, body, request_options=request_options))
 
     def calculate_loyalty_points(
         self,
@@ -147,16 +151,17 @@ class Loyalty:
                 points.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.calculate_loyalty_points(
-            program_id, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.calculate_loyalty_points(program_id, body, request_options=request_options)
+        )
 
     def cancel_loyalty_promotion(
         self, promotion_id: str, program_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -172,16 +177,17 @@ class Loyalty:
             promotion_id: The ID of the `loyalty promotion <entity:LoyaltyPromotion>`__ to cancel. You can cancel a
                 promotion that has an ``ACTIVE`` or ``SCHEDULED`` status.
             program_id: The ID of the base `loyalty program <entity:LoyaltyProgram>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.cancel_loyalty_promotion(
-            promotion_id, program_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.cancel_loyalty_promotion(promotion_id, program_id, request_options=request_options)
+        )
 
     def create_loyalty_account(
         self,
@@ -195,14 +201,15 @@ class Loyalty:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_loyalty_account(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_loyalty_account(body, request_options=request_options))
 
     def create_loyalty_promotion(
         self,
@@ -224,16 +231,17 @@ class Loyalty:
                 the ``main`` keyword.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_loyalty_promotion(
-            program_id, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.create_loyalty_promotion(program_id, body, request_options=request_options)
+        )
 
     def create_loyalty_reward(
         self,
@@ -252,14 +260,15 @@ class Loyalty:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_loyalty_reward(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_loyalty_reward(body, request_options=request_options))
 
     def delete_loyalty_reward(
         self, reward_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -275,14 +284,15 @@ class Loyalty:
 
         Args:
             reward_id: The ID of the `loyalty reward <entity:LoyaltyReward>`__ to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_loyalty_reward(reward_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.delete_loyalty_reward(reward_id, request_options=request_options))
 
     def list_loyalty_programs(
         self, *, request_options: RequestOptionsOrDict | None = None
@@ -296,14 +306,15 @@ class Loyalty:
         keyword ``main``.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_loyalty_programs(request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.list_loyalty_programs(request_options=request_options))
 
     def list_loyalty_promotions(
         self,
@@ -329,16 +340,19 @@ class Loyalty:
             limit: The maximum number of results to return in a single paged response. The minimum value is 1 and the
                 maximum value is 30. The default value is 30. For more information, see `Pagination
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_loyalty_promotions(
-            program_id, status=status, cursor=cursor, limit=limit, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_loyalty_promotions(
+                program_id, status=status, cursor=cursor, limit=limit, request_options=request_options
+            ),
+        )
 
     def redeem_loyalty_reward(
         self,
@@ -361,14 +375,15 @@ class Loyalty:
             reward_id: The ID of the `loyalty reward <entity:LoyaltyReward>`__ to redeem.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.redeem_loyalty_reward(reward_id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.redeem_loyalty_reward(reward_id, body, request_options=request_options))
 
     def retrieve_loyalty_account(
         self, account_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -377,14 +392,15 @@ class Loyalty:
 
         Args:
             account_id: The ID of the `loyalty account <entity:LoyaltyAccount>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_loyalty_account(account_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_loyalty_account(account_id, request_options=request_options))
 
     def retrieve_loyalty_program(
         self, program_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -398,14 +414,15 @@ class Loyalty:
         Args:
             program_id: The ID of the loyalty program or the keyword ``main``. Either value can be used to retrieve the
                 single loyalty program that belongs to the seller.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_loyalty_program(program_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_loyalty_program(program_id, request_options=request_options))
 
     def retrieve_loyalty_promotion(
         self, promotion_id: str, program_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -416,16 +433,19 @@ class Loyalty:
             promotion_id: The ID of the `loyalty promotion <entity:LoyaltyPromotion>`__ to retrieve.
             program_id: The ID of the base `loyalty program <entity:LoyaltyProgram>`__. To get the program ID, call
                 `RetrieveLoyaltyProgram <api-endpoint:Loyalty-RetrieveLoyaltyProgram>`__ using the ``main`` keyword.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_loyalty_promotion(
-            promotion_id, program_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.retrieve_loyalty_promotion(
+                promotion_id, program_id, request_options=request_options
+            ),
+        )
 
     def retrieve_loyalty_reward(
         self, reward_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -434,14 +454,15 @@ class Loyalty:
 
         Args:
             reward_id: The ID of the `loyalty reward <entity:LoyaltyReward>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_loyalty_reward(reward_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_loyalty_reward(reward_id, request_options=request_options))
 
     def search_loyalty_accounts(
         self,
@@ -459,14 +480,15 @@ class Loyalty:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_loyalty_accounts(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_loyalty_accounts(body, request_options=request_options))
 
     def search_loyalty_events(
         self,
@@ -485,14 +507,15 @@ class Loyalty:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_loyalty_events(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_loyalty_events(body, request_options=request_options))
 
     def search_loyalty_rewards(
         self,
@@ -512,14 +535,15 @@ class Loyalty:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_loyalty_rewards(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_loyalty_rewards(body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> LoyaltyWithRawResponse:
@@ -557,16 +581,17 @@ class AsyncLoyalty:
             account_id: The ID of the target `loyalty account <entity:LoyaltyAccount>`__.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.accumulate_loyalty_points(account_id, body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def adjust_loyalty_points(
         self,
@@ -585,16 +610,17 @@ class AsyncLoyalty:
             account_id: The ID of the target `loyalty account <entity:LoyaltyAccount>`__.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.adjust_loyalty_points(account_id, body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def calculate_loyalty_points(
         self,
@@ -625,16 +651,17 @@ class AsyncLoyalty:
                 points.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.calculate_loyalty_points(program_id, body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def cancel_loyalty_promotion(
         self, promotion_id: str, program_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -650,18 +677,19 @@ class AsyncLoyalty:
             promotion_id: The ID of the `loyalty promotion <entity:LoyaltyPromotion>`__ to cancel. You can cancel a
                 promotion that has an ``ACTIVE`` or ``SCHEDULED`` status.
             program_id: The ID of the base `loyalty program <entity:LoyaltyProgram>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.cancel_loyalty_promotion(
                 promotion_id, program_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def create_loyalty_account(
         self,
@@ -675,14 +703,15 @@ class AsyncLoyalty:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_loyalty_account(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_loyalty_account(body, request_options=request_options))
 
     async def create_loyalty_promotion(
         self,
@@ -704,16 +733,17 @@ class AsyncLoyalty:
                 the ``main`` keyword.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.create_loyalty_promotion(program_id, body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def create_loyalty_reward(
         self,
@@ -732,14 +762,15 @@ class AsyncLoyalty:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_loyalty_reward(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_loyalty_reward(body, request_options=request_options))
 
     async def delete_loyalty_reward(
         self, reward_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -755,16 +786,15 @@ class AsyncLoyalty:
 
         Args:
             reward_id: The ID of the `loyalty reward <entity:LoyaltyReward>`__ to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.delete_loyalty_reward(reward_id, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.delete_loyalty_reward(reward_id, request_options=request_options))
 
     async def list_loyalty_programs(
         self, *, request_options: RequestOptionsOrDict | None = None
@@ -778,14 +808,15 @@ class AsyncLoyalty:
         keyword ``main``.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.list_loyalty_programs(request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.list_loyalty_programs(request_options=request_options))
 
     async def list_loyalty_promotions(
         self,
@@ -811,18 +842,19 @@ class AsyncLoyalty:
             limit: The maximum number of results to return in a single paged response. The minimum value is 1 and the
                 maximum value is 30. The default value is 30. For more information, see `Pagination
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_loyalty_promotions(
                 program_id, status=status, cursor=cursor, limit=limit, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def redeem_loyalty_reward(
         self,
@@ -845,16 +877,17 @@ class AsyncLoyalty:
             reward_id: The ID of the `loyalty reward <entity:LoyaltyReward>`__ to redeem.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.redeem_loyalty_reward(reward_id, body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def retrieve_loyalty_account(
         self, account_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -863,16 +896,17 @@ class AsyncLoyalty:
 
         Args:
             account_id: The ID of the `loyalty account <entity:LoyaltyAccount>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_loyalty_account(account_id, request_options=request_options)
-        ).unwrap()
+        )
 
     async def retrieve_loyalty_program(
         self, program_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -886,16 +920,17 @@ class AsyncLoyalty:
         Args:
             program_id: The ID of the loyalty program or the keyword ``main``. Either value can be used to retrieve the
                 single loyalty program that belongs to the seller.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_loyalty_program(program_id, request_options=request_options)
-        ).unwrap()
+        )
 
     async def retrieve_loyalty_promotion(
         self, promotion_id: str, program_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -906,18 +941,19 @@ class AsyncLoyalty:
             promotion_id: The ID of the `loyalty promotion <entity:LoyaltyPromotion>`__ to retrieve.
             program_id: The ID of the base `loyalty program <entity:LoyaltyProgram>`__. To get the program ID, call
                 `RetrieveLoyaltyProgram <api-endpoint:Loyalty-RetrieveLoyaltyProgram>`__ using the ``main`` keyword.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_loyalty_promotion(
                 promotion_id, program_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_loyalty_reward(
         self, reward_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -926,16 +962,15 @@ class AsyncLoyalty:
 
         Args:
             reward_id: The ID of the `loyalty reward <entity:LoyaltyReward>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.retrieve_loyalty_reward(reward_id, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.retrieve_loyalty_reward(reward_id, request_options=request_options))
 
     async def search_loyalty_accounts(
         self,
@@ -953,14 +988,15 @@ class AsyncLoyalty:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_loyalty_accounts(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_loyalty_accounts(body, request_options=request_options))
 
     async def search_loyalty_events(
         self,
@@ -979,14 +1015,15 @@ class AsyncLoyalty:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_loyalty_events(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_loyalty_events(body, request_options=request_options))
 
     async def search_loyalty_rewards(
         self,
@@ -1006,14 +1043,15 @@ class AsyncLoyalty:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_loyalty_rewards(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_loyalty_rewards(body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncLoyaltyWithRawResponse:
@@ -1048,7 +1086,8 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             account_id: The ID of the target `loyalty account <entity:LoyaltyAccount>`__.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1081,7 +1120,8 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             account_id: The ID of the target `loyalty account <entity:LoyaltyAccount>`__.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1126,7 +1166,8 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
                 points.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1156,7 +1197,8 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             promotion_id: The ID of the `loyalty promotion <entity:LoyaltyPromotion>`__ to cancel. You can cancel a
                 promotion that has an ``ACTIVE`` or ``SCHEDULED`` status.
             program_id: The ID of the base `loyalty program <entity:LoyaltyProgram>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1183,7 +1225,8 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1218,7 +1261,8 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
                 the ``main`` keyword.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1251,7 +1295,8 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1280,7 +1325,8 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
 
         Args:
             reward_id: The ID of the `loyalty reward <entity:LoyaltyReward>`__ to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1307,7 +1353,8 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         keyword ``main``.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1344,7 +1391,8 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             limit: The maximum number of results to return in a single paged response. The minimum value is 1 and the
                 maximum value is 30. The default value is 30. For more information, see `Pagination
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1384,7 +1432,8 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             reward_id: The ID of the `loyalty reward <entity:LoyaltyReward>`__ to redeem.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1407,7 +1456,8 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
 
         Args:
             account_id: The ID of the `loyalty account <entity:LoyaltyAccount>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1433,7 +1483,8 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             program_id: The ID of the loyalty program or the keyword ``main``. Either value can be used to retrieve the
                 single loyalty program that belongs to the seller.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1456,7 +1507,8 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
             promotion_id: The ID of the `loyalty promotion <entity:LoyaltyPromotion>`__ to retrieve.
             program_id: The ID of the base `loyalty program <entity:LoyaltyProgram>`__. To get the program ID, call
                 `RetrieveLoyaltyProgram <api-endpoint:Loyalty-RetrieveLoyaltyProgram>`__ using the ``main`` keyword.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1477,7 +1529,8 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
 
         Args:
             reward_id: The ID of the `loyalty reward <entity:LoyaltyReward>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1507,7 +1560,8 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1539,7 +1593,8 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1572,7 +1627,8 @@ class LoyaltyWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes])
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1616,7 +1672,8 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             account_id: The ID of the target `loyalty account <entity:LoyaltyAccount>`__.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1627,7 +1684,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[AccumulateLoyaltyPointsRequest | AccumulateLoyaltyPointsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[AccumulateLoyaltyPointsResponse],
+            decoder=async_json_decoder[AccumulateLoyaltyPointsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1649,7 +1706,8 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             account_id: The ID of the target `loyalty account <entity:LoyaltyAccount>`__.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1660,7 +1718,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[AdjustLoyaltyPointsRequest | AdjustLoyaltyPointsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[AdjustLoyaltyPointsResponse],
+            decoder=async_json_decoder[AdjustLoyaltyPointsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1694,7 +1752,8 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
                 points.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1705,7 +1764,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CalculateLoyaltyPointsRequest | CalculateLoyaltyPointsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CalculateLoyaltyPointsResponse],
+            decoder=async_json_decoder[CalculateLoyaltyPointsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1724,7 +1783,8 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             promotion_id: The ID of the `loyalty promotion <entity:LoyaltyPromotion>`__ to cancel. You can cancel a
                 promotion that has an ``ACTIVE`` or ``SCHEDULED`` status.
             program_id: The ID of the base `loyalty program <entity:LoyaltyProgram>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1734,7 +1794,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             path_params=[param[str]("promotion_id", promotion_id), param[str]("program_id", program_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CancelLoyaltyPromotionResponse],
+            decoder=async_json_decoder[CancelLoyaltyPromotionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1751,7 +1811,8 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1761,7 +1822,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateLoyaltyAccountRequest | CreateLoyaltyAccountRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateLoyaltyAccountResponse],
+            decoder=async_json_decoder[CreateLoyaltyAccountResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1786,7 +1847,8 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
                 the ``main`` keyword.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1797,7 +1859,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateLoyaltyPromotionRequest | CreateLoyaltyPromotionRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateLoyaltyPromotionResponse],
+            decoder=async_json_decoder[CreateLoyaltyPromotionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1819,7 +1881,8 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1829,7 +1892,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateLoyaltyRewardRequest | CreateLoyaltyRewardRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateLoyaltyRewardResponse],
+            decoder=async_json_decoder[CreateLoyaltyRewardResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1848,7 +1911,8 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
 
         Args:
             reward_id: The ID of the `loyalty reward <entity:LoyaltyReward>`__ to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1858,7 +1922,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             path_params=[param[str]("reward_id", reward_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeleteLoyaltyRewardResponse],
+            decoder=async_json_decoder[DeleteLoyaltyRewardResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1875,7 +1939,8 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         keyword ``main``.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1883,7 +1948,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             http_method="GET",
             url_template=self._server.default("/v2/loyalty/programs"),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListLoyaltyProgramsResponse],
+            decoder=async_json_decoder[ListLoyaltyProgramsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1912,7 +1977,8 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             limit: The maximum number of results to return in a single paged response. The minimum value is 1 and the
                 maximum value is 30. The default value is 30. For more information, see `Pagination
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1926,7 +1992,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
                 param[int | None]("limit", limit),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListLoyaltyPromotionsResponse],
+            decoder=async_json_decoder[ListLoyaltyPromotionsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1952,7 +2018,8 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             reward_id: The ID of the `loyalty reward <entity:LoyaltyReward>`__ to redeem.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1963,7 +2030,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[RedeemLoyaltyRewardRequest | RedeemLoyaltyRewardRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RedeemLoyaltyRewardResponse],
+            decoder=async_json_decoder[RedeemLoyaltyRewardResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1975,7 +2042,8 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
 
         Args:
             account_id: The ID of the `loyalty account <entity:LoyaltyAccount>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1984,7 +2052,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             url_template=self._server.default("/v2/loyalty/accounts/{account_id}"),
             path_params=[param[str]("account_id", account_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveLoyaltyAccountResponse],
+            decoder=async_json_decoder[RetrieveLoyaltyAccountResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2001,7 +2069,8 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             program_id: The ID of the loyalty program or the keyword ``main``. Either value can be used to retrieve the
                 single loyalty program that belongs to the seller.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2010,7 +2079,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             url_template=self._server.default("/v2/loyalty/programs/{program_id}"),
             path_params=[param[str]("program_id", program_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveLoyaltyProgramResponse],
+            decoder=async_json_decoder[RetrieveLoyaltyProgramResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2024,7 +2093,8 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             promotion_id: The ID of the `loyalty promotion <entity:LoyaltyPromotion>`__ to retrieve.
             program_id: The ID of the base `loyalty program <entity:LoyaltyProgram>`__. To get the program ID, call
                 `RetrieveLoyaltyProgram <api-endpoint:Loyalty-RetrieveLoyaltyProgram>`__ using the ``main`` keyword.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2033,7 +2103,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             url_template=self._server.default("/v2/loyalty/programs/{program_id}/promotions/{promotion_id}"),
             path_params=[param[str]("promotion_id", promotion_id), param[str]("program_id", program_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveLoyaltyPromotionResponse],
+            decoder=async_json_decoder[RetrieveLoyaltyPromotionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2045,7 +2115,8 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
 
         Args:
             reward_id: The ID of the `loyalty reward <entity:LoyaltyReward>`__ to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2054,7 +2125,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             url_template=self._server.default("/v2/loyalty/rewards/{reward_id}"),
             path_params=[param[str]("reward_id", reward_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveLoyaltyRewardResponse],
+            decoder=async_json_decoder[RetrieveLoyaltyRewardResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2075,7 +2146,8 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2085,7 +2157,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchLoyaltyAccountsRequest | SearchLoyaltyAccountsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SearchLoyaltyAccountsResponse],
+            decoder=async_json_decoder[SearchLoyaltyAccountsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2107,7 +2179,8 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2117,7 +2190,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchLoyaltyEventsRequest | SearchLoyaltyEventsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SearchLoyaltyEventsResponse],
+            decoder=async_json_decoder[SearchLoyaltyEventsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -2140,7 +2213,8 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -2150,7 +2224,7 @@ class AsyncLoyaltyWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asy
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchLoyaltyRewardsRequest | SearchLoyaltyRewardsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SearchLoyaltyRewardsResponse],
+            decoder=async_json_decoder[SearchLoyaltyRewardsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

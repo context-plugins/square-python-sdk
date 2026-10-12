@@ -16,7 +16,7 @@ class CatalogCategory(SdkBaseModel):
     """The category name. This is a searchable attribute for use in applicable query filters, and its value length is of
     Unicode code points."""
 
-    image_ids: Optional[list[str | None]] = UNSET
+    image_ids: OptionalNullable[list[str]] = UNSET
     """The IDs of images associated with this ``CatalogCategory`` instance. Currently these images are not displayed by
     Square, but are free to be displayed in 3rd party applications."""
 
@@ -31,10 +31,10 @@ class CatalogCategory(SdkBaseModel):
     is_top_level: OptionalNullable[bool] = UNSET
     """Indicates whether a category is a top level category, which does not have any parent_category."""
 
-    channels: Optional[list[str | None]] = UNSET
+    channels: OptionalNullable[list[str]] = UNSET
     """A list of IDs representing channels, such as a Square Online site, where the category can be made visible."""
 
-    availability_period_ids: Optional[list[str | None]] = UNSET
+    availability_period_ids: OptionalNullable[list[str]] = UNSET
     """The IDs of the ``CatalogAvailabilityPeriod`` objects associated with the category."""
 
     online_visibility: OptionalNullable[bool] = UNSET
@@ -47,20 +47,20 @@ class CatalogCategory(SdkBaseModel):
     ecom_seo_data: Optional[CatalogEcomSeoData] = UNSET
     """SEO data for for a seller's Square Online store."""
 
-    path_to_root: Optional[list[CategoryPathToRootNode | None]] = UNSET
+    path_to_root: OptionalNullable[list[CategoryPathToRootNode]] = UNSET
     """The path from the category to its root category. The first node of the path is the parent of the category and the
     last is the root category. The path is empty if the category is a root category."""
 
 
 class CatalogCategoryDict(TypedDict):
     name: NotRequired[str | None]
-    image_ids: NotRequired[list[str | None]]
+    image_ids: NotRequired[list[str] | None]
     category_type: NotRequired[CatalogCategoryTypeOrStr]
-    parent_category: NotRequired[CatalogObjectCategory | CatalogObjectCategoryDict]
+    parent_category: NotRequired[CatalogObjectCategoryDict]
     is_top_level: NotRequired[bool | None]
-    channels: NotRequired[list[str | None]]
-    availability_period_ids: NotRequired[list[str | None]]
+    channels: NotRequired[list[str] | None]
+    availability_period_ids: NotRequired[list[str] | None]
     online_visibility: NotRequired[bool | None]
     root_category: NotRequired[str]
-    ecom_seo_data: NotRequired[CatalogEcomSeoData | CatalogEcomSeoDataDict]
-    path_to_root: NotRequired[list[CategoryPathToRootNode | CategoryPathToRootNodeDict | None]]
+    ecom_seo_data: NotRequired[CatalogEcomSeoDataDict]
+    path_to_root: NotRequired[list[CategoryPathToRootNodeDict] | None]

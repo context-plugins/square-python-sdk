@@ -43,7 +43,7 @@ class Invoice(SdkBaseModel):
     the remaining ``InvoiceRecipient`` fields. You cannot update these fields after the invoice is published. Square
     updates the customer ID in response to a merge operation, but does not update other fields."""
 
-    payment_requests: Optional[list[InvoicePaymentRequest | None]] = UNSET
+    payment_requests: OptionalNullable[list[InvoicePaymentRequest]] = UNSET
     """The payment schedule for the invoice, represented by one or more payment requests that define payment settings,
     such as amount due and due date. An invoice supports the following payment request combinations:
     - One balance
@@ -111,7 +111,7 @@ class Invoice(SdkBaseModel):
     """The payment methods that customers can use to pay an `invoice <entity:Invoice>`__ on the Square-hosted invoice
     payment page."""
 
-    custom_fields: Optional[list[InvoiceCustomField | None]] = UNSET
+    custom_fields: OptionalNullable[list[InvoiceCustomField]] = UNSET
     """Additional seller-defined fields that are displayed on the invoice. For more information, see `Custom fields
     <https://developer.squareup.com/docs/invoices-api/overview#custom-fields>`__.
 
@@ -157,24 +157,24 @@ class InvoiceDict(TypedDict):
     version: NotRequired[int]
     location_id: NotRequired[str | None]
     order_id: NotRequired[str | None]
-    primary_recipient: NotRequired[InvoiceRecipient | InvoiceRecipientDict]
-    payment_requests: NotRequired[list[InvoicePaymentRequest | InvoicePaymentRequestDict | None]]
+    primary_recipient: NotRequired[InvoiceRecipientDict]
+    payment_requests: NotRequired[list[InvoicePaymentRequestDict] | None]
     delivery_method: NotRequired[InvoiceDeliveryMethodOrStr]
     invoice_number: NotRequired[str | None]
     title: NotRequired[str | None]
     description: NotRequired[str | None]
     scheduled_at: NotRequired[str | None]
     public_url: NotRequired[str]
-    next_payment_amount_money: NotRequired[Money | MoneyDict]
+    next_payment_amount_money: NotRequired[MoneyDict]
     status: NotRequired[InvoiceStatusOrStr]
     timezone: NotRequired[str]
     created_at: NotRequired[str]
     updated_at: NotRequired[str]
-    accepted_payment_methods: NotRequired[InvoiceAcceptedPaymentMethods | InvoiceAcceptedPaymentMethodsDict]
-    custom_fields: NotRequired[list[InvoiceCustomField | InvoiceCustomFieldDict | None]]
+    accepted_payment_methods: NotRequired[InvoiceAcceptedPaymentMethodsDict]
+    custom_fields: NotRequired[list[InvoiceCustomFieldDict] | None]
     subscription_id: NotRequired[str]
     sale_or_service_date: NotRequired[str | None]
     payment_conditions: NotRequired[str | None]
     store_payment_method_enabled: NotRequired[bool | None]
-    attachments: NotRequired[list[InvoiceAttachment | InvoiceAttachmentDict]]
+    attachments: NotRequired[list[InvoiceAttachmentDict]]
     creator_team_member_id: NotRequired[str]

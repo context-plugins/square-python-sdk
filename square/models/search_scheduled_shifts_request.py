@@ -23,6 +23,6 @@ class SearchScheduledShiftsRequest(SdkBaseModel):
 
 
 class SearchScheduledShiftsRequestDict(TypedDict):
-    query: NotRequired[ScheduledShiftQuery | ScheduledShiftQueryDict]
+    query: NotRequired[ScheduledShiftQueryDict]
     limit: NotRequired[int]
     cursor: NotRequired[str]

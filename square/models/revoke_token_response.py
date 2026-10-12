@@ -16,4 +16,4 @@ class RevokeTokenResponse(SdkBaseModel):
 
 class RevokeTokenResponseDict(TypedDict):
     success: NotRequired[bool]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

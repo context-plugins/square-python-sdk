@@ -20,4 +20,4 @@ class TransferOrderCreatedEventData(SdkBaseModel):
 class TransferOrderCreatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[TransferOrderCreatedEventObject | TransferOrderCreatedEventObjectDict]
+    object_: NotRequired[TransferOrderCreatedEventObjectDict]

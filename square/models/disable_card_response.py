@@ -22,5 +22,5 @@ class DisableCardResponse(SdkBaseModel):
 
 
 class DisableCardResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    card: NotRequired[Card | CardDict]
+    errors: NotRequired[list[ErrorDict]]
+    card: NotRequired[CardDict]

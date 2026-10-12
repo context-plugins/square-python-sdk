@@ -20,5 +20,5 @@ class CreateCustomerCustomAttributeDefinitionRequest(SdkBaseModel):
 
 
 class CreateCustomerCustomAttributeDefinitionRequestDict(TypedDict):
-    custom_attribute_definition: CustomAttributeDefinition | CustomAttributeDefinitionDict
+    custom_attribute_definition: CustomAttributeDefinitionDict
     idempotency_key: NotRequired[str]

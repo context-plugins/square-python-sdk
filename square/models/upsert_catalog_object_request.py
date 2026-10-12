@@ -37,4 +37,4 @@ class UpsertCatalogObjectRequest(SdkBaseModel):
 
 class UpsertCatalogObjectRequestDict(TypedDict):
     idempotency_key: str
-    object_: CatalogObject | CatalogObjectDict
+    object_: CatalogObjectDict

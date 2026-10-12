@@ -20,10 +20,4 @@ class BulkUpsertCustomerCustomAttributesRequest(SdkBaseModel):
 
 
 class BulkUpsertCustomerCustomAttributesRequestDict(TypedDict):
-    values: dict[
-        str,
-        (
-            BulkUpsertCustomerCustomAttributesRequestCustomerCustomAttributeUpsertRequest
-            | BulkUpsertCustomerCustomAttributesRequestCustomerCustomAttributeUpsertRequestDict
-        ),
-    ]
+    values: dict[str, BulkUpsertCustomerCustomAttributesRequestCustomerCustomAttributeUpsertRequestDict]

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
+from ..core import UNSET, OptionalNullable, SdkBaseModel
 from .segment_filter import SegmentFilter, SegmentFilterDict
 from .time_range import TimeRange, TimeRangeDict
 
@@ -19,7 +19,7 @@ class SearchAvailabilityFilter(SdkBaseModel):
     """The query expression to search for buyer-accessible availabilities with their location IDs matching the specified
     location ID. This query expression cannot be set if ``booking_id`` is set."""
 
-    segment_filters: Optional[list[SegmentFilter | None]] = UNSET
+    segment_filters: OptionalNullable[list[SegmentFilter]] = UNSET
     """The query expression to search for buyer-accessible availabilities matching the specified list of segment
     filters. If the size of the ``segment_filters`` list is ``n``, the search returns availabilities with ``n`` segments
     per availability.
@@ -33,7 +33,7 @@ class SearchAvailabilityFilter(SdkBaseModel):
 
 
 class SearchAvailabilityFilterDict(TypedDict):
-    start_at_range: TimeRange | TimeRangeDict
+    start_at_range: TimeRangeDict
     location_id: NotRequired[str | None]
-    segment_filters: NotRequired[list[SegmentFilter | SegmentFilterDict | None]]
+    segment_filters: NotRequired[list[SegmentFilterDict] | None]
     booking_id: NotRequired[str | None]

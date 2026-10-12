@@ -18,4 +18,4 @@ class BulkCreateTeamMembersRequest(SdkBaseModel):
 
 
 class BulkCreateTeamMembersRequestDict(TypedDict):
-    team_members: dict[str, CreateTeamMemberRequest | CreateTeamMemberRequestDict]
+    team_members: dict[str, CreateTeamMemberRequestDict]

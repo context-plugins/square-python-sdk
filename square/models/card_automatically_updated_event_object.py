@@ -13,4 +13,4 @@ class CardAutomaticallyUpdatedEventObject(SdkBaseModel):
 
 
 class CardAutomaticallyUpdatedEventObjectDict(TypedDict):
-    card: NotRequired[Card | CardDict]
+    card: NotRequired[CardDict]

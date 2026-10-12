@@ -19,5 +19,5 @@ class DisableBankAccountResponse(SdkBaseModel):
 
 
 class DisableBankAccountResponseDict(TypedDict):
-    bank_account: NotRequired[BankAccount | BankAccountDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    bank_account: NotRequired[BankAccountDict]
+    errors: NotRequired[list[ErrorDict]]

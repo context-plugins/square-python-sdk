@@ -19,5 +19,5 @@ class SubmitEvidenceResponse(SdkBaseModel):
 
 
 class SubmitEvidenceResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    dispute: NotRequired[Dispute | DisputeDict]
+    errors: NotRequired[list[ErrorDict]]
+    dispute: NotRequired[DisputeDict]

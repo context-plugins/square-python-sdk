@@ -18,5 +18,5 @@ class CreateTeamMemberResponse(SdkBaseModel):
 
 
 class CreateTeamMemberResponseDict(TypedDict):
-    team_member: NotRequired[TeamMember | TeamMemberDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    team_member: NotRequired[TeamMemberDict]
+    errors: NotRequired[list[ErrorDict]]

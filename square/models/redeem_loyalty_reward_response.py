@@ -19,5 +19,5 @@ class RedeemLoyaltyRewardResponse(SdkBaseModel):
 
 
 class RedeemLoyaltyRewardResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    event: NotRequired[LoyaltyEvent | LoyaltyEventDict]
+    errors: NotRequired[list[ErrorDict]]
+    event: NotRequired[LoyaltyEventDict]

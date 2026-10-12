@@ -2,14 +2,14 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, SdkBaseModel
+from ..core import UNSET, OptionalNullable, SdkBaseModel
 from .inventory_count import InventoryCount, InventoryCountDict
 
 
 class InventoryCountUpdatedEventObject(SdkBaseModel):
-    inventory_counts: Optional[list[InventoryCount | None]] = UNSET
+    inventory_counts: OptionalNullable[list[InventoryCount]] = UNSET
     """The inventory counts."""
 
 
 class InventoryCountUpdatedEventObjectDict(TypedDict):
-    inventory_counts: NotRequired[list[InventoryCount | InventoryCountDict | None]]
+    inventory_counts: NotRequired[list[InventoryCountDict] | None]

@@ -18,5 +18,5 @@ class CreateInvoiceAttachmentResponse(SdkBaseModel):
 
 
 class CreateInvoiceAttachmentResponseDict(TypedDict):
-    attachment: NotRequired[InvoiceAttachment | InvoiceAttachmentDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    attachment: NotRequired[InvoiceAttachmentDict]
+    errors: NotRequired[list[ErrorDict]]

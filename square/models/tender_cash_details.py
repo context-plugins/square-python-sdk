@@ -23,5 +23,5 @@ class TenderCashDetails(SdkBaseModel):
 
 
 class TenderCashDetailsDict(TypedDict):
-    buyer_tendered_money: NotRequired[Money | MoneyDict]
-    change_back_money: NotRequired[Money | MoneyDict]
+    buyer_tendered_money: NotRequired[MoneyDict]
+    change_back_money: NotRequired[MoneyDict]

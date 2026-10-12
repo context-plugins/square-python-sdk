@@ -33,7 +33,7 @@ class GiftCardActivityRedeem(SdkBaseModel):
 
 
 class GiftCardActivityRedeemDict(TypedDict):
-    amount_money: Money | MoneyDict
+    amount_money: MoneyDict
     payment_id: NotRequired[str]
     reference_id: NotRequired[str | None]
     status: NotRequired[GiftCardActivityRedeemStatusOrStr]

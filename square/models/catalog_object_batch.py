@@ -14,4 +14,4 @@ class CatalogObjectBatch(SdkBaseModel):
 
 
 class CatalogObjectBatchDict(TypedDict):
-    objects: list[CatalogObject | CatalogObjectDict]
+    objects: list[CatalogObjectDict]

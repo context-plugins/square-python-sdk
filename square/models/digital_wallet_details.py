@@ -32,6 +32,6 @@ class DigitalWalletDetails(SdkBaseModel):
 class DigitalWalletDetailsDict(TypedDict):
     status: NotRequired[str | None]
     brand: NotRequired[str | None]
-    cash_app_details: NotRequired[CashAppDetails | CashAppDetailsDict]
-    lightning_details: NotRequired[LightningDetails | LightningDetailsDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    cash_app_details: NotRequired[CashAppDetailsDict]
+    lightning_details: NotRequired[LightningDetailsDict]
+    errors: NotRequired[list[ErrorDict]]

@@ -30,7 +30,7 @@ class SearchOrdersResponse(SdkBaseModel):
 
 
 class SearchOrdersResponseDict(TypedDict):
-    order_entries: NotRequired[list[OrderEntry | OrderEntryDict]]
-    orders: NotRequired[list[Order | OrderDict]]
+    order_entries: NotRequired[list[OrderEntryDict]]
+    orders: NotRequired[list[OrderDict]]
     cursor: NotRequired[str]
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

@@ -17,7 +17,7 @@ class WebhookSubscription(SdkBaseModel):
     enabled: OptionalNullable[bool] = UNSET
     """Indicates whether the subscription is enabled (``true``) or not (``false``)."""
 
-    event_types: Optional[list[str | None]] = UNSET
+    event_types: OptionalNullable[list[str]] = UNSET
     """The event types associated with this subscription."""
 
     notification_url: OptionalNullable[str] = UNSET
@@ -43,7 +43,7 @@ class WebhookSubscriptionDict(TypedDict):
     id: NotRequired[str]
     name: NotRequired[str | None]
     enabled: NotRequired[bool | None]
-    event_types: NotRequired[list[str | None]]
+    event_types: NotRequired[list[str] | None]
     notification_url: NotRequired[str | None]
     api_version: NotRequired[str | None]
     signature_key: NotRequired[str]

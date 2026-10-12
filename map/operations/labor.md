@@ -95,9 +95,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `DELETE /v2/labor/break-types/{id}`
 - **Auth**: `oauth2`
-- **Signature**: `def delete_break_type(id: str, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`
-- **Params**: `id` — path
+- **Signature**: `def delete_break_type(id_: str, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`
+- **Params**: `id_` — path `id`
 - **Returns (parsed)**: `DeleteBreakTypeResponse`
 - **Returns (raw)**: `ApiResult[DeleteBreakTypeResponse, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -110,9 +110,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `DELETE /v2/labor/shifts/{id}`
 - **Auth**: `oauth2`
-- **Signature**: `def delete_shift(id: str, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`
-- **Params**: `id` — path
+- **Signature**: `def delete_shift(id_: str, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`
+- **Params**: `id_` — path `id`
 - **Returns (parsed)**: `DeleteShiftResponse`
 - **Returns (raw)**: `ApiResult[DeleteShiftResponse, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -125,9 +125,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `DELETE /v2/labor/timecards/{id}`
 - **Auth**: `oauth2`
-- **Signature**: `def delete_timecard(id: str, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`
-- **Params**: `id` — path
+- **Signature**: `def delete_timecard(id_: str, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`
+- **Params**: `id_` — path `id`
 - **Returns (parsed)**: `DeleteTimecardResponse`
 - **Returns (raw)**: `ApiResult[DeleteTimecardResponse, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -140,9 +140,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /v2/labor/break-types/{id}`
 - **Auth**: `oauth2`
-- **Signature**: `def get_break_type(id: str, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`
-- **Params**: `id` — path
+- **Signature**: `def get_break_type(id_: str, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`
+- **Params**: `id_` — path `id`
 - **Returns (parsed)**: `GetBreakTypeResponse`
 - **Returns (raw)**: `ApiResult[GetBreakTypeResponse, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -155,9 +155,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /v2/labor/employee-wages/{id}`
 - **Auth**: `oauth2`
-- **Signature**: `def get_employee_wage(id: str, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`
-- **Params**: `id` — path
+- **Signature**: `def get_employee_wage(id_: str, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`
+- **Params**: `id_` — path `id`
 - **Returns (parsed)**: `GetEmployeeWageResponse`
 - **Returns (raw)**: `ApiResult[GetEmployeeWageResponse, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -170,9 +170,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /v2/labor/shifts/{id}`
 - **Auth**: `oauth2`
-- **Signature**: `def get_shift(id: str, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`
-- **Params**: `id` — path
+- **Signature**: `def get_shift(id_: str, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`
+- **Params**: `id_` — path `id`
 - **Returns (parsed)**: `GetShiftResponse`
 - **Returns (raw)**: `ApiResult[GetShiftResponse, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -185,9 +185,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /v2/labor/team-member-wages/{id}`
 - **Auth**: `oauth2`
-- **Signature**: `def get_team_member_wage(id: str, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`
-- **Params**: `id` — path
+- **Signature**: `def get_team_member_wage(id_: str, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`
+- **Params**: `id_` — path `id`
 - **Returns (parsed)**: `GetTeamMemberWageResponse`
 - **Returns (raw)**: `ApiResult[GetTeamMemberWageResponse, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -256,9 +256,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /v2/labor/scheduled-shifts/{id}/publish`
 - **Auth**: `oauth2`
-- **Signature**: `def publish_scheduled_shift(id: str, body: PublishScheduledShiftRequest | PublishScheduledShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`, `body`
-- **Params**: `id` — path · `body` — JSON body
+- **Signature**: `def publish_scheduled_shift(id_: str, body: PublishScheduledShiftRequest | PublishScheduledShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`, `body`
+- **Params**: `id_` — path `id` · `body` — JSON body
 - **Returns (parsed)**: `PublishScheduledShiftResponse`
 - **Returns (raw)**: `ApiResult[PublishScheduledShiftResponse, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -273,9 +273,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /v2/labor/scheduled-shifts/{id}`
 - **Auth**: `oauth2`
-- **Signature**: `def retrieve_scheduled_shift(id: str, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`
-- **Params**: `id` — path
+- **Signature**: `def retrieve_scheduled_shift(id_: str, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`
+- **Params**: `id_` — path `id`
 - **Returns (parsed)**: `RetrieveScheduledShiftResponse`
 - **Returns (raw)**: `ApiResult[RetrieveScheduledShiftResponse, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -288,9 +288,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `GET /v2/labor/timecards/{id}`
 - **Auth**: `oauth2`
-- **Signature**: `def retrieve_timecard(id: str, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`
-- **Params**: `id` — path
+- **Signature**: `def retrieve_timecard(id_: str, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`
+- **Params**: `id_` — path `id`
 - **Returns (parsed)**: `RetrieveTimecardResponse`
 - **Returns (raw)**: `ApiResult[RetrieveTimecardResponse, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -354,9 +354,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `PUT /v2/labor/break-types/{id}`
 - **Auth**: `oauth2`
-- **Signature**: `def update_break_type(id: str, body: UpdateBreakTypeRequest | UpdateBreakTypeRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`, `body`
-- **Params**: `id` — path · `body` — JSON body
+- **Signature**: `def update_break_type(id_: str, body: UpdateBreakTypeRequest | UpdateBreakTypeRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`, `body`
+- **Params**: `id_` — path `id` · `body` — JSON body
 - **Returns (parsed)**: `UpdateBreakTypeResponse`
 - **Returns (raw)**: `ApiResult[UpdateBreakTypeResponse, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -371,9 +371,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `PUT /v2/labor/scheduled-shifts/{id}`
 - **Auth**: `oauth2`
-- **Signature**: `def update_scheduled_shift(id: str, body: UpdateScheduledShiftRequest | UpdateScheduledShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`, `body`
-- **Params**: `id` — path · `body` — JSON body
+- **Signature**: `def update_scheduled_shift(id_: str, body: UpdateScheduledShiftRequest | UpdateScheduledShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`, `body`
+- **Params**: `id_` — path `id` · `body` — JSON body
 - **Returns (parsed)**: `UpdateScheduledShiftResponse`
 - **Returns (raw)**: `ApiResult[UpdateScheduledShiftResponse, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -388,9 +388,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `PUT /v2/labor/shifts/{id}`
 - **Auth**: `oauth2`
-- **Signature**: `def update_shift(id: str, body: UpdateShiftRequest | UpdateShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`, `body`
-- **Params**: `id` — path · `body` — JSON body
+- **Signature**: `def update_shift(id_: str, body: UpdateShiftRequest | UpdateShiftRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`, `body`
+- **Params**: `id_` — path `id` · `body` — JSON body
 - **Returns (parsed)**: `UpdateShiftResponse`
 - **Returns (raw)**: `ApiResult[UpdateShiftResponse, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -405,9 +405,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `PUT /v2/labor/timecards/{id}`
 - **Auth**: `oauth2`
-- **Signature**: `def update_timecard(id: str, body: UpdateTimecardRequest | UpdateTimecardRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`, `body`
-- **Params**: `id` — path · `body` — JSON body
+- **Signature**: `def update_timecard(id_: str, body: UpdateTimecardRequest | UpdateTimecardRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`, `body`
+- **Params**: `id_` — path `id` · `body` — JSON body
 - **Returns (parsed)**: `UpdateTimecardResponse`
 - **Returns (raw)**: `ApiResult[UpdateTimecardResponse, RawError]`
 - **Error**: `RawError` — **Case B**
@@ -422,9 +422,9 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `PUT /v2/labor/workweek-configs/{id}`
 - **Auth**: `oauth2`
-- **Signature**: `def update_workweek_config(id: str, body: UpdateWorkweekConfigRequest | UpdateWorkweekConfigRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
-  - required, positional: `id`, `body`
-- **Params**: `id` — path · `body` — JSON body
+- **Signature**: `def update_workweek_config(id_: str, body: UpdateWorkweekConfigRequest | UpdateWorkweekConfigRequestDict, *, request_options: RequestOptionsOrDict | None = None)`
+  - required, positional: `id_`, `body`
+- **Params**: `id_` — path `id` · `body` — JSON body
 - **Returns (parsed)**: `UpdateWorkweekConfigResponse`
 - **Returns (raw)**: `ApiResult[UpdateWorkweekConfigResponse, RawError]`
 - **Error**: `RawError` — **Case B**

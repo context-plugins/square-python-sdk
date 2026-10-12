@@ -17,10 +17,4 @@ class BulkDeleteOrderCustomAttributesRequest(SdkBaseModel):
 
 
 class BulkDeleteOrderCustomAttributesRequestDict(TypedDict):
-    values: dict[
-        str,
-        (
-            BulkDeleteOrderCustomAttributesRequestDeleteCustomAttribute
-            | BulkDeleteOrderCustomAttributesRequestDeleteCustomAttributeDict
-        ),
-    ]
+    values: dict[str, BulkDeleteOrderCustomAttributesRequestDeleteCustomAttributeDict]

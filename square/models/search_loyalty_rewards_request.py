@@ -25,8 +25,6 @@ class SearchLoyaltyRewardsRequest(SdkBaseModel):
 
 
 class SearchLoyaltyRewardsRequestDict(TypedDict):
-    query: NotRequired[
-        SearchLoyaltyRewardsRequestLoyaltyRewardQuery | SearchLoyaltyRewardsRequestLoyaltyRewardQueryDict
-    ]
+    query: NotRequired[SearchLoyaltyRewardsRequestLoyaltyRewardQueryDict]
     limit: NotRequired[int]
     cursor: NotRequired[str]

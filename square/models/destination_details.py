@@ -29,6 +29,6 @@ class DestinationDetails(SdkBaseModel):
 
 
 class DestinationDetailsDict(TypedDict):
-    card_details: NotRequired[DestinationDetailsCardRefundDetails | DestinationDetailsCardRefundDetailsDict]
-    cash_details: NotRequired[DestinationDetailsCashRefundDetails | DestinationDetailsCashRefundDetailsDict]
-    external_details: NotRequired[DestinationDetailsExternalRefundDetails | DestinationDetailsExternalRefundDetailsDict]
+    card_details: NotRequired[DestinationDetailsCardRefundDetailsDict]
+    cash_details: NotRequired[DestinationDetailsCashRefundDetailsDict]
+    external_details: NotRequired[DestinationDetailsExternalRefundDetailsDict]

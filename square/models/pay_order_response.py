@@ -22,5 +22,5 @@ class PayOrderResponse(SdkBaseModel):
 
 
 class PayOrderResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    order: NotRequired[Order | OrderDict]
+    errors: NotRequired[list[ErrorDict]]
+    order: NotRequired[OrderDict]

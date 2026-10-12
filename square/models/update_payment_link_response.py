@@ -15,5 +15,5 @@ class UpdatePaymentLinkResponse(SdkBaseModel):
 
 
 class UpdatePaymentLinkResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    payment_link: NotRequired[PaymentLink | PaymentLinkDict]
+    errors: NotRequired[list[ErrorDict]]
+    payment_link: NotRequired[PaymentLinkDict]

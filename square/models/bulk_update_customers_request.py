@@ -21,4 +21,4 @@ class BulkUpdateCustomersRequest(SdkBaseModel):
 
 
 class BulkUpdateCustomersRequestDict(TypedDict):
-    customers: dict[str, BulkUpdateCustomerData | BulkUpdateCustomerDataDict]
+    customers: dict[str, BulkUpdateCustomerDataDict]

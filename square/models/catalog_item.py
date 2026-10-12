@@ -50,16 +50,16 @@ class CatalogItem(SdkBaseModel):
     buyer_facing_name: OptionalNullable[str] = UNSET
     """The override to a product name to display to users"""
 
-    tax_ids: Optional[list[str | None]] = UNSET
+    tax_ids: OptionalNullable[list[str]] = UNSET
     """A set of IDs indicating the taxes enabled for this item. When updating an item, any taxes listed here will be
     added to the item. Taxes may also be added to or deleted from an item using ``UpdateItemTaxes``."""
 
-    modifier_list_info: Optional[list[CatalogItemModifierListInfo | None]] = UNSET
+    modifier_list_info: OptionalNullable[list[CatalogItemModifierListInfo]] = UNSET
     """A set of ``CatalogItemModifierListInfo`` objects representing the modifier lists that apply to this item, along
     with the overrides and min and max limits that are specific to this item. Modifier lists may also be added to or
     deleted from an item using ``UpdateItemModifierLists``."""
 
-    variations: Optional[list[CatalogObject | None]] = UNSET
+    variations: OptionalNullable[list[CatalogObject]] = UNSET
     """A list of `CatalogItemVariation <entity:CatalogItemVariation>`__ objects for this item. An item must have at
     least one variation."""
 
@@ -77,7 +77,7 @@ class CatalogItem(SdkBaseModel):
 
     Third-party clients are encouraged to implement similar behaviors."""
 
-    item_options: Optional[list[CatalogItemOptionForItem | None]] = UNSET
+    item_options: OptionalNullable[list[CatalogItemOptionForItem]] = UNSET
     """List of item options IDs for this item. Used to manage and group item variations in a specified order.
 
     Maximum: 6 item options."""
@@ -85,11 +85,11 @@ class CatalogItem(SdkBaseModel):
     ecom_uri: OptionalNullable[str] = UNSET
     """Deprecated. A URI pointing to a published e-commerce product page for the Item."""
 
-    ecom_image_uris: Optional[list[str | None]] = UNSET
+    ecom_image_uris: OptionalNullable[list[str]] = UNSET
     """Deprecated. A comma-separated list of encoded URIs pointing to a set of published e-commerce images for the
     Item."""
 
-    image_ids: Optional[list[str | None]] = UNSET
+    image_ids: OptionalNullable[list[str]] = UNSET
     """The IDs of images associated with this ``CatalogItem`` instance. These images will be shown to customers in
     Square Online Store. The first image will show up as the icon for this item in POS."""
 
@@ -99,7 +99,7 @@ class CatalogItem(SdkBaseModel):
 
     It is currently supported for sellers of the Japanese locale only."""
 
-    categories: Optional[list[CatalogObjectCategory | None]] = UNSET
+    categories: OptionalNullable[list[CatalogObjectCategory]] = UNSET
     """The list of categories to which this item belongs. Each entry includes the category ID and an ordinal value that
     determines the item's relative position within that category."""
 
@@ -137,7 +137,7 @@ class CatalogItem(SdkBaseModel):
     name. e.g., customer name might be "Big John's Mega Burger" and the kitchen name is "12oz beef burger"
     """
 
-    channels: Optional[list[str | None]] = UNSET
+    channels: OptionalNullable[list[str]] = UNSET
     """A list of IDs representing channels, such as a Square Online site, where the item can be made visible or
     available. This field is read only and cannot be edited."""
 
@@ -167,23 +167,23 @@ class CatalogItemDict(TypedDict):
     is_taxable: NotRequired[bool | None]
     category_id: NotRequired[str | None]
     buyer_facing_name: NotRequired[str | None]
-    tax_ids: NotRequired[list[str | None]]
-    modifier_list_info: NotRequired[list[CatalogItemModifierListInfo | CatalogItemModifierListInfoDict | None]]
-    variations: NotRequired[list[CatalogObject | CatalogObjectDict | None]]
+    tax_ids: NotRequired[list[str] | None]
+    modifier_list_info: NotRequired[list[CatalogItemModifierListInfoDict] | None]
+    variations: NotRequired[list[CatalogObjectDict] | None]
     product_type: NotRequired[CatalogItemProductTypeOrStr]
     skip_modifier_screen: NotRequired[bool | None]
-    item_options: NotRequired[list[CatalogItemOptionForItem | CatalogItemOptionForItemDict | None]]
+    item_options: NotRequired[list[CatalogItemOptionForItemDict] | None]
     ecom_uri: NotRequired[str | None]
-    ecom_image_uris: NotRequired[list[str | None]]
-    image_ids: NotRequired[list[str | None]]
+    ecom_image_uris: NotRequired[list[str] | None]
+    image_ids: NotRequired[list[str] | None]
     sort_name: NotRequired[str | None]
-    categories: NotRequired[list[CatalogObjectCategory | CatalogObjectCategoryDict | None]]
+    categories: NotRequired[list[CatalogObjectCategoryDict] | None]
     description_html: NotRequired[str | None]
     description_plaintext: NotRequired[str]
     kitchen_name: NotRequired[str | None]
-    channels: NotRequired[list[str | None]]
+    channels: NotRequired[list[str] | None]
     is_archived: NotRequired[bool | None]
-    ecom_seo_data: NotRequired[CatalogEcomSeoData | CatalogEcomSeoDataDict]
-    food_and_beverage_details: NotRequired[CatalogItemFoodAndBeverageDetails | CatalogItemFoodAndBeverageDetailsDict]
-    reporting_category: NotRequired[CatalogObjectCategory | CatalogObjectCategoryDict]
+    ecom_seo_data: NotRequired[CatalogEcomSeoDataDict]
+    food_and_beverage_details: NotRequired[CatalogItemFoodAndBeverageDetailsDict]
+    reporting_category: NotRequired[CatalogObjectCategoryDict]
     is_alcoholic: NotRequired[bool | None]

@@ -15,4 +15,4 @@ class UpdateWorkweekConfigRequest(SdkBaseModel):
 
 
 class UpdateWorkweekConfigRequestDict(TypedDict):
-    workweek_config: WorkweekConfig | WorkweekConfigDict
+    workweek_config: WorkweekConfigDict

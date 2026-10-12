@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.bulk_delete_order_custom_attributes_request import (
     BulkDeleteOrderCustomAttributesRequest,
@@ -78,16 +80,17 @@ class OrderCustomAttributes:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.bulk_delete_order_custom_attributes(
-            body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.bulk_delete_order_custom_attributes(body, request_options=request_options)
+        )
 
     def bulk_upsert_order_custom_attributes(
         self,
@@ -113,16 +116,17 @@ class OrderCustomAttributes:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.bulk_upsert_order_custom_attributes(
-            body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.bulk_upsert_order_custom_attributes(body, request_options=request_options)
+        )
 
     def create_order_custom_attribute_definition(
         self,
@@ -139,16 +143,17 @@ class OrderCustomAttributes:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_order_custom_attribute_definition(
-            body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.create_order_custom_attribute_definition(body, request_options=request_options)
+        )
 
     def delete_order_custom_attribute(
         self, order_id: str, custom_attribute_key: str, *, request_options: RequestOptionsOrDict | None = None
@@ -163,16 +168,19 @@ class OrderCustomAttributes:
             order_id: The ID of the target `order <entity:Order>`__.
             custom_attribute_key: The key of the custom attribute to delete. This key must match the key of an existing
                 custom attribute definition.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_order_custom_attribute(
-            order_id, custom_attribute_key, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.delete_order_custom_attribute(
+                order_id, custom_attribute_key, request_options=request_options
+            ),
+        )
 
     def delete_order_custom_attribute_definition(
         self, key: str, *, request_options: RequestOptionsOrDict | None = None
@@ -184,16 +192,17 @@ class OrderCustomAttributes:
 
         Args:
             key: The key of the custom attribute definition to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_order_custom_attribute_definition(
-            key, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.delete_order_custom_attribute_definition(key, request_options=request_options)
+        )
 
     def list_order_custom_attribute_definitions(
         self,
@@ -221,16 +230,19 @@ class OrderCustomAttributes:
                 response might contain more or fewer results. The minimum value is 1 and the maximum value is 100. The
                 default value is 20. For more information, see `Pagination
                 <https://developer.squareup.com/docs/working-with-apis/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_order_custom_attribute_definitions(
-            visibility_filter=visibility_filter, cursor=cursor, limit=limit, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_order_custom_attribute_definitions(
+                visibility_filter=visibility_filter, cursor=cursor, limit=limit, request_options=request_options
+            ),
+        )
 
     def list_order_custom_attributes(
         self,
@@ -266,21 +278,24 @@ class OrderCustomAttributes:
                 <entity:CustomAttributeDefinition>`__ in the ``definition`` field of each custom attribute. Set this
                 parameter to ``true`` to get the name and description of each custom attribute, information about the
                 data type, or other definition details. The default value is ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_order_custom_attributes(
-            order_id,
-            visibility_filter=visibility_filter,
-            cursor=cursor,
-            limit=limit,
-            with_definitions=with_definitions,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_order_custom_attributes(
+                order_id,
+                visibility_filter=visibility_filter,
+                cursor=cursor,
+                limit=limit,
+                with_definitions=with_definitions,
+                request_options=request_options,
+            ),
+        )
 
     def retrieve_order_custom_attribute(
         self,
@@ -311,20 +326,23 @@ class OrderCustomAttributes:
                 <entity:CustomAttributeDefinition>`__ in the ``definition`` field of each custom attribute. Set this
                 parameter to ``true`` to get the name and description of each custom attribute, information about the
                 data type, or other definition details. The default value is ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_order_custom_attribute(
-            order_id,
-            custom_attribute_key,
-            version=version,
-            with_definition=with_definition,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.retrieve_order_custom_attribute(
+                order_id,
+                custom_attribute_key,
+                version=version,
+                with_definition=with_definition,
+                request_options=request_options,
+            ),
+        )
 
     def retrieve_order_custom_attribute_definition(
         self, key: str, *, version: int | None = None, request_options: RequestOptionsOrDict | None = None
@@ -341,16 +359,19 @@ class OrderCustomAttributes:
             version: To enable `optimistic concurrency
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency>`__
                 control, include this optional field and specify the current version of the custom attribute.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_order_custom_attribute_definition(
-            key, version=version, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.retrieve_order_custom_attribute_definition(
+                key, version=version, request_options=request_options
+            ),
+        )
 
     def update_order_custom_attribute_definition(
         self,
@@ -368,16 +389,17 @@ class OrderCustomAttributes:
             key: The key of the custom attribute definition to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_order_custom_attribute_definition(
-            key, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.update_order_custom_attribute_definition(key, body, request_options=request_options)
+        )
 
     def upsert_order_custom_attribute(
         self,
@@ -404,16 +426,19 @@ class OrderCustomAttributes:
                 existing custom attribute definition.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.upsert_order_custom_attribute(
-            order_id, custom_attribute_key, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.upsert_order_custom_attribute(
+                order_id, custom_attribute_key, body, request_options=request_options
+            ),
+        )
 
     @property
     def with_raw_response(self) -> OrderCustomAttributesWithRawResponse:
@@ -448,16 +473,17 @@ class AsyncOrderCustomAttributes:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.bulk_delete_order_custom_attributes(body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def bulk_upsert_order_custom_attributes(
         self,
@@ -483,16 +509,17 @@ class AsyncOrderCustomAttributes:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.bulk_upsert_order_custom_attributes(body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def create_order_custom_attribute_definition(
         self,
@@ -509,18 +536,19 @@ class AsyncOrderCustomAttributes:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.create_order_custom_attribute_definition(
                 body, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def delete_order_custom_attribute(
         self, order_id: str, custom_attribute_key: str, *, request_options: RequestOptionsOrDict | None = None
@@ -535,18 +563,19 @@ class AsyncOrderCustomAttributes:
             order_id: The ID of the target `order <entity:Order>`__.
             custom_attribute_key: The key of the custom attribute to delete. This key must match the key of an existing
                 custom attribute definition.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.delete_order_custom_attribute(
                 order_id, custom_attribute_key, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def delete_order_custom_attribute_definition(
         self, key: str, *, request_options: RequestOptionsOrDict | None = None
@@ -558,16 +587,17 @@ class AsyncOrderCustomAttributes:
 
         Args:
             key: The key of the custom attribute definition to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.delete_order_custom_attribute_definition(key, request_options=request_options)
-        ).unwrap()
+        )
 
     async def list_order_custom_attribute_definitions(
         self,
@@ -595,18 +625,19 @@ class AsyncOrderCustomAttributes:
                 response might contain more or fewer results. The minimum value is 1 and the maximum value is 100. The
                 default value is 20. For more information, see `Pagination
                 <https://developer.squareup.com/docs/working-with-apis/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_order_custom_attribute_definitions(
                 visibility_filter=visibility_filter, cursor=cursor, limit=limit, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def list_order_custom_attributes(
         self,
@@ -642,14 +673,15 @@ class AsyncOrderCustomAttributes:
                 <entity:CustomAttributeDefinition>`__ in the ``definition`` field of each custom attribute. Set this
                 parameter to ``true`` to get the name and description of each custom attribute, information about the
                 data type, or other definition details. The default value is ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_order_custom_attributes(
                 order_id,
                 visibility_filter=visibility_filter,
@@ -657,8 +689,8 @@ class AsyncOrderCustomAttributes:
                 limit=limit,
                 with_definitions=with_definitions,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_order_custom_attribute(
         self,
@@ -689,22 +721,23 @@ class AsyncOrderCustomAttributes:
                 <entity:CustomAttributeDefinition>`__ in the ``definition`` field of each custom attribute. Set this
                 parameter to ``true`` to get the name and description of each custom attribute, information about the
                 data type, or other definition details. The default value is ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_order_custom_attribute(
                 order_id,
                 custom_attribute_key,
                 version=version,
                 with_definition=with_definition,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_order_custom_attribute_definition(
         self, key: str, *, version: int | None = None, request_options: RequestOptionsOrDict | None = None
@@ -721,18 +754,19 @@ class AsyncOrderCustomAttributes:
             version: To enable `optimistic concurrency
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency>`__
                 control, include this optional field and specify the current version of the custom attribute.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_order_custom_attribute_definition(
                 key, version=version, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def update_order_custom_attribute_definition(
         self,
@@ -750,18 +784,19 @@ class AsyncOrderCustomAttributes:
             key: The key of the custom attribute definition to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.update_order_custom_attribute_definition(
                 key, body, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def upsert_order_custom_attribute(
         self,
@@ -788,18 +823,19 @@ class AsyncOrderCustomAttributes:
                 existing custom attribute definition.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.upsert_order_custom_attribute(
                 order_id, custom_attribute_key, body, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     @property
     def with_raw_response(self) -> AsyncOrderCustomAttributesWithRawResponse:
@@ -831,7 +867,8 @@ class OrderCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Server,
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -870,7 +907,8 @@ class OrderCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Server,
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -900,7 +938,8 @@ class OrderCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Server,
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -930,7 +969,8 @@ class OrderCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Server,
             order_id: The ID of the target `order <entity:Order>`__.
             custom_attribute_key: The key of the custom attribute to delete. This key must match the key of an existing
                 custom attribute definition.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -955,7 +995,8 @@ class OrderCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Server,
 
         Args:
             key: The key of the custom attribute definition to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -996,7 +1037,8 @@ class OrderCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Server,
                 response might contain more or fewer results. The minimum value is 1 and the maximum value is 100. The
                 default value is 20. For more information, see `Pagination
                 <https://developer.squareup.com/docs/working-with-apis/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1048,7 +1090,8 @@ class OrderCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Server,
                 <entity:CustomAttributeDefinition>`__ in the ``definition`` field of each custom attribute. Set this
                 parameter to ``true`` to get the name and description of each custom attribute, information about the
                 data type, or other definition details. The default value is ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1097,7 +1140,8 @@ class OrderCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Server,
                 <entity:CustomAttributeDefinition>`__ in the ``definition`` field of each custom attribute. Set this
                 parameter to ``true`` to get the name and description of each custom attribute, information about the
                 data type, or other definition details. The default value is ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1129,7 +1173,8 @@ class OrderCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Server,
             version: To enable `optimistic concurrency
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency>`__
                 control, include this optional field and specify the current version of the custom attribute.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1160,7 +1205,8 @@ class OrderCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Server,
             key: The key of the custom attribute definition to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1203,7 +1249,8 @@ class OrderCustomAttributesWithRawResponse(SecuredRawResponse[RawClient, Server,
                 existing custom attribute definition.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1245,7 +1292,8 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1255,7 +1303,7 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkDeleteOrderCustomAttributesRequest | BulkDeleteOrderCustomAttributesRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BulkDeleteOrderCustomAttributesResponse],
+            decoder=async_json_decoder[BulkDeleteOrderCustomAttributesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1284,7 +1332,8 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1294,7 +1343,7 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkUpsertOrderCustomAttributesRequest | BulkUpsertOrderCustomAttributesRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BulkUpsertOrderCustomAttributesResponse],
+            decoder=async_json_decoder[BulkUpsertOrderCustomAttributesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1314,7 +1363,8 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1326,7 +1376,7 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
                 CreateOrderCustomAttributeDefinitionRequest | CreateOrderCustomAttributeDefinitionRequestDict
             ](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateOrderCustomAttributeDefinitionResponse],
+            decoder=async_json_decoder[CreateOrderCustomAttributeDefinitionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1344,7 +1394,8 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
             order_id: The ID of the target `order <entity:Order>`__.
             custom_attribute_key: The key of the custom attribute to delete. This key must match the key of an existing
                 custom attribute definition.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1354,7 +1405,7 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
             path_params=[param[str]("order_id", order_id), param[str]("custom_attribute_key", custom_attribute_key)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeleteOrderCustomAttributeResponse],
+            decoder=async_json_decoder[DeleteOrderCustomAttributeResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1369,7 +1420,8 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
 
         Args:
             key: The key of the custom attribute definition to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1379,7 +1431,7 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
             path_params=[param[str]("key", key)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeleteOrderCustomAttributeDefinitionResponse],
+            decoder=async_json_decoder[DeleteOrderCustomAttributeDefinitionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1410,7 +1462,8 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
                 response might contain more or fewer results. The minimum value is 1 and the maximum value is 100. The
                 default value is 20. For more information, see `Pagination
                 <https://developer.squareup.com/docs/working-with-apis/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1423,7 +1476,7 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
                 param[int | None]("limit", limit),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListOrderCustomAttributeDefinitionsResponse],
+            decoder=async_json_decoder[ListOrderCustomAttributeDefinitionsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1462,7 +1515,8 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
                 <entity:CustomAttributeDefinition>`__ in the ``definition`` field of each custom attribute. Set this
                 parameter to ``true`` to get the name and description of each custom attribute, information about the
                 data type, or other definition details. The default value is ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1477,7 +1531,7 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
                 param[bool | None]("with_definitions", with_definitions),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListOrderCustomAttributesResponse],
+            decoder=async_json_decoder[ListOrderCustomAttributesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1511,7 +1565,8 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
                 <entity:CustomAttributeDefinition>`__ in the ``definition`` field of each custom attribute. Set this
                 parameter to ``true`` to get the name and description of each custom attribute, information about the
                 data type, or other definition details. The default value is ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1523,7 +1578,7 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
                 param[int | None]("version", version), param[bool | None]("with_definition", with_definition)
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveOrderCustomAttributeResponse],
+            decoder=async_json_decoder[RetrieveOrderCustomAttributeResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1543,7 +1598,8 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
             version: To enable `optimistic concurrency
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency>`__
                 control, include this optional field and specify the current version of the custom attribute.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1553,7 +1609,7 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
             path_params=[param[str]("key", key)],
             query_params=[param[int | None]("version", version)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveOrderCustomAttributeDefinitionResponse],
+            decoder=async_json_decoder[RetrieveOrderCustomAttributeDefinitionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1574,7 +1630,8 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
             key: The key of the custom attribute definition to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1587,7 +1644,7 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
                 UpdateOrderCustomAttributeDefinitionRequest | UpdateOrderCustomAttributeDefinitionRequestDict
             ](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateOrderCustomAttributeDefinitionResponse],
+            decoder=async_json_decoder[UpdateOrderCustomAttributeDefinitionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1617,7 +1674,8 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
                 existing custom attribute definition.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1628,7 +1686,7 @@ class AsyncOrderCustomAttributesWithRawResponse(SecuredRawResponse[AsyncRawClien
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpsertOrderCustomAttributeRequest | UpsertOrderCustomAttributeRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpsertOrderCustomAttributeResponse],
+            decoder=async_json_decoder[UpsertOrderCustomAttributeResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

@@ -25,6 +25,6 @@ class SearchVendorsRequest(SdkBaseModel):
 
 
 class SearchVendorsRequestDict(TypedDict):
-    filter: NotRequired[SearchVendorsRequestFilter | SearchVendorsRequestFilterDict]
-    sort: NotRequired[SearchVendorsRequestSort | SearchVendorsRequestSortDict]
+    filter: NotRequired[SearchVendorsRequestFilterDict]
+    sort: NotRequired[SearchVendorsRequestSortDict]
     cursor: NotRequired[str]

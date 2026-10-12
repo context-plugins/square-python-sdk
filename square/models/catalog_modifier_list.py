@@ -25,7 +25,7 @@ class CatalogModifierList(SdkBaseModel):
     selection_type: Optional[CatalogModifierListSelectionTypeOrStr] = UNSET
     """Indicates whether a CatalogModifierList supports multiple selections."""
 
-    modifiers: Optional[list[CatalogObject | None]] = UNSET
+    modifiers: OptionalNullable[list[CatalogObject]] = UNSET
     """A non-empty list of ``CatalogModifier`` objects to be included in the ``CatalogModifierList``, for non text-based
     modifiers when the ``modifier_type`` attribute is ``LIST``. Each element of this list is a ``CatalogObject``
     instance of the ``MODIFIER`` type, containing the following attributes:
@@ -35,7 +35,7 @@ class CatalogModifierList(SdkBaseModel):
     }
     ```"""
 
-    image_ids: Optional[list[str | None]] = UNSET
+    image_ids: OptionalNullable[list[str]] = UNSET
     """The IDs of images associated with this ``CatalogModifierList`` instance. Currently these images are not displayed
     on Square products, but may be displayed in 3rd-party applications."""
 
@@ -99,8 +99,8 @@ class CatalogModifierListDict(TypedDict):
     name: NotRequired[str | None]
     ordinal: NotRequired[int | None]
     selection_type: NotRequired[CatalogModifierListSelectionTypeOrStr]
-    modifiers: NotRequired[list[CatalogObject | CatalogObjectDict | None]]
-    image_ids: NotRequired[list[str | None]]
+    modifiers: NotRequired[list[CatalogObjectDict] | None]
+    image_ids: NotRequired[list[str] | None]
     allow_quantities: NotRequired[bool | None]
     is_conversational: NotRequired[bool | None]
     modifier_type: NotRequired[CatalogModifierListModifierTypeOrStr]

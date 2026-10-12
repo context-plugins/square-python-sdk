@@ -19,5 +19,5 @@ class BatchRetrieveOrdersResponse(SdkBaseModel):
 
 
 class BatchRetrieveOrdersResponseDict(TypedDict):
-    orders: NotRequired[list[Order | OrderDict]]
-    errors: NotRequired[list[Error | ErrorDict]]
+    orders: NotRequired[list[OrderDict]]
+    errors: NotRequired[list[ErrorDict]]

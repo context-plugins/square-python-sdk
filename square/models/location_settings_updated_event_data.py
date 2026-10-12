@@ -23,4 +23,4 @@ class LocationSettingsUpdatedEventData(SdkBaseModel):
 class LocationSettingsUpdatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[LocationSettingsUpdatedEventObject | LocationSettingsUpdatedEventObjectDict]
+    object_: NotRequired[LocationSettingsUpdatedEventObjectDict]

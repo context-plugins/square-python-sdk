@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, SdkBaseModel
+from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
 from .enums.loyalty_promotion_status import LoyaltyPromotionStatusOrStr
 from .loyalty_promotion_available_time_data import (
     LoyaltyPromotionAvailableTimeData,
@@ -63,7 +63,7 @@ class LoyaltyPromotion(SdkBaseModel):
     the sign of the value indicates the purpose of the money transfer. See `Working with Monetary Amounts
     <https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts>`__ for more information."""
 
-    qualifying_item_variation_ids: Optional[list[str | None]] = UNSET
+    qualifying_item_variation_ids: OptionalNullable[list[str]] = UNSET
     """The IDs of any qualifying ``ITEM_VARIATION`` `catalog objects <entity:CatalogObject>`__. If specified, the
     purchase must include at least one of these items to qualify for the promotion.
 
@@ -73,7 +73,7 @@ class LoyaltyPromotion(SdkBaseModel):
     You can specify ``qualifying_item_variation_ids`` or ``qualifying_category_ids`` for a given promotion, but not
     both."""
 
-    qualifying_category_ids: Optional[list[str | None]] = UNSET
+    qualifying_category_ids: OptionalNullable[list[str]] = UNSET
     """The IDs of any qualifying ``CATEGORY`` `catalog objects <entity:CatalogObject>`__. If specified, the purchase
     must include at least one item from one of these categories to qualify for the promotion.
 
@@ -86,14 +86,14 @@ class LoyaltyPromotion(SdkBaseModel):
 class LoyaltyPromotionDict(TypedDict):
     id: NotRequired[str]
     name: str
-    incentive: LoyaltyPromotionIncentive | LoyaltyPromotionIncentiveDict
-    available_time: LoyaltyPromotionAvailableTimeData | LoyaltyPromotionAvailableTimeDataDict
-    trigger_limit: NotRequired[LoyaltyPromotionTriggerLimit | LoyaltyPromotionTriggerLimitDict]
+    incentive: LoyaltyPromotionIncentiveDict
+    available_time: LoyaltyPromotionAvailableTimeDataDict
+    trigger_limit: NotRequired[LoyaltyPromotionTriggerLimitDict]
     status: NotRequired[LoyaltyPromotionStatusOrStr]
     created_at: NotRequired[str]
     canceled_at: NotRequired[str]
     updated_at: NotRequired[str]
     loyalty_program_id: NotRequired[str]
-    minimum_spend_amount_money: NotRequired[Money | MoneyDict]
-    qualifying_item_variation_ids: NotRequired[list[str | None]]
-    qualifying_category_ids: NotRequired[list[str | None]]
+    minimum_spend_amount_money: NotRequired[MoneyDict]
+    qualifying_item_variation_ids: NotRequired[list[str] | None]
+    qualifying_category_ids: NotRequired[list[str] | None]

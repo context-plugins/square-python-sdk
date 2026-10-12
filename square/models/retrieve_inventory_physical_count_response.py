@@ -18,5 +18,5 @@ class RetrieveInventoryPhysicalCountResponse(SdkBaseModel):
 
 
 class RetrieveInventoryPhysicalCountResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    count: NotRequired[InventoryPhysicalCount | InventoryPhysicalCountDict]
+    errors: NotRequired[list[ErrorDict]]
+    count: NotRequired[InventoryPhysicalCountDict]

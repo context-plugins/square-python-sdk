@@ -27,4 +27,4 @@ class ConfirmationOptionsDict(TypedDict):
     body: str
     agree_button_text: str
     disagree_button_text: NotRequired[str | None]
-    decision: NotRequired[ConfirmationDecision | ConfirmationDecisionDict]
+    decision: NotRequired[ConfirmationDecisionDict]

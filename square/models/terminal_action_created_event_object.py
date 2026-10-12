@@ -12,4 +12,4 @@ class TerminalActionCreatedEventObject(SdkBaseModel):
 
 
 class TerminalActionCreatedEventObjectDict(TypedDict):
-    action: NotRequired[TerminalAction | TerminalActionDict]
+    action: NotRequired[TerminalActionDict]

@@ -15,4 +15,4 @@ class BulkCreateVendorsRequest(SdkBaseModel):
 
 
 class BulkCreateVendorsRequestDict(TypedDict):
-    vendors: dict[str, Vendor | VendorDict]
+    vendors: dict[str, VendorDict]

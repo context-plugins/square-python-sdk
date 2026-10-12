@@ -25,7 +25,7 @@ Each `###` block is one operation and assumes `sdk-map.md` is loaded: blocks omi
 
 - **Route**: `POST /v2/disputes/{dispute_id}/evidence-files`
 - **Auth**: `oauth2`
-- **Signature**: `def create_dispute_evidence_file(dispute_id: str, *, request: CreateDisputeEvidenceFileRequest | CreateDisputeEvidenceFileRequestDict | None = None, image_file: bytes | None = None, request_options: RequestOptionsOrDict | None = None)`
+- **Signature**: `def create_dispute_evidence_file(dispute_id: str, *, request: CreateDisputeEvidenceFileRequest | CreateDisputeEvidenceFileRequestDict | None = None, image_file: FileInput | None = None, request_options: RequestOptionsOrDict | None = None)`
   - required, positional: `dispute_id`
 - **Params**: `dispute_id` — path · `request` — multipart field · `image_file` — multipart file
 - **Returns (parsed)**: `CreateDisputeEvidenceFileResponse`

@@ -34,6 +34,6 @@ class DeviceCheckoutOptionsDict(TypedDict):
     device_id: str
     skip_receipt_screen: NotRequired[bool | None]
     collect_signature: NotRequired[bool | None]
-    tip_settings: NotRequired[TipSettings | TipSettingsDict]
+    tip_settings: NotRequired[TipSettingsDict]
     show_itemized_cart: NotRequired[bool | None]
     allow_auto_card_surcharge: NotRequired[bool | None]

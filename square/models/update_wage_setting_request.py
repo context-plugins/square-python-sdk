@@ -15,4 +15,4 @@ class UpdateWageSettingRequest(SdkBaseModel):
 
 
 class UpdateWageSettingRequestDict(TypedDict):
-    wage_setting: WageSetting | WageSettingDict
+    wage_setting: WageSettingDict

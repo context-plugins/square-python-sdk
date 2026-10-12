@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, SdkBaseModel
+from ..core import UNSET, OptionalNullable, SdkBaseModel
 from .transfer_order_goods_receipt_line_item import (
     TransferOrderGoodsReceiptLineItem,
     TransferOrderGoodsReceiptLineItemDict,
@@ -29,7 +29,7 @@ class TransferOrderGoodsReceipt(SdkBaseModel):
     - Adjusts received quantities
     - Updates inventory levels at both source and destination `Location <entity:Location>`__s"""
 
-    line_items: Optional[list[TransferOrderGoodsReceiptLineItem | None]] = UNSET
+    line_items: OptionalNullable[list[TransferOrderGoodsReceiptLineItem]] = UNSET
     """Line items being received. Each line item specifies:
     - The item being received
     - Quantity received in good condition
@@ -44,4 +44,4 @@ class TransferOrderGoodsReceipt(SdkBaseModel):
 
 
 class TransferOrderGoodsReceiptDict(TypedDict):
-    line_items: NotRequired[list[TransferOrderGoodsReceiptLineItem | TransferOrderGoodsReceiptLineItemDict | None]]
+    line_items: NotRequired[list[TransferOrderGoodsReceiptLineItemDict] | None]

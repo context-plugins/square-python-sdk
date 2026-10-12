@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from ..core import UNSET, Optional, SdkBaseModel
+from ..core import UNSET, Optional, OptionalNullable, SdkBaseModel
 from .enums.subscription_event_subscription_event_type import SubscriptionEventSubscriptionEventTypeOrStr
 from .phase import Phase, PhaseDict
 from .subscription_event_info import SubscriptionEventInfo, SubscriptionEventInfoDict
@@ -26,7 +26,7 @@ class SubscriptionEvent(SdkBaseModel):
     info: Optional[SubscriptionEventInfo] = UNSET
     """Provides information about the subscription event."""
 
-    phases: Optional[list[Phase | None]] = UNSET
+    phases: OptionalNullable[list[Phase]] = UNSET
     """A list of Phases, to pass phase-specific information used in the swap."""
 
     plan_variation_id: str
@@ -38,6 +38,6 @@ class SubscriptionEventDict(TypedDict):
     subscription_event_type: SubscriptionEventSubscriptionEventTypeOrStr
     effective_date: str
     monthly_billing_anchor_date: NotRequired[int]
-    info: NotRequired[SubscriptionEventInfo | SubscriptionEventInfoDict]
-    phases: NotRequired[list[Phase | PhaseDict | None]]
+    info: NotRequired[SubscriptionEventInfoDict]
+    phases: NotRequired[list[PhaseDict] | None]
     plan_variation_id: str

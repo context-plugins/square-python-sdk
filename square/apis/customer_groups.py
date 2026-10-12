@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.create_customer_group_request import CreateCustomerGroupRequest, CreateCustomerGroupRequestDict
 from ..models.create_customer_group_response import CreateCustomerGroupResponse
@@ -42,14 +44,15 @@ class CustomerGroups:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_customer_group(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_customer_group(body, request_options=request_options))
 
     def delete_customer_group(
         self, group_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -58,14 +61,15 @@ class CustomerGroups:
 
         Args:
             group_id: The ID of the customer group to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_customer_group(group_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.delete_customer_group(group_id, request_options=request_options))
 
     def list_customer_groups(
         self,
@@ -84,16 +88,17 @@ class CustomerGroups:
                 contain more or fewer results. If the limit is less than 1 or greater than 50, Square returns a ``400
                 VALUE_TOO_LOW`` or ``400 VALUE_TOO_HIGH`` error. The default value is 50. For more information, see
                 `Pagination <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_customer_groups(
-            cursor=cursor, limit=limit, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_customer_groups(cursor=cursor, limit=limit, request_options=request_options)
+        )
 
     def retrieve_customer_group(
         self, group_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -102,14 +107,15 @@ class CustomerGroups:
 
         Args:
             group_id: The ID of the customer group to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_customer_group(group_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_customer_group(group_id, request_options=request_options))
 
     def update_customer_group(
         self,
@@ -124,14 +130,15 @@ class CustomerGroups:
             group_id: The ID of the customer group to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_customer_group(group_id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.update_customer_group(group_id, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> CustomerGroupsWithRawResponse:
@@ -155,14 +162,15 @@ class AsyncCustomerGroups:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_customer_group(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_customer_group(body, request_options=request_options))
 
     async def delete_customer_group(
         self, group_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -171,14 +179,15 @@ class AsyncCustomerGroups:
 
         Args:
             group_id: The ID of the customer group to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.delete_customer_group(group_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.delete_customer_group(group_id, request_options=request_options))
 
     async def list_customer_groups(
         self,
@@ -197,18 +206,19 @@ class AsyncCustomerGroups:
                 contain more or fewer results. If the limit is less than 1 or greater than 50, Square returns a ``400
                 VALUE_TOO_LOW`` or ``400 VALUE_TOO_HIGH`` error. The default value is 50. For more information, see
                 `Pagination <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_customer_groups(
                 cursor=cursor, limit=limit, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_customer_group(
         self, group_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -217,16 +227,15 @@ class AsyncCustomerGroups:
 
         Args:
             group_id: The ID of the customer group to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.retrieve_customer_group(group_id, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.retrieve_customer_group(group_id, request_options=request_options))
 
     async def update_customer_group(
         self,
@@ -241,16 +250,17 @@ class AsyncCustomerGroups:
             group_id: The ID of the customer group to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.update_customer_group(group_id, body, request_options=request_options)
-        ).unwrap()
+        )
 
     @property
     def with_raw_response(self) -> AsyncCustomerGroupsWithRawResponse:
@@ -271,7 +281,8 @@ class CustomerGroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSc
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -293,7 +304,8 @@ class CustomerGroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSc
 
         Args:
             group_id: The ID of the customer group to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -325,7 +337,8 @@ class CustomerGroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSc
                 contain more or fewer results. If the limit is less than 1 or greater than 50, Square returns a ``400
                 VALUE_TOO_LOW`` or ``400 VALUE_TOO_HIGH`` error. The default value is 50. For more information, see
                 `Pagination <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -346,7 +359,8 @@ class CustomerGroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSc
 
         Args:
             group_id: The ID of the customer group to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -373,7 +387,8 @@ class CustomerGroupsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSc
             group_id: The ID of the customer group to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -404,7 +419,8 @@ class AsyncCustomerGroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serv
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -414,7 +430,7 @@ class AsyncCustomerGroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serv
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateCustomerGroupRequest | CreateCustomerGroupRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateCustomerGroupResponse],
+            decoder=async_json_decoder[CreateCustomerGroupResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -426,7 +442,8 @@ class AsyncCustomerGroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serv
 
         Args:
             group_id: The ID of the customer group to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -436,7 +453,7 @@ class AsyncCustomerGroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serv
             path_params=[param[str]("group_id", group_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeleteCustomerGroupResponse],
+            decoder=async_json_decoder[DeleteCustomerGroupResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -458,7 +475,8 @@ class AsyncCustomerGroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serv
                 contain more or fewer results. If the limit is less than 1 or greater than 50, Square returns a ``400
                 VALUE_TOO_LOW`` or ``400 VALUE_TOO_HIGH`` error. The default value is 50. For more information, see
                 `Pagination <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -467,7 +485,7 @@ class AsyncCustomerGroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serv
             url_template=self._server.default("/v2/customers/groups"),
             query_params=[param[str | None]("cursor", cursor), param[int | None]("limit", limit)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListCustomerGroupsResponse],
+            decoder=async_json_decoder[ListCustomerGroupsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -479,7 +497,8 @@ class AsyncCustomerGroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serv
 
         Args:
             group_id: The ID of the customer group to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -488,7 +507,7 @@ class AsyncCustomerGroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serv
             url_template=self._server.default("/v2/customers/groups/{group_id}"),
             path_params=[param[str]("group_id", group_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveCustomerGroupResponse],
+            decoder=async_json_decoder[RetrieveCustomerGroupResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -506,7 +525,8 @@ class AsyncCustomerGroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serv
             group_id: The ID of the customer group to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -517,7 +537,7 @@ class AsyncCustomerGroupsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serv
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateCustomerGroupRequest | UpdateCustomerGroupRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateCustomerGroupResponse],
+            decoder=async_json_decoder[UpdateCustomerGroupResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

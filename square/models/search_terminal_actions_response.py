@@ -22,6 +22,6 @@ class SearchTerminalActionsResponse(SdkBaseModel):
 
 
 class SearchTerminalActionsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    action: NotRequired[list[TerminalAction | TerminalActionDict]]
+    errors: NotRequired[list[ErrorDict]]
+    action: NotRequired[list[TerminalActionDict]]
     cursor: NotRequired[str]

@@ -20,6 +20,6 @@ class BatchRetrieveInventoryChangesResponse(SdkBaseModel):
 
 
 class BatchRetrieveInventoryChangesResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    changes: NotRequired[list[InventoryChange | InventoryChangeDict]]
+    errors: NotRequired[list[ErrorDict]]
+    changes: NotRequired[list[InventoryChangeDict]]
     cursor: NotRequired[str]

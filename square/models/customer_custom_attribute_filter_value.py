@@ -52,11 +52,11 @@ class CustomerCustomAttributeFilterValue(SdkBaseModel):
 
 
 class CustomerCustomAttributeFilterValueDict(TypedDict):
-    email: NotRequired[CustomerTextFilter | CustomerTextFilterDict]
-    phone: NotRequired[CustomerTextFilter | CustomerTextFilterDict]
-    text: NotRequired[CustomerTextFilter | CustomerTextFilterDict]
-    selection: NotRequired[FilterValue | FilterValueDict]
-    date: NotRequired[TimeRange | TimeRangeDict]
-    number: NotRequired[FloatNumberRange | FloatNumberRangeDict]
+    email: NotRequired[CustomerTextFilterDict]
+    phone: NotRequired[CustomerTextFilterDict]
+    text: NotRequired[CustomerTextFilterDict]
+    selection: NotRequired[FilterValueDict]
+    date: NotRequired[TimeRangeDict]
+    number: NotRequired[FloatNumberRangeDict]
     boolean: NotRequired[bool | None]
-    address: NotRequired[CustomerAddressFilter | CustomerAddressFilterDict]
+    address: NotRequired[CustomerAddressFilterDict]

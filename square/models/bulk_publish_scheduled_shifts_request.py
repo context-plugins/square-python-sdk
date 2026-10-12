@@ -23,5 +23,5 @@ class BulkPublishScheduledShiftsRequest(SdkBaseModel):
 
 
 class BulkPublishScheduledShiftsRequestDict(TypedDict):
-    scheduled_shifts: dict[str, BulkPublishScheduledShiftsData | BulkPublishScheduledShiftsDataDict]
+    scheduled_shifts: dict[str, BulkPublishScheduledShiftsDataDict]
     scheduled_shift_notification_audience: NotRequired[ScheduledShiftNotificationAudienceOrStr]

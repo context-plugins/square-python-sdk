@@ -27,6 +27,6 @@ class ListCardsResponse(SdkBaseModel):
 
 
 class ListCardsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    cards: NotRequired[list[Card | CardDict]]
+    errors: NotRequired[list[ErrorDict]]
+    cards: NotRequired[list[CardDict]]
     cursor: NotRequired[str]

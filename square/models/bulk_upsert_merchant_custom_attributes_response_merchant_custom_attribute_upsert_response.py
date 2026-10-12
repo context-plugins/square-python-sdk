@@ -24,5 +24,5 @@ class BulkUpsertMerchantCustomAttributesResponseMerchantCustomAttributeUpsertRes
 
 class BulkUpsertMerchantCustomAttributesResponseMerchantCustomAttributeUpsertResponseDict(TypedDict):
     merchant_id: NotRequired[str]
-    custom_attribute: NotRequired[CustomAttribute | CustomAttributeDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    custom_attribute: NotRequired[CustomAttributeDict]
+    errors: NotRequired[list[ErrorDict]]

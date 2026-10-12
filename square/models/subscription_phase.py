@@ -41,6 +41,6 @@ class SubscriptionPhaseDict(TypedDict):
     uid: NotRequired[str | None]
     cadence: SubscriptionCadenceOrStr
     periods: NotRequired[int | None]
-    recurring_price_money: NotRequired[Money | MoneyDict]
+    recurring_price_money: NotRequired[MoneyDict]
     ordinal: NotRequired[int | None]
-    pricing: NotRequired[SubscriptionPricing | SubscriptionPricingDict]
+    pricing: NotRequired[SubscriptionPricingDict]

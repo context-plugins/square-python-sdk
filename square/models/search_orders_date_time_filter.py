@@ -37,6 +37,6 @@ class SearchOrdersDateTimeFilter(SdkBaseModel):
 
 
 class SearchOrdersDateTimeFilterDict(TypedDict):
-    created_at: NotRequired[TimeRange | TimeRangeDict]
-    updated_at: NotRequired[TimeRange | TimeRangeDict]
-    closed_at: NotRequired[TimeRange | TimeRangeDict]
+    created_at: NotRequired[TimeRangeDict]
+    updated_at: NotRequired[TimeRangeDict]
+    closed_at: NotRequired[TimeRangeDict]

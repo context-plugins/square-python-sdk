@@ -18,4 +18,4 @@ class UpdateCustomerGroupRequest(SdkBaseModel):
 
 
 class UpdateCustomerGroupRequestDict(TypedDict):
-    group: CustomerGroup | CustomerGroupDict
+    group: CustomerGroupDict

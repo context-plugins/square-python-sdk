@@ -98,7 +98,7 @@ class FulfillmentPickupDetails(SdkBaseModel):
 
 
 class FulfillmentPickupDetailsDict(TypedDict):
-    recipient: NotRequired[FulfillmentRecipient | FulfillmentRecipientDict]
+    recipient: NotRequired[FulfillmentRecipientDict]
     expires_at: NotRequired[str | None]
     auto_complete_duration: NotRequired[str | None]
     schedule_type: NotRequired[FulfillmentPickupDetailsScheduleTypeOrStr]
@@ -115,6 +115,4 @@ class FulfillmentPickupDetailsDict(TypedDict):
     canceled_at: NotRequired[str]
     cancel_reason: NotRequired[str | None]
     is_curbside_pickup: NotRequired[bool | None]
-    curbside_pickup_details: NotRequired[
-        FulfillmentPickupDetailsCurbsidePickupDetails | FulfillmentPickupDetailsCurbsidePickupDetailsDict
-    ]
+    curbside_pickup_details: NotRequired[FulfillmentPickupDetailsCurbsidePickupDetailsDict]

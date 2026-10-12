@@ -30,4 +30,4 @@ class EmployeeWageDict(TypedDict):
     id: NotRequired[str]
     employee_id: NotRequired[str | None]
     title: NotRequired[str | None]
-    hourly_rate: NotRequired[Money | MoneyDict]
+    hourly_rate: NotRequired[MoneyDict]

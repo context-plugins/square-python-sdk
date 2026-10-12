@@ -28,5 +28,5 @@ class ShiftQuery(SdkBaseModel):
 
 
 class ShiftQueryDict(TypedDict):
-    filter: NotRequired[ShiftFilter | ShiftFilterDict]
-    sort: NotRequired[ShiftSort | ShiftSortDict]
+    filter: NotRequired[ShiftFilterDict]
+    sort: NotRequired[ShiftSortDict]

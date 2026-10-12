@@ -29,5 +29,5 @@ class UpdateCatalogImageResponse(SdkBaseModel):
 
 
 class UpdateCatalogImageResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    image: NotRequired[CatalogObject | CatalogObjectDict]
+    errors: NotRequired[list[ErrorDict]]
+    image: NotRequired[CatalogObjectDict]

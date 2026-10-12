@@ -34,7 +34,7 @@ class CatalogSubscriptionPlanVariation(SdkBaseModel):
 
 class CatalogSubscriptionPlanVariationDict(TypedDict):
     name: str
-    phases: list[SubscriptionPhase | SubscriptionPhaseDict]
+    phases: list[SubscriptionPhaseDict]
     subscription_plan_id: NotRequired[str | None]
     monthly_billing_anchor_date: NotRequired[int | None]
     can_prorate: NotRequired[bool | None]

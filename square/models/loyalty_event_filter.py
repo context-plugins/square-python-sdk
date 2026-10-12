@@ -31,8 +31,8 @@ class LoyaltyEventFilter(SdkBaseModel):
 
 
 class LoyaltyEventFilterDict(TypedDict):
-    loyalty_account_filter: NotRequired[LoyaltyEventLoyaltyAccountFilter | LoyaltyEventLoyaltyAccountFilterDict]
-    type_filter: NotRequired[LoyaltyEventTypeFilter | LoyaltyEventTypeFilterDict]
-    date_time_filter: NotRequired[LoyaltyEventDateTimeFilter | LoyaltyEventDateTimeFilterDict]
-    location_filter: NotRequired[LoyaltyEventLocationFilter | LoyaltyEventLocationFilterDict]
-    order_filter: NotRequired[LoyaltyEventOrderFilter | LoyaltyEventOrderFilterDict]
+    loyalty_account_filter: NotRequired[LoyaltyEventLoyaltyAccountFilterDict]
+    type_filter: NotRequired[LoyaltyEventTypeFilterDict]
+    date_time_filter: NotRequired[LoyaltyEventDateTimeFilterDict]
+    location_filter: NotRequired[LoyaltyEventLocationFilterDict]
+    order_filter: NotRequired[LoyaltyEventOrderFilterDict]

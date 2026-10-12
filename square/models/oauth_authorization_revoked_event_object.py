@@ -14,6 +14,4 @@ class OauthAuthorizationRevokedEventObject(SdkBaseModel):
 
 
 class OauthAuthorizationRevokedEventObjectDict(TypedDict):
-    revocation: NotRequired[
-        OauthAuthorizationRevokedEventRevocationObject | OauthAuthorizationRevokedEventRevocationObjectDict
-    ]
+    revocation: NotRequired[OauthAuthorizationRevokedEventRevocationObjectDict]

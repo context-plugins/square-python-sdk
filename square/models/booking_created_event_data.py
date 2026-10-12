@@ -20,4 +20,4 @@ class BookingCreatedEventData(SdkBaseModel):
 class BookingCreatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[BookingCreatedEventObject | BookingCreatedEventObjectDict]
+    object_: NotRequired[BookingCreatedEventObjectDict]

@@ -26,6 +26,6 @@ class ChangeBillingAnchorDateResponse(SdkBaseModel):
 
 
 class ChangeBillingAnchorDateResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    subscription: NotRequired[Subscription | SubscriptionDict]
-    actions: NotRequired[list[SubscriptionAction | SubscriptionActionDict]]
+    errors: NotRequired[list[ErrorDict]]
+    subscription: NotRequired[SubscriptionDict]
+    actions: NotRequired[list[SubscriptionActionDict]]

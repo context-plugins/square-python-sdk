@@ -17,4 +17,4 @@ class DisableEventsResponse(SdkBaseModel):
 
 
 class DisableEventsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

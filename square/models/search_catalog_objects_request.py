@@ -102,6 +102,6 @@ class SearchCatalogObjectsRequestDict(TypedDict):
     include_deleted_objects: NotRequired[bool]
     include_related_objects: NotRequired[bool]
     begin_time: NotRequired[str]
-    query: NotRequired[CatalogQuery | CatalogQueryDict]
+    query: NotRequired[CatalogQueryDict]
     limit: NotRequired[int]
     include_category_path_to_root: NotRequired[bool]

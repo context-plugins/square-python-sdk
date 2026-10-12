@@ -19,4 +19,4 @@ class SearchTeamMembersQuery(SdkBaseModel):
 
 
 class SearchTeamMembersQueryDict(TypedDict):
-    filter: NotRequired[SearchTeamMembersFilter | SearchTeamMembersFilterDict]
+    filter: NotRequired[SearchTeamMembersFilterDict]

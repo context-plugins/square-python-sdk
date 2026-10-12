@@ -24,11 +24,5 @@ class BulkDeleteMerchantCustomAttributesResponse(SdkBaseModel):
 
 
 class BulkDeleteMerchantCustomAttributesResponseDict(TypedDict):
-    values: dict[
-        str,
-        (
-            BulkDeleteMerchantCustomAttributesResponseMerchantCustomAttributeDeleteResponse
-            | BulkDeleteMerchantCustomAttributesResponseMerchantCustomAttributeDeleteResponseDict
-        ),
-    ]
-    errors: NotRequired[list[Error | ErrorDict]]
+    values: dict[str, BulkDeleteMerchantCustomAttributesResponseMerchantCustomAttributeDeleteResponseDict]
+    errors: NotRequired[list[ErrorDict]]

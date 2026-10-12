@@ -15,4 +15,4 @@ class LoyaltyEventQuery(SdkBaseModel):
 
 
 class LoyaltyEventQueryDict(TypedDict):
-    filter: NotRequired[LoyaltyEventFilter | LoyaltyEventFilterDict]
+    filter: NotRequired[LoyaltyEventFilterDict]

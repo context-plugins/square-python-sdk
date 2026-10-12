@@ -31,5 +31,5 @@ class CalculateLoyaltyPointsRequest(SdkBaseModel):
 
 class CalculateLoyaltyPointsRequestDict(TypedDict):
     order_id: NotRequired[str | None]
-    transaction_amount_money: NotRequired[Money | MoneyDict]
+    transaction_amount_money: NotRequired[MoneyDict]
     loyalty_account_id: NotRequired[str | None]

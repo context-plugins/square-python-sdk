@@ -34,7 +34,7 @@ class DisputeEvidenceDict(TypedDict):
     evidence_id: NotRequired[str | None]
     id: NotRequired[str]
     dispute_id: NotRequired[str | None]
-    evidence_file: NotRequired[DisputeEvidenceFile | DisputeEvidenceFileDict]
+    evidence_file: NotRequired[DisputeEvidenceFileDict]
     evidence_text: NotRequired[str | None]
     uploaded_at: NotRequired[str | None]
     evidence_type: NotRequired[DisputeEvidenceTypeOrStr]

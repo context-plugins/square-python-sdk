@@ -19,5 +19,5 @@ class UpdateInventoryAdjustmentReasonRequest(SdkBaseModel):
 
 
 class UpdateInventoryAdjustmentReasonRequestDict(TypedDict):
-    reason_id: InventoryAdjustmentReasonId | InventoryAdjustmentReasonIdDict
-    adjustment_reason: InventoryAdjustmentReason | InventoryAdjustmentReasonDict
+    reason_id: InventoryAdjustmentReasonIdDict
+    adjustment_reason: InventoryAdjustmentReasonDict

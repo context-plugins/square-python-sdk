@@ -18,5 +18,5 @@ class SearchOrdersQuery(SdkBaseModel):
 
 
 class SearchOrdersQueryDict(TypedDict):
-    filter: NotRequired[SearchOrdersFilter | SearchOrdersFilterDict]
-    sort: NotRequired[SearchOrdersSort | SearchOrdersSortDict]
+    filter: NotRequired[SearchOrdersFilterDict]
+    sort: NotRequired[SearchOrdersSortDict]

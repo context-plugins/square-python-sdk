@@ -35,9 +35,5 @@ class LoyaltyPromotionIncentive(SdkBaseModel):
 
 class LoyaltyPromotionIncentiveDict(TypedDict):
     type_: LoyaltyPromotionIncentiveTypeOrStr
-    points_multiplier_data: NotRequired[
-        LoyaltyPromotionIncentivePointsMultiplierData | LoyaltyPromotionIncentivePointsMultiplierDataDict
-    ]
-    points_addition_data: NotRequired[
-        LoyaltyPromotionIncentivePointsAdditionData | LoyaltyPromotionIncentivePointsAdditionDataDict
-    ]
+    points_multiplier_data: NotRequired[LoyaltyPromotionIncentivePointsMultiplierDataDict]
+    points_addition_data: NotRequired[LoyaltyPromotionIncentivePointsAdditionDataDict]

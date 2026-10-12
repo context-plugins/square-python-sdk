@@ -123,7 +123,7 @@ class FulfillmentDeliveryDetails(SdkBaseModel):
 
 
 class FulfillmentDeliveryDetailsDict(TypedDict):
-    recipient: NotRequired[FulfillmentRecipient | FulfillmentRecipientDict]
+    recipient: NotRequired[FulfillmentRecipientDict]
     schedule_type: NotRequired[FulfillmentDeliveryDetailsOrderFulfillmentDeliveryDetailsScheduleTypeOrStr]
     placed_at: NotRequired[str]
     deliver_at: NotRequired[str | None]

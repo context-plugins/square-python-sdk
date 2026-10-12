@@ -35,5 +35,5 @@ class SearchSubscriptionsRequest(SdkBaseModel):
 class SearchSubscriptionsRequestDict(TypedDict):
     cursor: NotRequired[str]
     limit: NotRequired[int]
-    query: NotRequired[SearchSubscriptionsQuery | SearchSubscriptionsQueryDict]
+    query: NotRequired[SearchSubscriptionsQueryDict]
     include: NotRequired[list[str]]

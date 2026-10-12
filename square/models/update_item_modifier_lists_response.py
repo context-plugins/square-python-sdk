@@ -17,5 +17,5 @@ class UpdateItemModifierListsResponse(SdkBaseModel):
 
 
 class UpdateItemModifierListsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]
     updated_at: NotRequired[str]

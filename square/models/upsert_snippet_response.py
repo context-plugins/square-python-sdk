@@ -19,5 +19,5 @@ class UpsertSnippetResponse(SdkBaseModel):
 
 
 class UpsertSnippetResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    snippet: NotRequired[Snippet | SnippetDict]
+    errors: NotRequired[list[ErrorDict]]
+    snippet: NotRequired[SnippetDict]

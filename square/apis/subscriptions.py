@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.bulk_swap_plan_request import BulkSwapPlanRequest, BulkSwapPlanRequestDict
 from ..models.bulk_swap_plan_response import BulkSwapPlanResponse
@@ -58,14 +60,15 @@ class Subscriptions:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.bulk_swap_plan(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.bulk_swap_plan(body, request_options=request_options))
 
     def cancel_subscription(
         self, subscription_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -75,14 +78,15 @@ class Subscriptions:
 
         Args:
             subscription_id: The ID of the subscription to cancel.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.cancel_subscription(subscription_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.cancel_subscription(subscription_id, request_options=request_options))
 
     def change_billing_anchor_date(
         self,
@@ -99,16 +103,17 @@ class Subscriptions:
             subscription_id: The ID of the subscription to update the billing anchor date.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.change_billing_anchor_date(
-            subscription_id, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.change_billing_anchor_date(subscription_id, body, request_options=request_options)
+        )
 
     def create_subscription(
         self,
@@ -128,14 +133,15 @@ class Subscriptions:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_subscription(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_subscription(body, request_options=request_options))
 
     def delete_subscription_action(
         self, subscription_id: str, action_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -145,16 +151,19 @@ class Subscriptions:
         Args:
             subscription_id: The ID of the subscription the targeted action is to act upon.
             action_id: The ID of the targeted action to be deleted.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_subscription_action(
-            subscription_id, action_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.delete_subscription_action(
+                subscription_id, action_id, request_options=request_options
+            ),
+        )
 
     def list_subscription_events(
         self,
@@ -174,16 +183,19 @@ class Subscriptions:
                 cursor is unset, the response contains the last page of the results. For more information, see
                 `Pagination <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
             limit: The upper limit on the number of subscription events to return in a paged response.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_subscription_events(
-            subscription_id, cursor=cursor, limit=limit, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_subscription_events(
+                subscription_id, cursor=cursor, limit=limit, request_options=request_options
+            ),
+        )
 
     def pause_subscription(
         self,
@@ -198,16 +210,17 @@ class Subscriptions:
             subscription_id: The ID of the subscription to pause.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.pause_subscription(
-            subscription_id, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.pause_subscription(subscription_id, body, request_options=request_options)
+        )
 
     def resume_subscription(
         self,
@@ -222,16 +235,17 @@ class Subscriptions:
             subscription_id: The ID of the subscription to resume.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.resume_subscription(
-            subscription_id, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.resume_subscription(subscription_id, body, request_options=request_options)
+        )
 
     def retrieve_subscription(
         self, subscription_id: str, *, include: str | None = None, request_options: RequestOptionsOrDict | None = None
@@ -242,16 +256,19 @@ class Subscriptions:
             subscription_id: The ID of the subscription to retrieve.
             include: A query parameter to specify related information to be included in the response. The supported
                 query parameter values are: - ``actions``: to include scheduled actions on the targeted subscription.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_subscription(
-            subscription_id, include=include, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.retrieve_subscription(
+                subscription_id, include=include, request_options=request_options
+            ),
+        )
 
     def search_subscriptions(
         self,
@@ -272,14 +289,15 @@ class Subscriptions:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_subscriptions(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_subscriptions(body, request_options=request_options))
 
     def swap_plan(
         self,
@@ -296,14 +314,15 @@ class Subscriptions:
             subscription_id: The ID of the subscription to swap the subscription plan for.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.swap_plan(subscription_id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.swap_plan(subscription_id, body, request_options=request_options))
 
     def update_subscription(
         self,
@@ -319,16 +338,17 @@ class Subscriptions:
             subscription_id: The ID of the subscription to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_subscription(
-            subscription_id, body, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.update_subscription(subscription_id, body, request_options=request_options)
+        )
 
     @property
     def with_raw_response(self) -> SubscriptionsWithRawResponse:
@@ -352,14 +372,15 @@ class AsyncSubscriptions:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.bulk_swap_plan(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.bulk_swap_plan(body, request_options=request_options))
 
     async def cancel_subscription(
         self, subscription_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -369,16 +390,17 @@ class AsyncSubscriptions:
 
         Args:
             subscription_id: The ID of the subscription to cancel.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.cancel_subscription(subscription_id, request_options=request_options)
-        ).unwrap()
+        )
 
     async def change_billing_anchor_date(
         self,
@@ -395,18 +417,19 @@ class AsyncSubscriptions:
             subscription_id: The ID of the subscription to update the billing anchor date.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.change_billing_anchor_date(
                 subscription_id, body, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def create_subscription(
         self,
@@ -426,14 +449,15 @@ class AsyncSubscriptions:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_subscription(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_subscription(body, request_options=request_options))
 
     async def delete_subscription_action(
         self, subscription_id: str, action_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -443,18 +467,19 @@ class AsyncSubscriptions:
         Args:
             subscription_id: The ID of the subscription the targeted action is to act upon.
             action_id: The ID of the targeted action to be deleted.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.delete_subscription_action(
                 subscription_id, action_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def list_subscription_events(
         self,
@@ -474,18 +499,19 @@ class AsyncSubscriptions:
                 cursor is unset, the response contains the last page of the results. For more information, see
                 `Pagination <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
             limit: The upper limit on the number of subscription events to return in a paged response.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_subscription_events(
                 subscription_id, cursor=cursor, limit=limit, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def pause_subscription(
         self,
@@ -500,16 +526,17 @@ class AsyncSubscriptions:
             subscription_id: The ID of the subscription to pause.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.pause_subscription(subscription_id, body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def resume_subscription(
         self,
@@ -524,16 +551,17 @@ class AsyncSubscriptions:
             subscription_id: The ID of the subscription to resume.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.resume_subscription(subscription_id, body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def retrieve_subscription(
         self, subscription_id: str, *, include: str | None = None, request_options: RequestOptionsOrDict | None = None
@@ -544,18 +572,19 @@ class AsyncSubscriptions:
             subscription_id: The ID of the subscription to retrieve.
             include: A query parameter to specify related information to be included in the response. The supported
                 query parameter values are: - ``actions``: to include scheduled actions on the targeted subscription.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_subscription(
                 subscription_id, include=include, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def search_subscriptions(
         self,
@@ -576,14 +605,15 @@ class AsyncSubscriptions:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_subscriptions(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_subscriptions(body, request_options=request_options))
 
     async def swap_plan(
         self,
@@ -600,16 +630,15 @@ class AsyncSubscriptions:
             subscription_id: The ID of the subscription to swap the subscription plan for.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.swap_plan(subscription_id, body, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.swap_plan(subscription_id, body, request_options=request_options))
 
     async def update_subscription(
         self,
@@ -625,16 +654,17 @@ class AsyncSubscriptions:
             subscription_id: The ID of the subscription to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.update_subscription(subscription_id, body, request_options=request_options)
-        ).unwrap()
+        )
 
     @property
     def with_raw_response(self) -> AsyncSubscriptionsWithRawResponse:
@@ -655,7 +685,8 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -678,7 +709,8 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
 
         Args:
             subscription_id: The ID of the subscription to cancel.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -708,7 +740,8 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             subscription_id: The ID of the subscription to update the billing anchor date.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -742,7 +775,8 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -765,7 +799,8 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
         Args:
             subscription_id: The ID of the subscription the targeted action is to act upon.
             action_id: The ID of the targeted action to be deleted.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -798,7 +833,8 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
                 cursor is unset, the response contains the last page of the results. For more information, see
                 `Pagination <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
             limit: The upper limit on the number of subscription events to return in a paged response.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -826,7 +862,8 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             subscription_id: The ID of the subscription to pause.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -855,7 +892,8 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             subscription_id: The ID of the subscription to resume.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -880,7 +918,8 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             subscription_id: The ID of the subscription to retrieve.
             include: A query parameter to specify related information to be included in the response. The supported
                 query parameter values are: - ``actions``: to include scheduled actions on the targeted subscription.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -914,7 +953,8 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -944,7 +984,8 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             subscription_id: The ID of the subscription to swap the subscription plan for.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -974,7 +1015,8 @@ class SubscriptionsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSch
             subscription_id: The ID of the subscription to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1005,7 +1047,8 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1015,7 +1058,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkSwapPlanRequest | BulkSwapPlanRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BulkSwapPlanResponse],
+            decoder=async_json_decoder[BulkSwapPlanResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1028,7 +1071,8 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
 
         Args:
             subscription_id: The ID of the subscription to cancel.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1038,7 +1082,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             path_params=[param[str]("subscription_id", subscription_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CancelSubscriptionResponse],
+            decoder=async_json_decoder[CancelSubscriptionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1058,7 +1102,8 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             subscription_id: The ID of the subscription to update the billing anchor date.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1069,7 +1114,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[ChangeBillingAnchorDateRequest | ChangeBillingAnchorDateRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ChangeBillingAnchorDateResponse],
+            decoder=async_json_decoder[ChangeBillingAnchorDateResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1092,7 +1137,8 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1102,7 +1148,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateSubscriptionRequest | CreateSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateSubscriptionResponse],
+            decoder=async_json_decoder[CreateSubscriptionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1115,7 +1161,8 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         Args:
             subscription_id: The ID of the subscription the targeted action is to act upon.
             action_id: The ID of the targeted action to be deleted.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1125,7 +1172,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             path_params=[param[str]("subscription_id", subscription_id), param[str]("action_id", action_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeleteSubscriptionActionResponse],
+            decoder=async_json_decoder[DeleteSubscriptionActionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1148,7 +1195,8 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
                 cursor is unset, the response contains the last page of the results. For more information, see
                 `Pagination <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
             limit: The upper limit on the number of subscription events to return in a paged response.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1158,7 +1206,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             path_params=[param[str]("subscription_id", subscription_id)],
             query_params=[param[str | None]("cursor", cursor), param[int | None]("limit", limit)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListSubscriptionEventsResponse],
+            decoder=async_json_decoder[ListSubscriptionEventsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1176,7 +1224,8 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             subscription_id: The ID of the subscription to pause.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1187,7 +1236,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[PauseSubscriptionRequest | PauseSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[PauseSubscriptionResponse],
+            decoder=async_json_decoder[PauseSubscriptionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1205,7 +1254,8 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             subscription_id: The ID of the subscription to resume.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1216,7 +1266,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[ResumeSubscriptionRequest | ResumeSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ResumeSubscriptionResponse],
+            decoder=async_json_decoder[ResumeSubscriptionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1230,7 +1280,8 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             subscription_id: The ID of the subscription to retrieve.
             include: A query parameter to specify related information to be included in the response. The supported
                 query parameter values are: - ``actions``: to include scheduled actions on the targeted subscription.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1240,7 +1291,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             path_params=[param[str]("subscription_id", subscription_id)],
             query_params=[param[str | None]("include", include)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveSubscriptionResponse],
+            decoder=async_json_decoder[RetrieveSubscriptionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1264,7 +1315,8 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1274,7 +1326,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchSubscriptionsRequest | SearchSubscriptionsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SearchSubscriptionsResponse],
+            decoder=async_json_decoder[SearchSubscriptionsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1294,7 +1346,8 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             subscription_id: The ID of the subscription to swap the subscription plan for.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1305,7 +1358,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SwapPlanRequest | SwapPlanRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SwapPlanResponse],
+            decoder=async_json_decoder[SwapPlanResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1324,7 +1377,8 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             subscription_id: The ID of the subscription to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1335,7 +1389,7 @@ class AsyncSubscriptionsWithRawResponse(SecuredRawResponse[AsyncRawClient, Serve
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateSubscriptionRequest | UpdateSubscriptionRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateSubscriptionResponse],
+            decoder=async_json_decoder[UpdateSubscriptionResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

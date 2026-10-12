@@ -22,6 +22,6 @@ class SearchLoyaltyRewardsResponse(SdkBaseModel):
 
 
 class SearchLoyaltyRewardsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    rewards: NotRequired[list[LoyaltyReward | LoyaltyRewardDict]]
+    errors: NotRequired[list[ErrorDict]]
+    rewards: NotRequired[list[LoyaltyRewardDict]]
     cursor: NotRequired[str]

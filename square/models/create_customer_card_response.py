@@ -21,5 +21,5 @@ class CreateCustomerCardResponse(SdkBaseModel):
 
 
 class CreateCustomerCardResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    card: NotRequired[Card | CardDict]
+    errors: NotRequired[list[ErrorDict]]
+    card: NotRequired[CardDict]

@@ -14,4 +14,4 @@ class UpdateLocationRequest(SdkBaseModel):
 
 
 class UpdateLocationRequestDict(TypedDict):
-    location: NotRequired[Location | LocationDict]
+    location: NotRequired[LocationDict]

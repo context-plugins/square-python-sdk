@@ -18,6 +18,6 @@ class SearchTerminalActionsRequest(SdkBaseModel):
 
 
 class SearchTerminalActionsRequestDict(TypedDict):
-    query: NotRequired[TerminalActionQuery | TerminalActionQueryDict]
+    query: NotRequired[TerminalActionQueryDict]
     cursor: NotRequired[str]
     limit: NotRequired[int]

@@ -20,4 +20,4 @@ class CardDisabledEventData(SdkBaseModel):
 class CardDisabledEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[CardDisabledEventObject | CardDisabledEventObjectDict]
+    object_: NotRequired[CardDisabledEventObjectDict]

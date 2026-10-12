@@ -28,6 +28,6 @@ class TimecardWage(SdkBaseModel):
 
 class TimecardWageDict(TypedDict):
     title: NotRequired[str | None]
-    hourly_rate: NotRequired[Money | MoneyDict]
+    hourly_rate: NotRequired[MoneyDict]
     job_id: NotRequired[str]
     tip_eligible: NotRequired[bool | None]

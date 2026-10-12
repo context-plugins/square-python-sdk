@@ -22,4 +22,4 @@ class VendorUpdatedEventData(SdkBaseModel):
 class VendorUpdatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[VendorUpdatedEventObject | VendorUpdatedEventObjectDict]
+    object_: NotRequired[VendorUpdatedEventObjectDict]

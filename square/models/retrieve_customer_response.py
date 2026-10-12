@@ -20,5 +20,5 @@ class RetrieveCustomerResponse(SdkBaseModel):
 
 
 class RetrieveCustomerResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    customer: NotRequired[Customer | CustomerDict]
+    errors: NotRequired[list[ErrorDict]]
+    customer: NotRequired[CustomerDict]

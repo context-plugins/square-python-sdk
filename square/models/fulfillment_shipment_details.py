@@ -69,7 +69,7 @@ class FulfillmentShipmentDetails(SdkBaseModel):
 
 
 class FulfillmentShipmentDetailsDict(TypedDict):
-    recipient: NotRequired[FulfillmentRecipient | FulfillmentRecipientDict]
+    recipient: NotRequired[FulfillmentRecipientDict]
     carrier: NotRequired[str | None]
     shipping_note: NotRequired[str | None]
     shipping_type: NotRequired[str | None]

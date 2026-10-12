@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.disable_events_response import DisableEventsResponse
 from ..models.enable_events_response import EnableEventsResponse
@@ -33,27 +35,29 @@ class Events:
         even if you re-enable them later.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.disable_events(request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.disable_events(request_options=request_options))
 
     def enable_events(self, *, request_options: RequestOptionsOrDict | None = None) -> EnableEventsResponse:
         """Enables events to make them searchable. Only events that occur while in the enabled state are searchable.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.enable_events(request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.enable_events(request_options=request_options))
 
     def list_event_types(
         self, *, api_version: str | None = None, request_options: RequestOptionsOrDict | None = None
@@ -63,16 +67,17 @@ class Events:
         Args:
             api_version: The API version for which to list event types. Setting this field overrides the default version
                 used by the application.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_event_types(
-            api_version=api_version, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_event_types(api_version=api_version, request_options=request_options)
+        )
 
     def search_events(
         self,
@@ -85,14 +90,15 @@ class Events:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_events(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_events(body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> EventsWithRawResponse:
@@ -109,27 +115,29 @@ class AsyncEvents:
         even if you re-enable them later.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.disable_events(request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.disable_events(request_options=request_options))
 
     async def enable_events(self, *, request_options: RequestOptionsOrDict | None = None) -> EnableEventsResponse:
         """Enables events to make them searchable. Only events that occur while in the enabled state are searchable.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.enable_events(request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.enable_events(request_options=request_options))
 
     async def list_event_types(
         self, *, api_version: str | None = None, request_options: RequestOptionsOrDict | None = None
@@ -139,16 +147,17 @@ class AsyncEvents:
         Args:
             api_version: The API version for which to list event types. Setting this field overrides the default version
                 used by the application.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_event_types(api_version=api_version, request_options=request_options)
-        ).unwrap()
+        )
 
     async def search_events(
         self,
@@ -161,14 +170,15 @@ class AsyncEvents:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_events(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_events(body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncEventsWithRawResponse:
@@ -184,7 +194,8 @@ class EventsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         even if you re-enable them later.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -204,7 +215,8 @@ class EventsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         """Enables events to make them searchable. Only events that occur while in the enabled state are searchable.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -226,7 +238,8 @@ class EventsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             api_version: The API version for which to list event types. Setting this field overrides the default version
                 used by the application.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -251,7 +264,8 @@ class EventsWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes]):
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -276,7 +290,8 @@ class AsyncEventsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
         even if you re-enable them later.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -285,7 +300,7 @@ class AsyncEventsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
             url_template=self._server.default("/v2/events/disable"),
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DisableEventsResponse],
+            decoder=async_json_decoder[DisableEventsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -296,7 +311,8 @@ class AsyncEventsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
         """Enables events to make them searchable. Only events that occur while in the enabled state are searchable.
 
         Args:
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -305,7 +321,7 @@ class AsyncEventsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
             url_template=self._server.default("/v2/events/enable"),
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[EnableEventsResponse],
+            decoder=async_json_decoder[EnableEventsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -318,7 +334,8 @@ class AsyncEventsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
         Args:
             api_version: The API version for which to list event types. Setting this field overrides the default version
                 used by the application.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -327,7 +344,7 @@ class AsyncEventsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
             url_template=self._server.default("/v2/events/types"),
             query_params=[param[str | None]("api_version", api_version)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListEventTypesResponse],
+            decoder=async_json_decoder[ListEventTypesResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -343,7 +360,8 @@ class AsyncEventsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -353,7 +371,7 @@ class AsyncEventsWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, Asyn
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchEventsRequest | SearchEventsRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SearchEventsResponse],
+            decoder=async_json_decoder[SearchEventsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

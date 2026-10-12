@@ -15,4 +15,4 @@ class UpdateBreakTypeRequest(SdkBaseModel):
 
 
 class UpdateBreakTypeRequestDict(TypedDict):
-    break_type: BreakType | BreakTypeDict
+    break_type: BreakTypeDict

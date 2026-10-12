@@ -10,10 +10,12 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_body,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.add_group_to_customer_response import AddGroupToCustomerResponse
 from ..models.bulk_create_customers_request import BulkCreateCustomersRequest, BulkCreateCustomersRequestDict
@@ -57,16 +59,17 @@ class Customers:
         Args:
             customer_id: The ID of the customer to add to a group.
             group_id: The ID of the customer group to add the customer to.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.add_group_to_customer(
-            customer_id, group_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.add_group_to_customer(customer_id, group_id, request_options=request_options)
+        )
 
     def bulk_create_customers(
         self,
@@ -89,14 +92,15 @@ class Customers:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.bulk_create_customers(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.bulk_create_customers(body, request_options=request_options))
 
     def bulk_delete_customers(
         self,
@@ -111,14 +115,15 @@ class Customers:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.bulk_delete_customers(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.bulk_delete_customers(body, request_options=request_options))
 
     def bulk_retrieve_customers(
         self,
@@ -133,14 +138,15 @@ class Customers:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.bulk_retrieve_customers(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.bulk_retrieve_customers(body, request_options=request_options))
 
     def bulk_update_customers(
         self,
@@ -155,14 +161,15 @@ class Customers:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.bulk_update_customers(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.bulk_update_customers(body, request_options=request_options))
 
     def create_customer(
         self,
@@ -183,14 +190,15 @@ class Customers:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_customer(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_customer(body, request_options=request_options))
 
     def create_customer_card(
         self,
@@ -208,14 +216,15 @@ class Customers:
             customer_id: The Square ID of the customer profile the card is linked to.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.create_customer_card(customer_id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.create_customer_card(customer_id, body, request_options=request_options))
 
     def delete_customer(
         self, customer_id: str, *, version: int | None = None, request_options: RequestOptionsOrDict | None = None
@@ -232,16 +241,17 @@ class Customers:
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency>`__
                 control. For more information, see `Delete a customer profile
                 <https://developer.squareup.com/docs/customers-api/use-the-api/keep-records#delete-customer-profile>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_customer(
-            customer_id, version=version, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.delete_customer(customer_id, version=version, request_options=request_options)
+        )
 
     def delete_customer_card(
         self, customer_id: str, card_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -251,16 +261,17 @@ class Customers:
         Args:
             customer_id: The ID of the customer that the card on file belongs to.
             card_id: The ID of the card on file to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.delete_customer_card(
-            customer_id, card_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.delete_customer_card(customer_id, card_id, request_options=request_options)
+        )
 
     def list_customers(
         self,
@@ -291,21 +302,24 @@ class Customers:
                 order. The default value is ``ASC``.
             count: Indicates whether to return the total count of customers in the ``count`` field of the response. The
                 default value is ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_customers(
-            cursor=cursor,
-            limit=limit,
-            sort_field=sort_field,
-            sort_order=sort_order,
-            count=count,
-            request_options=request_options,
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_customers(
+                cursor=cursor,
+                limit=limit,
+                sort_field=sort_field,
+                sort_order=sort_order,
+                count=count,
+                request_options=request_options,
+            ),
+        )
 
     def remove_group_from_customer(
         self, customer_id: str, group_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -318,16 +332,17 @@ class Customers:
         Args:
             customer_id: The ID of the customer to remove from the group.
             group_id: The ID of the customer group to remove the customer from.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.remove_group_from_customer(
-            customer_id, group_id, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.remove_group_from_customer(customer_id, group_id, request_options=request_options)
+        )
 
     def retrieve_customer(
         self, customer_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -336,14 +351,15 @@ class Customers:
 
         Args:
             customer_id: The ID of the customer to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_customer(customer_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_customer(customer_id, request_options=request_options))
 
     def search_customers(
         self,
@@ -363,14 +379,15 @@ class Customers:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.search_customers(body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.search_customers(body, request_options=request_options))
 
     def update_customer(
         self,
@@ -389,14 +406,15 @@ class Customers:
             customer_id: The ID of the customer to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.update_customer(customer_id, body, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.update_customer(customer_id, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> CustomersWithRawResponse:
@@ -418,16 +436,17 @@ class AsyncCustomers:
         Args:
             customer_id: The ID of the customer to add to a group.
             group_id: The ID of the customer group to add the customer to.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.add_group_to_customer(customer_id, group_id, request_options=request_options)
-        ).unwrap()
+        )
 
     async def bulk_create_customers(
         self,
@@ -450,14 +469,15 @@ class AsyncCustomers:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.bulk_create_customers(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.bulk_create_customers(body, request_options=request_options))
 
     async def bulk_delete_customers(
         self,
@@ -472,14 +492,15 @@ class AsyncCustomers:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.bulk_delete_customers(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.bulk_delete_customers(body, request_options=request_options))
 
     async def bulk_retrieve_customers(
         self,
@@ -494,14 +515,15 @@ class AsyncCustomers:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.bulk_retrieve_customers(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.bulk_retrieve_customers(body, request_options=request_options))
 
     async def bulk_update_customers(
         self,
@@ -516,14 +538,15 @@ class AsyncCustomers:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.bulk_update_customers(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.bulk_update_customers(body, request_options=request_options))
 
     async def create_customer(
         self,
@@ -544,14 +567,15 @@ class AsyncCustomers:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.create_customer(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.create_customer(body, request_options=request_options))
 
     async def create_customer_card(
         self,
@@ -569,16 +593,17 @@ class AsyncCustomers:
             customer_id: The Square ID of the customer profile the card is linked to.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.create_customer_card(customer_id, body, request_options=request_options)
-        ).unwrap()
+        )
 
     async def delete_customer(
         self, customer_id: str, *, version: int | None = None, request_options: RequestOptionsOrDict | None = None
@@ -595,16 +620,17 @@ class AsyncCustomers:
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency>`__
                 control. For more information, see `Delete a customer profile
                 <https://developer.squareup.com/docs/customers-api/use-the-api/keep-records#delete-customer-profile>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.delete_customer(customer_id, version=version, request_options=request_options)
-        ).unwrap()
+        )
 
     async def delete_customer_card(
         self, customer_id: str, card_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -614,16 +640,17 @@ class AsyncCustomers:
         Args:
             customer_id: The ID of the customer that the card on file belongs to.
             card_id: The ID of the card on file to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.delete_customer_card(customer_id, card_id, request_options=request_options)
-        ).unwrap()
+        )
 
     async def list_customers(
         self,
@@ -654,14 +681,15 @@ class AsyncCustomers:
                 order. The default value is ``ASC``.
             count: Indicates whether to return the total count of customers in the ``count`` field of the response. The
                 default value is ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_customers(
                 cursor=cursor,
                 limit=limit,
@@ -669,8 +697,8 @@ class AsyncCustomers:
                 sort_order=sort_order,
                 count=count,
                 request_options=request_options,
-            )
-        ).unwrap()
+            ),
+        )
 
     async def remove_group_from_customer(
         self, customer_id: str, group_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -683,18 +711,19 @@ class AsyncCustomers:
         Args:
             customer_id: The ID of the customer to remove from the group.
             group_id: The ID of the customer group to remove the customer from.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.remove_group_from_customer(
                 customer_id, group_id, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_customer(
         self, customer_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -703,14 +732,15 @@ class AsyncCustomers:
 
         Args:
             customer_id: The ID of the customer to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.retrieve_customer(customer_id, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.retrieve_customer(customer_id, request_options=request_options))
 
     async def search_customers(
         self,
@@ -730,14 +760,15 @@ class AsyncCustomers:
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (await self._with_raw_response.search_customers(body, request_options=request_options)).unwrap()
+        return unwrap(await self._with_raw_response.search_customers(body, request_options=request_options))
 
     async def update_customer(
         self,
@@ -756,16 +787,15 @@ class AsyncCustomers:
             customer_id: The ID of the customer to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
-            await self._with_raw_response.update_customer(customer_id, body, request_options=request_options)
-        ).unwrap()
+        return unwrap(await self._with_raw_response.update_customer(customer_id, body, request_options=request_options))
 
     @property
     def with_raw_response(self) -> AsyncCustomersWithRawResponse:
@@ -784,7 +814,8 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             customer_id: The ID of the customer to add to a group.
             group_id: The ID of the customer group to add the customer to.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -820,7 +851,8 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -848,7 +880,8 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -876,7 +909,8 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -904,7 +938,8 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -938,7 +973,8 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -969,7 +1005,8 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             customer_id: The Square ID of the customer profile the card is linked to.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1000,7 +1037,8 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency>`__
                 control. For more information, see `Delete a customer profile
                 <https://developer.squareup.com/docs/customers-api/use-the-api/keep-records#delete-customer-profile>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1024,7 +1062,8 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             customer_id: The ID of the customer that the card on file belongs to.
             card_id: The ID of the card on file to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1068,7 +1107,8 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
                 order. The default value is ``ASC``.
             count: Indicates whether to return the total count of customers in the ``count`` field of the response. The
                 default value is ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1099,7 +1139,8 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             customer_id: The ID of the customer to remove from the group.
             group_id: The ID of the customer group to remove the customer from.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1121,7 +1162,8 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
 
         Args:
             customer_id: The ID of the customer to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1153,7 +1195,8 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1185,7 +1228,8 @@ class CustomersWithRawResponse(SecuredRawResponse[RawClient, Server, AuthSchemes
             customer_id: The ID of the customer to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1214,7 +1258,8 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             customer_id: The ID of the customer to add to a group.
             group_id: The ID of the customer group to add the customer to.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1224,7 +1269,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             path_params=[param[str]("customer_id", customer_id), param[str]("group_id", group_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[AddGroupToCustomerResponse],
+            decoder=async_json_decoder[AddGroupToCustomerResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1250,7 +1295,8 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1260,7 +1306,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkCreateCustomersRequest | BulkCreateCustomersRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BulkCreateCustomersResponse],
+            decoder=async_json_decoder[BulkCreateCustomersResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1278,7 +1324,8 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1288,7 +1335,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkDeleteCustomersRequest | BulkDeleteCustomersRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BulkDeleteCustomersResponse],
+            decoder=async_json_decoder[BulkDeleteCustomersResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1306,7 +1353,8 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1316,7 +1364,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkRetrieveCustomersRequest | BulkRetrieveCustomersRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BulkRetrieveCustomersResponse],
+            decoder=async_json_decoder[BulkRetrieveCustomersResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1334,7 +1382,8 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1344,7 +1393,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[BulkUpdateCustomersRequest | BulkUpdateCustomersRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[BulkUpdateCustomersResponse],
+            decoder=async_json_decoder[BulkUpdateCustomersResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1368,7 +1417,8 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1378,7 +1428,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateCustomerRequest | CreateCustomerRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateCustomerResponse],
+            decoder=async_json_decoder[CreateCustomerResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1399,7 +1449,8 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             customer_id: The Square ID of the customer profile the card is linked to.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1410,7 +1461,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[CreateCustomerCardRequest | CreateCustomerCardRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[CreateCustomerCardResponse],
+            decoder=async_json_decoder[CreateCustomerCardResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1430,7 +1481,8 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
                 <https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency>`__
                 control. For more information, see `Delete a customer profile
                 <https://developer.squareup.com/docs/customers-api/use-the-api/keep-records#delete-customer-profile>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1441,7 +1493,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             query_params=[param[int | None]("version", version)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeleteCustomerResponse],
+            decoder=async_json_decoder[DeleteCustomerResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1454,7 +1506,8 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             customer_id: The ID of the customer that the card on file belongs to.
             card_id: The ID of the card on file to delete.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1464,7 +1517,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             path_params=[param[str]("customer_id", customer_id), param[str]("card_id", card_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[DeleteCustomerCardResponse],
+            decoder=async_json_decoder[DeleteCustomerCardResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1498,7 +1551,8 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
                 order. The default value is ``ASC``.
             count: Indicates whether to return the total count of customers in the ``count`` field of the response. The
                 default value is ``false``.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1513,7 +1567,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
                 param[bool | None]("count", count),
             ],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListCustomersResponse],
+            decoder=async_json_decoder[ListCustomersResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1529,7 +1583,8 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             customer_id: The ID of the customer to remove from the group.
             group_id: The ID of the customer group to remove the customer from.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1539,7 +1594,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             path_params=[param[str]("customer_id", customer_id), param[str]("group_id", group_id)],
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RemoveGroupFromCustomerResponse],
+            decoder=async_json_decoder[RemoveGroupFromCustomerResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1551,7 +1606,8 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
 
         Args:
             customer_id: The ID of the customer to retrieve.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1560,7 +1616,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             url_template=self._server.default("/v2/customers/{customer_id}"),
             path_params=[param[str]("customer_id", customer_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveCustomerResponse],
+            decoder=async_json_decoder[RetrieveCustomerResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1583,7 +1639,8 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
         Args:
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1593,7 +1650,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[SearchCustomersRequest | SearchCustomersRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[SearchCustomersResponse],
+            decoder=async_json_decoder[SearchCustomersResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -1615,7 +1672,8 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             customer_id: The ID of the customer to update.
             body: An object containing the fields to POST for the request. See the corresponding object definition for
                 field details.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -1626,7 +1684,7 @@ class AsyncCustomersWithRawResponse(SecuredRawResponse[AsyncRawClient, Server, A
             headers=[param[UUID]("Idempotency-Key", uuid4())],
             body=json_body[UpdateCustomerRequest | UpdateCustomerRequestDict](body),
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[UpdateCustomerResponse],
+            decoder=async_json_decoder[UpdateCustomerResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

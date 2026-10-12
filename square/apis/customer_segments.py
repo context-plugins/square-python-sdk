@@ -8,9 +8,11 @@ from ..core import (
     RawError,
     RequestOptionsOrDict,
     SecuredRawResponse,
+    async_json_decoder,
     json_decoder,
     param,
     raw_error_response,
+    unwrap,
 )
 from ..models.list_customer_segments_response import ListCustomerSegmentsResponse
 from ..models.retrieve_customer_segment_response import RetrieveCustomerSegmentResponse
@@ -38,16 +40,17 @@ class CustomerSegments:
                 contain more or fewer results. If the specified limit is less than 1 or greater than 50, Square returns
                 a ``400 VALUE_TOO_LOW`` or ``400 VALUE_TOO_HIGH`` error. The default value is 50. For more information,
                 see `Pagination <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.list_customer_segments(
-            cursor=cursor, limit=limit, request_options=request_options
-        ).unwrap()
+        return unwrap(
+            self._with_raw_response.list_customer_segments(cursor=cursor, limit=limit, request_options=request_options)
+        )
 
     def retrieve_customer_segment(
         self, segment_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -56,14 +59,15 @@ class CustomerSegments:
 
         Args:
             segment_id: The Square-issued ID of the customer segment.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return self._with_raw_response.retrieve_customer_segment(segment_id, request_options=request_options).unwrap()
+        return unwrap(self._with_raw_response.retrieve_customer_segment(segment_id, request_options=request_options))
 
     @property
     def with_raw_response(self) -> CustomerSegmentsWithRawResponse:
@@ -91,18 +95,19 @@ class AsyncCustomerSegments:
                 contain more or fewer results. If the specified limit is less than 1 or greater than 50, Square returns
                 a ``400 VALUE_TOO_LOW`` or ``400 VALUE_TOO_HIGH`` error. The default value is 50. For more information,
                 see `Pagination <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.list_customer_segments(
                 cursor=cursor, limit=limit, request_options=request_options
-            )
-        ).unwrap()
+            ),
+        )
 
     async def retrieve_customer_segment(
         self, segment_id: str, *, request_options: RequestOptionsOrDict | None = None
@@ -111,16 +116,17 @@ class AsyncCustomerSegments:
 
         Args:
             segment_id: The Square-issued ID of the customer segment.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             Success
 
         Raises:
             ApiError: If the API responds with an error status code. ``error`` is ``RawError``."""
-        return (
+        return unwrap(
             await self._with_raw_response.retrieve_customer_segment(segment_id, request_options=request_options)
-        ).unwrap()
+        )
 
     @property
     def with_raw_response(self) -> AsyncCustomerSegmentsWithRawResponse:
@@ -145,7 +151,8 @@ class CustomerSegmentsWithRawResponse(SecuredRawResponse[RawClient, Server, Auth
                 contain more or fewer results. If the specified limit is less than 1 or greater than 50, Square returns
                 a ``400 VALUE_TOO_LOW`` or ``400 VALUE_TOO_HIGH`` error. The default value is 50. For more information,
                 see `Pagination <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -166,7 +173,8 @@ class CustomerSegmentsWithRawResponse(SecuredRawResponse[RawClient, Server, Auth
 
         Args:
             segment_id: The Square-issued ID of the customer segment.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -199,7 +207,8 @@ class AsyncCustomerSegmentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
                 contain more or fewer results. If the specified limit is less than 1 or greater than 50, Square returns
                 a ``400 VALUE_TOO_LOW`` or ``400 VALUE_TOO_HIGH`` error. The default value is 50. For more information,
                 see `Pagination <https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination>`__.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -208,7 +217,7 @@ class AsyncCustomerSegmentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
             url_template=self._server.default("/v2/customers/segments"),
             query_params=[param[str | None]("cursor", cursor), param[int | None]("limit", limit)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[ListCustomerSegmentsResponse],
+            decoder=async_json_decoder[ListCustomerSegmentsResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )
@@ -220,7 +229,8 @@ class AsyncCustomerSegmentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
 
         Args:
             segment_id: The Square-issued ID of the customer segment.
-            request_options: Per-call overrides for this one request, such as a timeout or extra headers.
+            request_options: Per-call overrides for this one request, such as a timeout, extra headers, or its retry
+                count and statuses.
 
         Returns:
             An ``ApiResult`` holding the deserialized response or the error body."""
@@ -229,7 +239,7 @@ class AsyncCustomerSegmentsWithRawResponse(SecuredRawResponse[AsyncRawClient, Se
             url_template=self._server.default("/v2/customers/segments/{segment_id}"),
             path_params=[param[str]("segment_id", segment_id)],
             auth_scheme=self._auth.oauth2,
-            decoder=json_decoder[RetrieveCustomerSegmentResponse],
+            decoder=async_json_decoder[RetrieveCustomerSegmentResponse],
             error_mapper=raw_error_response,
             request_options=request_options,
         )

@@ -19,6 +19,6 @@ class ListChannelsResponse(SdkBaseModel):
 
 
 class ListChannelsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    channels: NotRequired[list[Channel | ChannelDict]]
+    errors: NotRequired[list[ErrorDict]]
+    channels: NotRequired[list[ChannelDict]]
     cursor: NotRequired[str]

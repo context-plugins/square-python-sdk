@@ -23,4 +23,4 @@ class OauthAuthorizationRevokedEventData(SdkBaseModel):
 class OauthAuthorizationRevokedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[OauthAuthorizationRevokedEventObject | OauthAuthorizationRevokedEventObjectDict]
+    object_: NotRequired[OauthAuthorizationRevokedEventObjectDict]

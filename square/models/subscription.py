@@ -81,7 +81,7 @@ class Subscription(SdkBaseModel):
     source: Optional[SubscriptionSource] = UNSET
     """The origination details of the subscription."""
 
-    actions: Optional[list[SubscriptionAction | None]] = UNSET
+    actions: OptionalNullable[list[SubscriptionAction]] = UNSET
     """The list of scheduled actions on this subscription. It is set only in the response from `RetrieveSubscription
     <api-endpoint:Subscriptions-RetrieveSubscription>`__ with the query parameter of ``include=actions`` or from
     `SearchSubscriptions <api-endpoint:Subscriptions-SearchSubscriptions>`__ with the input parameter of
@@ -108,13 +108,13 @@ class SubscriptionDict(TypedDict):
     status: NotRequired[SubscriptionStatusOrStr]
     tax_percentage: NotRequired[str | None]
     invoice_ids: NotRequired[list[str]]
-    price_override_money: NotRequired[Money | MoneyDict]
+    price_override_money: NotRequired[MoneyDict]
     version: NotRequired[int]
     created_at: NotRequired[str]
     card_id: NotRequired[str | None]
     timezone: NotRequired[str]
-    source: NotRequired[SubscriptionSource | SubscriptionSourceDict]
-    actions: NotRequired[list[SubscriptionAction | SubscriptionActionDict | None]]
+    source: NotRequired[SubscriptionSourceDict]
+    actions: NotRequired[list[SubscriptionActionDict] | None]
     monthly_billing_anchor_date: NotRequired[int]
-    phases: NotRequired[list[Phase | PhaseDict]]
+    phases: NotRequired[list[PhaseDict]]
     completed_date: NotRequired[str | None]

@@ -21,6 +21,6 @@ class StandardUnitDescription(SdkBaseModel):
 
 
 class StandardUnitDescriptionDict(TypedDict):
-    unit: NotRequired[MeasurementUnit | MeasurementUnitDict]
+    unit: NotRequired[MeasurementUnitDict]
     name: NotRequired[str | None]
     abbreviation: NotRequired[str | None]

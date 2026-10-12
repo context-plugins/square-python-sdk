@@ -21,5 +21,5 @@ class RegisterDomainResponse(SdkBaseModel):
 
 
 class RegisterDomainResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]
     status: NotRequired[RegisterDomainResponseStatusOrStr]

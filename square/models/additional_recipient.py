@@ -29,5 +29,5 @@ class AdditionalRecipient(SdkBaseModel):
 class AdditionalRecipientDict(TypedDict):
     location_id: str
     description: NotRequired[str | None]
-    amount_money: Money | MoneyDict
+    amount_money: MoneyDict
     receivable_id: NotRequired[str | None]

@@ -21,6 +21,6 @@ class ListPaymentLinksResponse(SdkBaseModel):
 
 
 class ListPaymentLinksResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    payment_links: NotRequired[list[PaymentLink | PaymentLinkDict]]
+    errors: NotRequired[list[ErrorDict]]
+    payment_links: NotRequired[list[PaymentLinkDict]]
     cursor: NotRequired[str]

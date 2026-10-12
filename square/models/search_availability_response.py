@@ -16,5 +16,5 @@ class SearchAvailabilityResponse(SdkBaseModel):
 
 
 class SearchAvailabilityResponseDict(TypedDict):
-    availabilities: NotRequired[list[Availability | AvailabilityDict]]
-    errors: NotRequired[list[Error | ErrorDict]]
+    availabilities: NotRequired[list[AvailabilityDict]]
+    errors: NotRequired[list[ErrorDict]]

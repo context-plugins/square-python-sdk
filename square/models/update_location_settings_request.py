@@ -11,4 +11,4 @@ class UpdateLocationSettingsRequest(SdkBaseModel):
 
 
 class UpdateLocationSettingsRequestDict(TypedDict):
-    location_settings: CheckoutLocationSettings | CheckoutLocationSettingsDict
+    location_settings: CheckoutLocationSettingsDict

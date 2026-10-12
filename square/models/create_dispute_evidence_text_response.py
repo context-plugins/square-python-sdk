@@ -17,5 +17,5 @@ class CreateDisputeEvidenceTextResponse(SdkBaseModel):
 
 
 class CreateDisputeEvidenceTextResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    evidence: NotRequired[DisputeEvidence | DisputeEvidenceDict]
+    errors: NotRequired[list[ErrorDict]]
+    evidence: NotRequired[DisputeEvidenceDict]

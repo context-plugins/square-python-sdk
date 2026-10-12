@@ -17,5 +17,5 @@ class RetrieveCashDrawerShiftResponse(SdkBaseModel):
 
 
 class RetrieveCashDrawerShiftResponseDict(TypedDict):
-    cash_drawer_shift: NotRequired[CashDrawerShift | CashDrawerShiftDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    cash_drawer_shift: NotRequired[CashDrawerShiftDict]
+    errors: NotRequired[list[ErrorDict]]

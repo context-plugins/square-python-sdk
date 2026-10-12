@@ -68,7 +68,7 @@ class OrderServiceCharge(SdkBaseModel):
     """Indicates whether the service charge can be taxed. If set to ``true``, order-level taxes automatically apply to
     the service charge. Note that service charges calculated in the ``TOTAL_PHASE`` cannot be marked as taxable."""
 
-    applied_taxes: Optional[list[OrderLineItemAppliedTax | None]] = UNSET
+    applied_taxes: OptionalNullable[list[OrderLineItemAppliedTax]] = UNSET
     """The list of references to the taxes applied to this service charge. Each ``OrderLineItemAppliedTax`` has a
     ``tax_uid`` that references the ``uid`` of a top-level ``OrderLineItemTax`` that is being applied to this service
     charge. On reads, the amount applied is populated.
@@ -80,7 +80,7 @@ class OrderServiceCharge(SdkBaseModel):
 
     To change the amount of a tax, modify the referenced top-level tax."""
 
-    metadata: Optional[dict[str, str | None]] = UNSET
+    metadata: OptionalNullable[dict[str, str]] = UNSET
     """Application-defined data attached to this service charge. Metadata fields are intended to store descriptive
     references or associations with an entity in another system or store brief information about the object. Square does
     not process this field; it only stores and returns it in relevant API calls. Do not use metadata to store any
@@ -113,14 +113,14 @@ class OrderServiceChargeDict(TypedDict):
     catalog_object_id: NotRequired[str | None]
     catalog_version: NotRequired[int | None]
     percentage: NotRequired[str | None]
-    amount_money: NotRequired[Money | MoneyDict]
-    applied_money: NotRequired[Money | MoneyDict]
-    total_money: NotRequired[Money | MoneyDict]
-    total_tax_money: NotRequired[Money | MoneyDict]
+    amount_money: NotRequired[MoneyDict]
+    applied_money: NotRequired[MoneyDict]
+    total_money: NotRequired[MoneyDict]
+    total_tax_money: NotRequired[MoneyDict]
     calculation_phase: NotRequired[OrderServiceChargeCalculationPhaseOrStr]
     taxable: NotRequired[bool | None]
-    applied_taxes: NotRequired[list[OrderLineItemAppliedTax | OrderLineItemAppliedTaxDict | None]]
-    metadata: NotRequired[dict[str, str | None]]
+    applied_taxes: NotRequired[list[OrderLineItemAppliedTaxDict] | None]
+    metadata: NotRequired[dict[str, str] | None]
     type_: NotRequired[OrderServiceChargeTypeOrStr]
     treatment_type: NotRequired[OrderServiceChargeTreatmentTypeOrStr]
     scope: NotRequired[OrderServiceChargeScopeOrStr]

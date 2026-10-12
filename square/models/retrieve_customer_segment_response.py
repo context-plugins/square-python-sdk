@@ -24,5 +24,5 @@ class RetrieveCustomerSegmentResponse(SdkBaseModel):
 
 
 class RetrieveCustomerSegmentResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    segment: NotRequired[CustomerSegment | CustomerSegmentDict]
+    errors: NotRequired[list[ErrorDict]]
+    segment: NotRequired[CustomerSegmentDict]

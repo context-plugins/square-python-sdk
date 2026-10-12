@@ -35,7 +35,7 @@ class InventoryAdjustmentReason(SdkBaseModel):
 
 
 class InventoryAdjustmentReasonDict(TypedDict):
-    id: InventoryAdjustmentReasonId | InventoryAdjustmentReasonIdDict
+    id: InventoryAdjustmentReasonIdDict
     name: NotRequired[str | None]
     direction: NotRequired[InventoryAdjustmentReasonDirectionOrStr]
     created_at: NotRequired[str]

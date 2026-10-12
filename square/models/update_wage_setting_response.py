@@ -19,5 +19,5 @@ class UpdateWageSettingResponse(SdkBaseModel):
 
 
 class UpdateWageSettingResponseDict(TypedDict):
-    wage_setting: NotRequired[WageSetting | WageSettingDict]
-    errors: NotRequired[list[Error | ErrorDict]]
+    wage_setting: NotRequired[WageSettingDict]
+    errors: NotRequired[list[ErrorDict]]

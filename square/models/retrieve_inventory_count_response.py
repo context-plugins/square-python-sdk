@@ -22,6 +22,6 @@ class RetrieveInventoryCountResponse(SdkBaseModel):
 
 
 class RetrieveInventoryCountResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    counts: NotRequired[list[InventoryCount | InventoryCountDict]]
+    errors: NotRequired[list[ErrorDict]]
+    counts: NotRequired[list[InventoryCountDict]]
     cursor: NotRequired[str]

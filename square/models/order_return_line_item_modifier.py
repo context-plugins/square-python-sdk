@@ -51,6 +51,6 @@ class OrderReturnLineItemModifierDict(TypedDict):
     catalog_object_id: NotRequired[str | None]
     catalog_version: NotRequired[int | None]
     name: NotRequired[str | None]
-    base_price_money: NotRequired[Money | MoneyDict]
-    total_price_money: NotRequired[Money | MoneyDict]
+    base_price_money: NotRequired[MoneyDict]
+    total_price_money: NotRequired[MoneyDict]
     quantity: NotRequired[str | None]

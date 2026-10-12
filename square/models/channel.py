@@ -38,7 +38,7 @@ class ChannelDict(TypedDict):
     merchant_id: NotRequired[str]
     name: NotRequired[str | None]
     version: NotRequired[int]
-    reference: NotRequired[Reference | ReferenceDict]
+    reference: NotRequired[ReferenceDict]
     status: NotRequired[ChannelStatusOrStr]
     created_at: NotRequired[str]
     updated_at: NotRequired[str]

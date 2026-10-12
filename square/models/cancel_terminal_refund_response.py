@@ -17,5 +17,5 @@ class CancelTerminalRefundResponse(SdkBaseModel):
 
 
 class CancelTerminalRefundResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    refund: NotRequired[TerminalRefund | TerminalRefundDict]
+    errors: NotRequired[list[ErrorDict]]
+    refund: NotRequired[TerminalRefundDict]

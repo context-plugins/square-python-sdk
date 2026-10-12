@@ -28,6 +28,6 @@ class ListCustomerGroupsResponse(SdkBaseModel):
 
 
 class ListCustomerGroupsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    groups: NotRequired[list[CustomerGroup | CustomerGroupDict]]
+    errors: NotRequired[list[ErrorDict]]
+    groups: NotRequired[list[CustomerGroupDict]]
     cursor: NotRequired[str]

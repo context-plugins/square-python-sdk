@@ -21,5 +21,5 @@ class BulkUpsertOrderCustomAttributesResponse(SdkBaseModel):
 
 
 class BulkUpsertOrderCustomAttributesResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    values: dict[str, UpsertOrderCustomAttributeResponse | UpsertOrderCustomAttributeResponseDict]
+    errors: NotRequired[list[ErrorDict]]
+    values: dict[str, UpsertOrderCustomAttributeResponseDict]

@@ -34,7 +34,7 @@ class CashDrawerShiftEvent(SdkBaseModel):
 class CashDrawerShiftEventDict(TypedDict):
     id: NotRequired[str]
     event_type: NotRequired[CashDrawerEventTypeOrStr]
-    event_money: NotRequired[Money | MoneyDict]
+    event_money: NotRequired[MoneyDict]
     created_at: NotRequired[str]
     description: NotRequired[str | None]
     team_member_id: NotRequired[str]

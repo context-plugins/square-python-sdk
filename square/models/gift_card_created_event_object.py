@@ -14,4 +14,4 @@ class GiftCardCreatedEventObject(SdkBaseModel):
 
 
 class GiftCardCreatedEventObjectDict(TypedDict):
-    gift_card: NotRequired[GiftCard | GiftCardDict]
+    gift_card: NotRequired[GiftCardDict]

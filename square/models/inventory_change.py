@@ -36,7 +36,7 @@ class InventoryChange(SdkBaseModel):
 
 class InventoryChangeDict(TypedDict):
     type_: NotRequired[InventoryChangeTypeOrStr]
-    physical_count: NotRequired[InventoryPhysicalCount | InventoryPhysicalCountDict]
-    adjustment: NotRequired[InventoryAdjustment | InventoryAdjustmentDict]
-    measurement_unit: NotRequired[CatalogMeasurementUnit | CatalogMeasurementUnitDict]
+    physical_count: NotRequired[InventoryPhysicalCountDict]
+    adjustment: NotRequired[InventoryAdjustmentDict]
+    measurement_unit: NotRequired[CatalogMeasurementUnitDict]
     measurement_unit_id: NotRequired[str]

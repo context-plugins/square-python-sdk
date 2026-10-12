@@ -24,4 +24,4 @@ class PrePopulatedData(SdkBaseModel):
 class PrePopulatedDataDict(TypedDict):
     buyer_email: NotRequired[str | None]
     buyer_phone_number: NotRequired[str | None]
-    buyer_address: NotRequired[Address | AddressDict]
+    buyer_address: NotRequired[AddressDict]

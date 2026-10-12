@@ -55,7 +55,7 @@ class ItemVariationLocationOverrides(SdkBaseModel):
 
 class ItemVariationLocationOverridesDict(TypedDict):
     location_id: NotRequired[str | None]
-    price_money: NotRequired[Money | MoneyDict]
+    price_money: NotRequired[MoneyDict]
     pricing_type: NotRequired[CatalogPricingTypeOrStr]
     track_inventory: NotRequired[bool | None]
     inventory_alert_type: NotRequired[InventoryAlertTypeOrStr]

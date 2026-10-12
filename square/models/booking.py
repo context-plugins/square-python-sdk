@@ -51,7 +51,7 @@ class Booking(SdkBaseModel):
     that cannot be expressed by supported attributes of a specific `CatalogObject <entity:CatalogObject>`__ instance.
     This field should not be visible to customers."""
 
-    appointment_segments: Optional[list[AppointmentSegment | None]] = UNSET
+    appointment_segments: OptionalNullable[list[AppointmentSegment]] = UNSET
     """A list of appointment segments for this booking."""
 
     transition_time_minutes: Optional[int] = UNSET
@@ -86,10 +86,10 @@ class BookingDict(TypedDict):
     customer_id: NotRequired[str | None]
     customer_note: NotRequired[str | None]
     seller_note: NotRequired[str | None]
-    appointment_segments: NotRequired[list[AppointmentSegment | AppointmentSegmentDict | None]]
+    appointment_segments: NotRequired[list[AppointmentSegmentDict] | None]
     transition_time_minutes: NotRequired[int]
     all_day: NotRequired[bool]
     location_type: NotRequired[BusinessAppointmentSettingsBookingLocationTypeOrStr]
-    creator_details: NotRequired[BookingCreatorDetails | BookingCreatorDetailsDict]
+    creator_details: NotRequired[BookingCreatorDetailsDict]
     source: NotRequired[BookingBookingSourceOrStr]
-    address: NotRequired[Address | AddressDict]
+    address: NotRequired[AddressDict]

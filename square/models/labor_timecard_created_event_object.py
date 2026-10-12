@@ -13,4 +13,4 @@ class LaborTimecardCreatedEventObject(SdkBaseModel):
 
 
 class LaborTimecardCreatedEventObjectDict(TypedDict):
-    timecard: NotRequired[Timecard | TimecardDict]
+    timecard: NotRequired[TimecardDict]

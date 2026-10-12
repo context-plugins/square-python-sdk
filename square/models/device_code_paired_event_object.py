@@ -11,4 +11,4 @@ class DeviceCodePairedEventObject(SdkBaseModel):
 
 
 class DeviceCodePairedEventObjectDict(TypedDict):
-    device_code: NotRequired[DeviceCode | DeviceCodeDict]
+    device_code: NotRequired[DeviceCodeDict]

@@ -13,4 +13,4 @@ class InvoiceCanceledEventObject(SdkBaseModel):
 
 
 class InvoiceCanceledEventObjectDict(TypedDict):
-    invoice: NotRequired[Invoice | InvoiceDict]
+    invoice: NotRequired[InvoiceDict]

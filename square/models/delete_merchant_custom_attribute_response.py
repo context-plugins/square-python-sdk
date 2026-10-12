@@ -16,4 +16,4 @@ class DeleteMerchantCustomAttributeResponse(SdkBaseModel):
 
 
 class DeleteMerchantCustomAttributeResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
+    errors: NotRequired[list[ErrorDict]]

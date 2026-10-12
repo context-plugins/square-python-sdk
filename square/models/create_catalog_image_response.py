@@ -29,5 +29,5 @@ class CreateCatalogImageResponse(SdkBaseModel):
 
 
 class CreateCatalogImageResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    image: NotRequired[CatalogObject | CatalogObjectDict]
+    errors: NotRequired[list[ErrorDict]]
+    image: NotRequired[CatalogObjectDict]

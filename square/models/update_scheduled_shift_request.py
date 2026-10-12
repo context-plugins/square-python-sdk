@@ -14,4 +14,4 @@ class UpdateScheduledShiftRequest(SdkBaseModel):
 
 
 class UpdateScheduledShiftRequestDict(TypedDict):
-    scheduled_shift: ScheduledShift | ScheduledShiftDict
+    scheduled_shift: ScheduledShiftDict

@@ -15,5 +15,5 @@ class RetrieveLocationSettingsResponse(SdkBaseModel):
 
 
 class RetrieveLocationSettingsResponseDict(TypedDict):
-    errors: NotRequired[list[Error | ErrorDict]]
-    location_settings: NotRequired[CheckoutLocationSettings | CheckoutLocationSettingsDict]
+    errors: NotRequired[list[ErrorDict]]
+    location_settings: NotRequired[CheckoutLocationSettingsDict]

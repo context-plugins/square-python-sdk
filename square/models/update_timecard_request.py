@@ -15,4 +15,4 @@ class UpdateTimecardRequest(SdkBaseModel):
 
 
 class UpdateTimecardRequestDict(TypedDict):
-    timecard: Timecard | TimecardDict
+    timecard: TimecardDict

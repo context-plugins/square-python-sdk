@@ -26,4 +26,4 @@ class LoyaltyPromotionCreatedEventData(SdkBaseModel):
 class LoyaltyPromotionCreatedEventDataDict(TypedDict):
     type_: NotRequired[str | None]
     id: NotRequired[str]
-    object_: NotRequired[LoyaltyPromotionCreatedEventObject | LoyaltyPromotionCreatedEventObjectDict]
+    object_: NotRequired[LoyaltyPromotionCreatedEventObjectDict]

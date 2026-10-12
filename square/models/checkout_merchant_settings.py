@@ -17,5 +17,5 @@ class CheckoutMerchantSettings(SdkBaseModel):
 
 
 class CheckoutMerchantSettingsDict(TypedDict):
-    payment_methods: NotRequired[CheckoutMerchantSettingsPaymentMethods | CheckoutMerchantSettingsPaymentMethodsDict]
+    payment_methods: NotRequired[CheckoutMerchantSettingsPaymentMethodsDict]
     updated_at: NotRequired[str]

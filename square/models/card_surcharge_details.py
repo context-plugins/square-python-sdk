@@ -20,4 +20,4 @@ class CardSurchargeDetails(SdkBaseModel):
 
 
 class CardSurchargeDetailsDict(TypedDict):
-    card_surcharge_money: NotRequired[Money | MoneyDict]
+    card_surcharge_money: NotRequired[MoneyDict]
